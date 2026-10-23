@@ -1,7 +1,7 @@
 {
   "id": "carboxmol-bioinformatics-club-portal",
-  "name": "CarboxMol Bioinformatics Club",
-  "short_name": "CarboxMol BioClub",
+  "name": "CarboxMol Bioinformatika Klubu",
+  "short_name": "CarboxMol",
   "description": "CarboxMol Bioinformatika Klubu — Rəsmi Portal, Tədris, Hesablama Biologiyası və Tədqiqat Mərkəzi",
   "start_url": "./index.html",
   "scope": "./",
@@ -11,8 +11,8 @@
     "minimal-ui",
     "window-controls-overlay"
   ],
-  "background_color": "#070e17",
-  "theme_color": "#070e17",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "orientation": "any",
   "lang": "az",
   "dir": "ltr",

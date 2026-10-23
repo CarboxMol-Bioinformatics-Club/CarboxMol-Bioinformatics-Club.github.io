@@ -921,7 +921,7 @@ const BioMeetEngine = {
       date: `${now.getDate()} Oktyabr ${now.getFullYear()}`,
       time: timeStr,
       timestamp: Date.now(),
-      tags: [this.currentRoom.badge, isAudio ? "Səsli Podkast" : "Video Dərs", "CarboxMol BioClub"],
+      tags: [this.currentRoom.badge, isAudio ? "Səsli Podkast" : "Video Dərs", "CarboxMol Bioinformatika Klubu"],
       summary: `${this.currentRoom.name} üzrə canlı dərs və mühazirə qeydi.`
     };
 
