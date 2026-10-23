@@ -11,7 +11,17 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/icon-512.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="assets/images/carboxmol_bioclub_logo.png" />
   <meta name="theme-color" content="#070e17" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://carboxmol-bioinformatics-club.github.io/" />
+  <meta property="og:title" content="CarboxMol Bioinformatika Klubu | CarboxMol Bioinformatics Club" />
+  <meta property="og:description" content="Hesablama Biologiyası, Genomika, Python, R və Süni İntellekt üzrə Tələbə Tədqiqat Mərkəzi." />
+  <meta property="og:image" content="https://carboxmol-bioinformatics-club.github.io/assets/images/carboxmol_bioclub_logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CarboxMol Bioinformatika Klubu" />
+  <meta name="twitter:description" content="Hesablama Biologiyası, Genomika, Python, R və Süni İntellekt üzrə Tələbə Tədqiqat Mərkəzi." />
+  <meta name="twitter:image" content="https://carboxmol-bioinformatics-club.github.io/assets/images/carboxmol_bioclub_logo.png" />
   <meta name="color-scheme" content="dark" />
 
   <!-- Progressive Web App (PWA) Manifest & Meta Tags -->
@@ -81,8 +91,8 @@
         
         <!-- Logo & University Badge (Anchored to Left) -->
         <a href="#home" onclick="navigateTo('home'); return false;" class="flex items-center gap-2 sm:gap-2.5 group shrink-0 min-w-0 !border-b-0 no-underline cursor-pointer">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-tr from-teal-600 via-emerald-500 to-cyan-400 p-0.5 shadow-lg shadow-teal-900/30 group-hover:scale-105 transition shrink-0">
-            <img src="favicon.svg" alt="CarboxMol Bioinformatika Klubu Loqosu" class="w-full h-full object-contain rounded-[14px]" />
+          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-teal-600 via-emerald-500 to-cyan-400 p-0.5 shadow-lg shadow-teal-900/40 group-hover:scale-105 transition shrink-0 overflow-hidden ring-1 ring-teal-400/40">
+            <img src="assets/images/carboxmol_bioclub_logo.png" alt="CarboxMol Bioinformatika Klubu Loqosu" class="w-full h-full object-cover rounded-[14px]" />
           </div>
           <div class="min-w-0">
             <div class="flex items-center gap-1.5">
@@ -326,9 +336,9 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative z-10">
           
           <div class="lg:col-span-7 space-y-5 lg:space-y-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-950/70 border border-teal-700/60 text-teal-300 text-xs font-semibold">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-              CarboxMol-Bioinformatics-Club.github.io • Rəsmi Akademik Tədqiqat Mərkəzi
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-teal-950/80 border border-teal-600/60 text-teal-300 text-xs font-semibold shadow-lg backdrop-blur">
+              <img src="assets/images/carboxmol_bioclub_logo.png" alt="CarboxMol" class="w-5 h-5 rounded-full object-cover ring-1 ring-teal-400/80 shadow-sm" />
+              <span>CarboxMol-Bioinformatics-Club.github.io • Rəsmi Akademik Tədqiqat Mərkəzi</span>
             </div>
 
             <h1 class="text-2xl sm:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-extrabold tracking-tight text-white leading-tight">
@@ -377,6 +387,16 @@
           <!-- Interactive 3D DNA Canvas Hero Element -->
           <div class="lg:col-span-5 h-[280px] sm:h-[350px] lg:h-[380px] xl:h-[400px] rounded-2xl relative overflow-hidden bg-slate-950/60 border border-slate-800 flex items-center justify-center">
             <canvas id="dnaCanvas"></canvas>
+            
+            <!-- Official Club Crest Badge Overlay -->
+            <div class="absolute top-3 left-3 flex items-center gap-2.5 bg-slate-950/85 border border-teal-500/40 rounded-xl px-2.5 py-1.5 backdrop-blur-md shadow-xl pointer-events-none">
+              <img src="assets/images/carboxmol_bioclub_logo.png" alt="CarboxMol Loqo" class="w-7 h-7 rounded-lg object-cover ring-1 ring-teal-400/50 shadow" />
+              <div class="flex flex-col">
+                <span class="text-[10px] font-black tracking-wide text-white leading-tight">CarboxMol BioClub</span>
+                <span class="text-[8px] text-teal-300 font-mono leading-tight">Rəsmi Elmi Emblemi</span>
+              </div>
+            </div>
+
             <div class="absolute bottom-3 left-4 right-4 flex justify-between items-center text-[10px] sm:text-[11px] text-slate-400 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-800 backdrop-blur pointer-events-none">
               <span><i class="fa-solid fa-circle-nodes text-teal-400 mr-1"></i> İnteraktiv 3D DNT Heliks Modeli</span>
               <span class="text-emerald-400 font-mono">Canlı Render</span>
@@ -501,6 +521,40 @@
             <button data-target="register" class="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition text-center shadow-lg shadow-emerald-500/20">
               Qeydiyyatdan Keç
             </button>
+          </div>
+        </div>
+
+        <!-- CarboxMol Official Insignia & Identity Showcase -->
+        <div class="rounded-3xl glass-panel p-6 sm:p-8 border border-teal-500/30 bg-gradient-to-r from-slate-950 via-slate-900 to-teal-950/40 relative overflow-hidden shadow-2xl">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <div class="md:col-span-4 flex justify-center">
+              <div class="relative group">
+                <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-teal-500 via-emerald-400 to-cyan-400 opacity-60 blur-lg group-hover:opacity-100 transition duration-500"></div>
+                <img src="assets/images/carboxmol_bioclub_logo.png" alt="CarboxMol Bioinformatika Klubu Loqosu" class="relative w-44 h-44 sm:w-52 sm:h-52 object-cover rounded-3xl shadow-2xl border border-teal-400/40 transform group-hover:scale-105 transition duration-300" />
+              </div>
+            </div>
+            <div class="md:col-span-8 space-y-3">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950 text-teal-300 text-xs font-semibold border border-teal-800">
+                <i class="fa-solid fa-atom"></i> Rəsmi Klub Emblemi və Elmi Məzmunu
+              </div>
+              <h3 class="text-xl sm:text-2xl font-black text-white">CarboxMol Bioinformatika Klubu Emblemi</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Loqomuz hesablamalı struktur biologiya və molekulyar bioinformatikanın təməl prinsiplərini əks etdirir: 
+                <strong>Karboksil qrupları (CarboxMol)</strong>, zülal-liqand koordinasiyası və aktiv mərkəz triadaları; 
+                <strong>DNT qoşa spiralı (Genomika)</strong> və <strong>neyron-məlumat şəbəkələri (Bioinformatik Hesablama və Süni İntellekt)</strong> vəhdəti.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-slate-900/90 text-teal-300 border border-teal-900">
+                  <i class="fa-solid fa-dna text-teal-400 mr-1"></i> DNT & Genomika
+                </span>
+                <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-slate-900/90 text-cyan-300 border border-cyan-900">
+                  <i class="fa-solid fa-circle-nodes text-cyan-400 mr-1"></i> Carbox triadaları
+                </span>
+                <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-slate-900/90 text-emerald-300 border border-emerald-900">
+                  <i class="fa-solid fa-brain text-emerald-400 mr-1"></i> AlphaFold & ML
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1550,7 +1604,7 @@ Seçilmiş pipeline: DESeq2
 
                 <!-- Watermark Logo (Bottom Right) -->
                 <div class="absolute bottom-3 right-3 flex items-center gap-2 px-2.5 py-1 rounded-xl bg-slate-950/70 backdrop-blur border border-slate-800/60 text-[10px] text-slate-400 pointer-events-none">
-                  <img src="favicon.svg" alt="CarboxMol" class="w-3.5 h-3.5 rounded-full" />
+                  <img src="assets/images/carboxmol_bioclub_logo.png" alt="CarboxMol" class="w-4 h-4 rounded-full object-cover ring-1 ring-teal-400/60" />
                   <span>CarboxMol BioMeet Studio</span>
                 </div>
               </div>
@@ -1728,8 +1782,8 @@ Seçilmiş pipeline: DESeq2
 
       <!-- 6.1 Unauthenticated Member Gateway (Giriş Etməmiş Üzvlər üçün) -->
       <div id="memberLoginGateway" class="glass-panel p-8 sm:p-12 rounded-3xl border border-teal-800/40 text-center max-w-3xl mx-auto space-y-6 shadow-2xl">
-        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-teal-500 to-cyan-500 p-0.5 mx-auto shadow-xl">
-          <img src="favicon.svg" alt="CarboxMol Bioinformatika Klubu Loqosu" class="w-full h-full object-contain rounded-[14px]" />
+        <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-teal-500 to-cyan-500 p-0.5 mx-auto shadow-xl overflow-hidden ring-1 ring-teal-400/40">
+          <img src="assets/images/carboxmol_bioclub_logo.png" alt="CarboxMol Bioinformatika Klubu Loqosu" class="w-full h-full object-cover rounded-[14px]" />
         </div>
 
         <div class="space-y-2">
@@ -5465,8 +5519,8 @@ Seçilmiş pipeline: DESeq2
         
         <div class="space-y-3 md:col-span-2">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-500 to-cyan-500 p-0.5 shadow-md">
-              <img src="favicon.svg" alt="CarboxMol Bioinformatika Klubu Loqosu" class="w-full h-full object-contain rounded-[10px]" />
+            <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-teal-500 to-cyan-500 p-0.5 shadow-md overflow-hidden shrink-0 ring-1 ring-teal-400/30">
+              <img src="assets/images/carboxmol_bioclub_logo.png" alt="CarboxMol Bioinformatika Klubu Loqosu" class="w-full h-full object-cover rounded-[10px]" />
             </div>
             <span class="font-bold text-white text-base">CarboxMol Bioinformatika Klubu</span>
           </div>
@@ -5553,7 +5607,7 @@ Seçilmiş pipeline: DESeq2
     <div class="bg-slate-900 border border-teal-500/40 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <div class="flex items-center gap-2.5">
-          <img src="favicon.svg" alt="CarboxMol BioClub" class="w-8 h-8 rounded-full object-contain bg-white p-0.5" />
+          <img src="assets/images/carboxmol_bioclub_logo.png" alt="CarboxMol BioClub" class="w-9 h-9 rounded-xl object-cover ring-1 ring-teal-400/60 p-0.5" />
           <h3 class="text-base font-bold text-white">Tətbiqi Telefona Quraşdırın</h3>
         </div>
         <button onclick="closeIosInstallModal()" class="text-slate-400 hover:text-white p-1 text-base">
