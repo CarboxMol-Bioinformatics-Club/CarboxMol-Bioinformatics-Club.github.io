@@ -38,23 +38,26 @@ function registerServiceWorker() {
           console.warn('[PWA] Service Worker qeydiyyat xətası:', error);
         });
 
-      // Service Worker-dən birbaşa aktivləşmə siqnalı gəldikdə səhifəni yenilə
+      const hadController = Boolean(navigator.serviceWorker.controller);
+
+      // Service Worker-dən birbaşa aktivləşmə siqnalı
       navigator.serviceWorker.addEventListener('message', (event) => {
         if (event.data && event.data.action === 'SW_ACTIVATED') {
-          console.log('[PWA] Yeni versiya aktivləşdi. Tətbiq ən son versiya ilə yenilənir...');
-          setTimeout(() => {
-            window.location.reload();
-          }, 600);
+          console.log('[PWA] Yeni versiya aktivləşdi:', event.data.version || '');
         }
       });
 
-      // Kontroller dəyişdikdə (Yeni Service Worker idarəetməni ələ aldıqda)
+      // Kontroller dəyişdikdə (Yalnız əvvəl köhnə kontroller var idisə və tək bir dəfə)
       let refreshing = false;
       navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (!refreshing) {
-          refreshing = true;
-          console.log('[PWA] Tətbiq yeni kontroller ilə yenilənir...');
-          window.location.reload();
+        if (!refreshing && hadController) {
+          const reloadedKey = 'pwa_sw_reloaded_once';
+          if (!sessionStorage.getItem(reloadedKey)) {
+            refreshing = true;
+            sessionStorage.setItem(reloadedKey, '1');
+            console.log('[PWA] Tətbiq ən son versiya ilə yenilənir...');
+            window.location.reload();
+          }
         }
       });
     });
