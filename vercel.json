@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "framework": null,
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://carboxmol-bioinformatics-club.github.io/$1",
+      "permanent": true
+    }
+  ]
+}
