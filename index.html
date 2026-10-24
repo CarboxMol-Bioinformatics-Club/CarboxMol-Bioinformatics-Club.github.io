@@ -59,6 +59,14 @@
   
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
+  <!-- Instant Redirection to New Official Domain -->
+  <meta http-equiv="refresh" content="0; url=https://carboxmol-bioinformatics-club.github.io/" />
+  <script>
+    if (window.location.hostname !== 'carboxmol-bioinformatics-club.github.io') {
+      var target = 'https://carboxmol-bioinformatics-club.github.io' + window.location.pathname + window.location.search + window.location.hash;
+      window.location.replace(target);
+    }
+  </script>
 </head>
 <body class="bg-[#f8fafc] text-slate-800 min-h-screen flex flex-col selection:bg-teal-500 selection:text-white">
 
@@ -405,7 +413,7 @@
                 <!-- Control Quick Actions -->
                 <div class="flex items-center gap-1 shrink-0">
                   <button id="molSpinBtn" class="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-semibold flex items-center gap-1 transition shadow-2xs" title="Avtomatik fırlanma">
-                    <i class="fa-solid fa-pause text-xs text-teal-600"></i> <span class="hidden sm:inline">Pauza</span>
+                    <i class="fa-solid fa-play text-xs text-teal-600"></i> <span class="hidden sm:inline">Fırlat</span>
                   </button>
                   <button id="molResetBtn" class="p-1.5 sm:px-2 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-semibold transition shadow-2xs" title="Görünüşü mərkəzləşdir">
                     <i class="fa-solid fa-crosshairs text-teal-600"></i>
@@ -433,9 +441,6 @@
             <!-- 3D WebGL Canvas Area -->
             <div class="relative w-full h-[300px] sm:h-[340px] lg:h-[370px] bg-white cursor-grab active:cursor-grabbing overflow-hidden flex items-center justify-center">
               <div id="molViewerContainer" class="w-full h-full relative z-0"></div>
-
-              <!-- Hidden 2D Fallback Canvas -->
-              <canvas id="dnaCanvas" class="hidden absolute inset-0 w-full h-full"></canvas>
 
               <!-- Loader Spinner -->
               <div id="molLoader" class="hidden absolute inset-0 bg-white/80 backdrop-blur-xs flex flex-col items-center justify-center gap-2 z-20">
@@ -6054,10 +6059,9 @@ Seçilmiş pipeline: DESeq2
   <script src="js/bioconductor.js"></script>
   <script src="js/collaborators.js"></script>
   <script src="js/biomeet.js"></script>
-    <!-- 3Dmol.js Real Biomolecular WebGL Engine & CarboxMol Studio -->
+  <!-- 3Dmol.js Real Biomolecular WebGL Engine & CarboxMol Studio -->
   <script src="js/3Dmol-min.js"></script>
   <script src="js/mol-viewer.js"></script>
-  <script src="js/canvas.js"></script>
   <script src="js/president.js"></script>
   <script src="js/members.js"></script>
   <script src="js/teacher.js"></script>

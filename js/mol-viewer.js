@@ -130,7 +130,7 @@
   let viewer = null;
   let currentMolecule = 'dna';
   let currentStyle = 'cartoon';
-  let isSpinning = true;
+  let isSpinning = false;
   let modelCache = {};
 
   function initMolViewer() {
@@ -364,8 +364,10 @@
   }
 
   function showFallback2D() {
-    const fallbackCanvas = document.getElementById('dnaCanvas');
-    if (fallbackCanvas) fallbackCanvas.classList.remove('hidden');
+    const container = document.getElementById('molViewerContainer');
+    if (container) {
+      container.innerHTML = '<div class="p-6 text-center text-slate-500 font-semibold text-xs">WebGL 3D dəstəklənmir.</div>';
+    }
   }
 
   // Public API
