@@ -2085,6 +2085,79 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "status": "Gözləyir",
       "photo": "",
       "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+    },
+    {
+      "id": "app-fatimirzz",
+      "memberId": "mem-fatimirzz",
+      "fullName": "Mirzəyeva (Fatimə)",
+      "email": "fatima.mirzayeva.david@bsu.edu.az",
+      "phone": "+994709809089",
+      "username": "fatimirzz",
+      "password": "Mirzeyeva.999",
+      "university": "Bakı Dövlət Universiteti (BDU)",
+      "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
+      "major": "Molekulyar biologiya",
+      "course": "Magistratura",
+      "studyLang": "Azərbaycan bölməsi | GPA: 96",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Güclü biologiya bazam var (Genetika, Molekulyar biologiya)",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası və Dərman Dizaynı"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "profileUrl": "https://www.linkedin.com/in/fatimə-mirzeyeva-b09268363?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      "motivation": "Bioinformatikaya sahəsinə giriş etmək istəyirəm. İnanıram ki bu platforma mənə bu prosesdə kömək edəcək.",
+      "yearGoal": "Qeyd edilməyib",
+      "dateApplied": "2026-10-16",
+      "status": "Gözləyir",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+    },
+    {
+      "id": "app-fidan",
+      "memberId": "mem-fidan",
+      "fullName": "Fidan Verdiyeva (Malik)",
+      "email": "fidanverdiyeva808@gmail.com",
+      "phone": "0708870494",
+      "username": "fidan",
+      "password": "Rasengan25",
+      "university": "Bakı Dövlət Universiteti (BDU)",
+      "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
+      "major": "Biologiya",
+      "course": "Magistratura",
+      "studyLang": "Azərbaycan bölməsi | GPA: 87.34",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyədə anlayışım var (Ümumi universitet biologiyası)",
+      "osType": "Yalnız universitet laboratoriyası",
+      "researchTracks": [
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası və Dərman Dizaynı",
+        "Transkriptomika və RNA-Seq"
+      ],
+      "roleInterest": "Tədqiqatçı / Layihə və Hakaton Komandası Üzvü",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "profileUrl": "https://www.linkedin.com/in/fidan-verdiyeva-753bb92ba?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+      "motivation": "Molekulyar biologiya və fitopatologiya sahəsində çalışdığım üçün bioinformatika biliklərimi inkişaf etdirmək istəyirəm. Xüsusilə DNT ardıcıllıqlarının analizi və Python-un bioloji tədqiqatlarda tətbiqi məni cəlb edir. Klubun praktiki fəaliyyətlərində iştirak edərək biliklərimi artırmağı və onları peşəkar fəaliyyətimdə tətbiq etməyi hədəfləyirəm.",
+      "yearGoal": "Bir il ərzində Python və Biopython vasitəsilə bitki patogenlərinin DNT ardıcıllıqlarını analiz etmək bacarığı qazanmaq istəyirəm. Məqsədim müxtəlif patogenlərin ardıcıllıqlarını müqayisə edən və nəticələri təqdim edən kiçik bioinformatik layihə hazırlamaqdır.",
+      "dateApplied": "2026-10-14",
+      "status": "Gözləyir",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
     }
   ],
 
@@ -2168,7 +2241,7 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.10.24.v32_president_approval_guarantee";
+const CURRENT_DATA_VERSION = "2026.10.24.v33_all_31_members_restored";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
