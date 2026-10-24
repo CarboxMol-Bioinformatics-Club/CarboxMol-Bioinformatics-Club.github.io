@@ -2168,7 +2168,7 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.10.20.v27_scientists_and_researchers";
+const CURRENT_DATA_VERSION = "2026.10.24.v32_president_approval_guarantee";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -2211,103 +2211,38 @@ const SyncEngine = {
 };
 window.SyncEngine = SyncEngine;
 
-// Köhnə uydurma (mock) və ya test dataları təmizləyən süzgəc (Yalnız real 15 üzv və yeni gələn müraciətlər qalır)
+// Təhlükəsiz təmizləmə süzgəci: Yalnız köhnə prototip uydurma ID-ləri təmizləyir, heç bir real və ya yeni müraciətə toxunmur!
 function purgeMockData(data) {
   if (!data) return;
-
-  const mockNames = [
-    "leyla məmmədova", "leyla mammadova",
-    "rəşad əliyev", "rashad aliyev",
-    "aytən quliyeva", "ayten quliyeva",
-    "kamran nəsirov", "kamran nasirov",
-    "rəhim əliyev", "rahim aliyev",
-    "fərid həsənli", "farid hasanli",
-    "zeynəb qasımova", "zeynab qasimova",
-    "səkinə ismayılova", "sakina ismayilova",
-    "test tələbə", "test telebe", "test student"
-  ];
-  const mockUsers = [
-    "leylamammadova", "rashadaliyev", "aytenquliyeva", "kamrannasirov",
-    "rahimaliyev", "faridhasanli", "zeynabqasimova", "sakinaway", "test"
-  ];
-  const mockEmails = [
-    "l.mammadova@wcu.edu.az", "r.aliyev@wcu.edu.az", "a.quliyeva@wcu.edu.az",
-    "k.nasirov@wcu.edu.az", "rahim.aliyev@wcu.edu.az", "farid.hasanli@wcu.edu.az",
-    "zeynab.qasimova@wcu.edu.az", "sakina.ismayilova@wcu.edu.az",
-    "test@test.com", "dummy@test.com"
-  ];
-  const mockAppIds = [
-    "app-leyla-01", "app-rashad-01", "app-ayten-01", "app-kamran-01",
-    "app-rahim-01", "app-farid-01", "app-zeynab-01", "app-sakina-01"
-  ];
-
-  const isMockOrTest = (item) => {
-    if (!item) return true;
-    if (mockAppIds.includes(item.id)) return true;
-    const lowerEmail = (item.email || "").toLowerCase();
-    if (mockEmails.includes(lowerEmail) || lowerEmail.includes("test@")) return true;
-    const lowerName = (item.fullName || "").toLowerCase();
-    if (mockNames.some(m => lowerName === m || lowerName.includes(m))) return true;
-    const lowerUser = (item.username || "").toLowerCase();
-    if (mockUsers.includes(lowerUser) || lowerUser.includes("test")) return true;
-    return false;
-  };
-
-  // 1. Tətbiqləri təmizlə
+  const legacyPrototypeIds = ["app-dummy-proto-00", "mem-dummy-proto-00"];
   if (Array.isArray(data.applications)) {
-    data.applications = data.applications.filter(app => !isMockOrTest(app));
-  } else {
-    data.applications = [];
+    data.applications = data.applications.filter(app => app && !legacyPrototypeIds.includes(app.id));
   }
-
-  // 2. Mock üzvləri təmizlə
   if (Array.isArray(data.members)) {
-    data.members = data.members.filter(mem => !isMockOrTest(mem));
-  } else {
-    data.members = [];
+    data.members = data.members.filter(mem => mem && !legacyPrototypeIds.includes(mem.id));
   }
-
-  // 3. Mock müzakirələri təmizlə
-  if (Array.isArray(data.discussions)) {
-    data.discussions = data.discussions.filter(disc => {
-      if (["disc-1", "disc-2"].includes(disc.id)) return false;
-      const lowerAuthor = (disc.author || "").toLowerCase();
-      return !mockNames.some(m => lowerAuthor.includes(m));
-    });
-  } else {
-    data.discussions = [];
-  }
-
-  // 4. Tapşırıqlardakı mock tələbə həllərini təmizlə
-  if (Array.isArray(data.tasks)) {
-    data.tasks.forEach(t => {
-      if (Array.isArray(t.submissions)) {
-        t.submissions = t.submissions.filter(s => {
-          if (["sub-1", "sub-2", "sub-3"].includes(s.id)) return false;
-          const lowerStudent = (s.studentName || "").toLowerCase();
-          return !mockNames.some(m => lowerStudent.includes(m));
-        });
-      } else {
-        t.submissions = [];
-      }
-    });
-  }
-
   data.memberCustomTasks = data.memberCustomTasks || [];
   data.memberNotes = data.memberNotes || [];
 }
 
 // LocalStorage Helper və Avtomatik Data Sinxronizatoru
 function getClubData() {
+  let parsed;
+  let hasStorageUpdates = false;
   const stored = localStorage.getItem("wcu_bioinfo_club_data");
   if (!stored) {
-    const fresh = JSON.parse(JSON.stringify(INITIAL_DATA));
-    fresh._dataVersion = CURRENT_DATA_VERSION;
-    localStorage.setItem("wcu_bioinfo_club_data", JSON.stringify(fresh));
-    return fresh;
+    parsed = JSON.parse(JSON.stringify(INITIAL_DATA));
+    hasStorageUpdates = true;
+  } else {
+    try {
+      parsed = JSON.parse(stored);
+    } catch (e) {
+      parsed = JSON.parse(JSON.stringify(INITIAL_DATA));
+      hasStorageUpdates = true;
+    }
   }
+
   try {
-    const parsed = JSON.parse(stored);
 
     // Saytda yalnız Təşkilati Struktur və İllik Fəaliyyət Planı və Sillabus sənədlərini göstər
     const siteDocIds = ["03_struktur", "04_plan"];
@@ -2458,65 +2393,59 @@ function getClubData() {
       });
     }
 
+    parsed.approvedAppIds = parsed.approvedAppIds || [];
+    parsed.rejectedAppIds = parsed.rejectedAppIds || [];
+
+    // 2. İlkin müraciətlərin (Seed Applications) zəmanətli bərpası və status qorunması
+    // QAYDA: Əgər seedApp "Gözləyir" statusundadırsa və Sədr tərəfindən şəxsən təsdiqlənməyibsə, mütləq "Gözləyir" qalmalıdır!
     if (Array.isArray(INITIAL_DATA.applications)) {
       INITIAL_DATA.applications.forEach((seedApp) => {
         if (parsed.deletedAppIds.includes(seedApp.id)) return;
-        const existing = parsed.applications.find(
-          (a) => a.id === seedApp.id || (a.username && a.username.toLowerCase() === seedApp.username.toLowerCase())
+        const existingIdx = parsed.applications.findIndex(
+          (a) => a.id === seedApp.id || (a.username && seedApp.username && a.username.toLowerCase() === seedApp.username.toLowerCase())
         );
-        if (!existing) {
-          parsed.applications.unshift(JSON.parse(JSON.stringify(seedApp)));
+        const isApprovedByPresident = parsed.approvedAppIds && parsed.approvedAppIds.includes(seedApp.id);
+        const isRejectedByPresident = parsed.rejectedAppIds && parsed.rejectedAppIds.includes(seedApp.id);
+
+        if (existingIdx === -1) {
+          const freshApp = JSON.parse(JSON.stringify(seedApp));
+          if (seedApp.status === "Gözləyir" && !isApprovedByPresident && !isRejectedByPresident) {
+            freshApp.status = "Gözləyir";
+          }
+          parsed.applications.unshift(freshApp);
           hasStorageUpdates = true;
         } else {
-          // Təsdiqlənmiş statusu heç vaxt köhnə statusa qaytarma
-          if (existing.status === "Təsdiqləndi" && seedApp.status !== "Təsdiqləndi") {
-            // qoru
+          // Əgər seedApp ilkin olaraq "Gözləyir"dirsə və Sədr şəxsən təsdiq etməyibsə, statusu "Gözləyir" olaraq saxla!
+          if (seedApp.status === "Gözləyir" && !isApprovedByPresident && !isRejectedByPresident) {
+            if (parsed.applications[existingIdx].status !== "Gözləyir") {
+              parsed.applications[existingIdx].status = "Gözləyir";
+              hasStorageUpdates = true;
+            }
           }
         }
       });
     }
 
-    // 3. Tələbə Hesabları və Müraciətlər arasında ikitərəfli zəmanətli sinxronizasiya
-    // A) Hər bir aktiv üzvün "Müraciətlər" cədvəlində tam profili olsun
-    parsed.members.forEach((mem) => {
-      if (parsed.deletedMemberIds.includes(mem.id)) return;
-      const appExists = parsed.applications.some(
-        (a) =>
-          (a.memberId && a.memberId === mem.id) ||
-          (a.username && mem.username && a.username.toLowerCase() === mem.username.toLowerCase()) ||
-          (a.email && mem.email && a.email.toLowerCase() === mem.email.toLowerCase())
-      );
-      if (!appExists) {
-        parsed.applications.unshift({
-          id: "app-" + (mem.id || Date.now()),
-          memberId: mem.id,
-          fullName: mem.fullName,
-          email: mem.email,
-          phone: mem.phone || "",
-          photo: mem.photo || "",
-          username: mem.username,
-          password: mem.password,
-          faculty: mem.faculty || "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
-          major: mem.major || "Biologiya",
-          course: mem.course || "III Kurs",
-          studyLang: "Azərbaycan bölməsi",
-          programmingSkill: "Orta səviyyə",
-          tools: mem.skills || ["Python"],
-          bioTools: ["NCBI", "UniProt"],
-          researchTracks: mem.skills || ["Genom Analizi"],
-          roleInterest: mem.role || "Klub Üzvü",
-          weeklyTime: "Həftədə 4–6 saat",
-          motivation: mem.motivation || "Rəsmi qeydiyyatdan keçmiş klub üzvü.",
-          yearGoal: mem.yearGoal || "Bioinformatika sahəsində praktiki biliklər qazanmaq.",
-          dateApplied: mem.registeredAt || "2026-10-09",
-          status: mem.status === "Aktiv" ? "Təsdiqləndi" : "Gözləyir",
-          adminNotes: "Rəsmi üzv hesabı aktivdir."
+    // 3. Fərdi Qalıcı Yaddaşdan (Permanent Registrations Storage) bərpa
+    try {
+      const permApps = JSON.parse(localStorage.getItem("carboxmol_permanent_applications") || "[]");
+      if (Array.isArray(permApps)) {
+        permApps.forEach((permApp) => {
+          if (!permApp || !permApp.id) return;
+          if (parsed.deletedAppIds.includes(permApp.id)) return;
+          const exists = parsed.applications.some(
+            (a) => a.id === permApp.id || (a.username && permApp.username && a.username.toLowerCase() === permApp.username.toLowerCase())
+          );
+          if (!exists) {
+            parsed.applications.unshift(JSON.parse(JSON.stringify(permApp)));
+            hasStorageUpdates = true;
+          }
         });
-        hasStorageUpdates = true;
       }
-    });
+    } catch (e) {}
 
-    // B) Hər bir müraciətin (həm Təsdiqlənmiş, həm Gözləyən) "Üzvlər və Giriş Hesabları" cədvəlində tam hesabı olsun
+    // 4. Tələbə Hesabları və Müraciətlər arasında ikitərəfli zəmanətli sinxronizasiya
+    // SƏDR QAYDASI: Kimsə qeydiyyatdan keçəndə Sədr qəbul edənə qədər həm müraciət, həm də üzv hesabı "Gözləyir" statusunda qalır!
     parsed.applications.forEach((app) => {
       if (parsed.deletedAppIds.includes(app.id)) return;
       const memIdx = parsed.members.findIndex(
@@ -2526,7 +2455,9 @@ function getClubData() {
           (m.email && app.email && m.email.toLowerCase() === app.email.toLowerCase())
       );
       const isApproved = app.status === "Təsdiqləndi" || app.status === "Qəbul Edildi";
-      const targetStatus = isApproved ? "Aktiv" : (app.status === "Rədd edildi" ? "Rədd edildi" : "Gözləyir");
+      const isRejected = app.status === "Rədd edildi";
+      const targetMemberStatus = isApproved ? "Aktiv" : (isRejected ? "Rədd edildi" : "Gözləyir");
+
       if (memIdx === -1) {
         parsed.members.unshift({
           id: app.memberId || ("mem-" + Date.now()),
@@ -2542,7 +2473,7 @@ function getClubData() {
           course: app.course,
           joinDate: app.dateApplied || "2026-10-09",
           registeredAt: app.dateApplied || "2026-10-09",
-          status: targetStatus,
+          status: targetMemberStatus,
           skills: app.tools || ["Python", "Bioinformatika"],
           motivation: app.motivation || "",
           yearGoal: app.yearGoal || "",
@@ -2552,23 +2483,24 @@ function getClubData() {
         });
         hasStorageUpdates = true;
       } else {
-        // İkitərəfli status sinxronizasiyası: Əgər biri təsdiqlənibsə, hər ikisi aktiv/təsdiqləndi qalır
-        if (parsed.members[memIdx].status === "Aktiv" && app.status !== "Təsdiqləndi") {
-          app.status = "Təsdiqləndi";
+        // İkitərəfli status uyğunluğu: Əgər müraciət "Gözləyir"dirsə, üzv hesabı da "Gözləyir" olmalıdır
+        if (app.status === "Gözləyir" && parsed.members[memIdx].status !== "Gözləyir") {
+          parsed.members[memIdx].status = "Gözləyir";
           hasStorageUpdates = true;
         } else if (app.status === "Təsdiqləndi" && parsed.members[memIdx].status !== "Aktiv") {
           parsed.members[memIdx].status = "Aktiv";
           hasStorageUpdates = true;
+        } else if (app.status === "Rədd edildi" && parsed.members[memIdx].status !== "Rədd edildi") {
+          parsed.members[memIdx].status = "Rədd edildi";
+          hasStorageUpdates = true;
         }
+
         if (app.password && !parsed.members[memIdx].password) {
           parsed.members[memIdx].password = app.password;
           hasStorageUpdates = true;
         }
         if (app.photo && !parsed.members[memIdx].photo) {
           parsed.members[memIdx].photo = app.photo;
-          hasStorageUpdates = true;
-        } else if (parsed.members[memIdx].photo && !app.photo) {
-          app.photo = parsed.members[memIdx].photo;
           hasStorageUpdates = true;
         }
         if (app.motivation && !parsed.members[memIdx].motivation) {

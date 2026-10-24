@@ -388,6 +388,26 @@ const PresidentPortal = {
     if (!app) return;
 
     app.status = newStatus;
+    data.approvedAppIds = data.approvedAppIds || [];
+    data.rejectedAppIds = data.rejectedAppIds || [];
+
+    if (newStatus === "Təsdiqləndi") {
+      if (!data.approvedAppIds.includes(app.id)) data.approvedAppIds.push(app.id);
+      data.rejectedAppIds = data.rejectedAppIds.filter(id => id !== app.id);
+      app.approvedAt = new Date().toISOString().slice(0, 10);
+      app.approvedBy = "Süleyman Hacızadə (Klub Sədri)";
+    } else if (newStatus === "Rədd edildi") {
+      if (!data.rejectedAppIds.includes(app.id)) data.rejectedAppIds.push(app.id);
+      data.approvedAppIds = data.approvedAppIds.filter(id => id !== app.id);
+    } else {
+      data.approvedAppIds = data.approvedAppIds.filter(id => id !== app.id);
+      data.rejectedAppIds = data.rejectedAppIds.filter(id => id !== app.id);
+    }
+
+    try {
+      localStorage.setItem("carboxmol_approved_app_ids", JSON.stringify(data.approvedAppIds));
+      localStorage.setItem("carboxmol_rejected_app_ids", JSON.stringify(data.rejectedAppIds));
+    } catch(e) {}
 
     data.members = data.members || [];
     let memIdx = data.members.findIndex(m => 
@@ -467,13 +487,12 @@ const PresidentPortal = {
         body: JSON.stringify(syncStatusPayload)
       }).catch(() => {});
 
-      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v2_secure/publish", {
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(syncStatusPayload)
       }).catch(() => {});
     }
-
 
     let statusMsg = "müraciəti yeniləndi";
     if (newStatus === "Təsdiqləndi") statusMsg = "təsdiqləndi və hesabı aktivləşdirildi.";
@@ -2186,7 +2205,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
         })
       }).catch(e => console.warn("Delete application sync warning:", e));
 
-      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v2_secure/publish", {
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -2253,7 +2272,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
         })
       }).catch(e => console.warn("Delete member sync warning:", e));
 
-      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v2_secure/publish", {
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -2606,25 +2625,12 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
 
         const isMockOrTest = (item) => {
           if (!item) return true;
-          const name = (item.fullName || "").toLowerCase();
-          const email = (item.email || "").toLowerCase();
-          const user = (item.username || "").toLowerCase();
           const id = (item.id || "").toLowerCase();
-          if (name.includes("test") || email.includes("test") || user.includes("test") || id.includes("test")) return true;
-          const mockKeywords = [
-            "leyla məmmədova", "leylamammadova",
-            "rəşad əliyev", "rashadaliyev",
-            "aytən quliyeva", "aytenquliyeva",
-            "kamran nəsirov", "kamrannasirov",
-            "rəhim əliyev", "rahimaliyev",
-            "fərid həsənli", "faridhasanli",
-            "zeynəb qasımova", "zeynabqasimova",
-            "səkinə ismayılova", "sakinaway"
-          ];
-          return mockKeywords.some(k => name.includes(k) || user.includes(k) || email.includes(k) || id.includes(k));
+          if (id === "dummy" || id === "prototype-dummy") return true;
+          return false;
         };
 
-        const ntfyRes = await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v2_secure/json?poll=1");
+        const ntfyRes = await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/json?poll=1");
         if (ntfyRes.ok) {
           const text = await ntfyRes.text();
           const lines = text.trim().split("\n").filter(Boolean);
@@ -2652,6 +2658,15 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
                 if (incomingMem && data.deletedMemberIds.includes(incomingMem.id)) return;
 
                 if (incomingApp && incomingApp.id) {
+                  // Qalıcı ehtiyat yaddaşa dərhal yaz
+                  try {
+                    let perm = JSON.parse(localStorage.getItem("carboxmol_permanent_applications") || "[]");
+                    if (!perm.some(p => p.id === incomingApp.id)) {
+                      perm.unshift(incomingApp);
+                      localStorage.setItem("carboxmol_permanent_applications", JSON.stringify(perm));
+                    }
+                  } catch (e) {}
+
                   const existingIdx = data.applications.findIndex(
                     (a) =>
                       a.id === incomingApp.id ||
@@ -2659,6 +2674,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
                       (a.email && incomingApp.email && a.email.toLowerCase() === incomingApp.email.toLowerCase())
                   );
                   if (existingIdx === -1) {
+                    // Sədr təsdiqi olana qədər status mütləq "Gözləyir" qalmalıdır!
                     if (incomingApp.status !== "Təsdiqləndi" && incomingApp.status !== "Rədd edildi") {
                       incomingApp.status = "Gözləyir";
                     }
@@ -2670,9 +2686,9 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
                     }
                     if (window.ClubDatabase) window.ClubDatabase.provisionMember(incomingApp);
                   } else {
-                    // Status qorunması: Artıq təsdiqlənibsə geri qaytarma!
-                    if (data.applications[existingIdx].status === "Təsdiqləndi") {
-                      // Qoru
+                    // Əgər mövcuddursa, status Sədr tərəfindən idarə olunur
+                    if (data.applications[existingIdx].status === "Gözləyir") {
+                      // Gözləyir statusunu qoru
                     }
                   }
                 }
@@ -3358,7 +3374,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
         })
       }).catch(e => console.warn("[BulkImport] Cloud sync push error:", e));
 
-      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v2_secure/publish", {
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -3579,7 +3595,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
             tasks: data.tasks || []
           })
         });
-        await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v2_secure/publish", {
+        await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -3794,7 +3810,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
         body: JSON.stringify(studentPayload)
       }).catch((err) => console.warn("Cloud sync error:", err));
 
-      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v2_secure/publish", {
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(studentPayload)

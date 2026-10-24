@@ -1298,7 +1298,7 @@ const MembersPortal = {
         body: JSON.stringify(syncPayload)
       }).catch(err => console.warn("API sync error:", err));
 
-      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v2_secure/publish", {
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(syncPayload)

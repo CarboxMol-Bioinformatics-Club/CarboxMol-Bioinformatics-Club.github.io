@@ -865,7 +865,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function initRealtimeCloudSSE() {
     if (typeof EventSource === "undefined") return;
     try {
-      const sse = new EventSource("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v2_secure/sse");
+      const sse = new EventSource("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/sse");
       sse.onmessage = (event) => {
         try {
           const item = JSON.parse(event.data);
@@ -875,22 +875,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const isMockOrTest = (record) => {
               if (!record) return true;
-              const n = (record.fullName || "").toLowerCase();
-              const e = (record.email || "").toLowerCase();
-              const u = (record.username || "").toLowerCase();
               const id = (record.id || "").toLowerCase();
-              if (n.includes("test") || e.includes("test") || u.includes("test") || id.includes("test")) return true;
-              const mockKeywords = [
-                "leyla məmmədova", "leylamammadova",
-                "rəşad əliyev", "rashadaliyev",
-                "aytən quliyeva", "aytenquliyeva",
-                "kamran nəsirov", "kamrannasirov",
-                "rəhim əliyev", "rahimaliyev",
-                "fərid həsənli", "faridhasanli",
-                "zeynəb qasımova", "zeynabqasimova",
-                "səkinə ismayılova", "sakinaway"
-              ];
-              return mockKeywords.some(k => n.includes(k) || u.includes(k) || e.includes(k) || id.includes(k));
+              if (id === "dummy" || id === "prototype-dummy") return true;
+              return false;
             };
 
             const data = getClubData();
@@ -951,8 +938,19 @@ document.addEventListener("DOMContentLoaded", () => {
                   data.applications = data.applications || [];
                   const exists = data.applications.some(a => a.id === payload.application.id || (a.username && payload.application.username && a.username.toLowerCase() === payload.application.username.toLowerCase()));
                   if (!exists) {
+                    if (payload.application.status !== "Təsdiqləndi" && payload.application.status !== "Rədd edildi") {
+                      payload.application.status = "Gözləyir";
+                    }
                     data.applications.unshift(payload.application);
                     changed = true;
+
+                    try {
+                      let perm = JSON.parse(localStorage.getItem("carboxmol_permanent_applications") || "[]");
+                      if (!perm.some(p => p.id === payload.application.id)) {
+                        perm.unshift(payload.application);
+                        localStorage.setItem("carboxmol_permanent_applications", JSON.stringify(perm));
+                      }
+                    } catch (e) {}
                   }
                 }
               }
@@ -962,6 +960,9 @@ document.addEventListener("DOMContentLoaded", () => {
                   data.members = data.members || [];
                   const exists = data.members.some(m => m.id === payload.member.id || (m.username && m.username.toLowerCase() === payload.member.username.toLowerCase()));
                   if (!exists) {
+                    if (payload.member.status !== "Aktiv" && payload.member.status !== "Rədd edildi") {
+                      payload.member.status = "Gözləyir";
+                    }
                     data.members.unshift(payload.member);
                     changed = true;
                   }
@@ -2834,6 +2835,15 @@ function initApplicationForm() {
     data.members.unshift(newMember);
     saveClubData(data);
 
+    // Qalıcı ehtiyat yaddaşa yaz (Cache təmizlənsə belə müraciət itməsin!)
+    try {
+      let permApps = JSON.parse(localStorage.getItem("carboxmol_permanent_applications") || "[]");
+      if (!permApps.some(p => p.id === newApp.id)) {
+        permApps.unshift(newApp);
+        localStorage.setItem("carboxmol_permanent_applications", JSON.stringify(permApps));
+      }
+    } catch (e) {}
+
     // HƏR BİR ÜZV ÜÇÜN FƏRDİ QALICI VERİLƏNLƏR BAZASININ YARADILMASI (IndexedDB)
     if (window.ClubDatabase) {
       window.ClubDatabase.provisionMember(newMember);
@@ -2873,7 +2883,7 @@ function initApplicationForm() {
         timestamp: Date.now()
       };
 
-      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v2_secure/publish", {
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(ntfyPayload)
