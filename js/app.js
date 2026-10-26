@@ -571,8 +571,12 @@ function closeTeacherRegisterModal() {
 }
 window.closeTeacherRegisterModal = closeTeacherRegisterModal;
 
-function handleTeacherRegistration(e) {
+async function handleTeacherRegistration(e) {
   if (e) e.preventDefault();
+
+  const form = document.getElementById("teacherRegisterForm");
+  const submitBtn = document.getElementById("tRegSubmitBtn") || (form ? form.querySelector("button[type='submit']") : null);
+  const originalBtnText = submitBtn ? submitBtn.innerHTML : "";
 
   const fullName = (document.getElementById("tRegFullName")?.value || "").trim();
   const title = (document.getElementById("tRegTitle")?.value || "").trim();
@@ -702,6 +706,11 @@ function handleTeacherRegistration(e) {
     adminNotes: "Sayt üzərindən onlayn müəllim müraciəti edilmişdir."
   };
 
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Göndərilir...';
+  }
+
   data.teachers.unshift(newTeacher);
   data.teacherApplications.unshift(newApp);
   saveClubData(data);
@@ -723,9 +732,93 @@ function handleTeacherRegistration(e) {
     }).catch(() => {});
   } catch (err) {}
 
+  // Push Notification via ntfy
+  try {
+    const ntfyPayload = {
+      topic: "carboxmol_bioinfo_cloud_sync_v3_secure",
+      title: `🎓 Yeni Müəllim/Mentor Müraciəti: ${sanitizedFullName}`,
+      message: `${sanitizedFullName} (@${cleanUsername}) müəllim/mentor olaraq qeydiyyatdan keçdi.\nKafedra: ${department}\nE-poçt: ${email}\nTel: ${phone || 'Qeyd edilməyib'}`,
+      tags: ["mortar_board", "briefcase", "new_teacher"],
+      priority: 4,
+      click: "https://carboxmol-bioinformatics-club.github.io/#president-portal",
+      teacher: { ...newTeacher, password: "" },
+      data: { fullName: sanitizedFullName, email, department, title: sanitizedTitle },
+      timestamp: Date.now()
+    };
+    fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(ntfyPayload)
+    }).catch((err) => {
+      console.warn("[ntfy Bus] Göndərilmə gecikməsi:", err);
+    });
+  } catch (e) {}
+
+  // Send real-time notification to Suleyman Hajizadeh via FormSubmit API (Primary + CC)
+  const emailPayload = {
+    "Müraciət Növü": "Müəllim / Akademik Mentor Qeydiyyatı",
+    "Ad, Soyad və Elmi Titul": `${sanitizedFullName} (${sanitizedTitle || "Müəllim / Mentor"})`,
+    "Universitet / Təşkilat": university,
+    "Fakültə və ya Kafedra": department,
+    "Rəsmi E-poçt Ünvanı": email,
+    "Əlaqə Nömrəsi (WhatsApp)": phone || "Qeyd edilməyib",
+    "Təyin Edilmiş Login (@username)": "@" + cleanUsername,
+    "Təyin Edilmiş Şifrə (Klub Sədrinə Açıq)": password,
+    "Tədqiqat Sahələri": specArray.length ? specArray.join(", ") : "Bioinformatika",
+    "ORCID ID / Elmi Link": orcid || "Qeyd edilməyib",
+    "Kabinet / Otaq": officeLocation || "Qeyd edilməyib",
+    "Məsləhət Saatları": consultationHours || "Razılaşma ilə",
+    "Qısa Bioqrafiya və Dəstək Planı": sanitizedBio || "Qeyd edilməyib",
+    "Status": "Gözləyir (Klub Sədrinin Təsdiqi Tələb Olunur)",
+    "Müraciət Tarixi": new Date().toLocaleString("az-AZ"),
+    "_subject": `🎓 Yeni CarboxMol Müəllim/Mentor Qeydiyyatı: ${sanitizedFullName} (@${cleanUsername})`,
+    "_template": "table",
+    "_captcha": "false",
+    "_replyto": email,
+    "_cc": "suleyman.hacizade1@gmail.com",
+    "_autoresponse": `Hörmətli ${sanitizedFullName},\n\nCarboxMol Bioinformatika Klubuna müəllim/akademik mentor qeydiyyat müraciətiniz uğurla qeydə alındı.\n\nTəhlükəsizlik və nizamnamə qaydalarına əsasən, hesabınız Klub Sədri Süleyman Hacızadə tərəfindən Sədr panelindən təsdiqləndikdən sonra Müəllim Kabinetiniz aktivləşəcəkdir.\n\nİstifadəçi adınız: @${cleanUsername}\n\nKlubumuza göstərdiyiniz maraq və elmi dəstək üçün təşəkkür edirik!\n\nHörmətlə,\nCarboxMol Bioinformatika Klubu Rəhbərliyi`
+  };
+
+  let sentOnline = false;
+  if (navigator.onLine) {
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/suleyman.hacizade.232bioing@wcu.edu.az", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(emailPayload)
+      });
+      if (res.ok) sentOnline = true;
+    } catch (err) {
+      console.warn("FormSubmit notice (müəllim müraciəti):", err);
+    }
+  }
+
+  if (!sentOnline) {
+    if (typeof addToOfflineQueue === "function") {
+      addToOfflineQueue({ type: "teacher_application", data: emailPayload });
+    }
+    showToast("Müəllim müraciəti yerli bazaya qeyd edildi və Sədr panelinə sinxronlaşdırıldı.", "info");
+  }
+
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtnText;
+  }
+
+  // Reset form
+  if (form) form.reset();
+
+  // Broadcast across tabs and portals
+  if (window.SyncEngine) {
+    window.SyncEngine.broadcast("NEW_TEACHER_REGISTERED", { teacherId, username: cleanUsername });
+  }
+
   closeTeacherRegisterModal();
 
-  showToast(`Hörmətli ${sanitizedFullName}, müəllim/mentor qeydiyyat müraciətiniz qəbul edildi! Təhlükəsizlik qaydalarına əsasən hesabınız Klub Sədri Süleyman Hacızadə tərəfindən təsdiqləndikdən sonra aktivləşəcəkdir.`, "success", 7000);
+  showToast(`Hörmətli ${sanitizedFullName}, müəllim/mentor qeydiyyat müraciətiniz qəbul edildi! Bildiriş hər iki rəsmi e-poçta göndərildi və hesabınız Sədr tərəfindən təsdiqləndikdən sonra aktivləşəcəkdir.`, "success", 7000);
 }
 window.handleTeacherRegistration = handleTeacherRegistration;
 

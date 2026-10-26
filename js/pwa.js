@@ -317,7 +317,7 @@ async function syncOfflineQueue() {
     let successCount = 0;
 
     for (const item of queue) {
-      if (item.type === 'application') {
+      if (item.type === 'application' || item.type === 'teacher_application') {
         try {
           const res = await fetch("https://formsubmit.co/ajax/suleyman.hacizade.232bioing@wcu.edu.az", {
             method: "POST",
