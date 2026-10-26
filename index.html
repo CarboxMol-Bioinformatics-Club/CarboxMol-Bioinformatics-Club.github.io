@@ -412,112 +412,130 @@
           </div>
 
           <!-- Interactive Real 3D Biomolecular Studio (DNT, CYP1A1, AKT1) -->
-          <div id="molStudioWrapper" class="lg:col-span-5 rounded-3xl relative overflow-hidden bg-white border border-slate-200/90 shadow-xl shadow-slate-200/50 flex flex-col justify-between group transition-all">
+          <!-- Interactive Real 3D Biomolecular Studio (CarboxMol Engine: DNT, CYP1A1, AKT1) -->
+          <div id="molStudioWrapper" class="lg:col-span-5 rounded-3xl relative overflow-hidden bg-[#090d16] border border-cyan-500/30 shadow-2xl shadow-cyan-950/50 flex flex-col justify-between group transition-all text-slate-200">
             
-            <!-- Top Studio Header: Brand + Molecule Tabs -->
-            <div class="p-3 sm:p-4 bg-slate-50/90 border-b border-slate-200/90 flex flex-col gap-2.5 z-10 backdrop-blur">
+            <!-- Top Studio Header: CarboxMol Brand + Molecule Tabs -->
+            <div class="p-3 sm:p-4 bg-[#0c1221]/95 border-b border-cyan-500/20 flex flex-col gap-2.5 z-10 backdrop-blur-md">
               <div class="flex items-center justify-between gap-2">
-                <div class="flex items-center gap-2 min-w-0">
-                  <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-teal-600 via-emerald-500 to-cyan-500 p-0.5 shadow-sm shrink-0 overflow-hidden ring-1 ring-teal-400/30">
-                    <img src="assets/images/carboxmol_bioclub_logo.png" alt="CarboxMol Bioinformatika Klubu Loqosu" class="w-full h-full object-cover rounded-[10px]" />
+                <div class="flex items-center gap-2.5 min-w-0">
+                  <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-teal-500 to-emerald-400 p-0.5 shadow-md shadow-cyan-500/20 shrink-0 overflow-hidden ring-1 ring-cyan-400/40">
+                    <img src="assets/images/carboxmol_logo.png" alt="CarboxMol Logo" class="w-full h-full object-cover rounded-[10px]" />
                   </div>
                   <div class="min-w-0">
-                    <span class="text-xs font-extrabold text-slate-900 block truncate leading-tight">CarboxMol Bioinformatika Klubu</span>
-                    <span class="text-[10px] text-teal-700 font-semibold flex items-center gap-1 leading-tight">
-                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> 3D Real Biomolekulyar Studio
+                    <div class="flex items-center gap-1.5">
+                      <span class="text-xs font-black text-white tracking-wide leading-tight">CarboxMol</span>
+                      <span class="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider bg-cyan-950/90 text-cyan-300 border border-cyan-500/40 shadow-xs">Studio Engine</span>
+                    </div>
+                    <span class="text-[10px] text-cyan-400 font-semibold flex items-center gap-1 leading-tight">
+                      <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span> 3D Macromolecular Crystallographic Studio
                     </span>
                   </div>
                 </div>
 
                 <!-- Control Quick Actions -->
                 <div class="flex items-center gap-1 shrink-0">
-                  <button id="molSpinBtn" class="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-semibold flex items-center gap-1 transition shadow-2xs" title="Avtomatik fırlanma">
-                    <i class="fa-solid fa-play text-xs text-teal-600"></i> <span class="hidden sm:inline">Fırlat</span>
+                  <button id="molSpinBtn" class="px-2.5 py-1 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-cyan-500/30 text-[11px] font-semibold flex items-center gap-1 transition shadow-xs" title="Avtomatik fırlanma">
+                    <i class="fa-solid fa-play text-xs text-cyan-400"></i> <span class="hidden sm:inline">Fırlat</span>
                   </button>
-                  <button id="molResetBtn" class="p-1.5 sm:px-2 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-semibold transition shadow-2xs" title="Görünüşü mərkəzləşdir">
-                    <i class="fa-solid fa-crosshairs text-teal-600"></i>
+                  <button id="molResetBtn" class="p-1.5 sm:px-2 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-cyan-500/30 text-[11px] font-semibold transition shadow-xs" title="Görünüşü mərkəzləşdir">
+                    <i class="fa-solid fa-crosshairs text-cyan-400"></i>
                   </button>
-                  <button id="molFullscreenBtn" class="p-1.5 sm:px-2 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-semibold transition shadow-2xs" title="Tam ekran rejimi">
-                    <i class="fa-solid fa-expand text-slate-600"></i>
+                  <button id="molFullscreenBtn" class="p-1.5 sm:px-2 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-cyan-500/30 text-[11px] font-semibold transition shadow-xs" title="Tam ekran rejimi">
+                    <i class="fa-solid fa-expand text-slate-300"></i>
                   </button>
                 </div>
               </div>
 
-              <!-- 3 Core Molecules Tabs -->
-              <div class="grid grid-cols-3 gap-1.5 p-1 bg-slate-200/60 rounded-xl text-xs font-semibold">
-                <button data-mol="dna" class="mol-tab-btn px-2 py-1.5 rounded-lg text-center transition flex items-center justify-center gap-1.5 bg-white text-teal-700 shadow-sm border border-teal-500/40 font-bold">
+              <!-- 3 Core Molecules Tabs (CarboxMol Crystallographic Selection) -->
+              <div class="grid grid-cols-3 gap-1.5 p-1 bg-slate-950/80 border border-slate-800/80 rounded-xl text-xs font-semibold">
+                <button data-mol="dna" class="mol-tab-btn px-2 py-1.5 rounded-lg text-center transition flex items-center justify-center gap-1.5 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm font-bold">
                   <span>🧬 DNT</span>
                 </button>
-                <button data-mol="cyp1a1" class="mol-tab-btn px-2 py-1.5 rounded-lg text-center transition flex items-center justify-center gap-1.5 text-slate-600 hover:bg-slate-100 border border-transparent">
+                <button data-mol="cyp1a1" class="mol-tab-btn px-2 py-1.5 rounded-lg text-center transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-900 border border-transparent">
                   <span>🧪 CYP1A1</span>
                 </button>
-                <button data-mol="akt1" class="mol-tab-btn px-2 py-1.5 rounded-lg text-center transition flex items-center justify-center gap-1.5 text-slate-600 hover:bg-slate-100 border border-transparent">
+                <button data-mol="akt1" class="mol-tab-btn px-2 py-1.5 rounded-lg text-center transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-900 border border-transparent">
                   <span>⚡ AKT1</span>
                 </button>
               </div>
             </div>
 
-            <!-- 3D WebGL Canvas Area -->
-            <div class="relative w-full h-[300px] sm:h-[340px] lg:h-[370px] bg-white cursor-grab active:cursor-grabbing overflow-hidden flex items-center justify-center">
+            <!-- 3D WebGL Canvas Area (CarboxMol Deep Space Viewport) -->
+            <div class="relative w-full h-[320px] sm:h-[350px] lg:h-[380px] bg-[#090d16] cursor-grab active:cursor-grabbing overflow-hidden flex items-center justify-center">
+              <!-- Background Ambient Grid -->
+              <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:18px_18px] opacity-25 pointer-events-none"></div>
+
               <div id="molViewerContainer" class="w-full h-full relative z-0"></div>
 
               <!-- Loader Spinner -->
-              <div id="molLoader" class="hidden absolute inset-0 bg-white/80 backdrop-blur-xs flex flex-col items-center justify-center gap-2 z-20">
-                <i class="fa-solid fa-circle-notch fa-spin text-2xl text-teal-600"></i>
-                <span class="text-xs font-bold text-slate-700">3D Struktur Yüklənir...</span>
+              <div id="molLoader" class="hidden absolute inset-0 bg-[#090d16]/90 backdrop-blur-xs flex flex-col items-center justify-center gap-2 z-20">
+                <i class="fa-solid fa-circle-notch fa-spin text-2xl text-cyan-400"></i>
+                <span class="text-xs font-bold text-cyan-200 font-mono tracking-wide">CarboxMol 3D Struktur Yüklənir...</span>
               </div>
 
-              <!-- Interactive Floating Molecular Card -->
+              <!-- Interactive Floating Molecular HUD Card (CarboxMol Telemetry Style) -->
               <div class="absolute top-2.5 left-2.5 z-10 pointer-events-none">
-                <div class="px-2.5 py-1.5 rounded-xl bg-white/95 border border-slate-200 shadow-md backdrop-blur-md flex items-center gap-2">
+                <div class="px-2.5 py-1.5 rounded-xl bg-[#0c1221]/90 border border-cyan-500/30 shadow-lg backdrop-blur-md flex items-center gap-2">
                   <div class="flex flex-col">
                     <div class="flex items-center gap-1.5">
-                      <span id="molInfoTitle" class="text-xs font-extrabold text-slate-900 leading-tight">B-DNT (Cüt Spiral)</span>
-                      <span id="molInfoBadge" class="text-[9px] px-1.5 py-0.2 rounded-md bg-teal-50 text-teal-700 border border-teal-200 font-bold">DNT Heliks</span>
+                      <span id="molInfoTitle" class="text-xs font-extrabold text-white leading-tight">B-DNT (Cüt Spiral)</span>
+                      <span id="molInfoBadge" class="text-[9px] px-1.5 py-0.2 rounded-md bg-cyan-950 text-cyan-300 border border-cyan-500/40 font-bold uppercase tracking-wider">DNT Heliks</span>
                     </div>
-                    <span id="molInfoSubtitle" class="text-[10px] text-slate-500 font-mono leading-tight">1BNA • 1.9 Å</span>
+                    <span id="molInfoSubtitle" class="text-[10px] text-cyan-400/80 font-mono leading-tight">1BNA • 1.9 Å • X-RAY</span>
                   </div>
                 </div>
               </div>
 
-              <!-- 3D Rotation Guide Hint -->
-              <div class="absolute bottom-2 left-2 text-[10px] text-slate-400 bg-white/85 px-2 py-1 rounded-md border border-slate-200/80 pointer-events-none backdrop-blur hidden sm:flex items-center gap-1">
-                <i class="fa-solid fa-hand-pointer text-teal-600"></i> Fırlatmaq üçün siçanla sürükləyin
+              <!-- Real-time Orientation Tripod (CarboxMol Precision Axes X, Y, Z) -->
+              <canvas id="studio-orientation-tripod" width="70" height="70" class="absolute top-2 right-2 z-10 pointer-events-none" title="Kamera Orientasiyası (X, Y, Z)"></canvas>
+
+              <!-- CarboxMol Signature Badge (Bottom Right) -->
+              <div class="absolute bottom-2.5 right-2.5 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0c1221]/90 border border-cyan-500/30 text-[10px] font-mono text-cyan-300 backdrop-blur-md shadow-lg pointer-events-none">
+                <img src="assets/images/carboxmol_logo.png" alt="CarboxMol" class="w-3.5 h-3.5 rounded-full object-cover ring-1 ring-cyan-400/40" />
+                <span>CarboxMol Studio Engine</span>
+              </div>
+
+              <!-- 3D Rotation Guide Hint (Bottom Left) -->
+              <div class="absolute bottom-2 left-2 text-[10px] text-slate-400 bg-slate-900/80 px-2 py-1 rounded-md border border-slate-800 pointer-events-none backdrop-blur hidden sm:flex items-center gap-1">
+                <i class="fa-solid fa-hand-pointer text-cyan-400"></i> Fırlatmaq üçün siçanla sürükləyin
               </div>
             </div>
 
             <!-- Bottom Molecular Style Bar & Info -->
-            <div class="p-2.5 sm:p-3 bg-slate-50/90 border-t border-slate-200/90 flex items-center justify-between gap-2 text-xs z-10">
+            <div class="p-2.5 sm:p-3 bg-[#0c1221]/95 border-t border-cyan-500/20 flex items-center justify-between gap-2 text-xs z-10 backdrop-blur-md">
               <div class="flex items-center gap-1 flex-wrap">
-                <span class="text-[11px] font-semibold text-slate-500 mr-1 hidden sm:inline">Stil:</span>
-                <button data-style="cartoon" class="mol-style-btn px-2.5 py-1 rounded-lg bg-teal-50 text-teal-800 border border-teal-300 font-bold transition shadow-2xs text-[11px]">
+                <span class="text-[11px] font-semibold text-slate-400 mr-1 hidden sm:inline">Stil:</span>
+                <button data-style="cartoon" class="mol-style-btn px-2.5 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold transition shadow-xs text-[11px]">
                   Lent (Ribbon)
                 </button>
-                <button data-style="stick" class="mol-style-btn px-2.5 py-1 rounded-lg bg-white text-slate-600 border border-slate-200 transition shadow-2xs text-[11px]">
+                <button data-style="stick" class="mol-style-btn px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-300 border border-slate-800 hover:bg-slate-800 transition shadow-xs text-[11px]">
                   Çubuq (Stick)
                 </button>
-                <button data-style="surface" class="mol-style-btn px-2.5 py-1 rounded-lg bg-white text-slate-600 border border-slate-200 transition shadow-2xs text-[11px]">
+                <button data-style="surface" class="mol-style-btn px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-300 border border-slate-800 hover:bg-slate-800 transition shadow-xs text-[11px]">
                   Səth (Surface)
                 </button>
-                <button data-style="sphere" class="mol-style-btn px-2.5 py-1 rounded-lg bg-white text-slate-600 border border-slate-200 transition shadow-2xs text-[11px] hidden sm:inline-block">
+                <button data-style="sphere" class="mol-style-btn px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-300 border border-slate-800 hover:bg-slate-800 transition shadow-xs text-[11px] hidden sm:inline-block">
                   Atomlar
                 </button>
               </div>
 
-              <button id="molInfoToggleBtn" class="px-2 py-1 rounded-lg bg-white hover:bg-slate-100 text-teal-700 border border-slate-200 font-semibold text-[11px] flex items-center gap-1 transition shrink-0" title="Ətraflı elmi izah">
+              <button id="molInfoToggleBtn" class="px-2 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-cyan-400 border border-cyan-500/30 font-semibold text-[11px] flex items-center gap-1 transition shrink-0" title="Ətraflı elmi izah">
                 <i class="fa-solid fa-circle-info"></i> <span class="hidden sm:inline">Elmi İzah</span>
               </button>
             </div>
 
             <!-- Expandable Structure Info Drawer -->
-            <div id="molInfoDrawer" class="hidden p-3.5 bg-white border-t border-slate-200 text-xs text-slate-700 space-y-1.5 z-20">
-              <p id="molInfoDesc" class="leading-relaxed text-slate-600">
+            <div id="molInfoDrawer" class="hidden p-3.5 bg-[#090d16] border-t border-cyan-500/20 text-xs text-slate-300 space-y-1.5 z-20">
+              <p id="molInfoDesc" class="leading-relaxed text-slate-300">
                 Klassik B-formalı qoşa DNT spiralı. Qələvi cütləri (A-T və G-C), hidrogen rabitələri və antiparalel fosfodiester onurğa zənciri.
               </p>
-              <div class="flex items-center gap-3 text-[11px] text-teal-700 font-mono pt-1">
+              <div class="flex items-center gap-3 text-[11px] text-cyan-400 font-mono pt-1">
                 <span><i class="fa-solid fa-database mr-1"></i> PDB Arxiv Məlumatı</span>
                 <span>•</span>
                 <span><i class="fa-solid fa-microscope mr-1"></i> Rentgen-Struktur Analizi</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-atom mr-1"></i> CarboxMol Render</span>
               </div>
             </div>
 
