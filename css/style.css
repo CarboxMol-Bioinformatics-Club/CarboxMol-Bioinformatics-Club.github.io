@@ -981,15 +981,207 @@ footer a:hover, footer li button:hover {
   background: #94a3b8;
 }
 
-/* 13. CARBOXMOL 3D MACROMOLECULAR STUDIO STYLING */
+/* 13. CARBOXMOL 3D MACROMOLECULAR STUDIO ISOLATED SCOPE
+   High-contrast, crystal-clear typography on dark crystallographic canvas */
 #molStudioWrapper {
   background: #090d16 !important;
-  border: 1px solid rgba(6, 182, 212, 0.35) !important;
-  box-shadow: 0 20px 45px -10px rgba(8, 145, 178, 0.25) !important;
+  border: 1px solid rgba(6, 182, 212, 0.4) !important;
+  box-shadow: 0 20px 50px -10px rgba(6, 182, 212, 0.25) !important;
+  color: #f1f5f9 !important;
 }
 
+#molStudioWrapper * {
+  box-sizing: border-box;
+}
+
+/* Header & Top Bar */
+#molStudioWrapper .studio-header {
+  background: rgba(12, 18, 33, 0.98) !important;
+  border-bottom: 1px solid rgba(6, 182, 212, 0.25) !important;
+}
+
+#molStudioWrapper .brand-title {
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  text-shadow: 0 0 12px rgba(6, 182, 212, 0.5) !important;
+}
+
+#molStudioWrapper .brand-subtitle,
+#molStudioWrapper .brand-subtitle * {
+  color: #38bdf8 !important;
+}
+
+#molStudioWrapper .brand-engine-pill {
+  background: rgba(8, 47, 73, 0.95) !important;
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.5) !important;
+  font-weight: 700 !important;
+}
+
+/* Action Controls (Fırlat, Sıfırla, Tam Ekran) */
+#molStudioWrapper .studio-ctrl-btn {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  color: #f8fafc !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+#molStudioWrapper .studio-ctrl-btn:hover {
+  background: rgba(30, 41, 59, 0.95) !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+#molStudioWrapper .studio-ctrl-btn i,
+#molStudioWrapper .studio-ctrl-btn span {
+  color: inherit !important;
+}
+#molStudioWrapper .studio-ctrl-btn i.fa-play,
+#molStudioWrapper .studio-ctrl-btn i.fa-pause,
+#molStudioWrapper .studio-ctrl-btn i.fa-crosshairs {
+  color: #38bdf8 !important;
+}
+
+/* Molecule Selector Tabs */
+#molStudioWrapper .mol-tabs-row {
+  background: rgba(3, 7, 18, 0.95) !important;
+  border: 1px solid rgba(30, 41, 59, 0.8) !important;
+}
+
+#molStudioWrapper .mol-tab-btn {
+  background: rgba(15, 23, 42, 0.9) !important;
+  border: 1px solid rgba(51, 65, 85, 0.8) !important;
+  color: #cbd5e1 !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+}
+#molStudioWrapper .mol-tab-btn:hover {
+  background: rgba(30, 41, 59, 0.95) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+}
+#molStudioWrapper .mol-tab-btn.active,
+#molStudioWrapper .mol-tab-btn[data-active="true"] {
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.85), rgba(13, 148, 136, 0.8)) !important;
+  border: 1px solid #38bdf8 !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4), inset 0 0 8px rgba(56, 189, 248, 0.2) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Canvas Viewport */
+#molStudioWrapper .studio-canvas-area {
+  background: #090d16 !important;
+}
 #molViewerContainer canvas {
   background: #090d16 !important;
+}
+
+/* Floating Crystallographic HUD Card (Top-Left) */
+#molStudioWrapper .hud-card {
+  background: rgba(12, 18, 33, 0.95) !important;
+  border: 1px solid rgba(56, 189, 248, 0.5) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+#molStudioWrapper .hud-card #molInfoTitle {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+}
+#molStudioWrapper .hud-card #molInfoBadge {
+  background: rgba(8, 47, 73, 0.95) !important;
+  border: 1px solid rgba(56, 189, 248, 0.55) !important;
+  color: #38bdf8 !important;
+  font-weight: 700 !important;
+}
+#molStudioWrapper .hud-card #molInfoSubtitle {
+  color: #7dd3fc !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-weight: 600 !important;
+}
+
+/* Watermark Badge (Bottom-Right) */
+#molStudioWrapper .signature-pill {
+  background: rgba(10, 16, 30, 0.95) !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  color: #38bdf8 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6) !important;
+}
+#molStudioWrapper .signature-pill span {
+  color: #38bdf8 !important;
+  font-weight: 600 !important;
+}
+
+/* Drag Guide Hint (Bottom-Left) */
+#molStudioWrapper .drag-hint {
+  background: rgba(15, 23, 42, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #e2e8f0 !important;
+}
+#molStudioWrapper .drag-hint i {
+  color: #38bdf8 !important;
+}
+
+/* Bottom Molecular Style Bar & Info */
+#molStudioWrapper .style-bar {
+  background: rgba(12, 18, 33, 0.98) !important;
+  border-top: 1px solid rgba(6, 182, 212, 0.25) !important;
+}
+#molStudioWrapper .style-label {
+  color: #cbd5e1 !important;
+  font-weight: 700 !important;
+}
+#molStudioWrapper .mol-style-btn {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid rgba(51, 65, 85, 0.9) !important;
+  color: #e2e8f0 !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+}
+#molStudioWrapper .mol-style-btn:hover {
+  background: rgba(30, 41, 59, 0.95) !important;
+  color: #ffffff !important;
+  border-color: #38bdf8 !important;
+}
+#molStudioWrapper .mol-style-btn.active,
+#molStudioWrapper .mol-style-btn[data-active="true"] {
+  background: rgba(14, 116, 144, 0.75) !important;
+  border: 1px solid #38bdf8 !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9) !important;
+}
+
+#molStudioWrapper #molInfoToggleBtn {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  color: #38bdf8 !important;
+  font-weight: 700 !important;
+}
+#molStudioWrapper #molInfoToggleBtn:hover {
+  background: rgba(30, 41, 59, 0.95) !important;
+  color: #ffffff !important;
+}
+#molStudioWrapper #molInfoToggleBtn * {
+  color: inherit !important;
+}
+
+/* Expandable Drawer */
+#molStudioWrapper #molInfoDrawer {
+  background: #090d16 !important;
+  border-top: 1px solid rgba(6, 182, 212, 0.25) !important;
+}
+#molStudioWrapper #molInfoDesc {
+  color: #e2e8f0 !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+}
+#molStudioWrapper .drawer-meta,
+#molStudioWrapper .drawer-meta * {
+  color: #38bdf8 !important;
 }
 
 /* Ambient Blobs in Light Theme */

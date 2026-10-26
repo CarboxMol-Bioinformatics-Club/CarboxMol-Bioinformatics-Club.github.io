@@ -388,9 +388,11 @@
     document.querySelectorAll('.mol-tab-btn').forEach(btn => {
       const target = btn.getAttribute('data-mol');
       if (target === molId) {
-        btn.className = 'mol-tab-btn px-2 py-1.5 rounded-lg text-center transition flex items-center justify-center gap-1.5 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm font-bold';
+        btn.classList.add('active');
+        btn.setAttribute('data-active', 'true');
       } else {
-        btn.className = 'mol-tab-btn px-2 py-1.5 rounded-lg text-center transition flex items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-900 border border-transparent';
+        btn.classList.remove('active');
+        btn.removeAttribute('data-active');
       }
     });
   }
@@ -399,9 +401,11 @@
     document.querySelectorAll('.mol-style-btn').forEach(btn => {
       const s = btn.getAttribute('data-style');
       if (s === styleName) {
-        btn.className = 'mol-style-btn px-2.5 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold transition shadow-xs text-[11px]';
+        btn.classList.add('active');
+        btn.setAttribute('data-active', 'true');
       } else {
-        btn.className = 'mol-style-btn px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-300 border border-slate-800 hover:bg-slate-800 transition shadow-xs text-[11px]';
+        btn.classList.remove('active');
+        btn.removeAttribute('data-active');
       }
     });
   }
