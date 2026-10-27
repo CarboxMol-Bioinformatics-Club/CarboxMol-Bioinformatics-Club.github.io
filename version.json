@@ -1,6 +1,6 @@
 {
-  "version": "2.2.0",
-  "build": "20261028-0220",
-  "timestamp": 1793139600000,
-  "description": "CarboxMol Bioinformatika Klubu v2.2.0 — Sefanya Hacızadə (@sefanyamuellim) rəsmi akademik mentor, Prof. Qərib Mürşüdov seminarı qorunması, Sədr tərəfindən manual tədbir idarəetməsi və mock dataların tam təmizlənməsi"
+  "version": "2.2.1",
+  "build": "20261028-0310",
+  "timestamp": 1793142600000,
+  "description": "CarboxMol Bioinformatika Klubu v2.2.1 — Hero statistika (CarboxMol, PyMOL) yenilənməsi, sefanyamuellim istifadəçi adı və müəllim axtarış/giriş inteqrasiyasının təkmilləşdirilməsi"
 }

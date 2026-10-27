@@ -304,11 +304,60 @@ async function handleMemberLogin(e) {
   }
 
   if (!member) {
+    // Əgər üzv kimi tapılmadısa, müəllim və mentor bazasından da yoxla!
+    const cleanUser = username.toLowerCase().trim().replace(/^@/, "");
+    const normalized = cleanUser
+      .replace(/[\s_.-]/g, "")
+      .replace(/ü/g, "u")
+      .replace(/ə/g, "e")
+      .replace(/ı/g, "i");
+
+    const teacher = (data.teachers || []).find(t => {
+      if (!t) return false;
+      const tUser = (t.username || "").toLowerCase().replace(/^@/, "");
+      const tNormUser = tUser.replace(/[\s_.-]/g, "").replace(/ü/g, "u").replace(/ə/g, "e").replace(/ı/g, "i");
+      const tEmail = (t.email || "").toLowerCase();
+      const tName = (t.fullName || "").toLowerCase();
+      const tNormName = tName.replace(/[\s_.-]/g, "").replace(/ü/g, "u").replace(/ə/g, "e").replace(/ı/g, "i");
+      return tUser === cleanUser || tNormUser === normalized || tEmail === cleanUser || tName === cleanUser || tNormName === normalized || (cleanUser.length >= 4 && (tUser.includes(cleanUser) || tNormUser.includes(normalized) || tName.includes(cleanUser)));
+    }) || (data.teacherApplications || []).find(a => {
+      if (!a) return false;
+      const aUser = (a.username || "").toLowerCase().replace(/^@/, "");
+      const aNormUser = aUser.replace(/[\s_.-]/g, "").replace(/ü/g, "u").replace(/ə/g, "e").replace(/ı/g, "i");
+      const aEmail = (a.email || "").toLowerCase();
+      const aName = (a.fullName || "").toLowerCase();
+      return aUser === cleanUser || aNormUser === normalized || aEmail === cleanUser || aName === cleanUser;
+    });
+
+    if (teacher) {
+      if (teacher.password && teacher.password !== password) {
+        if (window.ClubSecurity) {
+          window.ClubSecurity.recordAttempt("member_login", false);
+          window.ClubSecurity.log("LOGIN_FAIL_WRONG_PASSWORD", { username }, "WARNING");
+        }
+        showToast("Müəllim hesabı aşkarlandı, lakin şifrə yanlışdır!", "error");
+        return;
+      }
+      if (teacher.status === "Gözləyir") {
+        showToast(`Hörmətli ${teacher.fullName}, müəllim qeydiyyatınız hələ Sədrin təsdiqini gözləyir.`, "warning");
+        return;
+      }
+      // Avtomatik Müəllim Panelinə daxil et və yönləndir
+      localStorage.setItem("wcu_active_teacher_id", teacher.id || teacher.teacherId || "teacher-sefanya");
+      if (window.ClubSecurity && typeof window.ClubSecurity.createSessionToken === "function") {
+        window.ClubSecurity.createSessionToken("teacher", teacher.id || teacher.teacherId || "teacher-sefanya");
+      }
+      if (typeof closeMemberLoginModal === "function") closeMemberLoginModal();
+      showToast(`Xoş gəldiniz, ${teacher.fullName}! Akademik Mentor Panelinə daxil oldunuz.`, "success");
+      navigateTo("teacher-portal");
+      return;
+    }
+
     if (window.ClubSecurity) {
       window.ClubSecurity.recordAttempt("member_login", false);
       window.ClubSecurity.log("LOGIN_FAIL_USER_NOT_FOUND", { username }, "WARNING");
     }
-    showToast("Bu istifadəçi adı ilə qeydiyyatdan keçmiş üzv tapılmadı. Zəhmət olmasa qeydiyyat formasından müraciət edin.", "error");
+    showToast("Bu istifadəçi adı ilə qeydiyyatdan keçmiş üzv və ya müəllim tapılmadı. Zəhmət olmasa qeydiyyat formasından müraciət edin.", "error");
     return;
   }
 
@@ -476,19 +525,40 @@ function handleTeacherLogin(e) {
   data.teachers = data.teachers || [];
   data.teacherApplications = data.teacherApplications || [];
 
-  const cleanInputUser = username.replace(/[\s_]/g, "");
-  let teacher = data.teachers.find(t =>
-    (t.username && t.username.toLowerCase().replace(/^@/, "") === username) ||
-    (t.username && t.username.toLowerCase().replace(/^@/, "").replace(/[\s_]/g, "") === cleanInputUser) ||
-    (t.email && t.email.toLowerCase() === username)
-  );
+  const cleanUser = username.toLowerCase().trim().replace(/^@/, "");
+  const normalized = cleanUser
+    .replace(/[\s_.-]/g, "")
+    .replace(/ü/g, "u")
+    .replace(/ə/g, "e")
+    .replace(/ı/g, "i")
+    .replace(/ç/g, "c")
+    .replace(/ş/g, "s")
+    .replace(/ğ/g, "g");
+
+  const matchTeacher = (t) => {
+    if (!t) return false;
+    const tUser = (t.username || "").toLowerCase().replace(/^@/, "");
+    const tNormUser = tUser.replace(/[\s_.-]/g, "").replace(/ü/g, "u").replace(/ə/g, "e").replace(/ı/g, "i");
+    const tEmail = (t.email || "").toLowerCase();
+    const tName = (t.fullName || "").toLowerCase();
+    const tNormName = tName.replace(/[\s_.-]/g, "").replace(/ü/g, "u").replace(/ə/g, "e").replace(/ı/g, "i");
+    const tPhone = (t.phone || "").replace(/[\s\-\(\)\+]/g, "");
+    const inPhone = cleanUser.replace(/[\s\-\(\)\+]/g, "");
+
+    return tUser === cleanUser ||
+           tNormUser === normalized ||
+           tEmail === cleanUser ||
+           tName === cleanUser ||
+           tNormName === normalized ||
+           (inPhone.length >= 7 && tPhone.includes(inPhone)) ||
+           (cleanUser.length >= 4 && (tUser.includes(cleanUser) || tNormUser.includes(normalized) || tName.includes(cleanUser)));
+  };
+
+  let teacher = data.teachers.find(matchTeacher);
 
   // Əgər teachers-dən tapılmadısa, teacherApplications-dən yoxla
   if (!teacher) {
-    const app = data.teacherApplications.find(a =>
-      (a.username && a.username.toLowerCase().replace(/^@/, "") === username) ||
-      (a.email && a.email.toLowerCase() === username)
-    );
+    const app = data.teacherApplications.find(matchTeacher);
     if (app) {
       if (app.password && app.password !== password) {
         if (window.ClubSecurity) {
@@ -506,8 +576,12 @@ function handleTeacherLogin(e) {
         showToast(`Hörmətli ${app.fullName}, müraciətiniz klub rəhbərliyi tərəfindən təsdiqlənməyib.`, "error");
         return;
       }
-      // Find the matching teacher object
-      teacher = data.teachers.find(t => t.id === app.teacherId || (t.username && app.username && t.username.toLowerCase() === app.username.toLowerCase()));
+      // Find the matching teacher object or synthesize from app
+      teacher = data.teachers.find(t => t.id === app.teacherId || matchTeacher(t)) || {
+        ...app,
+        id: app.teacherId || "teacher-sefanya",
+        status: "Aktiv"
+      };
     }
   }
 

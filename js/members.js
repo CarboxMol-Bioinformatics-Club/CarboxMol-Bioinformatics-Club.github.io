@@ -254,7 +254,39 @@ const MembersPortal = {
       return;
     }
 
-    container.innerHTML = members.map(m => {
+    const teachers = data.teachers || [];
+    const mentorHtml = teachers.map(t => `
+      <div class="col-span-full bg-gradient-to-r from-indigo-950/60 via-slate-900/90 to-purple-950/50 p-6 rounded-3xl border border-indigo-500/40 shadow-xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-5 mb-2">
+        <div class="flex items-center gap-4">
+          <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-cyan-400 p-0.5 shadow-lg shrink-0 overflow-hidden">
+            <img src="${t.photo || 'https://api.dicebear.com/7.x/identicon/svg?seed=sefanya'}" alt="${escapeHtml(t.fullName)}" class="w-full h-full object-cover rounded-[14px] bg-slate-900" />
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap mb-1">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
+                <i class="fa-solid fa-chalkboard-user mr-1"></i> Akademik Mentor & Tədqiqatçı
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                ${escapeHtml(t.status || 'Aktiv')}
+              </span>
+            </div>
+            <h4 class="text-lg font-black text-white">${escapeHtml(t.fullName)}</h4>
+            <div class="text-xs text-indigo-300 font-mono font-bold">@${escapeHtml(t.username)} • ${escapeHtml(t.email || '')}</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">${escapeHtml(t.university || 'Western Caspian University')} • ${escapeHtml(t.department || 'Təbiət Elmləri Kafedrası')}</div>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-3 py-1.5 rounded-xl bg-slate-900/80 border border-indigo-500/30 text-indigo-300 text-xs font-semibold">
+            <i class="fa-solid fa-phone mr-1 text-slate-400"></i> ${escapeHtml(t.phone || '+994 99 350 69 07')}
+          </span>
+          <span class="px-3 py-1.5 rounded-xl bg-slate-900/80 border border-indigo-500/30 text-indigo-300 text-xs font-semibold">
+            <i class="fa-solid fa-clock mr-1 text-slate-400"></i> ${escapeHtml(t.consultationHours || 'Məsləhət: Çərşənbə & Cümə')}
+          </span>
+        </div>
+      </div>
+    `).join("");
+
+    container.innerHTML = mentorHtml + members.map(m => {
       const isMe = active && (active.id === m.id || active.username === m.username);
       const initials = (m.fullName || "Ü")
         .split(" ")

@@ -2695,12 +2695,26 @@ function purgeMockData(data) {
   }
   if (Array.isArray(data.teachers)) {
     data.teachers = data.teachers.filter(t => t && t.id !== "teacher-1" && (t.username || "").toLowerCase() !== "rashad_ismayilov");
+    const hasSefanya = data.teachers.some(t => t && ((t.username || "").toLowerCase() === "sefanyamuellim" || t.id === "teacher-sefanya"));
+    if (!hasSefanya && Array.isArray(INITIAL_DATA.teachers) && INITIAL_DATA.teachers.length > 0) {
+      data.teachers.unshift(JSON.parse(JSON.stringify(INITIAL_DATA.teachers[0])));
+    }
   }
   if (Array.isArray(data.teacherApplications)) {
     data.teacherApplications = data.teacherApplications.filter(a => a && a.id !== "teach-app-1" && (a.username || "").toLowerCase() !== "rashad_ismayilov");
+    const hasSefanyaApp = data.teacherApplications.some(a => a && ((a.username || "").toLowerCase() === "sefanyamuellim" || a.id === "teach-app-sefanya"));
+    if (!hasSefanyaApp && Array.isArray(INITIAL_DATA.teacherApplications) && INITIAL_DATA.teacherApplications.length > 0) {
+      data.teacherApplications.unshift(JSON.parse(JSON.stringify(INITIAL_DATA.teacherApplications[0])));
+    }
   }
   if (Array.isArray(data.events)) {
     data.events = data.events.filter(e => e && !["ev-2", "ev-3", "ev-4", "ev-5"].includes(e.id));
+  }
+  if (Array.isArray(data.deletedTeacherIds)) {
+    data.deletedTeacherIds = data.deletedTeacherIds.filter(id => id !== "teacher-sefanya" && id !== "sefanyamuellim");
+  }
+  if (Array.isArray(data.deletedAppIds)) {
+    data.deletedAppIds = data.deletedAppIds.filter(id => id !== "teach-app-sefanya");
   }
   data.memberCustomTasks = data.memberCustomTasks || [];
   data.memberNotes = data.memberNotes || [];
