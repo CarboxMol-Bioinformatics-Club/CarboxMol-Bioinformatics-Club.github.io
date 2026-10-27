@@ -179,15 +179,15 @@ class ClubSecurityEngine {
       };
     }
 
-    // 2. Dwell-Time yoxlanışı (İnsan qeydiyyat formasını ən azı 3 saniyəyə doldura bilər)
+    // 2. Dwell-Time yoxlanışı (Mobil brauzerlərdə və PWA-da şifrə menecerləri üçün 80ms-dən sürətli skriptləri süz)
     const renderTime = this.formRenderTimestamps.get(formId);
     if (renderTime) {
       const elapsedMs = Date.now() - renderTime;
-      if (elapsedMs < 2500) {
+      if (elapsedMs < 80) {
         this.log("BOT_FAST_SUBMIT", { formId, elapsedMs }, "SECURITY_ALERT");
         return {
           isHuman: false,
-          reason: "Forma həddindən artıq sürətlə göndərildi. Bot ehtimalına qarşı sorğu bloklandı."
+          reason: "Forma qeyri-təbii sürətlə göndərildi. Zəhmət olmasa təkrar cəhd edin."
         };
       }
     }
@@ -195,10 +195,10 @@ class ClubSecurityEngine {
     return { isHuman: true };
   }
 
-  // 6. Kriptoqrafik Sessiya İmzalanması və Autentifikasiya Doğrulaması (Anti-Hijacking / Anti-Tampering)
+  // 6. Kriptoqrafik Sessiya İmzalanması və Autentifikasiya Doğrulaması (Anti-Hijacking / Anti-Tampering & PWA Persistent Session)
   createSessionToken(role, username) {
     const now = Date.now();
-    const expiry = now + (8 * 60 * 60 * 1000); // 8 saatlıq etibarlı sessiya
+    const expiry = now + (30 * 24 * 60 * 60 * 1000); // 30 günlük etibarlı PWA sessiyası
     const payload = `${role}:${username}:${now}:${expiry}`;
     // Sadə, lakin güclü istemci-tərəfli kriptoqrafik imza
     let hash = 0;
@@ -210,13 +210,16 @@ class ClubSecurityEngine {
     }
     const signature = Math.abs(hash).toString(36) + "_" + Math.abs(hash ^ 0x5a5a5a5a).toString(36);
     const token = btoa(`${payload}:${signature}`);
-    sessionStorage.setItem(`wcu_${role}_session_token`, token);
+    try {
+      localStorage.setItem(`wcu_${role}_session_token`, token);
+      sessionStorage.setItem(`wcu_${role}_session_token`, token);
+    } catch(e) {}
     return token;
   }
 
   verifySessionToken(role) {
     try {
-      const token = sessionStorage.getItem(`wcu_${role}_session_token`);
+      const token = localStorage.getItem(`wcu_${role}_session_token`) || sessionStorage.getItem(`wcu_${role}_session_token`);
       if (!token) return false;
       const decoded = atob(token);
       const parts = decoded.split(":");
@@ -245,6 +248,7 @@ class ClubSecurityEngine {
 
   clearSession(role) {
     try {
+      localStorage.removeItem(`wcu_${role}_session_token`);
       sessionStorage.removeItem(`wcu_${role}_session_token`);
       if (role === "president") {
         localStorage.removeItem("wcu_president_logged_in");

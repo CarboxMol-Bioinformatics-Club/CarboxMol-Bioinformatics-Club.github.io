@@ -2272,11 +2272,14 @@ Seçilmiş pipeline: DESeq2
           <form onsubmit="handleTeacherLogin(event)" class="space-y-3 text-xs">
             <div>
               <label class="block text-slate-300 font-semibold mb-1">İstifadəçi Adı və ya E-poçt:</label>
-              <input type="text" id="teacherLoginUsernameGateway" oninput="const u = document.getElementById('teacherLoginUsername'); if(u) u.value = this.value;" required placeholder="məs: rashad_ismayilov" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-indigo-400 font-mono text-xs" />
+              <input type="text" id="teacherLoginUsernameGateway" oninput="const u = document.getElementById('teacherLoginUsername'); if(u) u.value = this.value;" required placeholder="məs: sefanyamuellim" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-indigo-400 font-mono text-xs" />
             </div>
             <div>
               <label class="block text-slate-300 font-semibold mb-1">Giriş Şifrəsi:</label>
               <input type="password" id="teacherLoginPasswordGateway" oninput="const p = document.getElementById('teacherLoginPassword'); if(p) p.value = this.value;" required placeholder="••••••••" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-indigo-400 text-xs" />
+              <button type="button" onclick="document.getElementById('teacherLoginUsernameGateway').value='sefanyamuellim'; document.getElementById('teacherLoginPasswordGateway').value='Sefanya993506907'; const u = document.getElementById('teacherLoginUsername'); if(u) u.value='sefanyamuellim'; const p = document.getElementById('teacherLoginPassword'); if(p) p.value='Sefanya993506907';" class="text-[10px] text-indigo-400 hover:text-indigo-300 underline mt-1.5 block text-right font-mono transition">
+                <i class="fa-solid fa-key text-[9px] mr-1"></i> Sürətli Doldur: @sefanyamuellim
+              </button>
             </div>
             <button type="submit" class="w-full py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-xl text-xs shadow-lg transition flex items-center justify-center gap-2">
               <i class="fa-solid fa-right-to-bracket"></i> Müəllim Panelinə Daxil Ol
@@ -2297,7 +2300,7 @@ Seçilmiş pipeline: DESeq2
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div class="flex flex-col sm:flex-row sm:items-center gap-5">
             <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-cyan-400 p-0.5 shadow-2xl shrink-0 overflow-hidden group">
-              <img id="teacherActiveAvatar" src="https://api.dicebear.com/7.x/identicon/svg?seed=teacher" alt="Müəllim Avatarı" class="w-full h-full object-cover rounded-[14px] bg-slate-900" />
+              <img id="teacherActiveAvatar" src="https://api.dicebear.com/7.x/identicon/svg?seed=sefanya" alt="Müəllim Avatarı" class="w-full h-full object-cover rounded-[14px] bg-slate-900" />
               <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                 <i class="fa-solid fa-camera text-white text-xs"></i>
               </div>
@@ -2313,13 +2316,13 @@ Seçilmiş pipeline: DESeq2
                 </span>
               </div>
               <h2 id="teacherActiveName" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                Dos. Dr. Rəşad İsmayılov
+                Sefanya Hacızadə
               </h2>
               <p id="teacherActiveTitle" class="text-xs sm:text-sm font-semibold text-indigo-300">
-                Dosent, Biologiya Elmləri Üzrə Fəlsəfə Doktoru
+                Akademik Mentor & Tədqiqatçı
               </p>
               <p id="teacherActiveMeta" class="text-xs text-slate-400">
-                Western Caspian University • Təbiət Elmləri Kafedrası • @rashad_ismayilov
+                Western Caspian University • Təbiət Elmləri Kafedrası • @sefanyamuellim
               </p>
             </div>
           </div>
@@ -2447,17 +2450,23 @@ Seçilmiş pipeline: DESeq2
         </div>
       </div>
 
-      <!-- Section 3: 15 Club Students Roster (Academic Oversight) -->
+      <!-- Section 3: Club Students Roster (Academic Oversight) -->
       <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-indigo-500/30 space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
           <div>
             <span class="text-xs font-bold text-teal-400 uppercase tracking-widest flex items-center gap-1.5">
               <i class="fa-solid fa-users text-teal-400"></i> Klub Tələbə Heyəti
             </span>
-            <h3 class="text-xl sm:text-2xl font-extrabold text-white mt-1">15 Rəsmi Klub Tələbəsi (Elmi & Tədris İzləməsi)</h3>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-white mt-1 flex items-center gap-2 flex-wrap">
+              <span>Rəsmi Klub Tələbələri Heyəti</span>
+              <span id="teacherRosterCountBadge" class="text-xs bg-indigo-500/20 text-indigo-300 px-2.5 py-0.5 rounded-full border border-indigo-500/40 font-bold font-mono">31 Tələbə</span>
+            </h3>
             <p class="text-xs text-slate-300 mt-0.5">
-              Klubun 15 rəsmi üzvünün elmi ixtisasları, tədqiqat maraqları və əlaqə məlumatları.
+              Klubun rəsmi üzvlərinin elmi ixtisasları, tədqiqat maraqları və əlaqə məlumatları.
             </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="text" id="teacherStudentSearchInput" oninput="TeacherPortal.filterStudents(this.value)" placeholder="Tələbə axtarışı (Ad, e-poçt, ixtisas)..." class="bg-slate-900 border border-slate-700 text-xs rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400 w-full sm:w-64" />
           </div>
         </div>
 
@@ -2662,6 +2671,9 @@ Seçilmiş pipeline: DESeq2
 
           <!-- Quick Action Buttons for President -->
           <div class="flex flex-wrap items-center gap-2">
+            <button onclick="PresidentPortal.approveAllPendingApplications()" title="Bütün gözləyən müraciətləri dərhal təsdiqlə və rəsmi üzv et" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg shadow-emerald-500/20 transition">
+              <i class="fa-solid fa-check-double"></i> <span>Hamısını Təsdiq Et</span>
+            </button>
             <button onclick="PresidentPortal.openBulkEmailImportModal()" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg shadow-amber-500/20 transition">
               <i class="fa-solid fa-envelope-open-text"></i> <span>E-poçtdan İdxal Et</span>
             </button>
@@ -2671,8 +2683,11 @@ Seçilmiş pipeline: DESeq2
             <button onclick="PresidentPortal.openAddStudentModal()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center gap-1.5 border border-slate-700 transition">
               <i class="fa-solid fa-user-plus text-teal-400"></i> <span>Əl ilə Əlavə Et</span>
             </button>
-            <button onclick="PresidentPortal.exportFullClubBackup()" title="Bütün klub məlumatlarının JSON ehtiyat nüsxəsini yüklə" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold text-xs flex items-center gap-1 border border-slate-700 transition">
-              <i class="fa-solid fa-download"></i>
+            <button onclick="PresidentPortal.exportDatabaseJSON()" title="Bütün Verilənlər Bazasını JSON faylı kimi endir (Ehtiyat nüsxə)" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold text-xs flex items-center gap-1.5 border border-slate-700 transition">
+              <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">Baza İxrac</span>
+            </button>
+            <button onclick="PresidentPortal.importDatabaseJSON()" title="JSON Ehtiyat nüsxəsini sistemə yüklə və bərpa et" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold text-xs flex items-center gap-1.5 border border-slate-700 transition">
+              <i class="fa-solid fa-upload"></i> <span class="hidden sm:inline">JSON Bərpa</span>
             </button>
             <button onclick="PresidentPortal.syncFromCloud(false)" title="Server və Şinlə yenilə" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 font-bold text-xs flex items-center gap-1 border border-slate-700 transition">
               <i class="fa-solid fa-arrows-rotate"></i>
@@ -2906,6 +2921,39 @@ Seçilmiş pipeline: DESeq2
           </form>
         </div>
 
+      </div>
+
+      <!-- Existing Events Management Table (Sədr Tədbirlər İdarəetmə Cədvəli) -->
+      <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h3 class="text-base font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-calendar-days text-teal-400"></i> Klub Tədbirləri və Seminarların İdarə Edilməsi
+            </h3>
+            <p class="text-xs text-slate-400 mt-1">
+              Klubda keçirilmiş və ya planlaşdırılan rəsmi elmi tədbirlərin siyahısı. Yalnız Klub Sədri tərəfindən idarə olunur.
+            </p>
+          </div>
+          <span id="presidentEventsCountBadge" class="text-xs px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30 font-bold self-start sm:self-auto whitespace-nowrap">1 Tədbir</span>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-slate-800">
+          <table class="w-full text-left text-xs text-slate-300">
+            <thead class="bg-slate-900/90 text-slate-400 uppercase text-[10px] font-bold border-b border-slate-800">
+              <tr>
+                <th class="py-2.5 px-3">Tədbir Başlığı</th>
+                <th class="py-2.5 px-3">Kateqoriya</th>
+                <th class="py-2.5 px-3">Tarix & Saat</th>
+                <th class="py-2.5 px-3">Məruzəçi & Məkan</th>
+                <th class="py-2.5 px-3">Status</th>
+                <th class="py-2.5 px-3 text-right">Əməliyyat</th>
+              </tr>
+            </thead>
+            <tbody id="presidentEventsTableBody" class="divide-y divide-slate-800/60 font-medium">
+              <!-- Dynamically rendered by PresidentPortal.renderEventsTable() -->
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </section>
@@ -4072,7 +4120,7 @@ Seçilmiş pipeline: DESeq2
             <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
               <i class="fa-solid fa-at"></i>
             </span>
-            <input type="text" id="teacherLoginUsername" required placeholder="rashad_ismayilov" class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-9 pr-3 py-2.5 text-white focus:outline-none focus:border-indigo-500 text-xs font-mono" />
+            <input type="text" id="teacherLoginUsername" required placeholder="sefanyamuellim" class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-9 pr-3 py-2.5 text-white focus:outline-none focus:border-indigo-500 text-xs font-mono" />
           </div>
         </div>
 
@@ -4140,7 +4188,7 @@ Seçilmiş pipeline: DESeq2
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-slate-300 font-semibold mb-1">Ad, Soyad və Elmi Dərəcə *</label>
-            <input type="text" id="tRegFullName" required placeholder="məs: Dos. Dr. Rəşad İsmayılov" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
+            <input type="text" id="tRegFullName" required placeholder="məs: Sefanya Hacızadə (və ya Dosent/Müəllim)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
           </div>
 
           <div>
@@ -5717,24 +5765,28 @@ Seçilmiş pipeline: DESeq2
   <!-- ========================================== -->
   <!-- MOBILE / PWA BOTTOM APP DOCK BAR -->
   <!-- ========================================== -->
-  <nav id="mobileBottomNav" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-[#070e17]/95 backdrop-blur-xl border-t border-slate-800/90 py-1.5 px-3 flex items-center justify-around text-slate-400 text-[10px] font-medium shadow-2xl safe-area-bottom">
-    <button data-target="home" class="mobile-tab-btn flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition hover:text-teal-400 active:scale-95 text-teal-400">
+  <nav id="mobileBottomNav" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-[#070e17]/95 backdrop-blur-xl border-t border-slate-800/90 py-1 px-1.5 flex items-center justify-around text-slate-400 text-[10px] font-medium shadow-2xl safe-area-bottom">
+    <button data-target="home" class="mobile-tab-btn flex flex-col items-center justify-center py-1 px-1.5 rounded-xl transition hover:text-teal-400 active:scale-95 text-teal-400">
       <i class="fa-solid fa-house text-base mb-0.5"></i>
       <span>Ana Səhifə</span>
     </button>
-    <button data-target="biotools" class="mobile-tab-btn flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition hover:text-cyan-400 active:scale-95">
+    <button data-target="biotools" class="mobile-tab-btn flex flex-col items-center justify-center py-1 px-1.5 rounded-xl transition hover:text-cyan-400 active:scale-95">
       <i class="fa-solid fa-flask-vial text-base mb-0.5"></i>
       <span>Bio-Alət</span>
     </button>
-    <button data-target="curriculum" class="mobile-tab-btn flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition hover:text-teal-400 active:scale-95">
+    <button data-target="curriculum" class="mobile-tab-btn flex flex-col items-center justify-center py-1 px-1.5 rounded-xl transition hover:text-teal-400 active:scale-95">
       <i class="fa-solid fa-graduation-cap text-base mb-0.5"></i>
       <span>Sillabus</span>
     </button>
-    <button data-target="members-portal" class="mobile-tab-btn flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition hover:text-teal-400 active:scale-95">
+    <button data-target="teacher-portal" class="mobile-tab-btn flex flex-col items-center justify-center py-1 px-1.5 rounded-xl transition hover:text-indigo-400 active:scale-95 text-indigo-300">
+      <i class="fa-solid fa-chalkboard-user text-base mb-0.5 text-indigo-400"></i>
+      <span>Müəllim</span>
+    </button>
+    <button data-target="members-portal" class="mobile-tab-btn flex flex-col items-center justify-center py-1 px-1.5 rounded-xl transition hover:text-teal-400 active:scale-95">
       <i class="fa-solid fa-list-check text-base mb-0.5"></i>
       <span>Tapşırıqlar</span>
     </button>
-    <button data-target="register" class="mobile-tab-btn flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition hover:text-emerald-400 active:scale-95 text-emerald-400 font-semibold">
+    <button data-target="register" class="mobile-tab-btn flex flex-col items-center justify-center py-1 px-1.5 rounded-xl transition hover:text-emerald-400 active:scale-95 text-emerald-400 font-semibold">
       <i class="fa-solid fa-user-plus text-base mb-0.5"></i>
       <span>Üzvlük</span>
     </button>

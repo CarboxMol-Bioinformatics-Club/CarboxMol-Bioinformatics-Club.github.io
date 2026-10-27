@@ -142,7 +142,7 @@ const TeacherPortal = {
     const elTasks = document.getElementById("teacherMetricTasks");
     const elAnn = document.getElementById("teacherMetricAnnouncements");
 
-    if (elStudents) elStudents.innerText = Math.max(members.length, 15);
+    if (elStudents) elStudents.innerText = members.length;
     if (elPending) elPending.innerText = pendingReviews;
     if (elGraded) elGraded.innerText = gradedCount;
     if (elTasks) elTasks.innerText = tasks.length;
@@ -467,7 +467,7 @@ const TeacherPortal = {
 
     const newAnn = {
       id: "teach-ann-" + Date.now(),
-      teacherId: teacher.id || "teacher-1",
+      teacherId: teacher.id || "teacher-sefanya",
       teacherName: teacher.fullName,
       teacherTitle: teacher.title || "Akademik Mentor",
       title: typeof ClubSecurity !== "undefined" ? ClubSecurity.sanitizeText(title) : title,
@@ -529,15 +529,33 @@ const TeacherPortal = {
     if (typeof showToast === "function") showToast("Elan silindi.", "info");
   },
 
-  renderStudentsRoster() {
+  filterStudents(searchQuery = "") {
+    this.renderStudentsRoster(searchQuery);
+  },
+
+  renderStudentsRoster(searchQuery = "") {
     const container = document.getElementById("teacherStudentsRosterTableBody");
     if (!container) return;
 
     const data = typeof getClubData === "function" ? getClubData() : {};
-    const members = (data.members || []).filter(m => m.status === "Aktiv" || m.status === "Təsdiqləndi");
+    let members = (data.members || []).filter(m => m.status === "Aktiv" || m.status === "Təsdiqləndi");
+
+    const badge = document.getElementById("teacherRosterCountBadge");
+    if (badge) badge.innerText = `${members.length} Tələbə`;
+
+    if (searchQuery.trim() !== "") {
+      const q = searchQuery.toLowerCase();
+      members = members.filter(m =>
+        (m.fullName || "").toLowerCase().includes(q) ||
+        (m.email || "").toLowerCase().includes(q) ||
+        (m.major || "").toLowerCase().includes(q) ||
+        (m.faculty || "").toLowerCase().includes(q) ||
+        (m.username || "").toLowerCase().includes(q)
+      );
+    }
 
     if (members.length === 0) {
-      container.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-slate-500">Heç bir aktiv tələbə tapılmadı.</td></tr>`;
+      container.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-slate-500">Axtarışa uyğun aktiv tələbə tapılmadı.</td></tr>`;
       return;
     }
 

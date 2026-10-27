@@ -421,17 +421,35 @@ window.closeTeacherLoginModal = closeTeacherLoginModal;
 function handleTeacherLogin(e) {
   if (e) e.preventDefault();
 
-  const rawUser = (document.getElementById("teacherLoginUsername")?.value || "").trim();
-  const rawPass = (document.getElementById("teacherLoginPassword")?.value || "").trim();
+  const rawUser = (
+    document.getElementById("teacherLoginUsername")?.value || 
+    document.getElementById("teacherLoginUsernameGateway")?.value || 
+    ""
+  ).trim();
+  const rawPass = (
+    document.getElementById("teacherLoginPassword")?.value || 
+    document.getElementById("teacherLoginPasswordGateway")?.value || 
+    ""
+  ).trim();
   const username = rawUser.toLowerCase().replace(/^@/, "");
   const password = rawPass;
+
+  // Sync inputs across gateway and modal
+  const u1 = document.getElementById("teacherLoginUsername");
+  const u2 = document.getElementById("teacherLoginUsernameGateway");
+  const p1 = document.getElementById("teacherLoginPassword");
+  const p2 = document.getElementById("teacherLoginPasswordGateway");
+  if (u1 && !u1.value) u1.value = rawUser;
+  if (u2 && !u2.value) u2.value = rawUser;
+  if (p1 && !p1.value) p1.value = rawPass;
+  if (p2 && !p2.value) p2.value = rawPass;
 
   if (!username || !password) {
     showToast("İstifadəçi adı və şifrənizi daxil edin.", "warning");
     return;
   }
 
-  // Anti-Bot: Honeypot və Dwell-Time yoxlanışı
+  // Anti-Bot: Honeypot yoxlanışı
   if (window.ClubSecurity) {
     const honeypot = document.getElementById("teacherLoginHoneypot")?.value || "";
     const botCheck = window.ClubSecurity.verifyFormSubmission("teacher_login_form", honeypot);
@@ -1421,12 +1439,9 @@ function navigateTo(sectionId) {
     return;
   }
 
-  // Guard for teacher portal - only logged-in teachers or president can access
-  if (sectionId === "teacher-portal" && !isTeacherLoggedIn() && !isPresidentLoggedIn()) {
-    showToast("Müəllim Paneli yalnız təsdiqlənmiş akademik mentorlar üçün nəzərdə tutulub. Zəhmət olmasa hesabınıza daxil olun.", "warning");
-    window.location.hash = "home";
-    openTeacherLoginModal();
-    return;
+  // Teacher portal: seamlessly open gateway or dashboard
+  if (sectionId === "teacher-portal" && window.TeacherPortal) {
+    TeacherPortal.renderTeacherDashboard();
   }
 
   const sections = document.querySelectorAll(".app-section");
@@ -1473,6 +1488,7 @@ function navigateTo(sectionId) {
     if (PresidentPortal.renderTeachersAccountsTable) PresidentPortal.renderTeachersAccountsTable();
     if (PresidentPortal.renderMemberCustomTasks) PresidentPortal.renderMemberCustomTasks();
     if (PresidentPortal.renderMemberNotes) PresidentPortal.renderMemberNotes();
+    if (PresidentPortal.renderEventsTable) PresidentPortal.renderEventsTable();
     if (PresidentPortal.startAutoSync) PresidentPortal.startAutoSync();
     else if (PresidentPortal.syncFromCloud) PresidentPortal.syncFromCloud(true);
   } else if (window.PresidentPortal && PresidentPortal.stopAutoSync) {
@@ -2546,7 +2562,23 @@ function initEventsView() {
   if (!container) return;
 
   const data = getClubData();
-  const events = data.events || [];
+  const rawEvents = data.events || [];
+  const events = rawEvents.filter(ev => ev && !["ev-2", "ev-3", "ev-4", "ev-5"].includes(ev.id));
+
+  if (events.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full p-8 rounded-2xl bg-slate-900/60 border border-slate-800 text-center space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-teal-500/10 text-teal-400 flex items-center justify-center mx-auto text-xl">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <h4 class="text-white font-bold text-sm">Yaxın Zamanda Keçiriləcək Yeni Tədbirlər</h4>
+        <p class="text-slate-400 text-xs max-w-md mx-auto">
+          Yaxın zamanda keçiriləcək yeni elmi seminarlar və vörkşoplar Klub Sədri tərəfindən elan olunacaqdır.
+        </p>
+      </div>
+    `;
+    return;
+  }
 
   container.innerHTML = events.map(ev => {
     const hasPhotos = Array.isArray(ev.photos) && ev.photos.length > 0;

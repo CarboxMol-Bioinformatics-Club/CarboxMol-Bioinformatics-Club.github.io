@@ -51,7 +51,7 @@ const INITIAL_DATA = {
     }
   ],
 
-  events: [
+events: [
     {
       id: "ev-1",
       title: "Xüsusi Elmi Seminar: Bayes statistikası — Struktur biologiyaya tətbiqi",
@@ -86,54 +86,6 @@ const INITIAL_DATA = {
           caption: "Klub Üzvü, Prof. Qərib Mürşüdov və Klub Sədri Süleyman Hacızadə"
         }
       ]
-    },
-    {
-      id: "ev-2",
-      title: "Vörkşop #1: Bioloji Məlumat Bazaları (NCBI, UniProt, PDB)",
-      category: "Praktiki Laboratoriya",
-      date: "24 Oktyabr 2026",
-      time: "14:00 - 16:00",
-      location: "Kompüter Laboratoriyası #304",
-      badge: "Qeydiyyat Açıqdır",
-      description: "NCBI Entrez vasitəsilə gen axtarışı, FASTA formatlarının yüklənməsi, BLAST aləti ilə ardıcıllıq oxşarlıqlarının təyini.",
-      speaker: "Bioinformatika Təlimçisi",
-      status: "upcoming"
-    },
-    {
-      id: "ev-3",
-      title: "Hands-on Təlim: Python və Biopython ilə DNT Analizi",
-      category: "Kodlaşdırma Vörkşopu",
-      date: "07 Noyabr 2026",
-      time: "14:00 - 16:30",
-      location: "Online / Laboratoriya Hibrid",
-      badge: "Praktiki Kod",
-      description: "Biopython quraşdırılması, DNT -> mRNT transkripsiyası, zülal translyasiyası və GC nisbətinin hesablanması.",
-      speaker: "Klubun Texniki Mentorları",
-      status: "upcoming"
-    },
-    {
-      id: "ev-4",
-      title: "Journal Club #1: CRISPR və Süni İntellekt Gen Redaktəsində",
-      category: "Elmi Müzakirə",
-      date: "21 Noyabr 2026",
-      time: "15:30 - 17:00",
-      location: "WCU Kitabxanası / Coworking",
-      badge: "Məqalə Müzakirəsi",
-      description: "Nature jurnalında dərc olunmuş ən son CRISPR qrafik modelləri haqqında məqalənin qrup şəklində təhlili və debatı.",
-      speaker: "Klub Üzvləri Komandası",
-      status: "upcoming"
-    },
-    {
-      id: "ev-5",
-      title: "Zülal Modelləşdirməsi: PyMOL, ChimeraX, Coot, Carbox & CarboxMol",
-      category: "3D Modelləşdirmə",
-      date: "05 Dekabr 2026",
-      time: "14:00 - 16:00",
-      location: "Laboratoriya #304",
-      badge: "3D Strukturlar",
-      description: "Zülalların kristalloqrafik məlumatlarının PDB-dən çəkilməsi, AlphaFold proqnozlarının 3D analizi, PyMOL, ChimeraX, Coot və klubumuzun yerli Carbox / CarboxMol proqramları ilə vizuallaşdırma və liqand birləşmə sahələri (hamısı tədris olunacaq).",
-      speaker: "Struktur Biologiyası Mütəxəssisi (Süleyman Hacızadə)",
-      status: "upcoming"
     }
   ],
 
@@ -1007,6 +959,445 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "yearGoal": "Python və Biopython ilə genom ardıcıllıqlarının avtomatlaşdırılmış analizi və NCBI bazaları ilə iş bacarığı qazanmaq.",
       "customTasks": [],
       "notes": []
+    },
+    {
+          "id": "mem-banugurbanzade",
+          "fullName": "Banu Qurbanzadə (Emin)",
+          "username": "banugurbanzade",
+          "email": "banugurbanzade@gmail.com",
+          "phone": "+994503381571",
+          "password": "623510100Bb!",
+          "role": "Klub Üzvü",
+          "university": "Qərbi Kaspi Universiteti (WCU)",
+          "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+          "major": "IT",
+          "course": "I Kurs",
+          "joinDate": "19.10.2026",
+          "registeredAt": "2026-10-19",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=banugurbanzade",
+          "photo": "",
+          "skills": [
+                "Genomika və NGS Analizi",
+                "Struktur Biologiyası və Dərman Dizaynı",
+                "Python",
+                "Bioinformatika"
+          ],
+          "motivation": "Mənim üçün maraqlı və faydalı olacağını düşünürəm",
+          "yearGoal": "Proqramlarla işləmək bacarığı",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-nazrinahmadli",
+          "fullName": "Nəzrin Əhmədli (Yaşar)",
+          "username": "nazrinahmadli",
+          "email": "nazrinahmedli04@gmail.com",
+          "phone": "+994555724718",
+          "password": "Nazrin2004",
+          "role": "Klub Üzvü",
+          "university": "Bakı Dövlət Universiteti (BDU)",
+          "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
+          "major": "Molekulyar biologiya",
+          "course": "Magistratura",
+          "joinDate": "13.10.2026",
+          "registeredAt": "2026-10-13",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=nazrinahmadli",
+          "photo": "",
+          "skills": [
+                "Genomika və NGS Analizi",
+                "Struktur Biologiyası və Dərman Dizaynı",
+                "Transkriptomika və RNA-Seq",
+                "Süni İntellekt və Biotibb ML",
+                "Filogenetika və Təkamül Ağacları"
+          ],
+          "motivation": "Bioinformatika sahəsində biliklərimi artırıb, bu sahədə inkişaf etmək istəyirəm.",
+          "yearGoal": "Elmi məqalə hazırlaya bilmək, bioloji datalardan istifadə etmək və analiz etmək, həmçinin onların bazalara yüklənməsini bilmək, Python və R proqramlaşdırma dillərini bilmək.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-ayt-kin",
+          "fullName": "Aytəkin Namazova (Eldəniz)",
+          "username": "aytəkin",
+          "email": "namazovaaytekin474@gmail.com",
+          "phone": "0514034124",
+          "password": "Aytekin22",
+          "role": "Klub Üzvü",
+          "university": "Bakı Dövlət Universiteti (BDU)",
+          "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
+          "major": "Molekulyar biologiya",
+          "course": "Magistratura",
+          "joinDate": "13.10.2026",
+          "registeredAt": "2026-10-13",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=aytekin",
+          "photo": "",
+          "skills": [
+                "Genomika və NGS Analizi",
+                "Struktur Biologiyası və Dərman Dizaynı",
+                "Bioinformatika"
+          ],
+          "motivation": "Bioinformatikanı dərindən öyrənmək və molekulyar biologiya sahəsində tətbiq etmək.",
+          "yearGoal": "Magistratura tədqiqatımda bioinformatik alətlərdən sərbəst istifadə etmək.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-narmin-mmdva",
+          "fullName": "Nərmin Məmmədova (Ceyhun)",
+          "username": "narmin.mmdva",
+          "email": "narmin.mammadova2025@khazar.org",
+          "phone": "+994514368667",
+          "password": "Nermin2007",
+          "role": "Klub Üzvü",
+          "university": "Xəzər Universiteti",
+          "faculty": "Xəzər Universiteti - Təbiət Elmləri",
+          "major": "Biotexnologiya",
+          "course": "II Kurs",
+          "joinDate": "13.10.2026",
+          "registeredAt": "2026-10-13",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=narmin.mmdva",
+          "photo": "",
+          "skills": [
+                "Genomika və NGS Analizi",
+                "Struktur Biologiyası və Dərman Dizaynı",
+                "Biotexnologiya"
+          ],
+          "motivation": "Biotexnologiya və bioinformatikanın kəsişməsində təcrübə qazanmaq.",
+          "yearGoal": "Genetik və struktur analizləri mənimsəmək.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-lea-4ever",
+          "fullName": "Əsma Mütəllimli (Ramil)",
+          "username": "lea_4ever",
+          "email": "asmamutallimli@gmail.com",
+          "phone": "+994 99 788 01 48",
+          "password": "welling10n",
+          "role": "Klub Üzvü",
+          "university": "Azərbaycan Dövlət Aqrar Universiteti (ADAU)",
+          "faculty": "ADAU - Qida Mühəndisliyi",
+          "major": "Qida Texnologiyaları",
+          "course": "II Kurs",
+          "joinDate": "13.10.2026",
+          "registeredAt": "2026-10-13",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=lea_4ever",
+          "photo": "",
+          "skills": [
+                "Bioinformatika",
+                "Genomika",
+                "Qida Təhlükəsizliyi Analizi"
+          ],
+          "motivation": "Bioinformatikanın qida texnologiyalarına tətbiqini araşdırmaq.",
+          "yearGoal": "Bioloji dataların təhlilini öyrənmək.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-gulchin-m",
+          "fullName": "Gülçin Məmmədli (Elçin)",
+          "username": "gulchin_m",
+          "email": "gulchin.memmedli.234bioaz@wcu.edu.az",
+          "phone": "+994503181924",
+          "password": "gulcin207",
+          "role": "Klub Üzvü",
+          "university": "Qərbi Kaspi Universiteti (WCU)",
+          "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+          "major": "Biologiya",
+          "course": "III Kurs",
+          "joinDate": "13.10.2026",
+          "registeredAt": "2026-10-13",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=gulchin_m",
+          "photo": "",
+          "skills": [
+                "Genomika",
+                "Bioinformatika",
+                "Struktur Biologiyası"
+          ],
+          "motivation": "Universitetdə biologiya təhsilimi bioinformatika ilə zənginləşdirmək.",
+          "yearGoal": "Struktur modelləşdirmə və elmi layihələrdə fəal iştirak.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-rasim",
+          "fullName": "Rasim Abiyev (Oktay)",
+          "username": "rasim",
+          "email": "abiyev.rasim@gmail.com",
+          "phone": "+994 51 554 92 59",
+          "password": "Q1w2e3",
+          "role": "Klub Üzvü",
+          "university": "Bakı Dövlət Universiteti (BDU)",
+          "faculty": "Regionşünaslıq və Beynəlxalq Münasibətlər",
+          "major": "Regionşünaslıq və Beynəlxalq Münasibətlər",
+          "course": "Magistratura",
+          "joinDate": "13.10.2026",
+          "registeredAt": "2026-10-13",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=rasim",
+          "photo": "",
+          "skills": [
+                "Data Analizi",
+                "Beynəlxalq Əməkdaşlıq",
+                "Bioinformatika"
+          ],
+          "motivation": "Fənlərarası inteqrasiya və bioinformatika elmi siyasətini öyrənmək.",
+          "yearGoal": "Bioinformatik layihələrin koordinasiyasında iştirak.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-leyla-25",
+          "fullName": "Budagova Leyla",
+          "username": "leyla_25",
+          "email": "leylabudaqova073@gmail.com",
+          "phone": "+994505761087",
+          "password": "250921",
+          "role": "Klub Üzvü",
+          "university": "Bakı Dövlət Universiteti (BDU)",
+          "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
+          "major": "Molekulyar Biologiya",
+          "course": "Doktorantura",
+          "joinDate": "13.10.2026",
+          "registeredAt": "2026-10-13",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=leyla_25",
+          "photo": "",
+          "skills": [
+                "Molekulyar Biologiya",
+                "Genomika",
+                "Doktorantura Tədqiqatları"
+          ],
+          "motivation": "Doktorantura tədqiqatımda qabaqcıl bioinformatik metodları tətbiq etmək.",
+          "yearGoal": "Beynəlxalq indeksli jurnallarda elmi məqalə dərc etdirmək.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-gunay",
+          "fullName": "Gunay Rustemova (Zakir)",
+          "username": "gunay",
+          "email": "g27837103@gmail.com",
+          "phone": "0518578783",
+          "password": "gunay1019",
+          "role": "Klub Üzvü",
+          "university": "Qərbi Kaspi Universiteti (WCU)",
+          "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+          "major": "Biologiya",
+          "course": "III Kurs",
+          "joinDate": "13.10.2026",
+          "registeredAt": "2026-10-13",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=gunay",
+          "photo": "",
+          "skills": [
+                "Biologiya",
+                "Bioinformatika",
+                "DNT Analizi"
+          ],
+          "motivation": "Bioinformatika biliklərimi artırmaq və praktiki alətlərlə işləmək.",
+          "yearGoal": "Praktiki bacarıqlara yiyələnmək.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-ayselhummetovva",
+          "fullName": "Aysel Hümmətova (Hümmət)",
+          "username": "ayselhummetovva",
+          "email": "aysel.hummetova.234bioaz@wcu.edu.az",
+          "phone": "0707037032",
+          "password": "4716ays?",
+          "role": "Klub Üzvü",
+          "university": "Qərbi Kaspi Universiteti (WCU)",
+          "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+          "major": "Biologiya",
+          "course": "III Kurs",
+          "joinDate": "13.10.2026",
+          "registeredAt": "2026-10-13",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=ayselhummetovva",
+          "photo": "",
+          "skills": [
+                "Genomika",
+                "Struktur Biologiyası",
+                "Bioinformatika"
+          ],
+          "motivation": "Bioinformatika laboratoriyasında tədqiqatçı kimi formalaşmaq.",
+          "yearGoal": "Fərdi tədqiqat layihəsi yekunlaşdırmaq.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-mr-scientist",
+          "fullName": "Anar Vəliyev (Farid)",
+          "username": "mr.scientist",
+          "email": "veliyevanar750@gmail.com",
+          "phone": "0557504342",
+          "password": "Believe in yourself",
+          "role": "Klub Üzvü",
+          "university": "Bakı Dövlət Universiteti (BDU)",
+          "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
+          "major": "Biologiya",
+          "course": "III Kurs",
+          "joinDate": "14.10.2026",
+          "registeredAt": "2026-10-14",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=mr.scientist",
+          "photo": "",
+          "skills": [
+                "Python",
+                "Genomika",
+                "Bioinformatika",
+                "İngiliscə Elmi Tədqiqat"
+          ],
+          "motivation": "Beynəlxalq bioinformatika laboratoriyalarında tədqiqat aparmaq.",
+          "yearGoal": "Kompüter genomikası üzrə praktiki bacarıqlar.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-nuhov",
+          "fullName": "Nicat Nuhov (Pərviz)",
+          "username": "nuhov",
+          "email": "nicatnuhov389@gmail.com",
+          "phone": "505035670",
+          "password": "1453",
+          "role": "Klub Üzvü",
+          "university": "Azərbaycan Dövlət Pedaqoji Universiteti (ADPU)",
+          "faculty": "ADPU - Kimya və Biologiya Fakültəsi",
+          "major": "Kimya və biologiya müəllimliyi",
+          "course": "III Kurs",
+          "joinDate": "14.10.2026",
+          "registeredAt": "2026-10-14",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=nuhov",
+          "photo": "",
+          "skills": [
+                "Kimya",
+                "Biologiya",
+                "Bioinformatika"
+          ],
+          "motivation": "Müasir biologiya tədrisində kompüter bioinformatikasını tətbiq etmək.",
+          "yearGoal": "Klub çərçivəsində praktiki layihələr icra etmək.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-malikova-reyhan",
+          "fullName": "Reyhan Malikova (Nadim)",
+          "username": "malikova_reyhan",
+          "email": "r.malikova24@abdn.ac.uk",
+          "phone": "+994509988838",
+          "password": "Reychik03",
+          "role": "Klub Üzvü",
+          "university": "University of Aberdeen",
+          "faculty": "Tədqiqat İnstitutu və ya Mərkəzi - Biotexnologiya və Bioinformatika",
+          "major": "Biotexnologiya və Bioinformatika",
+          "course": "Magistratura",
+          "joinDate": "14.10.2026",
+          "registeredAt": "2026-10-14",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=malikova_reyhan",
+          "photo": "",
+          "skills": [
+                "Genomika",
+                "Biotexnologiya",
+                "Bioinformatika",
+                "NGS Analizi"
+          ],
+          "motivation": "Beynəlxalq magistratura təcrübəmi CarboxMol klubu ilə bölüşmək və birgə araşdırmalar aparmaq.",
+          "yearGoal": "Klubla birgə elmi tədqiqat məqaləsi nəşr etmək.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-minarataghiyeva",
+          "fullName": "Minara Taghiyeva (Elkhan)",
+          "username": "minarataghiyeva",
+          "email": "minara.taghiyeva@yuksekihtisas.edu.tr",
+          "phone": "+994554895953",
+          "password": "Minara2020",
+          "role": "Klub Üzvü",
+          "university": "Yüksek İhtisas Üniversitesi",
+          "faculty": "Tibbi Genetik",
+          "major": "Tibbi Genetik",
+          "course": "Magistratura",
+          "joinDate": "14.10.2026",
+          "registeredAt": "2026-10-14",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=minarataghiyeva",
+          "photo": "",
+          "skills": [
+                "Tibbi Genetik",
+                "Genomika",
+                "Klinik Bioinformatika"
+          ],
+          "motivation": "Tibbi genetik sahəsində klinik bioinformatik alətləri dərindən öyrənmək.",
+          "yearGoal": "Xəstəliklərlə bağlı mutasiyaların in-silico analizi.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-fatimirzz",
+          "fullName": "Fatimə Mirzəyeva (David)",
+          "username": "fatimirzz",
+          "email": "fatima.mirzayeva.david@bsu.edu.az",
+          "phone": "+994709809089",
+          "password": "Mirzeyeva.999",
+          "role": "Klub Üzvü",
+          "university": "Bakı Dövlət Universiteti (BDU)",
+          "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
+          "major": "Molekulyar biologiya",
+          "course": "Magistratura",
+          "joinDate": "14.10.2026",
+          "registeredAt": "2026-10-14",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=fatimirzz",
+          "photo": "",
+          "skills": [
+                "Molekulyar Biologiya",
+                "Genomika",
+                "Bioinformatika"
+          ],
+          "motivation": "Magistratura işimdə molekulyar biologiya və bioinformatikanı birləşdirmək.",
+          "yearGoal": "Molekulyar modelləşdirmə və elmi nəşr.",
+          "customTasks": [],
+          "notes": []
+    },
+    {
+          "id": "mem-fidan",
+          "fullName": "Fidan Verdiyeva (Malik)",
+          "username": "fidan",
+          "email": "fidanverdiyeva808@gmail.com",
+          "phone": "0708870494",
+          "password": "Rasengan25",
+          "role": "Klub Üzvü",
+          "university": "Bakı Dövlət Universiteti (BDU)",
+          "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
+          "major": "Biologiya",
+          "course": "Magistratura",
+          "joinDate": "14.10.2026",
+          "registeredAt": "2026-10-14",
+          "status": "Aktiv",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=fidan",
+          "photo": "",
+          "skills": [
+                "Genomika və NGS Analizi",
+                "Struktur Biologiyası və Dərman Dizaynı",
+                "Transkriptomika və RNA-Seq",
+                "Python",
+                "Biopython"
+          ],
+          "motivation": "Molekulyar biologiya və fitopatologiya sahəsində çalışdığım üçün bioinformatika biliklərimi inkişaf etdirmək istəyirəm. Xüsusilə DNT ardıcıllıqlarının analizi və Python-un bioloji tədqiqatlarda tətbiqi məni cəlb edir. Klubun praktiki fəaliyyətlərində iştirak edərək biliklərimi artırmağı və onları peşəkar fəaliyyətimdə tətbiq etməyi hədəfləyirəm.",
+          "yearGoal": "Bir il ərzində Python və Biopython vasitəsilə bitki patogenlərinin DNT ardıcıllıqlarını analiz etmək bacarığı qazanmaq istəyirəm. Məqsədim müxtəlif patogenlərin ardıcıllıqlarını müqayisə edən və nəticələri təqdim edən kiçik bioinformatik layihə hazırlamaqdır.",
+          "customTasks": [],
+          "notes": []
     }
   ],
 
@@ -1582,9 +1973,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Mənim üçün maraqlı və faydalı olacağını düşünürəm",
       "yearGoal": "Proqramlarla işləmək bacarığı",
       "dateApplied": "2026-10-19",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-nazrinahmadli",
@@ -1621,9 +2012,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Bioinformatika sahəsində biliklərimi artırıb, bu sahədə inkişaf etmək istəyirəm.",
       "yearGoal": "Elmi məqalə hazırlaya bilmək, bioloji datalardan istifadə etmək və analiz etmək, həmçinin onların bazalara yüklənməsini bilmək, Python və R proqramlaşdırma dillərini bilmək.",
       "dateApplied": "2026-10-13",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-ayt-kin",
@@ -1660,9 +2051,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Bu sahə bildiyimiz kimi ölkədə inkişaf etməyib, demək olar ki, bu bioinformatika sahəsində atılan ilk addımlardandır. Belə bir təşkilatın iştirakçısı olmaq mənim üçün əvəzedilməzdir. Bu sahədə yeni biliklər öyrənməyə açığam. Gələcək karyeram bu yöndə ola bilər.",
       "yearGoal": "Əldə edəcəyim biliklərə uyğun ən yaxşı layihələr hazırlamaq, öz məqaləmi yazmaq.",
       "dateApplied": "2026-10-13",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-narmin-mmdva",
@@ -1697,9 +2088,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Bu layihəni ilk dəfə gördüyüm üçün diqqətimi çəkdi və bioinformatika sahəsinə olan marağımı daha da artırdı. Hazırda bu sahədə biliklərim əsas səviyyədədir, lakin özümü inkişaf etdirmək, mövzunu daha dərindən öyrənmək və praktiki təcrübə qazanmaq istəyirəm. Düşünürəm ki, klub mənə həm yeni biliklər əldə etmək, həm də bu sahəyə marağı olan insanlarla ünsiyyət qurmaq üçün gözəl fürsət yaradacaq.",
       "yearGoal": "Bir il ərzində klubun fəaliyyətində davamlı iştirak etmək, hakatonlarda iştirak edib uğur qazanmaq və bioinformatika sahəsində biliklərimi daha da inkişaf etdirmək istəyirəm. Əsas hədəfim qazandığım bilikləri praktikada tətbiq edərək öz layihə ideyalarımı müstəqil şəkildə hazırlaya biləcək səviyyəyə çatmaqdır. Eyni zamanda, komanda ilə işləməyi və real problemlərə elmi və texnoloji həllər tapmağı öyrənmək istəyirəm.",
       "dateApplied": "2026-10-13",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-lea-4ever",
@@ -1733,9 +2124,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Mənim ixtisasım qida texnologiyalarıdır  görə, mən əsasən profilimlə bağlı, yəni qida mühəndisliklə bağlı, çoxlu sayda hackathon larda, tədqiqat və layihələrdə böyük həvəslə iştirak etmək istəyirəm. Tapdığım hackathonlar sırf qida mühəndisliyə aid azdır və qida texnologiyaları biotexnologiya elmə də aiddir deyə, bu klubun layihələrində iştirak etmək arzulayıram.",
       "yearGoal": "Qida mühəndisliklə bağlı şəxsi 3D model proyektləri hazırlamaq planlaşdırıram",
       "dateApplied": "2026-10-13",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-gulchin-m",
@@ -1769,9 +2160,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Yeni şeylər öyrənmək istəyirəm, həmçinin bioinformatika barəsində məlumat almaq istəyirəm.",
       "yearGoal": "Qeyd edilməyib",
       "dateApplied": "2026-10-13",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-rasim",
@@ -1809,9 +2200,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "CarboxMol Bioinformatika Klubuna qoşulmaqda əsas məqsədim süni intellekt, maşın öyrənməsi və bioinformatikanın kəsişməsində biliklərimi genişləndirmək, bu sahədə aparılan tədqiqatlarla tanış olmaqdır. Xüsusilə, AI metodlarının bioloji məlumatların təhlilində, DNT ardıcıllıqlarının təsnifatında və mürəkkəb elmi problemlərin həllində tətbiqi məni maraqlandırır. Artıq süni intellekt və kvant maşın öyrənməsi istiqamətlərində öyrənmə və tədqiqat fəaliyyətim olduğuna görə, bioinformatika sahəsində də praktiki təcrübə qazanmaq, digər tələbələrlə bilik mübadiləsi aparmaq və gələcək elmi layihələrdə iştirak etmək istəyirəm. İnanıram ki, klub bu maraqları real layihələrə çevirmək və multidissiplinar tədqiqat bacarıqlarımı inkişaf etdirmək üçün uyğun mühitdir.",
       "yearGoal": "Bir il ərzində süni intellekt və bioinformatikanı birləşdirən, bioloji məlumatların təhlilinə yönəlmiş işlək bir layihə hazırlamaq istəyirəm. Konkret ideyam maşın öyrənməsi metodlarından istifadə etməklə DNT ardıcıllıqlarının təsnifatı və potensial risklərin müəyyənləşdirilməsi üçün eksperimental model qurmaqdır. Layihə çərçivəsində açıq bioloji məlumat dəstləri ilə işləməyi, modellərin nəticələrini müqayisə etməyi və onların dəqiqliyini elmi əsaslarla qiymətləndirməyi hədəfləyirəm. İlin sonunda nəticələri GitHub-da sənədləşdirilmiş, təkrarlana bilən kiçik bir tədqiqat layihəsi təqdim etmək və bioinformatika sahəsində gələcək araşdırmalar üçün möhkəm təməl formalaşdırmaq istəyirəm.",
       "dateApplied": "2026-10-13",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-leyla-25",
@@ -1851,9 +2242,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "I wanna improve Computational biology",
       "yearGoal": "Drug design with endemic plants in Azerbaijan",
       "dateApplied": "2026-10-13",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-gunay",
@@ -1890,9 +2281,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Mən həm WCU da oxuyuram həm də ixtisasım Biologiyadır. Gələcəkdə Bioinformatika ixtisasına yönəlmək istəyirəm. Bu səbəblə iştirak edib öncədən praktiki biliklərə yiyələnmək mənim üçün yaxşı olar deyə düşünürəm. Klubun fəaliyyətinində aktiv iştirak etmək və gələcək əməkdaşlarla tanış olma nailiyyətinə yiyələnmək istəyirəm.",
       "yearGoal": "Məqalə hazırlamaq, hakatonlarda iştirak etmək",
       "dateApplied": "2026-10-13",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-ayselhummetovva",
@@ -1929,9 +2320,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Bioi formatika haqqında heç olmaya əsas baza biliklərə yiyələnmək və gələcək karyeram üçün baza toplamaq. Məni cəlb edən məqam o durki mən həmişə proqramlaşdırmaya it sahəsonə maraqlı biriso olmuşam amma çətinliyinə görə heç vaxt öyrənmək üçün ilk addımı atmağa cəsarətim olmayıb amma artıq bu marağımın və həvəsimin arxasınca getmək istəyirəm.",
       "yearGoal": "Bioinformatika üzrə məlumatlarımı bacarıqlarımı artırmaq gələcəkdə bioinformatika üzrə yönəlmək üçün bilməli olduğum bazanı toplamaq. Və ən önəmlisi bir biolog olaraq ixtisasımın bioinformatika bölməsi haqqında da biliklənmək və biliklərimdən gələcək karyeramda da aktiv istifadə etmək",
       "dateApplied": "2026-10-12",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-mr-scientist",
@@ -1970,9 +2361,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Düşünürəm ki ,  bu klubda bioinformatika biliklərimi inkişaf  etdirəcəyəm  və  bu yolda birlikdə inkişaf üçün biliklərimi sizinlə bölüşəcəm . Bu sahəyə marağım var idi  və  uzun zaman idi ki bu sahəyə marağı olan tələbələrlə görüşmək və onlarla elmi mübadilə aparmaq istəyirdim , buna görə də bu işdə əməyi olan hər kəsə təşəkkür edirəm.",
       "yearGoal": "1 illik fəaliyyətdən sonra çoxlu layihələr üzərində çalışmaq , yeni layihələrdə iştirak etmək və araşdırmalar nəticəsində sizinlə birlikdə  məqalələr yazmaq istərdim",
       "dateApplied": "2026-10-12",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-nuhov",
@@ -2007,9 +2398,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Biotexnologiya mənim üçün çox maraqlıdır",
       "yearGoal": "Şəxsi elmi məqalə hazırlamaq",
       "dateApplied": "2026-10-12",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-malikova-reyhan",
@@ -2045,9 +2436,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Biotexnologiya sahəsində təhsil aldığım üçün molekulyar biologiya, genetika və bioinformatikaya xüsusi marağım var. Mənim üçün ən maraqlı məqamlardan biri bioloji məlumatların kompüter texnologiyaları vasitəsilə necə təhlil edildiyini öyrənməkdir. CarboxMol Bioinformatika Klubuna qoşulmaq istəyirəm, çünki burada nəzəri biliklərimi praktik bacarıqlarla inkişaf etdirmək, xüsusilə Python, Biopython və genomik məlumatların analizi üzrə təcrübə qazanmaq imkanım olacaq. Eyni zamanda, elmi layihələrdə iştirak etmək, yeni insanlarla tanış olmaq və komanda şəklində işləmək mənim üçün çox dəyərlidir.",
       "yearGoal": "Bir il ərzində əsas məqsədim bioinformatika sahəsində praktik biliklərimi inkişaf etdirmək və müstəqil şəkildə bioloji məlumatların analizini həyata keçirə bilməkdir. Xüsusilə Python və Biopython vasitəsilə DNT ardıcıllıqlarının müqayisəsi, genetik variasiyaların araşdırılması və əldə olunan nəticələrin vizuallaşdırılması üzərində işləmək istərdim. Gələcəkdə bu biliklərdən istifadə edərək genetika və molekulyar biologiya ilə bağlı kiçik bir tədqiqat layihəsi hazırlamaq və nəticələrimi elmi təqdimat şəklində paylaşmaq istəyirəm.",
       "dateApplied": "2026-10-12",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-minarataghiyeva",
@@ -2082,9 +2473,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Biologiya üzrə bakalavr təhsilimi bitirmişəm və hazırda tibbi genetika üzrə magistr təhsili alıram. Genetika sahəsinə xüsusi marağım var və bu sahədə biliklərimi daha da artırmaq, yeni şeylər öyrənmək istəyirəm. Bioinformatikanın biologiya, genetika və texnologiyanı birləşdirməsi mənə çox maraqlı gəlir. Düşünürəm ki, bu klub mənə həm nəzəri biliklərimi praktikada tətbiq etmək, həm də yeni bacarıqlar qazanmaq üçün yaxşı imkan yaradacaq. Eyni zamanda, mənimlə oxşar maraqları olan insanlarla birlikdə işləmək, fərqli tədqiqat istiqamətləri ilə tanış olmaq və gələcəkdə elmi araşdırmalarda iştirak etmək istəyirəm.",
       "yearGoal": "Bir il ərzində bioinformatikanın əsaslarını öyrənmək və əldə etdiyim bilikləri tibbi genetika sahəsində tətbiq etmək istəyirəm. Xüsusilə genetik məlumatların analizi, xəstəliklərlə əlaqəli genetik dəyişikliklərin araşdırılması və DNT ardıcıllıqlarının öyrənilməsi mənə maraqlıdır. Əsas hədəfim bu istiqamətdə kiçik bir tədqiqat layihəsində iştirak etmək və gələcəkdə elmi məqalə hazırlamaq üçün təcrübə qazanmaqdır.",
       "dateApplied": "2026-10-12",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-fatimirzz",
@@ -2118,9 +2509,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Bioinformatikaya sahəsinə giriş etmək istəyirəm. İnanıram ki bu platforma mənə bu prosesdə kömək edəcək.",
       "yearGoal": "Qeyd edilməyib",
       "dateApplied": "2026-10-16",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     },
     {
       "id": "app-fidan",
@@ -2155,9 +2546,9 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "motivation": "Molekulyar biologiya və fitopatologiya sahəsində çalışdığım üçün bioinformatika biliklərimi inkişaf etdirmək istəyirəm. Xüsusilə DNT ardıcıllıqlarının analizi və Python-un bioloji tədqiqatlarda tətbiqi məni cəlb edir. Klubun praktiki fəaliyyətlərində iştirak edərək biliklərimi artırmağı və onları peşəkar fəaliyyətimdə tətbiq etməyi hədəfləyirəm.",
       "yearGoal": "Bir il ərzində Python və Biopython vasitəsilə bitki patogenlərinin DNT ardıcıllıqlarını analiz etmək bacarığı qazanmaq istəyirəm. Məqsədim müxtəlif patogenlərin ardıcıllıqlarını müqayisə edən və nəticələri təqdim edən kiçik bioinformatik layihə hazırlamaqdır.",
       "dateApplied": "2026-10-14",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "photo": "",
-      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
+      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     }
   ],
 
@@ -2165,28 +2556,29 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
 
   teachers: [
     {
-      "id": "teacher-1",
-      "fullName": "Dos. Dr. Rəşad İsmayılov",
-      "title": "Dosent, Biologiya Elmləri Üzrə Fəlsəfə Doktoru",
-      "academicDegree": "PhD / Dosent",
+      "id": "teacher-sefanya",
+      "fullName": "Sefanya Hacızadə",
+      "title": "Akademik Mentor & Tədqiqatçı",
+      "academicDegree": "Mentor",
       "university": "Qərbi Kaspi Universiteti (WCU)",
       "faculty": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
       "department": "Təbiət Elmləri Kafedrası",
-      "email": "rashad.ismayilov@wcu.edu.az",
-      "phone": "+994 50 123 45 67",
-      "username": "rashad_ismayilov",
-      "password": "wcuTeacher2026",
+      "email": "sefanyahajizadeh@gmail.com",
+      "phone": "+994 99 350 69 07",
+      "username": "sefanyamuellim",
+      "password": "Sefanya993506907",
       "photo": "",
       "specialties": [
-        "Molekulyar Genetika",
-        "Genom Analizi",
-        "Biostatistika"
+        "Bioinformatika",
+        "Genomika",
+        "DNT Analizi",
+        "Python"
       ],
-      "orcid": "0000-0002-1825-0097",
-      "googleScholar": "https://scholar.google.com",
-      "officeLocation": "Əhməd Rəcəbli korpusu, Otaq 312",
+      "orcid": "",
+      "googleScholar": "",
+      "officeLocation": "Kompüter və Bio-laboratoriya mərkəzi, Otaq 312",
       "consultationHours": "Çərşənbə axşamı və Cümə: 14:00 - 16:00",
-      "bio": "Bioinformatika və molekulyar biologiya sahəsində 12 illik elmi-pedaqoji təcrübə. Genom sekvenslənməsi və filogenetik təhlillər üzrə klubun akademik elmi məsləhətçisi və mentoru.",
+      "bio": "Bioinformatika və molekulyar biologiya sahəsində tələbələrə elmi rəhbərlik və laboratoriya mentorluğu göstərir.",
       "status": "Aktiv",
       "registeredAt": "2026-10-10",
       "approvedAt": "2026-10-10",
@@ -2196,27 +2588,28 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
 
   teacherApplications: [
     {
-      "id": "teach-app-1",
-      "teacherId": "teacher-1",
-      "fullName": "Dos. Dr. Rəşad İsmayılov",
-      "title": "Dosent, Biologiya Elmləri Üzrə Fəlsəfə Doktoru",
-      "academicDegree": "PhD / Dosent",
+      "id": "teach-app-sefanya",
+      "teacherId": "teacher-sefanya",
+      "fullName": "Sefanya Hacızadə",
+      "title": "Akademik Mentor & Tədqiqatçı",
+      "academicDegree": "Mentor",
       "university": "Qərbi Kaspi Universiteti (WCU)",
       "faculty": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
       "department": "Təbiət Elmləri Kafedrası",
-      "email": "rashad.ismayilov@wcu.edu.az",
-      "phone": "+994 50 123 45 67",
-      "username": "rashad_ismayilov",
-      "password": "wcuTeacher2026",
+      "email": "sefanyahajizadeh@gmail.com",
+      "phone": "+994 99 350 69 07",
+      "username": "sefanyamuellim",
+      "password": "Sefanya993506907",
       "specialties": [
-        "Molekulyar Genetika",
-        "Genom Analizi",
-        "Biostatistika"
+        "Bioinformatika",
+        "Genomika",
+        "DNT Analizi",
+        "Python"
       ],
-      "orcid": "0000-0002-1825-0097",
-      "officeLocation": "Əhməd Rəcəbli korpusu, Otaq 312",
+      "orcid": "",
+      "officeLocation": "Kompüter və Bio-laboratoriya mərkəzi, Otaq 312",
       "consultationHours": "Çərşənbə axşamı və Cümə: 14:00 - 16:00",
-      "bio": "Bioinformatika və molekulyar biologiya sahəsində 12 illik elmi-pedaqoji təcrübə. Genom sekvenslənməsi və filogenetik təhlillər üzrə klubun akademik elmi məsləhətçisi və mentoru.",
+      "bio": "Bioinformatika və molekulyar biologiya sahəsində tələbələrə elmi rəhbərlik və laboratoriya mentorluğu göstərir.",
       "status": "Təsdiqləndi",
       "dateApplied": "2026-10-10",
       "adminNotes": "Sədr tərəfindən rəsmi akademik mentor olaraq təsdiqlənmişdir."
@@ -2226,22 +2619,22 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
   teacherAnnouncements: [
     {
       "id": "teach-ann-1",
-      "teacherId": "teacher-1",
-      "teacherName": "Dos. Dr. Rəşad İsmayılov",
-      "teacherTitle": "Dosent / Elmi Məsləhətçi",
-      "title": "NCBI BLAST və DNT Düzülüşü üzrə Praktiki Məsləhət Saatı",
-      "category": "Məsləhət və Elmi Dəstək",
-      "content": "Hörmətli klub üzvləri, NCBI BLAST alətində E-value statistikası və FASTA formatlarının düzgün parser edilməsi ilə bağlı sualları olan tələbələr üçün bu Cümə saat 15:00-da laboratoriyada və Zoom platformasında canlı açıq məsləhət saatı təşkil olunur.",
-      "resourceLink": "https://blast.ncbi.nlm.nih.gov/Blast.cgi",
-      "resourceLabel": "NCBI BLAST Rəsmi Portalı",
+      "teacherId": "teacher-sefanya",
+      "teacherName": "Sefanya Hacızadə",
+      "teacherTitle": "Akademik Mentor & Tədqiqatçı",
+      "title": "Struktur Bioinformatikası: PyMOL və AlphaFold Praktikası",
+      "category": "Akademik Tövsiyə",
+      "content": "Əziz klub tələbələri, bu həftəki laboratoriya dərsimizdə zülalların 3D bükülməsi, PDB fayllarının analizi və AlphaFold 3 modelləri ilə işləyəcəyik. Kompüterlərinizdə PyMOL və ChimeraX proqramlarının quraşdırıldığından əmin olun.",
+      "resourceLink": "https://www.rcsb.org",
+      "resourceLabel": "RCSB PDB Bazası",
       "meetingInfo": "Otaq #304 & Zoom Linki",
-      "createdAt": "2026-10-12",
+      "createdAt": "2026-10-18",
       "badge": "Mühüm"
     }
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.10.24.v33_all_31_members_restored";
+const CURRENT_DATA_VERSION = "2026.10.28.v36_sefanyamuellim_garib_murshudov_only";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -2287,12 +2680,27 @@ window.SyncEngine = SyncEngine;
 // Təhlükəsiz təmizləmə süzgəci: Yalnız köhnə prototip uydurma ID-ləri təmizləyir, heç bir real və ya yeni müraciətə toxunmur!
 function purgeMockData(data) {
   if (!data) return;
-  const legacyPrototypeIds = ["app-dummy-proto-00", "mem-dummy-proto-00"];
+  const legacyPrototypeIds = [
+    "app-dummy-proto-00", 
+    "mem-dummy-proto-00", 
+    "teacher-1", 
+    "teach-app-1", 
+    "rashad_ismayilov"
+  ];
   if (Array.isArray(data.applications)) {
     data.applications = data.applications.filter(app => app && !legacyPrototypeIds.includes(app.id));
   }
   if (Array.isArray(data.members)) {
     data.members = data.members.filter(mem => mem && !legacyPrototypeIds.includes(mem.id));
+  }
+  if (Array.isArray(data.teachers)) {
+    data.teachers = data.teachers.filter(t => t && t.id !== "teacher-1" && (t.username || "").toLowerCase() !== "rashad_ismayilov");
+  }
+  if (Array.isArray(data.teacherApplications)) {
+    data.teacherApplications = data.teacherApplications.filter(a => a && a.id !== "teach-app-1" && (a.username || "").toLowerCase() !== "rashad_ismayilov");
+  }
+  if (Array.isArray(data.events)) {
+    data.events = data.events.filter(e => e && !["ev-2", "ev-3", "ev-4", "ev-5"].includes(e.id));
   }
   data.memberCustomTasks = data.memberCustomTasks || [];
   data.memberNotes = data.memberNotes || [];
@@ -2350,7 +2758,11 @@ function getClubData() {
           }
         });
       }
-      parsed.events = INITIAL_DATA.events;
+      // Qərib Mürşüdov tədbirini qoru və Sədrin əlavə etdiyi xüsusi tədbirləri heç vaxt silmə!
+      parsed.events = (parsed.events || []).filter(e => e && !["ev-2", "ev-3", "ev-4", "ev-5"].includes(e.id));
+      if (!parsed.events.some(e => e.id === "ev-1")) {
+        parsed.events.unshift(JSON.parse(JSON.stringify(INITIAL_DATA.events[0])));
+      }
 
       // Mock dataları tam təmizlə
       purgeMockData(parsed);
@@ -2469,8 +2881,20 @@ function getClubData() {
     parsed.approvedAppIds = parsed.approvedAppIds || [];
     parsed.rejectedAppIds = parsed.rejectedAppIds || [];
 
+    // Sədr tərəfindən verilən qərarların (Təsdiq / İmtina) qalıcı yaddaşdan oxunması
+    try {
+      const storedApproved = JSON.parse(localStorage.getItem("carboxmol_approved_app_ids") || "[]");
+      if (Array.isArray(storedApproved)) {
+        parsed.approvedAppIds = Array.from(new Set([...(parsed.approvedAppIds || []), ...storedApproved]));
+      }
+      const storedRejected = JSON.parse(localStorage.getItem("carboxmol_rejected_app_ids") || "[]");
+      if (Array.isArray(storedRejected)) {
+        parsed.rejectedAppIds = Array.from(new Set([...(parsed.rejectedAppIds || []), ...storedRejected]));
+      }
+    } catch (e) {}
+
     // 2. İlkin müraciətlərin (Seed Applications) zəmanətli bərpası və status qorunması
-    // QAYDA: Əgər seedApp "Gözləyir" statusundadırsa və Sədr tərəfindən şəxsən təsdiqlənməyibsə, mütləq "Gözləyir" qalmalıdır!
+    // QAYDA: Heç vaxt Sədrin təsdiqlədiyi müraciəti yenidən "Gözləyir" statusuna qaytarma!
     if (Array.isArray(INITIAL_DATA.applications)) {
       INITIAL_DATA.applications.forEach((seedApp) => {
         if (parsed.deletedAppIds.includes(seedApp.id)) return;
@@ -2482,18 +2906,34 @@ function getClubData() {
 
         if (existingIdx === -1) {
           const freshApp = JSON.parse(JSON.stringify(seedApp));
-          if (seedApp.status === "Gözləyir" && !isApprovedByPresident && !isRejectedByPresident) {
-            freshApp.status = "Gözləyir";
+          if (isApprovedByPresident) {
+            freshApp.status = "Təsdiqləndi";
+          } else if (isRejectedByPresident) {
+            freshApp.status = "Rədd edildi";
           }
-          parsed.applications.unshift(freshApp);
+          parsed.applications.push(freshApp);
           hasStorageUpdates = true;
         } else {
-          // Əgər seedApp ilkin olaraq "Gözləyir"dirsə və Sədr şəxsən təsdiq etməyibsə, statusu "Gözləyir" olaraq saxla!
-          if (seedApp.status === "Gözləyir" && !isApprovedByPresident && !isRejectedByPresident) {
-            if (parsed.applications[existingIdx].status !== "Gözləyir") {
-              parsed.applications[existingIdx].status = "Gözləyir";
-              hasStorageUpdates = true;
-            }
+          // Əgər saxlanmış müraciət artıq təsdiqlənibsə və ya Sədr qərar veribsə, statusu qoru
+          if (isApprovedByPresident && parsed.applications[existingIdx].status !== "Təsdiqləndi") {
+            parsed.applications[existingIdx].status = "Təsdiqləndi";
+            hasStorageUpdates = true;
+          } else if (isRejectedByPresident && parsed.applications[existingIdx].status !== "Rədd edildi") {
+            parsed.applications[existingIdx].status = "Rədd edildi";
+            hasStorageUpdates = true;
+          }
+          // Çatışmayan sahələri tamamla
+          if (!parsed.applications[existingIdx].password && seedApp.password) {
+            parsed.applications[existingIdx].password = seedApp.password;
+            hasStorageUpdates = true;
+          }
+          if (!parsed.applications[existingIdx].phone && seedApp.phone) {
+            parsed.applications[existingIdx].phone = seedApp.phone;
+            hasStorageUpdates = true;
+          }
+          if (!parsed.applications[existingIdx].email && seedApp.email) {
+            parsed.applications[existingIdx].email = seedApp.email;
+            hasStorageUpdates = true;
           }
         }
       });
@@ -2905,6 +3345,18 @@ function getClubData() {
 function saveClubData(data) {
   data._dataVersion = CURRENT_DATA_VERSION;
   localStorage.setItem("wcu_bioinfo_club_data", JSON.stringify(data));
-  SyncEngine.broadcast("DATA_SAVED", { timestamp: Date.now() });
+  if (typeof SyncEngine !== "undefined" && SyncEngine.broadcast) {
+    SyncEngine.broadcast("DATA_SAVED", { timestamp: Date.now() });
+  }
+}
+
+if (typeof window !== "undefined") {
+  window.INITIAL_DATA = INITIAL_DATA;
+  window.getClubData = getClubData;
+  window.saveClubData = saveClubData;
+}
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { INITIAL_DATA, getClubData, saveClubData };
 }
 

@@ -502,6 +502,83 @@ const PresidentPortal = {
     showToast(`${app.fullName} ${statusMsg}`, newStatus === 'Təsdiqləndi' ? 'success' : (newStatus === 'Gözləyir' ? 'info' : 'warning'));
   },
 
+  approveAllPendingApplications() {
+    const data = getClubData();
+    const pendingApps = (data.applications || []).filter(a => a.status === "Gözləyir");
+    if (pendingApps.length === 0) {
+      if (typeof showToast === "function") showToast("Təsdiq gözləyən müraciət yoxdur. Bütün müraciətlər artıq təsdiqlənib!", "info");
+      return;
+    }
+    if (!confirm(`Sistemdə olan bütün ${pendingApps.length} gözləyən müraciəti rəsmi olaraq təsdiqləmək və klub üzvü etmək istəyirsiniz?`)) {
+      return;
+    }
+
+    data.approvedAppIds = data.approvedAppIds || [];
+    data.members = data.members || [];
+    const nowIso = new Date().toISOString().slice(0, 10);
+
+    pendingApps.forEach(app => {
+      app.status = "Təsdiqləndi";
+      app.approvedAt = nowIso;
+      app.approvedBy = "Süleyman Hacızadə (Klub Sədri)";
+      if (!data.approvedAppIds.includes(app.id)) data.approvedAppIds.push(app.id);
+      data.rejectedAppIds = (data.rejectedAppIds || []).filter(id => id !== app.id);
+
+      let memIdx = data.members.findIndex(m =>
+        (app.memberId && m.id === app.memberId) ||
+        (m.username && app.username && m.username.toLowerCase() === app.username.toLowerCase()) ||
+        (m.email && app.email && m.email.toLowerCase() === app.email.toLowerCase())
+      );
+
+      if (memIdx === -1) {
+        const newMember = {
+          id: app.memberId || ("mem-" + Date.now() + Math.random().toString(36).substr(2, 4)),
+          fullName: app.fullName,
+          username: app.username || (app.email ? app.email.split("@")[0] : "user"),
+          email: app.email,
+          phone: app.phone || "",
+          photo: app.photo || "",
+          password: app.password || ("wcu" + Math.floor(1000 + Math.random() * 9000)),
+          role: "Klub Üzvü",
+          faculty: app.faculty,
+          major: app.major,
+          course: app.course,
+          joinDate: new Date().toLocaleDateString('az-AZ'),
+          registeredAt: app.dateApplied || nowIso,
+          status: "Aktiv",
+          skills: app.tools || ["Python", "Bioinformatika"],
+          customTasks: [],
+          notes: []
+        };
+        data.members.unshift(newMember);
+        if (window.ClubDatabase && typeof window.ClubDatabase.provisionMember === "function") {
+          window.ClubDatabase.provisionMember(newMember);
+        }
+      } else {
+        data.members[memIdx].status = "Aktiv";
+        if (app.password && !data.members[memIdx].password) data.members[memIdx].password = app.password;
+        if (app.phone && !data.members[memIdx].phone) data.members[memIdx].phone = app.phone;
+        if (window.ClubDatabase && typeof window.ClubDatabase.provisionMember === "function") {
+          window.ClubDatabase.provisionMember(data.members[memIdx]);
+        }
+      }
+    });
+
+    try {
+      localStorage.setItem("carboxmol_approved_app_ids", JSON.stringify(data.approvedAppIds));
+      localStorage.setItem("carboxmol_rejected_app_ids", JSON.stringify(data.rejectedAppIds || []));
+    } catch(e) {}
+
+    saveClubData(data);
+    this.renderMetrics();
+    this.renderApplicationsTable();
+    this.renderMembersAccountsTable();
+
+    if (typeof showToast === "function") {
+      showToast(`✓ Bütün ${pendingApps.length} müraciət uğurla təsdiqləndi və rəsmi üzv edildi!`, "success");
+    }
+  },
+
   exportToCSV() {
     const data = getClubData();
     const apps = data.applications || [];
@@ -644,12 +721,100 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     printWindow.document.close();
   },
 
+  renderEventsTable() {
+    const tbody = document.getElementById("presidentEventsTableBody");
+    const badgeCount = document.getElementById("presidentEventsCountBadge");
+    if (!tbody) return;
+
+    const data = getClubData();
+    const events = (data.events || []).filter(e => e && !["ev-2", "ev-3", "ev-4", "ev-5"].includes(e.id));
+    if (badgeCount) {
+      badgeCount.textContent = `${events.length} Tədbir`;
+    }
+
+    if (events.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="6" class="py-6 text-center text-slate-500 italic">
+            Hazırda heç bir tədbir yoxdur. Yuxarıdakı form vasitəsilə yeni seminar əlavə edə bilərsiniz.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    tbody.innerHTML = events.map((ev) => {
+      const isOfficial = ev.id === "ev-1";
+      return `
+        <tr class="hover:bg-slate-800/40 transition">
+          <td class="py-3 px-3">
+            <div class="font-bold text-white flex items-center gap-1.5">
+              ${isOfficial ? '<i class="fa-solid fa-star text-amber-400 text-xs" title="Rəsmi Keçirilmiş Əsas Seminar"></i>' : '<i class="fa-solid fa-calendar-check text-teal-400 text-xs"></i>'}
+              <span>${escapeHtml(ev.title || "Adsız Tədbir")}</span>
+            </div>
+            <div class="text-[11px] text-slate-400 line-clamp-1 mt-0.5">${escapeHtml(ev.description || "")}</div>
+          </td>
+          <td class="py-3 px-3 whitespace-nowrap">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${isOfficial ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' : 'bg-teal-500/20 text-teal-300 border border-teal-500/30'}">
+              ${escapeHtml(ev.category || "Seminar")}
+            </span>
+          </td>
+          <td class="py-3 px-3 whitespace-nowrap text-slate-300">
+            <div><i class="fa-regular fa-calendar text-teal-400 mr-1"></i>${escapeHtml(ev.date || "")}</div>
+            <div class="text-[11px] text-slate-400"><i class="fa-regular fa-clock text-slate-500 mr-1"></i>${escapeHtml(ev.time || "")}</div>
+          </td>
+          <td class="py-3 px-3 text-slate-300">
+            <div class="font-semibold text-slate-200"><i class="fa-solid fa-user-tie text-cyan-400 mr-1 text-xs"></i>${escapeHtml(ev.speaker || "Qeyd edilməyib")}</div>
+            <div class="text-[11px] text-slate-400"><i class="fa-solid fa-location-dot text-rose-400 mr-1 text-xs"></i>${escapeHtml(ev.location || "WCU")}</div>
+          </td>
+          <td class="py-3 px-3 whitespace-nowrap">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${ev.status === 'completed' || isOfficial ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'}">
+              ${isOfficial ? 'Keçirildi • Fotoreportaj' : escapeHtml(ev.badge || 'Aktiv')}
+            </span>
+          </td>
+          <td class="py-3 px-3 text-right whitespace-nowrap">
+            ${isOfficial ? `
+              <span class="text-[11px] text-emerald-400 font-bold px-2.5 py-1 bg-emerald-950/60 rounded-lg border border-emerald-800/60 inline-flex items-center gap-1" title="Qərib Mürşüdov seminarı rəsmi xatirə tədbiri olduğu üçün silinməzdir">
+                <i class="fa-solid fa-shield-halved text-xs"></i> Əsas Seminar
+              </span>
+            ` : `
+              <button onclick="PresidentPortal.deleteEvent('${ev.id}')" title="Tədbiri Sil" class="p-1.5 px-2.5 rounded-lg bg-rose-950/80 hover:bg-rose-900 text-rose-300 hover:text-white border border-rose-800/60 transition text-xs inline-flex items-center gap-1 font-bold">
+                <i class="fa-solid fa-trash-can text-xs"></i> <span>Sil</span>
+              </button>
+            `}
+          </td>
+        </tr>
+      `;
+    }).join("");
+  },
+
+  deleteEvent(eventId) {
+    if (eventId === "ev-1") {
+      alert("Prof. Qərib Mürşüdov ilə keçirilmiş rəsmi elmi seminar klubun əsas tarixi tədbiri olduğu üçün silinə bilməz.");
+      return;
+    }
+    if (!confirm("Bu tədbiri silmək istədiyinizdən əminsiniz? Bu əməliyyat geri qaytarılmır.")) {
+      return;
+    }
+    const data = getClubData();
+    data.events = (data.events || []).filter(e => e && e.id !== eventId);
+    saveClubData(data);
+    this.renderMetrics();
+    this.renderEventsTable();
+    if (window.renderEvents) window.renderEvents();
+    showToast("Tədbir uğurla silindi!", "success");
+  },
+
   addNewEvent(eventData) {
     const data = getClubData();
-    data.events = data.events || [];
+    data.events = (data.events || []).filter(e => e && !["ev-2", "ev-3", "ev-4", "ev-5"].includes(e.id));
+    if (!data.events.some(e => e.id === "ev-1")) {
+      data.events.push(JSON.parse(JSON.stringify(INITIAL_DATA.events[0])));
+    }
     data.events.unshift(eventData);
     saveClubData(data);
     this.renderMetrics();
+    this.renderEventsTable();
     if (window.renderEvents) window.renderEvents();
     showToast("Yeni tədbir uğurla əlavə edildi!", "success");
   },
