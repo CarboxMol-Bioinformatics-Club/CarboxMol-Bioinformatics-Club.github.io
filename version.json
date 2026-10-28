@@ -1,6 +1,6 @@
 {
-  "version": "2.2.2",
-  "build": "20261028-0320",
-  "timestamp": 1793143200000,
-  "description": "CarboxMol Bioinformatika Klubu v2.2.2 — CarboxMol 3D Studio: Kursor istiqamətinə dinamik uyğunlaşan fırlanma, ilkin vəziyyətin etibarlı bərpası və simmetrik 24px künc radiusu təkmilləşdirməsi"
+  "version": "2.2.3",
+  "build": "20261028-2355",
+  "timestamp": 1793217300000,
+  "description": "CarboxMol Bioinformatika Klubu v2.2.3 — CarboxMol 3D Studio altında rəsmi veb platforma (carboxmol.github.io) və akademik istinad (Reference) blokunun əlavə edilməsi"
 }

@@ -411,9 +411,11 @@
 
           </div>
 
-          <!-- Interactive Real 3D Biomolecular Studio (DNT, CYP1A1, AKT1) -->
+          <!-- Right Column: Interactive Real 3D Biomolecular Studio + Official Academic Reference -->
+          <div class="lg:col-span-5 flex flex-col gap-3">
+
           <!-- Interactive Real 3D Biomolecular Studio (CarboxMol Engine: DNT, CYP1A1, AKT1) -->
-          <div id="molStudioWrapper" data-keep-white="true" class="lg:col-span-5 rounded-3xl relative overflow-hidden bg-[#090d16] border border-cyan-500/40 shadow-2xl shadow-cyan-950/50 flex flex-col justify-between group transition-all text-slate-200">
+          <div id="molStudioWrapper" data-keep-white="true" class="w-full rounded-3xl relative overflow-hidden bg-[#090d16] border border-cyan-500/40 shadow-2xl shadow-cyan-950/50 flex flex-col justify-between group transition-all text-slate-200">
             
             <!-- Top Studio Header: CarboxMol Brand + Molecule Tabs -->
             <div class="studio-header p-4 sm:p-5 bg-[#0c1221] border-b border-cyan-500/25 flex flex-col gap-3 z-10 backdrop-blur-md">
@@ -538,6 +540,60 @@
                 <span><i class="fa-solid fa-atom mr-1"></i> CarboxMol Render</span>
               </div>
             </div>
+
+          </div>
+
+          <!-- CarboxMol Official Platform & Academic Reference Card -->
+          <div id="carboxmolRefCard" class="w-full rounded-2xl p-3.5 sm:p-4 transition-all">
+            <!-- Top Row: Academic Header + Official Platform Link -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-slate-200/90">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="ref-icon-box w-6 h-6 rounded-lg flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-graduation-cap text-[11px]"></i>
+                </span>
+                <div class="min-w-0">
+                  <span class="ref-header-label text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider block leading-tight">
+                    Elmi İstinad &amp; Rəsmi Platforma (Reference)
+                  </span>
+                </div>
+              </div>
+
+              <a href="https://carboxmol.github.io" target="_blank" rel="noopener noreferrer" class="carboxmol-url-pill inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold transition shrink-0" title="CarboxMol Rəsmi Veb Platforması (carboxmol.github.io)">
+                <i class="fa-solid fa-globe text-[10px]"></i>
+                <span>carboxmol.github.io</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-80"></i>
+              </a>
+            </div>
+
+            <!-- Middle Row: Formal Academic Citation Block -->
+            <div class="ref-citation-box mt-2.5 pl-3 py-1.5 pr-2.5 rounded-r-xl text-[11px] sm:text-[11.5px] leading-relaxed" data-selectable="true">
+              <span class="font-extrabold text-slate-900">Hajizadeh, S. M., &amp; Murshudov, G. N.</span>
+              <span class="text-slate-700 font-medium"> (2026). </span>
+              <em class="font-semibold text-slate-800">CarboxMol: Macromolecular Crystallography &amp; Structural Bioinformatics Workbench.</em>
+              <span class="text-slate-600"> Rəsmi Platforma: </span>
+              <a href="https://carboxmol.github.io" target="_blank" rel="noopener noreferrer" class="ref-inline-link font-mono font-bold underline underline-offset-2">https://carboxmol.github.io</a>
+            </div>
+
+            <!-- Bottom Row: Institutional Affiliations & One-Click Copy Citation -->
+            <div class="mt-2.5 pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-[10px] sm:text-[10.5px]">
+              <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-slate-600 font-medium min-w-0">
+                <span class="inline-flex items-center gap-1" title="Institute of Molecular Biology (AR ETN MBİ) &amp; Western Caspian University">
+                  <i class="fa-solid fa-building-columns text-teal-700 text-[9.5px]"></i>
+                  <span>AR ETN MBİ (IMB) &amp; WCU</span>
+                </span>
+                <span class="text-slate-300 font-bold">•</span>
+                <span class="inline-flex items-center gap-1" title="MRC Laboratory of Molecular Biology, Cambridge, United Kingdom">
+                  <i class="fa-solid fa-atom text-sky-700 text-[9.5px]"></i>
+                  <span>MRC LMB (Cambridge, UK)</span>
+                </span>
+              </div>
+
+              <button type="button" id="copyCarboxMolRefBtn" onclick="window.copyCarboxMolReference && window.copyCarboxMolReference(this)" class="carboxmol-copy-btn inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-bold transition shrink-0 cursor-pointer" title="Akademik istinadı (APA formatında) mübadilə buferinə kopyala">
+                <i class="fa-regular fa-copy text-[10px]"></i>
+                <span>İstinadı Kopyala</span>
+              </button>
+            </div>
+          </div>
 
           </div>
 

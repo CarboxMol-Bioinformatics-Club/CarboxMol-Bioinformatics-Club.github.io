@@ -614,6 +614,35 @@
     }
   }
 
+  // Academic Reference Copy Helper
+  function copyCarboxMolReference(btnEl) {
+    const citationText = 'Hajizadeh, S. M., & Murshudov, G. N. (2026). CarboxMol: Macromolecular Crystallography & Structural Bioinformatics Workbench. Official Web Platform: https://carboxmol.github.io';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(citationText).catch(() => {});
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = citationText;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    if (btnEl) {
+      const origHtml = btnEl.innerHTML;
+      btnEl.innerHTML = '<i class="fa-solid fa-check text-[10px]"></i> <span>Kopyalandı</span>';
+      setTimeout(() => {
+        btnEl.innerHTML = origHtml;
+      }, 2000);
+    }
+
+    if (typeof window.showToast === 'function') {
+      window.showToast('CarboxMol akademik istinadı (Reference) mübadilə buferinə kopyalandı!', 'success');
+    }
+  }
+
+  window.copyCarboxMolReference = copyCarboxMolReference;
+
   // Public API
   window.CarboxMolStudio = {
     loadMolecule,
@@ -621,6 +650,7 @@
     toggleSpin,
     resetView,
     toggleFullscreen,
+    copyReference: copyCarboxMolReference,
     init: initMolViewer
   };
 
