@@ -136,6 +136,17 @@
   let currentStyle = 'cartoon';
   let isSpinning = false;
   let modelCache = {};
+  const initialViews = {}; // Stores canonical initial crystallographic view for each molecule
+
+  // ─── CarboxMol Dynamic Gesture-Driven Rotation Engine ────────────────
+  let spinAxis = { vx: 0, vy: 1, vz: 0 }; // View-space rotation axis
+  let spinSpeed = 0.65; // Base rotation speed in degrees per frame
+  let isPointerDown = false;
+  let lastPointerX = 0;
+  let lastPointerY = 0;
+  let lastPointerTime = 0;
+  let dragMovements = [];
+  let spinAnimFrame = null;
 
   // ─── CarboxMol 3D Orientation Tripod Indicator ───────────────────────
   function updateOrientationTripod() {
@@ -256,6 +267,8 @@
 
       // Bind controls
       setupUIEventListeners();
+      setupGestureTracking(container);
+      startSpinLoop();
 
       // Window resize listener
       window.addEventListener('resize', handleResize, { passive: true });
@@ -315,6 +328,103 @@
     }
   }
 
+  // ─── Continuous Smooth Directional Rotation Loop ───────────────────
+  function startSpinLoop() {
+    if (spinAnimFrame) cancelAnimationFrame(spinAnimFrame);
+
+    function loop() {
+      if (isSpinning && !isPointerDown && viewer) {
+        try {
+          // Rotate around gesture-derived view-space axis
+          viewer.rotate(spinSpeed, spinAxis);
+          updateOrientationTripod();
+        } catch (e) {}
+      }
+      spinAnimFrame = requestAnimationFrame(loop);
+    }
+
+    spinAnimFrame = requestAnimationFrame(loop);
+  }
+
+  // ─── User Gesture Direction Tracker (Mouse & Touch) ──────────────────
+  function setupGestureTracking(container) {
+    if (!container) return;
+
+    container.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0 && e.pointerType === 'mouse') return;
+      isPointerDown = true;
+      lastPointerX = e.clientX;
+      lastPointerY = e.clientY;
+      lastPointerTime = performance.now();
+      dragMovements = [];
+    });
+
+    window.addEventListener('pointermove', function (e) {
+      if (!isPointerDown) return;
+      const now = performance.now();
+      const dx = e.clientX - lastPointerX;
+      const dy = e.clientY - lastPointerY;
+      const dt = Math.max(1, now - lastPointerTime);
+
+      if (Math.hypot(dx, dy) >= 1) {
+        dragMovements.push({ dx, dy, dt });
+        if (dragMovements.length > 8) dragMovements.shift();
+
+        // Convert mouse drag gesture to view-space rotation vector:
+        // Moving cursor right (dx > 0) -> rotates around vertical screen Y axis (vy > 0)
+        // Moving cursor left (dx < 0) -> rotates around vertical screen Y axis (vy < 0)
+        // Moving cursor down (dy > 0) -> tilts around horizontal screen X axis (vx > 0)
+        // Moving cursor up (dy < 0) -> tilts around horizontal screen X axis (vx < 0)
+        const len = Math.hypot(dx, dy);
+        if (len > 0.5) {
+          spinAxis = {
+            vx: dy / len,
+            vy: dx / len,
+            vz: 0
+          };
+        }
+      }
+
+      lastPointerX = e.clientX;
+      lastPointerY = e.clientY;
+      lastPointerTime = now;
+      updateOrientationTripod();
+    }, { passive: true });
+
+    window.addEventListener('pointerup', function () {
+      if (!isPointerDown) return;
+      isPointerDown = false;
+
+      // Extract smooth release velocity and direction vector from recent movements
+      if (dragMovements.length > 0) {
+        let totalDx = 0;
+        let totalDy = 0;
+        let totalDt = 0;
+        for (let i = 0; i < dragMovements.length; i++) {
+          totalDx += dragMovements[i].dx;
+          totalDy += dragMovements[i].dy;
+          totalDt += dragMovements[i].dt;
+        }
+        const len = Math.hypot(totalDx, totalDy);
+        if (len > 2) {
+          spinAxis = {
+            vx: totalDy / len,
+            vy: totalDx / len,
+            vz: 0
+          };
+          // Dynamic flick speed between 0.45 and 1.35
+          const calculatedSpeed = (len / totalDt) * 12;
+          spinSpeed = Math.min(1.35, Math.max(0.45, calculatedSpeed));
+        }
+      }
+      updateOrientationTripod();
+    }, { passive: true });
+
+    window.addEventListener('pointercancel', function () {
+      isPointerDown = false;
+    }, { passive: true });
+  }
+
   function renderModelData(pdbData, mol) {
     if (!viewer) return;
     try {
@@ -324,13 +434,18 @@
       mol.applyStyle(viewer, currentStyle);
       viewer.zoomTo();
       viewer.render();
-      updateOrientationTripod();
 
-      if (isSpinning) {
-        viewer.spin('y', 0.8);
-      } else {
-        viewer.spin(false);
-      }
+      // Store pristine initial crystallographic view for this molecule
+      initialViews[mol.id] = viewer.getView();
+
+      // Reset spin axis for new molecule to standard horizontal turn
+      spinAxis = { vx: 0, vy: 1, vz: 0 };
+      spinSpeed = 0.65;
+
+      // Ensure 3Dmol internal spin interval is stopped
+      try { viewer.spin(false); } catch (e) {}
+
+      updateOrientationTripod();
       showLoader(false);
     } catch (err) {
       console.error('Render error:', err);
@@ -353,24 +468,48 @@
   function toggleSpin() {
     if (!viewer) return;
     isSpinning = !isSpinning;
-    if (isSpinning) {
-      viewer.spin('y', 0.8);
-    } else {
-      viewer.spin(false);
-    }
+    try { viewer.spin(false); } catch (e) {} // Ensure 3Dmol native interval never runs
+
     const spinBtn = document.getElementById('molSpinBtn');
     if (spinBtn) {
       spinBtn.innerHTML = isSpinning
         ? '<i class="fa-solid fa-pause text-xs text-cyan-400"></i> <span class="hidden sm:inline">Pauza</span>'
         : '<i class="fa-solid fa-play text-xs text-cyan-400"></i> <span class="hidden sm:inline">Fırlat</span>';
+      if (isSpinning) {
+        spinBtn.classList.add('ring-1', 'ring-cyan-400');
+      } else {
+        spinBtn.classList.remove('ring-1', 'ring-cyan-400');
+      }
     }
   }
 
   function resetView() {
     if (!viewer) return;
+    try {
+      viewer.spin(false);
+    } catch (e) {}
+
+    // Restore the canonical initial crystallographic view regardless of how the user rotated it
+    if (initialViews[currentMolecule]) {
+      viewer.setView(initialViews[currentMolecule]);
+    } else if (viewer.rotationGroup && viewer.rotationGroup.quaternion) {
+      viewer.rotationGroup.quaternion.set(0, 0, 0, 1);
+    }
     viewer.zoomTo();
     viewer.render();
+
+    // Reset spin axis and speed to pristine default
+    spinAxis = { vx: 0, vy: 1, vz: 0 };
+    spinSpeed = 0.65;
+
     updateOrientationTripod();
+
+    // Visual button ripple feedback
+    const resetBtn = document.getElementById('molResetBtn');
+    if (resetBtn) {
+      resetBtn.classList.add('ring-2', 'ring-cyan-400');
+      setTimeout(() => resetBtn.classList.remove('ring-2', 'ring-cyan-400'), 350);
+    }
   }
 
   function toggleFullscreen() {
