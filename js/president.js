@@ -419,6 +419,12 @@ const PresidentPortal = {
     let activeMemberObj = null;
 
     if (newStatus === "Təsdiqləndi") {
+      const isTeacherRole = (app.roleInterest && (app.roleInterest.includes("Müəllim") || app.roleInterest.includes("Mentor"))) ||
+        (app.title && (app.title.includes("Müəllim") || app.title.includes("Mentor") || app.title.includes("Dosent") || app.title.includes("PhD"))) ||
+        (app.academicDegree && (app.academicDegree.includes("Müəllim") || app.academicDegree.includes("Mentor")));
+
+      const assignedRole = isTeacherRole ? "Akademik Mentor / Müəllim" : (app.role || "Klub Üzvü");
+
       if (memIdx === -1) {
         const newMember = {
           id: app.memberId || ("mem-" + Date.now()),
@@ -428,7 +434,7 @@ const PresidentPortal = {
           phone: app.phone || "",
           photo: app.photo || "",
           password: app.password || ("wcu" + Math.floor(1000 + Math.random() * 9000)),
-          role: "Klub Üzvü",
+          role: assignedRole,
           faculty: app.faculty,
           major: app.major,
           course: app.course,
@@ -444,8 +450,42 @@ const PresidentPortal = {
         if (window.ClubDatabase) window.ClubDatabase.provisionMember(newMember);
       } else {
         data.members[memIdx].status = "Aktiv";
+        if (isTeacherRole) data.members[memIdx].role = "Akademik Mentor / Müəllim";
         activeMemberObj = data.members[memIdx];
         if (window.ClubDatabase) window.ClubDatabase.provisionMember(data.members[memIdx]);
+      }
+
+      // Əgər müəllim rolundadırsa, data.teachers və data.teacherApplications reyestrində də aktivləşdir
+      if (isTeacherRole) {
+        data.teachers = data.teachers || [];
+        const tIdx = data.teachers.findIndex(t => 
+          (t.id && (t.id === app.memberId || t.id === app.teacherId)) || 
+          (t.username && app.username && t.username.toLowerCase() === app.username.toLowerCase()) ||
+          (t.email && app.email && t.email.toLowerCase() === app.email.toLowerCase())
+        );
+        if (tIdx !== -1) {
+          data.teachers[tIdx].status = "Aktiv";
+        } else {
+          data.teachers.unshift({
+            id: app.teacherId || app.memberId || ("teacher-" + Date.now()),
+            fullName: app.fullName,
+            title: app.title || "Akademik Mentor & Tədqiqatçı",
+            academicDegree: app.academicDegree || "Müəllim / Mentor",
+            university: app.university || "Qərbi Kaspi Universiteti (WCU)",
+            faculty: app.faculty || "",
+            department: app.department || "",
+            email: app.email,
+            phone: app.phone || "",
+            username: app.username,
+            password: app.password,
+            photo: app.photo || "",
+            specialties: app.tools || ["Bioinformatika"],
+            status: "Aktiv",
+            registeredAt: app.dateApplied || "2026-10-10",
+            approvedAt: new Date().toISOString(),
+            approvedBy: "Süleyman Hacızadə (Klub Sədri)"
+          });
+        }
       }
     } else if (newStatus === "Gözləyir") {
       if (memIdx !== -1) {

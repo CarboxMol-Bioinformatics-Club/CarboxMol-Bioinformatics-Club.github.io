@@ -228,6 +228,71 @@ async function handleMemberLogin(e) {
 
   const data = getClubData();
   data.members = data.members || [];
+  data.teachers = data.teachers || [];
+  data.teacherApplications = data.teacherApplications || [];
+
+  const cleanUser = username.toLowerCase().trim().replace(/^@/, "");
+  const normalized = cleanUser
+    .replace(/[\s_.-]/g, "")
+    .replace(/ü/g, "u")
+    .replace(/ə/g, "e")
+    .replace(/ı/g, "i")
+    .replace(/ç/g, "c")
+    .replace(/ş/g, "s")
+    .replace(/ğ/g, "g");
+
+  const matchTeacher = (t) => {
+    if (!t) return false;
+    const tUser = (t.username || "").toLowerCase().replace(/^@/, "");
+    const tNormUser = tUser.replace(/[\s_.-]/g, "").replace(/ü/g, "u").replace(/ə/g, "e").replace(/ı/g, "i").replace(/ç/g, "c").replace(/ş/g, "s").replace(/ğ/g, "g");
+    const tEmail = (t.email || "").toLowerCase();
+    const tName = (t.fullName || "").toLowerCase();
+    const tNormName = tName.replace(/[\s_.-]/g, "").replace(/ü/g, "u").replace(/ə/g, "e").replace(/ı/g, "i").replace(/ç/g, "c").replace(/ş/g, "s").replace(/ğ/g, "g");
+    const tPhone = (t.phone || "").replace(/[\s\-\(\)\+]/g, "");
+    const inPhone = cleanUser.replace(/[\s\-\(\)\+]/g, "");
+
+    return tUser === cleanUser ||
+           tNormUser === normalized ||
+           tEmail === cleanUser ||
+           tName === cleanUser ||
+           tNormName === normalized ||
+           (inPhone.length >= 7 && tPhone.includes(inPhone)) ||
+           (cleanUser.length >= 4 && (tUser.includes(cleanUser) || tNormUser.includes(normalized) || tName.includes(cleanUser) || tNormName.includes(normalized)));
+  };
+
+  // 1. İNTELLEKTUAL ROL YÖNLƏNDİRMƏSİ: Əgər bu istifadəçi Müəllim/Mentor bazasındadırsa,
+  // onu tələbə panelinə deyil, dərhal Akademik Müəllim Panelinə yönləndir!
+  const teacher = (data.teachers || []).find(matchTeacher) || (data.teacherApplications || []).find(matchTeacher);
+
+  if (teacher) {
+    if (teacher.password && teacher.password !== password) {
+      if (window.ClubSecurity) {
+        window.ClubSecurity.recordAttempt("member_login", false);
+        window.ClubSecurity.log("LOGIN_FAIL_WRONG_PASSWORD", { username }, "WARNING");
+      }
+      showToast("Giriş şifrəsi yanlışdır!", "error");
+      return;
+    }
+    if (teacher.status === "Gözləyir") {
+      showToast(`Hörmətli ${teacher.fullName}, müəllim/mentor qeydiyyatınız qəbul edilib və hazırda Sədrin təsdiqini gözləyir. Sədr təsdiq etdikdən dərhal sonra Müəllim Paneliniz aktivləşəcək.`, "warning");
+      return;
+    }
+    if (teacher.status === "Rədd edildi") {
+      showToast(`Hörmətli ${teacher.fullName}, müəllim hesabınız klub rəhbərliyi tərəfindən deaktiv edilmişdir.`, "error");
+      return;
+    }
+    // Avtomatik Müəllim Panelinə daxil et və yönləndir
+    const targetTeacherId = teacher.id || teacher.teacherId || "teacher-sefanya";
+    localStorage.setItem("wcu_active_teacher_id", targetTeacherId);
+    if (window.ClubSecurity && typeof window.ClubSecurity.createSessionToken === "function") {
+      window.ClubSecurity.createSessionToken("teacher", targetTeacherId);
+    }
+    if (typeof closeMemberLoginModal === "function") closeMemberLoginModal();
+    updateAuthUI();
+    showToast(`Xoş gəldiniz, ${teacher.fullName}! Akademik Mentor Panelinə yönləndirildiniz.`, "success");
+    navigateTo("teacher-portal");
+    return;
+  }
 
   // Axtarış: username (@ ilə və ya olmadan, boşluq/altxətt toleransı ilə), email və ya telefon nömrəsi üzrə
   const cleanInputUser = username.toLowerCase().replace(/^@/, "").replace(/[\s_]/g, "");
@@ -387,6 +452,19 @@ async function handleMemberLogin(e) {
       window.ClubSecurity.createSessionToken("member", member.id);
     }
     window.ClubSecurity.log("LOGIN_SUCCESS", { username, memberId: member.id }, "INFO");
+  }
+
+  // Əgər istifadəçinin üzv profilində rolu Müəllim / Akademik Mentor kimi qeyd edilibsə, onu Müəllim Panelinə yönləndir
+  if (member.role === "Akademik Mentor / Müəllim" || (member.role && (member.role.includes("Müəllim") || member.role.includes("Mentor")))) {
+    localStorage.setItem("wcu_active_teacher_id", member.id);
+    if (window.ClubSecurity && typeof window.ClubSecurity.createSessionToken === "function") {
+      window.ClubSecurity.createSessionToken("teacher", member.id);
+    }
+    closeMemberLoginModal();
+    updateAuthUI();
+    showToast(`Xoş gəldiniz, ${member.fullName}! Akademik Mentor Panelinə daxil oldunuz.`, "success");
+    navigateTo("teacher-portal");
+    return;
   }
 
   // Tələbənin daimi yaddaşda itməməsi üçün aktiv üzv kimi saxla
@@ -582,6 +660,32 @@ function handleTeacherLogin(e) {
         id: app.teacherId || "teacher-sefanya",
         status: "Aktiv"
       };
+    }
+  }
+
+  if (!teacher) {
+    const memberMatch = (data.members || []).find(m => {
+      if (!m) return false;
+      const mUser = (m.username || "").toLowerCase().replace(/^@/, "");
+      const mNorm = mUser.replace(/[\s_.-]/g, "").replace(/ü/g, "u").replace(/ə/g, "e").replace(/ı/g, "i");
+      const mEmail = (m.email || "").toLowerCase();
+      const mName = (m.fullName || "").toLowerCase();
+      const mNormName = mName.replace(/[\s_.-]/g, "").replace(/ü/g, "u").replace(/ə/g, "e").replace(/ı/g, "i");
+      return mUser === cleanUser || mNorm === normalized || mEmail === cleanUser || mName === cleanUser || mNormName === normalized;
+    });
+
+    if (memberMatch) {
+      if (memberMatch.role === "Akademik Mentor / Müəllim" || (memberMatch.role && (memberMatch.role.includes("Müəllim") || memberMatch.role.includes("Mentor")))) {
+        teacher = {
+          ...memberMatch,
+          id: memberMatch.id,
+          title: memberMatch.title || "Akademik Mentor & Tədqiqatçı",
+          status: memberMatch.status || "Aktiv"
+        };
+      } else {
+        showToast(`Hörmətli ${memberMatch.fullName}, hesabınız Tələbə/Klub Üzvü olaraq qeydiyyatdadır. Zəhmət olmasa "Üzv Girişi"ndən daxil olun və ya Müəllim kimi qeydiyyatdan keçin.`, "info");
+        return;
+      }
     }
   }
 

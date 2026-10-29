@@ -1372,12 +1372,13 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
     },
     {
           "id": "mem-fidan",
-          "fullName": "Fidan Verdiyeva (Malik)",
+          "fullName": "Fidan Məhərrəmova (Verdiyeva)",
           "username": "fidan",
           "email": "fidanverdiyeva808@gmail.com",
           "phone": "0708870494",
           "password": "Rasengan25",
-          "role": "Klub Üzvü",
+          "role": "Akademik Mentor / Müəllim",
+          "title": "Akademik Mentor & Tədqiqatçı",
           "university": "Bakı Dövlət Universiteti (BDU)",
           "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
           "major": "Biologiya",
@@ -2516,7 +2517,7 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
     {
       "id": "app-fidan",
       "memberId": "mem-fidan",
-      "fullName": "Fidan Verdiyeva (Malik)",
+      "fullName": "Fidan Məhərrəmova (Verdiyeva)",
       "email": "fidanverdiyeva808@gmail.com",
       "phone": "0708870494",
       "username": "fidan",
@@ -2540,7 +2541,7 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
         "Struktur Biologiyası və Dərman Dizaynı",
         "Transkriptomika və RNA-Seq"
       ],
-      "roleInterest": "Tədqiqatçı / Layihə və Hakaton Komandası Üzvü",
+      "roleInterest": "Akademik Mentor & Tədqiqatçı",
       "weeklyTime": "Həftədə 2–4 saat",
       "profileUrl": "https://www.linkedin.com/in/fidan-verdiyeva-753bb92ba?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
       "motivation": "Molekulyar biologiya və fitopatologiya sahəsində çalışdığım üçün bioinformatika biliklərimi inkişaf etdirmək istəyirəm. Xüsusilə DNT ardıcıllıqlarının analizi və Python-un bioloji tədqiqatlarda tətbiqi məni cəlb edir. Klubun praktiki fəaliyyətlərində iştirak edərək biliklərimi artırmağı və onları peşəkar fəaliyyətimdə tətbiq etməyi hədəfləyirəm.",
@@ -2583,6 +2584,36 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "registeredAt": "2026-10-10",
       "approvedAt": "2026-10-10",
       "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "teacher-fidan",
+      "fullName": "Fidan Məhərrəmova (Verdiyeva)",
+      "title": "Akademik Mentor & Tədqiqatçı",
+      "academicDegree": "Magistr / Tədqiqatçı",
+      "university": "Bakı Dövlət Universiteti (BDU)",
+      "faculty": "Biologiya Fakültəsi",
+      "department": "Molekulyar Biologiya və Biotexnologiya Kafedrası",
+      "email": "fidanverdiyeva808@gmail.com",
+      "phone": "+994 70 887 04 94",
+      "username": "fidan",
+      "password": "Rasengan25",
+      "photo": "",
+      "specialties": [
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası və Dərman Dizaynı",
+        "Transkriptomika və RNA-Seq",
+        "Python",
+        "Biopython"
+      ],
+      "orcid": "",
+      "googleScholar": "https://www.linkedin.com/in/fidan-verdiyeva-753bb92ba?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+      "officeLocation": "BDU Biologiya & CarboxMol Virtual Lab",
+      "consultationHours": "Razılaşma ilə (Onlayn / Laboratoriya)",
+      "bio": "Molekulyar biologiya, fitopatologiya və DNT ardıcıllıqlarının bioinformatik analizi üzrə tədqiqatçı və klub mentoru.",
+      "status": "Aktiv",
+      "registeredAt": "2026-10-14",
+      "approvedAt": "2026-10-14",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
     }
   ],
 
@@ -2613,6 +2644,34 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "status": "Təsdiqləndi",
       "dateApplied": "2026-10-10",
       "adminNotes": "Sədr tərəfindən rəsmi akademik mentor olaraq təsdiqlənmişdir."
+    },
+    {
+      "id": "teach-app-fidan",
+      "teacherId": "teacher-fidan",
+      "fullName": "Fidan Məhərrəmova (Verdiyeva)",
+      "title": "Akademik Mentor & Tədqiqatçı",
+      "academicDegree": "Magistr / Tədqiqatçı",
+      "university": "Bakı Dövlət Universiteti (BDU)",
+      "faculty": "Biologiya Fakültəsi",
+      "department": "Molekulyar Biologiya və Biotexnologiya Kafedrası",
+      "email": "fidanverdiyeva808@gmail.com",
+      "phone": "+994 70 887 04 94",
+      "username": "fidan",
+      "password": "Rasengan25",
+      "specialties": [
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası və Dərman Dizaynı",
+        "Transkriptomika və RNA-Seq",
+        "Python",
+        "Biopython"
+      ],
+      "orcid": "",
+      "officeLocation": "BDU Biologiya & CarboxMol Virtual Lab",
+      "consultationHours": "Razılaşma ilə (Onlayn / Laboratoriya)",
+      "bio": "Molekulyar biologiya, fitopatologiya və DNT ardıcıllıqlarının bioinformatik analizi üzrə tədqiqatçı və klub mentoru.",
+      "status": "Təsdiqləndi",
+      "dateApplied": "2026-10-14",
+      "adminNotes": "Sədr tərəfindən rəsmi akademik mentor və müəllim olaraq təsdiqlənmişdir."
     }
   ],
 
@@ -2634,7 +2693,7 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.10.28.v36_sefanyamuellim_garib_murshudov_only";
+const CURRENT_DATA_VERSION = "2026.10.29.v37_teacher_role_routing_fidan_maharramova_mentor";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
