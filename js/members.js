@@ -830,7 +830,7 @@ const MembersPortal = {
           <div>
             <span class="text-slate-400 block text-[11px]">Bələd Olduğu Dillər & Alətlər:</span>
             <div class="flex flex-wrap gap-1 mt-1">
-              ${tools.length ? tools.map(t => `<span class="px-2 py-0.5 rounded bg-slate-800 text-teal-300 border border-slate-700 text-[10px] font-medium">${escapeHtml(t)}</span>`).join('') : '<span class="text-slate-500">Qeyd edilməyib</span>'}
+              ${tools.length ? tools.map(t => `<span class="px-2 py-0.5 rounded-lg bg-teal-50 text-teal-800 border border-teal-200 text-[10px] font-semibold">${escapeHtml(t)}</span>`).join('') : '<span class="text-slate-500">Qeyd edilməyib</span>'}
             </div>
           </div>
           <div class="text-slate-300 pt-1">
@@ -1594,7 +1594,7 @@ const MembersPortal = {
                     <i class="fa-solid fa-globe text-teal-400"></i> 🌐 Ümumi Klub
                   </span>
                 `}
-                <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+                <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-slate-100 text-slate-700 border border-slate-200">
                   ${escapeHtml(task.difficulty || 'Orta')}
                 </span>
               </div>
@@ -1671,7 +1671,7 @@ const MembersPortal = {
             <span class="text-xs font-bold uppercase tracking-wider text-teal-400 px-2.5 py-1 rounded bg-teal-950 border border-teal-800/60">
               ${escapeHtml(task.category)}
             </span>
-            <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+            <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-slate-100 text-slate-700 border border-slate-200">
               Çətinlik: ${escapeHtml(task.difficulty || 'Orta')}
             </span>
             <span class="text-xs text-amber-300 ml-auto flex items-center gap-1">

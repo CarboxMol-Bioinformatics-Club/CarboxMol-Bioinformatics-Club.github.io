@@ -158,70 +158,75 @@ const PresidentPortal = {
 
     container.innerHTML = apps.map((app, idx) => {
       const isPending = app.status === "Gözləyir";
-      let badgeColor = "bg-amber-500/20 text-amber-300 border-amber-500/40";
-      if (app.status === "Təsdiqləndi" || app.status === "Qəbul Edildi") badgeColor = "bg-emerald-500/20 text-emerald-300 border-emerald-500/40";
-      if (app.status === "Rədd edildi") badgeColor = "bg-rose-500/20 text-rose-300 border-rose-500/40";
+      let badgeColor = "bg-amber-50 text-amber-800 border-amber-300";
+      if (app.status === "Təsdiqləndi" || app.status === "Qəbul Edildi") badgeColor = "bg-emerald-50 text-emerald-800 border-emerald-300";
+      if (app.status === "Rədd edildi") badgeColor = "bg-rose-50 text-rose-800 border-rose-300";
 
       const rowClass = isPending 
-        ? "bg-amber-950/25 border-b border-amber-500/30 border-l-4 border-l-amber-400 hover:bg-amber-950/40" 
-        : "border-b border-slate-800/60 hover:bg-slate-800/30";
+        ? "bg-amber-50/70 border-b border-amber-200 border-l-4 border-l-amber-500 hover:bg-amber-100/60" 
+        : "border-b border-slate-100 hover:bg-slate-50/80";
 
       return `
         <tr class="${rowClass} transition text-sm">
-          <td class="py-3 px-4 text-slate-400 font-mono">
-            ${isPending ? '<span class="text-amber-400 font-bold mr-1" title="Sədr Təsdiqi Gözləyir">●</span>' : ''}#${idx + 1}
+          <td class="py-3 px-4 text-slate-500 font-mono font-medium">
+            ${isPending ? '<span class="text-amber-500 font-bold mr-1" title="Sədr Təsdiqi Gözləyir">●</span>' : ''}#${idx + 1}
           </td>
           <td class="py-3 px-4">
             <div class="flex items-center gap-2.5">
               ${app.photo ? `
-                <img src="${app.photo}" alt="${app.fullName}" class="w-8 h-8 rounded-lg object-cover border border-teal-500/30 shrink-0" />
+                <img src="${app.photo}" alt="${escapeHtml(app.fullName)}" class="w-8 h-8 rounded-lg object-cover border border-teal-300 shrink-0" />
               ` : `
-                <div class="w-8 h-8 rounded-lg ${isPending ? 'bg-amber-950 border border-amber-600 text-amber-300' : 'bg-slate-900 border border-slate-800 text-slate-500'} flex items-center justify-center text-xs shrink-0">
+                <div class="w-8 h-8 rounded-lg ${isPending ? 'bg-amber-100 border border-amber-300 text-amber-800' : 'bg-slate-100 border border-slate-200 text-slate-600'} flex items-center justify-center text-xs shrink-0 font-bold">
                   <i class="fa-solid fa-user"></i>
                 </div>
               `}
               <div class="min-w-0">
-                <div class="font-semibold text-white truncate flex items-center gap-1.5">
-                  ${app.fullName}
-                  ${isPending ? '<span class="text-[9px] bg-amber-500/30 text-amber-300 px-1.5 py-0.5 rounded font-black tracking-wider uppercase border border-amber-500/40 animate-pulse">Gözləyir</span>' : ''}
+                <div class="font-bold text-slate-900 truncate flex items-center gap-1.5">
+                  ${escapeHtml(app.fullName)}
+                  ${isPending ? '<span class="text-[9px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-black tracking-wider uppercase border border-amber-300">Gözləyir</span>' : ''}
                 </div>
-                <div class="text-xs text-slate-400 truncate">${app.email}</div>
+                <div class="text-xs text-slate-500 truncate">${escapeHtml(app.email)}</div>
               </div>
             </div>
           </td>
-          <td class="py-3 px-4 text-slate-300">
-            <div>${app.faculty}</div>
-            <div class="text-xs text-teal-400">${app.major} (${app.course})</div>
+          <td class="py-3 px-4 text-slate-700">
+            <div class="font-medium">${escapeHtml(app.faculty || 'Məlumat yoxdur')}</div>
+            <div class="text-xs text-teal-700 font-semibold">${escapeHtml(app.major || '')} (${escapeHtml(app.course || '1')})</div>
           </td>
           <td class="py-3 px-4">
-            <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700">
-              ${app.programmingSkill}
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg border inline-flex items-center gap-1.5 ${
+              (app.programmingSkill && app.programmingSkill !== 'Heç biri' && app.programmingSkill !== 'Qeyd edilməyib')
+                ? 'bg-teal-50 text-teal-800 border-teal-200'
+                : 'bg-slate-100 text-slate-700 border-slate-200'
+            }">
+              <i class="fa-solid fa-code text-[10px] text-teal-600"></i>
+              <span>${escapeHtml(app.programmingSkill || app.tools?.join(', ') || 'Əsas / Baza')}</span>
             </span>
           </td>
-          <td class="py-3 px-4 text-xs text-slate-400">${app.dateApplied || '2026-10-01'}</td>
+          <td class="py-3 px-4 text-xs text-slate-500 font-mono">${escapeHtml(app.dateApplied || '2026-10-01')}</td>
           <td class="py-3 px-4">
             <span class="px-2.5 py-1 text-xs rounded-full border font-bold ${badgeColor}">
-              ${app.status}
+              ${escapeHtml(app.status)}
             </span>
           </td>
           <td class="py-3 px-4 text-right">
             <div class="inline-flex items-center gap-1">
-              <button onclick="PresidentPortal.viewAppDetail('${app.id}')" title="Ətraflı Bax" class="p-1.5 px-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 transition text-xs flex items-center gap-1 font-medium">
+              <button onclick="PresidentPortal.viewAppDetail('${app.id}')" title="Ətraflı Bax" class="p-1.5 px-2 rounded-lg bg-cyan-50 hover:bg-cyan-100 text-cyan-800 border border-cyan-200 transition text-xs flex items-center gap-1 font-semibold">
                 <i class="fa-solid fa-eye"></i> <span class="hidden xl:inline">Bax</span>
               </button>
-              <button onclick="PresidentPortal.openEditDossierModal('${app.id}', 'application')" title="Müraciət Dossyesini Limitsiz Redaktə Et" class="p-1.5 px-2 rounded-lg bg-cyan-950/80 hover:bg-cyan-900 text-cyan-300 border border-cyan-700 transition text-xs flex items-center gap-1 font-semibold">
+              <button onclick="PresidentPortal.openEditDossierModal('${app.id}', 'application')" title="Müraciət Dossyesini Limitsiz Redaktə Et" class="p-1.5 px-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 transition text-xs flex items-center gap-1 font-semibold">
                 <i class="fa-solid fa-user-pen"></i> <span class="hidden xl:inline">Redaktə</span>
               </button>
-              <button onclick="PresidentPortal.updateStatus('${app.id}', 'Təsdiqləndi')" title="Təsdiq Et (Qəbul)" class="p-1.5 px-2.5 rounded-lg ${isPending ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black shadow-md shadow-emerald-500/20' : 'bg-emerald-950/80 hover:bg-emerald-900 text-emerald-400 border border-emerald-800/60 font-semibold'} transition text-xs flex items-center gap-1">
+              <button onclick="PresidentPortal.updateStatus('${app.id}', 'Təsdiqləndi')" title="Təsdiq Et (Qəbul)" class="p-1.5 px-2.5 rounded-lg ${isPending ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black shadow-md shadow-emerald-500/20' : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-semibold'} transition text-xs flex items-center gap-1">
                 <i class="fa-solid fa-check"></i> <span class="hidden xl:inline">Təsdiq</span>
               </button>
-              <button onclick="PresidentPortal.updateStatus('${app.id}', 'Gözləyir')" title="Gözləmədə Saxla" class="p-1.5 px-2 rounded-lg bg-amber-950/80 hover:bg-amber-900 text-amber-300 border border-amber-800/60 transition text-xs flex items-center gap-1 font-semibold">
+              <button onclick="PresidentPortal.updateStatus('${app.id}', 'Gözləyir')" title="Gözləmədə Saxla" class="p-1.5 px-2 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 transition text-xs flex items-center gap-1 font-semibold">
                 <i class="fa-solid fa-clock"></i> <span class="hidden xl:inline">Gözlət</span>
               </button>
-              <button onclick="PresidentPortal.updateStatus('${app.id}', 'Rədd edildi')" title="İmtina Et (Rədd)" class="p-1.5 px-2 rounded-lg bg-rose-950/80 hover:bg-rose-900 text-rose-400 border border-rose-800/60 transition text-xs flex items-center gap-1 font-semibold">
+              <button onclick="PresidentPortal.updateStatus('${app.id}', 'Rədd edildi')" title="İmtina Et (Rədd)" class="p-1.5 px-2 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-300 transition text-xs flex items-center gap-1 font-semibold">
                 <i class="fa-solid fa-xmark"></i> <span class="hidden xl:inline">İmtina</span>
               </button>
-              <button onclick="PresidentPortal.deleteApplication('${app.id}')" title="Müraciəti Tamamilə Sil" class="p-1.5 px-2 rounded-lg bg-red-950/90 hover:bg-red-900 text-red-400 hover:text-white border border-red-800/80 transition text-xs flex items-center gap-1 font-bold">
+              <button onclick="PresidentPortal.deleteApplication('${app.id}')" title="Müraciəti Tamamilə Sil" class="p-1.5 px-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 transition text-xs flex items-center gap-1 font-bold">
                 <i class="fa-solid fa-trash-can"></i> <span class="hidden xl:inline">Sil</span>
               </button>
             </div>
@@ -1059,61 +1064,61 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
               </span>
               <div class="flex items-center gap-1.5 flex-wrap">
                 ${task.assignedTo && task.assignedTo !== 'all' ? `
-                  <span class="text-[11px] px-2.5 py-0.5 rounded-full font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center gap-1" title="Fərdi olaraq yalnız bu üzvün panelinə göndərilib">
-                    <i class="fa-solid fa-bullseye text-amber-400"></i> Fərdi: <strong>${escapeHtml(task.assignedToName || 'Xüsusi Üzv')}</strong>
+                  <span class="text-[11px] px-2.5 py-0.5 rounded-full font-semibold bg-amber-50 text-amber-800 border border-amber-300 flex items-center gap-1" title="Fərdi olaraq yalnız bu üzvün panelinə göndərilib">
+                    <i class="fa-solid fa-bullseye text-amber-600"></i> Fərdi: <strong>${escapeHtml(task.assignedToName || 'Xüsusi Üzv')}</strong>
                   </span>
                 ` : `
-                  <span class="text-[11px] px-2.5 py-0.5 rounded-full font-medium bg-teal-500/20 text-teal-300 border border-teal-500/30 flex items-center gap-1" title="Bütün klub üzvlərinin panelində görünür">
-                    <i class="fa-solid fa-globe text-teal-400"></i> Hamısına (Açıq)
+                  <span class="text-[11px] px-2.5 py-0.5 rounded-full font-medium bg-teal-50 text-teal-800 border border-teal-200 flex items-center gap-1" title="Bütün klub üzvlərinin panelində görünür">
+                    <i class="fa-solid fa-globe text-teal-600"></i> Hamısına (Açıq)
                   </span>
                 `}
                 <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold ${
-                  task.status === 'Aktiv' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-slate-800 text-slate-300'
+                  task.status === 'Aktiv' ? 'bg-emerald-50 text-emerald-800 border border-emerald-300' : 'bg-slate-100 text-slate-700 border border-slate-200'
                 }">
                   ${task.status}
                 </span>
               </div>
             </div>
 
-            <h4 class="text-base font-bold text-white leading-snug">${escapeHtml(task.title)}</h4>
-            <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">${escapeHtml(task.summary)}</p>
+            <h4 class="text-base font-bold text-slate-900 leading-snug">${escapeHtml(task.title)}</h4>
+            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">${escapeHtml(task.summary)}</p>
 
-            <div class="flex items-center gap-3 text-xs text-slate-400 pt-1 border-t border-slate-800/60 flex-wrap">
-              <span><i class="fa-regular fa-clock text-amber-400 mr-1"></i> Son tarix: <strong class="text-slate-200">${task.deadline}</strong></span>
-              <span><i class="fa-solid fa-users-viewfinder text-teal-400 mr-1"></i> ${task.targetGroup || 'Bütün Üzvlər'}</span>
+            <div class="flex items-center gap-3 text-xs text-slate-500 pt-1 border-t border-slate-100 flex-wrap">
+              <span><i class="fa-regular fa-clock text-amber-600 mr-1"></i> Son tarix: <strong class="text-slate-800">${task.deadline}</strong></span>
+              <span><i class="fa-solid fa-users-viewfinder text-teal-600 mr-1"></i> ${task.targetGroup || 'Bütün Üzvlər'}</span>
             </div>
 
             <div class="flex items-center gap-2 flex-wrap pt-1 text-[11px]">
-              ${task.document ? `<span class="px-2 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-800 flex items-center gap-1"><i class="fa-solid fa-file-lines text-teal-400"></i> ${escapeHtml(task.document.name || 'Sənəd')}</span>` : ''}
-              ${task.imageUrl ? '<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700"><i class="fa-solid fa-image text-cyan-400 mr-1"></i> Şəkil</span>' : ''}
-              ${task.videoUrl ? `<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700"><i class="fa-solid fa-video text-rose-400 mr-1"></i> Video (360p • ${task.videoDuration || 'Max 5 dəq'})</span>` : ''}
-              ${task.starterCode ? '<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700"><i class="fa-solid fa-code text-emerald-400 mr-1"></i> Kod</span>' : ''}
+              ${task.document ? `<span class="px-2 py-0.5 rounded-lg bg-teal-50 text-teal-800 border border-teal-200 flex items-center gap-1"><i class="fa-solid fa-file-lines text-teal-600"></i> ${escapeHtml(task.document.name || 'Sənəd')}</span>` : ''}
+              ${task.imageUrl ? '<span class="px-2 py-0.5 rounded-lg bg-cyan-50 text-cyan-800 border border-cyan-200"><i class="fa-solid fa-image text-cyan-600 mr-1"></i> Şəkil</span>' : ''}
+              ${task.videoUrl ? `<span class="px-2 py-0.5 rounded-lg bg-rose-50 text-rose-800 border border-rose-200"><i class="fa-solid fa-video text-rose-600 mr-1"></i> Video (360p • ${task.videoDuration || 'Max 5 dəq'})</span>` : ''}
+              ${task.starterCode ? '<span class="px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200"><i class="fa-solid fa-code text-emerald-600 mr-1"></i> Kod</span>' : ''}
             </div>
           </div>
 
-          <div class="pt-3 border-t border-slate-800 space-y-3">
-            <div class="flex items-center justify-between text-xs bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
-              <span class="text-slate-400">Tələbə İcrası:</span>
+          <div class="pt-3 border-t border-slate-100 space-y-3">
+            <div class="flex items-center justify-between text-xs bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+              <span class="text-slate-600 font-medium">Tələbə İcrası:</span>
               <div class="flex items-center gap-2">
-                <span class="text-slate-200 font-semibold">${subs.length} Təhvil</span>
-                ${pendingCount > 0 ? `<span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold border border-amber-500/30">${pendingCount} Baxılmayıb</span>` : ''}
-                ${approvedCount > 0 ? `<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">${approvedCount} Təsdiq</span>` : ''}
+                <span class="text-slate-900 font-bold">${subs.length} Təhvil</span>
+                ${pendingCount > 0 ? `<span class="px-2 py-0.5 rounded bg-amber-50 text-amber-800 text-[10px] font-bold border border-amber-300">${pendingCount} Baxılmayıb</span>` : ''}
+                ${approvedCount > 0 ? `<span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 text-[10px] font-bold border border-emerald-300">${approvedCount} Təsdiq</span>` : ''}
               </div>
             </div>
 
             <div class="flex items-center gap-2">
-              <button onclick="PresidentPortal.openTaskSubmissionsModal('${task.id}')" class="flex-1 py-2 px-3 rounded-xl bg-teal-600/20 hover:bg-teal-600/30 text-teal-300 border border-teal-500/40 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
+              <button onclick="PresidentPortal.openTaskSubmissionsModal('${task.id}')" class="flex-1 py-2 px-3 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
                 <i class="fa-solid fa-list-check"></i> İcranı İncələ (${subs.length})
               </button>
               ${task.document ? `
-                <button onclick="inAppDocViewer.openTaskDoc('${task.id}')" class="p-2 rounded-xl bg-teal-950/80 hover:bg-teal-900 text-teal-300 border border-teal-800/80 text-xs transition" title="Sənədə Bax (Yükləmədən birbaşa tətbiqdə aç)">
+                <button onclick="inAppDocViewer.openTaskDoc('${task.id}')" class="p-2 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 text-xs transition" title="Sənədə Bax (Yükləmədən birbaşa tətbiqdə aç)">
                   <i class="fa-solid fa-file-lines"></i>
                 </button>
               ` : ''}
-              <button onclick="PresidentPortal.openEditTaskModal('${task.id}')" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs transition" title="Redaktə Et">
+              <button onclick="PresidentPortal.openEditTaskModal('${task.id}')" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs transition" title="Redaktə Et">
                 <i class="fa-solid fa-pen-to-square"></i>
               </button>
-              <button onclick="PresidentPortal.deleteTask('${task.id}')" class="p-2 rounded-xl bg-rose-950/60 hover:bg-rose-900 text-rose-300 border border-rose-800/60 text-xs transition" title="Sil">
+              <button onclick="PresidentPortal.deleteTask('${task.id}')" class="p-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs transition" title="Sil">
                 <i class="fa-solid fa-trash"></i>
               </button>
             </div>
@@ -1650,58 +1655,58 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     }
 
     container.innerHTML = members.map((m, idx) => `
-      <tr class="border-b border-slate-800/60 hover:bg-slate-800/30 transition text-xs">
-        <td class="py-3 px-4 text-slate-400 font-mono">#${idx + 1}</td>
+      <tr class="border-b border-slate-100 hover:bg-slate-50/80 transition text-xs">
+        <td class="py-3 px-4 text-slate-500 font-mono font-medium">#${idx + 1}</td>
         <td class="py-3 px-4">
           <div class="flex items-center gap-3">
-            <div class="relative w-10 h-10 rounded-xl overflow-hidden bg-slate-900 border border-teal-500/30 shrink-0 shadow-md">
+            <div class="relative w-10 h-10 rounded-xl overflow-hidden bg-slate-100 border border-teal-200 shrink-0 shadow-sm">
               ${m.photo 
                 ? `<img src="${m.photo}" alt="${escapeHtml(m.fullName)}" class="w-full h-full object-cover">`
-                : `<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-teal-900/60 to-cyan-900/60 text-teal-300 font-bold text-xs">${escapeHtml((m.fullName || 'U').charAt(0).toUpperCase())}</div>`
+                : `<div class="w-full h-full flex items-center justify-center bg-teal-50 text-teal-800 font-bold text-xs">${escapeHtml((m.fullName || 'U').charAt(0).toUpperCase())}</div>`
               }
             </div>
             <div class="min-w-0">
-              <div class="font-bold text-white flex items-center gap-1.5">
+              <div class="font-bold text-slate-900 flex items-center gap-1.5">
                 <span class="truncate">${escapeHtml(m.fullName)}</span>
-                ${m.photo ? `<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 shrink-0" title="Profil şəkli aktivdir"></span>` : ''}
+                ${m.photo ? `<span class="inline-block w-2 h-2 rounded-full bg-emerald-500 shrink-0" title="Profil şəkli aktivdir"></span>` : ''}
               </div>
-              <div class="text-[11px] text-teal-400 truncate">${escapeHtml(m.university ? (m.university + (m.major ? ` • ${m.major}` : '')) : (m.faculty ? (m.faculty + (m.major ? ` • ${m.major}` : '')) : (m.major || '')))} ${m.course ? `(${escapeHtml(m.course)})` : ''}</div>
+              <div class="text-[11px] text-teal-700 font-medium truncate">${escapeHtml(m.university ? (m.university + (m.major ? ` • ${m.major}` : '')) : (m.faculty ? (m.faculty + (m.major ? ` • ${m.major}` : '')) : (m.major || '')))} ${m.course ? `(${escapeHtml(m.course)})` : ''}</div>
             </div>
           </div>
         </td>
         <td class="py-3 px-4">
-          <div class="text-slate-300 font-mono text-[11px]">${escapeHtml(m.email)}</div>
-          <div class="text-[11px] text-slate-400">${escapeHtml(m.phone || 'Qeyd edilməyib')}</div>
+          <div class="text-slate-800 font-mono text-[11px]">${escapeHtml(m.email)}</div>
+          <div class="text-[11px] text-slate-500">${escapeHtml(m.phone || 'Qeyd edilməyib')}</div>
         </td>
-        <td class="py-3 px-4 font-mono font-bold text-cyan-300 bg-slate-950/60 rounded px-2">
+        <td class="py-3 px-4 font-mono font-bold text-teal-800 bg-teal-50 border border-teal-100 rounded px-2">
           @${escapeHtml(m.username || 'user')}
         </td>
         <td class="py-3 px-4">
-          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-950/40 border border-amber-800/60 font-mono text-amber-300 font-bold select-all" title="Klub Sədrinə Açıq Şifrə">
-            <i class="fa-solid fa-key text-[10px] text-amber-400"></i>
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200 font-mono text-amber-900 font-bold select-all" title="Klub Sədrinə Açıq Şifrə">
+            <i class="fa-solid fa-key text-[10px] text-amber-600"></i>
             <span>${escapeHtml(m.password || 'Təyin edilməyib')}</span>
           </div>
         </td>
         <td class="py-3 px-4">
-          <span class="px-2 py-0.5 rounded-full font-bold text-[10px] ${m.status === 'Aktiv' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'}">
+          <span class="px-2 py-0.5 rounded-full font-bold text-[10px] ${m.status === 'Aktiv' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-amber-50 text-amber-800 border border-amber-200'}">
             ${escapeHtml(m.status || 'Aktiv')}
           </span>
         </td>
         <td class="py-3 px-4 text-right">
           <div class="inline-flex gap-1.5">
-            <button onclick="PresidentPortal.openEditDossierModal('${m.id}', 'member')" title="Üzvün Bütün Məlumatlarını Limitsiz Redaktə Et (Sədr Hüququ)" class="p-1.5 rounded-lg bg-cyan-950/80 hover:bg-cyan-900 text-cyan-300 border border-cyan-700 transition">
+            <button onclick="PresidentPortal.openEditDossierModal('${m.id}', 'member')" title="Üzvün Bütün Məlumatlarını Limitsiz Redaktə Et (Sədr Hüququ)" class="p-1.5 rounded-lg bg-cyan-50 hover:bg-cyan-100 text-cyan-800 border border-cyan-200 transition">
               <i class="fa-solid fa-user-pen"></i>
             </button>
-            <button onclick="PresidentPortal.openEditMemberPhotoModal('${m.id}')" title="Üzvün Profil Şəklini Yenilə / Dəyiş" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-slate-700 transition">
+            <button onclick="PresidentPortal.openEditMemberPhotoModal('${m.id}')" title="Üzvün Profil Şəklini Yenilə / Dəyiş" class="p-1.5 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 transition">
               <i class="fa-solid fa-camera"></i>
             </button>
-            <button onclick="PresidentPortal.openEditMemberPasswordModal('${m.id}')" title="Şifrəni Dəyiş" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 transition">
+            <button onclick="PresidentPortal.openEditMemberPasswordModal('${m.id}')" title="Şifrəni Dəyiş" class="p-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 transition">
               <i class="fa-solid fa-pen-to-square"></i>
             </button>
-            <button onclick="PresidentPortal.toggleMemberStatus('${m.id}')" title="Statusu Dəyiş" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-slate-700 transition">
+            <button onclick="PresidentPortal.toggleMemberStatus('${m.id}')" title="Statusu Dəyiş" class="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 transition">
               <i class="fa-solid fa-arrows-rotate"></i>
             </button>
-            <button onclick="PresidentPortal.deleteMember('${m.id}')" title="Sil" class="p-1.5 rounded-lg bg-rose-950/60 hover:bg-rose-900 text-rose-400 border border-rose-800/60 transition">
+            <button onclick="PresidentPortal.deleteMember('${m.id}')" title="Sil" class="p-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 transition">
               <i class="fa-solid fa-trash-can"></i>
             </button>
           </div>
@@ -1807,43 +1812,43 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
       const isPending = t.status === "Gözləyir";
       const isRejected = t.status === "Rədd edildi";
 
-      let statusBadge = `<span class="px-2 py-0.5 rounded-full font-bold text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1 w-max"><i class="fa-solid fa-clock"></i> Gözləyir (Təsdiq Gözlənilir)</span>`;
+      let statusBadge = `<span class="px-2 py-0.5 rounded-full font-bold text-[10px] bg-amber-50 text-amber-800 border border-amber-300 flex items-center gap-1 w-max"><i class="fa-solid fa-clock"></i> Gözləyir (Təsdiq Gözlənilir)</span>`;
       if (isApproved) {
-        statusBadge = `<span class="px-2 py-0.5 rounded-full font-bold text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1 w-max"><i class="fa-solid fa-check"></i> Aktiv (Təsdiqlənib)</span>`;
+        statusBadge = `<span class="px-2 py-0.5 rounded-full font-bold text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-300 flex items-center gap-1 w-max"><i class="fa-solid fa-check"></i> Aktiv (Təsdiqlənib)</span>`;
       } else if (isRejected) {
-        statusBadge = `<span class="px-2 py-0.5 rounded-full font-bold text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center gap-1 w-max"><i class="fa-solid fa-xmark"></i> Rədd Edildi</span>`;
+        statusBadge = `<span class="px-2 py-0.5 rounded-full font-bold text-[10px] bg-rose-50 text-rose-800 border border-rose-300 flex items-center gap-1 w-max"><i class="fa-solid fa-xmark"></i> Rədd Edildi</span>`;
       }
 
       return `
-        <tr class="border-b border-slate-800/60 hover:bg-slate-800/30 transition text-xs">
-          <td class="py-3 px-4 text-slate-400 font-mono">#${idx + 1}</td>
+        <tr class="border-b border-slate-100 hover:bg-slate-50/80 transition text-xs">
+          <td class="py-3 px-4 text-slate-500 font-mono font-medium">#${idx + 1}</td>
           <td class="py-3 px-4">
             <div class="flex items-center gap-3">
-              <div class="relative w-10 h-10 rounded-xl overflow-hidden bg-slate-900 border border-indigo-500/30 shrink-0 shadow-md">
+              <div class="relative w-10 h-10 rounded-xl overflow-hidden bg-indigo-50 border border-indigo-200 shrink-0 shadow-sm">
                 ${t.photo
                   ? `<img src="${t.photo}" alt="${escapeHtml(t.fullName)}" class="w-full h-full object-cover">`
-                  : `<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-900/60 to-purple-900/60 text-indigo-300 font-bold text-xs"><i class="fa-solid fa-chalkboard-user"></i></div>`
+                  : `<div class="w-full h-full flex items-center justify-center bg-indigo-50 text-indigo-700 font-bold text-xs"><i class="fa-solid fa-chalkboard-user"></i></div>`
                 }
               </div>
               <div class="min-w-0">
-                <div class="font-bold text-white flex items-center gap-1.5">
+                <div class="font-bold text-slate-900 flex items-center gap-1.5">
                   <span class="truncate">${escapeHtml(t.fullName)}</span>
                 </div>
-                <div class="text-[11px] text-indigo-300 truncate font-semibold">${escapeHtml(t.title || 'Müəllim')}</div>
-                <div class="text-[10px] text-slate-400 truncate">${escapeHtml(t.university || 'WCU')} • ${escapeHtml(t.department || '')}</div>
+                <div class="text-[11px] text-indigo-700 truncate font-semibold">${escapeHtml(t.title || 'Müəllim')}</div>
+                <div class="text-[10px] text-slate-500 truncate">${escapeHtml(t.university || 'WCU')} • ${escapeHtml(t.department || '')}</div>
               </div>
             </div>
           </td>
           <td class="py-3 px-4">
-            <div class="text-slate-300 font-mono text-[11px]">${escapeHtml(t.email)}</div>
-            <div class="text-[11px] text-slate-400">${escapeHtml(t.phone || 'Qeyd edilməyib')}</div>
+            <div class="text-slate-800 font-mono text-[11px]">${escapeHtml(t.email)}</div>
+            <div class="text-[11px] text-slate-500">${escapeHtml(t.phone || 'Qeyd edilməyib')}</div>
           </td>
-          <td class="py-3 px-4 font-mono font-bold text-indigo-300 bg-slate-950/60 rounded px-2">
+          <td class="py-3 px-4 font-mono font-bold text-indigo-800 bg-indigo-50 border border-indigo-100 rounded px-2">
             @${escapeHtml(t.username || 'teacher')}
           </td>
           <td class="py-3 px-4">
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-950/40 border border-amber-800/60 font-mono text-amber-300 font-bold select-all" title="Klub Sədrinə Açıq Şifrə">
-              <i class="fa-solid fa-key text-[10px] text-amber-400"></i>
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200 font-mono text-amber-900 font-bold select-all" title="Klub Sədrinə Açıq Şifrə">
+              <i class="fa-solid fa-key text-[10px] text-amber-600"></i>
               <span>${escapeHtml(t.password || 'Təyin edilməyib')}</span>
             </div>
           </td>
@@ -1856,14 +1861,14 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
           <td class="py-3 px-4 text-right">
             <div class="inline-flex gap-1.5 flex-wrap justify-end">
               ${isPending ? `
-                <button onclick="PresidentPortal.approveTeacher('${t.id}', '${t.appId}')" title="Müəllimi Təsdiq Et və Girişini Aktivləşdir" class="px-2.5 py-1 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition shadow flex items-center gap-1">
+                <button onclick="PresidentPortal.approveTeacher('${t.id}', '${t.appId}')" title="Müəllimi Təsdiq Et və Girişini Aktivləşdir" class="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow flex items-center gap-1">
                   <i class="fa-solid fa-check"></i> Təsdiq
                 </button>
-                <button onclick="PresidentPortal.rejectTeacher('${t.id}', '${t.appId}')" title="İmtina Et" class="px-2 py-1 rounded-lg bg-rose-950 hover:bg-rose-900 text-rose-300 border border-rose-700 font-bold text-xs transition">
+                <button onclick="PresidentPortal.rejectTeacher('${t.id}', '${t.appId}')" title="İmtina Et" class="px-2 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 font-bold text-xs transition">
                   <i class="fa-solid fa-xmark"></i> İmtina
                 </button>
               ` : (isApproved ? `
-                <button onclick="PresidentPortal.holdTeacher('${t.id}', '${t.appId}')" title="Statusu Gözləməyə Qaytar" class="px-2 py-1 rounded-lg bg-amber-950/80 hover:bg-amber-900 text-amber-300 border border-amber-700 text-xs transition">
+                <button onclick="PresidentPortal.holdTeacher('${t.id}', '${t.appId}')" title="Statusu Gözləməyə Qaytar" class="px-2 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs transition">
                   <i class="fa-solid fa-pause"></i> Gözlət
                 </button>
               ` : `
@@ -1871,10 +1876,10 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
                   <i class="fa-solid fa-rotate-left"></i> Bərpa
                 </button>
               `)}
-              <button onclick="PresidentPortal.viewTeacherDossier('${t.id}')" title="Tam Dossye və CV-yə Bax" class="p-1.5 rounded-lg bg-indigo-950 hover:bg-indigo-900 text-indigo-300 border border-indigo-700 transition">
+              <button onclick="PresidentPortal.viewTeacherDossier('${t.id}')" title="Tam Dossye və CV-yə Bax" class="p-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 transition">
                 <i class="fa-solid fa-id-card"></i>
               </button>
-              <button onclick="PresidentPortal.deleteTeacher('${t.id}', '${t.appId}')" title="Müəllim Hesabını Tam Sil" class="p-1.5 rounded-lg bg-rose-950/60 hover:bg-rose-900 text-rose-400 border border-rose-800/60 transition">
+              <button onclick="PresidentPortal.deleteTeacher('${t.id}', '${t.appId}')" title="Müəllim Hesabını Tam Sil" class="p-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 transition">
                 <i class="fa-solid fa-trash-can"></i>
               </button>
             </div>

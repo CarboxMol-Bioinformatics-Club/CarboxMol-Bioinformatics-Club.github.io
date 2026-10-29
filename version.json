@@ -1,6 +1,6 @@
 {
-  "version": "2.3.2",
-  "build": "20261029-2225",
-  "timestamp": 1793298300000,
-  "description": "CarboxMol Bioinformatika Klubu v2.3.2 — Sədrin müəllim heyətini tam və birdəfəlik silmə səlahiyyəti zəmanətləndirildi, dublikat və silinmiş qeydlərin dirilməsi (resurrection) tamamilə dayandırıldı."
+  "version": "2.3.3",
+  "build": "20261030-0100",
+  "timestamp": 1793307600000,
+  "description": "CarboxMol Bioinformatika Klubu v2.3.3 — Ağ tema kontrastı tam harmonizasiya edildi, cədvəl və kartlardakı bütün qaranlıq bloklar və gizli yazılar təmizləndi."
 }

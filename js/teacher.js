@@ -563,37 +563,37 @@ const TeacherPortal = {
     container.innerHTML = members.map((mem, idx) => {
       const skills = Array.isArray(mem.skills) ? mem.skills : ["Python", "Genom Analizi"];
       return `
-        <tr class="border-b border-slate-800/60 hover:bg-slate-800/30 transition text-xs">
+        <tr class="border-b border-slate-100 hover:bg-slate-50/80 transition text-xs">
           <td class="py-3 px-4 font-mono text-slate-500">#${idx + 1}</td>
           <td class="py-3 px-4">
             <div class="flex items-center gap-2.5">
               ${mem.photo ? `
-                <img src="${mem.photo}" alt="${mem.fullName}" class="w-7 h-7 rounded-lg object-cover border border-teal-500/30 shrink-0" />
+                <img src="${mem.photo}" alt="${escapeTeacherHtml(mem.fullName)}" class="w-7 h-7 rounded-lg object-cover border border-teal-200 shrink-0" />
               ` : `
-                <div class="w-7 h-7 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-500 text-xs shrink-0 font-bold">
-                  ${(mem.fullName || 'T')[0]}
+                <div class="w-7 h-7 rounded-lg bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-800 text-xs shrink-0 font-bold">
+                  ${escapeTeacherHtml((mem.fullName || 'T')[0])}
                 </div>
               `}
               <div class="min-w-0">
-                <div class="font-bold text-white truncate">${escapeTeacherHtml(mem.fullName)}</div>
-                <div class="text-[11px] font-mono text-cyan-400">@${escapeTeacherHtml(mem.username || 'uzv')}</div>
+                <div class="font-bold text-slate-900 truncate">${escapeTeacherHtml(mem.fullName)}</div>
+                <div class="text-[11px] font-mono text-cyan-700">@${escapeTeacherHtml(mem.username || 'uzv')}</div>
               </div>
             </div>
           </td>
-          <td class="py-3 px-4 text-slate-300">
+          <td class="py-3 px-4 text-slate-700">
             <div>${escapeTeacherHtml(mem.faculty || 'WCU')}</div>
-            <div class="text-[11px] text-teal-400">${escapeTeacherHtml(mem.major || 'Biologiya')} (${escapeTeacherHtml(mem.course || 'II Kurs')})</div>
+            <div class="text-[11px] text-teal-700 font-medium">${escapeTeacherHtml(mem.major || 'Biologiya')} (${escapeTeacherHtml(mem.course || 'II Kurs')})</div>
           </td>
           <td class="py-3 px-4">
             <div class="flex flex-wrap gap-1">
               ${skills.slice(0, 2).map(sk => `
-                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 text-[10px]">
+                <span class="px-2 py-0.5 rounded-lg bg-teal-50 text-teal-800 border border-teal-200 text-[10px] font-semibold">
                   ${escapeTeacherHtml(sk)}
                 </span>
               `).join("")}
             </div>
           </td>
-          <td class="py-3 px-4 text-slate-400 font-mono text-[11px]">
+          <td class="py-3 px-4 text-slate-500 font-mono text-[11px]">
             ${escapeTeacherHtml(mem.email || '')}
           </td>
         </tr>
