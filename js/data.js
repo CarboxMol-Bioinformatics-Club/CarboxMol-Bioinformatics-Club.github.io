@@ -2345,8 +2345,6 @@ events: [
       ],
       "orcid": "",
       "googleScholar": "",
-      "officeLocation": "Kompüter və Bio-laboratoriya mərkəzi, Otaq 312",
-      "consultationHours": "Çərşənbə axşamı və Cümə: 14:00 - 16:00",
       "bio": "Bioinformatika və molekulyar biologiya sahəsində tələbələrə elmi rəhbərlik və laboratoriya mentorluğu göstərir.",
       "status": "Aktiv",
       "registeredAt": "2026-10-10",
@@ -2375,8 +2373,6 @@ events: [
       ],
       "orcid": "",
       "googleScholar": "https://www.linkedin.com/in/fidan-verdiyeva-753bb92ba?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
-      "officeLocation": "BDU Biologiya & CarboxMol Virtual Lab",
-      "consultationHours": "Razılaşma ilə (Onlayn / Laboratoriya)",
       "bio": "Molekulyar biologiya, fitopatologiya və DNT ardıcıllıqlarının bioinformatik analizi üzrə tədqiqatçı və klub mentoru.",
       "status": "Aktiv",
       "registeredAt": "2026-10-14",
@@ -2406,8 +2402,6 @@ events: [
         "Python"
       ],
       "orcid": "",
-      "officeLocation": "Kompüter və Bio-laboratoriya mərkəzi, Otaq 312",
-      "consultationHours": "Çərşənbə axşamı və Cümə: 14:00 - 16:00",
       "bio": "Bioinformatika və molekulyar biologiya sahəsində tələbələrə elmi rəhbərlik və laboratoriya mentorluğu göstərir.",
       "status": "Təsdiqləndi",
       "dateApplied": "2026-10-10",
@@ -2434,8 +2428,6 @@ events: [
         "Biopython"
       ],
       "orcid": "",
-      "officeLocation": "BDU Biologiya & CarboxMol Virtual Lab",
-      "consultationHours": "Razılaşma ilə (Onlayn / Laboratoriya)",
       "bio": "Molekulyar biologiya, fitopatologiya və DNT ardıcıllıqlarının bioinformatik analizi üzrə tədqiqatçı və klub mentoru.",
       "status": "Təsdiqləndi",
       "dateApplied": "2026-10-14",
@@ -2461,7 +2453,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.10.29.v39_carbox_carboxmol_only_structural_tools";
+const CURRENT_DATA_VERSION = "2026.10.29.v40_teacher_flexible_universities_no_room_office";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -2555,6 +2547,22 @@ function purgeMockData(data) {
       if (p && p.id === "proj-3d-structural-tools") {
         p.title = "3D Struktur Alətləri (Carbox & CarboxMol)";
         p.stack = ["Carbox & CarboxMol"];
+      }
+    });
+  }
+  if (Array.isArray(data.teachers)) {
+    data.teachers.forEach(t => {
+      if (t) {
+        delete t.officeLocation;
+        delete t.consultationHours;
+      }
+    });
+  }
+  if (Array.isArray(data.teacherApplications)) {
+    data.teacherApplications.forEach(a => {
+      if (a) {
+        delete a.officeLocation;
+        delete a.consultationHours;
       }
     });
   }

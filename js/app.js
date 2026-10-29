@@ -776,20 +776,23 @@ async function handleTeacherRegistration(e) {
 
   const fullName = (document.getElementById("tRegFullName")?.value || "").trim();
   const title = (document.getElementById("tRegTitle")?.value || "").trim();
-  const university = (document.getElementById("tRegUniversity")?.value || "").trim() || "Qərbi Kaspi Universiteti (WCU)";
+  let university = (document.getElementById("tRegUniversity")?.value || "").trim();
+  if (university === "Digər" || !university) {
+    const customUni = (document.getElementById("tRegUniversityCustom")?.value || "").trim();
+    if (customUni) university = customUni;
+  }
+  if (!university) university = "Qərbi Kaspi Universiteti (WCU)";
   const department = (document.getElementById("tRegDepartment")?.value || "").trim();
   const email = (document.getElementById("tRegEmail")?.value || "").trim().toLowerCase();
   const phone = (document.getElementById("tRegPhone")?.value || "").trim();
   const specialties = (document.getElementById("tRegSpecialties")?.value || "").trim();
-  const officeLocation = (document.getElementById("tRegOffice")?.value || "").trim();
-  const consultationHours = (document.getElementById("tRegHours")?.value || "").trim();
   const orcid = (document.getElementById("tRegOrcid")?.value || "").trim();
   const bio = (document.getElementById("tRegBio")?.value || "").trim();
   const rawUsername = (document.getElementById("tRegUsername")?.value || "").trim().toLowerCase();
   const password = (document.getElementById("tRegPassword")?.value || "").trim();
 
-  if (!fullName || !email || !department || !rawUsername || !password) {
-    showToast("Zəhmət olmasa tələb olunan bütün əsas xanaları doldurun.", "warning");
+  if (!fullName || !email || !department || !specialties || !rawUsername || !password) {
+    showToast("Zəhmət olmasa tələb olunan bütün əsas xanaları (ad, universitet, ixtisas/sahə, e-poçt, login, şifrə) doldurun.", "warning");
     return;
   }
 
@@ -873,8 +876,8 @@ async function handleTeacherRegistration(e) {
     photo: "",
     specialties: specArray,
     orcid: orcid,
-    officeLocation: officeLocation || "Qeyd edilməyib",
-    consultationHours: consultationHours || "Razılaşma ilə",
+    officeLocation: "",
+    consultationHours: "",
     bio: sanitizedBio || "CarboxMol Bioinformatika Klubu akademik mentoru.",
     status: "Gözləyir", // TƏHLÜKƏSİZLİK: Yalnız Sədr təsdiq etdikdən sonra 'Aktiv' olur
     registeredAt: todayStr
@@ -894,8 +897,8 @@ async function handleTeacherRegistration(e) {
     password: password,
     specialties: specArray,
     orcid: orcid,
-    officeLocation: newTeacher.officeLocation,
-    consultationHours: newTeacher.consultationHours,
+    officeLocation: "",
+    consultationHours: "",
     bio: newTeacher.bio,
     status: "Gözləyir",
     dateApplied: todayStr,
@@ -960,10 +963,8 @@ async function handleTeacherRegistration(e) {
     "Əlaqə Nömrəsi (WhatsApp)": phone || "Qeyd edilməyib",
     "Təyin Edilmiş Login (@username)": "@" + cleanUsername,
     "Təyin Edilmiş Şifrə (Klub Sədrinə Açıq)": password,
-    "Tədqiqat Sahələri": specArray.length ? specArray.join(", ") : "Bioinformatika",
+    "İxtisası və Tədqiqat Sahəsi": specArray.length ? specArray.join(", ") : "Bioinformatika",
     "ORCID ID / Elmi Link": orcid || "Qeyd edilməyib",
-    "Kabinet / Otaq": officeLocation || "Qeyd edilməyib",
-    "Məsləhət Saatları": consultationHours || "Razılaşma ilə",
     "Qısa Bioqrafiya və Dəstək Planı": sanitizedBio || "Qeyd edilməyib",
     "Status": "Gözləyir (Klub Sədrinin Təsdiqi Tələb Olunur)",
     "Müraciət Tarixi": new Date().toLocaleString("az-AZ"),

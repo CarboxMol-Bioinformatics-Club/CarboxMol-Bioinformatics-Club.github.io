@@ -75,14 +75,14 @@ const TeacherPortal = {
     const elStatus = document.getElementById("teacherActiveStatus");
     const elAvatar = document.getElementById("teacherActiveAvatar");
     const elBio = document.getElementById("teacherActiveBio");
-    const elOffice = document.getElementById("teacherActiveOffice");
-    const elHours = document.getElementById("teacherActiveHours");
+    const elUni = document.getElementById("teacherActiveUniversity");
+    const elSpecialties = document.getElementById("teacherActiveSpecialties");
     const elTags = document.getElementById("teacherSpecialtiesContainer");
 
     if (elName) elName.innerText = teacher.fullName || "Müəllim / Mentor";
     if (elTitle) elTitle.innerText = teacher.title || "Akademik Mentor";
     if (elMeta) {
-      elMeta.innerText = `${teacher.university || 'WCU'} • ${teacher.department || 'Təbiət Elmləri Kafedrası'} • @${teacher.username || 'muellim'}`;
+      elMeta.innerText = `${teacher.university || 'Universitet'} • ${teacher.department || 'Akademik Kafedra'} • @${teacher.username || 'muellim'}`;
     }
     if (elStatus) {
       elStatus.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold border " +
@@ -99,11 +99,12 @@ const TeacherPortal = {
     if (elBio) {
       elBio.innerText = teacher.bio || "Bioinformatika sahəsində tələbələrə elmi dəstək və akademik rəhbərlik göstərir.";
     }
-    if (elOffice) {
-      elOffice.innerText = teacher.officeLocation || "Əhməd Rəcəbli korpusu, Otaq 312";
+    if (elUni) {
+      elUni.innerText = teacher.university || "Universitet qeyd edilməyib";
     }
-    if (elHours) {
-      elHours.innerText = teacher.consultationHours || "Çərşənbə axşamı və Cümə: 14:00 - 16:00";
+    if (elSpecialties) {
+      const specs = Array.isArray(teacher.specialties) ? teacher.specialties.join(", ") : (teacher.specialties || "Bioinformatika");
+      elSpecialties.innerText = specs;
     }
     if (elTags) {
       const specs = Array.isArray(teacher.specialties) ? teacher.specialties : ["Bioinformatika", "Genom Analizi"];
@@ -617,16 +618,39 @@ const TeacherPortal = {
     if (!modal) return;
 
     const elTitle = document.getElementById("editTeacherTitle");
-    const elOffice = document.getElementById("editTeacherOffice");
-    const elHours = document.getElementById("editTeacherHours");
+    const elUni = document.getElementById("editTeacherUniversity");
+    const elUniCustom = document.getElementById("editTeacherUniversityCustom");
+    const elUniCustomWrap = document.getElementById("editTeacherUniCustomWrap");
+    const elSpecialties = document.getElementById("editTeacherSpecialties");
     const elBio = document.getElementById("editTeacherBio");
     const elOrcid = document.getElementById("editTeacherOrcid");
 
-    if (elTitle) elTitle.value = teacher.title || "";
-    if (elOffice) elOffice.value = teacher.officeLocation || "";
-    if (elHours) elHours.value = teacher.consultationHours || "";
-    if (elBio) elBio.value = teacher.bio || "";
-    if (elOrcid) elOrcid.value = teacher.orcid || "";
+    if (elTitle) elTitle.value = currentTeacher.title || "";
+    if (elUni) {
+      const standardUnis = [
+        "Qərbi Kaspi Universiteti (WCU)", "Bakı Dövlət Universiteti (BDU)", "Azərbaycan Tibb Universiteti (ATU)",
+        "Xəzər Universiteti", "Azərbaycan Dövlət Neft və Sənaye Universiteti (ADNSU)", "ADA Universiteti",
+        "Bakı Mühəndislik Universiteti (BMU)", "Bakı Ali Neft Məktəbi (BANM)", "Fransız-Azərbaycan Universiteti (UFAZ)",
+        "Azərbaycan Dövlət İqtisad Universiteti (UNEC)", "AMEA / AR ETN Molekulyar Biologiya və Biotexnologiyalar İnstitutu",
+        "AR ETN Genetik Ehtiyatlar İnstitutu", "Cambridge University (MRC LMB)"
+      ];
+      if (standardUnis.includes(currentTeacher.university)) {
+        elUni.value = currentTeacher.university;
+        if (elUniCustomWrap) elUniCustomWrap.classList.add("hidden");
+      } else if (currentTeacher.university) {
+        elUni.value = "Digər";
+        if (elUniCustom) elUniCustom.value = currentTeacher.university;
+        if (elUniCustomWrap) elUniCustomWrap.classList.remove("hidden");
+      } else {
+        elUni.value = "Qərbi Kaspi Universiteti (WCU)";
+        if (elUniCustomWrap) elUniCustomWrap.classList.add("hidden");
+      }
+    }
+    if (elSpecialties) {
+      elSpecialties.value = Array.isArray(currentTeacher.specialties) ? currentTeacher.specialties.join(", ") : (currentTeacher.specialties || "");
+    }
+    if (elBio) elBio.value = currentTeacher.bio || "";
+    if (elOrcid) elOrcid.value = currentTeacher.orcid || "";
 
     modal.classList.remove("hidden");
   },
@@ -649,14 +673,20 @@ const TeacherPortal = {
     if (tIdx === -1) return;
 
     const titleVal = (document.getElementById("editTeacherTitle")?.value || "").trim();
-    const officeVal = (document.getElementById("editTeacherOffice")?.value || "").trim();
-    const hoursVal = (document.getElementById("editTeacherHours")?.value || "").trim();
+    let uniVal = (document.getElementById("editTeacherUniversity")?.value || "").trim();
+    if (uniVal === "Digər") {
+      const customVal = (document.getElementById("editTeacherUniversityCustom")?.value || "").trim();
+      if (customVal) uniVal = customVal;
+    }
+    const specsVal = (document.getElementById("editTeacherSpecialties")?.value || "").trim();
     const bioVal = (document.getElementById("editTeacherBio")?.value || "").trim();
     const orcidVal = (document.getElementById("editTeacherOrcid")?.value || "").trim();
 
+    const specArray = specsVal ? specsVal.split(",").map(s => s.trim()).filter(Boolean) : (data.teachers[tIdx].specialties || ["Bioinformatika"]);
+
     data.teachers[tIdx].title = typeof ClubSecurity !== "undefined" ? ClubSecurity.sanitizeText(titleVal) : titleVal;
-    data.teachers[tIdx].officeLocation = typeof ClubSecurity !== "undefined" ? ClubSecurity.sanitizeText(officeVal) : officeVal;
-    data.teachers[tIdx].consultationHours = typeof ClubSecurity !== "undefined" ? ClubSecurity.sanitizeText(hoursVal) : hoursVal;
+    data.teachers[tIdx].university = typeof ClubSecurity !== "undefined" ? ClubSecurity.sanitizeText(uniVal) : uniVal;
+    data.teachers[tIdx].specialties = specArray;
     data.teachers[tIdx].bio = typeof ClubSecurity !== "undefined" ? ClubSecurity.sanitizeText(bioVal) : bioVal;
     data.teachers[tIdx].orcid = typeof ClubSecurity !== "undefined" ? ClubSecurity.sanitizeText(orcidVal) : orcidVal;
 
@@ -664,8 +694,8 @@ const TeacherPortal = {
     const aIdx = (data.teacherApplications || []).findIndex(a => a.teacherId === teacher.id || a.id === teacher.id);
     if (aIdx !== -1) {
       data.teacherApplications[aIdx].title = data.teachers[tIdx].title;
-      data.teacherApplications[aIdx].officeLocation = data.teachers[tIdx].officeLocation;
-      data.teacherApplications[aIdx].consultationHours = data.teachers[tIdx].consultationHours;
+      data.teacherApplications[aIdx].university = data.teachers[tIdx].university;
+      data.teacherApplications[aIdx].specialties = data.teachers[tIdx].specialties;
       data.teacherApplications[aIdx].bio = data.teachers[tIdx].bio;
       data.teacherApplications[aIdx].orcid = data.teachers[tIdx].orcid;
     }

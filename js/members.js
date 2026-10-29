@@ -279,8 +279,8 @@ const MembersPortal = {
           <span class="px-3 py-1.5 rounded-xl bg-slate-900/80 border border-indigo-500/30 text-indigo-300 text-xs font-semibold">
             <i class="fa-solid fa-phone mr-1 text-slate-400"></i> ${escapeHtml(t.phone || '+994 99 350 69 07')}
           </span>
-          <span class="px-3 py-1.5 rounded-xl bg-slate-900/80 border border-indigo-500/30 text-indigo-300 text-xs font-semibold">
-            <i class="fa-solid fa-clock mr-1 text-slate-400"></i> ${escapeHtml(t.consultationHours || 'Məsləhət: Çərşənbə & Cümə')}
+          <span class="px-3 py-1.5 rounded-xl bg-slate-900/80 border border-teal-500/30 text-teal-300 text-xs font-semibold">
+            <i class="fa-solid fa-flask-vial mr-1 text-teal-400"></i> ${escapeHtml(Array.isArray(t.specialties) ? t.specialties.join(", ") : (t.specialties || 'Bioinformatika'))}
           </span>
         </div>
       </div>

@@ -2049,13 +2049,9 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
               <span class="text-slate-400 block font-semibold">Əlaqə Telefonu:</span>
               <span class="text-slate-200">${escapeHtml(t.phone || app.phone || 'Qeyd edilməyib')}</span>
             </div>
-            <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-              <span class="text-slate-400 block font-semibold">Kabinet / Otaq:</span>
-              <span class="text-slate-200">${escapeHtml(t.officeLocation || app.officeLocation || 'Qeyd edilməyib')}</span>
-            </div>
-            <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-              <span class="text-slate-400 block font-semibold">Məsləhət Saatları:</span>
-              <span class="text-slate-200">${escapeHtml(t.consultationHours || app.consultationHours || 'Qeyd edilməyib')}</span>
+            <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1 sm:col-span-2">
+              <span class="text-slate-400 block font-semibold">İxtisası və Tədqiqat Sahəsi:</span>
+              <span class="text-teal-300 font-medium">${escapeHtml(Array.isArray(t.specialties) ? t.specialties.join(", ") : (t.specialties || app.specialties || 'Bioinformatika'))}</span>
             </div>
           </div>
 
@@ -2099,6 +2095,8 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
 
     const fullName = (document.getElementById("newTeachFullName")?.value || "").trim();
     const title = (document.getElementById("newTeachTitle")?.value || "").trim();
+    const university = (document.getElementById("newTeachUniversity")?.value || "").trim() || "Qərbi Kaspi Universiteti (WCU)";
+    const specsVal = (document.getElementById("newTeachSpecialties")?.value || "").trim();
     const email = (document.getElementById("newTeachEmail")?.value || "").trim();
     const phone = (document.getElementById("newTeachPhone")?.value || "").trim();
     const department = (document.getElementById("newTeachDept")?.value || "").trim();
@@ -2110,6 +2108,8 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
       if (typeof showToast === "function") showToast("Zəhmət olmasa bütün vacib xanaları doldurun.", "error");
       return;
     }
+
+    const specArray = specsVal ? specsVal.split(",").map(s => s.trim()).filter(Boolean) : ["Bioinformatika", "Genom Analizi"];
 
     const cleanUsername = typeof ClubSecurity !== "undefined"
       ? ClubSecurity.sanitizeUsername(username)
@@ -2125,17 +2125,17 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
       fullName: typeof ClubSecurity !== "undefined" ? ClubSecurity.sanitizeText(fullName) : fullName,
       title: title || "Akademik Mentor",
       academicDegree: "Müəllim / Mentor",
-      university: "Qərbi Kaspi Universiteti (WCU)",
-      faculty: "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+      university: university,
+      faculty: department || "Təbiət Elmləri",
       department: department || "Təbiət Elmləri Kafedrası",
       email: email,
       phone: phone,
       username: cleanUsername,
       password: password,
       photo: "",
-      specialties: ["Bioinformatika", "Genom Analizi"],
-      officeLocation: "Əhməd Rəcəbli korpusu",
-      consultationHours: "Razılaşma ilə",
+      specialties: specArray,
+      officeLocation: "",
+      consultationHours: "",
       bio: bio || "CarboxMol Bioinformatika Klubu akademik mentoru.",
       status: "Aktiv",
       registeredAt: new Date().toISOString().split("T")[0],

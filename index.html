@@ -2524,12 +2524,16 @@ Seçilmiş pipeline: DESeq2
 
           <div class="space-y-2 bg-slate-950/70 p-3.5 rounded-2xl border border-slate-800">
             <div>
-              <span class="text-slate-400 block text-[11px] font-semibold">Otaq / Laboratoriya:</span>
-              <span id="teacherActiveOffice" class="text-slate-200 font-medium">Əhməd Rəcəbli korpusu, Otaq 312</span>
+              <span class="text-slate-400 block text-[11px] font-semibold flex items-center gap-1.5">
+                <i class="fa-solid fa-building-columns text-indigo-400"></i> Universitet / Təşkilat:
+              </span>
+              <span id="teacherActiveUniversity" class="text-slate-200 font-medium">Qərbi Kaspi Universiteti (WCU)</span>
             </div>
             <div>
-              <span class="text-slate-400 block text-[11px] font-semibold">Məsləhət Saatları:</span>
-              <span id="teacherActiveHours" class="text-slate-200 font-medium">Çərşənbə axşamı və Cümə: 14:00 - 16:00</span>
+              <span class="text-slate-400 block text-[11px] font-semibold flex items-center gap-1.5">
+                <i class="fa-solid fa-flask-vial text-teal-400"></i> İxtisas və Tədqiqat Sahəsi:
+              </span>
+              <span id="teacherActiveSpecialties" class="text-teal-300 font-medium">Bioinformatika, Genom Analizi</span>
             </div>
           </div>
         </div>
@@ -4362,18 +4366,40 @@ Seçilmiş pipeline: DESeq2
           </div>
 
           <div>
-            <label class="block text-slate-300 font-semibold mb-1">Universitet / Təşkilat *</label>
-            <input type="text" id="tRegUniversity" value="Qərbi Kaspi Universiteti (WCU)" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
+            <label class="block text-slate-300 font-semibold mb-1">Universitet / Elmi Təşkilat *</label>
+            <select id="tRegUniversity" onchange="const c = document.getElementById('tRegUniCustomWrap'); if(c) c.classList.toggle('hidden', this.value !== 'Digər');" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400">
+              <option value="Qərbi Kaspi Universiteti (WCU)">Qərbi Kaspi Universiteti (WCU)</option>
+              <option value="Bakı Dövlət Universiteti (BDU)">Bakı Dövlət Universiteti (BDU)</option>
+              <option value="Azərbaycan Tibb Universiteti (ATU)">Azərbaycan Tibb Universiteti (ATU)</option>
+              <option value="Xəzər Universiteti">Xəzər Universiteti</option>
+              <option value="Azərbaycan Dövlət Neft və Sənaye Universiteti (ADNSU)">Azərbaycan Dövlət Neft və Sənaye Universiteti (ADNSU)</option>
+              <option value="ADA Universiteti">ADA Universiteti</option>
+              <option value="Bakı Mühəndislik Universiteti (BMU)">Bakı Mühəndislik Universiteti (BMU)</option>
+              <option value="Bakı Ali Neft Məktəbi (BANM)">Bakı Ali Neft Məktəbi (BANM)</option>
+              <option value="Fransız-Azərbaycan Universiteti (UFAZ)">Fransız-Azərbaycan Universiteti (UFAZ)</option>
+              <option value="Azərbaycan Dövlət İqtisad Universiteti (UNEC)">Azərbaycan Dövlət İqtisad Universiteti (UNEC)</option>
+              <option value="Azərbaycan Texniki Universiteti (AzTU)">Azərbaycan Texniki Universiteti (AzTU)</option>
+              <option value="Azərbaycan Dövlət Pedaqoji Universiteti (ADPU)">Azərbaycan Dövlət Pedaqoji Universiteti (ADPU)</option>
+              <option value="AMEA / AR ETN Molekulyar Biologiya və Biotexnologiyalar İnstitutu">AR ETN Molekulyar Biologiya və Biotexnologiyalar İnstitutu (MBİ)</option>
+              <option value="AR ETN Genetik Ehtiyatlar İnstitutu">AR ETN Genetik Ehtiyatlar İnstitutu</option>
+              <option value="Cambridge University (MRC LMB)">Cambridge University (MRC LMB)</option>
+              <option value="Digər">Digər Universitet / Elmi Mərkəz (Aşağıda Qeyd Edin)...</option>
+            </select>
+          </div>
+
+          <div id="tRegUniCustomWrap" class="hidden sm:col-span-2">
+            <label class="block text-slate-300 font-semibold mb-1">Universitet / Elmi Müəssisənin Tam Adı *</label>
+            <input type="text" id="tRegUniversityCustom" placeholder="Universitetinizin və ya elmi mərkəzinizin adını daxil edin" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
           </div>
 
           <div>
-            <label class="block text-slate-300 font-semibold mb-1">Fakültə və ya Kafedra *</label>
-            <input type="text" id="tRegDepartment" required placeholder="məs: Təbiət Elmləri Kafedrası" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
+            <label class="block text-slate-300 font-semibold mb-1">Fakültə, Kafedra və ya Laboratoriya *</label>
+            <input type="text" id="tRegDepartment" required placeholder="məs: Təbiət Elmləri / Molekulyar Biologiya" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
           </div>
 
           <div>
             <label class="block text-slate-300 font-semibold mb-1">Rəsmi E-poçt Ünvanı *</label>
-            <input type="email" id="tRegEmail" required placeholder="ad.soyad@wcu.edu.az" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-mono focus:outline-none focus:border-indigo-400" />
+            <input type="email" id="tRegEmail" required placeholder="ad.soyad@universitet.edu.az və ya email" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-mono focus:outline-none focus:border-indigo-400" />
           </div>
 
           <div>
@@ -4381,24 +4407,16 @@ Seçilmiş pipeline: DESeq2
             <input type="text" id="tRegPhone" placeholder="+994 50 123 45 67" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
           </div>
 
-          <div>
-            <label class="block text-slate-300 font-semibold mb-1">İxtisas və Tədqiqat Sahələri (Vergüllə ayırın)</label>
-            <input type="text" id="tRegSpecialties" placeholder="Molekulyar Genetika, Genom Analizi, Biostatistika" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
+          <div class="sm:col-span-2">
+            <label class="block text-slate-300 font-semibold mb-1">
+              <i class="fa-solid fa-flask-vial text-teal-400 mr-1"></i> İxtisası və Tədqiqat Sahəsi *
+            </label>
+            <input type="text" id="tRegSpecialties" required placeholder="məs: Molekulyar Biologiya, Genomika, Bioinformatika, DNT ardıcıllığı analizi" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
           </div>
 
-          <div>
+          <div class="sm:col-span-2">
             <label class="block text-slate-300 font-semibold mb-1">ORCID ID və ya Elmi Link (istəyə bağlı)</label>
-            <input type="text" id="tRegOrcid" placeholder="0000-0002-1825-0097" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-mono focus:outline-none focus:border-indigo-400" />
-          </div>
-
-          <div>
-            <label class="block text-slate-300 font-semibold mb-1">Kabinet / Otaq</label>
-            <input type="text" id="tRegOffice" placeholder="Əhməd Rəcəbli korpusu, Otaq 312" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
-          </div>
-
-          <div>
-            <label class="block text-slate-300 font-semibold mb-1">Məsləhət Saatları</label>
-            <input type="text" id="tRegHours" placeholder="Çərşənbə axşamı və Cümə: 14:00 - 16:00" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
+            <input type="text" id="tRegOrcid" placeholder="https://orcid.org/... və ya LinkedIn elmi profil" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-mono focus:outline-none focus:border-indigo-400" />
           </div>
         </div>
 
@@ -4586,15 +4604,36 @@ Seçilmiş pipeline: DESeq2
           <input type="text" id="editTeacherTitle" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label class="block text-slate-300 font-semibold mb-1">Kabinet / Otaq:</label>
-            <input type="text" id="editTeacherOffice" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
-          </div>
-          <div>
-            <label class="block text-slate-300 font-semibold mb-1">Məsləhət Saatları:</label>
-            <input type="text" id="editTeacherHours" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
-          </div>
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Universitet / Elmi Təşkilat:</label>
+          <select id="editTeacherUniversity" onchange="const c = document.getElementById('editTeacherUniCustomWrap'); if(c) c.classList.toggle('hidden', this.value !== 'Digər');" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400">
+            <option value="Qərbi Kaspi Universiteti (WCU)">Qərbi Kaspi Universiteti (WCU)</option>
+            <option value="Bakı Dövlət Universiteti (BDU)">Bakı Dövlət Universiteti (BDU)</option>
+            <option value="Azərbaycan Tibb Universiteti (ATU)">Azərbaycan Tibb Universiteti (ATU)</option>
+            <option value="Xəzər Universiteti">Xəzər Universiteti</option>
+            <option value="Azərbaycan Dövlət Neft və Sənaye Universiteti (ADNSU)">Azərbaycan Dövlət Neft və Sənaye Universiteti (ADNSU)</option>
+            <option value="ADA Universiteti">ADA Universiteti</option>
+            <option value="Bakı Mühəndislik Universiteti (BMU)">Bakı Mühəndislik Universiteti (BMU)</option>
+            <option value="Bakı Ali Neft Məktəbi (BANM)">Bakı Ali Neft Məktəbi (BANM)</option>
+            <option value="Fransız-Azərbaycan Universiteti (UFAZ)">Fransız-Azərbaycan Universiteti (UFAZ)</option>
+            <option value="Azərbaycan Dövlət İqtisad Universiteti (UNEC)">Azərbaycan Dövlət İqtisad Universiteti (UNEC)</option>
+            <option value="AMEA / AR ETN Molekulyar Biologiya və Biotexnologiyalar İnstitutu">AR ETN Molekulyar Biologiya və Biotexnologiyalar İnstitutu (MBİ)</option>
+            <option value="AR ETN Genetik Ehtiyatlar İnstitutu">AR ETN Genetik Ehtiyatlar İnstitutu</option>
+            <option value="Cambridge University (MRC LMB)">Cambridge University (MRC LMB)</option>
+            <option value="Digər">Digər Universitet / Təşkilat...</option>
+          </select>
+        </div>
+
+        <div id="editTeacherUniCustomWrap" class="hidden">
+          <label class="block text-slate-300 font-semibold mb-1">Universitetin / Təşkilatın Tam Adı:</label>
+          <input type="text" id="editTeacherUniversityCustom" placeholder="Universitetinizin adını daxil edin" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">
+            <i class="fa-solid fa-flask-vial text-teal-400 mr-1"></i> İxtisası və Tədqiqat Sahəsi:
+          </label>
+          <input type="text" id="editTeacherSpecialties" placeholder="Molekulyar Biologiya, Genomika, DNT Analizi" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
         </div>
 
         <div>
@@ -4654,6 +4693,25 @@ Seçilmiş pipeline: DESeq2
           <div>
             <label class="block text-slate-300 font-semibold mb-1">Əlaqə Nömrəsi</label>
             <input type="text" id="newTeachPhone" placeholder="+994 50 123 45 67" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Universitet / Elmi Təşkilat *</label>
+            <select id="newTeachUniversity" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400">
+              <option value="Qərbi Kaspi Universiteti (WCU)">Qərbi Kaspi Universiteti (WCU)</option>
+              <option value="Bakı Dövlət Universiteti (BDU)">Bakı Dövlət Universiteti (BDU)</option>
+              <option value="Azərbaycan Tibb Universiteti (ATU)">Azərbaycan Tibb Universiteti (ATU)</option>
+              <option value="Xəzər Universiteti">Xəzər Universiteti</option>
+              <option value="Azərbaycan Dövlət Neft və Sənaye Universiteti (ADNSU)">Azərbaycan Dövlət Neft və Sənaye Universiteti (ADNSU)</option>
+              <option value="ADA Universiteti">ADA Universiteti</option>
+              <option value="AMEA / AR ETN Molekulyar Biologiya və Biotexnologiyalar İnstitutu">AR ETN Molekulyar Biologiya və Biotexnologiyalar İnstitutu (MBİ)</option>
+              <option value="AR ETN Genetik Ehtiyatlar İnstitutu">AR ETN Genetik Ehtiyatlar İnstitutu</option>
+              <option value="Cambridge University (MRC LMB)">Cambridge University (MRC LMB)</option>
+              <option value="Digər Universitet / Elmi Mərkəz">Digər Universitet / Elmi Mərkəz</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">İxtisası və Tədqiqat Sahəsi *</label>
+            <input type="text" id="newTeachSpecialties" required placeholder="məs: Molekulyar Biologiya, Genomika" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-indigo-400" />
           </div>
           <div>
             <label class="block text-slate-300 font-semibold mb-1">Kafedra / Departament</label>

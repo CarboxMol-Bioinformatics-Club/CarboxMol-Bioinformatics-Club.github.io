@@ -1,7 +1,7 @@
 // CarboxMol Bioinformatika Klubu - PWA Service Worker (Oflayn və Canlı Sinxronizasiya Mühərriki)
-// Versiya: 2.2.9
+// Versiya: 2.3.0
  
-const CACHE_VERSION = 'carboxmol-bioinformatics-club-v2.2.9';
+const CACHE_VERSION = 'carboxmol-bioinformatics-club-v2.3.0';
 const CORE_CACHE = `core-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
 
