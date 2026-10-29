@@ -616,7 +616,7 @@
 
   // Academic Reference Copy Helper
   function copyCarboxMolReference(btnEl) {
-    const citationText = 'Hajizadeh, S. M., & Murshudov, G. N. (2026). CarboxMol: Macromolecular Crystallography & Structural Bioinformatics Workbench. Official Web Platform: https://carboxmol.github.io';
+    const citationText = 'Hajizadeh, S. M., & Murshudov, G. N. (2026). CarboxMol: Macromolecular Crystallography & Structural Bioinformatics Workbench (Under Active Development). Official Web Platform: https://carboxmol.github.io';
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(citationText).catch(() => {});
     } else {
