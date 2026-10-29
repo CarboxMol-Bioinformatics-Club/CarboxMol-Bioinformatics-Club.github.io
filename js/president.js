@@ -1984,10 +1984,34 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     if (!confirm("Diqqət! Bu müəllim hesabını və müraciətini tamamilə silmək istədiyinizdən əminsiniz?")) return;
 
     const data = getClubData();
-    data.teachers = (data.teachers || []).filter(item => item.id !== teacherId);
-    data.teacherApplications = (data.teacherApplications || []).filter(item => item.id !== appId && item.teacherId !== teacherId);
+    const targetTeacher = (data.teachers || []).find(t => t.id === teacherId);
+    const targetUsername = targetTeacher ? (targetTeacher.username || "").toLowerCase() : "";
+
+    data.deletedTeacherIds = data.deletedTeacherIds || [];
+    if (teacherId && !data.deletedTeacherIds.includes(teacherId)) {
+      data.deletedTeacherIds.push(teacherId);
+    }
+    if (targetUsername && !data.deletedTeacherIds.includes(targetUsername)) {
+      data.deletedTeacherIds.push(targetUsername);
+    }
+
+    data.deletedAppIds = data.deletedAppIds || [];
+    if (appId && !data.deletedAppIds.includes(appId)) {
+      data.deletedAppIds.push(appId);
+    }
+
+    data.teachers = (data.teachers || []).filter(item => item.id !== teacherId && (item.username || "").toLowerCase() !== targetUsername);
+    data.teacherApplications = (data.teacherApplications || []).filter(item => item.id !== appId && item.teacherId !== teacherId && (item.username || "").toLowerCase() !== targetUsername);
 
     saveClubData(data);
+
+    if (window.SyncEngine) {
+      window.SyncEngine.broadcast("DELETE_TEACHER", {
+        teacherId,
+        applicationId: appId,
+        deletedTeacherIds: data.deletedTeacherIds
+      });
+    }
 
     try {
       fetch("/api/sync", {
@@ -1996,7 +2020,8 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
         body: JSON.stringify({
           action: "DELETE_TEACHER",
           teacherId,
-          applicationId: appId
+          applicationId: appId,
+          deletedTeacherIds: data.deletedTeacherIds
         })
       }).catch(() => {});
     } catch (e) {}
@@ -2005,7 +2030,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     this.renderTeachersAccountsTable();
 
     if (typeof showToast === "function") {
-      showToast("Müəllim hesabı sistemdən tamamilə silindi.", "info");
+      showToast("Müəllim hesabı sistemdən tamamilə silindi və bloklandı.", "info");
     }
   },
 

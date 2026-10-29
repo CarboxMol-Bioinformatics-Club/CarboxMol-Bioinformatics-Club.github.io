@@ -1462,8 +1462,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (Array.isArray(res.teachers)) {
             data.teachers = data.teachers || [];
+            data.deletedTeacherIds = data.deletedTeacherIds || [];
             res.teachers.forEach(st => {
               if (!st || !st.id) return;
+              if (data.deletedTeacherIds.includes(st.id) || (st.username && data.deletedTeacherIds.includes(st.username.toLowerCase()))) return;
+              if (st.id === "teacher-fidan" || (st.username || "").toLowerCase() === "fidan") return;
               const idx = data.teachers.findIndex(t => t.id === st.id || (t.username && st.username && t.username.toLowerCase() === st.username.toLowerCase()));
               if (idx === -1) {
                 data.teachers.unshift(st);
@@ -1477,8 +1480,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (Array.isArray(res.teacherApplications)) {
             data.teacherApplications = data.teacherApplications || [];
+            data.deletedAppIds = data.deletedAppIds || [];
+            data.deletedTeacherIds = data.deletedTeacherIds || [];
             res.teacherApplications.forEach(sa => {
               if (!sa || !sa.id) return;
+              if (data.deletedAppIds.includes(sa.id) || (sa.teacherId && data.deletedTeacherIds.includes(sa.teacherId))) return;
+              if (sa.id === "teach-app-fidan" || sa.teacherId === "teacher-fidan" || (sa.username || "").toLowerCase() === "fidan") return;
               const idx = data.teacherApplications.findIndex(a => a.id === sa.id);
               if (idx === -1) {
                 data.teacherApplications.unshift(sa);

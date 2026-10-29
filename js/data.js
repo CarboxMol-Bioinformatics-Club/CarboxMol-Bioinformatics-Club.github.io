@@ -2350,34 +2350,6 @@ events: [
       "registeredAt": "2026-10-10",
       "approvedAt": "2026-10-10",
       "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
-    },
-    {
-      "id": "teacher-fidan",
-      "fullName": "Fidan Məhərrəmova (Verdiyeva)",
-      "title": "Akademik Mentor & Tədqiqatçı",
-      "academicDegree": "Magistr / Tədqiqatçı",
-      "university": "Bakı Dövlət Universiteti (BDU)",
-      "faculty": "Biologiya Fakültəsi",
-      "department": "Molekulyar Biologiya və Biotexnologiya Kafedrası",
-      "email": "fidanverdiyeva808@gmail.com",
-      "phone": "+994 70 887 04 94",
-      "username": "fidan",
-      "password": "Rasengan25",
-      "photo": "",
-      "specialties": [
-        "Genomika və NGS Analizi",
-        "Struktur Biologiyası və Dərman Dizaynı",
-        "Transkriptomika və RNA-Seq",
-        "Python",
-        "Biopython"
-      ],
-      "orcid": "",
-      "googleScholar": "https://www.linkedin.com/in/fidan-verdiyeva-753bb92ba?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
-      "bio": "Molekulyar biologiya, fitopatologiya və DNT ardıcıllıqlarının bioinformatik analizi üzrə tədqiqatçı və klub mentoru.",
-      "status": "Aktiv",
-      "registeredAt": "2026-10-14",
-      "approvedAt": "2026-10-14",
-      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
     }
   ],
 
@@ -2406,32 +2378,6 @@ events: [
       "status": "Təsdiqləndi",
       "dateApplied": "2026-10-10",
       "adminNotes": "Sədr tərəfindən rəsmi akademik mentor olaraq təsdiqlənmişdir."
-    },
-    {
-      "id": "teach-app-fidan",
-      "teacherId": "teacher-fidan",
-      "fullName": "Fidan Məhərrəmova (Verdiyeva)",
-      "title": "Akademik Mentor & Tədqiqatçı",
-      "academicDegree": "Magistr / Tədqiqatçı",
-      "university": "Bakı Dövlət Universiteti (BDU)",
-      "faculty": "Biologiya Fakültəsi",
-      "department": "Molekulyar Biologiya və Biotexnologiya Kafedrası",
-      "email": "fidanverdiyeva808@gmail.com",
-      "phone": "+994 70 887 04 94",
-      "username": "fidan",
-      "password": "Rasengan25",
-      "specialties": [
-        "Genomika və NGS Analizi",
-        "Struktur Biologiyası və Dərman Dizaynı",
-        "Transkriptomika və RNA-Seq",
-        "Python",
-        "Biopython"
-      ],
-      "orcid": "",
-      "bio": "Molekulyar biologiya, fitopatologiya və DNT ardıcıllıqlarının bioinformatik analizi üzrə tədqiqatçı və klub mentoru.",
-      "status": "Təsdiqləndi",
-      "dateApplied": "2026-10-14",
-      "adminNotes": "Sədr tərəfindən rəsmi akademik mentor və müəllim olaraq təsdiqlənmişdir."
     }
   ],
 
@@ -2453,7 +2399,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.10.29.v40_teacher_flexible_universities_no_room_office";
+const CURRENT_DATA_VERSION = "2026.10.29.v41_remove_duplicate_teacher_fidan_and_tombstone";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -2518,14 +2464,14 @@ function purgeMockData(data) {
     data.tasks = data.tasks.filter(t => t && !["task-101", "task-102", "task-103"].includes(t.id));
   }
   if (Array.isArray(data.teachers)) {
-    data.teachers = data.teachers.filter(t => t && t.id !== "teacher-1" && (t.username || "").toLowerCase() !== "rashad_ismayilov");
+    data.teachers = data.teachers.filter(t => t && t.id !== "teacher-1" && t.id !== "teacher-fidan" && (t.username || "").toLowerCase() !== "rashad_ismayilov" && (t.username || "").toLowerCase() !== "fidan");
     const hasSefanya = data.teachers.some(t => t && ((t.username || "").toLowerCase() === "sefanyamuellim" || t.id === "teacher-sefanya"));
     if (!hasSefanya && Array.isArray(INITIAL_DATA.teachers) && INITIAL_DATA.teachers.length > 0) {
       data.teachers.unshift(JSON.parse(JSON.stringify(INITIAL_DATA.teachers[0])));
     }
   }
   if (Array.isArray(data.teacherApplications)) {
-    data.teacherApplications = data.teacherApplications.filter(a => a && a.id !== "teach-app-1" && (a.username || "").toLowerCase() !== "rashad_ismayilov");
+    data.teacherApplications = data.teacherApplications.filter(a => a && a.id !== "teach-app-1" && a.id !== "teach-app-fidan" && a.teacherId !== "teacher-fidan" && (a.username || "").toLowerCase() !== "rashad_ismayilov" && (a.username || "").toLowerCase() !== "fidan");
     const hasSefanyaApp = data.teacherApplications.some(a => a && ((a.username || "").toLowerCase() === "sefanyamuellim" || a.id === "teach-app-sefanya"));
     if (!hasSefanyaApp && Array.isArray(INITIAL_DATA.teacherApplications) && INITIAL_DATA.teacherApplications.length > 0) {
       data.teacherApplications.unshift(JSON.parse(JSON.stringify(INITIAL_DATA.teacherApplications[0])));

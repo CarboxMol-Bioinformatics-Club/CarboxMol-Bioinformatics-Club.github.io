@@ -1,6 +1,6 @@
 {
-  "version": "2.3.0",
-  "build": "20261029-2205",
-  "timestamp": 1793297100000,
-  "description": "CarboxMol Bioinformatika Klubu v2.3.0 — Müəllim qeydiyyatında universitet seçiminin (bütün universitetlər) əlavə edilməsi, otaq/kabinet sahələrinin çıxarılaraq ixtisas və elmi istiqamətin vurğulanması"
+  "version": "2.3.1",
+  "build": "20261029-2212",
+  "timestamp": 1793297520000,
+  "description": "CarboxMol Bioinformatika Klubu v2.3.1 — Dublikat #3 müəllim hesabının tam təmizlənməsi və müəllim silinməsinin qalıcı bloklanması (tombstone) təmin edildi"
 }
