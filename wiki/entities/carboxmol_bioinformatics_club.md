@@ -14,7 +14,8 @@ sources: ["raw/club_bylaws_and_constitution.md", "raw/club_curriculum_and_annual
 * **Təsisçi və Sədr:** [[suleyman_hajizadeh|Süleyman Mehdi oğlu Hacızadə]]
 * **Ev Sahibi Qurum:** [[western_caspian_university|Qərbi Kaspi Universiteti (WCU)]], Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi
 * **Rəsmi Veb Platforma:** [https://carboxmol-bioinformatics-club.github.io](https://carboxmol-bioinformatics-club.github.io)
-* **Əsas Repozitoriya:** [`CarboxMol-Bioinformatics-Club / CarboxMol-Bioinformatics-Club`](https://github.com/CarboxMol-Bioinformatics-Club/CarboxMol-Bioinformatics-Club)
+* **Əsas Repozitoriya:** [`CarboxMol-Bioinformatics-Club / CarboxMol-Bioinformatics-Club`](https://github.com/CarboxMol-Bioinformatics-Club/CarboxMol-Bioinformatics-Club) (🔒 Private Codebase)
+* **Məlumat İdarəçiliyi:** Tədqiqat dataları və əsas repozitoriya məxfidir (Private) — giriş icazəsi (Access) üçün müraciət: `suleyman.hacizade.232bioing@wcu.edu.az`
 * **Əlaqə:** `suleyman.hacizade.232bioing@wcu.edu.az` | `+994 70 550 69 07`
 
 ---

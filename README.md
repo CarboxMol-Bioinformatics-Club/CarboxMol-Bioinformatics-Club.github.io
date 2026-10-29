@@ -2,6 +2,8 @@
 ### *The Official Portal & Progressive Web App for CarboxMol Bioinformatics Club*
 
 [![Live Site](https://img.shields.io/badge/Live%20Site-CarboxMol--Bioinformatics--Club.github.io-06b6d4?style=for-the-badge&logo=githubpages&logoColor=white)](https://carboxmol-bioinformatics-club.github.io)
+[![Data Access](https://img.shields.io/badge/Research_Data-Private_🔒-f59e0b?style=for-the-badge)](mailto:suleyman.hacizade.232bioing@wcu.edu.az?subject=CarboxMol%20Bioinformatics%20Club%20-%20Private%20Data%20Access%20Request)
+[![Request Access](https://img.shields.io/badge/Request_Access-Email_Chair-ef4444?style=for-the-badge&logo=gmail&logoColor=white)](mailto:suleyman.hacizade.232bioing@wcu.edu.az?subject=CarboxMol%20Bioinformatics%20Club%20-%20Private%20Data%20Access%20Request)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready%20%26%20Offline%20Capable-10b981?style=for-the-badge&logo=pwa&logoColor=white)](#)
 
@@ -11,6 +13,17 @@
   <p><strong>Rəsmi Veb Ünvan:</strong> <a href="https://carboxmol-bioinformatics-club.github.io">https://carboxmol-bioinformatics-club.github.io</a></p>
   <p><em>Hesablama Biologiyası, Struktur Genomika, Carbox & CarboxMol, Python, R və Süni İntellekt Mərkəzi</em></p>
 </div>
+
+---
+
+> [!IMPORTANT]
+> ### 🔒 Məxfi Datalar və Giriş İcazəsi (Private Research Data & Repository Access Notice)
+>
+> **🇦🇿 Azərbaycan dili:** CarboxMol Bioinformatika Klubunun əsas tədqiqat dataları, xam sekvensiya analizləri, daxili laboratoriya skriptləri və əsas repozitoriyası (**`CarboxMol-Bioinformatics-Club`**) **məxfidir (Private)**. Tələbələr, müəllimlər və ya elmi əməkdaşlıq üçün giriş icazəsi (**Access**) əldə etmək istəyənlər rəsmi elektron poçt vasitəsilə müraciət edə bilərlər:
+> - 📧 **E-poçt:** [**suleyman.hacizade.232bioing@wcu.edu.az**](mailto:suleyman.hacizade.232bioing@wcu.edu.az?subject=CarboxMol%20Bioinformatics%20Club%20-%20Private%20Data%20Access%20Request) / [**suleyman.hacizade1@gmail.com**](mailto:suleyman.hacizade1@gmail.com?subject=CarboxMol%20Bioinformatics%20Club%20-%20Private%20Data%20Access%20Request)
+>
+> **🇬🇧 English:** All primary research datasets, internal syllabi databases, and the core backend repository are **Private**. To request **access** for academic collaboration or research review, please contact:
+> - 📧 **Email:** [**suleyman.hacizade.232bioing@wcu.edu.az**](mailto:suleyman.hacizade.232bioing@wcu.edu.az?subject=CarboxMol%20Bioinformatics%20Club%20-%20Private%20Data%20Access%20Request)
 
 ---
 
