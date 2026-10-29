@@ -2399,7 +2399,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.10.29.v41_remove_duplicate_teacher_fidan_and_tombstone";
+const CURRENT_DATA_VERSION = "2026.10.29.v42_absolute_president_teacher_deletion_authority";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -2464,27 +2464,23 @@ function purgeMockData(data) {
     data.tasks = data.tasks.filter(t => t && !["task-101", "task-102", "task-103"].includes(t.id));
   }
   if (Array.isArray(data.teachers)) {
-    data.teachers = data.teachers.filter(t => t && t.id !== "teacher-1" && t.id !== "teacher-fidan" && (t.username || "").toLowerCase() !== "rashad_ismayilov" && (t.username || "").toLowerCase() !== "fidan");
+    data.teachers = data.teachers.filter(t => t && t.id !== "teacher-1" && t.id !== "teacher-fidan" && (t.username || "").toLowerCase() !== "rashad_ismayilov" && (t.username || "").toLowerCase() !== "fidan" && (t.email || "").toLowerCase() !== "fidanverdiyeva808@gmail.com");
     const hasSefanya = data.teachers.some(t => t && ((t.username || "").toLowerCase() === "sefanyamuellim" || t.id === "teacher-sefanya"));
-    if (!hasSefanya && Array.isArray(INITIAL_DATA.teachers) && INITIAL_DATA.teachers.length > 0) {
+    const isSefanyaDeleted = data.deletedTeacherIds && (data.deletedTeacherIds.includes("teacher-sefanya") || data.deletedTeacherIds.includes("sefanyamuellim"));
+    if (!hasSefanya && !isSefanyaDeleted && Array.isArray(INITIAL_DATA.teachers) && INITIAL_DATA.teachers.length > 0) {
       data.teachers.unshift(JSON.parse(JSON.stringify(INITIAL_DATA.teachers[0])));
     }
   }
   if (Array.isArray(data.teacherApplications)) {
-    data.teacherApplications = data.teacherApplications.filter(a => a && a.id !== "teach-app-1" && a.id !== "teach-app-fidan" && a.teacherId !== "teacher-fidan" && (a.username || "").toLowerCase() !== "rashad_ismayilov" && (a.username || "").toLowerCase() !== "fidan");
+    data.teacherApplications = data.teacherApplications.filter(a => a && a.id !== "teach-app-1" && a.id !== "teach-app-fidan" && a.teacherId !== "teacher-fidan" && (a.username || "").toLowerCase() !== "rashad_ismayilov" && (a.username || "").toLowerCase() !== "fidan" && (a.email || "").toLowerCase() !== "fidanverdiyeva808@gmail.com");
     const hasSefanyaApp = data.teacherApplications.some(a => a && ((a.username || "").toLowerCase() === "sefanyamuellim" || a.id === "teach-app-sefanya"));
-    if (!hasSefanyaApp && Array.isArray(INITIAL_DATA.teacherApplications) && INITIAL_DATA.teacherApplications.length > 0) {
+    const isSefanyaAppDeleted = data.deletedTeacherIds && (data.deletedTeacherIds.includes("teacher-sefanya") || data.deletedTeacherIds.includes("sefanyamuellim"));
+    if (!hasSefanyaApp && !isSefanyaAppDeleted && Array.isArray(INITIAL_DATA.teacherApplications) && INITIAL_DATA.teacherApplications.length > 0) {
       data.teacherApplications.unshift(JSON.parse(JSON.stringify(INITIAL_DATA.teacherApplications[0])));
     }
   }
   if (Array.isArray(data.events)) {
     data.events = data.events.filter(e => e && !["ev-2", "ev-3", "ev-4", "ev-5"].includes(e.id));
-  }
-  if (Array.isArray(data.deletedTeacherIds)) {
-    data.deletedTeacherIds = data.deletedTeacherIds.filter(id => id !== "teacher-sefanya" && id !== "sefanyamuellim");
-  }
-  if (Array.isArray(data.deletedAppIds)) {
-    data.deletedAppIds = data.deletedAppIds.filter(id => id !== "teach-app-sefanya");
   }
   data.memberCustomTasks = data.memberCustomTasks || [];
   data.memberNotes = data.memberNotes || [];
@@ -2822,10 +2818,32 @@ function getClubData() {
     parsed.teachers = parsed.teachers || [];
     parsed.teacherApplications = parsed.teacherApplications || [];
     parsed.teacherAnnouncements = parsed.teacherAnnouncements || [];
+    parsed.deletedTeacherIds = parsed.deletedTeacherIds || [];
+    parsed.deletedAppIds = parsed.deletedAppIds || [];
 
-    // İlkin seed müəllimlərinin qorunması
+    // Fərdi qalıcı silinmişlər reyestrindən (tombstone) bərpa
+    try {
+      const storedTeacherTombs = JSON.parse(localStorage.getItem("carboxmol_deleted_teacher_ids") || "[]");
+      if (Array.isArray(storedTeacherTombs) && storedTeacherTombs.length > 0) {
+        parsed.deletedTeacherIds = Array.from(new Set([...parsed.deletedTeacherIds, ...storedTeacherTombs]));
+      }
+    } catch (e) {}
+
+    const isTeacherDeleted = (item) => {
+      if (!item) return false;
+      const delSet = new Set((parsed.deletedTeacherIds || []).map(x => String(x).toLowerCase()));
+      const delApps = new Set(parsed.deletedAppIds || []);
+      if (item.id && (delSet.has(String(item.id).toLowerCase()) || delApps.has(item.id))) return true;
+      if (item.teacherId && delSet.has(String(item.teacherId).toLowerCase())) return true;
+      if (item.username && delSet.has(item.username.toLowerCase())) return true;
+      if (item.email && delSet.has(item.email.toLowerCase())) return true;
+      return false;
+    };
+
+    // İlkin seed müəllimlərinin qorunması (YALNIZ Sədr tərəfindən silinməyibsə!)
     if (Array.isArray(INITIAL_DATA.teachers)) {
       INITIAL_DATA.teachers.forEach((seedTeacher) => {
+        if (isTeacherDeleted(seedTeacher)) return;
         const existingIdx = parsed.teachers.findIndex(
           (t) =>
             (t.username && t.username.toLowerCase() === seedTeacher.username.toLowerCase()) ||
@@ -2840,6 +2858,7 @@ function getClubData() {
 
     if (Array.isArray(INITIAL_DATA.teacherApplications)) {
       INITIAL_DATA.teacherApplications.forEach((seedApp) => {
+        if (isTeacherDeleted(seedApp)) return;
         const exists = parsed.teacherApplications.some(
           (a) => a.id === seedApp.id || (a.username && a.username.toLowerCase() === seedApp.username.toLowerCase())
         );
@@ -2860,8 +2879,9 @@ function getClubData() {
       });
     }
 
-    // Müəllimlər və Müəllim Müraciətləri arasında ikitərəfli sinxronizasiya:
+    // Müəllimlər və Müəllim Müraciətləri arasında ikitərəfli sinxronizasiya (Silinmişlər dərhal kənarlaşdırılır):
     parsed.teacherApplications.forEach((app) => {
+      if (isTeacherDeleted(app)) return;
       const teachIdx = parsed.teachers.findIndex(
         (t) =>
           (t.id && t.id === app.teacherId) ||
@@ -2908,6 +2928,7 @@ function getClubData() {
     });
 
     parsed.teachers.forEach((t) => {
+      if (isTeacherDeleted(t)) return;
       const appExists = parsed.teacherApplications.some(
         (a) =>
           (a.teacherId && a.teacherId === t.id) ||
@@ -2942,6 +2963,32 @@ function getClubData() {
         hasStorageUpdates = true;
       }
     });
+
+    // Yekun süzgəc: Sədr tərəfindən silinmiş qeydlərin bazada qalmasına qətiyyən icazə verilmir
+    if (parsed.deletedTeacherIds && parsed.deletedTeacherIds.length > 0) {
+      const delSet = new Set(parsed.deletedTeacherIds.map(x => String(x).toLowerCase()));
+      const delApps = new Set(parsed.deletedAppIds || []);
+      const prevTeachCount = parsed.teachers.length;
+      const prevAppCount = parsed.teacherApplications.length;
+
+      parsed.teachers = parsed.teachers.filter(t => 
+        !delSet.has(String(t.id).toLowerCase()) &&
+        !delSet.has(String(t.username || '').toLowerCase()) &&
+        !delSet.has(String(t.email || '').toLowerCase())
+      );
+
+      parsed.teacherApplications = parsed.teacherApplications.filter(a => 
+        !delApps.has(a.id) &&
+        !delSet.has(String(a.id).toLowerCase()) &&
+        !delSet.has(String(a.teacherId || '').toLowerCase()) &&
+        !delSet.has(String(a.username || '').toLowerCase()) &&
+        !delSet.has(String(a.email || '').toLowerCase())
+      );
+
+      if (parsed.teachers.length !== prevTeachCount || parsed.teacherApplications.length !== prevAppCount) {
+        hasStorageUpdates = true;
+      }
+    }
 
     // Prof. Qərib Mürşüdov Elmi Seminarının fotoreportajı və məlumatlarının zəmanətli yenilənməsi
     if (Array.isArray(parsed.events)) {

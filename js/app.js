@@ -1361,11 +1361,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
               }
             } else if (payload.action === "DELETE_TEACHER") {
-              if (payload.teacherId) {
-                data.teachers = (data.teachers || []).filter(item => item.id !== payload.teacherId);
-                data.teacherApplications = (data.teacherApplications || []).filter(item => item.teacherId !== payload.teacherId && item.id !== payload.applicationId);
-                changed = true;
+              data.deletedTeacherIds = data.deletedTeacherIds || [];
+              data.deletedAppIds = data.deletedAppIds || [];
+              if (payload.teacherId && !data.deletedTeacherIds.includes(payload.teacherId)) {
+                data.deletedTeacherIds.push(payload.teacherId);
               }
+              if (payload.applicationId && !data.deletedAppIds.includes(payload.applicationId)) {
+                data.deletedAppIds.push(payload.applicationId);
+              }
+              if (Array.isArray(payload.deletedTeacherIds)) {
+                payload.deletedTeacherIds.forEach(id => {
+                  if (!data.deletedTeacherIds.includes(id)) data.deletedTeacherIds.push(id);
+                });
+              }
+              const delSet = new Set(data.deletedTeacherIds.map(x => String(x).toLowerCase()));
+              data.teachers = (data.teachers || []).filter(item => 
+                !delSet.has(String(item.id).toLowerCase()) && 
+                !delSet.has(String(item.username || '').toLowerCase()) &&
+                !delSet.has(String(item.email || '').toLowerCase())
+              );
+              data.teacherApplications = (data.teacherApplications || []).filter(item => 
+                !delSet.has(String(item.id).toLowerCase()) && 
+                !delSet.has(String(item.teacherId || '').toLowerCase()) && 
+                !delSet.has(String(item.username || '').toLowerCase()) &&
+                !delSet.has(String(item.email || '').toLowerCase()) &&
+                !data.deletedAppIds.includes(item.id)
+              );
+              changed = true;
             } else if (payload.action === "ADD_TEACHER_ANNOUNCEMENT") {
               if (payload.announcement && payload.announcement.id) {
                 data.teacherAnnouncements = data.teacherAnnouncements || [];

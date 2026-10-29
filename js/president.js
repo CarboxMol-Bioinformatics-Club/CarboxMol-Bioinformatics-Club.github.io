@@ -1715,8 +1715,24 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     if (!container) return;
 
     const data = getClubData();
-    let teachers = data.teachers || [];
-    let teacherApps = data.teacherApplications || [];
+    data.deletedTeacherIds = data.deletedTeacherIds || [];
+    data.deletedAppIds = data.deletedAppIds || [];
+
+    const delSet = new Set(data.deletedTeacherIds.map(x => String(x).toLowerCase()));
+    const delApps = new Set(data.deletedAppIds);
+
+    let teachers = (data.teachers || []).filter(t => 
+      !delSet.has(String(t.id).toLowerCase()) &&
+      !delSet.has(String(t.username || '').toLowerCase()) &&
+      !delSet.has(String(t.email || '').toLowerCase())
+    );
+    let teacherApps = (data.teacherApplications || []).filter(a => 
+      !delApps.has(a.id) &&
+      !delSet.has(String(a.id).toLowerCase()) &&
+      !delSet.has(String(a.teacherId || '').toLowerCase()) &&
+      !delSet.has(String(a.username || '').toLowerCase()) &&
+      !delSet.has(String(a.email || '').toLowerCase())
+    );
 
     // Hər bir müəllimi müraciət anketi ilə birləşdir
     let list = teachers.map(t => {
@@ -1981,27 +1997,86 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
   },
 
   deleteTeacher(teacherId, appId) {
-    if (!confirm("Diqqət! Bu müəllim hesabını və müraciətini tamamilə silmək istədiyinizdən əminsiniz?")) return;
+    if (!confirm("Diqqət! Bu müəllim hesabını və müraciətini tamamilə silmək istədiyinizdən əminsiniz? Sədr qərarı ilə bu hesab sistemdən biryolluq silinəcək.")) return;
 
     const data = getClubData();
-    const targetTeacher = (data.teachers || []).find(t => t.id === teacherId);
-    const targetUsername = targetTeacher ? (targetTeacher.username || "").toLowerCase() : "";
-
+    data.teachers = data.teachers || [];
+    data.teacherApplications = data.teacherApplications || [];
     data.deletedTeacherIds = data.deletedTeacherIds || [];
-    if (teacherId && !data.deletedTeacherIds.includes(teacherId)) {
-      data.deletedTeacherIds.push(teacherId);
-    }
-    if (targetUsername && !data.deletedTeacherIds.includes(targetUsername)) {
-      data.deletedTeacherIds.push(targetUsername);
-    }
-
     data.deletedAppIds = data.deletedAppIds || [];
-    if (appId && !data.deletedAppIds.includes(appId)) {
-      data.deletedAppIds.push(appId);
+
+    // teacherId və appId üzrə bazadakı bütün əlaqəli qeydləri tapırıq
+    const matchedTeachers = data.teachers.filter(t => 
+      t.id === teacherId || 
+      t.id === appId || 
+      (appId && t.appId === appId) ||
+      (teacherId && (t.username || '').toLowerCase() === String(teacherId).toLowerCase())
+    );
+    const matchedApps = data.teacherApplications.filter(a => 
+      a.id === appId || 
+      a.id === teacherId || 
+      a.teacherId === teacherId || 
+      a.teacherId === appId ||
+      (teacherId && (a.username || '').toLowerCase() === String(teacherId).toLowerCase())
+    );
+
+    const idsToBlock = new Set([teacherId, appId].filter(Boolean).map(x => String(x)));
+    const usernamesToBlock = new Set();
+    const emailsToBlock = new Set();
+
+    matchedTeachers.forEach(t => {
+      if (t.id) idsToBlock.add(String(t.id));
+      if (t.username) usernamesToBlock.add(t.username.toLowerCase());
+      if (t.email) emailsToBlock.add(t.email.toLowerCase());
+    });
+    matchedApps.forEach(a => {
+      if (a.id) idsToBlock.add(String(a.id));
+      if (a.teacherId) idsToBlock.add(String(a.teacherId));
+      if (a.username) usernamesToBlock.add(a.username.toLowerCase());
+      if (a.email) emailsToBlock.add(a.email.toLowerCase());
+    });
+
+    if (typeof teacherId === "string" && !idsToBlock.has(teacherId)) {
+      usernamesToBlock.add(teacherId.toLowerCase());
     }
 
-    data.teachers = (data.teachers || []).filter(item => item.id !== teacherId && (item.username || "").toLowerCase() !== targetUsername);
-    data.teacherApplications = (data.teacherApplications || []).filter(item => item.id !== appId && item.teacherId !== teacherId && (item.username || "").toLowerCase() !== targetUsername);
+    idsToBlock.forEach(id => {
+      if (!data.deletedTeacherIds.includes(id)) data.deletedTeacherIds.push(id);
+      if (!data.deletedAppIds.includes(id)) data.deletedAppIds.push(id);
+    });
+    usernamesToBlock.forEach(u => {
+      if (!data.deletedTeacherIds.includes(u)) data.deletedTeacherIds.push(u);
+    });
+    emailsToBlock.forEach(e => {
+      if (!data.deletedTeacherIds.includes(e)) data.deletedTeacherIds.push(e);
+    });
+
+    try {
+      let storedTombs = JSON.parse(localStorage.getItem("carboxmol_deleted_teacher_ids") || "[]");
+      storedTombs = Array.from(new Set([...storedTombs, ...data.deletedTeacherIds]));
+      localStorage.setItem("carboxmol_deleted_teacher_ids", JSON.stringify(storedTombs));
+    } catch (e) {}
+
+    // Qalıcı tam təmizlənmə
+    data.teachers = data.teachers.filter(t => {
+      if (idsToBlock.has(String(t.id))) return false;
+      if (t.username && usernamesToBlock.has(t.username.toLowerCase())) return false;
+      if (t.email && emailsToBlock.has(t.email.toLowerCase())) return false;
+      return true;
+    });
+
+    data.teacherApplications = data.teacherApplications.filter(a => {
+      if (idsToBlock.has(String(a.id)) || (a.teacherId && idsToBlock.has(String(a.teacherId)))) return false;
+      if (a.username && usernamesToBlock.has(a.username.toLowerCase())) return false;
+      if (a.email && emailsToBlock.has(a.email.toLowerCase())) return false;
+      return true;
+    });
+
+    // Əgər həmin müəllimin sessiyası aktivdirsə, dərhal sistemdən çıxar
+    const activeTeacherId = localStorage.getItem("wcu_active_teacher_id");
+    if (activeTeacherId && (idsToBlock.has(String(activeTeacherId)) || usernamesToBlock.has(String(activeTeacherId).toLowerCase()))) {
+      localStorage.removeItem("wcu_active_teacher_id");
+    }
 
     saveClubData(data);
 
@@ -2030,7 +2105,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     this.renderTeachersAccountsTable();
 
     if (typeof showToast === "function") {
-      showToast("Müəllim hesabı sistemdən tamamilə silindi və bloklandı.", "info");
+      showToast("Müəllim hesabı Sədr səlahiyyəti ilə sistemdən biryolluq silindi.", "success");
     }
   },
 
