@@ -315,12 +315,12 @@ const INITIAL_PUBLISHED_PROJECTS = [
   },
   {
     id: "proj-3d-structural-tools",
-    title: "3D Struktur Alətləri (PyMOL, ChimeraX, CarboxMol & Carbox)",
+    title: "3D Struktur Alətləri (Carbox & CarboxMol)",
     category: "Struktur Biologiyası",
     authors: "Süleyman Hacızadə & Prof. Qərib Mürşüdov (Cambridge University, MRC LMB)",
     date: "2026/2027 Tədris İli",
     status: "Daxili Elmi Alət & Workbench",
-    stack: ["Carbox & CarboxMol", "PyMOL", "UCSF ChimeraX", "Coot", "GemmiMol", "WebGL", "C++"],
+    stack: ["Carbox & CarboxMol"],
     biocPipelineKey: null,
     summary: "Atomar zülal strukturlarının, Krio-EM xəritələrinin və zülal-liqand komplekslərinin 3D analizi. Xüsusi Qeyd: Carbox və CarboxMol hələ ki, rəsmi nəşr (publish) edilmədiyi üçün klubun daxili elmi aləti və workbench-i olaraq istifadə olunur və yalnız Süleyman Hacızadə və Prof. Qərib Mürşüdov tərəfindən izah edilə və tədris oluna bilər.",
     githubUrl: "https://github.com/SuleimanHajizadeh/WCU-Bioinformatics-Club",
@@ -815,7 +815,7 @@ const BioconductorEngine = {
   // -------------------------------------------------------------
   getProjects() {
     const data = getClubData();
-    if (!data.publishedProjects || !Array.isArray(data.publishedProjects) || data.publishedProjects.length !== INITIAL_PUBLISHED_PROJECTS.length || data.publishedProjects.some(p => p.id.includes("transcriptoviz") || p.id.includes("genomicpeaks") || p.id.includes("alphapredict") || p.id.includes("bioseqml"))) {
+    if (!data.publishedProjects || !Array.isArray(data.publishedProjects) || data.publishedProjects.length !== INITIAL_PUBLISHED_PROJECTS.length || data.publishedProjects.some(p => p.id.includes("transcriptoviz") || p.id.includes("genomicpeaks") || p.id.includes("alphapredict") || p.id.includes("bioseqml") || (p.id === "proj-3d-structural-tools" && (p.title.includes("PyMOL") || (p.stack && p.stack.includes("PyMOL")))))) {
       data.publishedProjects = JSON.parse(JSON.stringify(INITIAL_PUBLISHED_PROJECTS));
       saveClubData(data);
     }
@@ -863,7 +863,7 @@ const BioconductorEngine = {
             </button>
           ` : (proj.actionType === "structural" ? `
             <button onclick="BioconductorEngine.switchTab('structural');" class="px-3.5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition flex items-center gap-1.5 shadow">
-              <i class="fa-solid fa-cube"></i> 3D Struktur Alətlərini Aç
+              <i class="fa-solid fa-cube"></i> Carbox & CarboxMol Aç
             </button>
           ` : `
             <button onclick="BioconductorEngine.switchTab('seq');" class="px-3.5 py-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs transition flex items-center gap-1.5 shadow">

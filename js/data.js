@@ -2461,7 +2461,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.10.29.v38_fidan_mentor_only_zero_mock_tasks";
+const CURRENT_DATA_VERSION = "2026.10.29.v39_carbox_carboxmol_only_structural_tools";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -2550,6 +2550,14 @@ function purgeMockData(data) {
   }
   data.memberCustomTasks = data.memberCustomTasks || [];
   data.memberNotes = data.memberNotes || [];
+  if (Array.isArray(data.publishedProjects)) {
+    data.publishedProjects.forEach(p => {
+      if (p && p.id === "proj-3d-structural-tools") {
+        p.title = "3D Struktur Alətləri (Carbox & CarboxMol)";
+        p.stack = ["Carbox & CarboxMol"];
+      }
+    });
+  }
 }
 
 // LocalStorage Helper və Avtomatik Data Sinxronizatoru

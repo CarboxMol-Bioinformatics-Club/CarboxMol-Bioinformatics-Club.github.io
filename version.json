@@ -1,6 +1,6 @@
 {
-  "version": "2.2.8",
-  "build": "20261029-2148",
-  "timestamp": 1793296080000,
-  "description": "CarboxMol Bioinformatika Klubu v2.2.8 — Fidan Məhərrəmovanın yalnız Akademik Mentor statusuna keçirilməsi, mock tapşırıqların (task-101..103) tam təmizlənməsi və müəllim panelindən manual laboratoriya tapşırığı təyini"
+  "version": "2.2.9",
+  "build": "20261029-2155",
+  "timestamp": 1793296500000,
+  "description": "CarboxMol Bioinformatika Klubu v2.2.9 — 3D Struktur Alətləri kartının yalnız Carbox və CarboxMol olaraq dəqiqləşdirilməsi"
 }
