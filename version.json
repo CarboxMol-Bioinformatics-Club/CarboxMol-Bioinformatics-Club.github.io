@@ -1,6 +1,6 @@
 {
-  "version": "2.2.7",
-  "build": "20261029-2140",
-  "timestamp": 1793295600000,
-  "description": "CarboxMol Bioinformatika Klubu v2.2.7 — Navbar dizaynının optimizasiyası, üst-üstə düşmənin (collision) aradan qaldırılması və təmiz responsive nizamlanması"
+  "version": "2.2.8",
+  "build": "20261029-2148",
+  "timestamp": 1793296080000,
+  "description": "CarboxMol Bioinformatika Klubu v2.2.8 — Fidan Məhərrəmovanın yalnız Akademik Mentor statusuna keçirilməsi, mock tapşırıqların (task-101..103) tam təmizlənməsi və müəllim panelindən manual laboratoriya tapşırığı təyini"
 }

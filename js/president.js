@@ -1414,6 +1414,10 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     if (window.MembersPortal && window.MembersPortal.renderTasks) {
       window.MembersPortal.renderTasks();
     }
+    if (window.TeacherPortal && window.TeacherPortal.renderMetrics) {
+      window.TeacherPortal.renderMetrics();
+      if (window.TeacherPortal.renderSubmissions) window.TeacherPortal.renderSubmissions();
+    }
 
     document.getElementById("presidentTaskModal").classList.add("hidden");
   },
@@ -1448,6 +1452,10 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     this.renderTasksList();
     if (window.MembersPortal && window.MembersPortal.renderTasks) {
       window.MembersPortal.renderTasks();
+    }
+    if (window.TeacherPortal && window.TeacherPortal.renderMetrics) {
+      window.TeacherPortal.renderMetrics();
+      if (window.TeacherPortal.renderSubmissions) window.TeacherPortal.renderSubmissions();
     }
     showToast("Tapşırıq silindi və sinxronlaşdırıldı.", "info");
   },
@@ -1598,6 +1606,10 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     this.renderTasksList();
     if (window.MembersPortal && window.MembersPortal.renderTasks) {
       window.MembersPortal.renderTasks();
+    }
+    if (window.TeacherPortal && window.TeacherPortal.renderMetrics) {
+      window.TeacherPortal.renderMetrics();
+      if (window.TeacherPortal.renderSubmissions) window.TeacherPortal.renderSubmissions();
     }
 
     showToast(`${sub.studentName} üçün rəy və qiymətləndirmə saxlanıldı!`, "success");

@@ -307,172 +307,7 @@ events: [
     }
   ],
 
-  tasks: [
-    {
-      id: "task-101",
-      title: "Laboratoriya #1: Biopython ilə DNT Transkripsiyası və ORF Axtarışı",
-      category: "Biopython & Kodlaşdırma",
-      difficulty: "Başlanğıc / Orta",
-      deadline: "15 Noyabr 2026",
-      targetGroup: "Bütün Klub Üzvləri",
-      status: "Aktiv",
-      summary: "SARS-CoV-2 genomunun FASTA faylını oxuyaraq mRNT transkripsiyası, aminturşu translyasiyası və GC nisbətini hesablayan Biopython skripti hazırlayın.",
-      imageUrl: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=1200&q=80",
-      imageCaption: "DNT ikili heliks modeli, translyasiya və hesablama biologiyası ardıcıllıq analizi",
-      videoUrl: "https://www.youtube.com/watch?v=1O_b3W_6V-w",
-      videoEmbed: "https://www.youtube.com/embed/1O_b3W_6V-w",
-      videoTitle: "Biopython ilə DNT Analizi və FASTA Oxunması (360p İzahlı Dərslik)",
-      videoDuration: "04:30",
-      videoQuality: "360p",
-      document: {
-        name: "SARS_CoV_2_Spike_Reference.fasta",
-        type: "fasta",
-        size: "14.2 KB",
-        url: "",
-        rawContent: `>NC_045512.2_Spike_Glycoprotein_Region Severe acute respiratory syndrome coronavirus 2
-ATGTTTGTTTTTCTTGTTTTATTGCCACTAGTCTCTAGTCAGTGTGTTAATCTTACAACCAGAACTCAATTACCCCCTGCATACACTAATTCTTTCACACGTGGTGTTTATTACCCTGACAAAGTTTTCAGATCCTCAGTTTTACATTCAACTCAGGACTTGTTCTTACCTTTCTTTTCCAATGTTACTTGGTTCCATGCTATACATGTCTCTGGGACCAATGGTACTAAGAGGTTTGATAACCCTGTCCTACCATTTAATGATGGTGTTTATTTTGCTTCCACTGAGAAGTCTAACATAATAAGAGGCTGGATTTTTGGTACTACTTTAGATTCGAAGACCCAGTCCCTACTTATTGTTAATAACGCTACTAATGTTGTTATTAAAGTCTGTGAATTTCAATTTTGTAATGATCCATTTTTGGGTGTTTATTACCACAAAAACAACAAAAGTTGGATGGAAAGTGAGTTCAGAGTTTATTCTAGTGCGAATAATTGCACTTTTGAATATGTCTCTCAGCCTTTTCTTATGGACCTTGAAGGAAAACAGGGTAATTTCAAAAATCTTAGGGAATTTGTGTTTAAGAATATTGATGGTTATTTTAAAATATATTCTAAGCACACGCCTATTAATTTAGTGCGTGATCTCCCTCAGGGTTTTTCGGCTTTAGAACCATTGGTAGATTTGCCAATAGGTATTAACATCACTAGGTTTCAAACTTTACTTGCTTTACATAGAAGTTATTTGACTCCTGGTGATTCTTCTTCAGGTTGGACAGCTGGTGCTGCAGCTTATTATGTGGGTTATCTTCAACCTAGGACTTTTCTATTAAAATATAATGAAAATGGAACCATTACAGATGCTGTAGACTGTGCACTTGACCCTCTCTCAGAAACAAAGTGTACGTTGAAATCCTTCACTGTAGAAAAAGGAATCTATCAAACTTCTAACTTTAGAGTCCAACCAACAGAATCTATTGTTAGATTTCCTAATATTACAAACTTGTGCCCTTTTGGTGAAGTTTTTAACGCCACCAGATTTGCATCTGTTTATGCTTGGAACAGGAAGAGAATCAGCAACTGTGTTGCTGATTATTCTGTCCTATATAATTCCGCATCATTTTCCACTTTTAAGTGTTATGGAGTGTCTCCTACTAAATTAAATGATCTCTGCTTTACTAATGTCTATGCAGATTCATTTGTAATTAGAGGTGATGAAGTCAGACAAATCGCTCCAGGGCAAACTGGAAAGATTGCTGATTATAATTATAAATTACCAGATGATTTTACAGGCTGCGTTATAGCTTGGAATTCTAACAATCTTGATTCTAAGGTTGGTGGTAATTATAATTACCTGTATAGATTGTTTAGGAAGTCTAATCTCAAACCTTTTGAGAGAGATATTTCAACTGAAATCTATCAGGCCGGTAGCACACCTTGTAATGGTGTTGAAGGTTTTAATTGTTACTTTCCTTTACAATCATATGGTTTCCAACCCACTAATGGTGTTGGTTACCAACCATACAGAGTAGTAGTACTTTCTTTTGAACTTCTACATGCACCAGCAACTGTTTGTGGACCTAAAAAGTCTACTAATTTGGTTAAAAACAAATGTGTCAATTTCAACTTCAATGGTTTAACAGGCACAGGTGTTCTTACTGAGTCTAACAAAAAGTTTCTGCCTTTCCAACAATTTGGCAGAGACATTGCTGACACTACTGATGCTGTCCGTGATCCACAGACACTTGAGATTCTTGACATTACACCATGTTCTTTTGGTGGTGTCAGTGTTATAACACCAGGAACAAATACTTCTAACCAGGTTGCTGTTCTTTATCAGGATGTTAACTGCACAGAAGTCCCTGTTGCTATTCATGCAGATCAACTTACTCCTACTTGGCGTGTTTATTCTACAGGTTCTAATGTTTTTCAAACACGTGCAGGCTGTTTAATAGGGGCTGAACATGTCAACAACTCATATGAGTGTGACATACCCATTGGTGCAGGTATATGCGCTAGTTATCAGACTCAGACTAATTCTCCTCGGCGGGCACGTAGTGTAGCTAGTCAATCCATCATTGCCTACACTATGTCACTTGGTGCAGAAAATTCAGTTGCTTACTCTAATAACTCTATTGCCATACCCACAAATTTTACTATTAGTGTTACCACAGAAATTCTACCAGTGTCTATGACCAAGACATCAGTAGATTGTACAATGTACATTTGTGGTGATTCAACTGAATGCAGCAATCTTTTGTTGCAATATGGCAGTTTTTGTACACAATTAAACCGTGCTTTAACTGGAATAGCTGTTGAACAAGACAAAAACACCCAAGAAGTTTTTGCACAAGTCAAACAAATTTACAAAACACCACCAATTAAAGATTTTGGTGGTTTTAATTTTTCACAAATATTACCAGATCCATCAAAACCAAGCAAGAGGTCATTTATTGAAGATCTACTTTTCAACAAAGTGACACTTGCAGATGCTGGCTTCATCAAACAATATGGTGATTGCCTTGGTGATATTGCTGCTAGAGACCTCATTTGTGCACAAAAGTTTAACGGCCTTACTGTTTTGCCACCTTTGCTCACAGATGAAATGATTGCTCAATACACTTCTGCACTGTTAGCGGGTACAATCACTTCTGGTTGGACCTTTGGTGCAGGTGCTGCATTACAAATACCATTTGCTATGCAAATGGCTTATAGGTTTAATGGTATTGGAGTTACACAGAATGTTCTCTATGAGAACCAAAAATTGATTGCCAACCAATTTAATAGTGCTATTGGCAAAATTCAAGACTCACTTTCTTCCACAGCAAGTGCACTTGGAAAACTTCAAGATGTGGTCAACCAAAATGCACAAGCTTTAAACACGCTTGTTAAACAACTTAGCTCCAATTTTGGTGCAATTTCAAGTGTTTTAAATGATATCCTTTCACGTCTTGACAAAGTTGAGGCTGAAGTGCAAATTGATAGGTTGATCACAGGCAGACTTCAAAGTTTGCAGACATATGTGACTCAACAATTAATTAGAGCTGCAGAAATCAGAGCTTCTGCTAATCTTGCTGCTACTAAAATGTCAGAGTGTGTACTTGGACAATCAAAAAGAGTTGATTTTTGTGGAAAGGGCTATCATCTTATGTCCTTCCCTCAGTCAGCACCTCATGGTGTAGTCTTCTTGCATGTGACTTATGTCCCTGCACAAGAAAAGAACTTCACAACTGCTCCTGCCATTTGTCATGATGGAAAAGCACACTTTCCTCGTGAAGGTGTCTTTGTTTCAAATGGCACACACTGGTTTGTAACACAAAGGAATTTTTATGAACCACAAATCATTACTACAGACAACACATTTGTGTCTGGTAACTGTGATGTTGTAATAGGAATTGTCAACAACACAGTTTATGATCCTTTGCAACCTGAATTAGACTCATTCAAGGAGGAGTTAGATAAATATTTTAAGAATCATACATCACCAGATGTTGATTTAGGTGACATCTCTGGCATTAATGCTTCAGTTGTAAACATTCAAAAAGAAATTGACCGCCTCAATGAGGTCGCCAAGAATTTAAATGAATCTCTCATCGATCTCCAAGAACTTGGAAAGTATGAGCAGTATATAAAATGGCCATGGTACATTTGGCTAGGTTTTATAGCTGGCTTGATTGCCATAGTAATGGTGACAATTATGCTTTGCTGTATGACCAGTTGCTGTAGTTGTCTCAAGGGCTGTTGTTCTTGTGGATCCTGCTGCAAATTTGATGAAGACGACTCTGAGCCAGTGCTCAAAGGAGTCAAATTACATTACACATAA`
-      },
-      instructions: `1. NCBI GenBank bazasından SARS-CoV-2 (Accession: NC_045512.2) FASTA sekvensini əldə edin və ya yuxarıdakı sənədi yükləmədən birbaşa tətbiq daxilində oxuyun.
-2. Seq obyekti üzərində uzunluq, GC faizi və kodon tezliyini təyin edən funksiya yazın.
-3. DNT zəncirini mRNT-yə transkripsiya edin və 6 mümkün oxu çərçivəsində (Open Reading Frame - ORF) zülallara translyasiya edin.
-4. Spike (S) zülalına uyğun gələn ən uzun zülal seqmentini seçib nəticələrinizi Google Colab və ya GitHub repozitoriyasında saxlayaraq linki təhvil verin.`,
-      starterCode: `# Biopython ilə Başlanğıc Nümunəsi
-from Bio.Seq import Seq
-from Bio import SeqIO
-
-# Nümunə DNT ardıcıllığı
-dna = Seq("ATGGCCATTGTAATGGGCCGCTGAAAGGGTGCCCGATAG")
-print("Orijinal DNT:", dna)
-print("Komplementar zəncir:", dna.complement())
-print("mRNT transkripsiyası:", dna.transcribe())
-print("Zülal translyasiyası:", dna.translate())
-
-# GC faizinin hesablanması
-gc_content = 100 * float(dna.count("G") + dna.count("C")) / len(dna)
-print(f"GC nisbəti: {gc_content:.2f}%")`,
-      resourceLink: "https://colab.research.google.com",
-      resourceName: "Google Colab-da Başla",
-      submissions: []
-    },
-    {
-      id: "task-102",
-      title: "Laboratoriya #2: 3D Zülal Strukturu Analizi (PyMOL, ChimeraX, Coot, Carbox & CarboxMol)",
-      category: "Struktur Biologiyası",
-      difficulty: "Orta / İrəli",
-      deadline: "28 Noyabr 2026",
-      targetGroup: "Bütün Klub Üzvləri & Tədqiqat Komandası",
-      status: "Aktiv",
-      summary: "RCSB PDB bazasından Spike qlikoprotein (PDB ID: 6VXX) strukturunu yükləyərək PyMOL, UCSF ChimeraX, Coot, GemmiMol və klubumuzun yerli inkişaf etdirdiyi Carbox & CarboxMol proqramlarında ikincili strukturları, aktiv mərkəz sahələrini rəngləndirin və AlphaFold proqnozu ilə müqayisə edin (Bütün bu alətlər klubumuzun dərslərində praktiki tədris olunacaq).",
-      imageUrl: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&q=80",
-      imageCaption: "3D zülal kristalloqrafik modeli, elektron sıxlığı və alfa-spiral zəncirləri (PyMOL, ChimeraX, Coot, Carbox & CarboxMol)",
-      videoUrl: "https://www.youtube.com/watch?v=FqB8Y_Qx4lI",
-      videoEmbed: "https://www.youtube.com/embed/FqB8Y_Qx4lI",
-      videoTitle: "3D Zülal Vizuallaşdırması və Liqand Analizi: PyMOL, ChimeraX, Coot, Carbox & CarboxMol (360p Dərslik)",
-      videoDuration: "03:45",
-      videoQuality: "360p",
-      document: {
-        name: "3D_Structural_Biology_Protocols.md",
-        type: "markdown",
-        size: "8.5 KB",
-        url: "",
-        rawContent: `# 3D Zülal Strukturu və Vizuallaşdırma Protokolu
-## Məqsəd və Elmi Tələblər:
-RCSB PDB bazasından Spike qlikoprotein (6VXX) strukturunun yüklənməsi, liqand sahələrinin seçilməsi, PyMOL, UCSF ChimeraX, Coot, GemmiMol və klubumuzun yerli inkişaf etdirdiyi Carbox / CarboxMol proqramları ilə müqayisəli qiymətləndirilməsi. Bu alətlərin hamısı CarboxMol Bioinformatika Klubunda dərslərdə praktiki olaraq keçiriləcəkdir.
-
-### 1. PyMOL & CarboxMol Əmrləri:
-\`\`\`bash
-# PyMOL / CarboxMol interaktiv terminalı
-fetch 6VXX
-remove solvent
-show cartoon, chain A
-color cyan, ss h
-color orange, ss s
-select rbd, chain A and resi 319-541
-show surface, rbd
-color yellow, rbd
-set ray_opaque_background, 0
-png spike_rbd_render.png, dpi=300
-\`\`\`
-
-### 2. Carbox Mühərriki ilə Həndəsi Analiz:
-- mmCIF/PDB koordinatlarının avtomatlaşdırılmış emalı
-- Atomlararası rabitə bucaqları, dihedrallar və van-der-Vaals toqquşmaları
-- Zülal-liqand qarşılıqlı təsir ciblərinin dəqiq koordinat xəritəsi
-
-### 3. Coot & ChimeraX ilə Elektron Sıxlığı Təhlili:
-- 2Fo-Fc və Fo-Fc fərq xəritələrində aminturşu rotamerlərinin real-space refinementi
-- Krio-EM həcm sıxlığı və elektrostatik Kolomb potensial xəritələnməsi
-
-### 4. AlphaFold pLDDT Təhlili:
-- **pLDDT > 90**: Yüksək dəqiqlikli sahələr (Mavi)
-- **70 < pLDDT < 90**: Yaxşı etibarlılıq (Açıq mavi)
-- **50 < pLDDT < 70**: Aşağı etibarlılıq (Sarı)
-- **pLDDT < 50**: Qeyri-müəyyən və ya nizamsız konformasiya (Narıncı/Qırmızı)`
-      },
-      instructions: `1. RCSB PDB-dən 6VXX strukturunu PyMOL və ya CarboxMol daxilində 'fetch 6VXX' əmri ilə yükləyin.
-2. Su molekullarını (remove solvent) və lazımsız heterogen atomları təmizləyin.
-3. Zülalı 'cartoon' rejimində göstərib ikincili strukturlara görə rəngləndirin (alfa-spirallar: firuzəyi, beta-qatlar: narıncı).
-4. Reseptor birləşmə domenini (RBD: Chain A, 319-541 aminturşuları) seçərək 'surface' formatında göstərin və yüksək keyfiyyətli skrinşot çəkin.
-5. Klubumuzun Carbox həndəsi analiz aləti və Coot/ChimeraX alətlərində eyni strukturu açıb fərqləri qeyd edin (Klub dərslərində hamısı keçiriləcək).
-6. AlphaFold Database-dən (AF-P0DTC2-F1) pLDDT etibarlılıq xəritəsini çıxararaq müqayisəli qeyd yazın.`,
-      starterCode: `# 3D Struktur Analizi və Skripti (PyMOL, ChimeraX, Carbox & CarboxMol)
-fetch 6VXX
-hide everything
-show cartoon, chain A
-color cyan, ss h
-color orange, ss s
-select rbd, chain A and resi 319-541
-show surface, rbd
-color yellow, rbd
-set ray_opaque_background, 0
-png spike_rbd_render.png, dpi=300`,
-      resourceLink: "https://www.rcsb.org/structure/6VXX",
-      resourceName: "RCSB PDB 6VXX Səhifəsi",
-      submissions: []
-    },
-    {
-      id: "task-103",
-      title: "Laboratoriya #3: NCBI BLAST ilə Naməlum Sekvensin Təyini",
-      category: "Genomika & Bazalar",
-      difficulty: "Başlanğıc",
-      deadline: "10 Dekabr 2026",
-      targetGroup: "Bütün Klub Üzvləri",
-      status: "Aktiv",
-      summary: "Təqdim olunan naməlum DNT sekvensini NCBI Nucleotide BLAST (blastn) ilə axtararaq növü, gen ailəsini və E-value göstəricisini təyin edin.",
-      imageUrl: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=1200&q=80",
-      imageCaption: "NCBI GenBank və BLAST ardıcıllıq uyğunlaşdırma matrisi",
-      videoUrl: "https://www.youtube.com/watch?v=jW_o3bZ8FmE",
-      videoEmbed: "https://www.youtube.com/embed/jW_o3bZ8FmE",
-      videoTitle: "NCBI BLAST İstifadə Qaydaları və Nəticələrin Təhlili (360p)",
-      videoDuration: "04:50",
-      videoQuality: "360p",
-      document: {
-        name: "Unknown_Sample_Query.fasta",
-        type: "fasta",
-        size: "1.8 KB",
-        url: "",
-        rawContent: `>Unknown_WCU_Sample_2026_Calmodulin_Like_Gene
-ATGGCTGATCAACTGACTGAGGAGCAGATTGCAGAATTCAAGGAAGCATTCTCCCTATTT
-GACAAGGATGGGGACGGCACTATCACAACAAAGGAGCTGGGCACTGTGATGCGGTCCCTG
-GGACAGAACCCTACAGAAGCAGAGCTACAGGACATGATTAATGAAGTGGATGCTGATGGA
-AATGGCACCATTGACTTCCCCGAATTTTTGACTATGATGGCTAGAAAAATGAAAGACACA
-GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`
-      },
-      instructions: `1. Aşağıdakı starter kod blokundakı naməlum FASTA ardıcıllığını kopyalayın və ya sənədi tətbiqdaxili baxışda incələyin.
-2. NCBI BLAST (blastn) rəsmi platformasına daxil olaraq ardıcıllığı daxil edin və standart nr/nt bazası üzrə axtarış başladın.
-3. Ən yüksək identiklik (Percent Identity) və 0-a yaxın E-value göstəricisinə malik ilk 3 nəticəni qeyd edin.
-4. Bu genin canlı orqanizmdə hansı bioloji və fizioloji rola malik olduğunu 3-4 cümlə ilə izah edərək təhvil verin.`,
-      starterCode: `>Unknown_WCU_Sample_2026
-ATGGCTGATCAACTGACTGAGGAGCAGATTGCAGAATTCAAGGAAGCATTCTCCCTATTT
-GACAAGGATGGGGACGGCACTATCACAACAAAGGAGCTGGGCACTGTGATGCGGTCCCTG
-GGACAGAACCCTACAGAAGCAGAGCTACAGGACATGATTAATGAAGTGGATGCTGATGGA
-AATGGCACCATTGACTTCCCCGAATTTTTGACTATGATGGCTAGAAAAATGAAAGACACA
-GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
-      resourceLink: "https://blast.ncbi.nlm.nih.gov/Blast.cgi",
-      resourceName: "NCBI BLAST Aləti",
-      submissions: []
-    }
-  ],
+  tasks: [],
 
   structuralTools: [
     {
@@ -1367,36 +1202,6 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
           ],
           "motivation": "Magistratura işimdə molekulyar biologiya və bioinformatikanı birləşdirmək.",
           "yearGoal": "Molekulyar modelləşdirmə və elmi nəşr.",
-          "customTasks": [],
-          "notes": []
-    },
-    {
-          "id": "mem-fidan",
-          "fullName": "Fidan Məhərrəmova (Verdiyeva)",
-          "username": "fidan",
-          "email": "fidanverdiyeva808@gmail.com",
-          "phone": "0708870494",
-          "password": "Rasengan25",
-          "role": "Akademik Mentor / Müəllim",
-          "title": "Akademik Mentor & Tədqiqatçı",
-          "university": "Bakı Dövlət Universiteti (BDU)",
-          "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
-          "major": "Biologiya",
-          "course": "Magistratura",
-          "joinDate": "14.10.2026",
-          "registeredAt": "2026-10-14",
-          "status": "Aktiv",
-          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=fidan",
-          "photo": "",
-          "skills": [
-                "Genomika və NGS Analizi",
-                "Struktur Biologiyası və Dərman Dizaynı",
-                "Transkriptomika və RNA-Seq",
-                "Python",
-                "Biopython"
-          ],
-          "motivation": "Molekulyar biologiya və fitopatologiya sahəsində çalışdığım üçün bioinformatika biliklərimi inkişaf etdirmək istəyirəm. Xüsusilə DNT ardıcıllıqlarının analizi və Python-un bioloji tədqiqatlarda tətbiqi məni cəlb edir. Klubun praktiki fəaliyyətlərində iştirak edərək biliklərimi artırmağı və onları peşəkar fəaliyyətimdə tətbiq etməyi hədəfləyirəm.",
-          "yearGoal": "Bir il ərzində Python və Biopython vasitəsilə bitki patogenlərinin DNT ardıcıllıqlarını analiz etmək bacarığı qazanmaq istəyirəm. Məqsədim müxtəlif patogenlərin ardıcıllıqlarını müqayisə edən və nəticələri təqdim edən kiçik bioinformatik layihə hazırlamaqdır.",
           "customTasks": [],
           "notes": []
     }
@@ -2513,43 +2318,6 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
       "status": "Təsdiqləndi",
       "photo": "",
       "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
-    },
-    {
-      "id": "app-fidan",
-      "memberId": "mem-fidan",
-      "fullName": "Fidan Məhərrəmova (Verdiyeva)",
-      "email": "fidanverdiyeva808@gmail.com",
-      "phone": "0708870494",
-      "username": "fidan",
-      "password": "Rasengan25",
-      "university": "Bakı Dövlət Universiteti (BDU)",
-      "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
-      "major": "Biologiya",
-      "course": "Magistratura",
-      "studyLang": "Azərbaycan bölməsi | GPA: 87.34",
-      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
-      "tools": [
-        "Heç biri"
-      ],
-      "bioTools": [
-        "Heç biri"
-      ],
-      "bioKnowledge": "Orta səviyyədə anlayışım var (Ümumi universitet biologiyası)",
-      "osType": "Yalnız universitet laboratoriyası",
-      "researchTracks": [
-        "Genomika və NGS Analizi",
-        "Struktur Biologiyası və Dərman Dizaynı",
-        "Transkriptomika və RNA-Seq"
-      ],
-      "roleInterest": "Akademik Mentor & Tədqiqatçı",
-      "weeklyTime": "Həftədə 2–4 saat",
-      "profileUrl": "https://www.linkedin.com/in/fidan-verdiyeva-753bb92ba?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
-      "motivation": "Molekulyar biologiya və fitopatologiya sahəsində çalışdığım üçün bioinformatika biliklərimi inkişaf etdirmək istəyirəm. Xüsusilə DNT ardıcıllıqlarının analizi və Python-un bioloji tədqiqatlarda tətbiqi məni cəlb edir. Klubun praktiki fəaliyyətlərində iştirak edərək biliklərimi artırmağı və onları peşəkar fəaliyyətimdə tətbiq etməyi hədəfləyirəm.",
-      "yearGoal": "Bir il ərzində Python və Biopython vasitəsilə bitki patogenlərinin DNT ardıcıllıqlarını analiz etmək bacarığı qazanmaq istəyirəm. Məqsədim müxtəlif patogenlərin ardıcıllıqlarını müqayisə edən və nəticələri təqdim edən kiçik bioinformatik layihə hazırlamaqdır.",
-      "dateApplied": "2026-10-14",
-      "status": "Təsdiqləndi",
-      "photo": "",
-      "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
     }
   ],
 
@@ -2693,7 +2461,7 @@ GACAGTGAAGAAGAAATTAGAGAAGCGTTCCGTGTGTTTGATAAGGATGGCAATGGCTAC`,
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.10.29.v37_teacher_role_routing_fidan_maharramova_mentor";
+const CURRENT_DATA_VERSION = "2026.10.29.v38_fidan_mentor_only_zero_mock_tasks";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -2746,11 +2514,16 @@ function purgeMockData(data) {
     "teach-app-1", 
     "rashad_ismayilov"
   ];
+  // Fidan Məhərrəmova yalnız Akademik Mentor / Müəllimdir - tələbə üzvlüyü və müraciətindən tam çıxarılır
   if (Array.isArray(data.applications)) {
-    data.applications = data.applications.filter(app => app && !legacyPrototypeIds.includes(app.id));
+    data.applications = data.applications.filter(app => app && !legacyPrototypeIds.includes(app.id) && app.id !== "app-fidan" && app.memberId !== "mem-fidan" && (app.username || "").toLowerCase() !== "fidan");
   }
   if (Array.isArray(data.members)) {
-    data.members = data.members.filter(mem => mem && !legacyPrototypeIds.includes(mem.id));
+    data.members = data.members.filter(mem => mem && !legacyPrototypeIds.includes(mem.id) && mem.id !== "mem-fidan" && (mem.username || "").toLowerCase() !== "fidan");
+  }
+  // Bütün köhnə mock tapşırıqlar (task-101, task-102, task-103) təmizlənir - laboratoriya tapşırıqları manual təyin edilir
+  if (Array.isArray(data.tasks)) {
+    data.tasks = data.tasks.filter(t => t && !["task-101", "task-102", "task-103"].includes(t.id));
   }
   if (Array.isArray(data.teachers)) {
     data.teachers = data.teachers.filter(t => t && t.id !== "teacher-1" && (t.username || "").toLowerCase() !== "rashad_ismayilov");
@@ -2840,34 +2613,16 @@ function getClubData() {
       // Mock dataları tam təmizlə
       purgeMockData(parsed);
 
-      // Tapşırıqların standart siyahısını yenilə və mock həlləri sıfırla
-      parsed.tasks = parsed.tasks || [];
-      INITIAL_DATA.tasks.forEach((defTask) => {
-        const existingIdx = parsed.tasks.findIndex((t) => t.id === defTask.id);
-        if (existingIdx === -1) {
-          parsed.tasks.push(JSON.parse(JSON.stringify(defTask)));
-        } else {
-          parsed.tasks[existingIdx].title = defTask.title;
-          parsed.tasks[existingIdx].category = defTask.category;
-          parsed.tasks[existingIdx].difficulty = defTask.difficulty;
-          parsed.tasks[existingIdx].summary = defTask.summary;
-          parsed.tasks[existingIdx].instructions = defTask.instructions;
-          parsed.tasks[existingIdx].starterCode = defTask.starterCode;
-          parsed.tasks[existingIdx].imageUrl = defTask.imageUrl;
-          parsed.tasks[existingIdx].imageCaption = defTask.imageCaption;
-          parsed.tasks[existingIdx].videoUrl = defTask.videoUrl;
-          parsed.tasks[existingIdx].videoEmbed = defTask.videoEmbed;
-          parsed.tasks[existingIdx].videoTitle = defTask.videoTitle;
-          parsed.tasks[existingIdx].videoDuration = defTask.videoDuration || "04:30";
-          parsed.tasks[existingIdx].videoQuality = defTask.videoQuality || "360p";
-          parsed.tasks[existingIdx].document = defTask.document;
-          parsed.tasks[existingIdx].resourceLink = defTask.resourceLink;
-          parsed.tasks[existingIdx].resourceName = defTask.resourceName;
-          parsed.tasks[existingIdx].submissions = (parsed.tasks[existingIdx].submissions || []).filter(
-            s => !["sub-1", "sub-2", "sub-3"].includes(s.id)
-          );
-        }
-      });
+      // Tapşırıqlar: Köhnə prototip / avtomatik mock tapşırıqlar (task-101, task-102, task-103) tam təmizlənir
+      parsed.tasks = (parsed.tasks || []).filter(t => t && !["task-101", "task-102", "task-103"].includes(t.id));
+      if (Array.isArray(INITIAL_DATA.tasks) && INITIAL_DATA.tasks.length > 0) {
+        INITIAL_DATA.tasks.forEach((defTask) => {
+          const existingIdx = parsed.tasks.findIndex((t) => t.id === defTask.id);
+          if (existingIdx === -1) {
+            parsed.tasks.push(JSON.parse(JSON.stringify(defTask)));
+          }
+        });
+      }
 
       parsed.members = parsed.members || [];
       parsed.memberCustomTasks = parsed.memberCustomTasks || [];
