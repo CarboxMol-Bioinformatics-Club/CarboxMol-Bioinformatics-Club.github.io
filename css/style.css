@@ -144,6 +144,14 @@ input, select, textarea {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+.glass-nav .nav-link {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 /* Code and Genetic font */

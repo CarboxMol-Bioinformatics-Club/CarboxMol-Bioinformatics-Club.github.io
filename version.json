@@ -1,6 +1,6 @@
 {
-  "version": "2.2.6",
-  "build": "20261029-2130",
-  "timestamp": 1793295000000,
-  "description": "CarboxMol Bioinformatika Klubu v2.2.6 — Müəllim və Mentor qeydiyyatlarının avtomatik rol yönləndirməsi və Fidan Məhərrəmova (Verdiyeva) akademik mentor statusunun rəsmiləşdirilməsi"
+  "version": "2.2.7",
+  "build": "20261029-2140",
+  "timestamp": 1793295600000,
+  "description": "CarboxMol Bioinformatika Klubu v2.2.7 — Navbar dizaynının optimizasiyası, üst-üstə düşmənin (collision) aradan qaldırılması və təmiz responsive nizamlanması"
 }
