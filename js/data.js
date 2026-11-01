@@ -8,8 +8,8 @@ const INITIAL_DATA = {
     year: "2026/2027",
     president: "Süleyman Mehdi oğlu Hacızadə",
     presidentTitle: "Təsisçi və Klub Sədri | Bioinformatika Mütəxəssisi",
-    presidentEducation: "Western Caspian University, Biologiya (İngilis dili), 2021–2026",
-    presidentBio: "Qərbi Kaspi Universiteti Biologiya (İngilis dili) 2021–2026 (V kurs tələbəsi). Azərbaycan Elm və Təhsil Nazirliyi Molekulyar Biologiya İnstitutunun (IMB) Hesablama Struktur Biologiyası Laboratoriyasında Bioinformatika Mütəxəssisi. Holberton School Azerbaijan Kompüter Elmləri məzunu.",
+    presidentEducation: "Western Caspian University, Biologiya (İngilis dili), 2021–2026 | Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi (Kompüter ustalığı / İT Dəstək, 1 illik təhsil, 2020–2021)",
+    presidentBio: "Qərbi Kaspi Universiteti Biologiya (İngilis dili) 2021–2026 (V kurs tələbəsi). Azərbaycan Elm və Təhsil Nazirliyi Molekulyar Biologiya İnstitutunun (IMB) Hesablama Struktur Biologiyası Laboratoriyasında Bioinformatika Mütəxəssisi. Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi (Kompüter ustalığı / İT Dəstək, 1 illik təhsil, 2020–2021) və Holberton School Azerbaijan Kompüter Elmləri məzunu.",
     presidentPhoto: "assets/images/president.jpg",
     presidentGithub: "https://github.com/SuleimanHajizadeh",
     phones: ["+994 70 550 69 07", "+994 99 350 69 07"],
@@ -2513,7 +2513,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.01.v43_formsubmit_kenan_heyderov_auto_sync";
+const CURRENT_DATA_VERSION = "2026.11.01.v44_president_vocational_it_education";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {

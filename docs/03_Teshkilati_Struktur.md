@@ -20,7 +20,9 @@ Klubun idarəetmə strukturu çevik, sadə və effektiv elmi fəaliyyəti təmin
   * Western Caspian University, Biologiya (ingilis dili), 2021–2026 (V kurs tələbəsi);
   * Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasında **Bioinformatika Mütəxəssisi (Bioinformatics Specialist)**;
   * Kembric MRC LMB Proqram Rəhbəri Prof. Qərib Mürşüdov ilə birgə makromolekulyar koordinat və həndəsi analiz mühərriki **Carbox** və interaktiv 3D biomolekulyar vizualizator **CarboxMol** proqram təminatlarının müəllifi və tərtibatçısı (Hələ rəsmi nəşr edilmədiyi üçün daxili elmi alət kimi yalnız onlar tərəfindən tədris olunur);
-  * Holberton School Azerbaijan, Kompüter Elmləri məzunu.
+  * Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi, Kompüter ustalığı (İT Dəstək) ixtisası üzrə 1 illik təhsil məzunu (2020–2021);
+  * Holberton School Azerbaijan, Kompüter Elmləri məzunu;
+  * 1 saylı Bakı Tibb Kolleci (Əczaçılıq) və 6+ illik əczaçılıq təcrübəsi bazası.
 * **Əlaqə:** +994 70 550 69 07 | +994 99 350 69 07 | suleyman.hacizade.232bioing@wcu.edu.az | GitHub: [SuleimanHajizadeh](https://github.com/SuleimanHajizadeh)
 * **Vəzifə Öhdəlikləri:**
   * **Rəsmi Təmsilçilik:** Klubu rəsmi olaraq Qərbi Kaspi Universitetinin rəhbərliyi, dekanlıq, Tələbə İşləri Departamenti və Tələbə Gənclər Təşkilatı (TGT) qarşısında təmsil edir.

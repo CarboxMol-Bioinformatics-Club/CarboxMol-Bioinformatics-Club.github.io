@@ -28,7 +28,7 @@
 
 Müasir dövrdə biologiya, biotexnologiya, genetika və informasiya texnologiyalarının kəsişməsində yerləşən bioinformatika (hesablama biologiyası) elmi sürətlə inkişaf etməkdə və qlobal elmi tədqiqatların mərkəzində dayanmaqdadır. 
 
-Mən, Süleyman Mehdi oğlu Hacızadə, Qərbi Kaspi Universitetinin Biologiya (ingilis dili) ixtisasının 2021–2026 (V kurs) tələbəsi olmaqla yanaşı, eyni zamanda Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasında Bioinformatika Mütəxəssisi (Bioinformatics Specialist) vəzifəsində elmi-tədqiqat fəaliyyəti göstərirəm və Holberton School Azerbaijan proqramlaşdırma mərkəzində kompüter elmləri təhsili almışam.
+Mən, Süleyman Mehdi oğlu Hacızadə, Qərbi Kaspi Universitetinin Biologiya (ingilis dili) ixtisasının 2021–2026 (V kurs) tələbəsi olmaqla yanaşı, eyni zamanda Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasında Bioinformatika Mütəxəssisi (Bioinformatics Specialist) vəzifəsində elmi-tədqiqat fəaliyyəti göstərirəm, Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzində Kompüter ustalığı (İT Dəstək) ixtisası üzrə 1 illik təhsil almışam (2020–2021) və Holberton School Azerbaijan proqramlaşdırma mərkəzində kompüter elmləri təhsili almışam.
 
 Universitetimizdə təhsil alan tələbələrin bu sahədə bilik və bacarıqlarını artırmaq, praktiki genomika, zülalların 3D struktur modelləşdirməsi (AlphaFold, PyMOL, ChimeraX, Coot, GemmiMol, Carbox & CarboxMol), Python və R proqramlaşdırma dilləri vasitəsilə bioloji böyük verilənlərin analizi vərdişləri qazandırmaq məqsədilə tələbələr adından "WCU Bioinformatics Club" (WCU Bioinformatika Klubu) təsis etmək təşəbbüsü ilə çıxış edirik.
 
@@ -218,7 +218,9 @@ Klubun idarəetmə strukturu çevik, sadə və effektiv elmi fəaliyyəti təmin
   * Western Caspian University, Biologiya (ingilis dili), 2021–2026 (V kurs tələbəsi);
   * Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasında **Bioinformatika Mütəxəssisi (Bioinformatics Specialist)**;
   * Kembric MRC LMB Proqram Rəhbəri Prof. Qərib Mürşüdov ilə birgə makromolekulyar koordinat və həndəsi analiz mühərriki **Carbox** və interaktiv 3D biomolekulyar vizualizator **CarboxMol** proqram təminatlarının müəllifi və tərtibatçısı (Hələ rəsmi nəşr edilmədiyi üçün daxili elmi alət kimi yalnız onlar tərəfindən tədris olunur);
-  * Holberton School Azerbaijan, Kompüter Elmləri məzunu.
+  * Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi, Kompüter ustalığı (İT Dəstək) ixtisası üzrə 1 illik təhsil məzunu (2020–2021);
+  * Holberton School Azerbaijan, Kompüter Elmləri məzunu;
+  * 1 saylı Bakı Tibb Kolleci (Əczaçılıq) və 6+ illik əczaçılıq təcrübəsi bazası.
 * **Əlaqə:** +994 70 550 69 07 | +994 99 350 69 07 | suleyman.hacizade.232bioing@wcu.edu.az | GitHub: [SuleimanHajizadeh](https://github.com/SuleimanHajizadeh)
 * **Vəzifə Öhdəlikləri:**
   * **Rəsmi Təmsilçilik:** Klubu rəsmi olaraq Qərbi Kaspi Universitetinin rəhbərliyi, dekanlıq, Tələbə İşləri Departamenti və Tələbə Gənclər Təşkilatı (TGT) qarşısında təmsil edir.
