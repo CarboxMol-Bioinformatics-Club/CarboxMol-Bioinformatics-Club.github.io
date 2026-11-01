@@ -1699,6 +1699,9 @@ function navigateTo(sectionId) {
     if (PresidentPortal.renderEventsTable) PresidentPortal.renderEventsTable();
     if (PresidentPortal.startAutoSync) PresidentPortal.startAutoSync();
     else if (PresidentPortal.syncFromCloud) PresidentPortal.syncFromCloud(true);
+    if (typeof PresidentPortal.fetchFromFormSubmitApi === "function") {
+      PresidentPortal.fetchFromFormSubmitApi(null, true);
+    }
   } else if (window.PresidentPortal && PresidentPortal.stopAutoSync) {
     PresidentPortal.stopAutoSync();
   }

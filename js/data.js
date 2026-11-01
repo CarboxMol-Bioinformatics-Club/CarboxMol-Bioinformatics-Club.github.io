@@ -1204,6 +1204,32 @@ events: [
           "yearGoal": "Molekulyar modelləşdirmə və elmi nəşr.",
           "customTasks": [],
           "notes": []
+    },
+    {
+          "id": "mem-kenanbiotech",
+          "fullName": "Kənan Heydərov (Fərail)",
+          "username": "kenanbiotech",
+          "email": "heyderofknan@gmail.com",
+          "phone": "+994519549012",
+          "password": "Kennan1245",
+          "role": "Klub Üzvü",
+          "university": "Bakı Dövlət Universiteti (BDU)",
+          "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
+          "major": "Biotexnologiya",
+          "course": "II Kurs",
+          "joinDate": "24.10.2026",
+          "registeredAt": "2026-10-24",
+          "status": "Gözləyir",
+          "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=kenanbiotech",
+          "photo": "",
+          "skills": [
+                "Biotexnologiya",
+                "Genomika və NGS Analizi"
+          ],
+          "motivation": "Ümumiyyətlə bioinformatika sahəsinə geniş marağım var və düşünürəm və inanıram ki CarboxMol Bioinformatika klubunda bunlara cavab tapacam.",
+          "yearGoal": "Açığı hələki tam qərar verməmişəm duruma görə dəyişə bilər.",
+          "customTasks": [],
+          "notes": []
     }
   ],
 
@@ -2318,6 +2344,42 @@ events: [
       "status": "Təsdiqləndi",
       "photo": "",
       "adminNotes": "Rəsmi təsdiqlənmiş klub üzvü."
+    },
+    {
+      "id": "app-kenanbiotech",
+      "memberId": "mem-kenanbiotech",
+      "fullName": "Kənan Heydərov (Fərail)",
+      "email": "heyderofknan@gmail.com",
+      "phone": "+994519549012",
+      "username": "kenanbiotech",
+      "password": "Kennan1245",
+      "university": "Bakı Dövlət Universiteti (BDU)",
+      "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
+      "major": "Biotexnologiya",
+      "course": "Bakalavr (II kurs)",
+      "studyLang": "İngilis bölməsi | GPA: 82.4",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyədə anlayışım var (Ümumi universitet biologiyası)",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi",
+        "Transkriptomika və RNA-Seq",
+        "Süni İntellekt və Biotibb ML"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Ümumiyyətlə bioinformatika sahəsinə geniş marağım var və düşünürəm və inanıram ki CarboxMol Bioinformatika klubunda bunlara cavab tapacam.",
+      "yearGoal": "Açığı hələki tam qərar verməmişəm duruma görə dəyişə bilər.",
+      "dateApplied": "2026-10-24",
+      "status": "Gözləyir",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət."
     }
   ],
 
@@ -2350,6 +2412,33 @@ events: [
       "registeredAt": "2026-10-10",
       "approvedAt": "2026-10-10",
       "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "teacher-fidan-m",
+      "fullName": "Fidan Məhərrəmova",
+      "title": "Akademik Mentor & Tədqiqatçı",
+      "academicDegree": "MSc Bioinformatika",
+      "university": "Digər Elmi-Tədqiqat İnstitutu və ya Mərkəzi",
+      "faculty": "Bioinformatika Fakültəsi",
+      "department": "Bioinformatika və Hesablama Biologiyası",
+      "email": "fidan.maharramova1@gmail.com",
+      "phone": "+447394415024",
+      "username": "fidan_m",
+      "password": "Imperial123:)",
+      "photo": "",
+      "specialties": [
+        "Bioinformatika",
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası",
+        "Python & R"
+      ],
+      "orcid": "",
+      "googleScholar": "",
+      "bio": "Bioinformatika (Magistratura) üzrə tədqiqatçı və CarboxMol klubunun akademik mentoru.",
+      "status": "Aktiv",
+      "registeredAt": "2026-10-27",
+      "approvedAt": "2026-10-27",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
     }
   ],
 
@@ -2378,6 +2467,31 @@ events: [
       "status": "Təsdiqləndi",
       "dateApplied": "2026-10-10",
       "adminNotes": "Sədr tərəfindən rəsmi akademik mentor olaraq təsdiqlənmişdir."
+    },
+    {
+      "id": "teach-app-fidan-m",
+      "teacherId": "teacher-fidan-m",
+      "fullName": "Fidan Məhərrəmova",
+      "title": "Akademik Mentor & Tədqiqatçı",
+      "academicDegree": "MSc Bioinformatika",
+      "university": "Digər Elmi-Tədqiqat İnstitutu və ya Mərkəzi",
+      "faculty": "Bioinformatika Fakültəsi",
+      "department": "Bioinformatika və Hesablama Biologiyası",
+      "email": "fidan.maharramova1@gmail.com",
+      "phone": "+447394415024",
+      "username": "fidan_m",
+      "password": "Imperial123:)",
+      "specialties": [
+        "Bioinformatika",
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası",
+        "Python & R"
+      ],
+      "orcid": "",
+      "bio": "Bioinformatika (Magistratura) üzrə tədqiqatçı və CarboxMol klubunun akademik mentoru.",
+      "status": "Təsdiqləndi",
+      "dateApplied": "2026-10-27",
+      "adminNotes": "Sədr tərəfindən rəsmi akademik mentor olaraq təsdiqlənmişdir."
     }
   ],
 
@@ -2399,7 +2513,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.10.29.v42_absolute_president_teacher_deletion_authority";
+const CURRENT_DATA_VERSION = "2026.11.01.v43_formsubmit_kenan_heyderov_auto_sync";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {

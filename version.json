@@ -1,6 +1,6 @@
 {
-  "version": "2.3.3",
-  "build": "20261030-0100",
-  "timestamp": 1793307600000,
-  "description": "CarboxMol Bioinformatika Klubu v2.3.3 — Ağ tema kontrastı tam harmonizasiya edildi, cədvəl və kartlardakı bütün qaranlıq bloklar və gizli yazılar təmizləndi."
+  "version": "2.3.4",
+  "build": "20261101-1105",
+  "timestamp": 1793475900000,
+  "description": "CarboxMol Bioinformatika Klubu v2.3.4 — FormSubmit bulud arxivi avtomatik sinxronizasiyası (Kənan Heydərov və Fidan Məhərrəmova daxil olmaqla) və API Key inteqrasiyası tamamlandı."
 }

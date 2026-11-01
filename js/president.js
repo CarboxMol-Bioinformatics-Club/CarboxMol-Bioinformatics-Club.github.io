@@ -3746,7 +3746,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     }
   },
 
-  async fetchFromFormSubmitApi(manualKey) {
+  async fetchFromFormSubmitApi(manualKey, isBackground = false) {
     const keyInput = document.getElementById("formSubmitApiKeyInput");
     const defaultKey = "fbef3c3e5ab53c64b0e0f64b6c56185c97a4d5954882c2383df82583d572bc65";
     const apiKey = (manualKey || (keyInput ? keyInput.value : "") || localStorage.getItem("wcu_formsubmit_api_key") || defaultKey).trim();
@@ -3755,65 +3755,207 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
       keyInput.value = apiKey;
     }
     localStorage.setItem("wcu_formsubmit_api_key", apiKey);
-    showToast("FormSubmit bulud arxivindən müraciətlər çəkilir...", "info");
+    if (!isBackground && typeof showToast === "function") {
+      showToast("FormSubmit bulud arxivindən müraciətlər çəkilir...", "info");
+    }
 
     try {
       let result = null;
 
-      // 1. Edge Serverless Gateway (/api/sync) vasitəsilə sorğu
+      // 1. Birbaşa FormSubmit API sorğusu (CORS dəstəklənir)
       try {
-        const res = await fetch("/api/sync", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ action: "FORMSUBMIT_SUBMISSIONS", apiKey })
-        });
-        if (res.ok) {
-          result = await res.json();
+        const directRes = await fetch(`https://formsubmit.co/api/get-submissions/${encodeURIComponent(apiKey)}`);
+        if (directRes.ok) {
+          result = await directRes.json();
         }
-      } catch (errGateway) {
-        console.warn("Gateway error, trying direct fetch:", errGateway);
+      } catch (errDirect) {
+        console.warn("Direct FormSubmit fetch notice:", errDirect);
       }
 
-      // 2. Birbaşa FormSubmit API sorğusu (Əgər şlüzdən cavab gəlməzsə fallback)
+      // 2. Gateway fallback (/api/sync)
       if (!result || !result.success || !Array.isArray(result.submissions)) {
         try {
-          const directRes = await fetch(`https://formsubmit.co/api/get-submissions/${encodeURIComponent(apiKey)}`);
-          if (directRes.ok) {
-            result = await directRes.json();
+          const res = await fetch("/api/sync", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ action: "FORMSUBMIT_SUBMISSIONS", apiKey })
+          });
+          if (res.ok) {
+            result = await res.json();
           }
-        } catch (errDirect) {
-          console.warn("Direct FormSubmit fetch notice:", errDirect);
-        }
+        } catch (errGateway) {}
       }
 
       if (!result || !result.success) {
-        showToast(result?.error || result?.message || "FormSubmit-dən məlumat alına bilmədi. Açarı yoxlayın.", "error");
+        if (!isBackground && typeof showToast === "function") {
+          showToast(result?.error || result?.message || "FormSubmit-dən məlumat alına bilmədi. Açarı yoxlayın.", "error");
+        }
         return;
       }
 
       const submissions = result.submissions || [];
       if (submissions.length === 0) {
-        showToast("FormSubmit arxivində heç bir müraciət tapılmadı.", "info");
+        if (!isBackground && typeof showToast === "function") {
+          showToast("FormSubmit arxivində heç bir müraciət tapılmadı.", "info");
+        }
         return;
       }
 
-      // Gələn arxiv obyektlərini tələbə müraciətinə çevir
+      // Gələn arxiv obyektlərini normallaşdır
       const parsedStudents = submissions.map(sub => this._normalizeStudentObject(sub)).filter(s => s && (s.fullName || s.email));
 
       if (parsedStudents.length === 0) {
-        showToast("Arxivdəki qeydlər təhlil edilə bilmədi.", "warning");
+        if (!isBackground && typeof showToast === "function") {
+          showToast("Arxivdəki qeydlər təhlil edilə bilmədi.", "warning");
+        }
         return;
       }
 
-      // Xam mətn xanasına da JSON formatında doldur
+      // Xam mətn xanasına da JSON formatında doldur (əgər açıqdırsa)
       const rawInput = document.getElementById("bulkEmailRawInput");
       if (rawInput) rawInput.value = JSON.stringify(submissions, null, 2);
 
       this._parsedBulkStudents = parsedStudents;
-      this.previewBulkEmailImport();
-      showToast(`✓ FormSubmit buludundan ${parsedStudents.length} tələbə müraciəti uğurla çəkildi!`, "success");
+
+      // AVTOMATİK BİRLƏŞDİRMƏ VƏ BAZAYA ƏLAVƏ (Auto-Merge to Storage)
+      const data = getClubData();
+      data.applications = data.applications || [];
+      data.members = data.members || [];
+      data.deletedAppIds = data.deletedAppIds || [];
+      data.deletedMemberIds = data.deletedMemberIds || [];
+      data.teachers = data.teachers || [];
+      data.teacherApplications = data.teacherApplications || [];
+
+      let addedCount = 0;
+      parsedStudents.forEach((s, idx) => {
+        const cleanUser = (s.username || "").toLowerCase();
+        const cleanMail = (s.email || "").toLowerCase();
+
+        // Əgər Sədr tərəfindən silinibdirsə, kənara qoy
+        if (data.deletedMemberIds.includes(cleanUser) || (data.deletedTeacherIds && data.deletedTeacherIds.includes(cleanUser))) return;
+
+        // Fidan Məhərrəmova müəllim / mentor hesabıdır, tələbələrə qarışdırılmır
+        if (cleanUser === "fidan_m" || cleanUser === "fidan" || cleanMail === "fidan.maharramova1@gmail.com") {
+          const tIdx = data.teachers.findIndex(t => (t.username && t.username.toLowerCase() === "fidan_m") || (t.email && t.email.toLowerCase() === cleanMail));
+          if (tIdx === -1) {
+            data.teachers.push({
+              id: "teacher-fidan-m",
+              fullName: s.fullName,
+              title: "Akademik Mentor & Tədqiqatçı",
+              academicDegree: "MSc Bioinformatika",
+              university: s.university || "Digər Elmi-Tədqiqat İnstitutu və ya Mərkəzi",
+              faculty: "Bioinformatika Fakültəsi",
+              department: "Bioinformatika və Hesablama Biologiyası",
+              email: s.email,
+              phone: s.phone,
+              username: "fidan_m",
+              password: s.password || "Imperial123:)",
+              photo: "",
+              specialties: ["Bioinformatika", "Genomika və NGS Analizi", "Struktur Biologiyası", "Python & R"],
+              bio: s.motivation || "Bioinformatika (Magistratura) üzrə tədqiqatçı və CarboxMol klubunun akademik mentoru.",
+              status: "Aktiv",
+              registeredAt: s.dateApplied || "2026-10-27",
+              approvedAt: "2026-10-27",
+              approvedBy: "Süleyman Hacızadə (Klub Sədri)"
+            });
+            addedCount++;
+          }
+          return;
+        }
+
+        // Tələbə müraciətlərində mövcud olub-olmadığını yoxla
+        const existsApp = data.applications.find(a => 
+          (a.username && a.username.toLowerCase() === cleanUser) ||
+          (a.email && a.email.toLowerCase() === cleanMail)
+        );
+
+        const newAppId = "app-fs-" + (cleanUser || (Date.now() + idx));
+        const newMemId = "mem-fs-" + (cleanUser || (Date.now() + idx));
+
+        if (!existsApp) {
+          const appObj = {
+            id: newAppId,
+            memberId: newMemId,
+            fullName: s.fullName,
+            email: s.email,
+            phone: s.phone,
+            username: s.username,
+            password: s.password,
+            university: s.university,
+            faculty: s.faculty,
+            major: s.major,
+            course: s.course,
+            studyLang: s.studyLang,
+            programmingSkill: s.progSkill || "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+            tools: s.tools || ["Heç biri"],
+            bioTools: s.bioTools || ["Heç biri"],
+            bioKnowledge: s.bioKnowledge || "Orta səviyyə",
+            osType: s.osType || "Windows",
+            researchTracks: s.researchTracks || ["Genomika və NGS Analizi"],
+            roleInterest: s.roleInterest || "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+            weeklyTime: s.weeklyTime || "Həftədə 2–4 saat",
+            motivation: s.motivation,
+            yearGoal: s.yearGoal,
+            dateApplied: s.dateApplied || new Date().toISOString().slice(0, 10),
+            status: "Gözləyir",
+            photo: s.photo || "",
+            adminNotes: "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət."
+          };
+          data.applications.unshift(appObj);
+          addedCount++;
+        }
+
+        // Üzvlər siyahısında da hesabını aç (statusu müraciətlə eyni qalır)
+        const existsMem = data.members.find(m => 
+          (m.username && m.username.toLowerCase() === cleanUser) ||
+          (m.email && m.email.toLowerCase() === cleanMail)
+        );
+        if (!existsMem) {
+          data.members.unshift({
+            id: newMemId,
+            fullName: s.fullName,
+            username: s.username,
+            email: s.email,
+            phone: s.phone,
+            password: s.password,
+            role: "Klub Üzvü",
+            university: s.university,
+            faculty: s.faculty,
+            major: s.major,
+            course: s.course,
+            joinDate: s.dateApplied || "2026-10-24",
+            registeredAt: s.dateApplied || "2026-10-24",
+            status: existsApp ? existsApp.status : "Gözləyir",
+            avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${cleanUser}`,
+            photo: s.photo || "",
+            skills: s.tools || ["Biotexnologiya", "Genomika və NGS Analizi"],
+            motivation: s.motivation,
+            yearGoal: s.yearGoal,
+            researchTracks: s.researchTracks || ["Genomika və NGS Analizi"],
+            customTasks: [],
+            notes: []
+          });
+        }
+      });
+
+      if (addedCount > 0) {
+        saveClubData(data);
+        this.renderMetrics();
+        this.renderApplicationsTable();
+        if (this.renderMembersAccountsTable) this.renderMembersAccountsTable();
+        if (this.renderTeachersAccountsTable) this.renderTeachersAccountsTable();
+        if (typeof showToast === "function") {
+          showToast(`✓ FormSubmit buludundan ${addedCount} yeni tələbə müraciəti bazaya daxil edildi!`, "success");
+        }
+      } else {
+        if (!isBackground && typeof showToast === "function") {
+          showToast(`FormSubmit arxivindəki bütün müraciətlər artıq cədvəlinizdə mövcuddur.`, "info");
+        }
+      }
     } catch (e) {
-      showToast("FormSubmit sinxronizasiya xətası: " + e.message, "error");
+      if (!isBackground && typeof showToast === "function") {
+        showToast("FormSubmit sinxronizasiya xətası: " + e.message, "error");
+      }
     }
   },
 
