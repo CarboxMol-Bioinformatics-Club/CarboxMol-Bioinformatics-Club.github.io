@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Səhifə Yönləndirilir | CarboxMol Bioinformatika Klubu</title>
+  <meta name="description" content="CarboxMol Bioinformatika Klubu rəsmi portalına yönləndirilirsiniz. Hesablama Biologiyası, Genomika, Python və 3D Struktur Analizi Platforması." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://carboxmol-bioinformatics-club.github.io/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="assets/images/carboxmol_bioclub_logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <script>
+    (function() {
+      // Smart Path to Hash Route Resolver for GitHub Pages
+      var path = window.location.pathname || '';
+      var cleanPath = path.replace(/^\/+|\/+$/g, '').toLowerCase();
+      var hashTarget = 'home';
+
+      var routeMap = {
+        'documents': 'documents',
+        'senedler': 'documents',
+        'esasname': 'documents',
+        'curriculum': 'curriculum',
+        'tedris': 'curriculum',
+        'sillabus': 'curriculum',
+        'biotools': 'biotools',
+        'aletler': 'biotools',
+        'carbox': 'biotools',
+        'carboxmol': 'biotools',
+        'events': 'events',
+        'tedbirler': 'events',
+        'seminar': 'events',
+        'collaborators': 'collaborators',
+        'emekdashlar': 'collaborators',
+        'biomeet': 'biomeet',
+        'meet': 'biomeet',
+        'video': 'biomeet',
+        'register': 'register',
+        'qeydiyyat': 'register',
+        'uzvluk': 'register',
+        'apply': 'register',
+        'members': 'members-portal',
+        'telebe': 'members-portal',
+        'teachers': 'teacher-portal',
+        'muellim': 'teacher-portal',
+        'president': 'president-portal',
+        'sedr': 'president-portal'
+      };
+
+      if (cleanPath && routeMap[cleanPath]) {
+        hashTarget = routeMap[cleanPath];
+        window.location.replace('https://carboxmol-bioinformatics-club.github.io/#' + hashTarget);
+        return;
+      }
+    })();
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4">
+  <div class="max-w-xl w-full bg-slate-900 border border-teal-500/30 rounded-3xl p-8 sm:p-10 text-center shadow-2xl space-y-6">
+    <div class="w-20 h-20 mx-auto rounded-2xl bg-teal-500/10 border border-teal-500/40 flex items-center justify-center shadow-lg">
+      <i class="fa-solid fa-dna text-3xl text-teal-400 animate-pulse"></i>
+    </div>
+    
+    <div class="space-y-2">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-white">CarboxMol Bioinformatika Klubu</h1>
+      <p class="text-sm text-slate-400">Axtardığınız səhifə əsas portalımıza yönləndirilir...</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left pt-2">
+      <a href="https://carboxmol-bioinformatics-club.github.io/#home" class="p-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 hover:border-teal-400 text-xs text-slate-200 transition flex items-center gap-2">
+        <i class="fa-solid fa-house text-teal-400"></i> Əsas Səhifə
+      </a>
+      <a href="https://carboxmol-bioinformatics-club.github.io/#biotools" class="p-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 hover:border-teal-400 text-xs text-slate-200 transition flex items-center gap-2">
+        <i class="fa-solid fa-cube text-cyan-400"></i> Bioinformatika Alətləri
+      </a>
+      <a href="https://carboxmol-bioinformatics-club.github.io/#curriculum" class="p-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 hover:border-teal-400 text-xs text-slate-200 transition flex items-center gap-2">
+        <i class="fa-solid fa-book-open text-emerald-400"></i> 28 Həftəlik Sillabus
+      </a>
+      <a href="https://carboxmol-bioinformatics-club.github.io/#register" class="p-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 hover:border-teal-400 text-xs text-slate-200 transition flex items-center gap-2">
+        <i class="fa-solid fa-user-plus text-indigo-400"></i> Kluba Qeydiyyat
+      </a>
+      <a href="https://carboxmol-bioinformatics-club.github.io/#documents" class="p-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 hover:border-teal-400 text-xs text-slate-200 transition flex items-center gap-2">
+        <i class="fa-solid fa-file-contract text-amber-400"></i> Rəsmi Əsasnamə
+      </a>
+      <a href="https://carboxmol-bioinformatics-club.github.io/#events" class="p-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 hover:border-teal-400 text-xs text-slate-200 transition flex items-center gap-2">
+        <i class="fa-solid fa-calendar-check text-rose-400"></i> Elmi Tədbirlər
+      </a>
+    </div>
+
+    <div class="pt-4 border-t border-slate-800 flex items-center justify-center">
+      <a href="https://carboxmol-bioinformatics-club.github.io/" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-bold text-xs shadow-lg transition">
+        Əsas Portala Keçid Et
+      </a>
+    </div>
+  </div>
+</body>
+</html>

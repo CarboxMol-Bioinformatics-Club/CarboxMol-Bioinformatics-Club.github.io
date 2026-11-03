@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bioinformatika Alətləri (Carbox, CarboxMol, AlphaFold, PyMOL) | CarboxMol Bioinformatika Klubu</title>
+  <meta name="description" content="CarboxMol Bioinformatika Klubunun inkişaf etdirdiyi və tədris etdiyi elmi alətlər: Carbox (həndəsi analiz), CarboxMol (3D vizualizasiya), AlphaFold, PyMOL, ChimeraX, Coot, GemmiMol, Biopython və DESeq2." />
+  <meta name="keywords" content="Carbox, CarboxMol, AlphaFold, PyMOL, ChimeraX, Coot, GemmiMol, SeqAnalyzer, Biopython, Bioconductor, DESeq2, BioMeet, 3D zülal strukturları, hesablama biologiyası alətləri, Süleyman Hacızadə, Qərib Mürşüdov" />
+  <link rel="canonical" href="https://carboxmol-bioinformatics-club.github.io/biotools/" />
+  <link rel="alternate" hreflang="az" href="https://carboxmol-bioinformatics-club.github.io/biotools/" />
+  <link rel="alternate" hreflang="en" href="https://carboxmol-bioinformatics-club.github.io/biotools/" />
+  <meta name="robots" content="index, follow" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CarboxMol Bioinformatika Klubu" />
+  <meta property="og:url" content="https://carboxmol-bioinformatics-club.github.io/biotools/" />
+  <meta property="og:title" content="Bioinformatika Alətləri | CarboxMol, Carbox, AlphaFold, PyMOL" />
+  <meta property="og:description" content="3D makromolekulyar vizualizasiya, zülal-liqand qarşılıqlı təsirləri, genomika və maşın öyrənməsi üzrə bioinformatika proqram təminatları." />
+  <meta property="og:image" content="https://carboxmol-bioinformatics-club.github.io/assets/images/carboxmol_bioclub_logo.png" />
+
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="icon" type="image/png" href="../assets/images/carboxmol_bioclub_logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Carbox & CarboxMol Structural Biology Workbench",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All (Web, PWA, WebGL)",
+    "description": "Makromolekulyar həndəsi analiz mühərriki (Carbox) və interaktiv 3D biomolekulyar vizualizasiya platforması (CarboxMol). Müəlliflər: Süleyman Hacızadə və Prof. Qərib Mürşüdov (Cambridge University, MRC LMB).",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Süleyman Mehdi oğlu Hacızadə"
+      },
+      {
+        "@type": "Person",
+        "name": "Prof. Qərib Mürşüdov",
+        "affiliation": "MRC Laboratory of Molecular Biology, Cambridge"
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen selection:bg-teal-500 selection:text-white">
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
+      <a href="../#home" class="flex items-center gap-3">
+        <img src="../assets/images/carboxmol_bioclub_logo.png" alt="CarboxMol Loqo" class="w-10 h-10 rounded-xl" />
+        <div>
+          <span class="text-sm font-extrabold text-white block">CarboxMol Bioinformatika Klubu</span>
+          <span class="text-[11px] text-teal-400 font-mono">Qərbi Kaspi Universiteti & MBİ</span>
+        </div>
+      </a>
+      <a href="../#biotools" class="px-4 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 text-xs font-bold transition shadow">
+        İnteraktiv Studio-nu Aç
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-12 space-y-12">
+    <div class="text-center max-w-3xl mx-auto space-y-3">
+      <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Elmi Proqram Təminatları</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Bioinformatika və Hesablama Struktur Biologiyası Alətləri</h1>
+      <p class="text-sm text-slate-400 leading-relaxed">
+        Klubumuzda atomar səviyyədə makromolekulyar analiz, zülalların 3D konformasiyaları, gen ekspressiyası və süni intellekt əsaslı struktur proqnozlaşdırması üçün qabaqcıl elmi proqram təminatları tədris olunur və istifadə edilir.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Carbox -->
+      <article class="p-6 rounded-2xl bg-slate-900 border border-teal-500/30 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-teal-300 px-2.5 py-1 rounded-lg bg-teal-950 border border-teal-800 font-mono">Daxili Layihə</span>
+          <span class="text-xs text-slate-400">PDB / mmCIF Analizi</span>
+        </div>
+        <h2 class="text-xl font-bold text-white">Carbox: Makromolekulyar Koordinat və Həndəsi Analiz Mühərriki</h2>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          PDB və mmCIF makromolekulyar koordinatlarının emalı, atomlararası rabitə bucaqları, dihedrallar, toqquşma analizi və zülal-liqand qarşılıqlı əlaqələrinin riyazi hesablanması üçün xüsusi mühərrik.
+        </p>
+        <p class="text-xs text-slate-400">
+          <strong>Müəlliflər:</strong> Süleyman Hacızadə & Prof. Qərib Mürşüdov (Cambridge University, MRC LMB).
+        </p>
+      </article>
+
+      <!-- CarboxMol -->
+      <article class="p-6 rounded-2xl bg-slate-900 border border-cyan-500/30 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-cyan-300 px-2.5 py-1 rounded-lg bg-cyan-950 border border-cyan-800 font-mono">Daxili Layihə</span>
+          <span class="text-xs text-slate-400">3D Vizuallaşdırma</span>
+        </div>
+        <h2 class="text-xl font-bold text-white">CarboxMol: İnteraktiv 3D Biomolekulyar Render Platforması</h2>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          PyMOL və ChimeraX analoqu olan müasir vizualizator: zülalların ikincili/üçüncülü strukturlarını (alfa-spiral, beta-qat), aktiv mərkəz ciblərini, elektrostatik səthləri və elektron sıxlıqlarını 3D mühitdə yüksək sürətlə vizuallaşdırmaq üçün daxili alət.
+        </p>
+        <p class="text-xs text-slate-400">
+          <strong>Müəlliflər:</strong> Süleyman Hacızadə & Prof. Qərib Mürşüdov (Cambridge University, MRC LMB).
+        </p>
+      </article>
+
+      <!-- AlphaFold -->
+      <article class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-indigo-300 px-2.5 py-1 rounded-lg bg-indigo-950 border border-indigo-800 font-mono">AI Zülal Qatlanması</span>
+          <span class="text-xs text-slate-400">DeepMind / EMBL-EBI</span>
+        </div>
+        <h2 class="text-xl font-bold text-white">AlphaFold & ColabFold</h2>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Süni intellekt və dərin neyron şəbəkələri vasitəsilə 200+ milyon zülalın atomik səviyyəli 3D strukturunun proqnozlaşdırılması, pLDDT və PAE etibarlılıq analizləri.
+        </p>
+      </article>
+
+      <!-- PyMOL & ChimeraX -->
+      <article class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-300 px-2.5 py-1 rounded-lg bg-emerald-950 border border-emerald-800 font-mono">Molekulyar Qrafika</span>
+          <span class="text-xs text-slate-400">Schrödinger & UCSF</span>
+        </div>
+        <h2 class="text-xl font-bold text-white">PyMOL, UCSF ChimeraX, Coot & GemmiMol</h2>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Nəşr səviyyəli 3D render, kristalloqrafik elektron sıxlığı xəritələri, Krio-EM modelləri və dərman dizaynında liqand bağlanma cibləri analizi.
+        </p>
+      </article>
+    </div>
+
+    <div class="text-center pt-8 border-t border-slate-800">
+      <a href="../#biotools" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-black text-sm shadow-xl transition inline-flex items-center gap-2">
+        <i class="fa-solid fa-cube"></i> Bütün Alətləri Əsas Tətbiqdə İşlədin
+      </a>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500">
+    <p>CarboxMol Bioinformatika Klubu — Qərbi Kaspi Universiteti & AR ETN MBİ</p>
+    <p class="mt-1">Təsisçi & Klub Sədri: Süleyman Mehdi oğlu Hacızadə</p>
+  </footer>
+</body>
+</html>

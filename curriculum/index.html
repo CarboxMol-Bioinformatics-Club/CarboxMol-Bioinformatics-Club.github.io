@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>28 Həftəlik Akademik Sillabus və Tədris Planı | CarboxMol Bioinformatika Klubu</title>
+  <meta name="description" content="CarboxMol Bioinformatika Klubunun 28 həftəlik akademik fəaliyyət planı və laboratoriya sillabusu: Python, Biopython, R Bioconductor, DESeq2, Linux/Bash, 3D zülal strukturları, molekulyar dokinq və illik tələbə hakatonu." />
+  <meta name="keywords" content="bioinformatika sillabus, hesablama biologiyası dərsləri, Python biologiya, R Bioconductor kursu, DESeq2 dərsi, AlphaFold təlimi, PyMOL laboratoriyası, Carbox, CarboxMol, Qərbi Kaspi Universiteti tədris planı, Süleyman Hacızadə" />
+  <link rel="canonical" href="https://carboxmol-bioinformatics-club.github.io/curriculum/" />
+  <link rel="alternate" hreflang="az" href="https://carboxmol-bioinformatics-club.github.io/curriculum/" />
+  <link rel="alternate" hreflang="en" href="https://carboxmol-bioinformatics-club.github.io/curriculum/" />
+  <meta name="robots" content="index, follow" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CarboxMol Bioinformatika Klubu" />
+  <meta property="og:url" content="https://carboxmol-bioinformatics-club.github.io/curriculum/" />
+  <meta property="og:title" content="28 Həftəlik Bioinformatika Sillabusu | CarboxMol Klubu" />
+  <meta property="og:description" content="Genomika, struktur biologiyası, R/DESeq2 transkriptomikası və maşın öyrənməsi üzrə tam akademik tədris modulları." />
+  <meta property="og:image" content="https://carboxmol-bioinformatics-club.github.io/assets/images/carboxmol_bioclub_logo.png" />
+
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="icon" type="image/png" href="../assets/images/carboxmol_bioclub_logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Praktiki Bioinformatika və Hesablama Struktur Biologiyası Kursu",
+    "description": "Python, Biopython, Linux/Bash, R Bioconductor, DESeq2, zülalların 3D modelləşdirilməsi və xərçəng genomikası üzrə 28 həftəlik akademik proqram.",
+    "provider": {
+      "@type": "Organization",
+      "name": "CarboxMol Bioinformatika Klubu",
+      "sameAs": "https://carboxmol-bioinformatics-club.github.io/"
+    },
+    "timeToComplete": "P28W",
+    "isAccessibleForFree": true,
+    "courseCode": "BIOINFO-2026",
+    "inLanguage": "az"
+  }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen selection:bg-teal-500 selection:text-white">
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
+      <a href="../#home" class="flex items-center gap-3">
+        <img src="../assets/images/carboxmol_bioclub_logo.png" alt="CarboxMol Loqo" class="w-10 h-10 rounded-xl" />
+        <div>
+          <span class="text-sm font-extrabold text-white block">CarboxMol Bioinformatika Klubu</span>
+          <span class="text-[11px] text-teal-400 font-mono">Qərbi Kaspi Universiteti & MBİ</span>
+        </div>
+      </a>
+      <a href="../#curriculum" class="px-4 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 text-xs font-bold transition shadow">
+        İnteraktiv Sillabusa Keç
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-12 space-y-12">
+    <div class="text-center max-w-3xl mx-auto space-y-3">
+      <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Akademik Tədris Planı</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">28 Həftəlik Bioinformatika və Tədqiqat Sillabusu</h1>
+      <p class="text-sm text-slate-400 leading-relaxed">
+        Klubun sillabusu beynəlxalq standartlar əsasında hazırlanmışdır: Payız semestrində alqoritmik təməl və 3D struktur biologiyası, Yaz semestrində isə tətbiqi Omics məlumat elmi və tələbə hakatonu əhatə olunur.
+      </p>
+    </div>
+
+    <!-- Semester 1 -->
+    <div class="space-y-4">
+      <h2 class="text-xl font-bold text-teal-400 border-b border-slate-800 pb-2">I Semestr: Hesablama Biologiyasının Əsasları və Struktur Genomika</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-1">
+          <span class="text-teal-400 font-bold block">Həftə 01–03: Təməl Mühit</span>
+          <p class="text-slate-300">Linux Bash terminal əmrləri, FASTA/FASTQ/SAM/BAM fayl standartları və NCBI/UniProt bazaları.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-1">
+          <span class="text-cyan-400 font-bold block">Həftə 04–08: Python & Biopython</span>
+          <p class="text-slate-300">Python sintaksisi, Biopython Seq/SeqIO modulları, Needleman-Wunsch və BLAST hevristik axtarışları.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-1">
+          <span class="text-indigo-400 font-bold block">Həftə 09–12: Struktur Biologiyası</span>
+          <p class="text-slate-300">AlphaFold DB, PyMOL, ChimeraX, Coot, Carbox və CarboxMol ilə 3D zülal konformasiyaları və koordinat analizi.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-1">
+          <span class="text-amber-400 font-bold block">Həftə 13–14: Təkamül & Bio-Quiz</span>
+          <p class="text-slate-300">Clustal Omega filogenetik ağaclar, I Semestr yekun elmi debatı və interaktiv bilik yarışması.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Semester 2 -->
+    <div class="space-y-4">
+      <h2 class="text-xl font-bold text-emerald-400 border-b border-slate-800 pb-2">II Semestr: Tətbiqi Omics Data Science, Süni İntellekt və Tələbə Hakatonu</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-1">
+          <span class="text-emerald-400 font-bold block">Həftə 15–18: R & Bioconductor</span>
+          <p class="text-slate-300">R proqramlaşdırma dili, ggplot2 nəşr səviyyəli vizuallaşdırma, GenomicRanges və NGS keyfiyyət süzgəcləri.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-1">
+          <span class="text-rose-400 font-bold block">Həftə 19–23: RNA-Seq & Xərçəng Genomikası</span>
+          <p class="text-slate-300">STAR/HISAT2 hizalama, DESeq2 diferensial gen ifadəsi (DGE), Volcano plot, istilik xəritələri və GO zənginləşdirmə.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-1">
+          <span class="text-teal-400 font-bold block">Həftə 24–25: Dərman Dizaynı & ML</span>
+          <p class="text-slate-300">AutoDock Vina molekulyar dokinq, zülal-liqand rabitə enerjisi və Scikit-learn maşın öyrənməsi ilə xərçəng biomarkerləri.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-1">
+          <span class="text-purple-400 font-bold block">Həftə 26–28: Hakaton və Elmi Sərgi</span>
+          <p class="text-slate-300">WCU Bio-Data Hakaton komanda layihələri, mentor saatları və universitet rəhbərliyi qarşısında poster müdafiəsi.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center pt-8 border-t border-slate-800">
+      <a href="../#curriculum" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-sm shadow-xl transition inline-flex items-center gap-2">
+        <i class="fa-solid fa-graduation-cap"></i> Bütün Həftəlik Sillabusu Tətbiqdə Aç
+      </a>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500">
+    <p>CarboxMol Bioinformatika Klubu — Qərbi Kaspi Universiteti & AR ETN MBİ</p>
+    <p class="mt-1">Təsisçi & Klub Sədri: Süleyman Mehdi oğlu Hacızadə</p>
+  </footer>
+</body>
+</html>

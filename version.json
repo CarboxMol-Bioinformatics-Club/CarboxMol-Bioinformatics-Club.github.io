@@ -1,6 +1,6 @@
 {
-  "version": "2.3.5",
-  "build": "20261101-1120",
-  "timestamp": 1793476800000,
-  "description": "CarboxMol Bioinformatika Klubu v2.3.5 — Təsisçi və Klub Sədri Süleyman Hacızadənin peşə təhsili (Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi, Kompüter ustalığı / İT Dəstək, 1 illik təhsil, 2020–2021) bütün saytda, kartlarda, daxili sənəd oxuyucuda, Markdown, Word (.docx) və PDF fayllarında əlavə edildi."
+  "version": "2.3.6",
+  "build": "20261103-2330",
+  "timestamp": 1793650200000,
+  "description": "CarboxMol Bioinformatika Klubu v2.3.6 — Bütün URL və path-lər üzrə Enterprise/Architect səviyyəsində qabaqcıl SEO optimizasiyası (sitemap.xml, robots.txt, 404.html, hər bölmə üçün statik HTML snapshotları, Schema.org JSON-LD və dinamik meta sinxronizasiyası) tətbiq edildi."
 }

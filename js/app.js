@@ -1687,6 +1687,80 @@ function navigateTo(sectionId) {
 
   window.location.hash = sectionId;
 
+  // Dynamic SEO and Title synchronization for all URLs and paths
+  const seoSectionMeta = {
+    home: {
+      title: "CarboxMol Bioinformatika Klubu | Hesablama Biologiyası, Genomika & Süni İntellekt Mərkəzi",
+      description: "CarboxMol Bioinformatika Klubu — Qərbi Kaspi Universiteti və AR ETN MBİ (IMB) əməkdaşlığı ilə hesablama struktur biologiyası, Python, R və süni intellekt tədqiqat mərkəzi.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/#home"
+    },
+    documents: {
+      title: "Rəsmi Sənədlər və Əsasnamə | CarboxMol Bioinformatika Klubu",
+      description: "Qərbi Kaspi Universiteti Bioinformatika Klubunun rəsmi əsasnaməsi, təşkilati strukturu, illik fəaliyyət planı, sillabusu və üzvlük sənədləri toplusu.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/documents/"
+    },
+    curriculum: {
+      title: "28 Həftəlik Akademik Sillabus və Tədris Planı | CarboxMol Bioinformatika Klubu",
+      description: "Python, Biopython, R Bioconductor, DESeq2, Linux/Bash, zülalların 3D vizuallaşdırılması (AlphaFold, PyMOL, ChimeraX, Carbox & CarboxMol) və maşın öyrənməsi üzrə tam illik tədris planı.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/curriculum/"
+    },
+    biotools: {
+      title: "Bioinformatika Alətləri (Carbox, CarboxMol, AlphaFold, PyMOL) | CarboxMol Bioinformatika Klubu",
+      description: "Carbox (həndəsi analiz), CarboxMol (3D vizualizator), AlphaFold, PyMOL, ChimeraX, Coot, GemmiMol, Biopython, DESeq2 və BioMeet alətləri toplusu.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/biotools/"
+    },
+    events: {
+      title: "Elmi Seminarlar, Vorkşoplar və Hakatonlar | CarboxMol Bioinformatika Klubu",
+      description: "Prof. Qərib Mürşüdov (Cambridge MRC LMB) və beynəlxalq alimlərin iştirakı ilə elmi seminarlar, laboratoriya vorkşopları və tələbə hakatonları.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/events/"
+    },
+    collaborators: {
+      title: "Beynəlxalq Alimlər və Tərəfdaş Təşkilatlar | CarboxMol Bioinformatika Klubu",
+      description: "Cambridge Universiteti MRC LMB, Oxford Universiteti, AR ETN Molekulyar Biologiya İnstitutu və Qərbi Kaspi Universiteti alimləri ilə beynəlxalq elmi əlaqələr.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/collaborators/"
+    },
+    biomeet: {
+      title: "BioMeet: Canlı Elmi Otaqlar və Video Konfrans | CarboxMol Bioinformatika Klubu",
+      description: "Bioinformatika dərsləri, laboratoriya tədqiqatları və virtual elmi müzakirələr üçün inteqrasiya olunmuş WebRTC canlı video konfrans mühiti.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/biomeet/"
+    },
+    "members-portal": {
+      title: "Tələbə və Tədqiqatçı Şəxsi Kabineti | CarboxMol Bioinformatika Klubu",
+      description: "Klub üzvləri üçün fərdi laboratoriya tapşırıqları, elmi müzakirələr, irəliləyiş göstəriciləri və nailiyyət sertifikatları portalı.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/#members-portal"
+    },
+    "teacher-portal": {
+      title: "Müəllim və Mentor İdarəetmə Paneli | CarboxMol Bioinformatika Klubu",
+      description: "Akademik mentorlar və müəllimlər üçün tələbə qiymətləndirmə, tapşırıq monitorinqi və laboratoriya idarəetmə paneli.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/#teacher-portal"
+    },
+    "president-portal": {
+      title: "Klub Sədri İdarəetmə Paneli | CarboxMol Bioinformatika Klubu",
+      description: "Klub Sədri Süleyman Hacızadə üçün rəsmi müraciətlərin təsdiqi, tələbə və müəllim heyətinin idarə edilməsi mərkəzi.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/#president-portal"
+    },
+    register: {
+      title: "Kluba Qeydiyyat və Üzvlük Forması | CarboxMol Bioinformatika Klubu",
+      description: "Qərbi Kaspi Universiteti və respublikanın bütün universitet tələbələri üçün CarboxMol Bioinformatika Klubuna rəsmi qeydiyyat və üzvlük forması.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/register/"
+    }
+  };
+
+  const metaInfo = seoSectionMeta[sectionId] || seoSectionMeta.home;
+  if (metaInfo) {
+    document.title = metaInfo.title;
+    const descEl = document.getElementById("seoDescription") || document.querySelector('meta[name="description"]');
+    if (descEl) descEl.setAttribute("content", metaInfo.description);
+    const ogTitleEl = document.getElementById("ogTitle") || document.querySelector('meta[property="og:title"]');
+    if (ogTitleEl) ogTitleEl.setAttribute("content", metaInfo.title);
+    const ogDescEl = document.getElementById("ogDescription") || document.querySelector('meta[property="og:description"]');
+    if (ogDescEl) ogDescEl.setAttribute("content", metaInfo.description);
+    const ogUrlEl = document.getElementById("ogUrl") || document.querySelector('meta[property="og:url"]');
+    if (ogUrlEl) ogUrlEl.setAttribute("content", metaInfo.canonical);
+    const canonEl = document.getElementById("seoCanonical") || document.querySelector('link[rel="canonical"]');
+    if (canonEl) canonEl.setAttribute("href", metaInfo.canonical);
+  }
+
   // Refresh dynamic portals on navigate
   if (sectionId === "president-portal" && window.PresidentPortal) {
     PresidentPortal.renderMetrics();

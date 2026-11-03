@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- 1. Home / Root Page -->
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="az" href="https://carboxmol-bioinformatics-club.github.io/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://carboxmol-bioinformatics-club.github.io/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carboxmol-bioinformatics-club.github.io/" />
+    <image:image>
+      <image:loc>https://carboxmol-bioinformatics-club.github.io/assets/images/carboxmol_bioclub_logo.png</image:loc>
+      <image:title>CarboxMol Bioinformatika Klubu Rəsmi Loqosu</image:title>
+      <image:caption>Qərbi Kaspi Universiteti Bioinformatika Klubu — Tədqiqat və Tədris Mərkəzi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 2. Bioinformatika Alətləri (Carbox, CarboxMol, AlphaFold, PyMOL) -->
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/biotools/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="az" href="https://carboxmol-bioinformatics-club.github.io/biotools/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://carboxmol-bioinformatics-club.github.io/biotools/" />
+    <image:image>
+      <image:loc>https://carboxmol-bioinformatics-club.github.io/assets/images/carboxmol_bioclub_logo.png</image:loc>
+      <image:title>Carbox və CarboxMol 3D Struktur Biologiyası Proqram Təminatları</image:title>
+    </image:image>
+  </url>
+
+  <!-- 3. Kluba Qeydiyyat və Üzvlük Forması -->
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/register/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="az" href="https://carboxmol-bioinformatics-club.github.io/register/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://carboxmol-bioinformatics-club.github.io/register/" />
+  </url>
+
+  <!-- 4. 28 Həftəlik Tədris Planı və Sillabus -->
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/curriculum/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="az" href="https://carboxmol-bioinformatics-club.github.io/curriculum/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://carboxmol-bioinformatics-club.github.io/curriculum/" />
+  </url>
+
+  <!-- 5. Rəsmi Sənədlər və Əsasnamə -->
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/documents/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="az" href="https://carboxmol-bioinformatics-club.github.io/documents/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://carboxmol-bioinformatics-club.github.io/documents/" />
+  </url>
+
+  <!-- 6. Elmi Tədbirlər, Seminarlar və Hakatonlar -->
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/events/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="az" href="https://carboxmol-bioinformatics-club.github.io/events/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://carboxmol-bioinformatics-club.github.io/events/" />
+  </url>
+
+  <!-- 7. Beynəlxalq Əməkdaşlar və Alimlər (Cambridge, Oxford, IMB) -->
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/collaborators/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="az" href="https://carboxmol-bioinformatics-club.github.io/collaborators/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://carboxmol-bioinformatics-club.github.io/collaborators/" />
+  </url>
+
+  <!-- 8. BioMeet: Canlı Elmi Otaqlar və Video Konfrans -->
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/biomeet/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="az" href="https://carboxmol-bioinformatics-club.github.io/biomeet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://carboxmol-bioinformatics-club.github.io/biomeet/" />
+  </url>
+
+  <!-- 9. Hash Route Anchors for Enhanced Crawling -->
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/#home</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/#biotools</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/#register</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/#curriculum</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/#documents</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/#events</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/#collaborators</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/#biomeet</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 10. Official Sənədlər (PDF Formatında İndekslənmə) -->
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/docs/WCU_Bioinformatika_Klubu_Tam_Paket.pdf</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/docs/01_Muraciet_Erizesi.pdf</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/docs/02_Esasname.pdf</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/docs/03_Teshkilati_Struktur.pdf</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/docs/04_Illik_Fealiyyet_Plani_ve_Sillabus.pdf</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://carboxmol-bioinformatics-club.github.io/docs/05_Uzvluk_Formasi.pdf</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+</urlset>

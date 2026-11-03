@@ -1,0 +1,60 @@
+# ==============================================================================
+# Robots.txt for CarboxMol Bioinformatika Klubu
+# Official Domain: https://carboxmol-bioinformatics-club.github.io
+# Description: Search engine crawler directives for maximum SEO indexing
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Allow: /docs/
+Allow: /documents/
+Allow: /curriculum/
+Allow: /biotools/
+Allow: /events/
+Allow: /collaborators/
+Allow: /biomeet/
+Allow: /register/
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+Allow: /wiki/
+
+# Crawl Delay
+Crawl-delay: 1
+
+# Explicit Googlebot Directives
+User-agent: Googlebot
+Allow: /
+Allow: /docs/*.pdf
+Allow: /docs/*.docx
+Allow: /docs/*.md
+
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /apple-touch-icon.png
+Allow: /favicon.svg
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# Sitemap Index and Canonical Host
+Sitemap: https://carboxmol-bioinformatics-club.github.io/sitemap.xml
+Host: https://carboxmol-bioinformatics-club.github.io
