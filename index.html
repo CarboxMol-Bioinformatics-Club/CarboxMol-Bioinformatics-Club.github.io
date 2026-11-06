@@ -3336,10 +3336,10 @@ Seçilmiş pipeline: DESeq2
       <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-address-book text-teal-400"></i> Tələbə Üzvlük Müraciətləri
+            <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-address-book text-teal-400"></i> Üzvlük və Müəllimlik Müraciətləri
             </h3>
-            <p class="text-xs text-slate-400 mt-0.5">Klub üzvlüyü üçün müraciət edən tələbələrin siyahısı və Sədr təsdiqi</p>
+            <p class="text-xs text-slate-400 mt-0.5">Kluba qoşulmaq istəyən bütün tələbələrin və akademik müəllimlərin / mentorların vahid reyestri və Sədr təsdiqi</p>
           </div>
 
           <!-- Quick Action Buttons for President -->
@@ -3375,6 +3375,16 @@ Seçilmiş pipeline: DESeq2
               <span>Hamısı</span>
               <span id="tabAppCountAll" class="px-1.5 py-0.2 rounded-full bg-slate-900 text-slate-300 text-[10px] font-mono">0</span>
             </button>
+            <button type="button" onclick="PresidentPortal.setFilterTab('teachers')" id="pillFilterTeachers" class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-indigo-950/40 text-indigo-300 border border-indigo-700/60 hover:bg-indigo-900/50 flex items-center gap-1.5">
+              <i class="fa-solid fa-chalkboard-user text-indigo-400"></i>
+              <span>Müəllimlər / Mentorlar</span>
+              <span id="tabAppCountTeachers" class="px-1.5 py-0.2 rounded-full bg-indigo-900 text-indigo-200 text-[10px] font-mono">0</span>
+            </button>
+            <button type="button" onclick="PresidentPortal.setFilterTab('students')" id="pillFilterStudents" class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-slate-900 text-teal-300 border border-teal-800/60 hover:bg-teal-950/40 flex items-center gap-1.5">
+              <i class="fa-solid fa-graduation-cap text-teal-400"></i>
+              <span>Tələbələr</span>
+              <span id="tabAppCountStudents" class="px-1.5 py-0.2 rounded-full bg-teal-950 text-teal-200 text-[10px] font-mono">0</span>
+            </button>
             <button type="button" onclick="PresidentPortal.setFilterTab('Gözləyir')" id="pillFilterPending" class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-amber-950/30 text-amber-400/80 border border-amber-900/40 hover:bg-amber-950/50 flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
               <span>Gözləyir</span>
@@ -3395,8 +3405,10 @@ Seçilmiş pipeline: DESeq2
           <div class="flex items-center gap-2">
             <input type="text" id="appSearchInput" oninput="PresidentPortal.renderApplicationsTable(PresidentPortal.currentAppFilterTab || 'all', this.value)" placeholder="Axtarış (Ad, ixtisas, e-poçt)..." class="bg-slate-900 border border-slate-700 text-xs rounded-xl px-3 py-1.5 text-white focus:outline-none focus:border-teal-500 w-full sm:w-60" />
             <select id="appFilterStatus" onchange="PresidentPortal.setFilterTab(this.value)" class="bg-slate-900 border border-slate-700 text-xs rounded-xl px-2.5 py-1.5 text-white focus:outline-none focus:border-teal-500 hidden sm:block">
-              <option value="all">Bütün Statuslar</option>
-              <option value="Gözləyir">Gözləyir</option>
+              <option value="all">Bütün Kateqoriya & Statuslar</option>
+              <option value="teachers">Yalnız Müəllimlər / Mentorlar</option>
+              <option value="students">Yalnız Tələbələr</option>
+              <option value="Gözləyir">Gözləyir (Təsdiq Gözlənilir)</option>
               <option value="Təsdiqləndi">Təsdiqləndi</option>
               <option value="Rədd edildi">İmtina</option>
             </select>
@@ -3406,13 +3418,13 @@ Seçilmiş pipeline: DESeq2
         <!-- Table Container -->
         <div class="table-scroll-hint"><i class="fa-solid fa-arrows-left-right text-teal-400"></i> Cədvəli tam görmək üçün sağa və sola sürüşdürün</div>
         <div class="overflow-x-auto rounded-xl border border-slate-800" style="-webkit-overflow-scrolling: touch;">
-          <table class="responsive-table min-w-[720px] w-full text-left border-collapse">
+          <table class="responsive-table min-w-[760px] w-full text-left border-collapse">
             <thead>
               <tr class="bg-slate-900 text-slate-400 text-xs font-semibold uppercase tracking-wider border-b border-slate-800">
                 <th class="py-3 px-4">#</th>
-                <th class="py-3 px-4">Tələbə</th>
-                <th class="py-3 px-4">Fakültə & İxtisas</th>
-                <th class="py-3 px-4">Proqramlaşdırma</th>
+                <th class="py-3 px-4">Namizəd & Kateqoriya</th>
+                <th class="py-3 px-4">Universitet, Fakültə & Kafedra</th>
+                <th class="py-3 px-4">Səriştə / Tədqiqat Sahəsi</th>
                 <th class="py-3 px-4">Tarix</th>
                 <th class="py-3 px-4">Status</th>
                 <th class="py-3 px-4 text-right">Əməliyyatlar</th>
@@ -3742,12 +3754,52 @@ Seçilmiş pipeline: DESeq2
             <label for="appHoneypot">Zəhmət olmasa bu xananı boş buraxın:</label>
             <input type="text" id="appHoneypot" name="website_trap_hp" tabindex="-1" autocomplete="off" />
           </div>
+
+          <!-- Müraciət Tipi Seçimi (Tələbə və ya Müəllim/Mentor) -->
+          <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-indigo-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
+            <div>
+              <span class="text-[11px] font-bold text-teal-400 uppercase tracking-wider block">
+                <i class="fa-solid fa-user-gear mr-1 text-teal-400"></i> Müraciət Kateqoriyası *
+              </span>
+              <p class="text-xs text-slate-300 mt-0.5">
+                Kluba tələbə üzv və ya elmi-akademik müəllim / mentor kimi qoşulmaq istədiyinizi seçin:
+              </p>
+            </div>
+            <div class="inline-flex p-1 rounded-xl bg-slate-950 border border-slate-800 shrink-0">
+              <label class="flex items-center gap-2 px-4 py-2 rounded-lg cursor-pointer text-xs font-bold transition has-[:checked]:bg-teal-600 has-[:checked]:text-white text-slate-400">
+                <input type="radio" name="registrationRoleType" value="student" checked onchange="handleRegistrationRoleTypeChange('student')" class="sr-only" />
+                <i class="fa-solid fa-graduation-cap"></i> <span>Tələbə Üzv</span>
+              </label>
+              <label class="flex items-center gap-2 px-4 py-2 rounded-lg cursor-pointer text-xs font-bold transition has-[:checked]:bg-indigo-600 has-[:checked]:text-white text-slate-400">
+                <input type="radio" name="registrationRoleType" value="teacher" onchange="handleRegistrationRoleTypeChange('teacher')" class="sr-only" />
+                <i class="fa-solid fa-chalkboard-user"></i> <span>Müəllim / Mentor</span>
+              </label>
+            </div>
+          </div>
           
           <!-- Section 1: Personal Info -->
           <div class="space-y-4">
             <h4 class="text-sm font-bold uppercase tracking-wider text-teal-400 pb-2 border-b border-slate-800 flex items-center gap-2">
               <i class="fa-solid fa-user-tag text-teal-400"></i> 1. Şəxsi və Əlaqə Məlumatları
             </h4>
+
+            <!-- Müəllimlər üçün xüsusi əlavə sahələr (Müəllim seçildikdə görünür) -->
+            <div id="teacherExtraFields" class="hidden space-y-3 p-4 rounded-2xl bg-indigo-950/30 border border-indigo-500/40">
+              <div class="flex items-center gap-2 text-xs text-indigo-300 font-bold">
+                <i class="fa-solid fa-chalkboard-user"></i> Akademik Müəllim / Mentor Məlumatları
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-medium text-slate-300 mb-1">Elmi Titul və Dərəcə:</label>
+                  <input type="text" id="appTeacherTitle" placeholder="Dosent, Baş Müəllim, Tədqiqatçı, PhD və s." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white focus:outline-none focus:border-indigo-400 text-xs" />
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-slate-300 mb-1">Kafedra / Laboratoriya / Şöbə:</label>
+                  <input type="text" id="appTeacherDepartment" placeholder="Təbiət Elmləri, Hesablama Struktur Biologiyası və s." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-white focus:outline-none focus:border-indigo-400 text-xs" />
+                </div>
+              </div>
+            </div>
+
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div class="sm:col-span-2">
                 <label class="block text-xs font-medium text-slate-300 mb-1">Ad və Soyad: *</label>

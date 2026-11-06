@@ -64,14 +64,18 @@ const PresidentPortal = {
   setFilterTab(status) {
     this.currentAppFilterTab = status;
     const allPill = document.getElementById("pillFilterAll");
+    const teachPill = document.getElementById("pillFilterTeachers");
+    const studPill = document.getElementById("pillFilterStudents");
     const pendPill = document.getElementById("pillFilterPending");
     const appPill = document.getElementById("pillFilterApproved");
     const rejPill = document.getElementById("pillFilterRejected");
     const select = document.getElementById("appFilterStatus");
     if (select) select.value = status;
 
-    const baseClass = "px-3 py-1.5 rounded-lg text-xs font-bold transition";
+    const baseClass = "px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5";
     if (allPill) allPill.className = status === "all" ? `${baseClass} bg-slate-800 text-white border border-slate-700 shadow-sm` : `${baseClass} bg-slate-900 text-slate-400 border border-slate-800 hover:text-white`;
+    if (teachPill) teachPill.className = status === "teachers" ? `${baseClass} bg-indigo-600 text-white border border-indigo-400 shadow-md shadow-indigo-600/30` : `${baseClass} bg-indigo-950/40 text-indigo-300 border border-indigo-800/60 hover:bg-indigo-900/50`;
+    if (studPill) studPill.className = status === "students" ? `${baseClass} bg-teal-600 text-white border border-teal-400 shadow-md shadow-teal-600/30` : `${baseClass} bg-slate-900 text-teal-300 border border-teal-800/60 hover:bg-teal-950/40`;
     if (pendPill) pendPill.className = status === "Gözləyir" ? `${baseClass} bg-amber-500/30 text-amber-300 border border-amber-500/60 shadow-sm` : `${baseClass} bg-amber-950/30 text-amber-400/80 border border-amber-900/40 hover:bg-amber-950/50`;
     if (appPill) appPill.className = status === "Təsdiqləndi" ? `${baseClass} bg-emerald-500/30 text-emerald-300 border border-emerald-500/60 shadow-sm` : `${baseClass} bg-slate-900 text-slate-400 border border-slate-800 hover:text-emerald-300`;
     if (rejPill) rejPill.className = status === "Rədd edildi" ? `${baseClass} bg-rose-500/30 text-rose-300 border border-rose-500/60 shadow-sm` : `${baseClass} bg-slate-900 text-slate-400 border border-slate-800 hover:text-rose-300`;
@@ -90,19 +94,92 @@ const PresidentPortal = {
     const currentFilter = this.currentAppFilterTab || "all";
 
     const data = getClubData();
-    const allApps = data.applications || [];
+    data.deletedAppIds = data.deletedAppIds || [];
+    data.deletedTeacherIds = data.deletedTeacherIds || [];
+    const delApps = new Set(data.deletedAppIds);
+    const delTeachers = new Set(data.deletedTeacherIds.map(x => String(x).toLowerCase()));
 
-    // Tab counts
-    const pendingCount = allApps.filter(a => a.status === "Gözləyir").length;
-    const approvedCount = allApps.filter(a => a.status === "Təsdiqləndi" || a.status === "Qəbul Edildi").length;
-    const rejectedCount = allApps.filter(a => a.status === "Rədd edildi").length;
+    const rawStudentApps = (data.applications || []).filter(a => !delApps.has(a.id));
+    const rawTeacherApps = (data.teacherApplications || []).filter(ta => 
+      !delApps.has(ta.id) && 
+      !delTeachers.has(String(ta.id).toLowerCase()) &&
+      !delTeachers.has(String(ta.teacherId || '').toLowerCase()) &&
+      !delTeachers.has(String(ta.username || '').toLowerCase()) &&
+      !delTeachers.has(String(ta.email || '').toLowerCase())
+    );
+
+    // Map teacher applications to standard structure
+    const teacherApps = rawTeacherApps.map(ta => ({
+      id: ta.id,
+      memberId: ta.teacherId || ta.id,
+      teacherId: ta.teacherId || ta.id,
+      isTeacher: true,
+      fullName: ta.fullName,
+      email: ta.email,
+      phone: ta.phone || "",
+      photo: ta.photo || "",
+      faculty: ta.university || ta.faculty || "Ali Məktəb / İnstitut",
+      major: (ta.title || "Akademik Mentor") + (ta.department ? ` (${ta.department})` : ""),
+      course: ta.academicDegree || "Müəllim / Mentor",
+      programmingSkill: Array.isArray(ta.specialties) ? ta.specialties.join(", ") : (ta.specialties || "Bioinformatika"),
+      tools: Array.isArray(ta.specialties) ? ta.specialties : [ta.specialties || "Bioinformatika"],
+      dateApplied: ta.dateApplied || ta.registeredAt || "2026-10-10",
+      status: (ta.status === "Aktiv" || ta.status === "Təsdiqləndi") ? "Təsdiqləndi" : (ta.status || "Gözləyir"),
+      adminNotes: ta.adminNotes || "Müəllim / Akademik Mentor müraciəti",
+      username: ta.username || "teacher",
+      password: ta.password || ""
+    }));
+
+    // Check student applications for any teacher flags
+    const studentApps = rawStudentApps.map(sa => {
+      const isTeacherRole = sa.isTeacher === true ||
+        (sa.roleInterest && (sa.roleInterest.includes("Müəllim") || sa.roleInterest.includes("Mentor"))) ||
+        (sa.title && (sa.title.includes("Müəllim") || sa.title.includes("Mentor"))) ||
+        (sa.academicDegree && (sa.academicDegree.includes("Müəllim") || sa.academicDegree.includes("Mentor"))) ||
+        (sa.major && (sa.major.includes("müəllimliyi") || sa.major.includes("Müəllim")));
+      return {
+        ...sa,
+        isTeacher: isTeacherRole
+      };
+    });
+
+    // Unified list with deduplication by username/email
+    const seenMap = new Set();
+    const unifiedApps = [];
+
+    // Prioritize teacherApps
+    teacherApps.forEach(ta => {
+      const key = (ta.username || ta.email || ta.id).toLowerCase();
+      seenMap.add(key);
+      unifiedApps.push(ta);
+    });
+
+    studentApps.forEach(sa => {
+      const key = (sa.username || sa.email || sa.id).toLowerCase();
+      if (!seenMap.has(key)) {
+        seenMap.add(key);
+        unifiedApps.push(sa);
+      }
+    });
+
+    // Counts
+    const allCount = unifiedApps.length;
+    const teachersCount = unifiedApps.filter(a => a.isTeacher).length;
+    const studentsCount = unifiedApps.filter(a => !a.isTeacher).length;
+    const pendingCount = unifiedApps.filter(a => a.status === "Gözləyir").length;
+    const approvedCount = unifiedApps.filter(a => a.status === "Təsdiqləndi" || a.status === "Qəbul Edildi" || a.status === "Aktiv").length;
+    const rejectedCount = unifiedApps.filter(a => a.status === "Rədd edildi").length;
 
     const tabAll = document.getElementById("tabAppCountAll");
+    const tabTeachers = document.getElementById("tabAppCountTeachers");
+    const tabStudents = document.getElementById("tabAppCountStudents");
     const tabPending = document.getElementById("tabAppCountPending");
     const tabApproved = document.getElementById("tabAppCountApproved");
     const tabRejected = document.getElementById("tabAppCountRejected");
 
-    if (tabAll) tabAll.innerText = allApps.length;
+    if (tabAll) tabAll.innerText = allCount;
+    if (tabTeachers) tabTeachers.innerText = teachersCount;
+    if (tabStudents) tabStudents.innerText = studentsCount;
     if (tabPending) tabPending.innerText = pendingCount;
     if (tabApproved) tabApproved.innerText = approvedCount;
     if (tabRejected) tabRejected.innerText = rejectedCount;
@@ -116,11 +193,15 @@ const PresidentPortal = {
       }
     }
 
-    let apps = [...allApps];
+    let apps = [...unifiedApps];
 
     if (currentFilter !== "all") {
-      if (currentFilter === "Təsdiqləndi") {
-        apps = apps.filter(a => a.status === "Təsdiqləndi" || a.status === "Qəbul Edildi");
+      if (currentFilter === "teachers") {
+        apps = apps.filter(a => a.isTeacher);
+      } else if (currentFilter === "students") {
+        apps = apps.filter(a => !a.isTeacher);
+      } else if (currentFilter === "Təsdiqləndi") {
+        apps = apps.filter(a => a.status === "Təsdiqləndi" || a.status === "Qəbul Edildi" || a.status === "Aktiv");
       } else {
         apps = apps.filter(a => a.status === currentFilter);
       }
@@ -132,11 +213,12 @@ const PresidentPortal = {
         (a.fullName || "").toLowerCase().includes(q) ||
         (a.email || "").toLowerCase().includes(q) ||
         (a.major || "").toLowerCase().includes(q) ||
-        (a.faculty || "").toLowerCase().includes(q)
+        (a.faculty || "").toLowerCase().includes(q) ||
+        (a.username || "").toLowerCase().includes(q)
       );
     }
 
-    // Sort so "Gözləyir" applications appear FIRST at the very top!
+    // Sort: Pending first, then by date
     apps.sort((a, b) => {
       if (a.status === "Gözləyir" && b.status !== "Gözləyir") return -1;
       if (a.status !== "Gözləyir" && b.status === "Gözləyir") return 1;
@@ -149,7 +231,7 @@ const PresidentPortal = {
           <td colspan="7" class="text-center py-10 text-slate-400">
             <i class="fa-solid fa-folder-open text-3xl mb-2.5 block text-slate-600"></i>
             <div class="font-bold text-slate-300 text-sm">Heç bir müraciət tapılmadı</div>
-            <p class="text-xs text-slate-500 mt-1">E-poçtunuza gələn müraciətləri "E-poçtdan İdxal Et" düyməsi ilə cədvələ əlavə edə bilərsiniz.</p>
+            <p class="text-xs text-slate-500 mt-1">E-poçtunuza və ya FormSubmit-ə gələn müraciətləri yuxarıdakı düymələrlə cədvələ sinxronlaşdıra bilərsiniz.</p>
           </td>
         </tr>
       `;
@@ -158,77 +240,100 @@ const PresidentPortal = {
 
     container.innerHTML = apps.map((app, idx) => {
       const isPending = app.status === "Gözləyir";
-      let badgeColor = "bg-amber-50 text-amber-800 border-amber-300";
-      if (app.status === "Təsdiqləndi" || app.status === "Qəbul Edildi") badgeColor = "bg-emerald-50 text-emerald-800 border-emerald-300";
-      if (app.status === "Rədd edildi") badgeColor = "bg-rose-50 text-rose-800 border-rose-300";
+      const isTeacher = !!app.isTeacher;
+      let badgeColor = "bg-amber-950/40 text-amber-300 border-amber-600/50";
+      if (app.status === "Təsdiqləndi" || app.status === "Qəbul Edildi" || app.status === "Aktiv") badgeColor = "bg-emerald-950/40 text-emerald-300 border-emerald-600/50";
+      if (app.status === "Rədd edildi") badgeColor = "bg-rose-950/40 text-rose-300 border-rose-600/50";
 
       const rowClass = isPending 
-        ? "bg-amber-50/70 border-b border-amber-200 border-l-4 border-l-amber-500 hover:bg-amber-100/60" 
-        : "border-b border-slate-100 hover:bg-slate-50/80";
+        ? "bg-amber-950/20 border-b border-amber-800/40 border-l-4 border-l-amber-500 hover:bg-amber-950/30" 
+        : "border-b border-slate-800 hover:bg-slate-900/60";
+
+      const typeBadge = isTeacher
+        ? `<span class="px-2 py-0.5 rounded-md text-[10px] font-black bg-indigo-950/90 text-indigo-300 border border-indigo-700/80 inline-flex items-center gap-1 shadow-sm"><i class="fa-solid fa-chalkboard-user text-[10px]"></i> Müəllim / Mentor</span>`
+        : `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-teal-950/90 text-teal-300 border border-teal-800/80 inline-flex items-center gap-1 shadow-sm"><i class="fa-solid fa-graduation-cap text-[10px]"></i> Tələbə</span>`;
 
       return `
-        <tr class="${rowClass} transition text-sm">
-          <td class="py-3 px-4 text-slate-500 font-mono font-medium">
-            ${isPending ? '<span class="text-amber-500 font-bold mr-1" title="Sədr Təsdiqi Gözləyir">●</span>' : ''}#${idx + 1}
+        <tr class="${rowClass} transition text-xs text-slate-300">
+          <td class="py-3 px-4 font-mono font-medium text-slate-500">
+            ${isPending ? '<span class="text-amber-400 font-bold mr-1" title="Sədr Təsdiqi Gözləyir">●</span>' : ''}#${idx + 1}
           </td>
           <td class="py-3 px-4">
             <div class="flex items-center gap-2.5">
               ${app.photo ? `
-                <img src="${app.photo}" alt="${escapeHtml(app.fullName)}" class="w-8 h-8 rounded-lg object-cover border border-teal-300 shrink-0" />
+                <img src="${app.photo}" alt="${escapeHtml(app.fullName)}" class="w-9 h-9 rounded-xl object-cover ${isTeacher ? 'border-2 border-indigo-500/70' : 'border border-teal-400/50'} shrink-0" />
               ` : `
-                <div class="w-8 h-8 rounded-lg ${isPending ? 'bg-amber-100 border border-amber-300 text-amber-800' : 'bg-slate-100 border border-slate-200 text-slate-600'} flex items-center justify-center text-xs shrink-0 font-bold">
-                  <i class="fa-solid fa-user"></i>
+                <div class="w-9 h-9 rounded-xl ${isTeacher ? 'bg-indigo-950/80 border border-indigo-700/60 text-indigo-300' : 'bg-slate-900 border border-slate-700 text-teal-300'} flex items-center justify-center text-xs shrink-0 font-bold shadow-inner">
+                  <i class="fa-solid ${isTeacher ? 'fa-chalkboard-user' : 'fa-user'}"></i>
                 </div>
               `}
               <div class="min-w-0">
-                <div class="font-bold text-slate-900 truncate flex items-center gap-1.5">
-                  ${escapeHtml(app.fullName)}
-                  ${isPending ? '<span class="text-[9px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-black tracking-wider uppercase border border-amber-300">Gözləyir</span>' : ''}
+                <div class="font-extrabold text-white truncate flex items-center gap-2">
+                  <span>${escapeHtml(app.fullName)}</span>
+                  ${typeBadge}
+                  ${isPending ? '<span class="text-[9px] bg-amber-500/20 text-amber-300 px-1.5 py-0.2 rounded font-black tracking-wider uppercase border border-amber-500/40">Gözləyir</span>' : ''}
                 </div>
-                <div class="text-xs text-slate-500 truncate">${escapeHtml(app.email)}</div>
+                <div class="text-[11px] text-slate-400 truncate mt-0.5">
+                  <span class="text-teal-400 font-mono">@${escapeHtml(app.username || 'user')}</span> • ${escapeHtml(app.email || '')} ${app.phone ? `• <span class="text-slate-400">${escapeHtml(app.phone)}</span>` : ''}
+                </div>
               </div>
             </div>
           </td>
-          <td class="py-3 px-4 text-slate-700">
-            <div class="font-medium">${escapeHtml(app.faculty || 'Məlumat yoxdur')}</div>
-            <div class="text-xs text-teal-700 font-semibold">${escapeHtml(app.major || '')} (${escapeHtml(app.course || '1')})</div>
+          <td class="py-3 px-4">
+            <div class="font-medium text-slate-200">${escapeHtml(app.faculty || 'Məlumat yoxdur')}</div>
+            <div class="text-[11px] ${isTeacher ? 'text-indigo-300 font-bold' : 'text-teal-400'} mt-0.5">${escapeHtml(app.major || '')} <span class="text-slate-500 font-normal">(${escapeHtml(app.course || '1')})</span></div>
           </td>
           <td class="py-3 px-4">
-            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg border inline-flex items-center gap-1.5 ${
-              (app.programmingSkill && app.programmingSkill !== 'Heç biri' && app.programmingSkill !== 'Qeyd edilməyib')
-                ? 'bg-teal-50 text-teal-800 border-teal-200'
-                : 'bg-slate-100 text-slate-700 border-slate-200'
+            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg border inline-flex items-center gap-1.5 ${
+              isTeacher 
+                ? 'bg-indigo-950/40 text-indigo-300 border-indigo-800/50' 
+                : 'bg-slate-900 text-teal-300 border-slate-800'
             }">
-              <i class="fa-solid fa-code text-[10px] text-teal-600"></i>
-              <span>${escapeHtml(app.programmingSkill || app.tools?.join(', ') || 'Əsas / Baza')}</span>
+              <i class="fa-solid ${isTeacher ? 'fa-flask-vial text-indigo-400' : 'fa-code text-teal-400'} text-[10px]"></i>
+              <span class="truncate max-w-[140px]">${escapeHtml(app.programmingSkill || app.tools?.join(', ') || 'Bioinformatika')}</span>
             </span>
           </td>
-          <td class="py-3 px-4 text-xs text-slate-500 font-mono">${escapeHtml(app.dateApplied || '2026-10-01')}</td>
+          <td class="py-3 px-4 text-[11px] text-slate-400 font-mono whitespace-nowrap">${escapeHtml(app.dateApplied || '2026-10-01')}</td>
           <td class="py-3 px-4">
-            <span class="px-2.5 py-1 text-xs rounded-full border font-bold ${badgeColor}">
+            <span class="px-2.5 py-0.5 text-[10px] rounded-full border font-bold ${badgeColor} whitespace-nowrap">
               ${escapeHtml(app.status)}
             </span>
           </td>
           <td class="py-3 px-4 text-right">
-            <div class="inline-flex items-center gap-1">
-              <button onclick="PresidentPortal.viewAppDetail('${app.id}')" title="Ətraflı Bax" class="p-1.5 px-2 rounded-lg bg-cyan-50 hover:bg-cyan-100 text-cyan-800 border border-cyan-200 transition text-xs flex items-center gap-1 font-semibold">
-                <i class="fa-solid fa-eye"></i> <span class="hidden xl:inline">Bax</span>
-              </button>
-              <button onclick="PresidentPortal.openEditDossierModal('${app.id}', 'application')" title="Müraciət Dossyesini Limitsiz Redaktə Et" class="p-1.5 px-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 transition text-xs flex items-center gap-1 font-semibold">
-                <i class="fa-solid fa-user-pen"></i> <span class="hidden xl:inline">Redaktə</span>
-              </button>
-              <button onclick="PresidentPortal.updateStatus('${app.id}', 'Təsdiqləndi')" title="Təsdiq Et (Qəbul)" class="p-1.5 px-2.5 rounded-lg ${isPending ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black shadow-md shadow-emerald-500/20' : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-semibold'} transition text-xs flex items-center gap-1">
-                <i class="fa-solid fa-check"></i> <span class="hidden xl:inline">Təsdiq</span>
-              </button>
-              <button onclick="PresidentPortal.updateStatus('${app.id}', 'Gözləyir')" title="Gözləmədə Saxla" class="p-1.5 px-2 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 transition text-xs flex items-center gap-1 font-semibold">
-                <i class="fa-solid fa-clock"></i> <span class="hidden xl:inline">Gözlət</span>
-              </button>
-              <button onclick="PresidentPortal.updateStatus('${app.id}', 'Rədd edildi')" title="İmtina Et (Rədd)" class="p-1.5 px-2 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-300 transition text-xs flex items-center gap-1 font-semibold">
-                <i class="fa-solid fa-xmark"></i> <span class="hidden xl:inline">İmtina</span>
-              </button>
-              <button onclick="PresidentPortal.deleteApplication('${app.id}')" title="Müraciəti Tamamilə Sil" class="p-1.5 px-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 transition text-xs flex items-center gap-1 font-bold">
-                <i class="fa-solid fa-trash-can"></i> <span class="hidden xl:inline">Sil</span>
-              </button>
+            <div class="inline-flex items-center gap-1 justify-end flex-wrap">
+              ${isTeacher ? `
+                <button onclick="PresidentPortal.viewTeacherDossier('${app.teacherId || app.id}')" title="Müəllim Dossyesinə Bax" class="p-1.5 px-2 rounded-lg bg-indigo-950/60 hover:bg-indigo-900/80 text-indigo-300 border border-indigo-700/60 transition text-xs flex items-center gap-1 font-bold">
+                  <i class="fa-solid fa-id-card"></i> <span class="hidden xl:inline">Dossye</span>
+                </button>
+                <button onclick="${isPending ? `PresidentPortal.approveTeacher('${app.teacherId || app.id}', '${app.id}')` : `PresidentPortal.approveTeacher('${app.teacherId || app.id}', '${app.id}')`}" title="${isPending ? 'Müəllimi Təsdiq Et və Hesabını Aktivləşdir' : 'Yenidən Təsdiq Et'}" class="p-1.5 px-2.5 rounded-lg ${isPending ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black shadow-md shadow-emerald-500/20' : 'bg-emerald-950/60 hover:bg-emerald-900 text-emerald-300 border border-emerald-700 font-semibold'} transition text-xs flex items-center gap-1">
+                  <i class="fa-solid fa-check"></i> <span class="hidden xl:inline">Təsdiq</span>
+                </button>
+                <button onclick="PresidentPortal.rejectTeacher('${app.teacherId || app.id}', '${app.id}')" title="İmtina Et" class="p-1.5 px-2 rounded-lg bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-800/60 transition text-xs flex items-center gap-1 font-semibold">
+                  <i class="fa-solid fa-xmark"></i> <span class="hidden xl:inline">İmtina</span>
+                </button>
+                <button onclick="PresidentPortal.deleteTeacher('${app.teacherId || app.id}', '${app.id}')" title="Müəllimi Sil" class="p-1.5 px-2 rounded-lg bg-red-950/40 hover:bg-red-900/60 text-red-400 border border-red-800/60 transition text-xs flex items-center gap-1 font-bold">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              ` : `
+                <button onclick="PresidentPortal.viewAppDetail('${app.id}')" title="Ətraflı Bax" class="p-1.5 px-2 rounded-lg bg-cyan-950/60 hover:bg-cyan-900/80 text-cyan-300 border border-cyan-800/60 transition text-xs flex items-center gap-1 font-semibold">
+                  <i class="fa-solid fa-eye"></i> <span class="hidden xl:inline">Bax</span>
+                </button>
+                <button onclick="PresidentPortal.openEditDossierModal('${app.id}', 'application')" title="Müraciət Dossyesini Redaktə Et" class="p-1.5 px-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 transition text-xs flex items-center gap-1 font-semibold">
+                  <i class="fa-solid fa-user-pen"></i> <span class="hidden xl:inline">Redaktə</span>
+                </button>
+                <button onclick="PresidentPortal.updateStatus('${app.id}', 'Təsdiqləndi')" title="Təsdiq Et (Qəbul)" class="p-1.5 px-2.5 rounded-lg ${isPending ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black shadow-md shadow-emerald-500/20' : 'bg-emerald-950/60 hover:bg-emerald-900 text-emerald-300 border border-emerald-700 font-semibold'} transition text-xs flex items-center gap-1">
+                  <i class="fa-solid fa-check"></i> <span class="hidden xl:inline">Təsdiq</span>
+                </button>
+                <button onclick="PresidentPortal.updateStatus('${app.id}', 'Gözləyir')" title="Gözləmədə Saxla" class="p-1.5 px-2 rounded-lg bg-amber-950/40 hover:bg-amber-900/60 text-amber-300 border border-amber-800/60 transition text-xs flex items-center gap-1 font-semibold">
+                  <i class="fa-solid fa-clock"></i> <span class="hidden xl:inline">Gözlət</span>
+                </button>
+                <button onclick="PresidentPortal.updateStatus('${app.id}', 'Rədd edildi')" title="İmtina Et (Rədd)" class="p-1.5 px-2 rounded-lg bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-800/60 transition text-xs flex items-center gap-1 font-semibold">
+                  <i class="fa-solid fa-xmark"></i> <span class="hidden xl:inline">İmtina</span>
+                </button>
+                <button onclick="PresidentPortal.deleteApplication('${app.id}')" title="Müraciəti Tamamilə Sil" class="p-1.5 px-2 rounded-lg bg-red-950/40 hover:bg-red-900/60 text-red-400 border border-red-800/60 transition text-xs flex items-center gap-1 font-bold">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              `}
             </div>
           </td>
         </tr>
@@ -1776,6 +1881,43 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
       }
     });
 
+    // Əsas applications siyahısından da müəllim/mentor statuslu müraciətləri tapıb cədvələ əlavə et
+    (data.applications || []).forEach(a => {
+      if (delApps.has(a.id)) return;
+      const isTeacherApp = a.isTeacher === true ||
+        (a.major && (a.major.toLowerCase().includes("müəllimliyi") || a.major.toLowerCase().includes("müəllim"))) ||
+        (a.course && (a.course.toLowerCase().includes("müəllim") || a.course.toLowerCase().includes("mentor") || a.course.toLowerCase().includes("dosent"))) ||
+        (a.roleInterest && (a.roleInterest.toLowerCase().includes("müəllim") || a.roleInterest.toLowerCase().includes("mentor")));
+      if (isTeacherApp) {
+        const exists = list.some(item => 
+          item.id === a.teacherId || 
+          item.id === a.id || 
+          (item.username && a.username && item.username.toLowerCase() === a.username.toLowerCase()) ||
+          (item.email && a.email && item.email.toLowerCase() === a.email.toLowerCase())
+        );
+        if (!exists) {
+          list.push({
+            id: a.teacherId || a.id,
+            appId: a.id,
+            fullName: a.fullName,
+            title: a.title || "Müəllim / Mentor",
+            academicDegree: a.academicDegree || a.major || "Müəllim",
+            university: a.university || "Qərbi Kaspi Universiteti (WCU)",
+            faculty: a.faculty || "",
+            department: a.department || "",
+            email: a.email,
+            phone: a.phone || "",
+            username: a.username || "teacher",
+            password: a.password || "wcuTeacher2026",
+            status: a.status === "Təsdiqləndi" ? "Aktiv" : (a.status || "Gözləyir"),
+            dateApplied: a.dateApplied || "2026-10-10",
+            adminNotes: a.adminNotes || "",
+            specialties: a.specialties || a.tools || ["Bioinformatika"]
+          });
+        }
+      }
+    });
+
     if (filterStatus !== "all") {
       if (filterStatus === "Aktiv") {
         list = list.filter(item => item.status === "Aktiv" || item.status === "Təsdiqləndi");
@@ -1812,43 +1954,43 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
       const isPending = t.status === "Gözləyir";
       const isRejected = t.status === "Rədd edildi";
 
-      let statusBadge = `<span class="px-2 py-0.5 rounded-full font-bold text-[10px] bg-amber-50 text-amber-800 border border-amber-300 flex items-center gap-1 w-max"><i class="fa-solid fa-clock"></i> Gözləyir (Təsdiq Gözlənilir)</span>`;
+      let statusBadge = `<span class="px-2 py-0.5 rounded-full font-bold text-[10px] bg-amber-950/60 text-amber-300 border border-amber-500/40 flex items-center gap-1 w-max"><i class="fa-solid fa-clock"></i> Gözləyir (Təsdiq Gözlənilir)</span>`;
       if (isApproved) {
-        statusBadge = `<span class="px-2 py-0.5 rounded-full font-bold text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-300 flex items-center gap-1 w-max"><i class="fa-solid fa-check"></i> Aktiv (Təsdiqlənib)</span>`;
+        statusBadge = `<span class="px-2 py-0.5 rounded-full font-bold text-[10px] bg-emerald-950/60 text-emerald-300 border border-emerald-500/40 flex items-center gap-1 w-max"><i class="fa-solid fa-check"></i> Aktiv (Təsdiqlənib)</span>`;
       } else if (isRejected) {
-        statusBadge = `<span class="px-2 py-0.5 rounded-full font-bold text-[10px] bg-rose-50 text-rose-800 border border-rose-300 flex items-center gap-1 w-max"><i class="fa-solid fa-xmark"></i> Rədd Edildi</span>`;
+        statusBadge = `<span class="px-2 py-0.5 rounded-full font-bold text-[10px] bg-rose-950/60 text-rose-300 border border-rose-500/40 flex items-center gap-1 w-max"><i class="fa-solid fa-xmark"></i> Rədd Edildi</span>`;
       }
 
       return `
-        <tr class="border-b border-slate-100 hover:bg-slate-50/80 transition text-xs">
+        <tr class="border-b border-slate-800/80 hover:bg-slate-900/60 transition text-xs">
           <td class="py-3 px-4 text-slate-500 font-mono font-medium">#${idx + 1}</td>
           <td class="py-3 px-4">
             <div class="flex items-center gap-3">
-              <div class="relative w-10 h-10 rounded-xl overflow-hidden bg-indigo-50 border border-indigo-200 shrink-0 shadow-sm">
+              <div class="relative w-10 h-10 rounded-xl overflow-hidden bg-slate-900 border border-indigo-500/30 shrink-0 shadow-sm">
                 ${t.photo
                   ? `<img src="${t.photo}" alt="${escapeHtml(t.fullName)}" class="w-full h-full object-cover">`
-                  : `<div class="w-full h-full flex items-center justify-center bg-indigo-50 text-indigo-700 font-bold text-xs"><i class="fa-solid fa-chalkboard-user"></i></div>`
+                  : `<div class="w-full h-full flex items-center justify-center bg-slate-900 text-indigo-400 font-bold text-xs"><i class="fa-solid fa-chalkboard-user"></i></div>`
                 }
               </div>
               <div class="min-w-0">
-                <div class="font-bold text-slate-900 flex items-center gap-1.5">
+                <div class="font-bold text-white flex items-center gap-1.5">
                   <span class="truncate">${escapeHtml(t.fullName)}</span>
                 </div>
-                <div class="text-[11px] text-indigo-700 truncate font-semibold">${escapeHtml(t.title || 'Müəllim')}</div>
-                <div class="text-[10px] text-slate-500 truncate">${escapeHtml(t.university || 'WCU')} • ${escapeHtml(t.department || '')}</div>
+                <div class="text-[11px] text-indigo-400 truncate font-semibold">${escapeHtml(t.title || 'Müəllim / Mentor')}</div>
+                <div class="text-[10px] text-slate-400 truncate">${escapeHtml(t.university || 'WCU')} • ${escapeHtml(t.department || '')}</div>
               </div>
             </div>
           </td>
           <td class="py-3 px-4">
-            <div class="text-slate-800 font-mono text-[11px]">${escapeHtml(t.email)}</div>
-            <div class="text-[11px] text-slate-500">${escapeHtml(t.phone || 'Qeyd edilməyib')}</div>
+            <div class="text-slate-300 font-mono text-[11px]">${escapeHtml(t.email)}</div>
+            <div class="text-[11px] text-slate-400">${escapeHtml(t.phone || 'Qeyd edilməyib')}</div>
           </td>
-          <td class="py-3 px-4 font-mono font-bold text-indigo-800 bg-indigo-50 border border-indigo-100 rounded px-2">
+          <td class="py-3 px-4 font-mono font-bold text-indigo-300 bg-slate-900/80 border border-indigo-500/30 rounded px-2">
             @${escapeHtml(t.username || 'teacher')}
           </td>
           <td class="py-3 px-4">
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200 font-mono text-amber-900 font-bold select-all" title="Klub Sədrinə Açıq Şifrə">
-              <i class="fa-solid fa-key text-[10px] text-amber-600"></i>
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-950/40 border border-amber-500/40 font-mono text-amber-300 font-bold select-all" title="Klub Sədrinə Açıq Şifrə">
+              <i class="fa-solid fa-key text-[10px] text-amber-400"></i>
               <span>${escapeHtml(t.password || 'Təyin edilməyib')}</span>
             </div>
           </td>
@@ -1861,14 +2003,14 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
           <td class="py-3 px-4 text-right">
             <div class="inline-flex gap-1.5 flex-wrap justify-end">
               ${isPending ? `
-                <button onclick="PresidentPortal.approveTeacher('${t.id}', '${t.appId}')" title="Müəllimi Təsdiq Et və Girişini Aktivləşdir" class="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow flex items-center gap-1">
+                <button onclick="PresidentPortal.approveTeacher('${t.id}', '${t.appId}')" title="Müəllimi Təsdiq Et və Girişini Aktivləşdir" class="px-2.5 py-1 rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black text-xs transition shadow-md shadow-emerald-500/20 flex items-center gap-1">
                   <i class="fa-solid fa-check"></i> Təsdiq
                 </button>
-                <button onclick="PresidentPortal.rejectTeacher('${t.id}', '${t.appId}')" title="İmtina Et" class="px-2 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 font-bold text-xs transition">
+                <button onclick="PresidentPortal.rejectTeacher('${t.id}', '${t.appId}')" title="İmtina Et" class="px-2 py-1 rounded-lg bg-rose-950/50 hover:bg-rose-900/70 text-rose-300 border border-rose-800 font-bold text-xs transition">
                   <i class="fa-solid fa-xmark"></i> İmtina
                 </button>
               ` : (isApproved ? `
-                <button onclick="PresidentPortal.holdTeacher('${t.id}', '${t.appId}')" title="Statusu Gözləməyə Qaytar" class="px-2 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs transition">
+                <button onclick="PresidentPortal.holdTeacher('${t.id}', '${t.appId}')" title="Statusu Gözləməyə Qaytar" class="px-2 py-1 rounded-lg bg-amber-950/50 hover:bg-amber-900/70 text-amber-300 border border-amber-800 text-xs transition">
                   <i class="fa-solid fa-pause"></i> Gözlət
                 </button>
               ` : `
@@ -1876,10 +2018,10 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
                   <i class="fa-solid fa-rotate-left"></i> Bərpa
                 </button>
               `)}
-              <button onclick="PresidentPortal.viewTeacherDossier('${t.id}')" title="Tam Dossye və CV-yə Bax" class="p-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 transition">
+              <button onclick="PresidentPortal.viewTeacherDossier('${t.id}')" title="Tam Dossye və CV-yə Bax" class="p-1.5 rounded-lg bg-indigo-950/60 hover:bg-indigo-900/80 text-indigo-300 border border-indigo-700/60 transition">
                 <i class="fa-solid fa-id-card"></i>
               </button>
-              <button onclick="PresidentPortal.deleteTeacher('${t.id}', '${t.appId}')" title="Müəllim Hesabını Tam Sil" class="p-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 transition">
+              <button onclick="PresidentPortal.deleteTeacher('${t.id}', '${t.appId}')" title="Müəllim Hesabını Tam Sil" class="p-1.5 rounded-lg bg-red-950/50 hover:bg-red-900/70 text-red-400 border border-red-800 transition">
                 <i class="fa-solid fa-trash-can"></i>
               </button>
             </div>
@@ -1907,6 +2049,14 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
       a.adminNotes = "Sədr tərəfindən rəsmi akademik mentor olaraq təsdiqlənmişdir.";
     }
 
+    // Əsas applications bazasında da statusu yenilə
+    const genApp = (data.applications || []).find(item => item.id === appId || item.teacherId === teacherId || (t && item.username && t.username && item.username.toLowerCase() === t.username.toLowerCase()));
+    if (genApp) {
+      genApp.status = "Təsdiqləndi";
+      genApp.isTeacher = true;
+      genApp.adminNotes = "Sədr tərəfindən rəsmi akademik mentor olaraq təsdiqlənmişdir.";
+    }
+
     saveClubData(data);
 
     try {
@@ -1924,6 +2074,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
 
     this.renderMetrics();
     this.renderTeachersAccountsTable();
+    this.renderApplicationsTable();
 
     if (typeof showToast === "function") {
       showToast(`Müəllim ${t ? t.fullName : ''} uğurla TƏSDİQ edildi! Giriş kabineti dərhal aktivləşdirildi.`, "success");
@@ -1944,6 +2095,14 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
       a.adminNotes = "Sədr tərəfindən imtina edilmişdir.";
     }
 
+    // Əsas applications bazasında da statusu yenilə
+    const genApp = (data.applications || []).find(item => item.id === appId || item.teacherId === teacherId || (t && item.username && t.username && item.username.toLowerCase() === t.username.toLowerCase()));
+    if (genApp) {
+      genApp.status = "Rədd edildi";
+      genApp.isTeacher = true;
+      genApp.adminNotes = "Sədr tərəfindən imtina edilmişdir.";
+    }
+
     saveClubData(data);
 
     try {
@@ -1961,6 +2120,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
 
     this.renderMetrics();
     this.renderTeachersAccountsTable();
+    this.renderApplicationsTable();
 
     if (typeof showToast === "function") {
       showToast("Müəllim müraciəti rədd edildi.", "info");
@@ -1977,6 +2137,9 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
 
     const a = data.teacherApplications.find(item => item.id === appId || item.teacherId === teacherId);
     if (a) a.status = "Gözləyir";
+
+    const genApp = (data.applications || []).find(item => item.id === appId || item.teacherId === teacherId || (t && item.username && t.username && item.username.toLowerCase() === t.username.toLowerCase()));
+    if (genApp) genApp.status = "Gözləyir";
 
     saveClubData(data);
 
@@ -1995,6 +2158,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
 
     this.renderMetrics();
     this.renderTeachersAccountsTable();
+    this.renderApplicationsTable();
 
     if (typeof showToast === "function") {
       showToast("Müəllim hesabı gözləmə statusuna keçirildi.", "info");
@@ -3277,6 +3441,11 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     let university = findVal([/universitet/i, /ali\s*m[eə]kt[eə]b/i, /^university$/i, /^school$/i]);
     let facAndMajor = findVal([/fak[uü]lt[eə]\s*v[eə]\s*ixtisas/i, /fak[uü]lt[eə]/i, /^faculty$/i]);
     let major = findVal([/ixtisas/i, /^major$/i]);
+    let course = findVal([/kurs/i, /^course$/i, /^level$/i]);
+    let title = findVal([/titul/i, /d[eə]r[eə]c[eə]/i, /^title$/i]);
+    let department = findVal([/kafedra/i, /laboratoriya/i, /^department$/i, /^dept$/i]);
+    let regRoleType = findVal([/m[uü]raci[eə]t\s*n[oö]v[uü]/i, /^registrationRoleType$/i, /^roleType$/i, /^appType$/i]);
+    let roleInterest = findVal([/rol/i, /maraq/i, /^roleInterest$/i]);
     let progSkill = findVal([/proqramla[sş]d[ıi]rma/i, /^programming/i, /^skill/i]);
     let studyLang = findVal([/t[eə]dris\s*dili/i, /dil/i, /^language$/i, /^lang$/i]);
     let motivation = findVal([/motivasiya/i, /m[eə]qs[eə]d/i, /^motivation$/i, /^message$/i]);
@@ -3284,7 +3453,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     let photo = findVal([/photo/i, /avatar/i, /[sş][eə]kil/i]);
 
     return this._buildStudentResult({
-      fullName, email, phone, username, password, university, facAndMajor, major, progSkill, studyLang, motivation, yearGoal, photo, submittedDate
+      fullName, email, phone, username, password, university, facAndMajor, major, course, title, department, regRoleType, roleInterest, progSkill, studyLang, motivation, yearGoal, photo, submittedDate
     });
   },
 
@@ -3413,6 +3582,18 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
       const cMatch = major.match(/\(([^)]+)\)/);
       if (cMatch) course = cMatch[1];
     }
+    if (d.course) course = d.course;
+
+    const title = d.title || "";
+    const department = d.department || "";
+    const roleInterest = d.roleInterest || (d.regRoleType === "teacher" ? "Akademik Mentor / Tədris Rəhbəri" : "Aktiv Tələbə / Təlim və Seminar İştirakçısı");
+
+    const isTeacher = (d.regRoleType === "teacher") ||
+      (d.isTeacher === true) ||
+      (title && title.trim().length > 0) ||
+      (major && (major.toLowerCase().includes("müəllimliyi") || major.toLowerCase().includes("müəllim"))) ||
+      (course && (course.toLowerCase().includes("müəllim") || course.toLowerCase().includes("mentor") || course.toLowerCase().includes("dosent"))) ||
+      (roleInterest && (roleInterest.toLowerCase().includes("müəllim") || roleInterest.toLowerCase().includes("mentor")));
 
     if (!username) {
       username = fullName.toLowerCase().replace(/[^a-z0-9]/g, "") + Math.floor(10 + Math.random() * 89);
@@ -3432,6 +3613,10 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
       faculty,
       major,
       course,
+      title: title || (isTeacher ? "Müəllim / Mentor" : ""),
+      department: department || (isTeacher ? "Biologiya və Təbiət Elmləri" : ""),
+      roleInterest,
+      isTeacher,
       progSkill,
       studyLang,
       motivation,
@@ -3834,31 +4019,109 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
         // Əgər Sədr tərəfindən silinibdirsə, kənara qoy
         if (data.deletedMemberIds.includes(cleanUser) || (data.deletedTeacherIds && data.deletedTeacherIds.includes(cleanUser))) return;
 
-        // Fidan Məhərrəmova müəllim / mentor hesabıdır, tələbələrə qarışdırılmır
-        if (cleanUser === "fidan_m" || cleanUser === "fidan" || cleanMail === "fidan.maharramova1@gmail.com") {
-          const tIdx = data.teachers.findIndex(t => (t.username && t.username.toLowerCase() === "fidan_m") || (t.email && t.email.toLowerCase() === cleanMail));
+        // Müəllim və ya mentor müraciətlərini avtomatik təhlil et və müəllim bazasına yönləndir
+        const isTeacherSubmission = s.isTeacher || 
+          cleanUser === "fidan_m" || cleanUser === "fidan" || cleanMail === "fidan.maharramova1@gmail.com" ||
+          (s.title && s.title.trim().length > 0) ||
+          (s.major && (s.major.toLowerCase().includes("müəllimliyi") || s.major.toLowerCase().includes("müəllim"))) ||
+          (s.course && (s.course.toLowerCase().includes("müəllim") || s.course.toLowerCase().includes("mentor") || s.course.toLowerCase().includes("dosent"))) ||
+          (s.roleInterest && (s.roleInterest.toLowerCase().includes("müəllim") || s.roleInterest.toLowerCase().includes("mentor")));
+
+        if (isTeacherSubmission) {
+          const teachId = "teacher-" + (cleanUser || (Date.now() + idx));
+          const teachAppId = "teach-app-" + (cleanUser || (Date.now() + idx));
+          const isFidan = cleanUser === "fidan_m" || cleanUser === "fidan" || cleanMail === "fidan.maharramova1@gmail.com";
+
+          const tIdx = data.teachers.findIndex(t => 
+            (t.username && t.username.toLowerCase() === cleanUser) || 
+            (t.email && t.email.toLowerCase() === cleanMail)
+          );
           if (tIdx === -1) {
-            data.teachers.push({
-              id: "teacher-fidan-m",
+            data.teachers.unshift({
+              id: teachId,
               fullName: s.fullName,
-              title: "Akademik Mentor & Tədqiqatçı",
-              academicDegree: "MSc Bioinformatika",
-              university: s.university || "Digər Elmi-Tədqiqat İnstitutu və ya Mərkəzi",
-              faculty: "Bioinformatika Fakültəsi",
-              department: "Bioinformatika və Hesablama Biologiyası",
+              title: s.title || (isFidan ? "Akademik Mentor & Tədqiqatçı" : "Müəllim / Mentor"),
+              academicDegree: isFidan ? "MSc Bioinformatika" : (s.major || "Müəllim"),
+              university: s.university || "Qərbi Kaspi Universiteti (WCU)",
+              faculty: s.faculty || "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+              department: s.department || "Biologiya və Təbiət Elmləri",
               email: s.email,
-              phone: s.phone,
-              username: "fidan_m",
-              password: s.password || "Imperial123:)",
-              photo: "",
-              specialties: ["Bioinformatika", "Genomika və NGS Analizi", "Struktur Biologiyası", "Python & R"],
-              bio: s.motivation || "Bioinformatika (Magistratura) üzrə tədqiqatçı və CarboxMol klubunun akademik mentoru.",
-              status: "Aktiv",
-              registeredAt: s.dateApplied || "2026-10-27",
-              approvedAt: "2026-10-27",
-              approvedBy: "Süleyman Hacızadə (Klub Sədri)"
+              phone: s.phone || "",
+              username: s.username,
+              password: s.password || (isFidan ? "Imperial123:)" : "wcuTeacher2026"),
+              photo: s.photo || "",
+              specialties: s.tools || ["Bioinformatika", "Genomika və NGS Analizi"],
+              bio: s.motivation || "",
+              status: isFidan ? "Aktiv" : "Gözləyir",
+              registeredAt: s.dateApplied || new Date().toISOString().slice(0, 10),
+              approvedAt: isFidan ? "2026-10-27" : null,
+              approvedBy: isFidan ? "Süleyman Hacızadə (Klub Sədri)" : null
             });
             addedCount++;
+          }
+
+          const taIdx = data.teacherApplications.findIndex(a =>
+            (a.username && a.username.toLowerCase() === cleanUser) ||
+            (a.email && a.email.toLowerCase() === cleanMail)
+          );
+          if (taIdx === -1) {
+            data.teacherApplications.unshift({
+              id: teachAppId,
+              teacherId: teachId,
+              fullName: s.fullName,
+              title: s.title || (isFidan ? "Akademik Mentor & Tədqiqatçı" : "Müəllim / Mentor"),
+              academicDegree: isFidan ? "MSc Bioinformatika" : (s.major || "Müəllim"),
+              university: s.university || "Qərbi Kaspi Universiteti (WCU)",
+              faculty: s.faculty || "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+              department: s.department || "Biologiya və Təbiət Elmləri",
+              email: s.email,
+              phone: s.phone || "",
+              username: s.username,
+              password: s.password || (isFidan ? "Imperial123:)" : "wcuTeacher2026"),
+              photo: s.photo || "",
+              specialties: s.tools || ["Bioinformatika", "Genomika və NGS Analizi"],
+              status: isFidan ? "Təsdiqləndi" : "Gözləyir",
+              dateApplied: s.dateApplied || new Date().toISOString().slice(0, 10),
+              adminNotes: "FormSubmit bulud arxivindən daxil olmuş rəsmi müəllim müraciəti."
+            });
+          }
+
+          // Həmçinin ümumi müraciətlər siyahısına da əlavə et ki, Sədr əsas cədvəldə baxa və təsdiq edə bilsin
+          const existsApp = data.applications.find(a => 
+            (a.username && a.username.toLowerCase() === cleanUser) ||
+            (a.email && a.email.toLowerCase() === cleanMail)
+          );
+          if (!existsApp) {
+            data.applications.unshift({
+              id: teachAppId,
+              memberId: teachId,
+              teacherId: teachId,
+              isTeacher: true,
+              fullName: s.fullName,
+              email: s.email,
+              phone: s.phone,
+              username: s.username,
+              password: s.password,
+              university: s.university,
+              faculty: s.faculty,
+              major: s.major,
+              course: s.course,
+              studyLang: s.studyLang,
+              programmingSkill: s.progSkill || "Orta",
+              tools: s.tools || ["Bioinformatika"],
+              bioTools: s.bioTools || ["CarboxMol"],
+              bioKnowledge: "Yüksək",
+              osType: "Windows",
+              researchTracks: ["Genomika və NGS Analizi"],
+              roleInterest: s.roleInterest || "Akademik Mentor / Tədris Rəhbəri",
+              weeklyTime: "Həftədə 4–6 saat",
+              motivation: s.motivation,
+              yearGoal: s.yearGoal,
+              dateApplied: s.dateApplied || new Date().toISOString().slice(0, 10),
+              status: isFidan ? "Təsdiqləndi" : "Gözləyir",
+              photo: s.photo || "",
+              adminNotes: "FormSubmit bulud arxivindən daxil olmuş rəsmi müəllim müraciəti."
+            });
           }
           return;
         }

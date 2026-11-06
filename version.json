@@ -1,6 +1,6 @@
 {
-  "version": "2.3.8",
-  "build": "20261106-2345",
-  "timestamp": 1793915100000,
-  "description": "CarboxMol Bioinformatika Klubu v2.3.8 — Bütün cihazlar (Mobil, Planşet, Noutbuk, Geniş Masaüstü) və Əməliyyat Sistemləri üçün 100% universal responsiv naviqasiya (Elanlar, Dil AZ|EN, Qeydiyyat və Menyu birbaşa əlçatan), dinamik JSON-LD və Meta yeniləyən avtomatlaşdırılmış SEO sinxronizasiya mühərriki və davamlı memarlıq standartları qüvvəyə mindi."
+  "version": "2.3.9",
+  "build": "20261107-0020",
+  "timestamp": 1793917200000,
+  "description": "CarboxMol Bioinformatika Klubu v2.3.9 — Müəllim və akademik mentor qeydiyyatı, Sədr portalında müəllim/tələbə müraciətlərinin vahid və filtrlənə bilən cədvəli (🎓 Müəllimlər / Mentorlar və 👤 Tələbələr nişanları), FormSubmit və yerli bazada müəllim məlumatlarının avtomatik tanınması və tam qorunması, habelə Sədr profilində və rəsmi sənədlərdə (HTML, DOCX, PDF) Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi (Kompüter ustalığı / İT Dəstək, 1 illik, 2020–2021) təhsilinin tam əks olunması."
 }

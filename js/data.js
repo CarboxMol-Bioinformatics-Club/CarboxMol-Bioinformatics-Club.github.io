@@ -3089,6 +3089,80 @@ function getClubData() {
       }
     });
 
+    // 5. Tələbə müraciətlərindən (data.applications) müəllim və ya mentor olanların avtomatik müəllim bazasına sinxronizasiyası:
+    if (Array.isArray(parsed.applications)) {
+      parsed.applications.forEach(app => {
+        if (!app || isTeacherDeleted(app)) return;
+        const isTeacherApp = app.isTeacher === true ||
+          (app.major && (app.major.toLowerCase().includes("müəllimliyi") || app.major.toLowerCase().includes("müəllim"))) ||
+          (app.course && (app.course.toLowerCase().includes("müəllim") || app.course.toLowerCase().includes("mentor") || app.course.toLowerCase().includes("dosent"))) ||
+          (app.roleInterest && (app.roleInterest.toLowerCase().includes("müəllim") || app.roleInterest.toLowerCase().includes("mentor")));
+
+        if (isTeacherApp) {
+          app.isTeacher = true;
+          if (!app.teacherId) app.teacherId = "teacher-" + (app.username || app.id.replace("app-", ""));
+
+          // Müəllim müraciətlərində olmasını təmin et
+          const existsTApp = parsed.teacherApplications.find(ta => 
+            ta.id === app.id || 
+            ta.teacherId === app.teacherId || 
+            (ta.username && app.username && ta.username.toLowerCase() === app.username.toLowerCase()) ||
+            (ta.email && app.email && ta.email.toLowerCase() === app.email.toLowerCase())
+          );
+          if (!existsTApp) {
+            parsed.teacherApplications.unshift({
+              id: app.id,
+              teacherId: app.teacherId,
+              fullName: app.fullName,
+              title: app.title || "Müəllim / Akademik Mentor",
+              academicDegree: app.major || "Müəllim",
+              university: app.university || "Qərbi Kaspi Universiteti (WCU)",
+              faculty: app.faculty || "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+              department: app.department || "Biologiya və Təbiət Elmləri",
+              email: app.email,
+              phone: app.phone || "",
+              username: app.username,
+              password: app.password,
+              photo: app.photo || "",
+              specialties: app.tools || ["Bioinformatika", "Genomika və NGS Analizi"],
+              status: app.status === "Təsdiqləndi" ? "Aktiv" : (app.status || "Gözləyir"),
+              dateApplied: app.dateApplied || "2026-10-15",
+              adminNotes: app.adminNotes || "Sayt qeydiyyatı vasitəsilə daxil olmuş müəllim heyəti."
+            });
+            hasStorageUpdates = true;
+          }
+
+          // Müəllimlər siyahısında olmasını təmin et
+          const existsT = parsed.teachers.find(t => 
+            t.id === app.teacherId || 
+            (t.username && app.username && t.username.toLowerCase() === app.username.toLowerCase()) ||
+            (t.email && app.email && t.email.toLowerCase() === app.email.toLowerCase())
+          );
+          if (!existsT) {
+            parsed.teachers.unshift({
+              id: app.teacherId,
+              fullName: app.fullName,
+              title: app.title || "Müəllim / Akademik Mentor",
+              academicDegree: app.major || "Müəllim",
+              university: app.university || "Qərbi Kaspi Universiteti (WCU)",
+              faculty: app.faculty || "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+              department: app.department || "Biologiya və Təbiət Elmləri",
+              email: app.email,
+              phone: app.phone || "",
+              username: app.username,
+              password: app.password,
+              photo: app.photo || "",
+              specialties: app.tools || ["Bioinformatika", "Genomika və NGS Analizi"],
+              status: app.status === "Təsdiqləndi" ? "Aktiv" : (app.status || "Gözləyir"),
+              registeredAt: app.dateApplied || "2026-10-15",
+              adminNotes: app.adminNotes || "Sayt qeydiyyatı vasitəsilə daxil olmuş müəllim heyəti."
+            });
+            hasStorageUpdates = true;
+          }
+        }
+      });
+    }
+
     // Yekun süzgəc: Sədr tərəfindən silinmiş qeydlərin bazada qalmasına qətiyyən icazə verilmir
     if (parsed.deletedTeacherIds && parsed.deletedTeacherIds.length > 0) {
       const delSet = new Set(parsed.deletedTeacherIds.map(x => String(x).toLowerCase()));

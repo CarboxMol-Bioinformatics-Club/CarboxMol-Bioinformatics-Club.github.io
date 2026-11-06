@@ -7,7 +7,7 @@
 ### I. KURS HAQQINDA ÜMUMİ MƏLUMAT VƏ TƏDRİS KONSEPSİYASI
 
 * **Təşkilatçı:** Qərbi Kaspi Universiteti Bioinformatika Klubu
-* **Elmi Rəhbər və Təlimçi:** Süleyman Mehdi oğlu Hacızadə (Western Caspian University, Biologiya 2021–2026, V kurs / Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasında Bioinformatika Mütəxəssisi)
+* **Elmi Rəhbər və Təlimçi:** Süleyman Mehdi oğlu Hacızadə (Western Caspian University, Biologiya 2021–2026, V kurs / Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasında Bioinformatika Mütəxəssisi / Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi Kompüter ustalığı və İT Dəstək, 1 illik təhsil, 2020–2021 / Holberton School Azerbaijan)
 * **Müddət:** 2 Semestr (28 Həftəlik Akademik Təqvim + 1 Həftəlik Qış İntensiv Məktəbi)
 * **Tədris Formatı:** Hibrid (Universitet Kompüter Laboratoriyasında əyani vorkşoplar, interaktiv seminar dərsləri və GitHub/Google Colab üzərindən praktiki kodlaşdırma)
 * **İş Formatı və Metodologiya:** **Komanda İşi (Teamwork & Pair-Programming)** — Bütün fəaliyyət planı üzrə praktiki tapşırıqlar, alqoritmik kodlaşdırma və elmi layihələr tələbə komandaları şəklində birgə icra ediləcəkdir.

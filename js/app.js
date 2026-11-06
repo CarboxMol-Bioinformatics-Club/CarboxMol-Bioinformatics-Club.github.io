@@ -3095,6 +3095,52 @@ function handleRegistrationPhotoSelect(event) {
 }
 window.handleRegistrationPhotoSelect = handleRegistrationPhotoSelect;
 
+function handleRegistrationRoleTypeChange(type) {
+  const extraFields = document.getElementById("teacherExtraFields");
+  const courseSelect = document.getElementById("appCourse");
+  const roleSelect = document.getElementById("appRoleInterest");
+  if (type === "teacher") {
+    if (extraFields) extraFields.classList.remove("hidden");
+    if (courseSelect) {
+      courseSelect.innerHTML = `
+        <option value="Müəllim / Tədqiqatçı" selected>Müəllim / Tədqiqatçı</option>
+        <option value="Dosent / Professor">Dosent / Professor</option>
+        <option value="Akademik Mentor">Akademik Mentor</option>
+        <option value="Laboratoriya Rəhbəri">Laboratoriya Rəhbəri</option>
+        <option value="Doktorantura / PhD">Doktorantura / PhD</option>
+      `;
+    }
+    if (roleSelect) {
+      roleSelect.innerHTML = `
+        <option value="Akademik Mentor / Tədris Rəhbəri" selected>Akademik Mentor / Tədris Rəhbəri</option>
+        <option value="Elmi Tədqiqatçı Müəllim">Elmi Tədqiqatçı Müəllim</option>
+        <option value="Laboratoriya Mentoru">Laboratoriya Mentoru</option>
+      `;
+    }
+  } else {
+    if (extraFields) extraFields.classList.add("hidden");
+    if (courseSelect) {
+      courseSelect.innerHTML = `
+        <option value="Bakalavr (I kurs)">Bakalavr (I kurs)</option>
+        <option value="Bakalavr (II kurs)">Bakalavr (II kurs)</option>
+        <option value="Bakalavr (III kurs)">Bakalavr (III kurs)</option>
+        <option value="Bakalavr (IV kurs)">Bakalavr (IV kurs)</option>
+        <option value="Bakalavr (V kurs)">Bakalavr (V kurs)</option>
+        <option value="Magistratura">Magistratura</option>
+        <option value="Doktorantura">Doktorantura</option>
+      `;
+    }
+    if (roleSelect) {
+      roleSelect.innerHTML = `
+        <option value="Aktiv Tələbə / Təlim və Seminar İştirakçısı">Aktiv Tələbə / Təlim və Seminar İştirakçısı</option>
+        <option value="Tədqiqatçı / Layihə və Hakaton Komandası Üzvü">Tədqiqatçı / Layihə və Hakaton Komandası Üzvü</option>
+        <option value="Təşkilatçı Üzv (Tədbir təşkili, PR, Dizayn və Texniki dəstək)">Təşkilatçı Üzv (Tədbir təşkili, PR, Dizayn, Texniki dəstək)</option>
+      `;
+    }
+  }
+}
+window.handleRegistrationRoleTypeChange = handleRegistrationRoleTypeChange;
+
 function initApplicationForm() {
   const form = document.getElementById("membershipApplicationForm");
   if (!form) return;
@@ -3198,11 +3244,23 @@ function initApplicationForm() {
       submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Müraciət Sədrə Göndərilir...';
     }
 
+    const regRoleType = document.querySelector('input[name="registrationRoleType"]:checked')?.value || "student";
+    const teacherTitle = (document.getElementById("appTeacherTitle")?.value || "").trim();
+    const teacherDept = (document.getElementById("appTeacherDepartment")?.value || "").trim();
+
+    const isTeacherRole = regRoleType === "teacher" || 
+      (roleInterest && (roleInterest.includes("Müəllim") || roleInterest.includes("Mentor"))) ||
+      (course && (course.includes("Müəllim") || course.includes("Dosent") || course.includes("Mentor"))) ||
+      (major && (major.includes("müəllimliyi") || major.includes("müəllim")));
+
     const memberId = "mem-" + Date.now();
+    const teacherId = "teacher-" + Date.now();
 
     const newApp = {
       id: "app-" + Date.now(),
       memberId: memberId,
+      teacherId: isTeacherRole ? teacherId : null,
+      isTeacher: isTeacherRole,
       fullName: fullName + (patronymic ? ` (${patronymic})` : ""),
       email,
       phone,
@@ -3227,7 +3285,7 @@ function initApplicationForm() {
       yearGoal,
       dateApplied: new Date().toISOString().slice(0, 10),
       status: "Gözləyir",
-      adminNotes: ""
+      adminNotes: isTeacherRole ? "Sayt qeydiyyat formu vasitəsilə daxil olmuş müəllim müraciəti." : ""
     };
 
     // Yeni üzv hesabını ilkin "Gözləyir" statusunda members bazasına əlavə et (Sədr təsdiqi gözlənilir)
@@ -3240,6 +3298,7 @@ function initApplicationForm() {
       faculty,
       major,
       course,
+      role: isTeacherRole ? "Akademik Mentor / Müəllim" : "Klub Üzvü",
       username: rawUsername,
       password: rawPassword,
       registeredAt: new Date().toISOString().slice(0, 10),
@@ -3250,6 +3309,42 @@ function initApplicationForm() {
 
     data.applications = data.applications || [];
     data.applications.unshift(newApp);
+
+    if (isTeacherRole) {
+      data.teachers = data.teachers || [];
+      data.teacherApplications = data.teacherApplications || [];
+
+      const newTeacher = {
+        id: teacherId,
+        fullName: fullName + (patronymic ? ` (${patronymic})` : ""),
+        title: teacherTitle || "Akademik Mentor & Tədqiqatçı",
+        academicDegree: teacherTitle || course || "Müəllim / Mentor",
+        university: faculty || "Qərbi Kaspi Universiteti (WCU)",
+        faculty: faculty,
+        department: teacherDept || major || "Təbiət Elmləri Kafedrası",
+        email: email,
+        phone: phone,
+        username: rawUsername,
+        password: rawPassword,
+        photo: selectedRegistrationPhoto || "",
+        specialties: tracks.length ? tracks : ["Bioinformatika", "Genom Analizi"],
+        orcid: profileUrl || "",
+        bio: motivation || "CarboxMol Bioinformatika Klubu akademik mentoru.",
+        status: "Gözləyir",
+        registeredAt: new Date().toISOString().slice(0, 10),
+        adminNotes: "Sayt qeydiyyat formu vasitəsilə daxil olmuş müəllim müraciəti."
+      };
+
+      const newTeacherApp = {
+        id: "teach-app-" + Date.now(),
+        teacherId: teacherId,
+        ...newTeacher,
+        dateApplied: new Date().toISOString().slice(0, 10)
+      };
+
+      data.teachers.unshift(newTeacher);
+      data.teacherApplications.unshift(newTeacherApp);
+    }
 
     data.members.unshift(newMember);
     saveClubData(data);
@@ -3313,7 +3408,9 @@ function initApplicationForm() {
 
     // Send Real-time notification to Suleyman Hajizadeh via FormSubmit API (Primary + CC)
     const emailPayload = {
+      "Müraciət Növü": isTeacherRole ? "Müəllim / Akademik Mentor Qeydiyyatı" : "Tələbə Üzvlük Qeydiyyatı",
       "Ad, Soyad və Ata Adı": fullName + (patronymic ? ` (${patronymic})` : ""),
+      "E-poçt Ünvanı": email,
       "Tələbə E-poçtu": email,
       "Əlaqə Nömrəsi (WhatsApp)": phone,
       "Təyin Edilmiş Login (@username)": "@" + rawUsername,
@@ -3327,11 +3424,11 @@ function initApplicationForm() {
       "Bioloji Baza Biliyi": bioKnowledge,
       "Əməliyyat Sistemi": osType,
       "Maraqlandığı Tədqiqat İstiqamətləri": tracks.length ? tracks.join(", ") : "Ümumi Bioinformatika",
-      "Klubda Maraqlandığı Rol": roleInterest,
+      "Klubda Maraqlandığı Rol": isTeacherRole ? (teacherTitle || "Akademik Mentor / Müəllim") : roleInterest,
       "Həftəlik Ayıra Biləcəyi Vaxt": weeklyTime,
       "Motivasiya Məktubu": motivation,
       "1 İllik Şəxsi Hədəf": yearGoal || "Qeyd edilməyib",
-      "_subject": `🧬 Yeni CarboxMol Bioinformatika Klubu Üzvlüyü: ${fullName} (@${rawUsername})`,
+      "_subject": isTeacherRole ? `🎓 Yeni CarboxMol Müəllim/Mentor Qeydiyyatı: ${fullName} (@${rawUsername})` : `🧬 Yeni CarboxMol Bioinformatika Klubu Üzvlüyü: ${fullName} (@${rawUsername})`,
       "_template": "table",
       "_captcha": "false",
       "_replyto": email,
