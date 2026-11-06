@@ -1,0 +1,59 @@
+version: "3"
+services:
+  notebook: # Notebook
+    build:
+      context: ./notebook
+    image: swiri021/openkbc_msproject:notebookcontainer1
+    volumes:
+      - /Users/junheeyun/OpenKBC/multiple_sclerosis_proj/notebook/notebook_lib:/home/jovyan/work/notebook_lib
+      - /Users/junheeyun/OpenKBC/multiple_sclerosis_proj/notebook/notebook_utils:/home/jovyan/work/notebook_utils
+      - /Users/junheeyun/OpenKBC/multiple_sclerosis_proj/notebook/notebook_archive:/home/jovyan/work/notebook_archive
+      - /Users/junheeyun/OpenKBC/multiple_sclerosis_proj/notebook/resultFiles:/home/jovyan/work/resultFiles
+      - /Users/junheeyun/OpenKBC/multiple_sclerosis_proj/data:/home/jovyan/MainData
+    ports:
+      - 8888:8888
+    container_name: notebookContainer
+
+  pipelines: # Pipelines
+    build:
+      context: ./pipelines
+    image: swiri021/openkbc_msproject:pipelinecontainer1
+    volumes:
+      - /Users/junheeyun/OpenKBC/multiple_sclerosis_proj/pipelines:/pipelines
+      - /Users/junheeyun/OpenKBC/multiple_sclerosis_proj/data:/MainData
+      - /Users/junheeyun/OpenKBC/multiple_sclerosis_proj/notebook/resultFiles:/Output
+      -  $HOME/.aws/credentials:/root/.aws/credentials:ro
+    ports:
+      - 80:5000
+    depends_on:
+      - redis
+    container_name: pipelineContainer
+    working_dir: /pipelines/pipeline_controller
+    command: conda run -n pipeline_controller_base gunicorn --bind 0.0.0.0:5000 --workers 2 --threads 4 --worker-class gthread connector:app
+
+  redis: # redis
+    image: redis:alpine
+    command: redis-server
+    ports:
+      - 6379:6379
+    container_name: redisServer
+
+  celery: # celery
+    build:
+      context: ./pipelines
+    image: swiri021/openkbc_msproject:celerycontainer1
+    deploy:
+      resources:
+        limits:
+          memory: 8000m
+    volumes:
+      - /Users/junheeyun/OpenKBC/multiple_sclerosis_proj/pipelines:/pipelines
+      - /Users/junheeyun/OpenKBC/multiple_sclerosis_proj/data:/MainData
+      - /Users/junheeyun/OpenKBC/multiple_sclerosis_proj/notebook/resultFiles:/Output
+      -  $HOME/.aws/credentials:/root/.aws/credentials:ro
+    working_dir: /pipelines/pipeline_controller/
+    command: conda run -n pipeline_controller_base celery -A app.celery worker --loglevel=info
+    depends_on:
+      - redis
+      - pipelines
+    container_name: celeryContainer

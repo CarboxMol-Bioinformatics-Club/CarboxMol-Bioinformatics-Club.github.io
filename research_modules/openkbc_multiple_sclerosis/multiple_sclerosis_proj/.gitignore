@@ -1,0 +1,30 @@
+# Testing
+tester.py
+
+# s3 entire data
+data/
+*.pem
+credentials
+
+# AWS module
+InstanceLaunch-Info
+InstanceVolume-Info
+InstanceInfoFile
+PublicIP
+
+# MAC
+.DS_Store
+
+# Python
+__pycache__/
+.Rproj.user
+*.Rproj
+.Rhistory
+.snakemake
+
+# Custom Result folders
+resultFiles
+exprMatrix
+ActMatrix
+FEResult
+logs

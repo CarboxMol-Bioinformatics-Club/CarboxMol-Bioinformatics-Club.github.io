@@ -1,0 +1,110 @@
+__author__ = "Junhee Yoon"
+__version__ = "1.0.0"
+__maintainer__ = "Junhee Yoon"
+__email__ = "swiri021@gmail.com"
+
+# Needs gene normalization step with DESeq at the first
+
+# For manual running, please use this one
+# configfile: "config.yaml"
+# pipeline_path = '/Users/junheeyun/OpenKBC/multiple_sclerosis_proj/pipelines/feature_extraction_pipeline/'
+#
+
+pipeline_path = '/pipelines/feature_extraction_pipeline/'
+
+SAMPLES = ['CD4','CD8','CD14']
+
+rule all:
+    input:
+        expand(config["FeatureOutput"]+"/{cell}.Ranksum.RFECV.gene.result",  cell=['CD4','CD8','CD14'])
+
+rule clean_normalized_data:
+    input:
+        config["NormalizeData"]["path"]+"counts_"+config["NormalizeData"]["type"]+"_{sample}.csv"
+    output:
+        config["FeatureOutput"]+"/counts_normalized/cleanedFiles/counts_"+config["NormalizeData"]["type"]+"_{sample}.cleaned.csv"
+    log:
+        pipeline_path+"logs/clean_normalized_data_{sample}_"+config["logID"]+".log"
+    run:
+        if config["NormalizeData"]["type"]=='vst':
+            shell("python "+pipeline_path+"import_utils/cleanup_normalized_matrix.py -i {input} -o {output} --vst >& {log}")
+        else:
+            shell("python "+pipeline_path+"import_utils/cleanup_normalized_matrix.py -i {input} -o {output} >& {log}")
+
+rule id_conversion:
+    input:
+        config["FeatureOutput"]+"/counts_normalized/cleanedFiles/counts_"+config["NormalizeData"]["type"]+"_{sample}.cleaned.csv"
+    output:
+        config["FeatureOutput"]+"/counts_normalized/IDConvertedFiles/counts_"+config["NormalizeData"]["type"]+"_{sample}.converted.csv"
+    log:
+        pipeline_path+"logs/id_conversion_{sample}_"+config["logID"]+".log"
+    shell:
+        "Rscript "+pipeline_path+"import_utils/IDconverter.R {input} {output} >& {log}"
+
+rule get_all_activation_score:
+    input:
+        config["FeatureOutput"]+"/counts_normalized/IDConvertedFiles/counts_"+config["NormalizeData"]["type"]+"_{sample}.converted.csv"
+    output:
+        config["FeatureOutput"]+"/activation_scores/msigdb_activation_"+config["NormalizeData"]["type"]+"_{sample}.csv"
+    params:
+        config["MsigDBInput"]
+    log:
+        pipeline_path+"logs/get_all_activation_score_{sample}_"+config["logID"]+".log"
+    shell:
+        "python "+pipeline_path+"import_utils/get_all_activation_scores.py -i {input} -o {output} -m {params}>& {log}"
+
+rule step1_activationScoreDiff:
+    input:
+        config["FeatureOutput"]+"/activation_scores/msigdb_activation_"+config["NormalizeData"]["type"]+"_{sample}.csv"
+    output:
+        config["FeatureOutput"]+"/{sample}.Ranksum.act.csv"
+    params:
+        meta = config["MetaInput"],
+        compType = config["CompareType"]
+    log:
+        pipeline_path+"logs/step1_activationScoreDiff_{sample}_"+config["logID"]+".log"
+    shell:
+        "python "+pipeline_path+"import_ML/step1_actscoreDiff.py {input} {params.meta} {params.compType} {output} >& {log} "
+
+rule step2_activationScoreRFECV:
+    input:
+        config["FeatureOutput"]+"/{sample}.Ranksum.act.csv"
+    output:
+        config["FeatureOutput"]+"/{sample}.Ranksum.RFECV.act.csv"
+    params:
+        meta = config["MetaInput"],
+        rankingThresh = config["RFECVrankingThreshold"]["step2"],
+        compType = config["CompareType"]
+    log:
+        pipeline_path+"logs/step2_activationScoreRFECV_{sample}_"+config["logID"]+".log"
+    shell:
+        "python "+pipeline_path+"import_ML/step2_actscoreRFECV.py {input} {params.meta} {params.rankingThresh} {params.compType} {output} >& {log}"
+
+rule step3_geneExprDiff:
+    input:
+        config["FeatureOutput"]+"/{sample}.Ranksum.RFECV.act.csv"
+    output:
+        config["FeatureOutput"]+"/{sample}.Ranksum.gene.csv"
+    params:
+        geneExpr = config["FeatureOutput"]+"/counts_normalized/IDConvertedFiles/counts_"+config["NormalizeData"]["type"]+"_{sample}.converted.csv",
+        meta = config["MetaInput"],
+        msigDB = config["MsigDBInput"],
+        compType = config["CompareType"]
+    log:
+        pipeline_path+"logs/step3_geneExprDiff_{sample}_"+config["logID"]+".log"
+    shell:
+        "python "+pipeline_path+"import_ML/step3_geneDiff.py {input} {params.geneExpr} {params.meta} {params.msigDB} {params.compType} {output} >& {log}"
+
+rule step4_geneRFECV:
+    input:
+        config["FeatureOutput"]+"/{sample}.Ranksum.gene.csv"
+    output:
+        config["FeatureOutput"]+"/{sample}.Ranksum.RFECV.gene.result"
+    params:
+        meta = config["MetaInput"],
+        rankingThresh = config["RFECVrankingThreshold"]["step4"],
+        compType = config["CompareType"]
+    log:
+        pipeline_path+"logs/step4_geneRFECV_{sample}_"+config["logID"]+".log"
+    shell:
+        "python "+pipeline_path+"import_ML/step2_actscoreRFECV.py {input} {params.meta} {params.rankingThresh} {params.compType} {output} >& {log}"

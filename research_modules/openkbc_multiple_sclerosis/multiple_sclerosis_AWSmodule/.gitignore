@@ -1,0 +1,4 @@
+*.log
+*.submitted
+*.pem
+.DS_store

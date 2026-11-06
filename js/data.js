@@ -375,6 +375,17 @@ events: [
       description: "İnteraktiv 3D biomolekulyar vizuallaşdırma və model render proqramı (PyMOL və ChimeraX analoqu): zülalların ikincili/üçüncülü strukturlarını (alfa-spiral, beta-qat), aktiv mərkəz ciblərini, elektrostatik səthləri və elektron sıxlıqlarını 3D mühitdə yüksək sürətlə vizuallaşdırmaq üçün daxili alət. Xüsusi Qeyd: CarboxMol hələ ki, rəsmi nəşr (publish) edilmədiyi üçün klubun daxili elmi aləti və workbench-i olaraq istifadə olunur və yalnız Süleyman Hacızadə və Prof. Qərib Mürşüdov tərəfindən izah edilə və tədris oluna bilər.",
       syllabusWeek: "Həftə 11, Həftə 24",
       icon: "fa-atom"
+    },
+    {
+      id: "tool-openkbc-zscore",
+      name: "OpenKBC Z-Score & Multi-Omics Engine",
+      badge: "Elmi Tədqiqat Modulu (MIT)",
+      category: "Gen Ekspressiyası & Siqnal Yolları",
+      developer: "Junhee Yoon (OpenKBC) & CarboxMol Bioinformatics Club",
+      status: "Tədris və Tədqiqat üçün Aktivləşdirilib",
+      description: "Dağınıq Skleroz (Multiple Sclerosis) və xərçəng toxumalarında mikromassiv/RNA-Seq ekspressiyasından fenotipik siqnal yollarının aktivasiya Z-balını hesablayan riyazi mühərrik və Snakemake avtomatlaşdırılmış iş axını (workflow).",
+      syllabusWeek: "Həftə 7, Həftə 15",
+      icon: "fa-chart-line"
     }
   ],
 
@@ -2513,7 +2524,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.01.v44_president_vocational_it_education";
+const CURRENT_DATA_VERSION = "2026.11.06.v45_openkbc_zscore_campusclubs_i18n";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {

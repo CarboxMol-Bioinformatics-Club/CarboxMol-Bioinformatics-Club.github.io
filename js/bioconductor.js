@@ -880,7 +880,7 @@ const BioconductorEngine = {
   },
 
   switchTab(tabKey) {
-    const tabs = ["seq", "bioc", "projects", "structural"];
+    const tabs = ["seq", "bioc", "projects", "structural", "zscore"];
     tabs.forEach(t => {
       const panel = document.getElementById(`biotoolsTabPanel_${t}`);
       const btn = document.getElementById(`biotoolsTabBtn_${t}`);
@@ -901,6 +901,10 @@ const BioconductorEngine = {
 
     if (tabKey === "structural") {
       this.renderStructuralTools();
+    } else if (tabKey === "zscore") {
+      if (window.BioAnalysisEngine) {
+        window.BioAnalysisEngine.updateAnalysis();
+      }
     }
 
     // Auto scroll if needed
