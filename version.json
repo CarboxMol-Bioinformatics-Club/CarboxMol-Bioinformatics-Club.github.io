@@ -1,6 +1,6 @@
 {
   "version": "2.3.7",
-  "build": "20261106-2230",
-  "timestamp": 1793910600000,
-  "description": "CarboxMol Bioinformatika Klubu v2.3.7 — OpenKBC Dağınıq Skleroz Z-Balı və Snakemake multi-omiks analiz modulu, CampusClubs elan və tədbir RSVP sistemi, iki dilli (Azərbaycan & İngilis) i18n mühərriki inteqrasiya edildi."
+  "build": "20261106-2330",
+  "timestamp": 1793914200000,
+  "description": "CarboxMol Bioinformatika Klubu v2.3.7 — Bütün saytı (naviqasiya, başlıqlar, kartlar, sənədlər, alətlər, modallar və formalar daxil) tam və qüsursuz əhatə edən 1450+ bəndlik tam iki dilli (Azərbaycan & İngilis) i18n mühərriki və OpenKBC Z-balı analizatoru inteqrasiya edildi."
 }

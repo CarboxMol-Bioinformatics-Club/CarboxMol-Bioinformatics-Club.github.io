@@ -1802,6 +1802,13 @@ function navigateTo(sectionId) {
     BioMeetEngine.renderMeetings();
     BioMeetEngine.renderRecordingsArchive();
   }
+
+  // Bilingual translation re-sync on navigation
+  if (window.CarboxMolI18n && window.CarboxMolI18n.getLanguage() === 'en') {
+    setTimeout(function() {
+      window.CarboxMolI18n.setLanguage('en');
+    }, 20);
+  }
 }
 window.navigateTo = navigateTo;
 window.showSection = navigateTo;
