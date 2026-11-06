@@ -309,15 +309,17 @@ input, select, textarea {
 /* Laptops & Standard Monitors (1024px to 1439px) */
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
   html {
-    font-size: 14.5px;
+    font-size: 14px;
   }
   nav.glass-nav .nav-link {
     font-size: 11px !important;
-    padding-left: 0.35rem !important;
-    padding-right: 0.35rem !important;
+    padding-left: 0.3rem !important;
+    padding-right: 0.3rem !important;
+    white-space: nowrap !important;
   }
   nav.glass-nav button {
     font-size: 11px !important;
+    white-space: nowrap !important;
   }
 }
 
@@ -863,39 +865,81 @@ button[class*="bg-teal-950"]:hover {
 }
 
 /* Signature Header Portal Login Buttons */
-#navMemberLoginBtn, #mobileMemberLoginBtn {
+#navPortalLoginCapsule {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+#navPortalLoginCapsule button {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#navPortalLoginCapsule #navMemberLoginBtn {
+  color: #0f766e !important;
+}
+#navPortalLoginCapsule #navMemberLoginBtn * {
+  color: #0f766e !important;
+}
+#navPortalLoginCapsule #navMemberLoginBtn:hover {
+  background-color: #f0fdfa !important;
+}
+
+#navPortalLoginCapsule #navTeacherLoginBtn {
+  color: #4338ca !important;
+}
+#navPortalLoginCapsule #navTeacherLoginBtn * {
+  color: #4338ca !important;
+}
+#navPortalLoginCapsule #navTeacherLoginBtn:hover {
+  background-color: #eef2ff !important;
+}
+
+#navPortalLoginCapsule #navPresidentLoginBtn {
+  color: #b45309 !important;
+}
+#navPortalLoginCapsule #navPresidentLoginBtn * {
+  color: #b45309 !important;
+}
+#navPortalLoginCapsule #navPresidentLoginBtn:hover {
+  background-color: #fffbeb !important;
+}
+
+#mobileMemberLoginBtn {
   background-color: #ffffff !important;
   border: 1.5px solid #0f766e !important;
   color: #0f766e !important;
 }
-#navMemberLoginBtn *, #mobileMemberLoginBtn * {
+#mobileMemberLoginBtn * {
   color: #0f766e !important;
 }
-#navMemberLoginBtn:hover, #mobileMemberLoginBtn:hover {
+#mobileMemberLoginBtn:hover {
   background-color: #f0fdfa !important;
 }
 
-#navTeacherLoginBtn, #mobileTeacherLoginBtn {
+#mobileTeacherLoginBtn {
   background-color: #ffffff !important;
   border: 1.5px solid #4338ca !important;
   color: #4338ca !important;
 }
-#navTeacherLoginBtn *, #mobileTeacherLoginBtn * {
+#mobileTeacherLoginBtn * {
   color: #4338ca !important;
 }
-#navTeacherLoginBtn:hover, #mobileTeacherLoginBtn:hover {
+#mobileTeacherLoginBtn:hover {
   background-color: #eef2ff !important;
 }
 
-#navPresidentLoginBtn, #mobilePresidentLoginBtn {
+#mobilePresidentLoginBtn {
   background-color: #ffffff !important;
   border: 1.5px solid #b45309 !important;
   color: #b45309 !important;
 }
-#navPresidentLoginBtn *, #mobilePresidentLoginBtn * {
+#mobilePresidentLoginBtn * {
   color: #b45309 !important;
 }
-#navPresidentLoginBtn:hover, #mobilePresidentLoginBtn:hover {
+#mobilePresidentLoginBtn:hover {
   background-color: #fffbeb !important;
 }
 
