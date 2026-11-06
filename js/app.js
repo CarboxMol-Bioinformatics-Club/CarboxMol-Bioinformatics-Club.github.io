@@ -1747,7 +1747,9 @@ function navigateTo(sectionId) {
   };
 
   const metaInfo = seoSectionMeta[sectionId] || seoSectionMeta.home;
-  if (metaInfo) {
+  if (window.SeoResponsiveEngine) {
+    window.SeoResponsiveEngine.syncSeo(sectionId);
+  } else if (metaInfo) {
     document.title = metaInfo.title;
     const descEl = document.getElementById("seoDescription") || document.querySelector('meta[name="description"]');
     if (descEl) descEl.setAttribute("content", metaInfo.description);
