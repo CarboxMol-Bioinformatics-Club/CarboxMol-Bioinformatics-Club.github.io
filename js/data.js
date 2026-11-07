@@ -2688,8 +2688,18 @@ function purgeMockData(data) {
   if (Array.isArray(data.tasks)) {
     data.tasks = data.tasks.filter(t => t && !["task-101", "task-102", "task-103"].includes(t.id));
   }
+  // Tələbə üzvlərinin (Fatimə Piriyeva, Xaqan Əliyev, Nicat Nuhov və s.) səhvən müəllim bazasına düşməsini təmizlə:
+  const studentUserSet = new Set([
+    "fatimapirieva", "fatimapiriyeva", "xaqan", "nuhov", "anar_aliyev", "gunay", "elmir_m", "kenan_bio", "fatimirzz", "nuray", "nigar"
+  ]);
+
   if (Array.isArray(data.teachers)) {
-    data.teachers = data.teachers.filter(t => t && t.id !== "teacher-1" && t.id !== "teacher-fidan" && (t.username || "").toLowerCase() !== "rashad_ismayilov" && (t.username || "").toLowerCase() !== "fidan" && (t.email || "").toLowerCase() !== "fidanverdiyeva808@gmail.com");
+    data.teachers = data.teachers.filter(t => {
+      if (!t) return false;
+      const u = (t.username || "").toLowerCase().replace(/^@/, "");
+      if (studentUserSet.has(u)) return false;
+      return t.id !== "teacher-1" && t.id !== "teacher-fidan" && (t.username || "").toLowerCase() !== "rashad_ismayilov" && (t.username || "").toLowerCase() !== "fidan" && (t.email || "").toLowerCase() !== "fidanverdiyeva808@gmail.com";
+    });
     const hasSefanya = data.teachers.some(t => t && ((t.username || "").toLowerCase() === "sefanyamuellim" || t.id === "teacher-sefanya"));
     const isSefanyaDeleted = data.deletedTeacherIds && (data.deletedTeacherIds.includes("teacher-sefanya") || data.deletedTeacherIds.includes("sefanyamuellim"));
     if (!hasSefanya && !isSefanyaDeleted && Array.isArray(INITIAL_DATA.teachers) && INITIAL_DATA.teachers.length > 0) {
@@ -2697,12 +2707,36 @@ function purgeMockData(data) {
     }
   }
   if (Array.isArray(data.teacherApplications)) {
-    data.teacherApplications = data.teacherApplications.filter(a => a && a.id !== "teach-app-1" && a.id !== "teach-app-fidan" && a.teacherId !== "teacher-fidan" && (a.username || "").toLowerCase() !== "rashad_ismayilov" && (a.username || "").toLowerCase() !== "fidan" && (a.email || "").toLowerCase() !== "fidanverdiyeva808@gmail.com");
+    data.teacherApplications = data.teacherApplications.filter(a => {
+      if (!a) return false;
+      const u = (a.username || "").toLowerCase().replace(/^@/, "");
+      if (studentUserSet.has(u)) return false;
+      return a.id !== "teach-app-1" && a.id !== "teach-app-fidan" && a.teacherId !== "teacher-fidan" && (a.username || "").toLowerCase() !== "rashad_ismayilov" && (a.username || "").toLowerCase() !== "fidan" && (a.email || "").toLowerCase() !== "fidanverdiyeva808@gmail.com";
+    });
     const hasSefanyaApp = data.teacherApplications.some(a => a && ((a.username || "").toLowerCase() === "sefanyamuellim" || a.id === "teach-app-sefanya"));
     const isSefanyaAppDeleted = data.deletedTeacherIds && (data.deletedTeacherIds.includes("teacher-sefanya") || data.deletedTeacherIds.includes("sefanyamuellim"));
     if (!hasSefanyaApp && !isSefanyaAppDeleted && Array.isArray(INITIAL_DATA.teacherApplications) && INITIAL_DATA.teacherApplications.length > 0) {
       data.teacherApplications.unshift(JSON.parse(JSON.stringify(INITIAL_DATA.teacherApplications[0])));
     }
+  }
+  if (Array.isArray(data.applications)) {
+    data.applications.forEach(a => {
+      if (!a) return;
+      const u = (a.username || "").toLowerCase().replace(/^@/, "");
+      if (studentUserSet.has(u)) {
+        delete a.isTeacher;
+        delete a.teacherId;
+      }
+    });
+  }
+  if (Array.isArray(data.members)) {
+    data.members.forEach(m => {
+      if (!m) return;
+      const u = (m.username || "").toLowerCase().replace(/^@/, "");
+      if (studentUserSet.has(u)) {
+        m.role = "Klub Üzvü";
+      }
+    });
   }
   if (Array.isArray(data.events)) {
     data.events = data.events.filter(e => e && !["ev-2", "ev-3", "ev-4", "ev-5"].includes(e.id));
@@ -3207,74 +3241,50 @@ function getClubData() {
       }
     });
 
-    // 5. Tələbə müraciətlərindən (data.applications) müəllim və ya mentor olanların avtomatik müəllim bazasına sinxronizasiyası:
+    // 5. Tələbə üzvlərinin (Fatimə Piriyeva, Xaqan Əliyev, Nicat Nuhov və s.) müəllim bazasından tam təcrid edilməsi və qorunması:
+    const studentUsernames = new Set([
+      "fatimapirieva", "fatimapiriyeva", "xaqan", "nuhov", "anar_aliyev", "gunay", "elmir_m", "kenan_bio", "fatimirzz", "nuray", "nigar"
+    ]);
+
+    if (Array.isArray(parsed.teachers)) {
+      const prevTCount = parsed.teachers.length;
+      parsed.teachers = parsed.teachers.filter(t => {
+        if (!t) return false;
+        const u = (t.username || "").toLowerCase().replace(/^@/, "");
+        return !studentUsernames.has(u);
+      });
+      if (parsed.teachers.length !== prevTCount) hasStorageUpdates = true;
+    }
+
+    if (Array.isArray(parsed.teacherApplications)) {
+      const prevTACount = parsed.teacherApplications.length;
+      parsed.teacherApplications = parsed.teacherApplications.filter(ta => {
+        if (!ta) return false;
+        const u = (ta.username || "").toLowerCase().replace(/^@/, "");
+        return !studentUsernames.has(u);
+      });
+      if (parsed.teacherApplications.length !== prevTACount) hasStorageUpdates = true;
+    }
+
     if (Array.isArray(parsed.applications)) {
       parsed.applications.forEach(app => {
-        if (!app || isTeacherDeleted(app)) return;
-        const isTeacherApp = app.isTeacher === true ||
-          (app.major && (app.major.toLowerCase().includes("müəllimliyi") || app.major.toLowerCase().includes("müəllim"))) ||
-          (app.course && (app.course.toLowerCase().includes("müəllim") || app.course.toLowerCase().includes("mentor") || app.course.toLowerCase().includes("dosent"))) ||
-          (app.roleInterest && (app.roleInterest.toLowerCase().includes("müəllim") || app.roleInterest.toLowerCase().includes("mentor")));
+        if (!app) return;
+        const u = (app.username || "").toLowerCase().replace(/^@/, "");
+        if (studentUsernames.has(u)) {
+          delete app.isTeacher;
+          delete app.teacherId;
+          hasStorageUpdates = true;
+        }
+      });
+    }
 
-        if (isTeacherApp) {
-          app.isTeacher = true;
-          if (!app.teacherId) app.teacherId = "teacher-" + (app.username || app.id.replace("app-", ""));
-
-          // Müəllim müraciətlərində olmasını təmin et
-          const existsTApp = parsed.teacherApplications.find(ta => 
-            ta.id === app.id || 
-            ta.teacherId === app.teacherId || 
-            (ta.username && app.username && ta.username.toLowerCase() === app.username.toLowerCase()) ||
-            (ta.email && app.email && ta.email.toLowerCase() === app.email.toLowerCase())
-          );
-          if (!existsTApp) {
-            parsed.teacherApplications.unshift({
-              id: app.id,
-              teacherId: app.teacherId,
-              fullName: app.fullName,
-              title: app.title || "Müəllim / Akademik Mentor",
-              academicDegree: app.major || "Müəllim",
-              university: app.university || "Qərbi Kaspi Universiteti (WCU)",
-              faculty: app.faculty || "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
-              department: app.department || "Biologiya və Təbiət Elmləri",
-              email: app.email,
-              phone: app.phone || "",
-              username: app.username,
-              password: app.password,
-              photo: app.photo || "",
-              specialties: app.tools || ["Bioinformatika", "Genomika və NGS Analizi"],
-              status: app.status === "Təsdiqləndi" ? "Aktiv" : (app.status || "Gözləyir"),
-              dateApplied: app.dateApplied || "2026-10-15",
-              adminNotes: app.adminNotes || "Sayt qeydiyyatı vasitəsilə daxil olmuş müəllim heyəti."
-            });
-            hasStorageUpdates = true;
-          }
-
-          // Müəllimlər siyahısında olmasını təmin et
-          const existsT = parsed.teachers.find(t => 
-            t.id === app.teacherId || 
-            (t.username && app.username && t.username.toLowerCase() === app.username.toLowerCase()) ||
-            (t.email && app.email && t.email.toLowerCase() === app.email.toLowerCase())
-          );
-          if (!existsT) {
-            parsed.teachers.unshift({
-              id: app.teacherId,
-              fullName: app.fullName,
-              title: app.title || "Müəllim / Akademik Mentor",
-              academicDegree: app.major || "Müəllim",
-              university: app.university || "Qərbi Kaspi Universiteti (WCU)",
-              faculty: app.faculty || "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
-              department: app.department || "Biologiya və Təbiət Elmləri",
-              email: app.email,
-              phone: app.phone || "",
-              username: app.username,
-              password: app.password,
-              photo: app.photo || "",
-              specialties: app.tools || ["Bioinformatika", "Genomika və NGS Analizi"],
-              status: app.status === "Təsdiqləndi" ? "Aktiv" : (app.status || "Gözləyir"),
-              registeredAt: app.dateApplied || "2026-10-15",
-              adminNotes: app.adminNotes || "Sayt qeydiyyatı vasitəsilə daxil olmuş müəllim heyəti."
-            });
+    if (Array.isArray(parsed.members)) {
+      parsed.members.forEach(m => {
+        if (!m) return;
+        const u = (m.username || "").toLowerCase().replace(/^@/, "");
+        if (studentUsernames.has(u)) {
+          if (m.role !== "Klub Üzvü") {
+            m.role = "Klub Üzvü";
             hasStorageUpdates = true;
           }
         }

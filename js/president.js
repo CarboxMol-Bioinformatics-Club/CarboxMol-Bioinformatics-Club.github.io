@@ -130,18 +130,11 @@ const PresidentPortal = {
       password: ta.password || ""
     }));
 
-    // Check student applications for any teacher flags
-    const studentApps = rawStudentApps.map(sa => {
-      const isTeacherRole = sa.isTeacher === true ||
-        (sa.roleInterest && (sa.roleInterest.includes("Müəllim") || sa.roleInterest.includes("Mentor"))) ||
-        (sa.title && (sa.title.includes("Müəllim") || sa.title.includes("Mentor"))) ||
-        (sa.academicDegree && (sa.academicDegree.includes("Müəllim") || sa.academicDegree.includes("Mentor"))) ||
-        (sa.major && (sa.major.includes("müəllimliyi") || sa.major.includes("Müəllim")));
-      return {
-        ...sa,
-        isTeacher: isTeacherRole
-      };
-    });
+    // Tələbə müraciətləri sırf tələbədir (müəllimliyi oxuyan tələbələr də daxil), heç vaxt müəllim kimi işarələnmir
+    const studentApps = rawStudentApps.map(sa => ({
+      ...sa,
+      isTeacher: false
+    }));
 
     // Unified list with deduplication by username/email
     const seenMap = new Set();
@@ -529,11 +522,10 @@ const PresidentPortal = {
     let activeMemberObj = null;
 
     if (newStatus === "Təsdiqləndi") {
-      const isTeacherRole = (app.roleInterest && (app.roleInterest.includes("Müəllim") || app.roleInterest.includes("Mentor"))) ||
-        (app.title && (app.title.includes("Müəllim") || app.title.includes("Mentor") || app.title.includes("Dosent") || app.title.includes("PhD"))) ||
-        (app.academicDegree && (app.academicDegree.includes("Müəllim") || app.academicDegree.includes("Mentor")));
+      const isTeacherRole = (app.isTeacher === true && app.regRoleType === "teacher") ||
+        (app.regRoleType && app.regRoleType.toLowerCase().includes("müəllim"));
 
-      const assignedRole = isTeacherRole ? "Akademik Mentor / Müəllim" : (app.role || "Klub Üzvü");
+      const assignedRole = isTeacherRole ? "Akademik Mentor / Müəllim" : "Klub Üzvü";
 
       if (memIdx === -1) {
         const newMember = {
@@ -1881,13 +1873,13 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
       }
     });
 
-    // Əsas applications siyahısından da müəllim/mentor statuslu müraciətləri tapıb cədvələ əlavə et
+    // Əsas applications siyahısından yalnız həqiqi müəllim müraciətlərini tap (tələbələr qətiyyən daxil edilmir)
+    const studentExcludes = new Set(["fatimapirieva", "fatimapiriyeva", "xaqan", "nuhov", "anar_aliyev", "gunay", "elmir_m", "kenan_bio", "fatimirzz"]);
     (data.applications || []).forEach(a => {
       if (delApps.has(a.id)) return;
-      const isTeacherApp = a.isTeacher === true ||
-        (a.major && (a.major.toLowerCase().includes("müəllimliyi") || a.major.toLowerCase().includes("müəllim"))) ||
-        (a.course && (a.course.toLowerCase().includes("müəllim") || a.course.toLowerCase().includes("mentor") || a.course.toLowerCase().includes("dosent"))) ||
-        (a.roleInterest && (a.roleInterest.toLowerCase().includes("müəllim") || a.roleInterest.toLowerCase().includes("mentor")));
+      const u = (a.username || "").toLowerCase().replace(/^@/, "");
+      if (studentExcludes.has(u)) return;
+      const isTeacherApp = a.isTeacher === true && a.regRoleType === "teacher";
       if (isTeacherApp) {
         const exists = list.some(item => 
           item.id === a.teacherId || 
@@ -3589,11 +3581,8 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     const roleInterest = d.roleInterest || (d.regRoleType === "teacher" ? "Akademik Mentor / Tədris Rəhbəri" : "Aktiv Tələbə / Təlim və Seminar İştirakçısı");
 
     const isTeacher = (d.regRoleType === "teacher") ||
-      (d.isTeacher === true) ||
-      (title && title.trim().length > 0) ||
-      (major && (major.toLowerCase().includes("müəllimliyi") || major.toLowerCase().includes("müəllim"))) ||
-      (course && (course.toLowerCase().includes("müəllim") || course.toLowerCase().includes("mentor") || course.toLowerCase().includes("dosent"))) ||
-      (roleInterest && (roleInterest.toLowerCase().includes("müəllim") || roleInterest.toLowerCase().includes("mentor")));
+      (d.regRoleType && (d.regRoleType.toLowerCase().includes("müəllim") || d.regRoleType.toLowerCase().includes("mentor"))) ||
+      (d.isTeacher === true && !["fatimapirieva", "fatimapiriyeva", "xaqan", "nuhov"].includes((username || "").toLowerCase()));
 
     if (!username) {
       username = fullName.toLowerCase().replace(/[^a-z0-9]/g, "") + Math.floor(10 + Math.random() * 89);
@@ -4019,13 +4008,15 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
         // Əgər Sədr tərəfindən silinibdirsə, kənara qoy
         if (data.deletedMemberIds.includes(cleanUser) || (data.deletedTeacherIds && data.deletedTeacherIds.includes(cleanUser))) return;
 
-        // Müəllim və ya mentor müraciətlərini avtomatik təhlil et və müəllim bazasına yönləndir
-        const isTeacherSubmission = s.isTeacher || 
+        // Müəllim və ya mentor müraciətlərini yalnız həqiqi müəllim olduqda müəllim bazasına yönləndir
+        const isStudentAccidental = ["fatimapirieva", "fatimapiriyeva", "xaqan", "nuhov", "anar_aliyev", "gunay", "elmir_m", "kenan_bio", "fatimirzz"].includes(cleanUser);
+        const isTeacherSubmission = !isStudentAccidental && (
+          s.isTeacher === true ||
           cleanUser === "fidan_m" || cleanUser === "fidan" || cleanMail === "fidan.maharramova1@gmail.com" ||
-          (s.title && s.title.trim().length > 0) ||
-          (s.major && (s.major.toLowerCase().includes("müəllimliyi") || s.major.toLowerCase().includes("müəllim"))) ||
-          (s.course && (s.course.toLowerCase().includes("müəllim") || s.course.toLowerCase().includes("mentor") || s.course.toLowerCase().includes("dosent"))) ||
-          (s.roleInterest && (s.roleInterest.toLowerCase().includes("müəllim") || s.roleInterest.toLowerCase().includes("mentor")));
+          cleanUser === "hasanovasusan" || cleanUser === "susan" || cleanMail === "hasanovaa.ssssss@gmail.com" ||
+          cleanUser === "leyla_25" ||
+          (s.regRoleType && (s.regRoleType.toLowerCase().includes("müəllim") || s.regRoleType === "teacher"))
+        );
 
         if (isTeacherSubmission) {
           const teachId = "teacher-" + (cleanUser || (Date.now() + idx));
