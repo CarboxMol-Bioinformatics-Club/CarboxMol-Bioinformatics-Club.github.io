@@ -1,6 +1,6 @@
 {
-  "version": "2.4.2",
-  "build": "20261107-1000",
-  "timestamp": 1793952000000,
-  "description": "CarboxMol Bioinformatika Klubu v2.4.2 — Müəllim və tələbə qeydiyyatı sinxronizasiyasının tam təmizlənməsi: 'Biologiya müəllimliyi' və 'Kimya və biologiya müəllimliyi' ixtisaslarında oxuyan bakalavr tələbələri (Fatimə Piriyeva, Nicat Nuhov) və tələbə marağı qeyd edən Xaqan Əliyev müəllim siyahısından tam çıxarılaraq rəsmi 'Klub Üzvü' statusuna qaytarıldı; Müəllim reyestri yalnız rəsmi akademik müəllim və mentorlardan (Sefanya Hacızadə, Fidan Məhərrəmova, Süsən Həsənova, Leyla Budaqova) ibarət saxlanıldı."
+  "version": "2.4.3",
+  "build": "20261107-1010",
+  "timestamp": 1793952600000,
+  "description": "CarboxMol Bioinformatika Klubu v2.4.3 — Sədr panelində 'Müəllimlər və Giriş Hesabları' (presidentTeachersAccountsTableBody) cədvəlinin dərhal təmizlənməsi: lokal brauzer yaddaşında qalmış tələbələrin (Fatimə Piriyeva, Xaqan Əliyev, Nicat Nuhov) müəllim cədvəlindən aktiv şəkildə kənarlaşdırılması, DATA_VERSION v47 məcburi miqrasiyası və yalnız 4 rəsmi akademik müəllimin (Fidan, Sefanya, Süsən, Leyla) əks etdirilməsi."
 }

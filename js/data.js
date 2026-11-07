@@ -2624,7 +2624,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.06.v45_openkbc_zscore_campusclubs_i18n";
+const CURRENT_DATA_VERSION = "2026.11.07.v47_strict_teacher_student_roles_fix";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -2692,12 +2692,22 @@ function purgeMockData(data) {
   const studentUserSet = new Set([
     "fatimapirieva", "fatimapiriyeva", "xaqan", "nuhov", "anar_aliyev", "gunay", "elmir_m", "kenan_bio", "fatimirzz", "nuray", "nigar"
   ]);
+  const studentEmailSet = new Set([
+    "fatimapirieva700@gmail.com", "fatima.babayeva2026@khazar.org", "xaqan.aliyev@wcu.edu.az", "nicatnuhov389@gmail.com"
+  ]);
+  const isStudentMember = (item) => {
+    if (!item) return false;
+    const u = (item.username || "").toLowerCase().replace(/^@/, "").trim();
+    const em = (item.email || "").toLowerCase().trim();
+    const fn = (item.fullName || "").toLowerCase();
+    if (studentUserSet.has(u) || studentEmailSet.has(em)) return true;
+    if (fn.includes("fatimə piriyeva") || fn.includes("fatima piriyeva") || fn.includes("xaqan əliyev") || fn.includes("nicat nuhov")) return true;
+    return false;
+  };
 
   if (Array.isArray(data.teachers)) {
     data.teachers = data.teachers.filter(t => {
-      if (!t) return false;
-      const u = (t.username || "").toLowerCase().replace(/^@/, "");
-      if (studentUserSet.has(u)) return false;
+      if (!t || isStudentMember(t)) return false;
       return t.id !== "teacher-1" && t.id !== "teacher-fidan" && (t.username || "").toLowerCase() !== "rashad_ismayilov" && (t.username || "").toLowerCase() !== "fidan" && (t.email || "").toLowerCase() !== "fidanverdiyeva808@gmail.com";
     });
     const hasSefanya = data.teachers.some(t => t && ((t.username || "").toLowerCase() === "sefanyamuellim" || t.id === "teacher-sefanya"));
@@ -2708,9 +2718,7 @@ function purgeMockData(data) {
   }
   if (Array.isArray(data.teacherApplications)) {
     data.teacherApplications = data.teacherApplications.filter(a => {
-      if (!a) return false;
-      const u = (a.username || "").toLowerCase().replace(/^@/, "");
-      if (studentUserSet.has(u)) return false;
+      if (!a || isStudentMember(a)) return false;
       return a.id !== "teach-app-1" && a.id !== "teach-app-fidan" && a.teacherId !== "teacher-fidan" && (a.username || "").toLowerCase() !== "rashad_ismayilov" && (a.username || "").toLowerCase() !== "fidan" && (a.email || "").toLowerCase() !== "fidanverdiyeva808@gmail.com";
     });
     const hasSefanyaApp = data.teacherApplications.some(a => a && ((a.username || "").toLowerCase() === "sefanyamuellim" || a.id === "teach-app-sefanya"));
@@ -2722,8 +2730,7 @@ function purgeMockData(data) {
   if (Array.isArray(data.applications)) {
     data.applications.forEach(a => {
       if (!a) return;
-      const u = (a.username || "").toLowerCase().replace(/^@/, "");
-      if (studentUserSet.has(u)) {
+      if (isStudentMember(a)) {
         delete a.isTeacher;
         delete a.teacherId;
       }
@@ -2732,8 +2739,7 @@ function purgeMockData(data) {
   if (Array.isArray(data.members)) {
     data.members.forEach(m => {
       if (!m) return;
-      const u = (m.username || "").toLowerCase().replace(/^@/, "");
-      if (studentUserSet.has(u)) {
+      if (isStudentMember(m)) {
         m.role = "Klub Üzvü";
       }
     });

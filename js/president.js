@@ -38,8 +38,18 @@ const PresidentPortal = {
     const elTotalSubs = document.getElementById("metricTotalSubmissions");
     const elPendingSubs = document.getElementById("metricPendingTaskReviews");
 
-    const teachers = data.teachers || [];
-    const teacherApps = data.teacherApplications || [];
+    const studentUserSet = new Set([
+      "fatimapirieva", "fatimapiriyeva", "xaqan", "nuhov", "anar_aliyev", "gunay", "elmir_m", "kenan_bio", "fatimirzz"
+    ]);
+    const isStudentMember = (item) => {
+      if (!item) return false;
+      const u = (item.username || "").toLowerCase().replace(/^@/, "").trim();
+      const em = (item.email || "").toLowerCase().trim();
+      return studentUserSet.has(u) || em.includes("fatima") || em.includes("xaqan") || em.includes("nuhov");
+    };
+
+    const teachers = (data.teachers || []).filter(t => !isStudentMember(t));
+    const teacherApps = (data.teacherApplications || []).filter(a => !isStudentMember(a));
     const pendingTeachers = teacherApps.filter(a => a.status === "Gözləyir").length;
     const approvedTeachers = teachers.filter(t => t.status === "Aktiv" || t.status === "Təsdiqləndi").length;
 
@@ -1820,15 +1830,49 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     data.deletedTeacherIds = data.deletedTeacherIds || [];
     data.deletedAppIds = data.deletedAppIds || [];
 
+    const studentUserSet = new Set([
+      "fatimapirieva", "fatimapiriyeva", "xaqan", "nuhov", "anar_aliyev", "gunay", "elmir_m", "kenan_bio", "fatimirzz", "nuray", "nigar"
+    ]);
+    const studentEmailSet = new Set([
+      "fatimapirieva700@gmail.com", "fatima.babayeva2026@khazar.org", "xaqan.aliyev@wcu.edu.az", "nicatnuhov389@gmail.com"
+    ]);
+    const isStudentMember = (item) => {
+      if (!item) return false;
+      const u = (item.username || "").toLowerCase().replace(/^@/, "").trim();
+      const em = (item.email || "").toLowerCase().trim();
+      const fn = (item.fullName || "").toLowerCase();
+      if (studentUserSet.has(u) || studentEmailSet.has(em)) return true;
+      if (fn.includes("fatimə piriyeva") || fn.includes("fatima piriyeva") || fn.includes("xaqan əliyev") || fn.includes("nicat nuhov")) return true;
+      return false;
+    };
+
+    // Tələbə üzvlərini lokal müəllim yaddaşından dərhal təmizlə
+    let storageChanged = false;
+    if (Array.isArray(data.teachers)) {
+      const prevTL = data.teachers.length;
+      data.teachers = data.teachers.filter(t => !isStudentMember(t));
+      if (data.teachers.length !== prevTL) storageChanged = true;
+    }
+    if (Array.isArray(data.teacherApplications)) {
+      const prevTAL = data.teacherApplications.length;
+      data.teacherApplications = data.teacherApplications.filter(a => !isStudentMember(a));
+      if (data.teacherApplications.length !== prevTAL) storageChanged = true;
+    }
+    if (storageChanged && typeof saveClubData === "function") {
+      saveClubData(data);
+    }
+
     const delSet = new Set(data.deletedTeacherIds.map(x => String(x).toLowerCase()));
     const delApps = new Set(data.deletedAppIds);
 
     let teachers = (data.teachers || []).filter(t => 
+      !isStudentMember(t) &&
       !delSet.has(String(t.id).toLowerCase()) &&
       !delSet.has(String(t.username || '').toLowerCase()) &&
       !delSet.has(String(t.email || '').toLowerCase())
     );
     let teacherApps = (data.teacherApplications || []).filter(a => 
+      !isStudentMember(a) &&
       !delApps.has(a.id) &&
       !delSet.has(String(a.id).toLowerCase()) &&
       !delSet.has(String(a.teacherId || '').toLowerCase()) &&
@@ -1846,7 +1890,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
         adminNotes: app.adminNotes || t.adminNotes || "",
         specialties: t.specialties || app.specialties || ["Bioinformatika"]
       };
-    });
+    }).filter(item => !isStudentMember(item));
 
     // Əgər hələ teacher array-ə düşməmiş müraciət varsa onu da əlavə et
     teacherApps.forEach(a => {
