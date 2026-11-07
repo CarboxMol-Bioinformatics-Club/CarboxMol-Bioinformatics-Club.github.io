@@ -1,6 +1,6 @@
 {
-  "version": "2.4.0",
-  "build": "20261107-0035",
-  "timestamp": 1793918100000,
-  "description": "CarboxMol Bioinformatika Klubu v2.4.0 — Ultra-kompakt və tam responsiv naviqasiya zolağı (Navbar): bütün cihaz və ekran ölçülərində (1024px laptop, planşet, smartfon və 4K monitorlar) kəsilmə və üst-üstə minmə aradan qaldırıldı; [👤 Üzv | 🧑‍🏫 Müəllim | 👑 Sədr] qruplaşdırılmış giriş kapsulu (Segmented Portal Capsule), iyerarxik tipoqrafiya, 100% AZ/EN dinamik tərcümə və Süleyman Hacızadənin profili ilə bütün sənədlərdə 'Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi (Kompüter ustalığı / İT Dəstək, 1 illik təhsil, 2020–2021)' məlumatlarının tam inteqrasiyası."
+  "version": "2.4.1",
+  "build": "20261107-0940",
+  "timestamp": 1793950800000,
+  "description": "CarboxMol Bioinformatika Klubu v2.4.1 — Müəllim və akademik mentor heyətinin rəsmi qeydiyyat inteqrasiyası: Süsən Həsənova (@hasanovasusan - BDU Biotexnologiya) və Leyla Budaqova (@leyla_25 - BDU & MBİ Molekulyar Biologiya Doktorantı) müəllim və akademik mentor reyestrinə rəsmi daxil edildi; Sədr portalında müəllim müraciətləri və təsdiq mexanizmi tam aktivləşdirildi."
 }

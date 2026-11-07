@@ -1005,7 +1005,7 @@ events: [
           "email": "leylabudaqova073@gmail.com",
           "phone": "+994505761087",
           "password": "250921",
-          "role": "Klub Üzvü",
+          "role": "Akademik Mentor & Doktorant",
           "university": "Bakı Dövlət Universiteti (BDU)",
           "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
           "major": "Molekulyar Biologiya",
@@ -1020,7 +1020,7 @@ events: [
                 "Genomika",
                 "Doktorantura Tədqiqatları"
           ],
-          "motivation": "Doktorantura tədqiqatımda qabaqcıl bioinformatik metodları tətbiq etmək.",
+          "motivation": "Doktorantura tədqiqatımda qabaqcıl bioinformatik metodları tətbiq etmək və klub üzvlərinə elmi mentorluq göstərmək.",
           "yearGoal": "Beynəlxalq indeksli jurnallarda elmi məqalə dərc etdirmək.",
           "customTasks": [],
           "notes": []
@@ -2450,6 +2450,59 @@ events: [
       "registeredAt": "2026-10-27",
       "approvedAt": "2026-10-27",
       "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "teacher-susan",
+      "fullName": "Süsən Həsənova",
+      "title": "Müəllim / Akademik Mentor",
+      "academicDegree": "Müəllim",
+      "university": "Bakı Dövlət Universiteti (BDU)",
+      "faculty": "Biotexnologiya Fakültəsi",
+      "department": "Biotexnologiya",
+      "email": "hasanovaa.ssssss@gmail.com",
+      "phone": "+994 50 761 40 64",
+      "username": "hasanovasusan",
+      "password": "Susan2005",
+      "photo": "",
+      "specialties": [
+        "Biotexnologiya",
+        "Genomics",
+        "Molekulyar Biologiya"
+      ],
+      "orcid": "",
+      "googleScholar": "",
+      "bio": "Bakı Dövlət Universiteti (BDU) Biotexnologiya kafedrası üzrə müəllim və CarboxMol klubunun akademik mentoru.",
+      "status": "Gözləyir",
+      "registeredAt": "2026-11-03",
+      "approvedAt": "",
+      "approvedBy": ""
+    },
+    {
+      "id": "teacher-leyla-25",
+      "fullName": "Leyla Budaqova",
+      "title": "Doktorant & Akademik Mentor",
+      "academicDegree": "Doktorant",
+      "university": "Bakı Dövlət Universiteti (BDU)",
+      "faculty": "Biologiya Fakültəsi / ETN Molekulyar Biologiya İnstitutu",
+      "department": "Molekulyar Biologiya",
+      "email": "leylabudaqova073@gmail.com",
+      "phone": "+994 50 576 10 87",
+      "username": "leyla_25",
+      "password": "250921",
+      "photo": "https://api.dicebear.com/7.x/bottts/svg?seed=leyla_25",
+      "specialties": [
+        "Molekulyar Biologiya",
+        "Genomika",
+        "Doktorantura Tədqiqatları",
+        "Struktur Biologiyası"
+      ],
+      "orcid": "",
+      "googleScholar": "",
+      "bio": "Bakı Dövlət Universiteti və MBİ-də Molekulyar Biologiya üzrə doktorantura tədqiqatçısı və CarboxMol klubunun akademik mentoru.",
+      "status": "Gözləyir",
+      "registeredAt": "2026-11-03",
+      "approvedAt": "",
+      "approvedBy": ""
     }
   ],
 
@@ -2503,6 +2556,53 @@ events: [
       "status": "Təsdiqləndi",
       "dateApplied": "2026-10-27",
       "adminNotes": "Sədr tərəfindən rəsmi akademik mentor olaraq təsdiqlənmişdir."
+    },
+    {
+      "id": "teach-app-susan",
+      "teacherId": "teacher-susan",
+      "fullName": "Süsən Həsənova (Müəllim)",
+      "title": "Müəllim / Akademik Mentor",
+      "academicDegree": "Müəllim",
+      "university": "Bakı Dövlət Universiteti (BDU)",
+      "faculty": "Biotexnologiya Fakültəsi",
+      "department": "Biotexnologiya",
+      "email": "hasanovaa.ssssss@gmail.com",
+      "phone": "+994 50 761 40 64",
+      "username": "hasanovasusan",
+      "password": "Susan2005",
+      "specialties": [
+        "Biotexnologiya",
+        "Genomics"
+      ],
+      "orcid": "",
+      "bio": "Bakı Dövlət Universiteti (BDU) Biotexnologiya kafedrası üzrə müəllim və CarboxMol klubunun akademik mentoru.",
+      "status": "Gözləyir",
+      "dateApplied": "2026-11-03",
+      "adminNotes": "FormSubmit üzərindən 03.11.2026 tarixində müraciət edilmişdir. Sədr təsdiqi gözlənilir."
+    },
+    {
+      "id": "teach-app-leyla-25",
+      "teacherId": "teacher-leyla-25",
+      "fullName": "Leyla Budaqova (Doktorant)",
+      "title": "Doktorant & Akademik Mentor",
+      "academicDegree": "Doktorant",
+      "university": "Bakı Dövlət Universiteti (BDU)",
+      "faculty": "Biologiya Fakültəsi / ETN Molekulyar Biologiya İnstitutu",
+      "department": "Molekulyar Biologiya",
+      "email": "leylabudaqova073@gmail.com",
+      "phone": "+994 50 576 10 87",
+      "username": "leyla_25",
+      "password": "250921",
+      "specialties": [
+        "Molekulyar Biologiya",
+        "Genomika",
+        "Doktorantura Tədqiqatları"
+      ],
+      "orcid": "",
+      "bio": "Bakı Dövlət Universiteti və MBİ-də Molekulyar Biologiya üzrə doktorantura tədqiqatçısı və CarboxMol klubunun akademik mentoru.",
+      "status": "Gözləyir",
+      "dateApplied": "2026-11-03",
+      "adminNotes": "Müəllim / Akademik Mentor qeydiyyatı. Sədr təsdiqi gözlənilir."
     }
   ],
 
@@ -2971,12 +3071,22 @@ function getClubData() {
         if (isTeacherDeleted(seedTeacher)) return;
         const existingIdx = parsed.teachers.findIndex(
           (t) =>
-            (t.username && t.username.toLowerCase() === seedTeacher.username.toLowerCase()) ||
+            (t.username && seedTeacher.username && t.username.toLowerCase() === seedTeacher.username.toLowerCase()) ||
+            (t.email && seedTeacher.email && t.email.toLowerCase() === seedTeacher.email.toLowerCase()) ||
             t.id === seedTeacher.id
         );
         if (existingIdx === -1) {
           parsed.teachers.push(JSON.parse(JSON.stringify(seedTeacher)));
           hasStorageUpdates = true;
+        } else {
+          if (!parsed.teachers[existingIdx].password && seedTeacher.password) {
+            parsed.teachers[existingIdx].password = seedTeacher.password;
+            hasStorageUpdates = true;
+          }
+          if (!parsed.teachers[existingIdx].department && seedTeacher.department) {
+            parsed.teachers[existingIdx].department = seedTeacher.department;
+            hasStorageUpdates = true;
+          }
         }
       });
     }
@@ -2984,12 +3094,20 @@ function getClubData() {
     if (Array.isArray(INITIAL_DATA.teacherApplications)) {
       INITIAL_DATA.teacherApplications.forEach((seedApp) => {
         if (isTeacherDeleted(seedApp)) return;
-        const exists = parsed.teacherApplications.some(
-          (a) => a.id === seedApp.id || (a.username && a.username.toLowerCase() === seedApp.username.toLowerCase())
+        const existingAppIdx = parsed.teacherApplications.findIndex(
+          (a) =>
+            a.id === seedApp.id ||
+            (a.username && seedApp.username && a.username.toLowerCase() === seedApp.username.toLowerCase()) ||
+            (a.email && seedApp.email && a.email.toLowerCase() === seedApp.email.toLowerCase())
         );
-        if (!exists) {
+        if (existingAppIdx === -1) {
           parsed.teacherApplications.push(JSON.parse(JSON.stringify(seedApp)));
           hasStorageUpdates = true;
+        } else {
+          if (!parsed.teacherApplications[existingAppIdx].password && seedApp.password) {
+            parsed.teacherApplications[existingAppIdx].password = seedApp.password;
+            hasStorageUpdates = true;
+          }
         }
       });
     }
