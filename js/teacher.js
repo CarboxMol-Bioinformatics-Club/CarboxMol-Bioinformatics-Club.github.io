@@ -17,6 +17,8 @@ function escapeTeacherHtml(str) {
 
 const TeacherPortal = {
   currentFilter: "all",
+  colleagueSearchQuery: "",
+  colleagueUniFilter: "all",
 
   getActiveTeacher() {
     if (typeof getActiveTeacher === "function") {
@@ -65,6 +67,7 @@ const TeacherPortal = {
     this.renderMetrics();
     this.renderSubmissions(this.currentFilter);
     this.renderAnnouncements();
+    this.renderColleaguesRoster();
     this.renderStudentsRoster();
     if (window.BioMeetEngine && typeof window.BioMeetEngine.renderPortalMeetings === "function") {
       window.BioMeetEngine.renderPortalMeetings("teacher");
@@ -140,12 +143,15 @@ const TeacherPortal = {
       });
     });
 
+    const elTeachers = document.getElementById("teacherMetricTeachers");
     const elStudents = document.getElementById("teacherMetricStudents");
     const elPending = document.getElementById("teacherMetricPending");
     const elGraded = document.getElementById("teacherMetricGraded");
     const elTasks = document.getElementById("teacherMetricTasks");
     const elAnn = document.getElementById("teacherMetricAnnouncements");
 
+    const activeTeachers = (data.teachers || []).filter(t => t.status === "Aktiv" || t.status === "Təsdiqləndi");
+    if (elTeachers) elTeachers.innerText = activeTeachers.length || 4;
     if (elStudents) elStudents.innerText = members.length;
     if (elPending) elPending.innerText = pendingReviews;
     if (elGraded) elGraded.innerText = gradedCount;
@@ -531,6 +537,206 @@ const TeacherPortal = {
     this.renderAnnouncements();
 
     if (typeof showToast === "function") showToast("Elan silindi.", "info");
+  },
+
+  renderColleaguesRoster(searchQuery = this.colleagueSearchQuery, filterUni = this.colleagueUniFilter) {
+    this.colleagueSearchQuery = (searchQuery || "").trim().toLowerCase();
+    this.colleagueUniFilter = filterUni || "all";
+
+    const container = document.getElementById("teacherColleaguesContainer");
+    const badge = document.getElementById("teacherColleaguesCountBadge");
+    if (!container) return;
+
+    const data = typeof getClubData === "function" ? getClubData() : {};
+    const currentActiveTeacher = this.getActiveTeacher();
+    let teachers = (data.teachers || []).filter(t => t.status === "Aktiv" || t.status === "Təsdiqləndi");
+
+    // Also include any approved teacher from teacherApplications if not yet in teachers list
+    if (Array.isArray(data.teacherApplications)) {
+      data.teacherApplications.forEach(app => {
+        if ((app.status === "Aktiv" || app.status === "Təsdiqləndi") && !teachers.some(t => t.id === app.teacherId || t.id === app.id || (t.username && app.username && t.username.toLowerCase() === app.username.toLowerCase()))) {
+          teachers.push({
+            id: app.teacherId || app.id,
+            fullName: app.fullName,
+            title: app.title || "Müəllim / Akademik Mentor",
+            academicDegree: app.academicDegree || "Müəllim",
+            university: app.university || "Universitet",
+            faculty: app.faculty || "",
+            department: app.department || app.faculty || "Kafedra",
+            email: app.email,
+            phone: app.phone,
+            username: app.username,
+            photo: app.photo || `https://api.dicebear.com/7.x/identicon/svg?seed=${encodeURIComponent(app.username || app.fullName || 'teacher')}`,
+            specialties: app.specialties || ["Bioinformatika"],
+            bio: app.bio || "",
+            status: "Aktiv"
+          });
+        }
+      });
+    }
+
+    if (badge) {
+      badge.innerText = `${teachers.length} Müəllim`;
+    }
+
+    // Filter by university
+    if (this.colleagueUniFilter !== "all") {
+      teachers = teachers.filter(t => {
+        const uni = ((t.university || "") + " " + (t.faculty || "")).toUpperCase();
+        if (this.colleagueUniFilter === "WCU") return uni.includes("WCU") || uni.includes("QƏRBİ KASPİ") || uni.includes("WESTERN CASPIAN");
+        if (this.colleagueUniFilter === "BDU") return uni.includes("BDU") || uni.includes("BAKI DÖVLƏT") || uni.includes("BAKU STATE");
+        if (this.colleagueUniFilter === "Digər") {
+          return !uni.includes("WCU") && !uni.includes("QƏRBİ KASPİ") && !uni.includes("WESTERN CASPIAN") && !uni.includes("BDU") && !uni.includes("BAKI DÖVLƏT") && !uni.includes("BAKU STATE");
+        }
+        return true;
+      });
+    }
+
+    // Filter by search query
+    if (this.colleagueSearchQuery) {
+      const q = this.colleagueSearchQuery.replace(/^@/, "").trim();
+      const normalize = (str) =>
+        (str || "")
+          .toLowerCase()
+          .replace(/ə/g, "e")
+          .replace(/ı/g, "i")
+          .replace(/ö/g, "o")
+          .replace(/ü/g, "u")
+          .replace(/ç/g, "c")
+          .replace(/ş/g, "s")
+          .replace(/ğ/g, "g");
+      const normQ = normalize(q);
+
+      teachers = teachers.filter(t => {
+        const name = (t.fullName || "").toLowerCase();
+        const uname = (t.username || "").toLowerCase();
+        const uni = (t.university || "").toLowerCase();
+        const title = (t.title || "").toLowerCase();
+        const dept = (t.department || t.faculty || "").toLowerCase();
+        const specs = Array.isArray(t.specialties) ? t.specialties.join(" ").toLowerCase() : (t.specialties || "").toLowerCase();
+        const email = (t.email || "").toLowerCase();
+
+        const rawMatch = name.includes(q) || uname.includes(q) || uni.includes(q) || title.includes(q) || dept.includes(q) || specs.includes(q) || email.includes(q);
+        if (rawMatch) return true;
+
+        const normTarget = normalize(`${name} ${uname} ${uni} ${title} ${dept} ${specs} ${email}`);
+        return normTarget.includes(normQ);
+      });
+    }
+
+    if (teachers.length === 0) {
+      container.innerHTML = `
+        <div class="col-span-full py-10 text-center text-slate-400 bg-slate-900/40 rounded-2xl border border-slate-800">
+          <i class="fa-solid fa-user-slash text-3xl text-slate-600 mb-2 block"></i>
+          <p class="font-bold text-slate-300">Axtarışa uyğun müəllim və ya mentor tapılmadı.</p>
+          <p class="text-xs text-slate-500 mt-1">Axtarış sözünü dəyişin və ya filtri "Hamısı" seçin.</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = teachers.map(t => {
+      const isSelf = currentActiveTeacher && (t.id === currentActiveTeacher.id || (t.username && currentActiveTeacher.username && t.username.toLowerCase() === currentActiveTeacher.username.toLowerCase()));
+      const avatarSrc = t.photo || `https://api.dicebear.com/7.x/identicon/svg?seed=${encodeURIComponent(t.username || t.fullName || 'teacher')}`;
+      const specs = Array.isArray(t.specialties) ? t.specialties : (t.specialties ? [t.specialties] : ["Bioinformatika"]);
+
+      return `
+        <div class="glass-panel p-5 rounded-2xl border ${isSelf ? 'border-cyan-500/50 bg-slate-900/90 ring-1 ring-cyan-500/30' : 'border-slate-800 bg-slate-900/70 hover:border-indigo-500/40'} transition flex flex-col justify-between space-y-4 shadow-lg group">
+          <div>
+            <!-- Header: Avatar, Name, Title, Self Badge -->
+            <div class="flex items-start gap-3.5">
+              <div class="relative w-14 h-14 rounded-xl bg-gradient-to-tr from-indigo-500 via-cyan-400 to-teal-400 p-0.5 shrink-0 shadow-md">
+                <img src="${escapeTeacherHtml(avatarSrc)}" alt="${escapeTeacherHtml(t.fullName)}" class="w-full h-full object-cover rounded-[10px] bg-slate-950" onerror="this.src='https://api.dicebear.com/7.x/identicon/svg?seed=${encodeURIComponent(t.username || 't')}'" />
+                <span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-slate-950" title="Aktiv Həmkar"></span>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <h4 class="text-sm font-extrabold text-white truncate leading-snug group-hover:text-cyan-300 transition">
+                    ${escapeTeacherHtml(t.fullName)}
+                  </h4>
+                  ${isSelf ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">Siz</span>' : ''}
+                </div>
+                <p class="text-xs text-indigo-300 font-semibold truncate mt-0.5">${escapeTeacherHtml(t.title || 'Akademik Mentor')}</p>
+                <p class="text-[11px] text-slate-400 truncate mt-0.5"><i class="fa-solid fa-building-columns text-[10px] text-slate-500 mr-1"></i>${escapeTeacherHtml(t.university || 'Universitet')}</p>
+              </div>
+            </div>
+
+            <!-- Department / Faculty -->
+            ${t.department || t.faculty ? `
+              <div class="mt-3 text-[11px] text-slate-400 bg-slate-950/60 p-2 rounded-lg border border-slate-800/80 flex items-center gap-2">
+                <i class="fa-solid fa-microscope text-indigo-400 text-xs shrink-0"></i>
+                <span class="truncate">${escapeTeacherHtml(t.department || t.faculty)}</span>
+              </div>
+            ` : ''}
+
+            <!-- Bio snippet -->
+            <p class="mt-2.5 text-xs text-slate-300 leading-relaxed line-clamp-2">
+              ${escapeTeacherHtml(t.bio || 'Bioinformatika və molekulyar elmlər üzrə klubun akademik mentoru.')}
+            </p>
+
+            <!-- Specialties pills -->
+            <div class="flex flex-wrap gap-1 mt-3">
+              ${specs.slice(0, 3).map(s => `
+                <span class="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 text-[10px] font-medium">
+                  ${escapeTeacherHtml(s)}
+                </span>
+              `).join('')}
+              ${specs.length > 3 ? `<span class="px-1.5 py-0.5 rounded-md bg-slate-800 text-slate-400 text-[10px]">+${specs.length - 3}</span>` : ''}
+            </div>
+          </div>
+
+          <!-- Actions: BioMeet Call & Email & Profile -->
+          <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2 text-xs">
+            <div class="flex items-center gap-1.5">
+              ${t.email ? `
+                <a href="mailto:${escapeTeacherHtml(t.email)}" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-semibold flex items-center gap-1.5 transition" title="E-poçt göndər">
+                  <i class="fa-solid fa-envelope text-indigo-400"></i> <span class="hidden sm:inline">E-poçt</span>
+                </a>
+              ` : ''}
+              ${t.phone ? `
+                <a href="https://wa.me/${escapeTeacherHtml((t.phone || '').replace(/[^0-9]/g, ''))}" target="_blank" rel="noopener" class="px-2.5 py-1.5 rounded-lg bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-300 border border-emerald-800/60 text-xs font-semibold flex items-center gap-1.5 transition" title="WhatsApp ilə əlaqə">
+                  <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                </a>
+              ` : ''}
+            </div>
+
+            <button onclick="BioMeetEngine.openScheduleModalFromPortal('teacher', true)" class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-bold text-xs flex items-center gap-1.5 shadow transition active:scale-95" title="Birgə BioMeet Görüşü Təşkil Et">
+              <i class="fa-solid fa-video text-[10px]"></i> <span>BioMeet</span>
+            </button>
+          </div>
+        </div>
+      `;
+    }).join("");
+  },
+
+  filterColleagues(query) {
+    this.renderColleaguesRoster(query, this.colleagueUniFilter);
+  },
+
+  filterColleaguesByUni(uni) {
+    this.colleagueUniFilter = uni;
+    const btnAll = document.getElementById("colleagueFilterBtn-all");
+    const btnWCU = document.getElementById("colleagueFilterBtn-WCU");
+    const btnBDU = document.getElementById("colleagueFilterBtn-BDU");
+    const btnOther = document.getElementById("colleagueFilterBtn-Other");
+
+    [btnAll, btnWCU, btnBDU, btnOther].forEach(b => {
+      if (b) {
+        b.className = "px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition whitespace-nowrap";
+      }
+    });
+
+    const activeMap = {
+      all: btnAll,
+      WCU: btnWCU,
+      BDU: btnBDU,
+      Digər: btnOther
+    };
+    if (activeMap[uni]) {
+      activeMap[uni].className = "px-2.5 py-1.5 rounded-lg text-xs font-bold text-cyan-300 bg-cyan-500/20 transition whitespace-nowrap";
+    }
+
+    this.renderColleaguesRoster(this.colleagueSearchQuery, uni);
   },
 
   filterStudents(searchQuery = "") {

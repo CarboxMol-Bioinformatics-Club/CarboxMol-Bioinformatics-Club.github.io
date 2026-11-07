@@ -2463,7 +2463,7 @@ events: [
       "phone": "+994 50 761 40 64",
       "username": "hasanovasusan",
       "password": "Susan2005",
-      "photo": "",
+      "photo": "https://api.dicebear.com/7.x/identicon/svg?seed=hasanovasusan",
       "specialties": [
         "Biotexnologiya",
         "Genomics",
@@ -2472,10 +2472,10 @@ events: [
       "orcid": "",
       "googleScholar": "",
       "bio": "Bakı Dövlət Universiteti (BDU) Biotexnologiya kafedrası üzrə müəllim və CarboxMol klubunun akademik mentoru.",
-      "status": "Gözləyir",
+      "status": "Aktiv",
       "registeredAt": "2026-11-03",
-      "approvedAt": "",
-      "approvedBy": ""
+      "approvedAt": "2026-11-03",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
     },
     {
       "id": "teacher-leyla-25",
@@ -2499,10 +2499,10 @@ events: [
       "orcid": "",
       "googleScholar": "",
       "bio": "Bakı Dövlət Universiteti və MBİ-də Molekulyar Biologiya üzrə doktorantura tədqiqatçısı və CarboxMol klubunun akademik mentoru.",
-      "status": "Gözləyir",
+      "status": "Aktiv",
       "registeredAt": "2026-11-03",
-      "approvedAt": "",
-      "approvedBy": ""
+      "approvedAt": "2026-11-03",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
     }
   ],
 
@@ -2576,9 +2576,9 @@ events: [
       ],
       "orcid": "",
       "bio": "Bakı Dövlət Universiteti (BDU) Biotexnologiya kafedrası üzrə müəllim və CarboxMol klubunun akademik mentoru.",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "dateApplied": "2026-11-03",
-      "adminNotes": "FormSubmit üzərindən 03.11.2026 tarixində müraciət edilmişdir. Sədr təsdiqi gözlənilir."
+      "adminNotes": "Sədr tərəfindən rəsmi akademik mentor olaraq təsdiqlənmişdir."
     },
     {
       "id": "teach-app-leyla-25",
@@ -2600,9 +2600,9 @@ events: [
       ],
       "orcid": "",
       "bio": "Bakı Dövlət Universiteti və MBİ-də Molekulyar Biologiya üzrə doktorantura tədqiqatçısı və CarboxMol klubunun akademik mentoru.",
-      "status": "Gözləyir",
+      "status": "Təsdiqləndi",
       "dateApplied": "2026-11-03",
-      "adminNotes": "Müəllim / Akademik Mentor qeydiyyatı. Sədr təsdiqi gözlənilir."
+      "adminNotes": "Sədr tərəfindən rəsmi akademik mentor olaraq təsdiqlənmişdir."
     }
   ],
 

@@ -3195,25 +3195,29 @@ Seçilmiş pipeline: DESeq2
         </div>
 
         <!-- Metrics Cards -->
-        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-2 border-t border-slate-800/80">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-2 border-t border-slate-800/80">
+          <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-cyan-900/40">
+            <span class="text-[11px] text-cyan-300/80 block mb-1" data-i18n="teacher_metric_colleagues">Müəllim & Mentorlar</span>
+            <span id="teacherMetricTeachers" class="text-xl sm:text-2xl font-black text-cyan-400">4</span>
+          </div>
           <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800">
-            <span class="text-[11px] text-slate-400 block mb-1">Rəsmi Tələbələr</span>
+            <span class="text-[11px] text-slate-400 block mb-1" data-i18n="teacher_metric_students">Rəsmi Tələbələr</span>
             <span id="teacherMetricStudents" class="text-xl sm:text-2xl font-black text-white">15</span>
           </div>
           <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-amber-900/40">
-            <span class="text-[11px] text-amber-300/80 block mb-1">Yoxlama Gözləyən</span>
+            <span class="text-[11px] text-amber-300/80 block mb-1" data-i18n="teacher_metric_pending">Yoxlama Gözləyən</span>
             <span id="teacherMetricPending" class="text-xl sm:text-2xl font-black text-amber-400">0</span>
           </div>
           <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-emerald-900/40">
-            <span class="text-[11px] text-emerald-300/80 block mb-1">Qiymətləndirilmiş</span>
+            <span class="text-[11px] text-emerald-300/80 block mb-1" data-i18n="teacher_metric_graded">Qiymətləndirilmiş</span>
             <span id="teacherMetricGraded" class="text-xl sm:text-2xl font-black text-emerald-400">0</span>
           </div>
           <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-indigo-900/40">
-            <span class="text-[11px] text-indigo-300/80 block mb-1">Klub Tapşırıqları</span>
+            <span class="text-[11px] text-indigo-300/80 block mb-1" data-i18n="teacher_metric_tasks">Klub Tapşırıqları</span>
             <span id="teacherMetricTasks" class="text-xl sm:text-2xl font-black text-indigo-400">0</span>
           </div>
-          <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-purple-900/40 col-span-2 sm:col-span-1">
-            <span class="text-[11px] text-purple-300/80 block mb-1">Müəllim Elanları</span>
+          <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-purple-900/40">
+            <span class="text-[11px] text-purple-300/80 block mb-1" data-i18n="teacher_metric_announcements">Müəllim Elanları</span>
             <span id="teacherMetricAnnouncements" class="text-xl sm:text-2xl font-black text-purple-400">0</span>
           </div>
         </div>
@@ -3306,7 +3310,53 @@ Seçilmiş pipeline: DESeq2
         </div>
       </div>
 
-      <!-- Section 3: Club Students Roster (Academic Oversight) -->
+      <!-- Section 3: Academic Faculty & Mentors Directory (Akademik Müəllim və Mentor Kollektivi) -->
+      <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-indigo-500/30 space-y-5 bg-gradient-to-br from-slate-900/90 via-slate-950/90 to-indigo-950/20 shadow-xl">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+          <div>
+            <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest flex items-center gap-1.5">
+              <i class="fa-solid fa-chalkboard-user text-cyan-400"></i> <span data-i18n="teacher_colleagues_badge">Akademik Müəllim & Mentor Kollektivi</span>
+            </span>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-white mt-1 flex items-center gap-2.5 flex-wrap">
+              <span data-i18n="teacher_colleagues_title">Klubun Müəllim və Həmkar Heyəti</span>
+              <span id="teacherColleaguesCountBadge" class="text-xs bg-cyan-500/20 text-cyan-300 px-2.5 py-0.5 rounded-full border border-cyan-500/40 font-bold font-mono">4 Müəllim</span>
+            </h3>
+            <p class="text-xs text-slate-300 mt-0.5" data-i18n="teacher_colleagues_desc">
+              CarboxMol klubunun akademik elmi heyəti, tədqiqat sahələri, universitet mənsubiyyəti və birgə BioMeet / elmi əməkdaşlıq əlaqələri.
+            </p>
+          </div>
+
+          <!-- Search & University Filters -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+            <div class="relative min-w-[220px]">
+              <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+              <input type="text" id="teacherColleagueSearchInput" oninput="TeacherPortal.filterColleagues(this.value)" placeholder="Müəllim, universitet, ixtisas axtar..." class="bg-slate-900 border border-slate-700 text-xs rounded-xl pl-8 pr-3 py-2 text-white focus:outline-none focus:border-cyan-400 w-full" data-i18n-placeholder="teacher_colleagues_search_placeholder" />
+            </div>
+            
+            <div class="inline-flex p-1 rounded-xl bg-slate-950 border border-slate-800 shrink-0 overflow-x-auto" id="teacherColleaguesFilterGroup">
+              <button onclick="TeacherPortal.filterColleaguesByUni('all')" id="colleagueFilterBtn-all" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-cyan-300 bg-cyan-500/20 transition whitespace-nowrap">
+                Hamısı
+              </button>
+              <button onclick="TeacherPortal.filterColleaguesByUni('WCU')" id="colleagueFilterBtn-WCU" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition whitespace-nowrap">
+                WCU
+              </button>
+              <button onclick="TeacherPortal.filterColleaguesByUni('BDU')" id="colleagueFilterBtn-BDU" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition whitespace-nowrap">
+                BDU
+              </button>
+              <button onclick="TeacherPortal.filterColleaguesByUni('Digər')" id="colleagueFilterBtn-Other" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition whitespace-nowrap">
+                Digər / Beynəlxalq
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colleagues Cards Container -->
+        <div id="teacherColleaguesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Rendered dynamically by teacher.js -->
+        </div>
+      </div>
+
+      <!-- Section 4: Club Students Roster (Academic Oversight) -->
       <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-indigo-500/30 space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
           <div>

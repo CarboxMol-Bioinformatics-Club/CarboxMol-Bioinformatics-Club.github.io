@@ -1,6 +1,6 @@
 {
-  "version": "2.5.1",
-  "build": "20261107-1320",
-  "timestamp": 1793964000000,
-  "description": "CarboxMol Bioinformatika Klubu v2.5.1 — Hər iki dildə (AZ və EN) tam eyni, simmetrik və qüsursuz navbar responsivliyi: Çıxış (Logout) düyməsinin 1024px və 1280px ekranlarda qırağa çıxmasının tam aradan qaldırılması, vahid portal kapsul arxitekturası, daimi SEO və PWA sinxronizasiyası, və layihə üçün Universal AI Təlimat Nizamnaməsi (PROJECT_AI_RULES.md, AGENTS.md, .cursorrules)."
+  "version": "2.5.2",
+  "build": "20261107-1830",
+  "timestamp": 1794071400000,
+  "description": "CarboxMol Bioinformatika Klubu v2.5.2 — Müəllim & Mentor Panelində Akademik Kollektiv (Həmkar Müəllimlər Kataloqu) bölməsinin inteqrasiyası: Fidan Məhərrəmova, Sefanya Hacızadə, Süsən Həsənova və Leyla Budaqova daxil olmaqla bütün təsdiqlənmiş müəllim və mentorların interaktiv profilləri, universitet filtri (WCU, BDU, Digər/Beynəlxalq), intellektual axtarış, birbaşa BioMeet dərs dəvəti və əlaqə vasitələri, hər iki dildə (AZ / EN) tam tərcümə və sinxronizasiya."
 }
