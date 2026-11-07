@@ -1,6 +1,6 @@
 {
-  "version": "2.4.3",
-  "build": "20261107-1010",
-  "timestamp": 1793952600000,
-  "description": "CarboxMol Bioinformatika Klubu v2.4.3 — Sədr panelində 'Müəllimlər və Giriş Hesabları' (presidentTeachersAccountsTableBody) cədvəlinin dərhal təmizlənməsi: lokal brauzer yaddaşında qalmış tələbələrin (Fatimə Piriyeva, Xaqan Əliyev, Nicat Nuhov) müəllim cədvəlindən aktiv şəkildə kənarlaşdırılması, DATA_VERSION v47 məcburi miqrasiyası və yalnız 4 rəsmi akademik müəllimin (Fidan, Sefanya, Süsən, Leyla) əks etdirilməsi."
+  "version": "2.4.4",
+  "build": "20261107-1040",
+  "timestamp": 1793954400000,
+  "description": "CarboxMol Bioinformatika Klubu v2.4.4 — Klub Sədri Süleyman Hacızadənin profil kartında təhsil illərinin dəqiqləşdirilməsi: 1 saylı Bakı Tibb Kolleci (Əczaçılıq, 2017–2020) və Holberton School Azerbaijan (Foundations of Computer Science, İyun 2025 – Aprel 2026), hər iki dildə (AZ və EN) tam i18n tərcümə dəstəyi ilə."
 }
