@@ -67,6 +67,10 @@ const PresidentPortal = {
 
     if (elTotalTeachers) elTotalTeachers.innerText = Math.max(teachers.length, approvedTeachers);
     if (elPendingTeachers) elPendingTeachers.innerText = pendingTeachers;
+
+    if (window.BioMeetEngine && typeof window.BioMeetEngine.renderPortalMeetings === "function") {
+      window.BioMeetEngine.renderPortalMeetings("president");
+    }
   },
 
   currentAppFilterTab: "all",

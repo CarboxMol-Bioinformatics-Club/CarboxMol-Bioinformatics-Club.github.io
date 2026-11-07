@@ -1,6 +1,6 @@
 {
-  "version": "2.4.4",
-  "build": "20261107-1040",
-  "timestamp": 1793954400000,
-  "description": "CarboxMol Bioinformatika Klubu v2.4.4 — Klub Sədri Süleyman Hacızadənin profil kartında təhsil illərinin dəqiqləşdirilməsi: 1 saylı Bakı Tibb Kolleci (Əczaçılıq, 2017–2020) və Holberton School Azerbaijan (Foundations of Computer Science, İyun 2025 – Aprel 2026), hər iki dildə (AZ və EN) tam i18n tərcümə dəstəyi ilə."
+  "version": "2.5.0",
+  "build": "20261107-1300",
+  "timestamp": 1793962800000,
+  "description": "CarboxMol Bioinformatika Klubu v2.5.0 — BioMeet Çoxistifadəçili Video Konfrans və Canlı Mühazirə Zalı (Senior WebRTC Mesh & Jitsi Bridge): Tələbə Portalı, Müəllim/Mentor Portalı və Sədr Rəhbərlik Zalı üçün xüsusi daxili görüş yaradılması, çarpaz-portal real-vaxt canlı video/audio/ekran paylaşımı, daxili canlı söhbət (chat), reaksiyalar və tam AZ/EN ikidilli dəstək."
 }

@@ -66,6 +66,9 @@ const TeacherPortal = {
     this.renderSubmissions(this.currentFilter);
     this.renderAnnouncements();
     this.renderStudentsRoster();
+    if (window.BioMeetEngine && typeof window.BioMeetEngine.renderPortalMeetings === "function") {
+      window.BioMeetEngine.renderPortalMeetings("teacher");
+    }
   },
 
   renderHeader(teacher) {

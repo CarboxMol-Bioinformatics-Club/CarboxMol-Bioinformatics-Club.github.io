@@ -53,6 +53,9 @@ const MembersPortal = {
       this.renderMemberCustomTasks();
       this.renderMemberNotes();
       this.renderMemberDossier();
+      if (window.BioMeetEngine && typeof window.BioMeetEngine.renderPortalMeetings === "function") {
+        window.BioMeetEngine.renderPortalMeetings("member");
+      }
     }
 
     this.renderMembersDirectory();
