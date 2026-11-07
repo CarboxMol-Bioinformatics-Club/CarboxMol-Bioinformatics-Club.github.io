@@ -1033,9 +1033,18 @@ function updateAuthUI() {
   const mobilePresPortal = document.getElementById("mobilePresidentPortalBtn");
   const mobilePresLogout = document.getElementById("mobilePresidentLogoutBtn");
 
-  if (navPresLogin) navPresLogin.classList.toggle("hidden", isPres);
-  if (navPresPortal) navPresPortal.classList.toggle("hidden", !isPres);
-  if (navPresLogout) navPresLogout.classList.toggle("hidden", !isPres);
+  if (navPresLogin) {
+    navPresLogin.classList.toggle("hidden", isPres);
+    navPresLogin.style.display = isPres ? "none" : "";
+  }
+  if (navPresPortal) {
+    navPresPortal.classList.toggle("hidden", !isPres);
+    navPresPortal.style.display = isPres ? "inline-flex" : "none";
+  }
+  if (navPresLogout) {
+    navPresLogout.classList.toggle("hidden", !isPres);
+    navPresLogout.style.display = isPres ? "inline-flex" : "none";
+  }
 
   if (mobilePresLogin) mobilePresLogin.classList.toggle("hidden", isPres);
   if (mobilePresPortal) mobilePresPortal.classList.toggle("hidden", !isPres);
@@ -1049,15 +1058,22 @@ function updateAuthUI() {
   const mobileMemberLoginBtn = document.getElementById("mobileMemberLoginBtn");
   const mobileMemberBadge = document.getElementById("mobileMemberBadge");
 
-  if (navMemberLoginBtn) navMemberLoginBtn.classList.toggle("hidden", !!member);
-  if (navMemberLogoutBtn) navMemberLogoutBtn.classList.toggle("hidden", !member);
+  if (navMemberLoginBtn) {
+    navMemberLoginBtn.classList.toggle("hidden", !!member);
+    navMemberLoginBtn.style.display = member ? "none" : "";
+  }
+  if (navMemberLogoutBtn) {
+    navMemberLogoutBtn.classList.toggle("hidden", !member);
+    navMemberLogoutBtn.style.display = member ? "inline-flex" : "none";
+  }
   if (navMemberBadge) {
     navMemberBadge.classList.toggle("hidden", !member);
+    navMemberBadge.style.display = member ? "inline-flex" : "none";
     if (member) {
       if (member.photo) {
-        navMemberBadge.innerHTML = `<img src="${member.photo}" class="w-4 h-4 rounded-full object-cover inline-block mr-1 border border-teal-400/50"> @${escapeHtml(member.username || "uzv")}`;
+        navMemberBadge.innerHTML = `<img src="${member.photo}" class="w-3.5 h-3.5 rounded-full object-cover inline-block mr-1 border border-teal-400/50"> <span class="hidden xl:inline">@${escapeHtml(member.username || "uzv")}</span>`;
       } else {
-        navMemberBadge.innerHTML = `<i class="fa-solid fa-user-check mr-1 text-teal-400"></i> @${escapeHtml(member.username || "uzv")}`;
+        navMemberBadge.innerHTML = `<i class="fa-solid fa-circle-user mr-1 text-teal-400 text-[10px]"></i> <span class="hidden xl:inline">@${escapeHtml(member.username || "uzv")}</span>`;
       }
     }
   }
@@ -1082,9 +1098,18 @@ function updateAuthUI() {
   const mobileTeachPortalBtn = document.getElementById("mobileTeacherPortalBtn");
   const mobileTeachLogoutBtn = document.getElementById("mobileTeacherLogoutBtn");
 
-  if (navTeachLoginBtn) navTeachLoginBtn.classList.toggle("hidden", teacherLogged);
-  if (navTeachPortalBtn) navTeachPortalBtn.classList.toggle("hidden", !teacherLogged);
-  if (navTeachLogoutBtn) navTeachLogoutBtn.classList.toggle("hidden", !teacherLogged);
+  if (navTeachLoginBtn) {
+    navTeachLoginBtn.classList.toggle("hidden", teacherLogged);
+    navTeachLoginBtn.style.display = teacherLogged ? "none" : "";
+  }
+  if (navTeachPortalBtn) {
+    navTeachPortalBtn.classList.toggle("hidden", !teacherLogged);
+    navTeachPortalBtn.style.display = teacherLogged ? "inline-flex" : "none";
+  }
+  if (navTeachLogoutBtn) {
+    navTeachLogoutBtn.classList.toggle("hidden", !teacherLogged);
+    navTeachLogoutBtn.style.display = teacherLogged ? "inline-flex" : "none";
+  }
   if (mobileTeachLoginBtn) mobileTeachLoginBtn.classList.toggle("hidden", teacherLogged);
   if (mobileTeachPortalBtn) mobileTeachPortalBtn.classList.toggle("hidden", !teacherLogged);
   if (mobileTeachLogoutBtn) mobileTeachLogoutBtn.classList.toggle("hidden", !teacherLogged);

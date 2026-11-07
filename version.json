@@ -1,6 +1,6 @@
 {
-  "version": "2.5.0",
-  "build": "20261107-1300",
-  "timestamp": 1793962800000,
-  "description": "CarboxMol Bioinformatika Klubu v2.5.0 — BioMeet Çoxistifadəçili Video Konfrans və Canlı Mühazirə Zalı (Senior WebRTC Mesh & Jitsi Bridge): Tələbə Portalı, Müəllim/Mentor Portalı və Sədr Rəhbərlik Zalı üçün xüsusi daxili görüş yaradılması, çarpaz-portal real-vaxt canlı video/audio/ekran paylaşımı, daxili canlı söhbət (chat), reaksiyalar və tam AZ/EN ikidilli dəstək."
+  "version": "2.5.1",
+  "build": "20261107-1320",
+  "timestamp": 1793964000000,
+  "description": "CarboxMol Bioinformatika Klubu v2.5.1 — Hər iki dildə (AZ və EN) tam eyni, simmetrik və qüsursuz navbar responsivliyi: Çıxış (Logout) düyməsinin 1024px və 1280px ekranlarda qırağa çıxmasının tam aradan qaldırılması, vahid portal kapsul arxitekturası, daimi SEO və PWA sinxronizasiyası, və layihə üçün Universal AI Təlimat Nizamnaməsi (PROJECT_AI_RULES.md, AGENTS.md, .cursorrules)."
 }

@@ -1,0 +1,8 @@
+# CarboxMol Bioinformatics Club - Cursor AI Rules
+# Reference: PROJECT_AI_RULES.md
+
+- Strictly maintain 100% responsiveness across all viewports (320px to 4K+) with zero horizontal overflow.
+- Ensure strict bilingual parity between Azerbaijani (AZ) and English (EN) via js/i18n.js. Switching language must NEVER break navbar or button geometry.
+- Keep SEO, canonical links, OpenGraph, and Schema.org JSON-LD synchronized via js/seo-responsive-engine.js.
+- Ensure the Exit/Logout button and Portal Capsule in the header never spill outside the viewport on any screen width (especially 1280px MacBook Air).
+- Always sync changes between CarboxMol-Bioinformatics-Club.github.io and CarboxMol-Bioinformatics-Club.
