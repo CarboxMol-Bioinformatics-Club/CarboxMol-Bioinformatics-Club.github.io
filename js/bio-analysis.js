@@ -221,14 +221,14 @@
     {
       id: "ann_recruitment_2026",
       category: "recruitment",
-      badge_az: "🔥 Aktiv Seçim • İdarə Heyəti",
-      badge_en: "🔥 Active Hiring • Executive Board",
-      title_az: "CarboxMol İdarə Heyətinə 2 Koordinator Seçimi (1 Sədr + 2 Koordinator Modeli)",
-      title_en: "CarboxMol Executive Board: 2 Coordinators Recruitment (1 President + 2 Coordinators)",
+      badge_az: "İdarə Heyəti Seçimi",
+      badge_en: "Executive Board Call",
+      title_az: "CarboxMol Komandasına 2 Tələbə Koordinator Dəvət Edirik",
+      title_en: "Welcoming 2 Student Coordinators to the CarboxMol Executive Team",
       date: "2026-11-09",
       image: "assets/images/announcements/coordinator-recruitment.png",
-      content_az: "Azərbaycanın ilk ixtisaslaşmış Hesablama Struktur Biologiyası və Bioinformatika Tələbə Klubu ölkə miqyasında inkişaf məqsədilə 2 tələbə koordinator (1. Elm və Tədris, 2. Təşkilat, PR və Media) axtarır. Beynəlxalq alimlərlə əməkdaşlıq, real bio-layihələrdə liderlik və akademik inkişaf imkanları.",
-      content_en: "Azerbaijan's premier Computational Structural Biology & Bioinformatics Student Club is recruiting 2 student coordinators (1. Science & Academic Curriculum, 2. Operations, PR & Visual Media). Global research networking, hands-on project leadership, and career growth opportunities."
+      content_az: "CarboxMol Bioinformatika Klubu elmi seminarlarımızı, praktiki layihələrimizi və tələbə icmamızı birgə idarə edəcəyimiz 2 fəal tələbə koordinator axtarır (Elm & Tədris və Təşkilat & Media). Beynəlxalq alimlərlə əlaqə və real layihələrdə rəhbərlik təcrübəsi.",
+      content_en: "CarboxMol Bioinformatics Club is inviting 2 driven student coordinators to co-lead our academic seminars, research projects, and student community (Science & Academic and Operations & Media). Direct research networking and hands-on leadership experience."
     },
     {
       id: "ann_01",
