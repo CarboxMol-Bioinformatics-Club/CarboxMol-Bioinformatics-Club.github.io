@@ -1739,6 +1739,11 @@ function navigateTo(sectionId) {
       description: "Prof. Qərib Mürşüdov (Cambridge MRC LMB) və beynəlxalq alimlərin iştirakı ilə elmi seminarlar, laboratoriya vorkşopları və tələbə hakatonları.",
       canonical: "https://carboxmol-bioinformatics-club.github.io/events/"
     },
+    announcements: {
+      title: "Rəsmi Elanlar, Vakansiyalar və Xəbərlər | CarboxMol Bioinformatika Klubu",
+      description: "CarboxMol Bioinformatika Klubu rəsmi elanları: İdarə Heyətinə 2 Koordinator seçimi, beynəlxalq elmi seminarlar, laboratoriya xəbərləri və hakaton anonsları.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/announcements/"
+    },
     collaborators: {
       title: "Beynəlxalq Alimlər və Tərəfdaş Təşkilatlar | CarboxMol Bioinformatika Klubu",
       description: "Cambridge Universiteti MRC LMB, Oxford Universiteti, AR ETN Molekulyar Biologiya İnstitutu və Qərbi Kaspi Universiteti alimləri ilə beynəlxalq elmi əlaqələr.",

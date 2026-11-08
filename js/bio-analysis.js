@@ -215,34 +215,54 @@
   }
 
   // CampusClubs-inspired Announcement and Event RSVP State
+  var currentAnnFilter = 'all';
+
   var INITIAL_ANNOUNCEMENTS = [
     {
+      id: "ann_recruitment_2026",
+      category: "recruitment",
+      badge_az: "🔥 Aktiv Seçim • İdarə Heyəti",
+      badge_en: "🔥 Active Hiring • Executive Board",
+      title_az: "CarboxMol İdarə Heyətinə 2 Koordinator Seçimi (1 Sədr + 2 Koordinator Modeli)",
+      title_en: "CarboxMol Executive Board: 2 Coordinators Recruitment (1 President + 2 Coordinators)",
+      date: "2026-11-09",
+      image: "assets/images/announcements/coordinator-recruitment.png",
+      content_az: "Azərbaycanın ilk ixtisaslaşmış Hesablama Struktur Biologiyası və Bioinformatika Tələbə Klubu ölkə miqyasında inkişaf məqsədilə 2 tələbə koordinator (1. Elm və Tədris, 2. Təşkilat, PR və Media) axtarır. Rəsmi sertifikat, tövsiyə məktubu və beynəlxalq alimlərlə birbaşa əməkdaşlıq imkanı.",
+      content_en: "Azerbaijan's premier Computational Structural Biology & Bioinformatics Student Club is recruiting 2 student coordinators (1. Science & Academic Curriculum, 2. Operations, PR & Visual Media). Official certificate, recommendation letter, and direct mentorship from leading researchers."
+    },
+    {
       id: "ann_01",
+      category: "academic",
       badge_az: "Elmi Seminar",
       badge_en: "Academic Seminar",
       title_az: "Oxford & IMB Tədqiqat Perspektivləri: Hesablama Biologiyası və Genomika",
       title_en: "Oxford & IMB Research Perspectives: Computational Biology & Genomics",
       date: "2026-11-15",
+      image: "",
       content_az: "Oxford Universiteti və Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutu (IMB) tədqiqatçısı Gülnar Abdullayeva ilə bioinformatika və xərçəng genomikası üzrə xüsusi onlayn elmi seminar.",
       content_en: "Special academic seminar on bioinformatics and cancer genomics with Gülnar Abdullayeva (Oxford University & Institute of Molecular Biology)."
     },
     {
       id: "ann_02",
+      category: "tools",
       badge_az: "Yeni Alət",
       badge_en: "New Pipeline Tool",
       title_az: "OpenKBC Dağınıq Skleroz Z-Balı Analiz Mühərriki İnteqrasiya Olundu",
       title_en: "OpenKBC Multiple Sclerosis Z-Score Engine Integrated",
       date: "2026-11-06",
+      image: "",
       content_az: "Junhee Yoon tərəfindən hazırlanmış çoxpilləli Snakemake və Z-balı aktivasiya alqoritmi klub platformamızda tələbələrin sərəncamına verildi.",
       content_en: "Multi-omics Snakemake workflow and Z-score activation engine by Junhee Yoon has been integrated into our club web platform."
     },
     {
       id: "ann_03",
+      category: "academic",
       badge_az: "Respublika Müsabiqəsi",
       badge_en: "National Contest",
       title_az: "2026 Bioinformatika və Struktur Biologiyası Tələbə Hakatonu",
       title_en: "2026 Bioinformatics & Structural Biology Student Hackathon",
       date: "2026-12-01",
+      image: "",
       content_az: "Qərbi Kaspi Universiteti Bioinformatika Klubu komandalarının beynəlxalq və respublika səviyyəli hakatonlara hazırlığı üzrə qeydiyyat davam edir.",
       content_en: "Registration is open for WCU Bioinformatics Club teams preparing for national and international computational biology hackathons."
     }
@@ -263,29 +283,125 @@
     modal.classList.remove('flex');
   }
 
-  function renderAnnouncementsList() {
-    var container = document.getElementById('announcementsListContainer');
-    if (!container) return;
-    var lang = (window.CarboxMolI18n && window.CarboxMolI18n.getLanguage()) || 'az';
-
-    var html = '';
-    INITIAL_ANNOUNCEMENTS.forEach(function (ann) {
-      var badge = lang === 'en' ? ann.badge_en : ann.badge_az;
-      var title = lang === 'en' ? ann.title_en : ann.title_az;
-      var content = lang === 'en' ? ann.content_en : ann.content_az;
-
-      html += '<div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-2 hover:border-teal-500/50 transition">';
-      html += '  <div class="flex items-center justify-between gap-2">';
-      html += '    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/40">' + badge + '</span>';
-      html += '    <span class="text-[11px] font-mono text-slate-400">' + ann.date + '</span>';
-      html += '  </div>';
-      html += '  <h4 class="text-sm font-bold text-white">' + title + '</h4>';
-      html += '  <p class="text-xs text-slate-300 leading-relaxed">' + content + '</p>';
-      html += '</div>';
+  function filterAnnouncements(category) {
+    currentAnnFilter = category || 'all';
+    
+    // Update button visual styles
+    var filterBtns = ['all', 'recruitment', 'academic', 'tools'];
+    filterBtns.forEach(function (key) {
+      var btn = document.getElementById('annFilter-' + key);
+      if (btn) {
+        if (key === currentAnnFilter) {
+          btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold text-teal-300 bg-teal-500/20 transition whitespace-nowrap";
+        } else {
+          btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition whitespace-nowrap";
+        }
+      }
     });
 
-    container.innerHTML = html;
+    // Toggle visibility of featured card
+    var featured = document.querySelector('.announcement-item.featured-announcement');
+    if (featured) {
+      if (currentAnnFilter === 'all' || currentAnnFilter === 'recruitment') {
+        featured.classList.remove('hidden');
+      } else {
+        featured.classList.add('hidden');
+      }
+    }
+
+    renderAnnouncementsList();
   }
+  window.filterAnnouncements = filterAnnouncements;
+
+  function renderAnnouncementsList() {
+    var lang = (window.CarboxMolI18n && window.CarboxMolI18n.getLanguage()) || 'az';
+
+    // 1. Modal Container List
+    var modalContainer = document.getElementById('announcementsListContainer');
+    if (modalContainer) {
+      var modalHtml = '';
+      INITIAL_ANNOUNCEMENTS.forEach(function (ann) {
+        var badge = lang === 'en' ? ann.badge_en : ann.badge_az;
+        var title = lang === 'en' ? ann.title_en : ann.title_az;
+        var content = lang === 'en' ? ann.content_en : ann.content_az;
+
+        modalHtml += '<div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-2 hover:border-teal-500/50 transition">';
+        modalHtml += '  <div class="flex items-center justify-between gap-2">';
+        modalHtml += '    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/40">' + badge + '</span>';
+        modalHtml += '    <span class="text-[11px] font-mono text-slate-400">' + ann.date + '</span>';
+        modalHtml += '  </div>';
+        modalHtml += '  <h4 class="text-sm font-bold text-white">' + title + '</h4>';
+        modalHtml += '  <p class="text-xs text-slate-300 leading-relaxed">' + content + '</p>';
+        modalHtml += '</div>';
+      });
+      modalContainer.innerHTML = modalHtml;
+    }
+
+    // 2. Full-page Announcements Grid (#announcementsPageGrid)
+    var pageGrid = document.getElementById('announcementsPageGrid');
+    if (pageGrid) {
+      var filteredList = INITIAL_ANNOUNCEMENTS.filter(function (ann) {
+        if (currentAnnFilter === 'all') return true;
+        return ann.category === currentAnnFilter;
+      });
+
+      if (filteredList.length === 0) {
+        pageGrid.innerHTML = '<div class="col-span-full py-10 text-center text-slate-400 bg-slate-900/50 rounded-2xl border border-slate-800">' +
+          '<i class="fa-solid fa-bullhorn text-2xl text-slate-600 mb-2 block"></i>' +
+          '<p class="text-xs font-semibold">' + (lang === 'en' ? 'No announcements found in this category.' : 'Bu kateqoriyada elan tapılmadı.') + '</p>' +
+          '</div>';
+        return;
+      }
+
+      var gridHtml = '';
+      filteredList.forEach(function (ann) {
+        var badge = lang === 'en' ? ann.badge_en : ann.badge_az;
+        var title = lang === 'en' ? ann.title_en : ann.title_az;
+        var content = lang === 'en' ? ann.content_en : ann.content_az;
+
+        gridHtml += '<div class="glass-panel p-5 rounded-2xl border border-slate-800 bg-slate-900/80 hover:border-teal-500/50 transition flex flex-col justify-between space-y-4 shadow-lg group">';
+        gridHtml += '  <div class="space-y-3">';
+        
+        if (ann.image) {
+          gridHtml += '    <div class="relative overflow-hidden rounded-xl border border-slate-800 aspect-video bg-slate-950">';
+          gridHtml += '      <img src="' + ann.image + '" alt="' + title + '" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />';
+          gridHtml += '    </div>';
+        }
+
+        gridHtml += '    <div class="flex items-center justify-between gap-2">';
+        gridHtml += '      <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30">' + badge + '</span>';
+        gridHtml += '      <span class="text-[11px] font-mono text-slate-400">' + ann.date + '</span>';
+        gridHtml += '    </div>';
+        gridHtml += '    <h4 class="text-sm sm:text-base font-extrabold text-white group-hover:text-teal-300 transition leading-snug">' + title + '</h4>';
+        gridHtml += '    <p class="text-xs text-slate-300 leading-relaxed line-clamp-3">' + content + '</p>';
+        gridHtml += '  </div>';
+
+        gridHtml += '  <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2 text-xs">';
+        if (ann.category === 'recruitment') {
+          gridHtml += '    <button onclick="navigateTo(\'register\')" class="px-3.5 py-1.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition">';
+          gridHtml += '      <i class="fa-solid fa-paper-plane text-xs"></i> <span>' + (lang === 'en' ? 'Apply Now' : 'Müraciət Et') + '</span>';
+          gridHtml += '    </button>';
+        } else if (ann.category === 'tools') {
+          gridHtml += '    <button onclick="navigateTo(\'biotools\')" class="px-3.5 py-1.5 rounded-xl bg-cyan-950 hover:bg-cyan-900 text-cyan-300 border border-cyan-700/60 font-bold text-xs flex items-center gap-1.5 transition">';
+          gridHtml += '      <i class="fa-solid fa-flask-vial text-xs"></i> <span>' + (lang === 'en' ? 'Try Bio-Tool' : 'Bio-Alətə Keç') + '</span>';
+          gridHtml += '    </button>';
+        } else {
+          gridHtml += '    <button onclick="navigateTo(\'events\')" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs flex items-center gap-1.5 transition">';
+          gridHtml += '      <i class="fa-solid fa-calendar-check text-xs text-teal-400"></i> <span>' + (lang === 'en' ? 'View Event' : 'Tədbirə Bax') + '</span>';
+          gridHtml += '    </button>';
+        }
+        gridHtml += '    <span class="text-[11px] font-mono text-slate-500">#' + ann.id + '</span>';
+        gridHtml += '  </div>';
+        gridHtml += '</div>';
+      });
+
+      pageGrid.innerHTML = gridHtml;
+    }
+  }
+
+  window.addEventListener('carboxmol:languageChanged', function () {
+    renderAnnouncementsList();
+  });
 
   // Event RSVP functionality inspired by CampusClubs
   function toggleRsvp(eventId) {
@@ -334,6 +450,8 @@
     if (document.getElementById('analysisChartContainer')) {
       updateAnalysis();
     }
+
+    renderAnnouncementsList();
   });
 
   // Export functions
