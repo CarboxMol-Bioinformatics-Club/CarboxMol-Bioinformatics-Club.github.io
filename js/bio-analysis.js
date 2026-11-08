@@ -379,7 +379,7 @@
         gridHtml += '  <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2 text-xs">';
         if (ann.category === 'recruitment') {
           gridHtml += '    <button onclick="navigateTo(\'register\')" class="px-3.5 py-1.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition">';
-          gridHtml += '      <i class="fa-solid fa-paper-plane text-xs"></i> <span>' + (lang === 'en' ? 'Apply Now' : 'Müraciət Et') + '</span>';
+          gridHtml += '      <i class="fa-solid fa-user-plus text-xs"></i> <span>' + (lang === 'en' ? 'Join the Club' : 'Kluba Üzv Ol') + '</span>';
           gridHtml += '    </button>';
         } else if (ann.category === 'tools') {
           gridHtml += '    <button onclick="navigateTo(\'biotools\')" class="px-3.5 py-1.5 rounded-xl bg-cyan-950 hover:bg-cyan-900 text-cyan-300 border border-cyan-700/60 font-bold text-xs flex items-center gap-1.5 transition">';
