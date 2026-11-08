@@ -42,6 +42,7 @@ const PRECACHE_ASSETS = [
   './apple-touch-icon.png',
   './assets/images/president.jpg',
   './assets/images/announcements/coordinator-recruitment.png',
+  './assets/images/announcements/coordinator-recruitment-linkedin.png',
   './assets/images/events/garib_murshudov_seminar_group.jpg',
   './assets/images/events/garib_murshudov_seminar_president.jpg',
   './assets/images/events/garib_murshudov_seminar_member1.jpg',
