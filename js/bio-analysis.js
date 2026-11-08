@@ -227,8 +227,8 @@
       title_en: "CarboxMol Executive Board: 2 Coordinators Recruitment (1 President + 2 Coordinators)",
       date: "2026-11-09",
       image: "assets/images/announcements/coordinator-recruitment.png",
-      content_az: "Azərbaycanın ilk ixtisaslaşmış Hesablama Struktur Biologiyası və Bioinformatika Tələbə Klubu ölkə miqyasında inkişaf məqsədilə 2 tələbə koordinator (1. Elm və Tədris, 2. Təşkilat, PR və Media) axtarır. Rəsmi sertifikat, tövsiyə məktubu və beynəlxalq alimlərlə birbaşa əməkdaşlıq imkanı.",
-      content_en: "Azerbaijan's premier Computational Structural Biology & Bioinformatics Student Club is recruiting 2 student coordinators (1. Science & Academic Curriculum, 2. Operations, PR & Visual Media). Official certificate, recommendation letter, and direct mentorship from leading researchers."
+      content_az: "Azərbaycanın ilk ixtisaslaşmış Hesablama Struktur Biologiyası və Bioinformatika Tələbə Klubu ölkə miqyasında inkişaf məqsədilə 2 tələbə koordinator (1. Elm və Tədris, 2. Təşkilat, PR və Media) axtarır. Beynəlxalq alimlərlə əməkdaşlıq, real bio-layihələrdə liderlik və akademik inkişaf imkanları.",
+      content_en: "Azerbaijan's premier Computational Structural Biology & Bioinformatics Student Club is recruiting 2 student coordinators (1. Science & Academic Curriculum, 2. Operations, PR & Visual Media). Global research networking, hands-on project leadership, and career growth opportunities."
     },
     {
       id: "ann_01",
