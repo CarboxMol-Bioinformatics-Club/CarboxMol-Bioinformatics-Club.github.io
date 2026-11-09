@@ -237,7 +237,9 @@
       badge_en: "Academic Seminar",
       title_az: "Oxford & IMB Tədqiqat Perspektivləri: Hesablama Biologiyası və Genomika",
       title_en: "Oxford & IMB Research Perspectives: Computational Biology & Genomics",
-      date: "2026-11-15",
+      date: "Tezliklə",
+      date_az: "Tezliklə",
+      date_en: "Coming Soon",
       image: "",
       content_az: "Oxford Universiteti və Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutu (IMB) tədqiqatçısı Gülnar Abdullayeva ilə bioinformatika və xərçəng genomikası üzrə xüsusi onlayn elmi seminar.",
       content_en: "Special academic seminar on bioinformatics and cancer genomics with Gülnar Abdullayeva (Oxford University & Institute of Molecular Biology)."
@@ -324,11 +326,12 @@
         var badge = lang === 'en' ? ann.badge_en : ann.badge_az;
         var title = lang === 'en' ? ann.title_en : ann.title_az;
         var content = lang === 'en' ? ann.content_en : ann.content_az;
+        var dateDisplay = (lang === 'en' && ann.date_en) ? ann.date_en : (ann.date_az || ann.date);
 
         modalHtml += '<div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-2 hover:border-teal-500/50 transition">';
         modalHtml += '  <div class="flex items-center justify-between gap-2">';
         modalHtml += '    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/40">' + badge + '</span>';
-        modalHtml += '    <span class="text-[11px] font-mono text-slate-400">' + ann.date + '</span>';
+        modalHtml += '    <span class="text-[11px] font-mono ' + (dateDisplay === 'Tezliklə' || dateDisplay === 'Coming Soon' ? 'text-teal-400 font-bold' : 'text-slate-400') + '">' + dateDisplay + '</span>';
         modalHtml += '  </div>';
         modalHtml += '  <h4 class="text-sm font-bold text-white">' + title + '</h4>';
         modalHtml += '  <p class="text-xs text-slate-300 leading-relaxed">' + content + '</p>';
@@ -358,6 +361,7 @@
         var badge = lang === 'en' ? ann.badge_en : ann.badge_az;
         var title = lang === 'en' ? ann.title_en : ann.title_az;
         var content = lang === 'en' ? ann.content_en : ann.content_az;
+        var dateDisplay = (lang === 'en' && ann.date_en) ? ann.date_en : (ann.date_az || ann.date);
 
         gridHtml += '<div class="glass-panel p-5 rounded-2xl border border-slate-800 bg-slate-900/80 hover:border-teal-500/50 transition flex flex-col justify-between space-y-4 shadow-lg group">';
         gridHtml += '  <div class="space-y-3">';
@@ -370,7 +374,7 @@
 
         gridHtml += '    <div class="flex items-center justify-between gap-2">';
         gridHtml += '      <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30">' + badge + '</span>';
-        gridHtml += '      <span class="text-[11px] font-mono text-slate-400">' + ann.date + '</span>';
+        gridHtml += '      <span class="text-[11px] font-mono ' + (dateDisplay === 'Tezliklə' || dateDisplay === 'Coming Soon' ? 'text-teal-400 font-bold' : 'text-slate-400') + '">' + dateDisplay + '</span>';
         gridHtml += '    </div>';
         gridHtml += '    <h4 class="text-sm sm:text-base font-extrabold text-white group-hover:text-teal-300 transition leading-snug">' + title + '</h4>';
         gridHtml += '    <p class="text-xs text-slate-300 leading-relaxed line-clamp-3">' + content + '</p>';
