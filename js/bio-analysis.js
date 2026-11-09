@@ -231,6 +231,20 @@
       content_en: "CarboxMol Bioinformatics Club is inviting 2 driven student coordinators to co-lead our academic seminars, research projects, and student community (Science & Academic and Operations & Media). Direct research networking and hands-on leadership experience."
     },
     {
+      id: "ann_virtuallab_2026",
+      category: "tools",
+      badge_az: "Virtual Laboratoriya",
+      badge_en: "VirtualLab Suite",
+      title_az: "CarboxMol VirtualLab: 3D Hesablamalı Struktur Biologiyası Laboratoriyası",
+      title_en: "CarboxMol VirtualLab: Interactive 3D Computational Biology Suite",
+      date: "Aktiv",
+      date_az: "Aktiv",
+      date_en: "Live",
+      image: "assets/images/announcements/carboxmol-virtuallab.png",
+      content_az: "3D zülal-liqand qarşılıqlı təsirləri, molekulyar dokinq (AutoDock Vina), AlphaFold struktur validasiyası və çoxpilləli omics boru kəmərləri birbaşa brauzerdə tədqiqatçı və tələbələrin istifadəsinə verildi.",
+      content_en: "Interactive 3D molecular simulation, protein-ligand docking (AutoDock Vina), AlphaFold structure validation, and multi-omics pipelines are now live directly in your browser."
+    },
+    {
       id: "ann_01",
       category: "academic",
       badge_az: "Elmi Seminar",
