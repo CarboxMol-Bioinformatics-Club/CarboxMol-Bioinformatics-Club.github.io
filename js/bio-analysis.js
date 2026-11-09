@@ -231,18 +231,18 @@
       content_en: "CarboxMol Bioinformatics Club is inviting 2 driven student coordinators to co-lead our academic seminars, research projects, and student community (Science & Academic and Operations & Media). Direct research networking and hands-on leadership experience."
     },
     {
-      id: "ann_virtuallab_2026",
-      category: "tools",
-      badge_az: "Virtual Laboratoriya",
-      badge_en: "VirtualLab Suite",
-      title_az: "CarboxMol VirtualLab: 3D Hesablamalı Struktur Biologiyası Laboratoriyası",
-      title_en: "CarboxMol VirtualLab: Interactive 3D Computational Biology Suite",
-      date: "Aktiv",
-      date_az: "Aktiv",
-      date_en: "Live",
-      image: "assets/images/announcements/carboxmol-virtuallab.png",
-      content_az: "3D zülal-liqand qarşılıqlı təsirləri, molekulyar dokinq (AutoDock Vina), AlphaFold struktur validasiyası və çoxpilləli omics boru kəmərləri birbaşa brauzerdə tədqiqatçı və tələbələrin istifadəsinə verildi.",
-      content_en: "Interactive 3D molecular simulation, protein-ligand docking (AutoDock Vina), AlphaFold structure validation, and multi-omics pipelines are now live directly in your browser."
+      id: "ann_virtulab_collab",
+      category: "recruitment",
+      badge_az: "Kollaborasiya & Əməkdaşlıq",
+      badge_en: "Call for Collaborators",
+      title_az: "CarboxMol VirtuLab: 3D Virtual Laboratoriya Layihəsi Üzrə Əməkdaşlıq və Kollaborator Seçimi",
+      title_en: "CarboxMol VirtuLab: Call for Collaborators & Scientific Partnerships",
+      date: "Müraciət Açıqdır",
+      date_az: "Müraciət Açıqdır",
+      date_en: "Open Call",
+      image: "assets/images/announcements/carboxmol-virtulab-collab.jpg",
+      content_az: "Qərbi Kaspi Universiteti Təbiət Elmləri Kafedrasının dəstəyi ilə hazırlanan «CarboxMol VirtuLab» interaktiv 3D biotibbi təhsil platformasını genişləndirmək məqsədilə 3D WebGL mühəndisləri, həkimlər, anatomlar və biokimyaçılarla kollaborasiya (əməkdaşlıq) elan edirik.",
+      content_en: "Western Caspian University Department of Natural Sciences is calling for collaborators to expand CarboxMol VirtuLab. We invite 3D WebGL engineers, medical doctors, anatomists, and biochemists to collaborate on our interactive 3D virtual laboratory."
     },
     {
       id: "ann_01",
@@ -399,7 +399,11 @@
         gridHtml += '  </div>';
 
         gridHtml += '  <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2 text-xs">';
-        if (ann.category === 'recruitment') {
+        if (ann.id === 'ann_virtulab_collab') {
+          gridHtml += '    <a href="https://carboxmol-virtulab.github.io/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition shadow-sm">';
+          gridHtml += '      <i class="fa-solid fa-up-right-from-square text-xs"></i> <span>' + (lang === 'en' ? 'Explore VirtuLab' : 'VirtuLab Portalı') + '</span>';
+          gridHtml += '    </a>';
+        } else if (ann.category === 'recruitment') {
           gridHtml += '    <button onclick="navigateTo(\'register\')" class="px-3.5 py-1.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition">';
           gridHtml += '      <i class="fa-solid fa-user-plus text-xs"></i> <span>' + (lang === 'en' ? 'Join the Club' : 'Kluba Üzv Ol') + '</span>';
           gridHtml += '    </button>';
