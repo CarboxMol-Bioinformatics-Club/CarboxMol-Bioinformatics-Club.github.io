@@ -237,9 +237,9 @@
       badge_en: "Call for Collaborators",
       title_az: "CarboxMol VirtuLab: 3D Virtual Laboratoriya Layihəsi Üzrə Əməkdaşlıq və Kollaborator Seçimi",
       title_en: "CarboxMol VirtuLab: Call for Collaborators & Scientific Partnerships",
-      date: "Müraciət Açıqdır",
-      date_az: "Müraciət Açıqdır",
-      date_en: "Open Call",
+      date: "2026-11-09",
+      date_az: "2026-11-09",
+      date_en: "2026-11-09",
       image: "assets/images/announcements/carboxmol-virtulab-collab.jpg",
       content_az: "Qərbi Kaspi Universiteti Təbiət Elmləri Kafedrasının dəstəyi ilə hazırlanan «CarboxMol VirtuLab» interaktiv 3D biotibbi təhsil platformasını genişləndirmək məqsədilə 3D WebGL mühəndisləri, həkimlər, anatomlar və biokimyaçılarla kollaborasiya (əməkdaşlıq) elan edirik.",
       content_en: "Western Caspian University Department of Natural Sciences is calling for collaborators to expand CarboxMol VirtuLab. We invite 3D WebGL engineers, medical doctors, anatomists, and biochemists to collaborate on our interactive 3D virtual laboratory."
