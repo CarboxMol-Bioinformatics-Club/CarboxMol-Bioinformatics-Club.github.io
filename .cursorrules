@@ -6,3 +6,4 @@
 - Keep SEO, canonical links, OpenGraph, and Schema.org JSON-LD synchronized via js/seo-responsive-engine.js.
 - Ensure the Exit/Logout button and Portal Capsule in the header never spill outside the viewport on any screen width (especially 1280px MacBook Air).
 - Always sync changes between CarboxMol-Bioinformatics-Club.github.io and CarboxMol-Bioinformatics-Club.
+- STRICT BAN ON FABRICATING DATES: Never invent dates/days for announcements or events. Always ask the user first for exact details. If unconfirmed, strictly use "Tezliklə" (AZ) / "Coming Soon" (EN).

@@ -265,10 +265,12 @@
       badge_en: "New Pipeline Tool",
       title_az: "OpenKBC Dağınıq Skleroz Z-Balı Analiz Mühərriki İnteqrasiya Olundu",
       title_en: "OpenKBC Multiple Sclerosis Z-Score Engine Integrated",
-      date: "2026-11-06",
+      date: "Tezliklə",
+      date_az: "Tezliklə",
+      date_en: "Coming Soon",
       image: "",
-      content_az: "Junhee Yoon tərəfindən hazırlanmış çoxpilləli Snakemake və Z-balı aktivasiya alqoritmi klub platformamızda tələbələrin sərəncamına verildi.",
-      content_en: "Multi-omics Snakemake workflow and Z-score activation engine by Junhee Yoon has been integrated into our club web platform."
+      content_az: "Junhee Yoon tərəfindən hazırlanmış çoxpilləli Snakemake və Z-balı aktivasiya alqoritmi klub platformamızda tələbələrin sərəncamına verildi. Bu layihə üzrə ətraflı məlumat, təlim dərsi və elmi seminar tezliklə təşkil olunacaq.",
+      content_en: "Multi-omics Snakemake workflow and Z-score activation engine by Junhee Yoon has been integrated into our club web platform. Detailed project documentation, workshop lecture, and academic seminar will be hosted soon."
     },
     {
       id: "ann_03",
@@ -277,7 +279,9 @@
       badge_en: "National Contest",
       title_az: "2026 Bioinformatika və Struktur Biologiyası Tələbə Hakatonu",
       title_en: "2026 Bioinformatics & Structural Biology Student Hackathon",
-      date: "2026-12-01",
+      date: "Tezliklə",
+      date_az: "Tezliklə",
+      date_en: "Coming Soon",
       image: "",
       content_az: "Qərbi Kaspi Universiteti Bioinformatika Klubu komandalarının beynəlxalq və respublika səviyyəli hakatonlara hazırlığı üzrə qeydiyyat davam edir.",
       content_en: "Registration is open for WCU Bioinformatics Club teams preparing for national and international computational biology hackathons."

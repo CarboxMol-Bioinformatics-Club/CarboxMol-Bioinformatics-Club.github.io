@@ -17,3 +17,8 @@ Before proposing or making any code changes, read `PROJECT_AI_RULES.md` and comp
 
 4. **Repository Parity:**
    - Always replicate committed changes to the mirror repository `/Users/macbookairm2/Documents/GitHub/CarboxMol-Bioinformatics-Club` and push to both `main` and `master`.
+
+5. **CRITICAL: Strict Ban on Fabricating Dates/Days in Announcements & Events:**
+   - **NEVER** invent, guess, or generate fake dates, days, or schedules for any announcement, event, seminar, workshop, or project.
+   - When preparing or adding any announcement or event, the AI **MUST ALWAYS** ask the user first for the exact date and details.
+   - If a specific date has not been explicitly provided and confirmed by the user, the AI must strictly default the date to `"Tezliklə"` (AZ) / `"Coming Soon"` (EN).

@@ -70,3 +70,18 @@
 
 3. **Multi-Repo Synchronization:**
    - All modifications to `CarboxMol-Bioinformatics-Club.github.io` must be mirrored identically to the sister repo `CarboxMol-Bioinformatics-Club` and pushed to both `main` and `master` branches.
+
+---
+
+## 5. Mandatory Policy: Strict Ban on Fabricating Dates, Days & Schedules in Announcements
+
+1. **Zero Tolerance for Hallucinated or Self-Invented Dates:**
+   - No AI (Antigravity, Claude, ChatGPT, Cursor, Copilot, etc.) is permitted to invent, guess, fabricate, or assume calendar dates (e.g. `2026-11-06`, `2026-12-01`), weekdays, or times for any club announcements, seminars, lectures, workshops, tools, or hackathons.
+2. **Mandatory User Inquiry Protocol:**
+   - When preparing or adding any announcement or event, the AI **MUST ALWAYS ask the user first** to provide or confirm every detail (exact date, speaker, title, time, and venue).
+3. **Default to "Tezliklə" / "Coming Soon":**
+   - If the user has not explicitly provided and confirmed a date, the date field must strictly be set to:
+     - `date: "Tezliklə"`
+     - `date_az: "Tezliklə"`
+     - `date_en: "Coming Soon"`
+   - Never insert a placeholder ISO calendar date that was not authorized by the user.
