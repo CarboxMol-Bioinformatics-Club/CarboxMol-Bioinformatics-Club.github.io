@@ -194,6 +194,94 @@ function closeMemberLoginModal() {
 }
 window.closeMemberLoginModal = closeMemberLoginModal;
 
+// Canlı Bulud Şini (ntfy.sh) vasitəsilə təsdiqlənmiş üzvləri və müraciət qərarlarını dərhal sinxronlaşdır
+async function syncCloudApprovals(targetUser) {
+  if (typeof fetch !== "function" || (typeof navigator !== "undefined" && !navigator.onLine)) return false;
+  try {
+    const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+    const timeoutId = controller ? setTimeout(() => controller.abort(), 2500) : null;
+    const fetchOpts = controller ? { signal: controller.signal } : {};
+    const res = await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/json?poll=1", fetchOpts);
+    if (timeoutId) clearTimeout(timeoutId);
+    if (!res.ok) return false;
+    const text = await res.text();
+    const lines = text.trim().split("\n").filter(Boolean);
+    const data = getClubData();
+    data.members = data.members || [];
+    data.applications = data.applications || [];
+    let updated = false;
+
+    for (const line of lines) {
+      try {
+        const item = JSON.parse(line);
+        let msg = item.message;
+        if (typeof msg === "string" && msg.trim().startsWith("{")) {
+          try { msg = JSON.parse(msg); } catch (e) {}
+        }
+        if (!msg || typeof msg !== "object") continue;
+
+        if (msg.action === "UPDATE_STATUS" && msg.appId && msg.status) {
+          const incomingApp = msg.application;
+          const incomingMem = msg.member;
+
+          let targetApp = data.applications.find(a => 
+            a.id === msg.appId || 
+            (incomingApp && a.username && incomingApp.username && a.username.toLowerCase() === incomingApp.username.toLowerCase()) ||
+            (incomingApp && a.email && incomingApp.email && a.email.toLowerCase() === incomingApp.email.toLowerCase())
+          );
+
+          if (targetApp) {
+            if (targetApp.status !== msg.status) {
+              targetApp.status = msg.status;
+              if (incomingApp && incomingApp.approvedAt) targetApp.approvedAt = incomingApp.approvedAt;
+              if (incomingApp && incomingApp.approvedBy) targetApp.approvedBy = incomingApp.approvedBy;
+              updated = true;
+            }
+          } else if (incomingApp && incomingApp.username) {
+            data.applications.unshift(incomingApp);
+            updated = true;
+          }
+
+          let targetMem = data.members.find(m => 
+            m.id === msg.appId || 
+            (targetApp && m.username && targetApp.username && m.username.toLowerCase() === targetApp.username.toLowerCase()) ||
+            (incomingMem && m.username && incomingMem.username && m.username.toLowerCase() === incomingMem.username.toLowerCase()) ||
+            (incomingMem && m.email && incomingMem.email && m.email.toLowerCase() === incomingMem.email.toLowerCase())
+          );
+
+          if (targetMem) {
+            const newMemStatus = (msg.status === "Təsdiqləndi") ? "Aktiv" : msg.status;
+            if (targetMem.status !== newMemStatus) {
+              targetMem.status = newMemStatus;
+              updated = true;
+            }
+          } else if (incomingMem && incomingMem.username) {
+            data.members.unshift(incomingMem);
+            updated = true;
+          }
+        } else if (msg.action === "REGISTER_STUDENT" && msg.application) {
+          const app = msg.application;
+          const exists = data.applications.some(a => a.id === app.id || (a.username && app.username && a.username.toLowerCase() === app.username.toLowerCase()));
+          if (!exists) {
+            data.applications.unshift(app);
+            if (msg.member) data.members.unshift(msg.member);
+            updated = true;
+          }
+        }
+      } catch (errLine) {}
+    }
+
+    if (updated) {
+      saveClubData(data);
+      return true;
+    }
+  } catch (errSync) {
+    console.warn("[CloudSync] Background sync notice:", errSync);
+  }
+  return false;
+}
+window.syncCloudApprovals = syncCloudApprovals;
+
 async function handleMemberLogin(e) {
   if (e) e.preventDefault();
 
@@ -225,6 +313,9 @@ async function handleMemberLogin(e) {
       return;
     }
   }
+
+  // Sədrin ən son təsdiq qərarlarını bulud şinindən dərhal yoxla və yerli bazaya tətbiq et
+  await syncCloudApprovals(username);
 
   const data = getClubData();
   data.members = data.members || [];
@@ -333,8 +424,15 @@ async function handleMemberLogin(e) {
         return;
       }
       if (app.status === "Gözləyir") {
-        showToast(`Hörmətli ${app.fullName}, qeydiyyat müraciətiniz qəbul edilib və hazırda Sədrin təsdiqini gözləyir. Sədr təsdiq etdikdən dərhal sonra şəxsi kabinetiniz aktivləşəcək.`, "warning");
-        return;
+        await syncCloudApprovals(username);
+        const refData = getClubData();
+        const refApp = (refData.applications || []).find(a => a.id === app.id || (a.username && a.username.toLowerCase() === username) || (a.email && a.email.toLowerCase() === username));
+        if (refApp && (refApp.status === "Təsdiqləndi" || refApp.status === "Aktiv")) {
+          app = refApp;
+        } else {
+          showToast(`Hörmətli ${app.fullName}, qeydiyyat müraciətiniz qəbul edilib və hazırda Sədrin təsdiqini gözləyir. Sədr təsdiq etdikdən dərhal sonra şəxsi kabinetiniz aktivləşəcək.`, "warning");
+          return;
+        }
       }
       if (app.status === "Rədd edildi") {
         showToast(`Hörmətli ${app.fullName}, müraciətiniz təsdiqlənməyib. Ətraflı məlumat üçün klub rəhbərliyi ilə əlaqə saxlayın.`, "error");
@@ -436,8 +534,15 @@ async function handleMemberLogin(e) {
   }
 
   if (member.status === "Gözləyir") {
-    showToast(`Hörmətli ${member.fullName}, qeydiyyat müraciətiniz qəbul edilib və hazırda Sədrin təsdiqini gözləyir. Sədr təsdiq etdikdən dərhal sonra şəxsi kabinetiniz aktivləşəcək.`, "warning");
-    return;
+    await syncCloudApprovals(username);
+    const refData = getClubData();
+    const refMem = (refData.members || []).find(m => m.id === member.id || (m.username && m.username.toLowerCase() === username) || (m.email && m.email.toLowerCase() === username));
+    if (refMem && (refMem.status === "Aktiv" || refMem.status === "Təsdiqləndi")) {
+      member = refMem;
+    } else {
+      showToast(`Hörmətli ${member.fullName}, qeydiyyat müraciətiniz qəbul edilib və hazırda Sədrin təsdiqini gözləyir. Sədr təsdiq etdikdən dərhal sonra şəxsi kabinetiniz aktivləşəcək.`, "warning");
+      return;
+    }
   }
 
   if (member.status === "Rədd edildi") {
@@ -1457,6 +1562,14 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (e) {}
   }
   initRealtimeCloudSSE();
+  // Sədrin verdiyi ən son təsdiq qərarlarını arxa planda dərhal sinxronlaşdır
+  setTimeout(() => {
+    if (typeof syncCloudApprovals === "function") {
+      syncCloudApprovals().then(changed => {
+        if (changed && typeof updateAuthUI === "function") updateAuthUI();
+      });
+    }
+  }, 400);
 
   // Background Periodic Sync (15 saniyə)
   setInterval(() => {

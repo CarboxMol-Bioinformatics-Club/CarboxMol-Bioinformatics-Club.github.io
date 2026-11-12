@@ -391,6 +391,53 @@ events: [
 
   members: [
     {
+      "id": "mem-1794415625983",
+      "fullName": "Sarukhanova Ulviyya (Arif)",
+      "username": "u1yashko",
+      "email": "u1yasarukhova@gmail.com",
+      "phone": "+994103279832",
+      "password": "u1yashmilashk0",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (Western Caspian University)",
+      "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+      "major": "Biology",
+      "course": "Bakalavr (II kurs)",
+      "joinDate": "11.11.2026",
+      "registeredAt": "2026-11-11",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=u1yashko",
+      "photo": "",
+      "profileUrl": "https://www.linkedin.com/in/ulyashasarukhova7",
+      "studyLang": "İngilis bölməsi",
+      "gpa": "86/100",
+      "skills": [
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası və Dərman Dizaynı",
+        "Transkriptomika və RNA-Seq",
+        "Süni İntellekt və Biotibb ML"
+      ],
+      "tools": [
+        "Python",
+        "R / RStudio",
+        "Linux / Bash",
+        "Git & GitHub",
+        "C / C++",
+        "SQL"
+      ],
+      "bioTools": [
+        "NCBI / BLAST",
+        "UniProt",
+        "RCSB PDB",
+        "PyMOL / ChimeraX / Coot / Carbox / CarboxMol",
+        "AlphaFold DB",
+        "Ensembl"
+      ],
+      "motivation": "Researching and learning new fields and build bright career",
+      "yearGoal": "May be even if one research program and experience for adding and strengthening my CV",
+      "customTasks": [],
+      "notes": []
+    },
+    {
       "id": "mem-fatima-01",
       "fullName": "Fatimə Piriyeva",
       "username": "fatimapirieva",
@@ -1245,6 +1292,59 @@ events: [
   ],
 
   applications: [
+    {
+      "id": "app-1794415625983",
+      "memberId": "mem-1794415625983",
+      "teacherId": null,
+      "isTeacher": false,
+      "fullName": "Sarukhanova Ulviyya (Arif)",
+      "email": "u1yasarukhova@gmail.com",
+      "phone": "+994103279832",
+      "photo": "",
+      "profileUrl": "https://www.linkedin.com/in/ulyashasarukhova7",
+      "university": "Qərbi Kaspi Universiteti (Western Caspian University)",
+      "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+      "major": "Biology",
+      "course": "Bakalavr (II kurs)",
+      "studyLang": "İngilis bölməsi",
+      "gpa": "86/100",
+      "username": "u1yashko",
+      "password": "u1yashmilashk0",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Python",
+        "R / RStudio",
+        "Linux / Bash",
+        "Git & GitHub",
+        "C / C++",
+        "SQL"
+      ],
+      "bioTools": [
+        "NCBI / BLAST",
+        "UniProt",
+        "RCSB PDB",
+        "PyMOL / ChimeraX / Coot / Carbox / CarboxMol",
+        "AlphaFold DB",
+        "Ensembl"
+      ],
+      "bioKnowledge": "Güclü biologiya bazam var (Genetika, Molekulyar biologiya)",
+      "osType": "Yalnız universitet laboratoriyası",
+      "researchTracks": [
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası və Dərman Dizaynı",
+        "Transkriptomika və RNA-Seq",
+        "Süni İntellekt və Biotibb ML"
+      ],
+      "weeklyTime": "Həftədə 4–6 saat",
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "motivation": "Researching and learning new fields and build bright career",
+      "yearGoal": "May be even if one research program and experience for adding and strengthening my CV",
+      "dateApplied": "2026-11-11",
+      "status": "Təsdiqləndi",
+      "adminNotes": "Sədr tərəfindən rəsmi təsdiqlənmiş Qərbi Kaspi Universiteti üzvü.",
+      "approvedAt": "2026-11-12",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
     {
       "id": "app-fatima-01",
       "memberId": "mem-fatima-01",
@@ -2624,7 +2724,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.07.v47_strict_teacher_student_roles_fix";
+const CURRENT_DATA_VERSION = "2026.11.13.v49_ulviyya_approval_cloud_sync";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -2908,6 +3008,11 @@ function getClubData() {
           parsed.members.unshift(JSON.parse(JSON.stringify(seedMem)));
           hasStorageUpdates = true;
         } else {
+          // Əgər seedMem rəsmi təsdiqlənibsə (Aktiv), statusu mütləq "Aktiv" et!
+          if (seedMem.status === "Aktiv" && parsed.members[existingIdx].status !== "Aktiv") {
+            parsed.members[existingIdx].status = "Aktiv";
+            hasStorageUpdates = true;
+          }
           // Əgər şifrə boşdursa və ya natamamdırsa, seed məlumatı ilə zəmanət ver
           if (!parsed.members[existingIdx].password) {
             parsed.members[existingIdx].password = seedMem.password;
@@ -2966,8 +3071,10 @@ function getClubData() {
           hasStorageUpdates = true;
         } else {
           // Əgər saxlanmış müraciət artıq təsdiqlənibsə və ya Sədr qərar veribsə, statusu qoru
-          if (isApprovedByPresident && parsed.applications[existingIdx].status !== "Təsdiqləndi") {
+          if ((seedApp.status === "Təsdiqləndi" || isApprovedByPresident) && parsed.applications[existingIdx].status !== "Təsdiqləndi") {
             parsed.applications[existingIdx].status = "Təsdiqləndi";
+            if (seedApp.approvedAt) parsed.applications[existingIdx].approvedAt = seedApp.approvedAt;
+            if (seedApp.approvedBy) parsed.applications[existingIdx].approvedBy = seedApp.approvedBy;
             hasStorageUpdates = true;
           } else if (isRejectedByPresident && parsed.applications[existingIdx].status !== "Rədd edildi") {
             parsed.applications[existingIdx].status = "Rədd edildi";
