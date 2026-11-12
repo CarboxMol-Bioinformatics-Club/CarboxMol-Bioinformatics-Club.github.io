@@ -735,38 +735,86 @@ const PresidentPortal = {
     }
   },
 
-  exportToCSV() {
+  exportToCSV(filter = 'all') {
     const data = getClubData();
     const apps = data.applications || [];
-    if (apps.length === 0) {
-      showToast("İxrac ediləcək heç bir müraciət yoxdur.", "warning");
+    const members = data.members || [];
+    
+    // Combine applications and existing active members (deduplicate by email)
+    const allPeople = [...apps];
+    members.forEach(m => {
+      if (!allPeople.some(p => p.email && m.email && p.email.toLowerCase() === m.email.toLowerCase())) {
+        allPeople.push({
+          id: m.id || 'MEM-' + Date.now(),
+          fullName: m.fullName || m.name,
+          email: m.email,
+          phone: m.phone,
+          university: m.university || "Qərbi Kaspi Universiteti (WCU)",
+          faculty: m.faculty || "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+          major: m.major || "Biologiya",
+          course: m.course || "3-cü kurs",
+          status: "Təsdiqlənib (Fəal Üzv)",
+          dateApplied: m.dateAdded || "2026-11-09"
+        });
+      }
+    });
+
+    const isWcuStudent = (a) => {
+      const u = (a.university || '').toLowerCase();
+      const f = (a.faculty || '').toLowerCase();
+      const e = (a.email || '').toLowerCase();
+      if (u.includes('bdu') || u.includes('bakı dövlət') || u.includes('tibb universiteti') || u.includes('atu') || u.includes('ada') || u.includes('azii') || u.includes('adnsu') || u.includes('xəzər') || u.includes('khazar') || u.includes('bmu') || u.includes('dia')) {
+        return false;
+      }
+      if (f.includes('bdu') || f.includes('bakı dövlət') || f.includes('atu')) {
+        return false;
+      }
+      if (u.includes('qərbi') || u.includes('kaspi') || u.includes('wcu') || u.includes('western')) return true;
+      if (f.includes('qərbi') || f.includes('kaspi') || f.includes('wcu') || f.includes('western') || f.includes('təbiət') || f.includes('mühəndislik') || f.includes('yüksək texnologiya')) return true;
+      if (e.endsWith('@wcu.edu.az')) return true;
+      return true;
+    };
+
+    let targetList = allPeople;
+    let fileName = `CarboxMol_Bioinformatika_Uzvlük_Muracietleri_${new Date().toISOString().slice(0, 10)}.csv`;
+    let toastMsg = "Ümumi CSV faylı uğurla endirildi!";
+
+    if (filter === 'wcu') {
+      targetList = allPeople.filter(isWcuStudent);
+      fileName = `Qerbi_Kaspi_Universiteti_WCU_CarboxMol_Telebe_Uzvlük_Siyahisi_${new Date().toISOString().slice(0, 10)}.csv`;
+      toastMsg = `Qərbi Kaspi Universiteti üzrə ${targetList.length} tələbənin rəsmi CSV siyahısı uğurla endirildi!`;
+    }
+
+    if (targetList.length === 0) {
+      showToast("İxrac ediləcək heç bir müraciət tapılmadı.", "warning");
       return;
     }
 
     const headers = [
-      "ID", "Ad Soyad", "E-poct", "Telefon", "Profil Link", "Fakulte", "Ixtisas", "Kurs",
-      "Tedris Dili", "GPA", "Proqramlasdirma", "Alətlər", "Bioloji Bazalar", "Biologiya Biliyi",
-      "Emeliyyat Sistemi", "Maraq Istiqametleri", "Status", "Tarix", "Həftəlik Vaxt", "1 Illik Hədəf", "Motivasiya"
+      "№", "ID", "Ad Soyad", "Universitet", "Fakültə", "İxtisas", "Kurs", "Tədris Dili", "E-poçt", "Telefon",
+      "GPA", "Proqramlaşdırma", "Bioloji Alətlər", "Bioloji Baza Biliyi", "Əməliyyat Sistemi", "Maraq İstiqaməti",
+      "Status", "Qeydiyyat Tarixi", "Həftəlik Vaxt", "1 İllik Hədəf", "Motivasiya"
     ];
-    const rows = apps.map(a => [
-      `"${a.id}"`,
+
+    const rows = targetList.map((a, idx) => [
+      `"${idx + 1}"`,
+      `"${a.id || ''}"`,
       `"${(a.fullName || '').replace(/"/g, '""')}"`,
-      `"${(a.email || '').replace(/"/g, '""')}"`,
-      `"${(a.phone || '').replace(/"/g, '""')}"`,
-      `"${(a.profileUrl || '').replace(/"/g, '""')}"`,
+      `"${(a.university || 'Qərbi Kaspi Universiteti (WCU)').replace(/"/g, '""')}"`,
       `"${(a.faculty || '').replace(/"/g, '""')}"`,
       `"${(a.major || '').replace(/"/g, '""')}"`,
       `"${(a.course || '').replace(/"/g, '""')}"`,
       `"${(a.studyLang || '').replace(/"/g, '""')}"`,
+      `"${(a.email || '').replace(/"/g, '""')}"`,
+      `"${(a.phone || '').replace(/"/g, '""')}"`,
       `"${(a.gpa || '').replace(/"/g, '""')}"`,
       `"${(a.programmingSkill || '').replace(/"/g, '""')}"`,
-      `"${((a.tools || []).join(', ')).replace(/"/g, '""')}"`,
-      `"${((a.bioTools || []).join(', ') || a.bioDbExp || '').replace(/"/g, '""')}"`,
+      `"${((a.tools || []).join(', ') || (a.bioTools || []).join(', ') || '').replace(/"/g, '""')}"`,
       `"${(a.bioKnowledge || '').replace(/"/g, '""')}"`,
       `"${(a.osType || '').replace(/"/g, '""')}"`,
       `"${((a.researchTracks || []).join(', ') || a.roleInterest || '').replace(/"/g, '""')}"`,
-      `"${(a.status || '').replace(/"/g, '""')}"`,
-      `"${(a.dateApplied || '').replace(/"/g, '""')}"`,
+      `"${(a.status || 'Qeydiyyatda').replace(/"/g, '""')}"`,
+      `"${(a.dateApplied || a.dateAdded || '').replace(/"/g, '""')}"`,
       `"${(a.weeklyTime || '').replace(/"/g, '""')}"`,
       `"${(a.yearGoal || '').replace(/"/g, '""')}"`,
       `"${(a.motivation || '').replace(/"/g, '""')}"`
@@ -777,11 +825,11 @@ const PresidentPortal = {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `CarboxMol_Bioinformatika_Uzvlük_Muracietleri_${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute("download", fileName);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    showToast("CSV faylı uğurla endirildi!", "success");
+    showToast(toastMsg, "success");
   },
 
   generateOfficialLetter(type) {

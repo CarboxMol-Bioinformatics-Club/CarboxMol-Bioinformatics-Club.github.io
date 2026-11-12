@@ -1734,6 +1734,11 @@ function navigateTo(sectionId) {
       description: "Carbox (həndəsi analiz), CarboxMol (3D vizualizator), AlphaFold, PyMOL, ChimeraX, Coot, GemmiMol, Biopython, DESeq2 və BioMeet alətləri toplusu.",
       canonical: "https://carboxmol-bioinformatics-club.github.io/biotools/"
     },
+    resources: {
+      title: "Elmi Resurslar və Rəqəmsal Kitabxana | CarboxMol Bioinformatika Klubu",
+      description: "Bioinformatika, Molekulyar Biologiya, Biokimya və Genetika üzrə qlobal və yerli akademik dərsliklər, vəsaitlər və metodik bazası.",
+      canonical: "https://carboxmol-bioinformatics-club.github.io/resources/"
+    },
     events: {
       title: "Elmi Seminarlar, Vorkşoplar və Hakatonlar | CarboxMol Bioinformatika Klubu",
       description: "Prof. Qərib Mürşüdov (Cambridge MRC LMB) və beynəlxalq alimlərin iştirakı ilə elmi seminarlar, laboratoriya vorkşopları və tələbə hakatonları.",
@@ -1828,6 +1833,9 @@ function navigateTo(sectionId) {
   }
   if (sectionId === "collaborators" && window.CollaboratorsEngine) {
     CollaboratorsEngine.renderCollaborators();
+  }
+  if (sectionId === "resources" && window.ResourcesEngine) {
+    ResourcesEngine.renderResourcesGrid();
   }
   if (sectionId === "biomeet" && window.BioMeetEngine) {
     BioMeetEngine.renderRoomsList();

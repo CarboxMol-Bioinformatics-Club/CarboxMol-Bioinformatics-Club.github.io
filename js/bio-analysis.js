@@ -219,6 +219,20 @@
 
   var INITIAL_ANNOUNCEMENTS = [
     {
+      id: "ann_wcu_approval_2026",
+      category: "academic",
+      badge_az: "Rəsmi Təsdiq & Akkreditasiya",
+      badge_en: "Official Accreditation",
+      title_az: "Qərbi Kaspi Universiteti CarboxMol Bioinformatika Klubunu Rəsmi Təsdiq Etdi",
+      title_en: "Western Caspian University Officially Accreditates CarboxMol Bioinformatics Club",
+      date: "2026-11-12",
+      date_az: "2026-11-12",
+      date_en: "2026-11-12",
+      image: "assets/images/announcements/wcu-approval-announcement.png",
+      content_az: "Klubumuzun əsasnaməsi və elmi inkişaf proqramı Qərbi Kaspi Universiteti (WCU) rəhbərliyi tərəfindən rəsmi olaraq təsdiqləndi. Bu, klubumuzun ilk böyük institusional uğurudur! Növbəti mərhələdə digər yerli və xarici universitetlər və elmi-tədqiqat institutları ilə rəsmi tərəfdaşlıq və əməkdaşlıqlar qurulacaq.",
+      content_en: "The charter and scientific roadmap of CarboxMol Bioinformatics Club have been officially approved and accredited by Western Caspian University (WCU). Marking our first institutional milestone, our next phase focuses on establishing academic partnerships with other universities and research institutes."
+    },
+    {
       id: "ann_recruitment_2026",
       category: "recruitment",
       badge_az: "İdarə Heyəti Seçimi",
@@ -399,7 +413,11 @@
         gridHtml += '  </div>';
 
         gridHtml += '  <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2 text-xs">';
-        if (ann.id === 'ann_virtulab_collab') {
+        if (ann.id === 'ann_wcu_approval_2026') {
+          gridHtml += '    <button onclick="navigateTo(\'register\')" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs flex items-center gap-1.5 transition shadow-sm">';
+          gridHtml += '      <img src="assets/images/wcu-logo.png" alt="WCU" class="w-3.5 h-3.5 object-contain" /> <span>' + (lang === 'en' ? 'Join as WCU Student' : 'WCU Tələbəsi Kimi Qoşul') + '</span>';
+          gridHtml += '    </button>';
+        } else if (ann.id === 'ann_virtulab_collab') {
           gridHtml += '    <a href="https://carboxmol-virtulab.github.io/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition shadow-sm">';
           gridHtml += '      <i class="fa-solid fa-up-right-from-square text-xs"></i> <span>' + (lang === 'en' ? 'Explore VirtuLab' : 'VirtuLab Portalı') + '</span>';
           gridHtml += '    </a>';

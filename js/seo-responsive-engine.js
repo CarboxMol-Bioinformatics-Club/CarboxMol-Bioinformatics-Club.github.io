@@ -48,6 +48,16 @@
       breadcrumb_az: "Bio-Alətlər və Tədqiqat Mərkəzi",
       breadcrumb_en: "Bio-Tools & Research Center"
     },
+    resources: {
+      path: "resources/",
+      title_az: "Elmi Resurslar və Rəqəmsal Kitabxana | CarboxMol Bioinformatika Klubu",
+      title_en: "Scientific Resources & Digital Library | CarboxMol Bioinformatics Club",
+      desc_az: "Bioinformatika, Molekulyar Biologiya, Biokimya və Genetika üzrə qlobal və yerli akademik dərsliklər, vəsaitlər və metodik bazası.",
+      desc_en: "Digital scientific library offering curated textbooks, references, and publications across Bioinformatics, Molecular Biology, Biochemistry, and Genetics in English and Azerbaijani.",
+      keywords: "bioinformatika dərslikləri, molekulyar biologiya kitabları, Alberts MBoC, Lehninger biokimya, genetika vəsaitləri, Qərbi Kaspi Universiteti kitabxana",
+      breadcrumb_az: "Elmi Resurslar və Kitabxana",
+      breadcrumb_en: "Resources & Digital Library"
+    },
     events: {
       path: "events/",
       title_az: "Elmi Seminarlar, Vorkşoplar və Journal Club | CarboxMol Bioinformatika Klubu",

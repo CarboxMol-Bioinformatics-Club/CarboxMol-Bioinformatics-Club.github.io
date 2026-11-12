@@ -205,6 +205,24 @@
     });
   }
 
+  // Dynamic translations for Resources, Announcements and WCU accreditation
+  Object.assign(DICTIONARY, {
+    "Resurslar": "Resources",
+    "Rəqəmsal Elmi Kitabxana & Ədəbiyyat Fondu": "Digital Scientific Library & Academic Literature",
+    "Bioinformatika, Molekulyar Biologiya və Genetika Dərslikləri": "Textbooks in Bioinformatics, Molecular Biology & Genetics",
+    "Tələbələrimizin nəzəri və tədqiqat potensialını gücləndirmək üçün həm qlobal akademik klassiklər (İngilis dilində), həm də yerli ali məktəb dərslikləri və tədris vəsaitləri toplusu (Azərbaycan dilində).": "A curated collection of global academic classics (in English) and local higher education textbooks and study guides (in Azerbaijani) to strengthen students' theoretical and research foundation.",
+    "Bütün Sahələr": "All Fields",
+    "Bütün Dillər": "All Languages",
+    "Məzmun & Detallar": "Overview & Details",
+    "Mənbəyə Keç": "Publisher Page",
+    "Klub Fondu": "Club Archive",
+    "12 Dərslik və Vəsait": "12 Textbooks & Guides",
+    "Yeni Kitab Təklif Et": "Suggest a Book",
+    "Tələbələr və Tədqiqatçılar Üçün Açıq Akademik Baza": "Open Academic Repository for Students and Researchers",
+    "WCU Tələbəsi Kimi Qoşul": "Join as WCU Student",
+    "Qərbi Kaspi Universiteti CarboxMol Bioinformatika Klubunu Rəsmi Təsdiq Etdi": "Western Caspian University Officially Accreditates CarboxMol Bioinformatics Club"
+  });
+
   function init() {
     updateToggleButtons(currentLang);
     if (currentLang === 'en') {

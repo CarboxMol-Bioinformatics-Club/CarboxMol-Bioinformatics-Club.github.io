@@ -419,6 +419,9 @@
           <button data-target="biotools" class="nav-link px-1 xl:px-1.5 py-1 text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-300 transition whitespace-nowrap">
             Bio-Alət
           </button>
+          <button data-target="resources" class="nav-link px-1 xl:px-1.5 py-1 text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-300 transition whitespace-nowrap" data-i18n="nav_resources">
+            Resurslar
+          </button>
           <button data-target="events" class="nav-link px-1 xl:px-1.5 py-1 text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-300 transition whitespace-nowrap">
             Tədbirlər
           </button>
@@ -562,6 +565,9 @@
           </button>
           <button data-target="biotools" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-200 hover:text-cyan-300 hover:border-cyan-500/40 transition">
             <i class="fa-solid fa-flask-vial text-cyan-400"></i> <span>Bio-Alətlər</span>
+          </button>
+          <button data-target="resources" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-200 hover:text-teal-300 hover:border-teal-500/40 transition">
+            <i class="fa-solid fa-book-bookmark text-teal-400"></i> <span data-i18n="nav_resources">Resurslar</span>
           </button>
           <button data-target="events" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-200 hover:text-teal-300 hover:border-teal-500/40 transition">
             <i class="fa-solid fa-calendar-days text-teal-400"></i> <span>Tədbirlər</span>
@@ -2023,6 +2029,103 @@ Seçilmiş pipeline: DESeq2
 
         </div>
 
+      </div>
+
+    </section>
+
+    <!-- 4.1 SECTION: RESOURCES & SCIENTIFIC LIBRARY -->
+    <section id="resources" class="app-section hidden space-y-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-slate-800">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 text-teal-300 border border-teal-500/30 text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-book-bookmark text-teal-400"></i> <span data-i18n="resources_badge">Rəqəmsal Elmi Kitabxana & Ədəbiyyat Fondu</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight" data-i18n="resources_title">
+            Bioinformatika, Molekulyar Biologiya və Genetika Dərslikləri
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400 max-w-3xl leading-relaxed" data-i18n="resources_desc">
+            Tələbələrimizin nəzəri və tədqiqat potensialını gücləndirmək üçün həm qlobal akademik klassiklər (İngilis dilində), həm də yerli ali məktəb dərslikləri və tədris vəsaitləri toplusu (Azərbaycan dilində).
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2 shrink-0">
+          <span id="resourcesCountBadge" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-teal-300 font-mono text-xs font-bold shadow">
+            12 Dərslik və Vəsait
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Guidance & Institutional Callout Banner -->
+      <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-teal-950/70 via-slate-900 to-indigo-950/70 border border-teal-500/40 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-teal-500/20 text-teal-300 border border-teal-500/40 flex items-center justify-center shrink-0 text-lg shadow-sm">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div class="space-y-0.5">
+            <h4 class="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
+              <span data-i18n="resources_banner_title">Tələbələr və Tədqiqatçılar Üçün Açıq Akademik Baza</span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[9px] font-black uppercase">Qərbi Kaspi Universiteti</span>
+            </h4>
+            <p class="text-[11px] sm:text-xs text-slate-300 leading-relaxed" data-i18n="resources_banner_desc">
+              Dərsliklərin elektron nüsxələri, elmi məqalə icmalları və fənn metodik vəsaitləri klub üzvlərinin istifadəsinə təqdim olunur. Kitabxanamıza yeni Azərbaycan və xarici dərsliklərin əlavə olunması mütəmadi davam edir.
+            </p>
+          </div>
+        </div>
+        <a href="mailto:suleyman.hacizade.232bioing@wcu.edu.az?subject=CarboxMol%20Kitabxanas%C4%B1na%20T%C9%99klif" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-teal-300 border border-slate-700 font-bold text-xs flex items-center gap-1.5 transition shrink-0 whitespace-nowrap shadow-sm">
+          <i class="fa-solid fa-plus text-teal-400"></i> <span data-i18n="resources_btn_suggest">Yeni Kitab Təklif Et</span>
+        </a>
+      </div>
+
+      <!-- Controls: Search & Multi-Pill Category Filters -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3.5 pt-1">
+        
+        <!-- Search Input -->
+        <div class="relative w-full lg:w-96">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+          <input type="text" id="resourcesSearchInput" placeholder="Kitab adı, müəllif, ISBN və ya açar söz axtar..." class="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-teal-500 transition" />
+        </div>
+
+        <div class="flex items-center gap-2 flex-wrap">
+          <!-- Category Filters -->
+          <div class="inline-flex p-1 rounded-xl bg-slate-950 border border-slate-800 flex-wrap" id="resourcesCategoryFilters">
+            <button onclick="ResourcesEngine.filterResources('all')" data-cat="all" class="px-3 py-1.5 rounded-lg text-xs font-bold text-teal-300 bg-teal-500/20 border border-teal-500/40 transition whitespace-nowrap" data-i18n="res_filter_all">
+              Bütün Sahələr
+            </button>
+            <button onclick="ResourcesEngine.filterResources('bioinformatics')" data-cat="bioinformatics" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition whitespace-nowrap" data-i18n="res_filter_bioinfo">
+              Bioinformatika
+            </button>
+            <button onclick="ResourcesEngine.filterResources('molecular_biology')" data-cat="molecular_biology" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition whitespace-nowrap" data-i18n="res_filter_molbio">
+              Molekulyar Biologiya
+            </button>
+            <button onclick="ResourcesEngine.filterResources('genetics')" data-cat="genetics" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition whitespace-nowrap" data-i18n="res_filter_genetics">
+              Genetika
+            </button>
+            <button onclick="ResourcesEngine.filterResources('biochemistry')" data-cat="biochemistry" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition whitespace-nowrap" data-i18n="res_filter_biochem">
+              Biokimya
+            </button>
+          </div>
+
+          <!-- Language Filters -->
+          <div class="inline-flex p-1 rounded-xl bg-slate-950 border border-slate-800" id="resourcesLangFilters">
+            <button onclick="ResourcesEngine.filterResourcesLang('all')" data-lang="all" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-cyan-300 bg-cyan-500/20 border border-cyan-500/40 transition whitespace-nowrap">
+              Hamısı
+            </button>
+            <button onclick="ResourcesEngine.filterResourcesLang('az')" data-lang="az" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition whitespace-nowrap">
+              🇦🇿 AZ
+            </button>
+            <button onclick="ResourcesEngine.filterResourcesLang('en')" data-lang="en" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition whitespace-nowrap">
+              🇬🇧 EN
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Books Grid (Populated dynamically by resources.js) -->
+      <div id="resourcesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Rendered by ResourcesEngine -->
       </div>
 
     </section>
@@ -3602,8 +3705,11 @@ Seçilmiş pipeline: DESeq2
             <a href="https://formsubmit.co/inbox" target="_blank" class="px-3.5 py-2.5 rounded-xl bg-blue-950/80 hover:bg-blue-900 text-blue-300 border border-blue-700 text-xs font-bold flex items-center gap-1.5 transition" title="Bütün onlayn müraciətlərin bulud arxivi">
               <i class="fa-solid fa-cloud text-blue-400 text-sm"></i> FormSubmit Arxivi
             </a>
-            <button onclick="PresidentPortal.exportToCSV()" class="px-3.5 py-2.5 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 text-emerald-300 border border-emerald-700 text-xs font-bold flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-file-csv text-emerald-400 text-sm"></i> CSV İxrac
+            <button onclick="PresidentPortal.exportToCSV('wcu')" class="px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-blue-900/90 to-indigo-900/90 hover:from-blue-800 hover:to-indigo-800 text-cyan-200 border border-cyan-500/50 text-xs font-bold flex items-center gap-1.5 transition shadow-lg" title="Yalnız Qərbi Kaspi Universiteti (WCU) tələbələrinin siyahısını CSV faylında ixrac et">
+              <img src="assets/images/wcu-logo.png" alt="WCU" class="w-4 h-4 object-contain rounded" /> WCU Tələbələri (CSV)
+            </button>
+            <button onclick="PresidentPortal.exportToCSV('all')" class="px-3.5 py-2.5 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 text-emerald-300 border border-emerald-700 text-xs font-bold flex items-center gap-1.5 transition" title="Bütün müraciətləri CSV faylında ixrac et">
+              <i class="fa-solid fa-file-csv text-emerald-400 text-sm"></i> Ümumi CSV
             </button>
             <button onclick="logoutPresident()" class="px-3.5 py-2.5 rounded-xl bg-rose-950/80 hover:bg-rose-900 text-rose-300 border border-rose-700 text-xs font-bold flex items-center gap-1.5 transition" title="Sədr Paneli Sistemindən Çıxış">
               <i class="fa-solid fa-right-from-bracket text-rose-400 text-sm"></i> Çıxış
@@ -7376,6 +7482,39 @@ Seçilmiş pipeline: DESeq2
     </div>
   </div>
 
+  <!-- Modal: Book Detail & Overview -->
+  <div id="bookDetailModal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md items-center justify-center p-4">
+    <div class="relative w-full max-w-2xl bg-slate-900 border border-teal-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5">
+      <button onclick="ResourcesEngine.closeBookModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-base w-8 h-8 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="space-y-1.5 pr-8">
+        <span class="px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 font-mono">CarboxMol Academic Library</span>
+        <h3 id="bookModalTitle" class="text-lg sm:text-2xl font-black text-white leading-tight"></h3>
+        <p id="bookModalAuthor" class="text-xs sm:text-sm font-semibold text-teal-400"></p>
+        <p id="bookModalMeta" class="text-[11px] text-slate-400 font-mono"></p>
+      </div>
+
+      <div class="space-y-1.5 bg-slate-950/60 p-4 rounded-2xl border border-slate-800">
+        <h5 class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Məzmun və Əhəmiyyəti:</h5>
+        <p id="bookModalDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed"></p>
+      </div>
+
+      <div class="space-y-1.5">
+        <h5 class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Əsas Bölmə və Mövzular:</h5>
+        <div id="bookModalTopics" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex items-center justify-between gap-3">
+        <button onclick="ResourcesEngine.closeBookModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition">
+          Bağla
+        </button>
+        <a id="bookModalLink" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-bold text-xs flex items-center transition shadow-lg"></a>
+      </div>
+    </div>
+  </div>
+
   <!-- CampusClubs-inspired Announcements and RSVP Modal -->
   <div id="announcementsModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md items-center justify-center p-4">
     <div class="glass-panel w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl border border-teal-500/40 p-6 space-y-5 bg-gradient-to-b from-slate-900 to-slate-950 shadow-2xl relative">
@@ -7428,6 +7567,7 @@ Seçilmiş pipeline: DESeq2
   <script src="js/pwa.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/bio-analysis.js"></script>
+  <script src="js/resources.js"></script>
   <script src="js/seo-responsive-engine.js"></script>
   <script src="js/app.js"></script>
 </body>
