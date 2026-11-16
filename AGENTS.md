@@ -22,3 +22,8 @@ Before proposing or making any code changes, read `PROJECT_AI_RULES.md` and comp
    - **NEVER** invent, guess, or generate fake dates, days, or schedules for any announcement, event, seminar, workshop, or project.
    - When preparing or adding any announcement or event, the AI **MUST ALWAYS** ask the user first for the exact date and details.
    - If a specific date has not been explicitly provided and confirmed by the user, the AI must strictly default the date to `"Tezliklə"` (AZ) / `"Coming Soon"` (EN).
+
+6. **CRITICAL: Official Logo, Products & Automatic Favicon Mandate (`robots.txt` Compliance):**
+   - For the club, all its software/scientific products (`Carbox`, `CarboxMol`, `Studio Engine`, `VirtuLab`, `BioMeet`, `BioTools`, `OpenKBC`), and **every** new or existing HTML page, subpage, or JS template, **MUST** exclusively use the current official CarboxMol Bioinformatics Club logo (`assets/images/carboxmol_bioclub_logo.png`) and its official favicon set (`favicon-32x32.png`, `favicon-16x16.png`, `favicon.ico`, `apple-touch-icon.png`, `assets/icons/icon-192.png`, `assets/icons/icon-512.png`).
+   - Legacy logo/favicon files (`favicon.svg`, `assets/favicon.svg`, `assets/images/carboxmol_logo.png`) are permanently retired and **MUST NEVER** be referenced anywhere.
+   - Always load `js/seo-responsive-engine.js` (or `../js/seo-responsive-engine.js`) on every HTML page so `SeoResponsiveEngine.enforceOfficialFavicons()` automatically maintains official favicons and logos everywhere.

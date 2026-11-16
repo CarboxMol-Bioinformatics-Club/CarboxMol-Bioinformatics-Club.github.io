@@ -1,7 +1,45 @@
 # ==============================================================================
-# Robots.txt for CarboxMol Bioinformatika Klubu
+# Robots.txt & Mandatory AI/Developer Architecture Directives
+# CarboxMol Bioinformatika Klubu (CarboxMol Bioinformatics Club)
 # Official Domain: https://carboxmol-bioinformatics-club.github.io
-# Description: Search engine crawler directives for maximum SEO indexing
+# ==============================================================================
+#
+# MANDATORY RULES FOR ALL AI AGENTS & CODE GENERATORS
+# (Antigravity, Claude, ChatGPT, Cursor, GitHub Copilot, Gemini, etc.):
+#
+# Whenever you create, edit, refactor, or extend ANY HTML page, subpage, app,
+# tool, embed, product, presentation, or JavaScript module inside this project:
+#
+# 1. OFFICIAL BRANDING & PRODUCT LOGO MANDATE (NO LEGACY LOGOS):
+#    - The ONLY authorized logo for CarboxMol Bioinformatics Club and ALL of its
+#      products/tools (Carbox, CarboxMol, Studio Engine, VirtuLab, BioMeet,
+#      BioTools, OpenKBC, Digital Library, Presentations, Portals, and future
+#      HTML pages) is:
+#        Root pages:       assets/images/carboxmol_bioclub_logo.png
+#        Subdirectory:  ../assets/images/carboxmol_bioclub_logo.png
+#    - RETIRED / PROHIBITED LEGACY FILES (DO NOT REFERENCE OR RESURRECT):
+#        favicon.svg, assets/favicon.svg, assets/images/carboxmol_logo.png
+#
+# 2. AUTOMATIC FAVICON REQUIREMENT ON EVERY HTML PAGE:
+#    - Every HTML page (root and any subdirectory) MUST define the official
+#      CarboxMol Bioinformatics Club favicon & icon set (NO .svg favicons):
+#        * <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+#        * <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+#        * <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png" />
+#        * <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/icon-512.png" />
+#        * <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+#        * <link rel="icon" type="image/png" href="assets/images/carboxmol_bioclub_logo.png" />
+#        * <link rel="shortcut icon" href="favicon.ico" />
+#      (Prefix with ../ inside subdirectories such as /biomeet/, /biotools/, etc.)
+#    - Every HTML page MUST also load js/seo-responsive-engine.js (or
+#      ../js/seo-responsive-engine.js), which runs enforceOfficialFavicons()
+#      automatically at runtime to purge legacy icons and synchronize the
+#      official CarboxMol Bioinformatics Club favicons and logos everywhere.
+#
+# 3. REPOSITORY PARITY & CONTENT VERIFICATION:
+#    - Replicate all changes to both CarboxMol-Bioinformatics-Club.github.io and
+#      CarboxMol-Bioinformatics-Club.
+#    - Never fabricate dates or unverified/non-existent textbooks or broken URLs.
 # ==============================================================================
 
 User-agent: *
@@ -14,10 +52,21 @@ Allow: /events/
 Allow: /collaborators/
 Allow: /biomeet/
 Allow: /register/
+Allow: /presentation.html
 Allow: /assets/
+Allow: /assets/icons/
+Allow: /assets/images/carboxmol_bioclub_logo.png
+Allow: /assets/images/carboxmol_favicon32.png
+Allow: /favicon.ico
+Allow: /favicon-32x32.png
+Allow: /favicon-16x16.png
+Allow: /apple-touch-icon.png
 Allow: /css/
 Allow: /js/
 Allow: /wiki/
+Disallow: /favicon.svg
+Disallow: /assets/favicon.svg
+Disallow: /assets/images/carboxmol_logo.png
 
 # Crawl Delay
 Crawl-delay: 1
@@ -28,11 +77,22 @@ Allow: /
 Allow: /docs/*.pdf
 Allow: /docs/*.docx
 Allow: /docs/*.md
+Disallow: /favicon.svg
+Disallow: /assets/favicon.svg
+Disallow: /assets/images/carboxmol_logo.png
 
 User-agent: Googlebot-Image
 Allow: /assets/
+Allow: /assets/icons/
+Allow: /assets/images/carboxmol_bioclub_logo.png
+Allow: /assets/images/carboxmol_favicon32.png
 Allow: /apple-touch-icon.png
-Allow: /favicon.svg
+Allow: /favicon.ico
+Allow: /favicon-32x32.png
+Allow: /favicon-16x16.png
+Disallow: /favicon.svg
+Disallow: /assets/favicon.svg
+Disallow: /assets/images/carboxmol_logo.png
 
 User-agent: Bingbot
 Allow: /

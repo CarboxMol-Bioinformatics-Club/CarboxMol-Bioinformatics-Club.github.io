@@ -1,7 +1,7 @@
 // CarboxMol Bioinformatika Klubu - PWA Service Worker (Oflayn və Canlı Sinxronizasiya Mühərriki)
-// Versiya: 2.5.3
+// Versiya: 2.5.4
  
-const CACHE_VERSION = 'carboxmol-bioinformatics-club-v2.5.3';
+const CACHE_VERSION = 'carboxmol-bioinformatics-club-v2.5.4';
 const CORE_CACHE = `core-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
 
@@ -36,10 +36,16 @@ const PRECACHE_ASSETS = [
   './js/pwa.js',
   './js/i18n.js',
   './js/bio-analysis.js',
+  './js/resources.js',
   './js/seo-responsive-engine.js',
+  './presentation.html',
   './version.json',
-  './favicon.svg',
+  './favicon.ico',
+  './favicon-32x32.png',
+  './favicon-16x16.png',
   './apple-touch-icon.png',
+  './assets/images/carboxmol_bioclub_logo.png',
+  './assets/images/carboxmol_favicon32.png',
   './assets/images/president.jpg',
   './assets/images/announcements/coordinator-recruitment.png',
   './assets/images/announcements/coordinator-recruitment-linkedin.png',
@@ -180,9 +186,7 @@ self.addEventListener('fetch', (event) => {
           const cached = await caches.match(request);
           if (cached) return cached;
           if (request.destination === 'image') {
-            return caches.match('./favicon.png',
-  './favicon.ico',
-  './apple-touch-icon.png');
+            return (await caches.match('./assets/images/carboxmol_bioclub_logo.png')) || (await caches.match('./apple-touch-icon.png'));
           }
           return new Response('Offline', { status: 503, statusText: 'Offline' });
         })

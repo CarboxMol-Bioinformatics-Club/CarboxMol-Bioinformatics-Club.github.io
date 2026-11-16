@@ -54,7 +54,7 @@
       title_en: "Scientific Resources & Digital Library | CarboxMol Bioinformatics Club",
       desc_az: "Bioinformatika, Molekulyar Biologiya, Biokimya və Genetika üzrə qlobal və yerli akademik dərsliklər, vəsaitlər və metodik bazası.",
       desc_en: "Digital scientific library offering curated textbooks, references, and publications across Bioinformatics, Molecular Biology, Biochemistry, and Genetics in English and Azerbaijani.",
-      keywords: "bioinformatika dərslikləri, molekulyar biologiya kitabları, Alberts MBoC, Lehninger biokimya, genetika vəsaitləri, Qərbi Kaspi Universiteti kitabxana",
+      keywords: "bioinformatika dərslikləri, molekulyar biologiya kitabları, MIT Computational Biology, OpenStax Biology, LibreTexts, genetika PDF, Qərbi Kaspi Universiteti kitabxana",
       breadcrumb_az: "Elmi Resurslar və Kitabxana",
       breadcrumb_en: "Resources & Digital Library"
     },
@@ -131,6 +131,64 @@
   };
 
   var BASE_URL = "https://carboxmol-bioinformatics-club.github.io/";
+  var ASSET_PREFIX = (function () {
+    var scripts = document.getElementsByTagName('script');
+    for (var i = scripts.length - 1; i >= 0; i--) {
+      var src = scripts[i].getAttribute('src') || '';
+      var idx = src.indexOf('js/seo-responsive-engine.js');
+      if (idx !== -1) {
+        return src.slice(0, idx);
+      }
+    }
+    var p = window.location.pathname || '';
+    return /\/(biomeet|biotools|collaborators|curriculum|documents|events|register)\//i.test(p) ? '../' : '';
+  })();
+  var OFFICIAL_LOGO_REL = 'assets/images/carboxmol_bioclub_logo.png';
+
+  function enforceOfficialFavicons() {
+    var head = document.head || document.getElementsByTagName('head')[0];
+    if (!head) return;
+
+    // Purge all legacy favicons (favicon.svg, carboxmol_logo.png, stale icon links)
+    var existing = head.querySelectorAll('link[rel*="icon"], link[rel="apple-touch-icon"]');
+    for (var i = 0; i < existing.length; i++) {
+      existing[i].parentNode.removeChild(existing[i]);
+    }
+
+    var iconSpecs = [
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: ASSET_PREFIX + 'favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: ASSET_PREFIX + 'favicon-16x16.png' },
+      { rel: 'icon', type: 'image/png', sizes: '192x192', href: ASSET_PREFIX + 'assets/icons/icon-192.png' },
+      { rel: 'icon', type: 'image/png', sizes: '512x512', href: ASSET_PREFIX + 'assets/icons/icon-512.png' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: ASSET_PREFIX + 'apple-touch-icon.png' },
+      { rel: 'icon', type: 'image/png', href: ASSET_PREFIX + OFFICIAL_LOGO_REL },
+      { rel: 'shortcut icon', href: ASSET_PREFIX + 'favicon.ico' }
+    ];
+
+    iconSpecs.forEach(function (spec) {
+      var link = document.createElement('link');
+      link.rel = spec.rel;
+      if (spec.type) link.type = spec.type;
+      if (spec.sizes) link.sizes = spec.sizes;
+      link.href = spec.href;
+      head.appendChild(link);
+    });
+
+    // Replace any legacy logo or favicon.svg <img> elements in DOM
+    if (document.body) {
+      var imgs = document.querySelectorAll('img[src]');
+      for (var j = 0; j < imgs.length; j++) {
+        var src = imgs[j].getAttribute('src') || '';
+        if (/(favicon\.svg|carboxmol_logo\.png)/i.test(src)) {
+          imgs[j].setAttribute('src', ASSET_PREFIX + OFFICIAL_LOGO_REL);
+        }
+      }
+    }
+  }
+
+  // Enforce official favicons immediately
+  enforceOfficialFavicons();
+
   var currentRoute = "home";
   var deviceInfo = {};
 
@@ -335,15 +393,29 @@
     syncSeo(hash);
   });
 
+  function detectStandaloneRoute() {
+    var path = (window.location.pathname || '').toLowerCase();
+    if (/presentation\.html|404\.html/i.test(path) || document.documentElement.getAttribute('data-preserve-seo') === 'true') {
+      return null;
+    }
+    var m = path.match(/\/(biomeet|biotools|collaborators|curriculum|documents|events|register)\/?(?:index\.html)?$/i);
+    if (m && m[1]) return m[1];
+    return (window.location.hash || '#home').replace('#', '');
+  }
+
   // Init on DOM ready
   document.addEventListener('DOMContentLoaded', function () {
+    enforceOfficialFavicons();
     detectEnvironment();
-    var initialRoute = (window.location.hash || '#home').replace('#', '');
-    syncSeo(initialRoute);
+    var initialRoute = detectStandaloneRoute();
+    if (initialRoute) {
+      syncSeo(initialRoute);
+    }
   });
 
   window.SeoResponsiveEngine = {
     detectEnvironment: detectEnvironment,
+    enforceOfficialFavicons: enforceOfficialFavicons,
     getDeviceInfo: function () { return deviceInfo; },
     syncSeo: syncSeo,
     getCurrentRoute: function () { return currentRoute; },

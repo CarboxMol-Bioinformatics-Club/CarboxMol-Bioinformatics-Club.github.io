@@ -85,3 +85,15 @@
      - `date_az: "Tezliklə"`
      - `date_en: "Coming Soon"`
    - Never insert a placeholder ISO calendar date that was not authorized by the user.
+
+---
+
+## 6. Mandatory Official CarboxMol Bioinformatics Club Logo & Automatic Favicon Policy (`robots.txt`)
+
+1. **Single Authorized Logo Across Platform & Products:**
+   - The official, current **CarboxMol Bioinformatics Club** logo (`assets/images/carboxmol_bioclub_logo.png`) and its generated icons (`favicon-32x32.png`, `favicon-16x16.png`, `favicon.ico`, `apple-touch-icon.png`, `assets/icons/icon-192.png`, `assets/icons/icon-512.png`, `assets/images/carboxmol_favicon32.png`) **MUST** be used across the main website, all subpages, presentations, OpenGraph/Twitter tags, Schema.org metadata, fallback avatars, and **all club products** (`Carbox`, `CarboxMol`, `Studio Engine`, `VirtuLab`, `BioMeet`, `BioTools`, `OpenKBC`, and any future HTML/JS module).
+   - Retired legacy files (`favicon.svg`, `assets/favicon.svg`, `assets/images/carboxmol_logo.png`) are strictly forbidden and must never be referenced.
+2. **Automatic Site-Wide Favicon Enforcement:**
+   - Every HTML document created or updated by any AI or developer **MUST** include the official favicon `<link>` tags AND load `js/seo-responsive-engine.js` (`../js/seo-responsive-engine.js` in subdirectories), which executes `enforceOfficialFavicons()` automatically on load.
+3. **Real Verified Sources Policy:**
+   - All books, PDFs, and educational resources listed on `#resources` or in presentations must be verified, live-tested real sources (direct open-access PDFs / confirmed official links). Never list unverified or fabricated titles.

@@ -45,7 +45,7 @@ const MembersPortal = {
           avatarEl.src = member.photo;
           if (removeBtn) removeBtn.classList.remove("hidden");
         } else {
-          avatarEl.src = "favicon.svg";
+          avatarEl.src = "assets/images/carboxmol_bioclub_logo.png";
           if (removeBtn) removeBtn.classList.add("hidden");
         }
       }

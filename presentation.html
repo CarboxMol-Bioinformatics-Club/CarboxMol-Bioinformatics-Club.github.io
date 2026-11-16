@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="az" data-preserve-seo="true">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prezentasiya: Hesablama Struktur Biologiyası və CarboxMol</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="assets/images/carboxmol_bioclub_logo.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <script src="js/seo-responsive-engine.js" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -43,9 +50,7 @@
   <!-- Top Progress & Header Bar -->
   <header class="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-8 py-4 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 text-xs text-slate-400">
     <div class="flex items-center gap-3">
-      <div class="w-7 h-7 rounded-lg bg-teal-500/20 border border-teal-500/40 flex items-center justify-center text-teal-300 font-black">
-        🧬
-      </div>
+      <img src="assets/images/carboxmol_bioclub_logo.png" alt="CarboxMol Bioinformatika Klubu" class="w-8 h-8 rounded-lg object-cover ring-1 ring-teal-500/40 shadow" />
       <span class="font-bold text-white tracking-wide">CarboxMol Bioinformatika Klubu</span>
       <span class="hidden sm:inline px-2 py-0.5 rounded-full bg-slate-800 text-[10px] text-teal-300 border border-slate-700">Qərbi Kaspi Universiteti</span>
     </div>
@@ -428,15 +433,19 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
         <div class="glass-card p-6 rounded-2xl border-indigo-500/30 space-y-3">
           <div class="flex items-center gap-2 text-indigo-300 font-bold text-sm">
-            <span class="px-2 py-0.5 rounded bg-indigo-500/20 border border-indigo-500/40 text-[10px]">🇬🇧 EN</span> Qlobal Akademik Klassiklər
+            <span class="px-2 py-0.5 rounded bg-indigo-500/20 border border-indigo-500/40 text-[10px]">🇬🇧 EN</span> Qlobal Açıq Dərsliklər (Rəsmi PDF-lər)
           </div>
           <ul class="text-xs text-slate-300 space-y-2">
-            <li><strong>Bruce Alberts</strong> — <em>Molecular Biology of the Cell (7th Ed)</em></li>
-            <li><strong>David L. Nelson</strong> — <em>Lehninger Principles of Biochemistry (8th Ed)</em></li>
-            <li><strong>David W. Mount</strong> — <em>Bioinformatics: Sequence and Genome Analysis</em></li>
-            <li><strong>Jonathan Pevsner</strong> — <em>Bioinformatics and Functional Genomics</em></li>
-            <li><strong>Jenny Gu, P. Bourne</strong> — <em>Structural Bioinformatics (2nd Ed)</em></li>
+            <li><a href="https://batch.libretexts.org/print/Letter/Finished/bio-40877/Full.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-300 underline decoration-indigo-500/40"><strong>Manolis Kellis et al.</strong> — <em>Computational Biology (MIT, 563 s.)</em></a></li>
+            <li><a href="https://batch.libretexts.org/print/Letter/Finished/bio-40832/Full.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-300 underline decoration-indigo-500/40"><strong>Shawn T. O'Neil</strong> — <em>A Primer for Computational Biology (OSU, 201 s.)</em></a></li>
+            <li><a href="https://arxiv.org/pdf/1801.09442" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-300 underline decoration-indigo-500/40"><strong>K.A. Feenstra, S. Abeln</strong> — <em>Structural Bioinformatics (VU, Hub PDF)</em></a></li>
+            <li><a href="https://app.readthedocs.org/projects/a-little-book-of-r-for-bioinformatics/downloads/pdf/latest/" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-300 underline decoration-indigo-500/40"><strong>Avril Coghlan</strong> — <em>A Little Book of R for Bioinformatics (193 s.)</em></a></li>
+            <li><a href="https://batch.libretexts.org/print/Letter/Finished/bio-290/Full.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-300 underline decoration-indigo-500/40"><strong>Ross C. Hardison</strong> — <em>Working with Molecular Genetics (Penn State, 356 s.)</em></a></li>
+            <li><a href="https://batch.libretexts.org/print/Letter/Finished/bio-7800/Full.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-300 underline decoration-indigo-500/40"><strong>Kevin Ahern et al.</strong> — <em>Biochemistry Free For All (OSU, 506 s.)</em></a></li>
           </ul>
+          <p class="text-[11px] text-slate-400 pt-1">
+            MIT, OpenStax, Oregon State, Penn State və VU Amsterdam-ın pulsuz CC BY lisenziyalı birbaşa PDF dərslikləri istifadə olunur.
+          </p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl border-emerald-500/30 space-y-3">
