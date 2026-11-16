@@ -220,7 +220,10 @@
     "Yeni Kitab Təklif Et": "Suggest a Book",
     "Tələbələr və Tədqiqatçılar Üçün Açıq Akademik Baza": "Open Academic Repository for Students and Researchers",
     "WCU Tələbəsi Kimi Qoşul": "Join as WCU Student",
-    "Qərbi Kaspi Universiteti CarboxMol Bioinformatika Klubunu Rəsmi Təsdiq Etdi": "Western Caspian University Officially Accreditates CarboxMol Bioinformatics Club"
+    "Qərbi Kaspi Universiteti CarboxMol Bioinformatika Klubunu Rəsmi Təsdiq Etdi": "Western Caspian University Officially Accreditates CarboxMol Bioinformatics Club",
+    "Konfrans • Olacaq": "Conference • Upcoming",
+    "Slaydlar": "Slides",
+    "Tədbir": "Event"
   });
 
   function init() {

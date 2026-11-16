@@ -53,6 +53,19 @@ const INITIAL_DATA = {
 
 events: [
     {
+      id: "ev-techbrains-2026",
+      title: "TechBrains 2026: Hesablama Struktur Biologiyası və CarboxMol",
+      category: "Bio / Longevity • Konfrans",
+      date: "21–22 Noyabr 2026",
+      time: "11:00 - 16:00",
+      location: "Bakı • GOUP Tech Community",
+      badge: "Olacaq • Spiker 51/100",
+      description: "Azərbaycanda Tələbə Bioinformatika Ekosisteminin Yaradılması, zülalların 3D modelləşdirilməsi, kristalloqrafiya (Carbox & CarboxMol), Python və R mövzularında rəsmi məruzə olacaq.",
+      speaker: "Süleyman Hacızadə (CarboxMol Bioinformatika Klubunun Sədri & IMB Tədqiqatçısı)",
+      status: "upcoming",
+      poster: "assets/images/announcements/techbrains-2026-speaker.jpg"
+    },
+    {
       id: "ev-1",
       title: "Xüsusi Elmi Seminar: Bayes statistikası — Struktur biologiyaya tətbiqi",
       category: "Xüsusi Elmi Seminar",
@@ -2724,7 +2737,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.13.v49_ulviyya_approval_cloud_sync";
+const CURRENT_DATA_VERSION = "2026.11.16.v50_techbrains_2026_upcoming";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -2927,11 +2940,13 @@ function getClubData() {
           }
         });
       }
-      // Qərib Mürşüdov tədbirini qoru və Sədrin əlavə etdiyi xüsusi tədbirləri heç vaxt silmə!
+      // Qərib Mürşüdov tədbirini və TechBrains 2026 tədbirini qoru, Sədrin əlavə etdiyi xüsusi tədbirləri heç vaxt silmə!
       parsed.events = (parsed.events || []).filter(e => e && !["ev-2", "ev-3", "ev-4", "ev-5"].includes(e.id));
-      if (!parsed.events.some(e => e.id === "ev-1")) {
-        parsed.events.unshift(JSON.parse(JSON.stringify(INITIAL_DATA.events[0])));
-      }
+      INITIAL_DATA.events.forEach(defEv => {
+        if (!parsed.events.some(e => e.id === defEv.id)) {
+          parsed.events.unshift(JSON.parse(JSON.stringify(defEv)));
+        }
+      });
 
       // Mock dataları tam təmizlə
       purgeMockData(parsed);

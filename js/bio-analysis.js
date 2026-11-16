@@ -219,6 +219,22 @@
 
   var INITIAL_ANNOUNCEMENTS = [
     {
+      id: "ann_techbrains_2026",
+      category: "academic",
+      badge_az: "Konfrans • Olacaq",
+      badge_en: "Upcoming Talk",
+      title_az: "TechBrains 2026: «Hesablama Struktur Biologiyası və CarboxMol» Çıxışı Olacaq",
+      title_en: "TechBrains 2026: «Hesablama Struktur Biologiyası və CarboxMol» Talk",
+      date: "2026-11-21",
+      date_az: "21–22 Noyabr 2026",
+      date_en: "21–22 Nov 2026",
+      image: "assets/images/announcements/techbrains-2026-speaker.jpg",
+      imageFit: "contain",
+      posterBg: "bg-[#f3f5f8]",
+      content_az: "21–22 Noyabr 2026 (11:00–16:00, Bakı) tarixində GOUP Baku Tech Community tərəfindən keçiriləcək TechBrains 2026 konfransında (Bio / Longevity • Bioinformatics bölməsi, Spiker 51/100) Klub Sədri Süleyman Hacızadə «Hesablama Struktur Biologiyası və CarboxMol: Azərbaycanda Tələbə Bioinformatika Ekosisteminin Yaradılması» mövzusunda məruzə ilə çıxış edəcək.",
+      content_en: "On 21–22 November 2026 (11:00–16:00, Baku) at TechBrains 2026 by GOUP Baku Tech Community (Bio / Longevity · Bioinformatics track, Speaker 51/100), Club President Suleiman Hajizadeh will speak on «Hesablama Struktur Biologiyası və CarboxMol: Building Azerbaijan's Student Bioinformatics Ecosystem»."
+    },
+    {
       id: "ann_wcu_approval_2026",
       category: "academic",
       badge_az: "Rəsmi Təsdiq & Akkreditasiya",
@@ -399,21 +415,33 @@
         gridHtml += '  <div class="space-y-3">';
         
         if (ann.image) {
-          gridHtml += '    <div class="relative overflow-hidden rounded-xl border border-slate-800 aspect-video bg-slate-950">';
-          gridHtml += '      <img src="' + ann.image + '" alt="' + title + '" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />';
-          gridHtml += '    </div>';
+          var isContain = ann.imageFit === 'contain';
+          var imgBg = ann.posterBg || 'bg-slate-950';
+          var imgFitClass = isContain ? 'object-contain p-1' : 'object-cover';
+          gridHtml += '    <a href="' + ann.image + '" target="_blank" rel="noopener noreferrer" title="' + (lang === 'en' ? 'Click to view full poster' : 'Posteri tam ölçüdə açmaq üçün klikləyin') + '" class="block relative overflow-hidden rounded-xl border border-slate-800 aspect-video ' + imgBg + '">';
+          gridHtml += '      <img src="' + ann.image + '" alt="' + title + '" class="w-full h-full ' + imgFitClass + ' group-hover:scale-105 transition duration-500" />';
+          gridHtml += '    </a>';
         }
 
         gridHtml += '    <div class="flex items-center justify-between gap-2">';
-        gridHtml += '      <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30">' + badge + '</span>';
-        gridHtml += '      <span class="text-[11px] font-mono ' + (dateDisplay === 'Tezliklə' || dateDisplay === 'Coming Soon' ? 'text-teal-400 font-bold' : 'text-slate-400') + '">' + dateDisplay + '</span>';
+        gridHtml += '      <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 whitespace-nowrap">' + badge + '</span>';
+        gridHtml += '      <span class="text-[11px] font-mono whitespace-nowrap ' + (dateDisplay === 'Tezliklə' || dateDisplay === 'Coming Soon' ? 'text-teal-400 font-bold' : 'text-slate-400') + '">' + dateDisplay + '</span>';
         gridHtml += '    </div>';
         gridHtml += '    <h4 class="text-sm sm:text-base font-extrabold text-white group-hover:text-teal-300 transition leading-snug">' + title + '</h4>';
         gridHtml += '    <p class="text-xs text-slate-300 leading-relaxed line-clamp-3">' + content + '</p>';
         gridHtml += '  </div>';
 
         gridHtml += '  <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2 text-xs">';
-        if (ann.id === 'ann_wcu_approval_2026') {
+        if (ann.id === 'ann_techbrains_2026') {
+          gridHtml += '    <div class="flex items-center gap-1.5">';
+          gridHtml += '      <a href="presentation.html" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-teal-500 hover:from-indigo-500 hover:to-teal-400 text-white font-bold text-xs flex items-center gap-1.5 transition shadow-sm">';
+          gridHtml += '        <i class="fa-solid fa-microphone-lines text-xs"></i> <span>' + (lang === 'en' ? 'Slides' : 'Slaydlar') + '</span>';
+          gridHtml += '      </a>';
+          gridHtml += '      <button onclick="navigateTo(\'events\')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 border border-slate-700 font-bold text-xs flex items-center gap-1 transition">';
+          gridHtml += '        <i class="fa-solid fa-calendar-days text-xs"></i> <span>' + (lang === 'en' ? 'Event' : 'Tədbir') + '</span>';
+          gridHtml += '      </button>';
+          gridHtml += '    </div>';
+        } else if (ann.id === 'ann_wcu_approval_2026') {
           gridHtml += '    <button onclick="navigateTo(\'register\')" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs flex items-center gap-1.5 transition shadow-sm">';
           gridHtml += '      <img src="assets/images/wcu-logo.png" alt="WCU" class="w-3.5 h-3.5 object-contain" /> <span>' + (lang === 'en' ? 'Join as WCU Student' : 'WCU Tələbəsi Kimi Qoşul') + '</span>';
           gridHtml += '    </button>';

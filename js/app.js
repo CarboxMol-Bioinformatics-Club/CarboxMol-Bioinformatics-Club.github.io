@@ -3042,6 +3042,11 @@ function initEventsView() {
           </span>
         </div>
         <h4 class="text-base font-bold text-white hover:text-teal-300 transition">${ev.title}</h4>
+        ${ev.poster ? `
+        <a href="${ev.poster}" target="_blank" rel="noopener noreferrer" class="block relative overflow-hidden rounded-xl border border-slate-700 aspect-video bg-[#f3f5f8]">
+          <img src="${ev.poster}" alt="${ev.title}" class="w-full h-full object-contain p-1 hover:scale-105 transition duration-300" loading="lazy" />
+        </a>
+        ` : ''}
         <p class="text-xs text-slate-300 leading-relaxed">${ev.description}</p>
         
         ${ev.report ? `
