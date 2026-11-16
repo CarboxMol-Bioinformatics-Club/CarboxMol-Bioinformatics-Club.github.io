@@ -7,13 +7,13 @@ updated: 2026-10-27
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 📚 CarboxMol Bioinformatika Klubu: 1 İllik Akademik Tədris Sillabusu
+# CarboxMol Bioinformatika Klubu: 1 İllik Akademik Tədris Sillabusu
 
 CarboxMol Bioinformatika Klubunun tədris proqramı tələbələri və gənc tədqiqatçıları ilkin bioloji/proqramlaşdırma bazasından başlayaraq beynəlxalq səviyyədə elmi məqalə hazırlaya biləcək səviyyəyə çatdırmaq üçün 4 semestr və 12 modul üzrə dizayn edilmişdir.
 
 ---
 
-## 🗓️ Semestrlər və Modullar
+## Semestrlər və Modullar
 
 ### I Semestr: Bioinformatika Əsasları və Hesablama Alətləri
 * **Modul 1: Linux Terminalı və Bio-Hesablama Mühiti**
@@ -49,7 +49,7 @@ CarboxMol Bioinformatika Klubunun tədris proqramı tələbələri və gənc tə
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[biopython]]
 * [[deseq2_bioconductor]]
 * [[macromolecular_crystallography]]

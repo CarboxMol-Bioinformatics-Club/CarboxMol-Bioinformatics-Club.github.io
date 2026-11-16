@@ -7,13 +7,13 @@ updated: 2026-10-27
 sources: ["raw/garib_murshudov_seminar_oct2026.md", "raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 💎 Makromolekulyar Rentgen Kristalloqrafiyası
+# Makromolekulyar Rentgen Kristalloqrafiyası
 
 **Makromolekulyar rentgen kristalloqrafiyası (MX)** — zülalların, nuklein turşularının və onların komplekslərinin atomik rezolyusiyada 3D strukturunu təyin etmək üçün istifadə olunan əsas eksperimental və hesablama metodudur.
 
 ---
 
-## 🔄 Kristalloqrafik Boru Kəməri (Pipeline)
+## Kristalloqrafik Boru Kəməri (Pipeline)
 
 1. **Kristallaşma:** Təmizlənmiş makromolekulun nizamlı 3D kristal şəbəkəsinin əldə edilməsi.
 2. **Difraksiya Ölçülməsi:** Sinxrotron və ya rentgen mənbəyindən istifadə edərək difraksiya ləkələrinin (Braqq əksolunmalarının) qeydə alınması.
@@ -23,7 +23,7 @@ sources: ["raw/garib_murshudov_seminar_oct2026.md", "raw/club_curriculum_and_ann
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[bayesian_statistics_in_structural_biology]]
 * [[garib_murshudov]]
 * [[catalytic_carboxyl_dyads]]

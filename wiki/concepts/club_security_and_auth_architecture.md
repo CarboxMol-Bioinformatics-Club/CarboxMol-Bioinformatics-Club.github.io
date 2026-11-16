@@ -7,13 +7,13 @@ updated: 2026-10-27
 sources: ["raw/club_bylaws_and_constitution.md"]
 ---
 
-# 🛡️ Təhlükəsizlik və Avtorizasiya Arxitekturası: CarboxMol Portalı
+# Təhlükəsizlik və Avtorizasiya Arxitekturası: CarboxMol Portalı
 
 Klub portalı açıq internet üzərində yerləşdiyindən kiberhücumlara, botlara, zərərli skriptlərə (XSS) və fırıldaqçı qeydiyyatlara qarşı çoxpilləli müdafiə sistemi (`window.ClubSecurity`) ilə qorunur.
 
 ---
 
-## 🔒 Təhlükəsizlik Mexanizmləri
+## Təhlükəsizlik Mexanizmləri
 
 1. **Anti-Bot Honeypot və Dwell-Time Nəzarəti:**
    * Formalarda istifadəçiyə görünməyən gizli xanalar (`tRegHoneypot`, `appHoneypot`) yerləşdirilir. Botlar formanı avtomatik doldurarkən bu xanaları doldurur və dərhal bloklanır.
@@ -31,7 +31,7 @@ Klub portalı açıq internet üzərində yerləşdiyindən kiberhücumlara, bot
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[system_architecture]]
 * [[pwa_offline_architecture]]
 * [[suleyman_hajizadeh]]

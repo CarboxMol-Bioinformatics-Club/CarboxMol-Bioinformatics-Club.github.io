@@ -7,20 +7,20 @@ updated: 2026-10-28
 sources: ["raw/club_bylaws_and_constitution.md", "raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 🧬 CarboxMol Bioinformatika Klubu (CarboxMol Bioinformatics Club)
+# CarboxMol Bioinformatika Klubu (CarboxMol Bioinformatics Club)
 
 **CarboxMol Bioinformatika Klubu** — [[western_caspian_university|Qərbi Kaspi Universiteti (WCU)]] nəzdində fəaliyyət göstərən, hesablama biologiyası, struktur kristalloqrafiya, genomika, transkriptomika və süni intellekt sahələrini birləşdirən aparıcı akademik və tədqiqat tələbə birliyidir.
 
 * **Təsisçi və Sədr:** [[suleyman_hajizadeh|Süleyman Mehdi oğlu Hacızadə]]
 * **Ev Sahibi Qurum:** [[western_caspian_university|Qərbi Kaspi Universiteti (WCU)]], Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi
 * **Rəsmi Veb Platforma:** [https://carboxmol-bioinformatics-club.github.io](https://carboxmol-bioinformatics-club.github.io)
-* **Əsas Repozitoriya:** [`CarboxMol-Bioinformatics-Club / CarboxMol-Bioinformatics-Club`](https://github.com/CarboxMol-Bioinformatics-Club/CarboxMol-Bioinformatics-Club) (🔒 Private Codebase)
+* **Əsas Repozitoriya:** [`CarboxMol-Bioinformatics-Club / CarboxMol-Bioinformatics-Club`](https://github.com/CarboxMol-Bioinformatics-Club/CarboxMol-Bioinformatics-Club) ( Private Codebase)
 * **Məlumat İdarəçiliyi:** Tədqiqat dataları və əsas repozitoriya məxfidir (Private) — giriş icazəsi (Access) üçün müraciət: `suleyman.hacizade.232bioing@wcu.edu.az`
 * **Əlaqə:** `suleyman.hacizade.232bioing@wcu.edu.az` | `+994 70 550 69 07`
 
 ---
 
-## 🎯 Missiya və Əsas Məqsədlər
+## Missiya və Əsas Məqsədlər
 
 1. **Fənlərarası Körpü:** Biologiya və tibb tələbələrinə proqramlaşdırma (Python, R, Linux, Git), kompüter elmləri tələbələrinə isə molekulyar biologiya, genetika və kristalloqrafiya qanunauyğunluqlarını öyrətmək.
 2. **Praktiki Tədqiqat Bacarığı:** Yalnız nəzəriyyə ilə kifayətlənməyib, tələbələri real bioloji böyük verilənlər (NGS, RNA-seq, PDB, AlphaFold) üzərində işlətmək.
@@ -29,7 +29,7 @@ sources: ["raw/club_bylaws_and_constitution.md", "raw/club_curriculum_and_annual
 
 ---
 
-## 🏛️ İdarə Heyəti və Təşkilati Quruluş
+## İdarə Heyəti və Təşkilati Quruluş
 
 ```mermaid
 flowchart TD
@@ -52,7 +52,7 @@ flowchart TD
 
 ---
 
-## 💻 Rəqəmsal Ekosistem və Platforma Modulları
+## Rəqəmsal Ekosistem və Platforma Modulları
 
 * **[[carboxmol_studio|CarboxMol 3D Studiyası]]:** WebGL və Mol* əsasında interaktiv kristalloqrafik vizuallaşdırma mühərriki.
 * **[[biomeet_platform|CarboxMol BioMeet]]:** Brauzerdaxili canlı mühazirə zalı və video-qeydiyyatçı.
@@ -62,7 +62,7 @@ flowchart TD
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[suleyman_hajizadeh]]
 * [[western_caspian_university]]
 * [[garib_murshudov]]

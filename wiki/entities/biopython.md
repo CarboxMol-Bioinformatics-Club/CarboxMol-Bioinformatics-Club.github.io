@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 🐍 Biopython: Genom və Molekulyar Ardıcıllıq Analiz Aləti
+# Biopython: Genom və Molekulyar Ardıcıllıq Analiz Aləti
 
 **Biopython** — bioinformatika və hesablama biologiyası üçün Python proqramlaşdırma dilində yazılmış ən nüfuzlu açıq mənbəli kitabxanalar toplusudur. [[carboxmol_bioinformatics_club|CarboxMol Bioinformatika Klubu]] tədris sillabusunun II modulunun əsas mühərrikidir.
 
@@ -20,7 +20,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 💻 Klub Sillabusundan Nümunə Kod:
+## Klub Sillabusundan Nümunə Kod:
 
 ```python
 from Bio.Seq import Seq
@@ -38,7 +38,7 @@ print(f"GC Faizi: {100 * (dna_seq.count('G') + dna_seq.count('C')) / len(dna_seq
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[seqanalyzer_tool]]
 * [[deseq2_bioconductor]]
 * [[annual_syllabus_breakdown]]

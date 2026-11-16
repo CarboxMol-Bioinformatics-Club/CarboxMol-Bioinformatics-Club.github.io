@@ -7,13 +7,13 @@ updated: 2026-10-28
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 🧬 Allosterik Kinaz İnhibisiyası (Allosteric Kinase Inhibition)
+# Allosterik Kinaz İnhibisiyası (Allosteric Kinase Inhibition)
 
 **Allosterik kinaz inhibisiyası** — dərman molekulunun fermentin ATP-bağlayan aktiv mərkəzinə deyil, ondan kənarda yerləşən allosterik tənzimləyici cibə bağlanaraq zülalın fəaliyyətini qeyri-aktiv konformasiyada "dondurması" mexanizmidir.
 
 ---
 
-## ⚡ Niyə Ənənəvi ATP-Rəqabətli İnhibitorlardan Üstündür?
+## Niyə Ənənəvi ATP-Rəqabətli İnhibitorlardan Üstündür?
 
 1. **Kinome Selektivliyi (Seçicilik):**
    * İnsan genomunda **518 fərqli zülal kinazı** (kinom) mövcuddur. Onların hamısı ATP istifadə etdiyi üçün ATP-bağlayan cibləri (məsələn, Hinge regionu) bir-birinə çox oxşardır.
@@ -25,7 +25,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 🔬 AKT1 (PDB 4GV1) Nümunəsində Allosterik Mexanizm
+## AKT1 (PDB 4GV1) Nümunəsində Allosterik Mexanizm
 
 [[pdb_4gv1_akt1|İnsan AKT1 Kinazı]]nda allosterik inhibitor (`0XZ`):
 * N-terminal **PH (Pleckstrin Homology) domeni** ilə C-terminal **Kinaz katalitik domeni** arasındakı hidrofob interfeysə oturur.
@@ -34,7 +34,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[pdb_4gv1_akt1]]
 * [[catalytic_carboxyl_dyads]]
 * [[carboxmol_studio]]

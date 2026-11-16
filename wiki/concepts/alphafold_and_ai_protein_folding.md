@@ -7,7 +7,7 @@ updated: 2026-10-28
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 🤖 AlphaFold və Süni İntellektlə Zülal Qatlanması
+# AlphaFold və Süni İntellektlə Zülal Qatlanması
 
 **Zülal qatlanması problemi (Protein Folding Problem)** — 50 ildən artıq müddətdə biologiyanın ən böyük tapmacalarından biri olmuşdur: *Birölçülü amin turşusu ardıcıllığından onun fəzada üçölçülü 3D funksional strukturunu necə təyin etmək olar?*
 
@@ -15,7 +15,7 @@ Google DeepMind tərəfindən yaradılmış **AlphaFold (AF2 / AF3)** və Meta A
 
 ---
 
-## 🧠 AlphaFold-un İşləmə Mexanizmi
+## AlphaFold-un İşləmə Mexanizmi
 
 ```mermaid
 flowchart LR
@@ -33,7 +33,7 @@ flowchart LR
 
 ---
 
-## 📊 İki Əsas Qiymətləndirmə Metriki
+## İki Əsas Qiymətləndirmə Metriki
 
 * **pLDDT (Predicted Local Distance Difference Test):** $0 - 100$ şkalası.
   * $> 90$ (Tünd mavi): Fövqəladə yüksək etibarlılıq (yan zəncirlər dəqiqdir).
@@ -44,7 +44,7 @@ flowchart LR
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[macromolecular_crystallography]]
 * [[carboxmol_studio]]
 * [[annual_syllabus_breakdown]]

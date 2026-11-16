@@ -1,4 +1,4 @@
-# 📜 CarboxMol Bioinformatics Club — Wiki Fəaliyyət Jurnalı (Log)
+# CarboxMol Bioinformatics Club — Wiki Fəaliyyət Jurnalı (Log)
 
 > Bu sənəd viki üzərində icra olunan bütün əməliyyatların (ingest, query/synthesis, lint) append-only xronoloji jurnalıdır. Format unix alətləri ilə asan axtarış (`grep "^## \[" log.md`) üçün standartlaşdırılmışdır.
 

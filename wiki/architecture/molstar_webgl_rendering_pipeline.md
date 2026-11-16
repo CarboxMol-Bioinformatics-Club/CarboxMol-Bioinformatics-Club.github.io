@@ -7,13 +7,13 @@ updated: 2026-10-28
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 🎮 Mol* WebGL 3D Qrafika və Render Boru Kəməri
+# Mol* WebGL 3D Qrafika və Render Boru Kəməri
 
 [[carboxmol_studio|CarboxMol 3D Studiyası]]nın vizual nüvəsi müasir molekulyar qrafikanın qlobal standartı olan **Mol\*** (*MolStar*) texnologiyası üzərində qurulmuşdur. Bu sənəd atomik koordinatların ekranda yüksək dəqiqlikli 3D təsvirə çevrilməsinin texniki mühəndisliyini izah edir.
 
 ---
 
-## 🔄 Qrafik Boru Kəmərinin Mərhələləri
+## Qrafik Boru Kəmərinin Mərhələləri
 
 ```mermaid
 flowchart LR
@@ -45,7 +45,7 @@ flowchart LR
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[carboxmol_studio]]
 * [[system_architecture]]
 * [[macromolecular_crystallography]]

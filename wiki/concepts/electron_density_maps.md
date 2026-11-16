@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 ---
 
-# 🌐 Elektron Sıxlığı Xəritələri: $2F_o - F_c$ və $F_o - F_c$
+# Elektron Sıxlığı Xəritələri: $2F_o - F_c$ və $F_o - F_c$
 
 Rentgen kristalloqrafiyasında rentgen şüaları atom nüvələri tərəfindən deyil, atomları əhatə edən elektron buludları tərəfindən səpilir. Difraksiya məlumatlarının tərs Furye çevrilməsi (*inverse Fourier transform*) birbaşa hüceyrədaxili elektron sıxlığını $\rho(x, y, z)$ verir:
 
@@ -15,7 +15,7 @@ $$\rho(x, y, z) = \frac{1}{V} \sum_{hkl} |F(hkl)| \exp[-2\pi i (hx + ky + lz) + 
 
 ---
 
-## 🔬 İki Əsas Xəritə Növü
+## İki Əsas Xəritə Növü
 
 ### 1. $2F_o - F_c$ Xəritəsi (Əsas Struktur Xəritəsi):
 * **Riyazi Quruluş:** Təcrübi amplitudaların iki mislindən modelin hesablanmış amplitudasının çıxılması ($2|F_o| - |F_c|$) ilə hesablanır.
@@ -30,7 +30,7 @@ $$\rho(x, y, z) = \frac{1}{V} \sum_{hkl} |F(hkl)| \exp[-2\pi i (hx + ky + lz) + 
 
 ---
 
-## 📊 Dəqiqlik Metrikaları: $R_{\text{work}}$ və $R_{\text{free}}$
+## Dəqiqlik Metrikaları: $R_{\text{work}}$ və $R_{\text{free}}$
 
 $$R = \frac{\sum ||F_o| - |F_c||}{\sum |F_o|}$$
 
@@ -39,7 +39,7 @@ $$R = \frac{\sum ||F_o| - |F_c||}{\sum |F_o|}$$
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[macromolecular_crystallography]]
 * [[bayesian_statistics_in_structural_biology]]
 * [[refmac5]]

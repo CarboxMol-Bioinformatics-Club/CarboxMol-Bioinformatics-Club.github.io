@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 ---
 
-# 📐 Bayes Statistikası: Struktur Biologiyaya Tətbiqi
+# Bayes Statistikası: Struktur Biologiyaya Tətbiqi
 
 **Bayes statistikası** — rentgen kristalloqrafiyası və Cryo-EM-də makromolekulların 3D atomik modellərinin həlli zamanı qeyri-müəyyənliklərin ehtimallar nəzəriyyəsi ilə riyazi idarə olunması metodudur.
 
@@ -19,7 +19,7 @@ $$P(\text{Model} \mid \text{Məlumat}) = \frac{P(\text{Məlumat} \mid \text{Mode
 
 ---
 
-## 🔬 Niyə Klassik Xətti Metodlardan Üstündür?
+## Niyə Klassik Xətti Metodlardan Üstündür?
 
 1. **Faza Probleminin (Phase Problem) Həlli:** Rentgen kristalloqrafiyasında təcrübə zamanı yalnız intensivliklər (amplitudalar) ölçülür, fazalar isə itir. Bayes yanaşması itirilmiş faza məlumatının ehtimal paylanmasını qurur.
 2. **Həddindən Artıq Uyğunlaşmanın (Overfitting) Qarşısının Alınması:** Zəif rezolyusiyalı məlumatlarda atomların sərbəst hərəkət edib səs-küyə (noise) uyğunlaşmasını stereokimyəvi Prior vasitəsilə məhdudlaşdırır.
@@ -27,7 +27,7 @@ $$P(\text{Model} \mid \text{Məlumat}) = \frac{P(\text{Məlumat} \mid \text{Mode
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[garib_murshudov]]
 * [[macromolecular_crystallography]]
 * [[catalytic_carboxyl_dyads]]

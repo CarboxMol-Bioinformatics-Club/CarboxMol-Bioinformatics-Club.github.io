@@ -7,13 +7,13 @@ updated: 2026-10-27
 sources: ["raw/garib_murshudov_seminar_oct2026.md", "raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 💡 Sintez: Bayes Refinement Prinsiplərinin CarboxMol Katalitik Dyad Modelləşdirməsinə Tətbiqi
+# Sintez: Bayes Refinement Prinsiplərinin CarboxMol Katalitik Dyad Modelləşdirməsinə Tətbiqi
 
 > **Sintez Məqsədi:** [[garib_murshudov|Prof. Qərib Mürşüdov]]un [[bayesian_statistics_in_structural_biology|Bayes statistikası və Maximum Likelihood refinement]] yanaşması ilə [[carboxmol_studio|CarboxMol]] tədqiqat layihəsinin əsasını təşkil edən [[catalytic_carboxyl_dyads|katalitik karboksil dyadlarının]] dəqiq protonlaşma analizi arasındakı metodoloji körpünü formalaşdırmaq.
 
 ---
 
-## 🔬 Problem: Kristalloqrafiyada Görünməyən Proton
+## Problem: Kristalloqrafiyada Görünməyən Proton
 
 Makromolekulyar rentgen kristalloqrafiyasında $1.5\text{ \AA}$ rezolyusiyadan zəif məlumatlarda hidrogen atomunun tək elektronu rentgen şüalarını kifayət qədər səpmir. Nəticədə fermentlərin aktiv mərkəzindəki Aspartat/Qlutamat dyadında:
 * Hansı oksigen atomunun proton daşıdığı ($-\text{C-O-H}$),
@@ -21,7 +21,7 @@ Makromolekulyar rentgen kristalloqrafiyasında $1.5\text{ \AA}$ rezolyusiyadan z
 
 ---
 
-## 📐 Bayes Həlli: Prior və Likelihood Sintezi
+## Bayes Həlli: Prior və Likelihood Sintezi
 
 [[garib_murshudov|Prof. Qərib Mürşüdov]]un təqdim etdiyi Bayes formulunu bu problemə tətbiq etdikdə:
 
@@ -35,13 +35,13 @@ Makromolekulyar rentgen kristalloqrafiyasında $1.5\text{ \AA}$ rezolyusiyadan z
 
 ---
 
-## 🚀 CarboxMol Klubu Tələbələri üçün Praktiki Nəticə
+## CarboxMol Klubu Tələbələri üçün Praktiki Nəticə
 
 Bu sintez göstərir ki, CarboxMol layihəsi yalnız vizual 3D alət deyil, eyni zamanda [[mrc_lmb_cambridge|Kembric MRC LMB]] məktəbinin statistik prinsiplərinə əsaslanan dərin elmi tədqiqat boru kəməridir.
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[garib_murshudov]]
 * [[bayesian_statistics_in_structural_biology]]
 * [[catalytic_carboxyl_dyads]]

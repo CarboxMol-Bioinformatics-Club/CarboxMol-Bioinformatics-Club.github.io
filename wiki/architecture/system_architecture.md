@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 🏗️ CarboxMol Platformasının Tam Sistem Arxitekturası
+# CarboxMol Platformasının Tam Sistem Arxitekturası
 
 CarboxMol Bioinformatika Klubu platforması müasir, serverless, oflayn işləyən (*local-first*) və yüksək dərəcədə optimallaşdırılmış SPA (Single Page Application) mühəndisliyinə əsaslanır.
 
@@ -44,7 +44,7 @@ flowchart TD
 
 ---
 
-## 🧩 Əsas Arxitektura Modulları
+## Əsas Arxitektura Modulları
 
 1. **İstifadəçi İnterfeysi (UI & Design System):**
    * **Stil:** Müasir elmi qaranlıq şüşə (*dark glassmorphic*) estetikası.
@@ -58,7 +58,7 @@ flowchart TD
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[pwa_offline_architecture]]
 * [[club_security_and_auth_architecture]]
 * [[carboxmol_studio]]

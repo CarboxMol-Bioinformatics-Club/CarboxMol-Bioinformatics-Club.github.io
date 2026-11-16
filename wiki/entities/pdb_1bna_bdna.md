@@ -7,19 +7,19 @@ updated: 2026-10-27
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 🧬 PDB 1BNA: Drew-Dickerson B-DNT Dodekameri
+# PDB 1BNA: Drew-Dickerson B-DNT Dodekameri
 
 **PDB ID:** `1BNA`  
 **Kəşf Edənlər:** H. R. Drew, R. M. Wing, T. Takano, C. Broka, S. Tanaka, K. Itakura, R. E. Dickerson (1981)  
 **Metod:** Rentgen Kristalloqrafiyası (*X-ray Diffraction*)  
 **Rezolyusiya:** $1.90\text{ \AA}$  
 **Orqanizm:** Sintetik nuklein turşusu ardıcıllığı  
-**Nukleotid Ardıcıllığı (5' ➔ 3'):** `d(C-P-G-P-C-P-G-P-A-P-A-P-T-P-T-P-C-P-G-P-C-P-G)`  
+**Nukleotid Ardıcıllığı (5'  3'):** `d(C-P-G-P-C-P-G-P-A-P-A-P-T-P-T-P-C-P-G-P-C-P-G)`  
 **Tam İkili Zəncir:** `5'-CGCGAATTCGCG-3'` / `3'-GCGCTTAAGCGC-5'`
 
 ---
 
-## 🔬 Struktur Biologiyasındakı İnqilabi Rolu
+## Struktur Biologiyasındakı İnqilabi Rolu
 
 1. **İlk Tək-Kristal B-DNT Strukturu:**
    * Watson və Crick (1953) DNT modelini lif difraksiyası (*fiber diffraction*) əsasında irəli sürmüşdülər. Lakin atomik rezolyusiyada tək-kristal B-formasının ilk sübutu məhz 1981-ci ildə Dickerson qrupu tərəfindən `1BNA` ilə verildi.
@@ -32,7 +32,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 💻 CarboxMol Studiyasında Vizuallaşdırma Xüsusiyyətləri
+## CarboxMol Studiyasında Vizuallaşdırma Xüsusiyyətləri
 
 * **Nuklein Turşusu Rənglənməsi:** Adenin (Yaşıl/Sian), Timin (Qırmızı), Quanin (Sarı), Sitozin (Mavi).
 * **Fosfodiester Skeleti:** Şəkər-fosfat sütunu parlaq boru (*tube / cartoon*) formatında göstərilir.
@@ -40,7 +40,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[carboxmol_studio]]
 * [[macromolecular_crystallography]]
 * [[catalytic_carboxyl_dyads]]

@@ -7,13 +7,13 @@ updated: 2026-10-28
 sources: ["raw/club_bylaws_and_constitution.md", "raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 📖 CarboxMol Journal Club: Elmi Müzakirə Çərçivəsi
+# CarboxMol Journal Club: Elmi Müzakirə Çərçivəsi
 
 **CarboxMol Journal Club** — klub üzvlərinin hər həftə beynəlxalq nüfuzlu jurnallarda (*Nature, Science, Cell, Nucleic Acids Research, Bioinformatics, Structure*) yenicə dərc edilmiş qabaqcıl məqalələri oxuyub, təhlil edib, [[biomeet_platform|CarboxMol BioMeet]] zalında müzakirə etdiyi mütəmadi elmi seminardır.
 
 ---
 
-## 🎯 Əsas Hədəf: Tənqidi Elmi Düşüncə
+## Əsas Hədəf: Tənqidi Elmi Düşüncə
 
 Tələbə yalnız müəllifin nəticələrini təkrarlamamalı, aşağıdakı sualları tənqidi şəkildə araşdırmalıdır:
 1. **Problemin Qoyuluşu:** Müəlliflər hansı həll olunmamış bioloji suala cavab axtarırlar?
@@ -23,7 +23,7 @@ Tələbə yalnız müəllifin nəticələrini təkrarlamamalı, aşağıdakı su
 
 ---
 
-## 📋 20 Dəqiqəlik Standart Təqdimat Strukturu
+## 20 Dəqiqəlik Standart Təqdimat Strukturu
 
 | Vaxt | Hissə | Məzmun |
 | :--- | :--- | :--- |
@@ -36,7 +36,7 @@ Tələbə yalnız müəllifin nəticələrini təkrarlamamalı, aşağıdakı su
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[annual_syllabus_breakdown]]
 * [[biomeet_platform]]
 * [[carboxmol_bioinformatics_club]]

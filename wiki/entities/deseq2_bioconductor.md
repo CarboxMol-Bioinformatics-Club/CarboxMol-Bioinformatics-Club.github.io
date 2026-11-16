@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 📊 DESeq2 & Bioconductor: R ilə Diferensial Gen Ekspressiyası
+# DESeq2 & Bioconductor: R ilə Diferensial Gen Ekspressiyası
 
 **DESeq2** — R proqramlaşdırma dili və **Bioconductor** ekosistemi daxilində RNA-seq oxunuş sayları (*read count data*) əsasında genlərin iki və ya daha çox qrup arasında (məsələn, Xərçəng toxuması vs Sağlam toxuma) diferensial ekspressiyasını müəyyən edən qlobal standart paketdir.
 
@@ -16,7 +16,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 🔬 Statistik Modeli: Mənfi Binomial Paylanma (Negative Binomial)
+## Statistik Modeli: Mənfi Binomial Paylanma (Negative Binomial)
 
 RNA-seq məlumatlarında gen oxunuş sayları Poisson paylanmasına uyğun gəlmir, çünki bioloji replikatlar arasında variasiya (dispersion) orta qiymətdən çox yüksək olur (*overdispersion*):
 
@@ -33,7 +33,7 @@ $$K_{ij} \sim \text{NB}(\mu_{ij}, \alpha_i)$$
 
 ---
 
-## 💻 R Kod Nümunəsi:
+## R Kod Nümunəsi:
 
 ```R
 library(DESeq2)
@@ -51,7 +51,7 @@ resSig <- subset(res, padj < 0.05 & abs(log2FoldChange) > 1)
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[rna_seq_differential_expression]]
 * [[biopython]]
 * [[annual_syllabus_breakdown]]

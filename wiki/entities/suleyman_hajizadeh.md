@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/club_bylaws_and_constitution.md", "raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 👤 Süleyman Mehdi oğlu Hacızadə
+# Süleyman Mehdi oğlu Hacızadə
 
 **Süleyman Hacızadə** — [[carboxmol_bioinformatics_club|CarboxMol Bioinformatika Klubu]]nun təsisçisi və sədri, hesablama struktur biologiyası tədqiqatçısıdır.
 
@@ -22,7 +22,7 @@ sources: ["raw/club_bylaws_and_constitution.md", "raw/club_curriculum_and_annual
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[carboxmol_bioinformatics_club]]
 * [[western_caspian_university]]
 * [[carboxmol_studio]]

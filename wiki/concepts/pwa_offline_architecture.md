@@ -7,13 +7,13 @@ updated: 2026-10-27
 sources: ["raw/club_bylaws_and_constitution.md"]
 ---
 
-# 📱 PWA və Oflayn Arxitektura: CarboxMol Portalının Mühəndisliyi
+# PWA və Oflayn Arxitektura: CarboxMol Portalının Mühəndisliyi
 
 [[carboxmol_bioinformatics_club|CarboxMol Bioinformatika Klubu]] portalı standart bir veb-sayt deyil, tam hüquqlu **Progressive Web App (PWA)** arxitekturasıdır. Bu o deməkdir ki, istifadəçi internet bağlantısı olmadığı və ya universitet laboratoriyasında şəbəkə kəsildiyi halda belə portaldan tam gücü ilə istifadə edə bilər.
 
 ---
 
-## 🏗️ Əsas Texnoloji Komponentlər
+## Əsas Texnoloji Komponentlər
 
 1. **Service Worker (`sw.js`):**
    * Brauzer arxa planında işləyən xüsusi proqram skriptidir. Şəbəkə sorğularını (*fetch events*) tutur və qabaqcadan keşlənmiş resurslarla cavablayır.
@@ -27,7 +27,7 @@ sources: ["raw/club_bylaws_and_constitution.md"]
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[system_architecture]]
 * [[club_security_and_auth_architecture]]
 * [[carboxmol_studio]]

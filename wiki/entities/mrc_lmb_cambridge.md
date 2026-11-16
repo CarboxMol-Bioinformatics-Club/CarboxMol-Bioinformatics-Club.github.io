@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 ---
 
-# 🏛️ MRC Laboratory of Molecular Biology (LMB)
+# MRC Laboratory of Molecular Biology (LMB)
 
 **Medical Research Council Laboratory of Molecular Biology (MRC LMB)** — Böyük Britaniyanın Kembric şəhərində yerləşən, molekulyar biologiyanın və struktur biologiyasının beşiyi sayılan dünya səviyyəli elmi-tədqiqat mərkəzidir.
 
@@ -18,7 +18,7 @@ sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[garib_murshudov]]
 * [[bayesian_statistics_in_structural_biology]]
 * [[macromolecular_crystallography]]

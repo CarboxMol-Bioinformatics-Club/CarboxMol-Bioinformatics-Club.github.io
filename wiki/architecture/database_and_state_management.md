@@ -7,13 +7,13 @@ updated: 2026-10-28
 sources: ["raw/club_bylaws_and_constitution.md"]
 ---
 
-# 🗄️ Məlumat Bazası və Vəziyyətin İdarəsi (State Management)
+# Məlumat Bazası və Vəziyyətin İdarəsi (State Management)
 
 [[carboxmol_bioinformatics_club|CarboxMol Bioinformatika Klubu]] portalı **Local-First (Birinci Yerli Yaddaş)** fəlsəfəsi ilə qurulmuşdur. Bu o deməkdir ki, istifadəçinin brauzeri sadəcə passiv bir "vizual pəncərə" deyil, tam hüquqlu müstəqil verilənlər bazası düyünüdür.
 
 ---
 
-## 🏗️ Üçqatlı Saxlama Qatı (Storage Tiers)
+## Üçqatlı Saxlama Qatı (Storage Tiers)
 
 ```mermaid
 flowchart TD
@@ -43,7 +43,7 @@ flowchart TD
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[system_architecture]]
 * [[pwa_offline_architecture]]
 * [[club_security_and_auth_architecture]]

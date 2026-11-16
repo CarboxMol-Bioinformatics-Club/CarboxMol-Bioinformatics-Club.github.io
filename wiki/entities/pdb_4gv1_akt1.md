@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 🧬 PDB 4GV1: İnsan AKT1 Kinazı və Allosterik İnhibitor Kompleksi
+# PDB 4GV1: İnsan AKT1 Kinazı və Allosterik İnhibitor Kompleksi
 
 **PDB ID:** `4GV1`  
 **Tədqiqatçılar:** M. A. Ashwell et al. (2012)  
@@ -18,7 +18,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 🔬 Siqnal Ötürülməsi və Onkologiyadakı Mərkəzi Rolu
+## Siqnal Ötürülməsi və Onkologiyadakı Mərkəzi Rolu
 
 1. **PI3K / AKT / mTOR Şəbəkəsinin Mərkəzi Qovşağı:**
    * AKT1 hüceyrənin sağ qalması, böyüməsi, proliferasiyası və qlükoza metabolizminin əsas tənzimləyicisidir.
@@ -30,7 +30,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 💻 CarboxMol Studiyasında Vizuallaşdırma Detalları
+## CarboxMol Studiyasında Vizuallaşdırma Detalları
 
 * **Kinaz Nüvəsi:** İki paylı arxitektura: N-terminal payı ($\beta$-vərəqlər) və C-terminal payı ($\alpha$-helikslər).
 * **Fosfotransferaza Katalitik İlməsi:** `Asp274` və `Lys179` kimi əsas katalitik qalıqlar və maqnezium koordinasiyası.
@@ -38,7 +38,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[carboxmol_studio]]
 * [[macromolecular_crystallography]]
 * [[catalytic_carboxyl_dyads]]

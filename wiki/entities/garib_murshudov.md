@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 ---
 
-# 👤 Prof. Qərib Mürşüdov (Garib Murshudov)
+# Prof. Qərib Mürşüdov (Garib Murshudov)
 
 **Prof. Qərib Mürşüdov** — dünya şöhrətli azərbaycanlı alim, hesablama struktur biologiyası və kristalloqrafik statistika sahəsində qlobal liderlərdən biridir.
 
@@ -18,7 +18,7 @@ sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 
 ---
 
-## 🔬 Elmi İrsi və Əsas Töhfələri
+## Elmi İrsi və Əsas Töhfələri
 
 1. **REFMAC5 Mühərriki:**
    * Makromolekulyar rentgen kristalloqrafiyası və Cryo-EM-də atomik modellərin dəqiqləşdirilməsi (*structure refinement*) üçün qlobal standart proqram təminatının yaradıcısıdır (CCP4 paketi tərkibində).
@@ -29,7 +29,7 @@ sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[mrc_lmb_cambridge]]
 * [[western_caspian_university]]
 * [[bayesian_statistics_in_structural_biology]]

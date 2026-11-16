@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 ---
 
-# 📝 Xülasə: Prof. Qərib Mürşüdovun Qərbi Kaspi Universiteti Seminarı
+# Xülasə: Prof. Qərib Mürşüdovun Qərbi Kaspi Universiteti Seminarı
 
 * **Tarix:** 20 Oktyabr 2026, 10:00 – 13:00
 * **Məkan:** [[western_caspian_university|Qərbi Kaspi Universiteti]], Təbiət Korpusu, Akt Zalı
@@ -16,7 +16,7 @@ sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 
 ---
 
-## 💡 Seminarın Əsas Elmi Çıxarışları
+## Seminarın Əsas Elmi Çıxarışları
 
 1. **Struktur Biologiyasında Qeyri-müəyyənliyin İdarəsi:**
    * Təcrübi difraksiya məlumatı heç vaxt mükəmməl olmur; xətalar və çatışmayan fazalar qaçılmazdır.
@@ -29,7 +29,7 @@ sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[garib_murshudov]]
 * [[bayesian_statistics_in_structural_biology]]
 * [[mrc_lmb_cambridge]]

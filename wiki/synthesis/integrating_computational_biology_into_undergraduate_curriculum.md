@@ -7,20 +7,20 @@ updated: 2026-10-28
 sources: ["raw/club_curriculum_and_annual_plan.md", "raw/club_bylaws_and_constitution.md"]
 ---
 
-# 💡 Sintez: Hesablama Biologiyasının Bakalavr Təhsilinə İnteqrasiya Metodologiyası
+# Sintez: Hesablama Biologiyasının Bakalavr Təhsilinə İnteqrasiya Metodologiyası
 
 > **Məqsəd:** [[western_caspian_university|Qərbi Kaspi Universiteti]] və [[carboxmol_bioinformatics_club|CarboxMol Bioinformatika Klubu]] təcrübəsi əsasında, biologiya və İT ixtisası tələbələrinin sıfır nöqtəsindən başlayaraq 1 il ərzində beynəlxalq səviyyəli bioinformatika tədqiqatçısına çevrilməsinin metodoloji modelini ümumiləşdirmək.
 
 ---
 
-## 🚧 Ənənəvi Tədrisin İki Böyük Ziddiyyəti (The Two Silos)
+## Ənənəvi Tədrisin İki Böyük Ziddiyyəti (The Two Silos)
 
 1. **Bioloqların "Kod Qorxusu":** Biologiya və biotexnologiya tələbələri canlı sistemlərin mexanizmini dərindən başa düşsələr də, terminal, Python və riyazi statistikadan çəkinirlər.
 2. **Kompüter Mühəndislərinin "Biologiya Çətinliyi":** İT və kompüter mühəndisliyi tələbələri mürəkkəb alqoritmləri rahat qursalar da, genlərin tənzimlənməsi, splaysinq və ya zülalların protonlaşma incəliklərini dərk etməkdə çətinlik çəkirlər.
 
 ---
 
-## 🏆 CarboxMol 4 Mərhələli Həll Modeli
+## CarboxMol 4 Mərhələli Həll Modeli
 
 ```mermaid
 flowchart TD
@@ -36,7 +36,7 @@ flowchart TD
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[annual_syllabus_breakdown]]
 * [[journal_club_framework]]
 * [[carboxmol_bioinformatics_club]]

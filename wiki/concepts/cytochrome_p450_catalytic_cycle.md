@@ -7,7 +7,7 @@ updated: 2026-10-28
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# ⚙️ Sitoxrom P450 Katalitik Tsikli (Cytochrome P450 Catalytic Cycle)
+# Sitoxrom P450 Katalitik Tsikli (Cytochrome P450 Catalytic Cycle)
 
 Sitoxrom P450 (CYP) fermentləri (məsələn, [[pdb_4i8v_cyp1a1|CYP1A1]]) molekulyar oksigen ($O_2$) və NADPH-dən gələn 2 elektron hesabına hidrofob substratların $C-H$ rabitəsini qıraraq ora bir oksigen atomu daxil edir (monooksigenaza reaksiyası):
 
@@ -15,7 +15,7 @@ $$\text{R-H} + \text{O}_2 + \text{NADPH} + \text{H}^+ \longrightarrow \text{R-OH
 
 ---
 
-## 🔄 8 Mərhələli Katalitik Tsikl
+## 8 Mərhələli Katalitik Tsikl
 
 ```mermaid
 flowchart TD
@@ -31,7 +31,7 @@ flowchart TD
 
 ---
 
-## 🔬 Açar Kimyəvi Varlıq: "Compound I"
+## Açar Kimyəvi Varlıq: "Compound I"
 
 * **Quruluş:** Oksiferril porfirin kation radikalı ($[\text{Fe}^{IV}=\text{O}]^{\bullet+}$).
 * **Fəaliyyət:** Təbiətdəki ən güclü bioloji oksidləşdiricilərdən biridir. Energetik cəhətdən çox sabit olan alifatik və aromatik $C-H$ rabitələrindən hidrogen atomunu qoparır (*hydrogen abstraction*), sərbəst radikal yaradır və dərhal oksigeni ora köçürür (*oxygen rebound*).
@@ -39,7 +39,7 @@ flowchart TD
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[pdb_4i8v_cyp1a1]]
 * [[macromolecular_crystallography]]
 * [[comparative_analysis_cyp1a1_akt1_active_sites]]

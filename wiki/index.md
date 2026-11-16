@@ -1,10 +1,10 @@
-# 🌐 CarboxMol Bioinformatics Club — Mərkəzi Viki Kataloqu (Index)
+# CarboxMol Bioinformatics Club — Mərkəzi Viki Kataloqu (Index)
 
-> **Xoş gəlmisiniz!** Bu sənəd [[carboxmol_bioinformatics_club|CarboxMol Bioinformatika Klubu]]nun daimi, toplanan və təkamül edən bilik bazasının (LLM Wiki) tam xəritəsidir. Hər bir bölmə layihənin elmi, mühəndislik və idarəetmə aspektlərini bir-biri ilə əlaqələndirir.
+> **Xoş gəlmisiniz!** Bu sənəd [[carboxmol_bioinformatics_club|CarboxMol Bioinformatika Klubu]]nun daimi, toplanan və təkamül edən bilik bazasının (Scientific Knowledge Base) tam xəritəsidir. Hər bir bölmə layihənin elmi, mühəndislik və idarəetmə aspektlərini bir-biri ilə əlaqələndirir.
 
 ---
 
-## 🏛️ 1. Təşkilat və Şəxslər (Entities: Organization & People)
+## 1. Təşkilat və Şəxslər (Entities: Organization & People)
 * [[carboxmol_bioinformatics_club]] — CarboxMol Bioinformatika Klubu haqqında ətraflı təşkilati profil, missiya və idarə heyəti.
 * [[garib_murshudov]] — Kembric Universiteti Professoru, MRC LMB Proqram Rəhbəri, REFMAC5 müəllifi, seminar məruzəçisi.
 * [[suleyman_hajizadeh]] — CarboxMol Bioinformatika Klubunun Təsisçisi və Sədri, IMB Hesablama Struktur Biologiyası tədqiqatçısı.
@@ -13,7 +13,7 @@
 
 ---
 
-## 💻 2. Proqram Təminatları və Alətlər (Entities: Software & Tools)
+## 2. Proqram Təminatları və Alətlər (Entities: Software & Tools)
 * [[carboxmol_studio]] — WebGL və Mol* bazasında 3D Makromolekulyar Kristalloqrafik Studio mühərriki.
 * [[refmac5]] — Makromolekulyar atomik model dəqiqləşdirməsi (refinement) üçün qlobal standart CCP4 proqramı.
 * [[biopython]] — Genom analizi, FASTA/GenBank emalı və molekulyar bioinformatika Python kitabxanası.
@@ -23,14 +23,14 @@
 
 ---
 
-## 🧬 3. PDB Makromolekulyar Modelləri (Entities: Structural Models)
+## 3. PDB Makromolekulyar Modelləri (Entities: Structural Models)
 * [[pdb_1bna_bdna]] — Drew-Dickerson B-DNT dodekameri ($1.90\text{ \AA}$), helikal şırımlar və hidrogen rabitələri.
 * [[pdb_4i8v_cyp1a1]] — İnsan Sitoxrom P450 1A1 və HEM kofaktoru ($2.60\text{ \AA}$), ksenobiotik metabolizmi və karsinogenez.
 * [[pdb_4gv1_akt1]] — İnsan AKT1 Kinazı və Allosterik İnhibitor kompleksi ($1.49\text{ \AA}$), PI3K/mTOR xərçəng siqnalı.
 
 ---
 
-## 🔬 4. Elmi və Statistik Konseptlər (Concepts: Science & Mathematics)
+## 4. Elmi və Statistik Konseptlər (Concepts: Science & Mathematics)
 * [[bayesian_statistics_in_structural_biology]] — Prior stereokimya və Likelihood difraksiya məlumatlarının Bayes inteqrasiyası.
 * [[catalytic_carboxyl_dyads]] — Asp/Glu ferment aktiv mərkəz dyadları, protonlaşma asimmetriyası və dərman dizaynı.
 * [[macromolecular_crystallography]] — Difraksiya, faza problemi, elektron sıxlığı və kristalloqrafik boru kəməri.
@@ -43,7 +43,7 @@
 
 ---
 
-## 🏗️ 5. Sistem Mühəndisliyi və Arxitektura (Architecture)
+## 5. Sistem Mühəndisliyi və Arxitektura (Architecture)
 * [[system_architecture]] — CarboxMol portalının SPA, WebGL, Service Worker və serverless sinxronizasiya arxitekturası.
 * [[pwa_offline_architecture]] — Cache-first strategiyası, `sw.js`, `localStorage` oflayn növbəsi və avtomatik re-sinxronizasiya.
 * [[club_security_and_auth_architecture]] — Anti-bot honeypot, rate-limiting, XSS filtrasiyası və FormSubmit ikiqat e-poçt sistemi.
@@ -52,24 +52,24 @@
 
 ---
 
-## 📚 6. Tədris və Metodologiya (Curriculum & Methodology)
+## 6. Tədris və Metodologiya (Curriculum & Methodology)
 * [[annual_syllabus_breakdown]] — 4 semestr və 12 modul üzrə Linux-dan AlphaFold-a qədər 1 illik akademik təlim planı.
 * [[journal_club_framework]] — Həftəlik elmi məqalə dekonstruksiyası, tənqidi təhlil və 20 dəqiqəlik təqdimat standartı.
 
 ---
 
-## 📝 7. Mənbə Xülasələri (Summaries)
+## 7. Mənbə Xülasələri (Summaries)
 * [[summary_garib_murshudov_seminar_oct2026]] — Prof. Qərib Mürşüdovun 20 Oktyabr 2026-cı il seminarının tam elmi xülasəsi.
 
 ---
 
-## 💡 8. Dərin Tədqiqat Sintezləri (Synthesis)
+## 8. Dərin Tədqiqat Sintezləri (Synthesis)
 * [[crystallographic_bayesian_refinement_in_carboxmol]] — Qərib Mürşüdovun Bayes prinsiplərinin CarboxMol karboksil dyad modelləşdirməsinə tətbiqi.
 * [[comparative_analysis_cyp1a1_akt1_active_sites]] — CYP1A1 (HEM) və AKT1 (Kinaz allosterik) aktiv mərkəzlərinin müqayisəli biokimyəvi analizi.
 * [[integrating_computational_biology_into_undergraduate_curriculum]] — Bakalavr tələbələrini 1 ilə elmi tədqiqatçıya çevirən 4 mərhələli inteqrasiya modeli.
 
 ---
 
-## 📜 9. Qaydalar və Tarixçə
+## 9. Qaydalar və Tarixçə
 * [[AGENTS|Wiki Əməliyyat Təlimatı (AGENTS.md)]] — Ingest, Query/Compound və Lint qaydaları.
 * [[log|Xronoloji Fəaliyyət Jurnalı (log.md)]] — Bütün viki əməliyyatlarının dəqiq tarixi arxivi.

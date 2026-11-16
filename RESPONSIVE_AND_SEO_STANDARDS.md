@@ -2,7 +2,7 @@
 
 Bu sənəd CarboxMol Bioinformatika Klubu veb-platformasının (**CarboxMol Bioinformatics Club**) bütün cihazlarda (Mobile, Tablet, Laptop, Desktop, 4K Ultrawide), əməliyyat sistemlərində (iOS, Android, macOS, Windows, Linux) və tətbiq mühitlərində (Brauzer, PWA / Standalone App) həm **100% responsiv və qüsursuz vizual təcrübə**, həm də **dünya səviyyəli avtomatlaşdırılmış SEO & Axtarış Motoru Optimallaşdırması (Search Engine Optimization)** təmin etməsi üçün müəyyən edilmiş memarlıq standartları və dəyişməz qaydalar toplusudur.
 
-Gələcəkdə layihə üzərində işləyən bütün süni intellekt köməkçiləri (AI Agents) və proqram təminatı mühəndisləri bu qaydaları dəqiq şəkildə izləməli və tətbiq etməlidirlər.
+Gələcəkdə layihə üzərində işləyən bütün proqram təminatı mühəndisləri və tərtibatçılar bu qaydaları dəqiq şəkildə izləməli və tətbiq etməlidirlər.
 
 ---
 
@@ -61,7 +61,7 @@ Hər bir keçiddə:
 
 ---
 
-## 3. Süni İntellekt və Tərtibatçılar üçün Əsas Qaydalar
+## 3. Tərtibatçılar və Mühəndislər üçün Əsas Qaydalar
 
 Gələcək dəyişikliklər zamanı bu tələbləri pozmaq QƏTİ QADAĞANDIR:
 

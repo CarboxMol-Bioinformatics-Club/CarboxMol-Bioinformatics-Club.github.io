@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 🧬 PDB 4I8V: İnsan Sitoxrom P450 1A1 (CYP1A1)
+# PDB 4I8V: İnsan Sitoxrom P450 1A1 (CYP1A1)
 
 **PDB ID:** `4I8V`  
 **Tədqiqatçılar:** C. A. Bart, E. E. Scott (2013)  
@@ -18,7 +18,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 🔬 Biokimyəvi və Fizioloji Əhəmiyyəti
+## Biokimyəvi və Fizioloji Əhəmiyyəti
 
 1. **Ksenobiotiklərin və Dərmanların Metabolizmi:**
    * CYP1A1 qaraciyərdə və ağciyərlərdə polisiklik aromatik karbohidrogenləri (PAH - məsələn, siqaret tüstüsündə və yanma məhsullarında olan benzo[a]piren) hidroksilləşdirərək orqanizmdən xaric etməyə çalışır.
@@ -31,7 +31,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 💻 CarboxMol Studiyasında Vizuallaşdırma Detalları
+## CarboxMol Studiyasında Vizuallaşdırma Detalları
 
 * **İkili Struktur:** $\alpha$-helikslər parlaq sian, $\beta$-vərəqlər bənövşəyi/çəhrayı, döngələr boz rəngdə render olunur.
 * **HEM Kofaktoru:** Porfirin halqası çubuqlar (*sticks*), mərkəzi Dəmir atomu isə qırmızı/narıncı sfera (*sphere*) kimi xüsusi ayrılır.
@@ -39,7 +39,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[carboxmol_studio]]
 * [[macromolecular_crystallography]]
 * [[catalytic_carboxyl_dyads]]

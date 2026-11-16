@@ -7,13 +7,13 @@ updated: 2026-10-27
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 💡 Müqayisəli Sintez: CYP1A1 (4I8V) və AKT1 (4GV1) Aktiv Mərkəzlərinin Fərqi və Terapevtik Əhəmiyyəti
+# Müqayisəli Sintez: CYP1A1 (4I8V) və AKT1 (4GV1) Aktiv Mərkəzlərinin Fərqi və Terapevtik Əhəmiyyəti
 
 > **Məqsəd:** [[carboxmol_studio|CarboxMol 3D Studiyasında]] əsas nümayiş modelləri kimi seçilmiş iki mühüm terapevtik zülalın — [[pdb_4i8v_cyp1a1|Sitoxrom P450 1A1 (4I8V)]] və [[pdb_4gv1_akt1|AKT1 Kinazının (4GV1)]] — katalitik arxitekturasını, liqand bağlanma mexanizmini və dərman dizaynı prinsiplərini dərindən müqayisə etmək.
 
 ---
 
-## 🔬 Müqayisə Cədvəli
+## Müqayisə Cədvəli
 
 | Parametr | Sitoxrom P450 1A1 ([[pdb_4i8v_cyp1a1]]) | AKT1 Kinazı ([[pdb_4gv1_akt1]]) |
 | :--- | :--- | :--- |
@@ -26,7 +26,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 🧠 Dərin Elmi Çıxarışlar
+## Dərin Elmi Çıxarışlar
 
 1. **Ksenobiotik Uyğunlaşma vs Kinaz Spesifikliyi:**
    * CYP1A1 cibi geniş çeşiddə yastı polisiklik aromatik karbohidrogenləri (PAH) qəbul edə biləcək şəkildə elastik və hidrofobdur. Bu səbəbdən onun inhibitorları (`BHF`) geniş aromatik səthə malikdir.
@@ -37,7 +37,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[pdb_4i8v_cyp1a1]]
 * [[pdb_4gv1_akt1]]
 * [[carboxmol_studio]]

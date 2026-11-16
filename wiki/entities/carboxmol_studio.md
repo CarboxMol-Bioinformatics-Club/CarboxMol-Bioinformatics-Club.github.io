@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 💻 CarboxMol 3D Macromolecular Studio Engine
+# CarboxMol 3D Macromolecular Studio Engine
 
 **CarboxMol Studio** — [[carboxmol_bioinformatics_club|CarboxMol Bioinformatika Klubu]] platformasının daxilində çalışan, yüksək dəqiqlikli 3D kristalloqrafik vizuallaşdırma mühərrikidir.
 
@@ -20,7 +20,7 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[catalytic_carboxyl_dyads]]
 * [[macromolecular_crystallography]]
 * [[suleyman_hajizadeh]]

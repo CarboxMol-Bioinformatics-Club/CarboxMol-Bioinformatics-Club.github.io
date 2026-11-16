@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# ⚗️ Katalitik Karboksil Dyadları (Catalytic Carboxyl Dyads)
+# Katalitik Karboksil Dyadları (Catalytic Carboxyl Dyads)
 
 **Katalitik karboksil dyadı** — fermentlərin aktiv mərkəzində bir-birinə çox yaxın yerləşən və birgə hidrogen rabitəsi şəbəkəsi vasitəsilə katalitik reaksiyanı aparan iki karboksil qrupunun (əsasən **Asp/Asp**, **Glu/Glu** və ya **Asp/Glu**) yaratdığı xüsusi struktur motifidir.
 
@@ -16,14 +16,14 @@ sources: ["raw/club_curriculum_and_annual_plan.md"]
 
 ---
 
-## 🔬 Carbox və CarboxMol Layihəsində Tədqiqat Əhəmiyyəti
+## Carbox və CarboxMol Layihəsində Tədqiqat Əhəmiyyəti
 
 1. **Struktur Modelləşdirməsi:** Rentgen kristalloqrafiyasında hidrogen atomları rentgen şüalarını çox zəif səpdiyi üçün onların dyad daxilindəki dəqiq yeri birbaşa görünmür. [[carboxmol_studio|CarboxMol]] və [[bayesian_statistics_in_structural_biology|Bayes statistik analizi]] vasitəsilə oksigen atomlarının məsafəsi və pKa fərqləri əsasında protonun ən ehtimallı yeri təyin edilir.
 2. **Dərman Dizaynı (Drug Design):** Dyadın protonlaşma vəziyyətini bilmədən ona qarşı inhibitor (dərman molekulu) dizayn etmək qeyri-mümkündür.
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[carboxmol_studio]]
 * [[bayesian_statistics_in_structural_biology]]
 * [[macromolecular_crystallography]]

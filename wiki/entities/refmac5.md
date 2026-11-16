@@ -7,7 +7,7 @@ updated: 2026-10-27
 sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 ---
 
-# 💻 REFMAC5: Makromolekulyar Struktur Refinement Proqramı
+# REFMAC5: Makromolekulyar Struktur Refinement Proqramı
 
 **REFMAC5** — [[mrc_lmb_cambridge|MRC Laboratory of Molecular Biology]] alimi [[garib_murshudov|Prof. Qərib Mürşüdov]] və həmkarları tərəfindən hazırlanmış, CCP4 (*Collaborative Computational Project No. 4*) paketinin əsas kristalloqrafik və Cryo-EM dəqiqləşdirmə mühərrikidir.
 
@@ -16,7 +16,7 @@ sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 
 ---
 
-## ⚙️ REFMAC5-in Əsas Riyazi Mexanizmləri
+## REFMAC5-in Əsas Riyazi Mexanizmləri
 
 1. **Hədəf Funksiyası (Target Function):**
    $$Q = -\ln L_{\text{X-ray}} + w_{\text{geom}} \cdot E_{\text{geom}}$$
@@ -28,7 +28,7 @@ sources: ["raw/garib_murshudov_seminar_oct2026.md"]
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[garib_murshudov]]
 * [[bayesian_statistics_in_structural_biology]]
 * [[macromolecular_crystallography]]

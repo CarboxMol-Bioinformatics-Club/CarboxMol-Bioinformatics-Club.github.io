@@ -7,13 +7,13 @@ updated: 2026-10-27
 sources: ["raw/club_curriculum_and_annual_plan.md"]
 ---
 
-# 🧬 RNA-seq Diferensial Gen Ekspressiyası Boru Kəməri (Pipeline)
+# RNA-seq Diferensial Gen Ekspressiyası Boru Kəməri (Pipeline)
 
 Transkriptomika — hüceyrədə müəyyən anda ekspressiya olunan bütün RNT molekullarının (mRNA, lncRNA, miRNA) tədqiqidir. [[carboxmol_bioinformatics_club|CarboxMol Bioinformatika Klubu]] tələbələri tam bir RNA-seq boru kəmərini icra etməyi öyrənirlər.
 
 ---
 
-## 🔄 Tam İş Axını (Step-by-Step Pipeline)
+## Tam İş Axını (Step-by-Step Pipeline)
 
 ```mermaid
 flowchart LR
@@ -46,7 +46,7 @@ flowchart LR
 
 ---
 
-## 🔗 Əlaqəli Səhifələr
+## Əlaqəli Səhifələr
 * [[deseq2_bioconductor]]
 * [[biopython]]
 * [[annual_syllabus_breakdown]]
