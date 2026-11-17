@@ -134,13 +134,18 @@
   let viewer = null;
   let currentMolecule = 'dna';
   let currentStyle = 'cartoon';
-  let isSpinning = false;
+  let isSpinning = true; // Default state: auto-rotating in 3D (X, Y, Z)
   let modelCache = {};
   const initialViews = {}; // Stores canonical initial crystallographic view for each molecule
 
-  // ─── CarboxMol Dynamic Gesture-Driven Rotation Engine ────────────────
-  let spinAxis = { vx: 0, vy: 1, vz: 0 }; // View-space rotation axis
-  let spinSpeed = 0.65; // Base rotation speed in degrees per frame
+  // ─── CarboxMol 3D Multi-Axis (X, Y, Z) Harmonic Rotation Engine ─────
+  // Canonical default 3D multi-axis orientation vector:
+  // vx (tilt/pitch around X), vy (turn/yaw around Y), vz (depth precession around Z)
+  const DEFAULT_3D_SPIN_AXIS = { vx: 0.363, vy: 0.888, vz: 0.282 };
+  const DEFAULT_SPIN_SPEED = 0.60; // Smooth crystallographic rotation speed
+
+  let spinAxis = { ...DEFAULT_3D_SPIN_AXIS };
+  let spinSpeed = DEFAULT_SPIN_SPEED;
   let isPointerDown = false;
   let lastPointerX = 0;
   let lastPointerY = 0;
@@ -268,6 +273,7 @@
       // Bind controls
       setupUIEventListeners();
       setupGestureTracking(container);
+      updateSpinButtonUI();
       startSpinLoop();
 
       // Window resize listener
@@ -377,10 +383,14 @@
         // Moving cursor up (dy < 0) -> tilts around horizontal screen X axis (vx < 0)
         const len = Math.hypot(dx, dy);
         if (len > 0.5) {
+          const gx = dy / len;
+          const gy = dx / len;
+          const gz = 0.24 * (Math.abs(gy) > 0.1 ? Math.sign(gy) : 1);
+          const norm = Math.hypot(gx, gy, gz);
           spinAxis = {
-            vx: dy / len,
-            vy: dx / len,
-            vz: 0
+            vx: gx / norm,
+            vy: gy / norm,
+            vz: gz / norm
           };
         }
       }
@@ -406,15 +416,25 @@
           totalDt += dragMovements[i].dt;
         }
         const len = Math.hypot(totalDx, totalDy);
-        if (len > 2) {
+        if (len > 1.5) {
+          const gx = totalDy / len;
+          const gy = totalDx / len;
+          const gz = 0.24 * (Math.abs(gy) > 0.1 ? Math.sign(gy) : 1);
+          const norm = Math.hypot(gx, gy, gz);
           spinAxis = {
-            vx: totalDy / len,
-            vy: totalDx / len,
-            vz: 0
+            vx: gx / norm,
+            vy: gy / norm,
+            vz: gz / norm
           };
-          // Dynamic flick speed between 0.45 and 1.35
-          const calculatedSpeed = (len / totalDt) * 12;
+          // Dynamic flick momentum speed between 0.45 and 1.35
+          const calculatedSpeed = (len / Math.max(16, totalDt)) * 10;
           spinSpeed = Math.min(1.35, Math.max(0.45, calculatedSpeed));
+
+          // If paused, flicking the model resumes spinning in the flicked direction
+          if (!isSpinning && len > 3.0) {
+            isSpinning = true;
+            updateSpinButtonUI();
+          }
         }
       }
       updateOrientationTripod();
@@ -438,9 +458,9 @@
       // Store pristine initial crystallographic view for this molecule
       initialViews[mol.id] = viewer.getView();
 
-      // Reset spin axis for new molecule to standard horizontal turn
-      spinAxis = { vx: 0, vy: 1, vz: 0 };
-      spinSpeed = 0.65;
+      // Reset spin axis for new molecule to canonical 3D multi-axis (X, Y, Z)
+      spinAxis = { ...DEFAULT_3D_SPIN_AXIS };
+      spinSpeed = DEFAULT_SPIN_SPEED;
 
       // Ensure 3Dmol internal spin interval is stopped
       try { viewer.spin(false); } catch (e) {}
@@ -465,22 +485,26 @@
     }
   }
 
+  function updateSpinButtonUI() {
+    const spinBtn = document.getElementById('molSpinBtn');
+    if (!spinBtn) return;
+    spinBtn.innerHTML = isSpinning
+      ? '<i class="fa-solid fa-pause text-xs text-cyan-400"></i> <span class="hidden sm:inline">Pauza</span>'
+      : '<i class="fa-solid fa-play text-xs text-cyan-400"></i> <span class="hidden sm:inline">Fırlat</span>';
+    if (isSpinning) {
+      spinBtn.classList.add('ring-1', 'ring-cyan-400');
+      spinBtn.setAttribute('title', 'Döndürməni dayandır (Pauza)');
+    } else {
+      spinBtn.classList.remove('ring-1', 'ring-cyan-400');
+      spinBtn.setAttribute('title', 'Avtomatik 3D fırlanmanı başlat (X, Y, Z)');
+    }
+  }
+
   function toggleSpin() {
     if (!viewer) return;
     isSpinning = !isSpinning;
     try { viewer.spin(false); } catch (e) {} // Ensure 3Dmol native interval never runs
-
-    const spinBtn = document.getElementById('molSpinBtn');
-    if (spinBtn) {
-      spinBtn.innerHTML = isSpinning
-        ? '<i class="fa-solid fa-pause text-xs text-cyan-400"></i> <span class="hidden sm:inline">Pauza</span>'
-        : '<i class="fa-solid fa-play text-xs text-cyan-400"></i> <span class="hidden sm:inline">Fırlat</span>';
-      if (isSpinning) {
-        spinBtn.classList.add('ring-1', 'ring-cyan-400');
-      } else {
-        spinBtn.classList.remove('ring-1', 'ring-cyan-400');
-      }
-    }
+    updateSpinButtonUI();
   }
 
   function resetView() {
@@ -498,9 +522,13 @@
     viewer.zoomTo();
     viewer.render();
 
-    // Reset spin axis and speed to pristine default
-    spinAxis = { vx: 0, vy: 1, vz: 0 };
-    spinSpeed = 0.65;
+    // Reset spin axis and speed to canonical 3D multi-axis (X, Y, Z)
+    spinAxis = { ...DEFAULT_3D_SPIN_AXIS };
+    spinSpeed = DEFAULT_SPIN_SPEED;
+    if (!isSpinning) {
+      isSpinning = true;
+      updateSpinButtonUI();
+    }
 
     updateOrientationTripod();
 
