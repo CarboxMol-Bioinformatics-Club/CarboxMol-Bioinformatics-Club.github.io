@@ -253,12 +253,12 @@
       category: "recruitment",
       badge_az: "İdarə Heyəti Seçimi",
       badge_en: "Executive Board Call",
-      title_az: "CarboxMol Komandasına 2 Tələbə Koordinator Dəvət Edirik",
-      title_en: "Welcoming 2 Student Coordinators to the CarboxMol Executive Team",
+      title_az: "CarboxMol Komandasına 2 Koordinator Dəvət Edirik",
+      title_en: "Welcoming 2 Coordinators to the CarboxMol Executive Team",
       date: "2026-11-09",
       image: "assets/images/announcements/coordinator-recruitment.png",
-      content_az: "CarboxMol Bioinformatika Klubu elmi seminarlarımızı, praktiki layihələrimizi və tələbə icmamızı birgə idarə edəcəyimiz 2 fəal tələbə koordinator axtarır (Elm & Tədris və Təşkilat & Media). Beynəlxalq alimlərlə əlaqə və real layihələrdə rəhbərlik təcrübəsi.",
-      content_en: "CarboxMol Bioinformatics Club is inviting 2 driven student coordinators to co-lead our academic seminars, research projects, and student community (Science & Academic and Operations & Media). Direct research networking and hands-on leadership experience."
+      content_az: "CarboxMol Bioinformatika Klubu elmi seminarlarımızı, praktiki layihələrimizi və tələbə icmamızı birgə idarə edəcəyimiz 2 fəal koordinator axtarır (Elm & Tədris və Təşkilat & Media). Beynəlxalq alimlərlə əlaqə və real layihələrdə rəhbərlik təcrübəsi.",
+      content_en: "CarboxMol Bioinformatics Club is inviting 2 driven coordinators to co-lead our academic seminars, research projects, and student community (Science & Academic and Operations & Media). Direct research networking and hands-on leadership experience."
     },
     {
       id: "ann_virtulab_collab",
