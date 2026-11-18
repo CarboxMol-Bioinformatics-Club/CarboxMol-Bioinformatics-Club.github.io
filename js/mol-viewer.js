@@ -140,9 +140,9 @@
 
   // ─── CarboxMol 3D Multi-Axis (X, Y, Z) Harmonic Rotation Engine ─────
   // Canonical default 3D multi-axis orientation vector:
-  // vx (tilt/pitch around X), vy (turn/yaw around Y), vz (depth precession around Z)
-  const DEFAULT_3D_SPIN_AXIS = { vx: 0.363, vy: 0.888, vz: 0.282 };
-  const DEFAULT_SPIN_SPEED = 0.60; // Smooth crystallographic rotation speed
+  // Standart ilkin açılış oxu: təmiz şaquli fırlanma (vx: 0, vy: 1, vz: 0) — videoda göstərilən rəsmi forma
+  const DEFAULT_3D_SPIN_AXIS = { vx: 0, vy: 1, vz: 0 };
+  const DEFAULT_SPIN_SPEED = 0.65; // Smooth crystallographic rotation speed
 
   let spinAxis = { ...DEFAULT_3D_SPIN_AXIS };
   let spinSpeed = DEFAULT_SPIN_SPEED;
@@ -385,12 +385,11 @@
         if (len > 0.5) {
           const gx = dy / len;
           const gy = dx / len;
-          const gz = 0.24 * (Math.abs(gy) > 0.1 ? Math.sign(gy) : 1);
-          const norm = Math.hypot(gx, gy, gz);
+          const norm = Math.hypot(gx, gy);
           spinAxis = {
-            vx: gx / norm,
-            vy: gy / norm,
-            vz: gz / norm
+            vx: gx / (norm || 1),
+            vy: gy / (norm || 1),
+            vz: 0
           };
         }
       }
@@ -419,12 +418,11 @@
         if (len > 1.5) {
           const gx = totalDy / len;
           const gy = totalDx / len;
-          const gz = 0.24 * (Math.abs(gy) > 0.1 ? Math.sign(gy) : 1);
-          const norm = Math.hypot(gx, gy, gz);
+          const norm = Math.hypot(gx, gy);
           spinAxis = {
-            vx: gx / norm,
-            vy: gy / norm,
-            vz: gz / norm
+            vx: gx / (norm || 1),
+            vy: gy / (norm || 1),
+            vz: 0
           };
           // Dynamic flick momentum speed between 0.45 and 1.35
           const calculatedSpeed = (len / Math.max(16, totalDt)) * 10;
