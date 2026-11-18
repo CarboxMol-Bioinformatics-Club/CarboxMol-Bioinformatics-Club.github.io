@@ -320,100 +320,7 @@ events: [
     }
   ],
 
-  tasks: [
-    {
-      id: "task-wcu-01",
-      title: "Biopython SeqIO ilə FASTA Sekvenslərinin GC-Tərkibinin Hesablanması və SeqIO Parseri",
-      category: "Biopython",
-      difficulty: "Başlanğıc / Orta",
-      deadline: "2026-11-25",
-      targetGroup: "Bütün Klub Üzvləri",
-      assignedTo: "all",
-      teacherId: "teacher-sefanya",
-      teacherName: "Sefanya Hacızadə (Akademik Mentor)",
-      summary: "Biopython SeqIO modulundan istifadə edərək FASTA fayllarında nukleotid ardıcıllığının uzunluğu, GC faizi və kodon istifadə tezliyini hesablayan Python skripti yazın və nəticələri təhlil edin.",
-      description: "Bu laboratoriya tapşırığında tələbələr Biopython kitabxanasının SeqIO modulundan istifadə edərək NCBI GenBank-dan yüklənmiş virus və ya bakteriya FASTA ardıcıllıqlarını oxumalı, GC-tərkibini (GC content percentage) hesablamalı və nəticəni CSV formatında ixrac etməlidirlər.",
-      starterCode: "from Bio import SeqIO\nfrom Bio.SeqUtils import GC\n\ndef analyze_fasta(filename):\n    for record in SeqIO.parse(filename, 'fasta'):\n        print(f'ID: {record.id}, Length: {len(record.seq)}, GC: {GC(record.seq):.2f}%')\n\n# analyze_fasta('sample.fasta')",
-      createdAt: "2026-11-10",
-      submissions: [
-        {
-          id: "sub-wcu-01-u1yashko",
-          studentId: "mem-1794415625983",
-          studentName: "Sarukhanova Ulviyya (Arif)",
-          studentUsername: "u1yashko",
-          studentEmail: "u1yasarukhova@gmail.com",
-          studentUniversity: "Qərbi Kaspi Universiteti (Western Caspian University)",
-          studentFaculty: "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
-          solutionUrl: "https://github.com/u1yashko/wcu-biopython-lab1",
-          attachedDocument: null,
-          attachedVideoUrl: "",
-          notes: "Biopython SeqIO modulu ilə 3 fərqli FASTA faylı (SARS-CoV-2, E. coli və İnsan İnsulin geni) analiz edilmişdir. GC nisbətləri və ekson-intron sərhədləri cədvələ çıxarılmışdır.",
-          submittedAt: "2026-11-15T14:30:00Z",
-          status: "Qiymətləndirildi",
-          grade: 96,
-          feedback: "Əla elmi işdir. SeqIO parseri və faylın chunk-lar şəklində oxunması yaddaş optimizasiyası baxımından çox düzgün qurulub. Exception handling əlavə edilib.",
-          reviewedBy: "Sefanya Hacızadə (Akademik Mentor)",
-          reviewedAt: "2026-11-16T10:15:00Z",
-          presidentFeedback: "👑 Sədr Superviziyası: Laboratoriya işi yüksək akademik intizamla təhvil verilib. Qiymətləndirmə təsdiqlənir.",
-          presidentReviewedAt: "2026-11-16T18:00:00Z"
-        }
-      ]
-    },
-    {
-      id: "task-wcu-02",
-      title: "CarboxMol və AlphaFold vasitəsilə 3D Zülal Strukturlarının Kristallografik Analizi",
-      category: "Struktur Biologiyası",
-      difficulty: "Orta / İrəli",
-      deadline: "2026-11-28",
-      targetGroup: "Bütün Klub Üzvləri",
-      assignedTo: "all",
-      teacherId: "president",
-      teacherName: "Süleyman Hacızadə (Klub Sədri)",
-      summary: "AlphaFold 3 verilənlər bazasından seçilmiş hədəf fermentin mmCIF strukturunu CarboxMol vizualizatorunda açaraq aktiv mərkəz qalıqlarını qeyd edin və pLDDT etibarlılıq analizini aparın.",
-      description: "Bu tapşırıqda klubun rəsmi 3D platforması olan CarboxMol vasitəsilə makromolekulyar koordinat analizləri aparılır. Tələbələr AlphaFold tərəfindən proqnozlaşdırılmış zülal konformasiyasında hidrogen rabitələri və aktiv mərkəz qalıqlarını (His, Asp, Ser) müəyyən etməlidirlər.",
-      starterCode: "# CarboxMol mmCIF parser və koordinat analiz starter skripti\n# Platform: https://carboxmol.github.io\nimport json\n# PDB/mmCIF koordinat oxunuşu",
-      createdAt: "2026-11-12",
-      submissions: [
-        {
-          id: "sub-wcu-02-fatima",
-          studentId: "mem-fatima-01",
-          studentName: "Fatimə Piriyeva",
-          studentUsername: "fatimapirieva",
-          studentEmail: "fatimapirieva700@gmail.com",
-          studentUniversity: "Xəzər Universiteti",
-          studentFaculty: "Xəzər Universiteti - Təbiət Elmləri",
-          solutionUrl: "https://github.com/fatimapirieva/carboxmol-alphafold-analysis",
-          attachedDocument: null,
-          attachedVideoUrl: "",
-          notes: "CarboxMol platformasında AlphaFold 3 modelinin 3D struktur baxışı tamamlandı. pLDDT > 90 olan yüksək dəqiqlikli sahələr xəritələndirildi və hesabat sənədi hazırlandı.",
-          submittedAt: "2026-11-17T18:20:00Z",
-          status: "Yoxlama Gözləyir",
-          grade: null,
-          feedback: "",
-          reviewedBy: "",
-          reviewedAt: null,
-          presidentFeedback: "",
-          presidentReviewedAt: null
-        }
-      ]
-    },
-    {
-      id: "task-wcu-03",
-      title: "DESeq2 və R ilə RNA-Seq Diferensial Gen Ekspressiyası Analizi",
-      category: "Genomika & BLAST",
-      difficulty: "İrəli",
-      deadline: "2026-12-05",
-      targetGroup: "Bütün Klub Üzvləri",
-      assignedTo: "all",
-      teacherId: "teacher-fidan-m",
-      teacherName: "Fidan Məhərrəmova (MSc Bioinformatika)",
-      summary: "TCGA xərçəng xəstələrindən əldə edilmiş RNA-Seq count matrix faylını R mühitində DESeq2 ilə analiz edərək Vulkano və Heatmap qrafiklərini qurun, dəyişən 10 əsas geni müəyyən edin.",
-      description: "Bioconductor DESeq2 paketi vasitəsilə diferensial gen ekspressiyası analizini (DGE) icra edin. Qat dəyişməsi (log2FoldChange) və korreksiya olunmuş p-dəyəri (padj < 0.05) əsasında əhəmiyyətli genləri seçin.",
-      starterCode: "# DESeq2 Pipeline Starter Code in R\nlibrary(DESeq2)\n# colData <- data.frame(condition = factor(c('control', 'control', 'treated', 'treated')))\n# dds <- DESeqDataSetFromMatrix(countData = counts, colData = colData, design = ~ condition)\n# dds <- DESeq(dds)\n# res <- results(dds)",
-      createdAt: "2026-11-14",
-      submissions: []
-    }
-  ],
+  tasks: [],
 
   structuralTools: [
     {
@@ -4955,7 +4862,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.18.v51_academic_supervision";
+const CURRENT_DATA_VERSION = "2026.11.18.v62_clean_manual_tasks";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -5015,9 +4922,15 @@ function purgeMockData(data) {
   if (Array.isArray(data.members)) {
     data.members = data.members.filter(mem => mem && !legacyPrototypeIds.includes(mem.id) && mem.id !== "mem-fidan" && (mem.username || "").toLowerCase() !== "fidan");
   }
-  // Bütün köhnə mock tapşırıqlar (task-101, task-102, task-103) təmizlənir - laboratoriya tapşırıqları manual təyin edilir
+  // Bütün köhnə və ya mock tapşırıqlar təmizlənir - laboratoriya tapşırıqları yalnız müəllim və ya sədr tərəfindən manual təyin edilir
+  const mockTaskIds = ["task-101", "task-102", "task-103", "task-wcu-01", "task-wcu-02", "task-wcu-03"];
   if (Array.isArray(data.tasks)) {
-    data.tasks = data.tasks.filter(t => t && !["task-101", "task-102", "task-103"].includes(t.id));
+    data.tasks = data.tasks.filter(t => t && !mockTaskIds.includes(t.id));
+    data.tasks.forEach(t => {
+      if (Array.isArray(t.submissions)) {
+        t.submissions = t.submissions.filter(s => s && s.id !== "sub-wcu-01-u1yashko" && s.id !== "sub-wcu-02-fatima" && !String(s.id).startsWith("sub-wcu-"));
+      }
+    });
   }
   // Tələbə üzvlərinin (Fatimə Piriyeva, Xaqan Əliyev, Nicat Nuhov və s.) səhvən müəllim bazasına düşməsini təmizlə:
   const studentUserSet = new Set([
@@ -5169,16 +5082,14 @@ function getClubData() {
       // Mock dataları tam təmizlə
       purgeMockData(parsed);
 
-      // Tapşırıqlar: Köhnə prototip / avtomatik mock tapşırıqlar (task-101, task-102, task-103) tam təmizlənir
-      parsed.tasks = (parsed.tasks || []).filter(t => t && !["task-101", "task-102", "task-103"].includes(t.id));
-      if (Array.isArray(INITIAL_DATA.tasks) && INITIAL_DATA.tasks.length > 0) {
-        INITIAL_DATA.tasks.forEach((defTask) => {
-          const existingIdx = parsed.tasks.findIndex((t) => t.id === defTask.id);
-          if (existingIdx === -1) {
-            parsed.tasks.push(JSON.parse(JSON.stringify(defTask)));
-          }
-        });
-      }
+      // Tapşırıqlar: Bütün köhnə/avtomatik mock tapşırıqlar tam təmizlənir (yalnız manual təyin edilmiş real tapşırıqlar saxlanılır)
+      const mockTaskIds = ["task-101", "task-102", "task-103", "task-wcu-01", "task-wcu-02", "task-wcu-03"];
+      parsed.tasks = (parsed.tasks || []).filter(t => t && !mockTaskIds.includes(t.id));
+      parsed.tasks.forEach(t => {
+        if (Array.isArray(t.submissions)) {
+          t.submissions = t.submissions.filter(s => s && s.id !== "sub-wcu-01-u1yashko" && s.id !== "sub-wcu-02-fatima" && !String(s.id).startsWith("sub-wcu-"));
+        }
+      });
 
       parsed.members = parsed.members || [];
       parsed.memberCustomTasks = parsed.memberCustomTasks || [];
@@ -5841,18 +5752,14 @@ function getClubData() {
       });
     }
 
-    // Həmişə əsas tədris tapşırıqlarını təmin et
-    if (!parsed.tasks || !Array.isArray(parsed.tasks) || parsed.tasks.length === 0) {
-      parsed.tasks = JSON.parse(JSON.stringify(INITIAL_DATA.tasks));
-      hasStorageUpdates = true;
-    } else {
-      INITIAL_DATA.tasks.forEach(defTask => {
-        if (!parsed.tasks.some(t => t.id === defTask.id)) {
-          parsed.tasks.push(JSON.parse(JSON.stringify(defTask)));
-          hasStorageUpdates = true;
-        }
-      });
-    }
+    // Tapşırıqlar yalnız rəhbərlik (Müəllim və ya Sədr) tərəfindən manual təyin edilir, heç bir avtomatik mock təyin olunmur
+    const mockTaskIdsEnd = ["task-101", "task-102", "task-103", "task-wcu-01", "task-wcu-02", "task-wcu-03"];
+    parsed.tasks = (parsed.tasks || []).filter(t => t && !mockTaskIdsEnd.includes(t.id));
+    parsed.tasks.forEach(t => {
+      if (Array.isArray(t.submissions)) {
+        t.submissions = t.submissions.filter(s => s && s.id !== "sub-wcu-01-u1yashko" && s.id !== "sub-wcu-02-fatima" && !String(s.id).startsWith("sub-wcu-"));
+      }
+    });
 
     if (hasStorageUpdates) {
       parsed._dataVersion = CURRENT_DATA_VERSION;
