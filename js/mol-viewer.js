@@ -138,20 +138,13 @@
   let modelCache = {};
   const initialViews = {}; // Stores canonical initial crystallographic view for each molecule
 
-  // ─── CarboxMol 3D Multi-Axis (X, Y, Z) Harmonic Rotation Engine ─────
-  // Canonical default 3D multi-axis orientation vector:
-  // Standart ilkin açılış oxu: təmiz şaquli fırlanma (vx: 0, vy: 1, vz: 0) — videoda göstərilən rəsmi forma
-  const DEFAULT_3D_SPIN_AXIS = { vx: 0, vy: 1, vz: 0 };
-  const DEFAULT_SPIN_SPEED = 0.65; // Smooth crystallographic rotation speed
-
-  let spinAxis = { ...DEFAULT_3D_SPIN_AXIS };
-  let spinSpeed = DEFAULT_SPIN_SPEED;
-  let isPointerDown = false;
-  let lastPointerX = 0;
-  let lastPointerY = 0;
-  let lastPointerTime = 0;
-  let dragMovements = [];
+  // ─── CarboxMol 3D Multi-Axis (X, Y, Z) Rotation Engine ──────────────
+  // Canonical default spin: smooth vertical rotation on Y axis (0.8 speed) as shown in official video
+  let spinDirection = 1; // 1: standard clockwise turn, -1: reverse
   let spinAnimFrame = null;
+  let isPointerDown = false;
+  let pointerStartX = 0;
+  let pointerStartY = 0;
 
   // ─── CarboxMol 3D Orientation Tripod Indicator ───────────────────────
   function updateOrientationTripod() {
@@ -274,7 +267,7 @@
       setupUIEventListeners();
       setupGestureTracking(container);
       updateSpinButtonUI();
-      startSpinLoop();
+      startTripodSyncLoop();
 
       // Window resize listener
       window.addEventListener('resize', handleResize, { passive: true });
@@ -334,112 +327,60 @@
     }
   }
 
-  // ─── Continuous Smooth Directional Rotation Loop ───────────────────
-  function startSpinLoop() {
+  // ─── Continuous Tripod Sync Loop ───────────────────────────────────
+  function startTripodSyncLoop() {
     if (spinAnimFrame) cancelAnimationFrame(spinAnimFrame);
-
     function loop() {
-      if (isSpinning && !isPointerDown && viewer) {
-        try {
-          // Rotate around gesture-derived view-space axis
-          viewer.rotate(spinSpeed, spinAxis);
-          updateOrientationTripod();
-        } catch (e) {}
+      if (viewer) {
+        updateOrientationTripod();
       }
       spinAnimFrame = requestAnimationFrame(loop);
     }
-
     spinAnimFrame = requestAnimationFrame(loop);
   }
 
-  // ─── User Gesture Direction Tracker (Mouse & Touch) ──────────────────
+  // ─── User Gesture Tracker (Smooth drag and flick spin direction) ────
   function setupGestureTracking(container) {
     if (!container) return;
 
     container.addEventListener('pointerdown', function (e) {
       if (e.button !== 0 && e.pointerType === 'mouse') return;
       isPointerDown = true;
-      lastPointerX = e.clientX;
-      lastPointerY = e.clientY;
-      lastPointerTime = performance.now();
-      dragMovements = [];
+      pointerStartX = e.clientX;
+      pointerStartY = e.clientY;
+      // Temporarily pause spin during manual drag to grant user total 3D control
+      if (isSpinning && viewer) {
+        try { viewer.spin(false); } catch (err) {}
+      }
     });
 
-    window.addEventListener('pointermove', function (e) {
-      if (!isPointerDown) return;
-      const now = performance.now();
-      const dx = e.clientX - lastPointerX;
-      const dy = e.clientY - lastPointerY;
-      const dt = Math.max(1, now - lastPointerTime);
-
-      if (Math.hypot(dx, dy) >= 1) {
-        dragMovements.push({ dx, dy, dt });
-        if (dragMovements.length > 8) dragMovements.shift();
-
-        // Convert mouse drag gesture to view-space rotation vector:
-        // Moving cursor right (dx > 0) -> rotates around vertical screen Y axis (vy > 0)
-        // Moving cursor left (dx < 0) -> rotates around vertical screen Y axis (vy < 0)
-        // Moving cursor down (dy > 0) -> tilts around horizontal screen X axis (vx > 0)
-        // Moving cursor up (dy < 0) -> tilts around horizontal screen X axis (vx < 0)
-        const len = Math.hypot(dx, dy);
-        if (len > 0.5) {
-          const gx = dy / len;
-          const gy = dx / len;
-          const norm = Math.hypot(gx, gy);
-          spinAxis = {
-            vx: gx / (norm || 1),
-            vy: gy / (norm || 1),
-            vz: 0
-          };
-        }
-      }
-
-      lastPointerX = e.clientX;
-      lastPointerY = e.clientY;
-      lastPointerTime = now;
-      updateOrientationTripod();
-    }, { passive: true });
-
-    window.addEventListener('pointerup', function () {
+    window.addEventListener('pointerup', function (e) {
       if (!isPointerDown) return;
       isPointerDown = false;
 
-      // Extract smooth release velocity and direction vector from recent movements
-      if (dragMovements.length > 0) {
-        let totalDx = 0;
-        let totalDy = 0;
-        let totalDt = 0;
-        for (let i = 0; i < dragMovements.length; i++) {
-          totalDx += dragMovements[i].dx;
-          totalDy += dragMovements[i].dy;
-          totalDt += dragMovements[i].dt;
-        }
-        const len = Math.hypot(totalDx, totalDy);
-        if (len > 1.5) {
-          const gx = totalDy / len;
-          const gy = totalDx / len;
-          const norm = Math.hypot(gx, gy);
-          spinAxis = {
-            vx: gx / (norm || 1),
-            vy: gy / (norm || 1),
-            vz: 0
-          };
-          // Dynamic flick momentum speed between 0.45 and 1.35
-          const calculatedSpeed = (len / Math.max(16, totalDt)) * 10;
-          spinSpeed = Math.min(1.35, Math.max(0.45, calculatedSpeed));
+      const dx = e.clientX - pointerStartX;
+      // If user dragged horizontally, adapt spin direction (left: counter-clockwise, right: clockwise)
+      if (Math.abs(dx) > 20) {
+        spinDirection = dx > 0 ? 1 : -1;
+      }
 
-          // If paused, flicking the model resumes spinning in the flicked direction
-          if (!isSpinning && len > 3.0) {
-            isSpinning = true;
-            updateSpinButtonUI();
-          }
-        }
+      // Resume native smooth spin if isSpinning is active
+      if (isSpinning && viewer) {
+        try {
+          viewer.spin('y', spinDirection * 0.8);
+        } catch (err) {}
       }
       updateOrientationTripod();
     }, { passive: true });
 
     window.addEventListener('pointercancel', function () {
+      if (!isPointerDown) return;
       isPointerDown = false;
+      if (isSpinning && viewer) {
+        try {
+          viewer.spin('y', spinDirection * 0.8);
+        } catch (err) {}
+      }
     }, { passive: true });
   }
 
@@ -456,12 +397,12 @@
       // Store pristine initial crystallographic view for this molecule
       initialViews[mol.id] = viewer.getView();
 
-      // Reset spin axis for new molecule to canonical 3D multi-axis (X, Y, Z)
-      spinAxis = { ...DEFAULT_3D_SPIN_AXIS };
-      spinSpeed = DEFAULT_SPIN_SPEED;
-
-      // Ensure 3Dmol internal spin interval is stopped
-      try { viewer.spin(false); } catch (e) {}
+      // Standart ilkin açılış: videodakı kimi təmiz və sabit şaquli (Y) fırlanma
+      if (isSpinning) {
+        viewer.spin('y', spinDirection * 0.8);
+      } else {
+        viewer.spin(false);
+      }
 
       updateOrientationTripod();
       showLoader(false);
@@ -494,14 +435,18 @@
       spinBtn.setAttribute('title', 'Döndürməni dayandır (Pauza)');
     } else {
       spinBtn.classList.remove('ring-1', 'ring-cyan-400');
-      spinBtn.setAttribute('title', 'Avtomatik 3D fırlanmanı başlat (X, Y, Z)');
+      spinBtn.setAttribute('title', 'Avtomatik fırlanmanı başlat (Pley)');
     }
   }
 
   function toggleSpin() {
     if (!viewer) return;
     isSpinning = !isSpinning;
-    try { viewer.spin(false); } catch (e) {} // Ensure 3Dmol native interval never runs
+    if (isSpinning) {
+      viewer.spin('y', spinDirection * 0.8);
+    } else {
+      viewer.spin(false);
+    }
     updateSpinButtonUI();
   }
 
@@ -520,13 +465,13 @@
     viewer.zoomTo();
     viewer.render();
 
-    // Reset spin axis and speed to canonical 3D multi-axis (X, Y, Z)
-    spinAxis = { ...DEFAULT_3D_SPIN_AXIS };
-    spinSpeed = DEFAULT_SPIN_SPEED;
+    // Reset spin direction to pristine default (clockwise vertical)
+    spinDirection = 1;
     if (!isSpinning) {
       isSpinning = true;
       updateSpinButtonUI();
     }
+    viewer.spin('y', 0.8);
 
     updateOrientationTripod();
 
