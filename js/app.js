@@ -2062,6 +2062,8 @@ function navigateTo(sectionId) {
     BioMeetEngine.renderRoomsList();
     BioMeetEngine.renderMeetings();
     BioMeetEngine.renderRecordingsArchive();
+    BioMeetEngine.updateLocalParticipantUI();
+    BioMeetEngine.announceRoomPresence();
   }
 
   // Bilingual translation re-sync on navigation

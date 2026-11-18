@@ -64,18 +64,27 @@ const BioMeetEngine = {
   chatMessages: [],
   isChatOpen: false,
   signalingChannel: null,
+  cloudStreamAbortController: null,
+  activeCloudRoomId: null,
+  processedSignalIds: new Set(),
+  peerHeartbeatInterval: null,
+  deadPeerPruneInterval: null,
+  roomChatHistory: {},
 
   init() {
     this.renderRoomsList();
     this.renderMeetings();
     this.renderRecordingsArchive();
     this.initWebRTCSignaling();
+    this.initCloudSignaling(this.currentRoom.id);
+    this.announceRoomPresence();
     this.renderPortalMeetings("member");
     this.renderPortalMeetings("teacher");
     this.renderPortalMeetings("president");
     this.bindEvents();
     this.checkAndSyncLiveMeetingState();
     this.startLiveSyncHeartbeat();
+    this.updateLocalParticipantUI();
   },
 
   renderRoomsList() {
@@ -132,10 +141,14 @@ const BioMeetEngine = {
     this.renderRoomsList();
     this.renderParticipantsGrid();
 
-    // If stream is active, announce presence in new room
-    if (this.activeStream || this.screenStream) {
-      this.announceRoomPresence();
-    }
+    // 1. Connect universal cloud real-time signaling to selected room
+    this.initCloudSignaling(roomId);
+
+    // 2. Clear & render chat messages for this room
+    this.renderChatMessagesForCurrentRoom();
+
+    // 3. Announce presence to everyone in this room immediately
+    this.announceRoomPresence();
 
     showToast(`"${r.name}" seçildi!`, "info");
   },
@@ -859,24 +872,40 @@ const BioMeetEngine = {
 
   async startRecording(type = "video") {
     if (this.isRecording) return;
+    this.recordingType = type;
 
     this.ensureLiveMeetingForRoom(this.currentRoom, type === "audio" ? "Səsli Mühazirə (Audio)" : "Görüntülü Dərs (Video & Səs)");
 
-    if (!this.activeStream && !this.screenStream) {
-      await this.startCamera();
-      if (!this.activeStream) return;
+    if (type === "audio") {
+      if (!this.activeStream) {
+        try {
+          const micStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+          this.activeStream = micStream;
+          this.initAudioVisualizer(micStream);
+          this.updateStatusPill(true);
+          this.updateLocalParticipantUI();
+        } catch (err) {
+          showToast("Mikrofon icazəsi verilmədi: " + err.message, "warning");
+          return;
+        }
+      }
+    } else {
+      if (!this.activeStream && !this.screenStream) {
+        await this.startCamera();
+        if (!this.activeStream && !this.screenStream) return;
+      }
     }
 
-    this.recordingType = type;
     const streamToRecord = this.screenStream || this.activeStream;
+    if (!streamToRecord) {
+      showToast("Yazmaq üçün aktiv media axını tapılmadı.", "warning");
+      return;
+    }
+
     this.recordedChunks = [];
 
     try {
-      let mimeType = "video/webm;codecs=vp8,opus";
-      if (type === "audio") {
-        mimeType = "audio/webm;codecs=opus";
-      }
-
+      let mimeType = type === "audio" ? "audio/webm;codecs=opus" : "video/webm;codecs=vp8,opus";
       if (!MediaRecorder.isTypeSupported(mimeType)) {
         mimeType = type === "audio" ? "audio/webm" : "video/webm";
       }
@@ -898,7 +927,7 @@ const BioMeetEngine = {
       this.isRecording = true;
       this.startRecordingTimer();
       this.updateRecordingUI(true);
-      showToast(type === "audio" ? "Səsli dərs yazılması başladı (REC)" : "Görüntülü dərs yazılması başladı (REC)", "success");
+      showToast(type === "audio" ? "Səsli mühazirə yazılması başladı (Audio REC)" : "Görüntülü dərs yazılması başladı (Video REC)", "success");
     } catch (err) {
       console.error("Recording error:", err);
       showToast("Yazma mühərriki işə düşmədi: " + err.message, "warning");
@@ -937,7 +966,7 @@ const BioMeetEngine = {
   async handleRecordingStopped() {
     const isAudio = this.recordingType === "audio";
     const mimeType = isAudio ? "audio/webm" : "video/webm";
-    const extension = isAudio ? "webm" : "webm";
+    const extension = "webm";
     const blob = new Blob(this.recordedChunks, { type: mimeType });
     const url = URL.createObjectURL(blob);
 
@@ -957,22 +986,9 @@ const BioMeetEngine = {
     const sizeFormatted = `${sizeMB} MB`;
 
     // Detect user role & name
-    let hostName = "Klub Sədri / Müəllim";
-    let hostRole = "Klub Rəhbərliyi";
-    if (typeof isPresidentLoggedIn === "function" && isPresidentLoggedIn()) {
-      hostName = "Süleyman Hacızadə";
-      hostRole = "Klub Sədri";
-    } else if (typeof isTeacherLoggedIn === "function" && isTeacherLoggedIn()) {
-      const teacher = typeof getActiveTeacher === "function" ? getActiveTeacher() : null;
-      hostName = teacher ? teacher.fullName : "Akademik Mentor";
-      hostRole = "Müəllim / Mentor";
-    } else if (typeof getActiveMember === "function" && getActiveMember()) {
-      hostName = getActiveMember().fullName;
-      hostRole = "Klub Üzvü";
-    }
-
+    const hostInfo = this.getCurrentHostInfo();
     const currentMeeting = this.activeMeeting;
-    const title = currentMeeting ? currentMeeting.title : `${this.currentRoom.name} - Dərs Qeydi`;
+    const title = currentMeeting ? currentMeeting.title : `${this.currentRoom.name} - ${isAudio ? 'Səsli Mühazirə' : 'Dərs Qeydi'}`;
 
     const recMeta = {
       id: `rec_${Date.now()}`,
@@ -980,8 +996,8 @@ const BioMeetEngine = {
       room: this.currentRoom.name,
       roomId: this.currentRoom.id,
       meetingCode: currentMeeting ? currentMeeting.meetingCode : this.currentRoom.code,
-      hostName: hostName,
-      hostRole: hostRole,
+      hostName: hostInfo.hostName,
+      hostRole: hostInfo.hostRole,
       type: this.recordingType,
       duration: durationFormatted,
       sizeFormatted: sizeFormatted,
@@ -1006,6 +1022,9 @@ const BioMeetEngine = {
 
     // 2. Arxivi dərhal yenidən render et
     this.renderRecordingsArchive();
+    this.renderPortalMeetings("member");
+    this.renderPortalMeetings("teacher");
+    this.renderPortalMeetings("president");
 
     // 3. UI-da pleyer və yükləmə düyməsini aktivləşdir
     const downloadSection = document.getElementById("recordedDownloadSection");
@@ -1023,7 +1042,17 @@ const BioMeetEngine = {
       downloadBtn.download = filename;
     }
 
-    showToast("Dərs qeydi (Video/Audio) həm brauzerin IndexedDB bazasında daimi saxlanıldı, həm də arxivə əlavə edildi!", "success");
+    // 4. Avtomatik ani fayl yükləməsi
+    try {
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    } catch (e) {}
+
+    showToast("Dərs qeydi uğurla tamamlandı, yaddaşa yazıldı və fayl yükləndi!", "success");
   },
 
   updateRecordingUI(isRec) {
@@ -1579,17 +1608,147 @@ const BioMeetEngine = {
     showToast(`"${m.title}" dərsinə uğurla qoşuldunuz!`, "success");
   },
 
+  canEndMeetingForAll() {
+    const isPres = typeof isPresidentLoggedIn === "function" && isPresidentLoggedIn();
+    const isTeach = typeof isTeacherLoggedIn === "function" && isTeacherLoggedIn();
+    return !!(isPres || isTeach);
+  },
+
+  handleEndMeetingClick() {
+    if (this.canEndMeetingForAll()) {
+      this.endCurrentLiveMeeting();
+    } else {
+      this.leaveRoomLocally();
+    }
+  },
+
   endCurrentLiveMeeting() {
-    if (!confirm("Canlı dərsi bütün iştirakçılar üçün yekunlaşdırmaq və yayımı dayandırmaq istədiyinizə əminsiniz?")) {
+    if (!this.canEndMeetingForAll()) {
+      showToast("Yalnız Klub Sədri və ya Müəllim dərsi hamı üçün yekunlaşdıra bilər. Siz yalnız otaqdan çıxa bilərsiniz.", "warning");
+      this.leaveRoomLocally();
       return;
     }
 
+    if (!confirm("Canlı dərsi bütün otaq və iştirakçılar üçün yekunlaşdırmaq və yayımı dayandırmaq istədiyinizə əminsiniz?")) {
+      return;
+    }
+
+    const hostInfo = this.getCurrentHostInfo();
+    const roomId = this.currentRoom.id;
+
+    // 1. Bütün iştirakçılara canlı dərsin yekunlaşdırılması siqnalını göndər
+    this.sendSignal("MEETING_TERMINATED_BY_HOST", {
+      roomId: roomId,
+      hostName: hostInfo.hostName,
+      hostRole: hostInfo.hostRole
+    });
+
+    // 2. Verilənlər bazasındakı canlı dərs statusunu 'completed' et
+    if (typeof getClubData === "function" && typeof saveClubData === "function") {
+      const data = getClubData();
+      if (Array.isArray(data.meetings)) {
+        let changed = false;
+        data.meetings.forEach(m => {
+          if (m.roomId === roomId && m.status === "live") {
+            m.status = "completed";
+            m.endedAt = new Date().toISOString();
+            changed = true;
+          }
+        });
+        if (changed) saveClubData(data);
+      }
+    }
+
     const meetingToClose = this.activeMeeting || this.getActiveLiveMeeting();
-    if (meetingToClose) {
+    if (meetingToClose && typeof this.broadcastLiveMeetingEnd === "function") {
       this.broadcastLiveMeetingEnd(meetingToClose.id);
     }
-    this.returnToLocalStudio();
-    showToast("Canlı dərs yekunlaşdırıldı.", "info");
+
+    // 3. Yerli resursları dayandır və təmizlə
+    this.handleMeetingTerminatedByHost({
+      roomId: roomId,
+      hostName: hostInfo.hostName,
+      hostRole: hostInfo.hostRole,
+      isLocalHost: true
+    });
+  },
+
+  leaveRoomLocally() {
+    if (this.isRecording) {
+      this.stopRecording();
+    }
+    this.stopCamera();
+    if (this.screenStream) {
+      this.screenStream.getTracks().forEach(t => t.stop());
+      this.screenStream = null;
+      this.isScreenSharing = false;
+    }
+    this.sendSignal("PEER_LEAVE", { peerId: this.localPeerId, roomId: this.currentRoom.id });
+    Object.keys(this.peers).forEach(pId => {
+      if (this.peers[pId].pc) {
+        try { this.peers[pId].pc.close(); } catch (e) {}
+      }
+    });
+    this.peers = {};
+    this.renderParticipantsGrid();
+    showToast("Otaqdan çıxdınız.", "info");
+  },
+
+  handleMeetingTerminatedByHost(data) {
+    if (this.isRecording) {
+      this.stopRecording();
+    }
+    this.stopCamera();
+    if (this.screenStream) {
+      this.screenStream.getTracks().forEach(t => t.stop());
+      this.screenStream = null;
+      this.isScreenSharing = false;
+    }
+    Object.keys(this.peers).forEach(pId => {
+      if (this.peers[pId].pc) {
+        try { this.peers[pId].pc.close(); } catch (e) {}
+      }
+    });
+    this.peers = {};
+
+    this.renderParticipantsGrid();
+    this.renderRoomsList();
+    this.renderMeetings();
+
+    if (!data.isLocalHost) {
+      this.showMeetingEndedModal(data.hostName || "Rəhbərlik", data.hostRole || "Klub Rəhbəri");
+    } else {
+      showToast("Canlı dərs bütün iştirakçılar üçün uğurla yekunlaşdırıldı.", "success");
+    }
+  },
+
+  showMeetingEndedModal(hostName, hostRole) {
+    const existing = document.getElementById("biomeetMeetingEndedModal");
+    if (existing) existing.remove();
+
+    const modalHtml = `
+      <div id="biomeetMeetingEndedModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn">
+        <div class="relative w-full max-w-md p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 border border-teal-500/40 shadow-2xl text-center space-y-4">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-rose-500/20 text-rose-400 border border-rose-500/30 flex items-center justify-center text-3xl shadow-inner">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div class="space-y-1.5">
+            <h3 class="text-lg font-extrabold text-white">Canlı Dərs Yekunlaşdırıldı</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Bu elmi mühazirə zalındakı canlı dərs rəhbərlik (<span class="font-bold text-teal-300">${hostName}</span> • <span class="font-bold text-amber-300">${hostRole}</span>) tərəfindən rəsmi olaraq yekunlaşdırıldı və bağlandı.
+            </p>
+          </div>
+          <div class="p-3 rounded-2xl bg-slate-950/90 border border-slate-800 text-[11px] text-slate-300 flex items-center justify-center gap-2">
+            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+            <span>Dərs qeydləri və materialları arxivə yönləndirildi.</span>
+          </div>
+          <button onclick="document.getElementById('biomeetMeetingEndedModal')?.remove()" class="w-full py-3 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-extrabold text-xs shadow-lg transition transform hover:scale-[1.02] active:scale-95">
+            Anladım, Təşəkkürlər
+          </button>
+        </div>
+      </div>
+    `;
+    document.body.insertAdjacentHTML("beforeend", modalHtml);
   },
 
   dismissLiveBanner() {
@@ -1600,7 +1759,6 @@ const BioMeetEngine = {
     const banner = document.getElementById("globalLiveMeetingBanner");
     if (banner) banner.classList.add("hidden");
   },
-
 
   // ==========================================
   // 8. SENIOR-ARCHITECT WEBRTC MESH & MULTI-PARTICIPANT CONFERENCING ENGINE
@@ -1647,7 +1805,7 @@ const BioMeetEngine = {
 
     try {
       if (typeof BroadcastChannel !== "undefined") {
-        this.signalingChannel = new BroadcastChannel("carboxmol_biomeet_channel_v2");
+        this.signalingChannel = new BroadcastChannel("carboxmol_biomeet_channel_v3");
         this.signalingChannel.onmessage = (event) => {
           if (event && event.data) {
             this.handleWebRTCSignal(event.data);
@@ -1670,10 +1828,105 @@ const BioMeetEngine = {
     window.addEventListener("beforeunload", () => {
       this.sendSignal("PEER_LEAVE", { peerId: this.localPeerId, roomId: this.currentRoom.id });
     });
+
+    // Hər 4 saniyədən bir zal üzrə varlıq (presence heartbeat) yay
+    if (this.peerHeartbeatInterval) clearInterval(this.peerHeartbeatInterval);
+    this.peerHeartbeatInterval = setInterval(() => {
+      this.sendSignal("PEER_HEARTBEAT", {
+        profile: this.getLocalProfile()
+      });
+    }, 4000);
+
+    // Bağlantısı kəsilmiş və ya pəncərəni bağlamış iştirakçıları 12s sonra avtomatik təmizlə
+    if (this.deadPeerPruneInterval) clearInterval(this.deadPeerPruneInterval);
+    this.deadPeerPruneInterval = setInterval(() => {
+      const now = Date.now();
+      let changed = false;
+      Object.keys(this.peers).forEach(pId => {
+        const p = this.peers[pId];
+        if (p.lastSeen && (now - p.lastSeen > 12000)) {
+          if (p.pc) {
+            try { p.pc.close(); } catch (e) {}
+          }
+          delete this.peers[pId];
+          const card = document.getElementById("participant_card_" + pId);
+          if (card) card.remove();
+          changed = true;
+        }
+      });
+      if (changed) {
+        this.renderParticipantsGrid();
+      }
+    }, 5000);
+  },
+
+  initCloudSignaling(roomId) {
+    if (this.cloudStreamAbortController) {
+      try { this.cloudStreamAbortController.abort(); } catch (e) {}
+      this.cloudStreamAbortController = null;
+    }
+
+    this.activeCloudRoomId = roomId;
+    const controller = new AbortController();
+    this.cloudStreamAbortController = controller;
+    const url = "https://ntfy.sh/carboxmol_biomeet_v4_" + encodeURIComponent(roomId) + "/json";
+
+    const startStreamReader = async () => {
+      try {
+        const resp = await fetch(url, { signal: controller.signal });
+        if (!resp.ok) throw new Error("HTTP status " + resp.status);
+        const reader = resp.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+
+        while (!controller.signal.aborted) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop();
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) continue;
+            try {
+              const parsed = JSON.parse(trimmed);
+              if (parsed.event === "message" && parsed.message) {
+                const signal = typeof parsed.message === "string" ? JSON.parse(parsed.message) : parsed.message;
+                this.handleWebRTCSignal(signal);
+              }
+            } catch (err) {}
+          }
+        }
+      } catch (err) {
+        if (controller.signal.aborted) return;
+        console.warn("[BioMeet] Cloud stream disconnected, retrying in 2s:", err);
+        setTimeout(() => {
+          if (!controller.signal.aborted && this.activeCloudRoomId === roomId) {
+            startStreamReader();
+          }
+        }, 2000);
+      }
+    };
+
+    startStreamReader();
+  },
+
+  sendCloudSignal(msg) {
+    const roomId = msg.roomId || this.currentRoom.id;
+    const url = "https://ntfy.sh/carboxmol_biomeet_v4_" + encodeURIComponent(roomId);
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(msg),
+      headers: { "Content-Type": "application/json" }
+    }).catch(err => {
+      console.warn("[BioMeet] Cloud publish error:", err);
+    });
   },
 
   sendSignal(action, payload = {}) {
+    const msgId = `${this.localPeerId}_${action}_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
     const msg = {
+      msgId: msgId,
       action: action,
       roomId: this.currentRoom.id,
       fromPeerId: this.localPeerId,
@@ -1681,20 +1934,36 @@ const BioMeetEngine = {
       ...payload
     };
 
+    this.processedSignalIds.add(msgId);
+    if (this.processedSignalIds.size > 500) {
+      const first = this.processedSignalIds.values().next().value;
+      this.processedSignalIds.delete(first);
+    }
+
     if (this.signalingChannel) {
-      try {
-        this.signalingChannel.postMessage(msg);
-      } catch (e) {}
+      try { this.signalingChannel.postMessage(msg); } catch (e) {}
     }
 
     try {
       localStorage.setItem("carboxmol_biomeet_webrtc_signal", JSON.stringify(msg));
     } catch (e) {}
+
+    this.sendCloudSignal(msg);
   },
 
   async handleWebRTCSignal(data) {
-    if (!data || data.roomId !== this.currentRoom.id) return;
+    if (!data || !data.action) return;
+    if (data.roomId !== this.currentRoom.id) return;
     if (data.fromPeerId === this.localPeerId) return;
+
+    if (data.msgId) {
+      if (this.processedSignalIds.has(data.msgId)) return;
+      this.processedSignalIds.add(data.msgId);
+      if (this.processedSignalIds.size > 500) {
+        const first = this.processedSignalIds.values().next().value;
+        this.processedSignalIds.delete(first);
+      }
+    }
 
     switch (data.action) {
       case "PEER_JOIN": {
@@ -1707,29 +1976,31 @@ const BioMeetEngine = {
             profile: profile,
             stream: null,
             pc: null,
+            lastSeen: Date.now(),
             isAudioMuted: !!profile.isAudioMuted,
             isVideoMuted: !!profile.isVideoMuted,
             isScreenSharing: !!profile.isScreenSharing
           };
         } else {
           this.peers[remotePeerId].profile = profile;
+          this.peers[remotePeerId].lastSeen = Date.now();
         }
 
         this.renderParticipantsGrid();
 
+        this.sendSignal("PEER_PRESENCE", {
+          targetPeerId: remotePeerId,
+          profile: this.getLocalProfile()
+        });
+
         if (this.localPeerId < remotePeerId) {
           await this.createPeerConnection(remotePeerId, true, profile);
-        } else {
-          this.sendSignal("PEER_PRESENCE", {
-            targetPeerId: remotePeerId,
-            profile: this.getLocalProfile()
-          });
         }
         break;
       }
 
       case "PEER_PRESENCE": {
-        if (data.targetPeerId !== this.localPeerId) return;
+        if (data.targetPeerId && data.targetPeerId !== this.localPeerId) return;
         const remotePeerId = data.fromPeerId;
         const profile = data.profile || {};
         
@@ -1739,15 +2010,57 @@ const BioMeetEngine = {
             profile: profile,
             stream: null,
             pc: null,
+            lastSeen: Date.now(),
             isAudioMuted: !!profile.isAudioMuted,
             isVideoMuted: !!profile.isVideoMuted,
             isScreenSharing: !!profile.isScreenSharing
           };
+        } else {
+          this.peers[remotePeerId].profile = profile;
+          this.peers[remotePeerId].lastSeen = Date.now();
         }
         this.renderParticipantsGrid();
 
         if (this.localPeerId < remotePeerId) {
           await this.createPeerConnection(remotePeerId, true, profile);
+        }
+        break;
+      }
+
+      case "PEER_HEARTBEAT": {
+        const remotePeerId = data.fromPeerId;
+        const profile = data.profile || {};
+        let needGridRender = false;
+
+        if (!this.peers[remotePeerId]) {
+          this.peers[remotePeerId] = {
+            id: remotePeerId,
+            profile: profile,
+            stream: null,
+            pc: null,
+            lastSeen: Date.now(),
+            isAudioMuted: !!profile.isAudioMuted,
+            isVideoMuted: !!profile.isVideoMuted,
+            isScreenSharing: !!profile.isScreenSharing
+          };
+          needGridRender = true;
+          this.sendSignal("PEER_PRESENCE", {
+            targetPeerId: remotePeerId,
+            profile: this.getLocalProfile()
+          });
+          if (this.localPeerId < remotePeerId) {
+            await this.createPeerConnection(remotePeerId, true, profile);
+          }
+        } else {
+          this.peers[remotePeerId].lastSeen = Date.now();
+          if (profile.name && !this.peers[remotePeerId].profile?.name) {
+            this.peers[remotePeerId].profile = profile;
+            needGridRender = true;
+          }
+        }
+
+        if (needGridRender) {
+          this.renderParticipantsGrid();
         }
         break;
       }
@@ -1788,12 +2101,26 @@ const BioMeetEngine = {
       }
 
       case "CHAT_MESSAGE": {
-        this.appendChatMessage(data.message);
+        if (data.message) {
+          this.appendChatMessage(data.message);
+        }
         break;
       }
 
       case "REACTION": {
-        this.showFloatingReaction(data.emoji);
+        if (data.emoji) {
+          this.showFloatingReaction(data.emoji);
+        }
+        break;
+      }
+
+      case "MEETING_TERMINATED_BY_HOST": {
+        this.handleMeetingTerminatedByHost({
+          roomId: data.roomId,
+          hostName: data.hostName || "Rəhbərlik",
+          hostRole: data.hostRole || "Klub Rəhbəri",
+          isLocalHost: false
+        });
         break;
       }
     }
@@ -1807,6 +2134,7 @@ const BioMeetEngine = {
         profile: remoteProfile,
         stream: null,
         pc: null,
+        lastSeen: Date.now(),
         isAudioMuted: false,
         isVideoMuted: false,
         isScreenSharing: false
@@ -1847,7 +2175,7 @@ const BioMeetEngine = {
 
     pc.onconnectionstatechange = () => {
       if (pc.connectionState === "disconnected" || pc.connectionState === "failed" || pc.connectionState === "closed") {
-        this.removeRemotePeer(remotePeerId);
+        // Gözləmə rejimi (ürək döyüntüsü fasiləsinə qədər saxla)
       }
     };
 
@@ -1875,15 +2203,19 @@ const BioMeetEngine = {
     const newVideoTrack = streamToSend.getVideoTracks()[0];
     const newAudioTrack = streamToSend.getAudioTracks()[0];
 
-    Object.values(this.peers).forEach(peer => {
+    Object.entries(this.peers).forEach(([remotePeerId, peer]) => {
       if (peer.pc) {
+        let renegotiateNeeded = false;
         const senders = peer.pc.getSenders();
         if (newVideoTrack) {
           const videoSender = senders.find(s => s.track && s.track.kind === "video");
           if (videoSender) {
             videoSender.replaceTrack(newVideoTrack).catch(() => {});
           } else {
-            try { peer.pc.addTrack(newVideoTrack, streamToSend); } catch (e) {}
+            try { 
+              peer.pc.addTrack(newVideoTrack, streamToSend); 
+              renegotiateNeeded = true;
+            } catch (e) {}
           }
         }
         if (newAudioTrack) {
@@ -1891,8 +2223,23 @@ const BioMeetEngine = {
           if (audioSender) {
             audioSender.replaceTrack(newAudioTrack).catch(() => {});
           } else {
-            try { peer.pc.addTrack(newAudioTrack, streamToSend); } catch (e) {}
+            try { 
+              peer.pc.addTrack(newAudioTrack, streamToSend); 
+              renegotiateNeeded = true;
+            } catch (e) {}
           }
+        }
+
+        if (renegotiateNeeded && this.localPeerId < remotePeerId) {
+          peer.pc.createOffer().then(offer => {
+            return peer.pc.setLocalDescription(offer).then(() => {
+              this.sendSignal("SDP_OFFER", {
+                targetPeerId: remotePeerId,
+                offer: offer,
+                profile: this.getLocalProfile()
+              });
+            });
+          }).catch(err => console.warn("Renegotiation error:", err));
         }
       }
     });
@@ -1950,11 +2297,11 @@ const BioMeetEngine = {
       this.renderParticipantsGrid();
       videoEl = document.getElementById("peer_video_" + remotePeerId);
     }
-
     if (videoEl) {
       videoEl.srcObject = stream;
       videoEl.play().catch(() => {});
     }
+    this.updateRemoteParticipantUI(remotePeerId);
   },
 
   removeRemotePeer(remotePeerId) {
@@ -1978,7 +2325,7 @@ const BioMeetEngine = {
     const totalCount = peerIds.length + 1;
     if (countBadge) countBadge.innerText = totalCount;
 
-    // Responsive grid layout adjustment
+    // Grid layout adjustment
     grid.className = totalCount === 1 
       ? "w-full h-full p-2.5 grid grid-cols-1 gap-3 items-center justify-center min-h-[300px] sm:min-h-[440px]"
       : (totalCount === 2
@@ -1998,10 +2345,12 @@ const BioMeetEngine = {
         grid.appendChild(card);
       }
 
+      const isVideoOff = p.isVideoMuted || !p.stream;
+
       card.innerHTML = `
-        <video id="peer_video_${pId}" autoplay playsinline class="w-full h-full object-cover rounded-2xl ${p.isVideoMuted ? 'hidden' : ''}"></video>
+        <video id="peer_video_${pId}" autoplay playsinline class="w-full h-full object-cover rounded-2xl ${isVideoOff ? 'hidden' : ''}"></video>
         
-        <div id="peer_avatar_fallback_${pId}" class="${p.isVideoMuted ? '' : 'hidden'} absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950/40 p-4 space-y-3">
+        <div id="peer_avatar_fallback_${pId}" class="${isVideoOff ? '' : 'hidden'} absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950/40 p-4 space-y-3">
           <div class="relative">
             <div class="w-24 h-24 rounded-full bg-indigo-500/20 flex items-center justify-center animate-pulse">
               <img src="${prof.avatar || 'assets/images/carboxmol_bioclub_logo.png'}" alt="${prof.name || 'İştirakçı'}" class="w-20 h-20 rounded-full object-cover ring-2 ring-indigo-400 shadow-2xl" />
@@ -2018,12 +2367,12 @@ const BioMeetEngine = {
 
         <!-- Peer Status Pill (Top Left) -->
         <div class="absolute top-3 left-3 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/85 backdrop-blur border border-slate-800 text-xs font-semibold shadow-md z-20">
-          <span class="w-2 h-2 rounded-full ${p.isAudioMuted ? 'bg-rose-500' : 'bg-emerald-400 animate-pulse'}"></span>
+          <span id="peer_audio_dot_${pId}" class="w-2 h-2 rounded-full ${p.isAudioMuted ? 'bg-rose-500' : 'bg-emerald-400 animate-pulse'}"></span>
           <span class="text-white font-medium truncate max-w-[140px]">${prof.name || 'İştirakçı'}</span>
         </div>
 
         <!-- Screen share badge -->
-        <div class="${p.isScreenSharing ? '' : 'hidden'} absolute top-12 left-3 px-2.5 py-1 rounded-lg bg-cyan-950/90 border border-cyan-500/80 text-cyan-300 text-[10px] font-bold flex items-center gap-1.5 shadow-lg z-20">
+        <div id="peer_screenshare_${pId}" class="${p.isScreenSharing ? '' : 'hidden'} absolute top-12 left-3 px-2.5 py-1 rounded-lg bg-cyan-950/90 border border-cyan-500/80 text-cyan-300 text-[10px] font-bold flex items-center gap-1.5 shadow-lg z-20">
           <i class="fa-solid fa-display text-cyan-400"></i> Ekran Paylaşılır
         </div>
 
@@ -2032,8 +2381,8 @@ const BioMeetEngine = {
           <div class="px-2.5 py-1 rounded-xl bg-slate-950/80 backdrop-blur border border-slate-800 text-[11px] font-bold text-white flex items-center gap-2 shadow">
             <span>${prof.name || 'İştirakçı'}</span>
             <div class="flex items-center gap-1">
-              <span class="${p.isAudioMuted ? 'text-rose-400' : 'text-teal-400'}"><i class="fa-solid ${p.isAudioMuted ? 'fa-microphone-slash' : 'fa-microphone'}"></i></span>
-              <span class="${p.isVideoMuted ? 'text-rose-400' : 'text-teal-400'}"><i class="fa-solid ${p.isVideoMuted ? 'fa-video-slash' : 'fa-video'}"></i></span>
+              <span id="peer_mic_${pId}" class="${p.isAudioMuted ? 'text-rose-400' : 'text-teal-400'}"><i class="fa-solid ${p.isAudioMuted ? 'fa-microphone-slash' : 'fa-microphone'}"></i></span>
+              <span id="peer_cam_${pId}" class="${p.isVideoMuted ? 'text-rose-400' : 'text-teal-400'}"><i class="fa-solid ${p.isVideoMuted ? 'fa-video-slash' : 'fa-video'}"></i></span>
             </div>
           </div>
           <button onclick="BioMeetEngine.toggleCardFullscreen('participant_card_${pId}')" class="pointer-events-auto p-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white transition border border-slate-700 text-xs" title="Tam Ekran">
@@ -2065,6 +2414,7 @@ const BioMeetEngine = {
     const micInd = document.getElementById("localMicIndicator");
     const camInd = document.getElementById("localCamIndicator");
     const userLabel = document.getElementById("localUserLabel");
+    const endBtn = document.getElementById("btnEndMeetingAction");
 
     if (nameEl) nameEl.innerText = prof.name + " (Siz)";
     if (roleBadgeEl) {
@@ -2087,6 +2437,21 @@ const BioMeetEngine = {
       camInd.className = this.isVideoMuted ? "text-rose-400" : "text-teal-400";
       camInd.innerHTML = `<i class="fa-solid ${this.isVideoMuted ? 'fa-video-slash' : 'fa-video'}"></i>`;
     }
+
+    // Role-based button adaptation: President/Teacher can end meeting for all, students can only leave
+    if (endBtn) {
+      if (this.canEndMeetingForAll()) {
+        endBtn.className = "px-3.5 py-2 rounded-xl bg-rose-950/80 hover:bg-rose-900 text-rose-300 border border-rose-800/80 font-bold text-xs flex items-center gap-1.5 transition";
+        endBtn.title = "Canlı dərsi bütün iştirakçılar üçün yekunlaşdır";
+        endBtn.setAttribute("onclick", "BioMeetEngine.handleEndMeetingClick()");
+        endBtn.innerHTML = '<i class="fa-solid fa-phone-slash text-rose-400"></i> <span>Dərsi Yekunlaşdır (Hamı üçün)</span>';
+      } else {
+        endBtn.className = "px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-bold text-xs flex items-center gap-1.5 transition";
+        endBtn.title = "Otaqdan çıx";
+        endBtn.setAttribute("onclick", "BioMeetEngine.handleEndMeetingClick()");
+        endBtn.innerHTML = '<i class="fa-solid fa-arrow-right-from-bracket text-slate-400"></i> <span>Otaqdan Çıx</span>';
+      }
+    }
   },
 
   updateRemoteParticipantUI(remotePeerId) {
@@ -2094,8 +2459,26 @@ const BioMeetEngine = {
     if (!p) return;
     const v = document.getElementById("peer_video_" + remotePeerId);
     const fb = document.getElementById("peer_avatar_fallback_" + remotePeerId);
-    if (v) v.classList.toggle("hidden", !!p.isVideoMuted);
-    if (fb) fb.classList.toggle("hidden", !p.isVideoMuted);
+    const screenBadge = document.getElementById("peer_screenshare_" + remotePeerId);
+    const micInd = document.getElementById("peer_mic_" + remotePeerId);
+    const camInd = document.getElementById("peer_cam_" + remotePeerId);
+    const audioPillDot = document.getElementById("peer_audio_dot_" + remotePeerId);
+
+    const isVideoOff = p.isVideoMuted || !p.stream;
+    if (v) v.classList.toggle("hidden", !!isVideoOff);
+    if (fb) fb.classList.toggle("hidden", !isVideoOff);
+    if (screenBadge) screenBadge.classList.toggle("hidden", !p.isScreenSharing);
+    if (micInd) {
+      micInd.className = p.isAudioMuted ? "text-rose-400" : "text-teal-400";
+      micInd.innerHTML = `<i class="fa-solid ${p.isAudioMuted ? 'fa-microphone-slash' : 'fa-microphone'}"></i>`;
+    }
+    if (camInd) {
+      camInd.className = p.isVideoMuted ? "text-rose-400" : "text-teal-400";
+      camInd.innerHTML = `<i class="fa-solid ${p.isVideoMuted ? 'fa-video-slash' : 'fa-video'}"></i>`;
+    }
+    if (audioPillDot) {
+      audioPillDot.className = "w-2 h-2 rounded-full " + (p.isAudioMuted ? "bg-rose-500" : "bg-emerald-400 animate-pulse");
+    }
   },
 
   toggleCardFullscreen(cardId) {
@@ -2122,6 +2505,8 @@ const BioMeetEngine = {
       if (btnWebRTC) {
         btnWebRTC.className = "px-3 py-1.5 rounded-lg font-bold text-slate-400 hover:text-white transition flex items-center gap-1.5";
       }
+      if (webrtcStage) webrtcStage.classList.add("hidden");
+      if (jitsiContainer) jitsiContainer.classList.remove("hidden");
       this.launchGroupConference();
     } else {
       if (btnWebRTC) {
@@ -2156,8 +2541,9 @@ const BioMeetEngine = {
 
     const prof = this.getLocalProfile();
     const msg = {
-      id: "msg_" + Date.now(),
+      id: "msg_" + Date.now() + "_" + Math.random().toString(36).substr(2, 5),
       fromPeerId: this.localPeerId,
+      roomId: this.currentRoom.id,
       name: prof.name,
       role: prof.roleBadge,
       avatar: prof.avatar,
@@ -2170,12 +2556,32 @@ const BioMeetEngine = {
     input.value = "";
   },
 
+  renderChatMessagesForCurrentRoom() {
+    const container = document.getElementById("biomeetChatMessagesList");
+    if (!container) return;
+    container.innerHTML = "";
+
+    const roomMsgs = (this.chatMessages || []).filter(m => !m.roomId || m.roomId === this.currentRoom.id);
+    roomMsgs.forEach(msg => {
+      this.renderSingleChatMessage(msg, false);
+    });
+    container.scrollTop = container.scrollHeight;
+  },
+
   appendChatMessage(msg) {
+    if (!msg) return;
+    if (!this.chatMessages) this.chatMessages = [];
+    this.chatMessages.push(msg);
+
+    if (!msg.roomId || msg.roomId === this.currentRoom.id) {
+      this.renderSingleChatMessage(msg, true);
+    }
+  },
+
+  renderSingleChatMessage(msg, autoScroll = true) {
     const container = document.getElementById("biomeetChatMessagesList");
     const dot = document.getElementById("chatUnreadDot");
     if (!container) return;
-
-    this.chatMessages.push(msg);
 
     const isMe = msg.fromPeerId === this.localPeerId;
     const msgHtml = `
@@ -2192,7 +2598,9 @@ const BioMeetEngine = {
     `;
 
     container.insertAdjacentHTML("beforeend", msgHtml);
-    container.scrollTop = container.scrollHeight;
+    if (autoScroll) {
+      container.scrollTop = container.scrollHeight;
+    }
 
     if (!this.isChatOpen && !isMe && dot) {
       dot.classList.remove("hidden");
