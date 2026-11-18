@@ -245,6 +245,14 @@ const TeacherPortal = {
             <span class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5">
               <i class="fa-solid fa-code text-cyan-400"></i> Tələbənin Təqdim Etdiyi Kod / Cavab:
             </span>
+            ${sub.solutionUrl ? `
+              <div class="pb-1.5 flex items-center justify-between">
+                <span class="text-[11px] text-slate-400">Təqdim olunmuş Həll Linki:</span>
+                <a href="${escapeTeacherHtml(sub.solutionUrl)}" target="_blank" rel="noopener noreferrer" class="text-teal-400 hover:text-teal-300 font-mono text-[11px] underline flex items-center gap-1 font-bold">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Linki Aç
+                </a>
+              </div>
+            ` : ''}
             <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-slate-300 max-h-32 overflow-y-auto whitespace-pre-wrap leading-relaxed select-text">
               ${escapeTeacherHtml(sub.solutionCode || sub.answer || sub.notes || 'Həll mətni daxil edilməyib.')}
             </div>
@@ -357,20 +365,40 @@ const TeacherPortal = {
       saveClubData(data);
     }
 
-    // Bulud sinxronizasiyası
+    // Bulud və cihazlararası real-time sinxronizasiya
+    if (window.SyncEngine) {
+      window.SyncEngine.broadcast("SUBMISSION_GRADED", {
+        taskId: taskId,
+        submissionId: subId,
+        submission: sub,
+        grade: gradeVal,
+        feedback: sanitizedFeedback,
+        teacherName: teacher.fullName
+      });
+    }
     try {
-      fetch("/api/sync", {
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          action: "TASK_SUBMISSION_ADDED",
+          action: "SUBMISSION_GRADED",
           taskId: taskId,
-          submission: sub
+          submissionId: subId,
+          submission: sub,
+          grade: gradeVal,
+          feedback: sanitizedFeedback,
+          teacherName: teacher.fullName
         })
       }).catch(() => {});
     } catch (err) {}
 
     this.closeGradeModal();
+    if (window.PresidentPortal && window.PresidentPortal.renderAcademicSupervision) {
+      window.PresidentPortal.renderAcademicSupervision();
+    }
+    if (window.MembersPortal && window.MembersPortal.renderTasks) {
+      window.MembersPortal.renderTasks();
+    }
     this.renderMetrics();
     this.renderSubmissions(this.currentFilter);
 

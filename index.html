@@ -4893,6 +4893,91 @@ Seçilmiş pipeline: DESeq2
         </div>
       </div>
 
+      <!-- Müəllim-Tələbə Akademik Nəzarət və Supervizor Paneli (Faculty-Student Academic Interaction & Task Supervision Audit Console) -->
+      <div id="presidentAcademicSupervisionSection" class="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-500/30 bg-gradient-to-b from-slate-900/95 via-slate-900/90 to-amber-950/20 shadow-2xl space-y-6 mt-8 mb-8">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+          <div>
+            <div class="flex items-center gap-2 flex-wrap mb-1">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid fa-crown text-amber-400"></i> Sədr Supervizor Nəzarəti
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Canlı Akademik İzləmə
+              </span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2.5">
+              <span>Müəllim-Tələbə Akademik Nəzarət və Supervizor Paneli</span>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed max-w-3xl">
+              Klubun 4 akademik mentoru və 65 təsdiqlənmiş tələbəsi arasındakı tapşırıq axını, təhvil verilmiş laboratoriya həlləri, mentor rəyləri və sədr supervizor təsdiqi.
+            </p>
+          </div>
+
+          <!-- Quick Supervision Metrics Badges -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <div class="bg-slate-950/80 p-3 rounded-2xl border border-slate-800 text-center">
+              <span class="text-[10px] text-slate-400 uppercase font-bold block">Təsdiqlənmiş Üzv</span>
+              <strong id="supervisionStatMembers" class="text-lg font-black text-white">65</strong>
+            </div>
+            <div class="bg-slate-950/80 p-3 rounded-2xl border border-slate-800 text-center">
+              <span class="text-[10px] text-slate-400 uppercase font-bold block">Müəllimlər</span>
+              <strong id="supervisionStatTeachers" class="text-lg font-black text-indigo-400">4</strong>
+            </div>
+            <div class="bg-slate-950/80 p-3 rounded-2xl border border-slate-800 text-center">
+              <span class="text-[10px] text-slate-400 uppercase font-bold block">Təhvil Verilən</span>
+              <strong id="supervisionStatSubmissions" class="text-lg font-black text-teal-400">0</strong>
+            </div>
+            <div class="bg-slate-950/80 p-3 rounded-2xl border border-slate-800 text-center">
+              <span class="text-[10px] text-slate-400 uppercase font-bold block">Yoxlama Gözləyən</span>
+              <strong id="supervisionStatPending" class="text-lg font-black text-amber-400">0</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1">
+          <div class="flex flex-wrap items-center gap-2.5 flex-1 min-w-0">
+            <!-- Filter by Teacher -->
+            <div class="flex items-center gap-1.5 bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-xs">
+              <i class="fa-solid fa-chalkboard-user text-indigo-400"></i>
+              <label for="supervisionTeacherFilter" class="text-slate-400 text-[11px] font-semibold">Mentor:</label>
+              <select id="supervisionTeacherFilter" onchange="PresidentPortal.renderAcademicSupervision()" class="bg-transparent text-white font-medium focus:outline-none cursor-pointer">
+                <option value="all">Bütün Müəllimlər & Mentorlar</option>
+                <option value="teacher-sefanya">Sefanya Hacızadə</option>
+                <option value="teacher-fidan-m">Fidan Məhərrəmova</option>
+                <option value="teacher-susan">Süsən Həsənova</option>
+                <option value="teacher-leyla-25">Leyla Budaqova</option>
+                <option value="president">Süleyman Hacızadə (Sədr)</option>
+              </select>
+            </div>
+
+            <!-- Filter by Status -->
+            <div class="flex items-center gap-1.5 bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-xs">
+              <i class="fa-solid fa-filter text-amber-400"></i>
+              <label for="supervisionStatusFilter" class="text-slate-400 text-[11px] font-semibold">Status:</label>
+              <select id="supervisionStatusFilter" onchange="PresidentPortal.renderAcademicSupervision()" class="bg-transparent text-white font-medium focus:outline-none cursor-pointer">
+                <option value="all">Bütün Statuslar</option>
+                <option value="pending">Yoxlama Gözləyir</option>
+                <option value="graded">Müəllim Qiymətləndirib</option>
+                <option value="approved">Sədr Təsdiqləyib</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Search Input -->
+          <div class="relative w-full sm:w-72">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input type="text" id="supervisionSearchInput" oninput="PresidentPortal.renderAcademicSupervision()" placeholder="Tələbə adı, mövzu və ya e-poçt..." class="w-full pl-9 pr-3.5 py-2 bg-slate-950 border border-slate-700/80 rounded-xl text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-amber-400 transition" />
+          </div>
+        </div>
+
+        <!-- Live Supervision Feed Container -->
+        <div id="presidentAcademicSupervisionContainer" class="space-y-4">
+          <!-- Rendered dynamically by PresidentPortal.renderAcademicSupervision() -->
+        </div>
+      </div>
+
+
       <!-- Live Member Custom Research Tasks & Notes Grid for President -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
@@ -8472,6 +8557,35 @@ Seçilmiş pipeline: DESeq2
 
       <div id="submissionsModalList" class="p-6 overflow-y-auto flex-1 space-y-4 text-xs">
         <!-- Rendered by president.js -->
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- 6b. President Academic Supervision Audit Modal -->
+  <div id="presidentSupervisionAuditModal"
+    class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div
+      class="bg-slate-900 border border-amber-500/40 rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      <div
+        class="p-5 border-b border-slate-800 flex items-center justify-between bg-gradient-to-r from-amber-950/40 to-slate-900">
+        <div class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-sm">
+            <i class="fa-solid fa-crown"></i>
+          </span>
+          <div>
+            <h4 class="text-base font-bold text-white">Sədr Akademik Supervizor Auditi</h4>
+            <p class="text-[11px] text-slate-400">Müəllim və tələbə arasındakı laboratoriya işinə rəsmi sədr təsdiqi və ya tövsiyəsi</p>
+          </div>
+        </div>
+        <button onclick="PresidentPortal.closeSupervisionAuditModal()"
+          class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div id="presidentSupervisionAuditContent" class="p-6 overflow-y-auto flex-1 space-y-4 text-xs">
+        <!-- Rendered by PresidentPortal.openSupervisionAuditModal -->
       </div>
     </div>
   </div>

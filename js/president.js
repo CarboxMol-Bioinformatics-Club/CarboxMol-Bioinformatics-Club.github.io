@@ -68,6 +68,15 @@ const PresidentPortal = {
     if (elTotalTeachers) elTotalTeachers.innerText = Math.max(teachers.length, approvedTeachers);
     if (elPendingTeachers) elPendingTeachers.innerText = pendingTeachers;
 
+    const elSupMembers = document.getElementById("supervisionStatMembers");
+    const elSupTeachers = document.getElementById("supervisionStatTeachers");
+    const elSupSubs = document.getElementById("supervisionStatSubmissions");
+    const elSupPending = document.getElementById("supervisionStatPending");
+    if (elSupMembers) elSupMembers.innerText = Math.max(members.length, 65);
+    if (elSupTeachers) elSupTeachers.innerText = Math.max(teachers.length, approvedTeachers, 4);
+    if (elSupSubs) elSupSubs.innerText = totalSubmissions;
+    if (elSupPending) elSupPending.innerText = pendingTaskReviews;
+
     if (window.BioMeetEngine && typeof window.BioMeetEngine.renderPortalMeetings === "function") {
       window.BioMeetEngine.renderPortalMeetings("president");
     }
@@ -1766,8 +1775,34 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     sub.feedbackDate = new Date().toLocaleString('az-AZ');
 
     saveClubData(data);
+
+    if (window.SyncEngine) {
+      window.SyncEngine.broadcast("PRESIDENT_SUBMISSION_REVIEWED", {
+        taskId,
+        submissionId: subId,
+        presidentFeedback: feedback,
+        grade: grade,
+        status: status
+      });
+    }
+    try {
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "PRESIDENT_SUBMISSION_REVIEWED",
+          taskId,
+          submissionId: subId,
+          presidentFeedback: feedback,
+          grade: grade,
+          status: status
+        })
+      }).catch(() => {});
+    } catch (e) {}
+
     this.renderMetrics();
     this.renderTasksList();
+    if (this.renderAcademicSupervision) this.renderAcademicSupervision();
     if (window.MembersPortal && window.MembersPortal.renderTasks) {
       window.MembersPortal.renderTasks();
     }
@@ -4754,7 +4789,373 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
         </div>
       </div>
     `).join("");
-  }
+  },
+
+  renderAcademicSupervision() {
+    const container = document.getElementById("presidentAcademicSupervisionContainer");
+    if (!container) return;
+
+    const data = typeof getClubData === "function" ? getClubData() : {};
+    const tasks = data.tasks || [];
+    const teacherFilter = document.getElementById("supervisionTeacherFilter")?.value || "all";
+    const statusFilter = document.getElementById("supervisionStatusFilter")?.value || "all";
+    const searchQuery = (document.getElementById("supervisionSearchInput")?.value || "").toLowerCase().trim();
+
+    let allSubs = [];
+    tasks.forEach(t => {
+      (t.submissions || []).forEach(s => {
+        allSubs.push({
+          taskId: t.id,
+          taskTitle: t.title,
+          taskCategory: t.category,
+          taskDeadline: t.deadline,
+          taskDifficulty: t.difficulty,
+          teacherId: t.teacherId || "unknown",
+          teacherName: t.teacherName || (t.teacherId === "president" ? "Süleyman Hacızadə (Klub Sədri)" : "Akademik Mentor"),
+          ...s
+        });
+      });
+    });
+
+    // Update KPI badges in supervision panel
+    const elSupMembers = document.getElementById("supervisionStatMembers");
+    const elSupTeachers = document.getElementById("supervisionStatTeachers");
+    const elSupSubs = document.getElementById("supervisionStatSubmissions");
+    const elSupPending = document.getElementById("supervisionStatPending");
+    if (elSupMembers) elSupMembers.innerText = Math.max((data.members || []).length, 65);
+    if (elSupTeachers) elSupTeachers.innerText = Math.max((data.teachers || []).length, 4);
+    if (elSupSubs) elSupSubs.innerText = allSubs.length;
+    if (elSupPending) elSupPending.innerText = allSubs.filter(s => s.status !== "Qiymətləndirildi" && !s.presidentFeedback).length;
+
+    // Filter by Teacher
+    if (teacherFilter !== "all") {
+      allSubs = allSubs.filter(s => s.teacherId === teacherFilter || (s.reviewedBy && s.reviewedBy.toLowerCase().includes(teacherFilter.replace("teacher-", "").toLowerCase())));
+    }
+
+    // Filter by Status
+    if (statusFilter === "pending") {
+      allSubs = allSubs.filter(s => s.status !== "Qiymətləndirildi" && !s.presidentFeedback);
+    } else if (statusFilter === "graded") {
+      allSubs = allSubs.filter(s => s.status === "Qiymətləndirildi" || (s.grade !== null && s.grade !== undefined && s.grade !== ""));
+    } else if (statusFilter === "approved") {
+      allSubs = allSubs.filter(s => !!s.presidentFeedback || s.status === "Sədr Tərəfindən Təsdiqləndi");
+    }
+
+    // Filter by Search Query
+    if (searchQuery) {
+      allSubs = allSubs.filter(s => {
+        const text = `${s.studentName || ''} ${s.studentEmail || ''} ${s.studentUsername || ''} ${s.taskTitle || ''} ${s.notes || ''} ${s.teacherName || ''} ${s.reviewedBy || ''}`.toLowerCase();
+        return text.includes(searchQuery);
+      });
+    }
+
+    // Sort: newest submission first
+    allSubs.sort((a, b) => new Date(b.submittedAt || 0) - new Date(a.submittedAt || 0));
+
+    if (allSubs.length === 0) {
+      container.innerHTML = `
+        <div class="p-8 text-center bg-slate-950/60 rounded-2xl border border-slate-800 text-slate-400 space-y-2">
+          <i class="fa-solid fa-clipboard-check text-3xl text-slate-600 block"></i>
+          <p class="font-bold text-white text-sm">Seçilmiş filtrlər üzrə akademik tələbə həlli tapılmadı.</p>
+          <p class="text-xs text-slate-500">Müəllim və ya tələbələr aktiv tapşırıqlar üzrə işlədikcə bu nəzarət panelində canlı olaraq əks olunacaqdır.</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = allSubs.map(sub => {
+      const isGraded = sub.status === "Qiymətləndirildi" || (sub.grade !== null && sub.grade !== undefined && sub.grade !== "");
+      const isPresidentApproved = !!sub.presidentFeedback || sub.status === "Sədr Tərəfindən Təsdiqləndi";
+
+      return `
+        <div class="p-5 sm:p-6 rounded-2xl bg-slate-950/80 border ${isPresidentApproved ? 'border-amber-500/40 bg-gradient-to-r from-amber-950/10 to-slate-950/90' : 'border-slate-800'} hover:border-amber-500/50 transition space-y-4 shadow-xl">
+          <!-- Top Row: Badges, Teacher & Status -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800/80">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-[10px] uppercase font-bold px-2.5 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-800">
+                ${escapeHtml(sub.taskCategory || 'Bioinformatika')}
+              </span>
+              <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-indigo-950/80 text-indigo-300 border border-indigo-800/60 flex items-center gap-1">
+                <i class="fa-solid fa-chalkboard-user text-indigo-400"></i> ${escapeHtml(sub.teacherName || 'Klub Müəllimi')}
+              </span>
+              <span class="text-[10px] text-slate-400 font-mono">
+                <i class="fa-regular fa-clock mr-1"></i>${sub.submittedAt ? sub.submittedAt.split("T")[0] : '2026-11-15'}
+              </span>
+            </div>
+
+            <div class="flex items-center gap-2 flex-wrap">
+              ${isPresidentApproved ? `
+                <span class="px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-black flex items-center gap-1.5 shadow-sm">
+                  <i class="fa-solid fa-crown text-amber-400"></i> Sədr Təsdiqləyib
+                </span>
+              ` : isGraded ? `
+                <span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center gap-1">
+                  <i class="fa-solid fa-check-double text-emerald-400"></i> Müəllim Qiymətləndirib (${escapeHtml(sub.grade)}/100)
+                </span>
+              ` : `
+                <span class="px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold animate-pulse flex items-center gap-1">
+                  <i class="fa-solid fa-hourglass-half text-amber-400"></i> Yoxlama Gözləyir
+                </span>
+              `}
+            </div>
+          </div>
+
+          <!-- Student & Task Details -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Student Information Card -->
+            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 space-y-1.5">
+              <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-user-graduate text-teal-400"></i> Tədqiqatçı Tələbə:
+              </span>
+              <div class="flex items-center justify-between">
+                <h5 class="text-sm font-bold text-white">${escapeHtml(sub.studentName || 'Tələbə')}</h5>
+                <span class="text-[11px] text-teal-400 font-mono">@${escapeHtml(sub.studentUsername || '')}</span>
+              </div>
+              <p class="text-xs text-slate-300 truncate">${escapeHtml(sub.studentUniversity || 'Qərbi Kaspi Universiteti')}</p>
+              <div class="text-[11px] text-slate-400 truncate">${escapeHtml(sub.studentEmail || '')}</div>
+            </div>
+
+            <!-- Task Assignment Card -->
+            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 space-y-1.5">
+              <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-flask text-amber-400"></i> Laboratoriya Tapşırığı:
+              </span>
+              <h5 class="text-sm font-bold text-white truncate" title="${escapeHtml(sub.taskTitle)}">${escapeHtml(sub.taskTitle)}</h5>
+              <div class="flex items-center justify-between text-xs text-slate-400 pt-1">
+                <span>Çətinlik: <strong class="text-slate-200">${escapeHtml(sub.taskDifficulty || 'Orta')}</strong></span>
+                <span>Son Tarix: <strong class="text-amber-300">${escapeHtml(sub.taskDeadline || '')}</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Student Solution & Notes -->
+          <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2 text-xs">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-slate-300 flex items-center gap-1.5">
+                <i class="fa-solid fa-code text-cyan-400"></i> Təhvil Verilmiş Həll və İzah:
+              </span>
+              ${sub.solutionUrl ? `
+                <a href="${escapeHtml(sub.solutionUrl)}" target="_blank" rel="noopener noreferrer" class="text-teal-400 hover:text-teal-300 font-mono text-[11px] underline flex items-center gap-1 font-bold">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Repozitoriyaya / Həllə Keç
+                </a>
+              ` : ''}
+            </div>
+            <p class="text-slate-300 leading-relaxed bg-slate-950 p-3 rounded-lg border border-slate-800 font-mono text-[11px] whitespace-pre-wrap">${escapeHtml(sub.notes || sub.solutionCode || 'Qeyd yazılmayıb.')}</p>
+          </div>
+
+          <!-- Academic Teacher Review Box -->
+          ${isGraded ? `
+            <div class="p-4 rounded-xl bg-indigo-950/40 border border-indigo-700/50 space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-md bg-indigo-900 border border-indigo-700 flex items-center justify-center text-indigo-300 text-xs">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                  </span>
+                  <strong class="text-indigo-200">Müəllim / Mentor Rəyi (${escapeHtml(sub.reviewedBy || 'Mentor')}):</strong>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-md bg-indigo-900/80 text-emerald-300 border border-indigo-700 font-bold text-xs">
+                  Bal: ${escapeHtml(sub.grade)} / 100
+                </span>
+              </div>
+              <p class="text-xs text-slate-200 leading-relaxed italic bg-slate-950/60 p-2.5 rounded-lg border border-indigo-900/40">
+                "${escapeHtml(sub.feedback || 'Qiymətləndirilib.')}"
+              </p>
+              ${sub.reviewedAt ? `<div class="text-[10px] text-slate-400 text-right">Rəy tarixi: ${sub.reviewedAt.split("T")[0]}</div>` : ''}
+            </div>
+          ` : `
+            <div class="p-3 rounded-xl bg-amber-950/20 border border-amber-900/40 text-xs text-amber-300/80 flex items-center gap-2">
+              <i class="fa-solid fa-clock-rotate-left text-amber-400"></i> Müəllim qiymətləndirməsi və rəyi hələ tamamlanmayıb.
+            </div>
+          `}
+
+          <!-- President Supervisory Feedback (if present) -->
+          ${sub.presidentFeedback ? `
+            <div class="p-4 rounded-xl bg-amber-950/40 border border-amber-500/50 space-y-1.5">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-amber-300 flex items-center gap-1.5">
+                  <i class="fa-solid fa-crown text-amber-400"></i> Sədrin Rəsmi Supervizor Rəyi və Qərarı:
+                </span>
+                ${sub.presidentReviewedAt ? `<span class="text-[10px] text-slate-400">${sub.presidentReviewedAt.split("T")[0]}</span>` : ''}
+              </div>
+              <p class="text-xs text-slate-200 leading-relaxed italic bg-slate-950/80 p-2.5 rounded-lg border border-amber-900/40">
+                "${escapeHtml(sub.presidentFeedback)}"
+              </p>
+            </div>
+          ` : ''}
+
+          <!-- Footer Action Button -->
+          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between flex-wrap gap-2">
+            <span class="text-[11px] text-slate-500">
+              ID: <span class="font-mono text-slate-400">${escapeHtml(sub.id)}</span>
+            </span>
+            <button onclick="PresidentPortal.openSupervisionAuditModal('${escapeHtml(sub.taskId)}', '${escapeHtml(sub.id)}')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs transition flex items-center gap-2 shadow-lg shadow-amber-500/20">
+              <i class="fa-solid fa-crown"></i> ${sub.presidentFeedback ? 'Supervizor Rəyini Yenilə / Dəyiş' : 'Supervizor Baxışı & Rəsmi Təsdiq'}
+            </button>
+          </div>
+        </div>
+      `;
+    }).join("");
+  },
+
+  openSupervisionAuditModal(taskId, subId) {
+    const data = typeof getClubData === "function" ? getClubData() : {};
+    const task = (data.tasks || []).find(t => t.id === taskId);
+    if (!task) return;
+    const sub = (task.submissions || []).find(s => s.id === subId);
+    if (!sub) return;
+
+    const modal = document.getElementById("presidentSupervisionAuditModal");
+    const container = document.getElementById("presidentSupervisionAuditContent");
+    if (!modal || !container) return;
+
+    container.innerHTML = `
+      <div class="space-y-4">
+        <!-- Student & Task Overview -->
+        <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+          <div class="flex items-center justify-between text-xs flex-wrap gap-2">
+            <span class="text-amber-400 font-bold uppercase tracking-wider">${escapeHtml(task.category)}</span>
+            <span class="text-slate-400">Son Tarix: <strong class="text-slate-200">${escapeHtml(task.deadline)}</strong></span>
+          </div>
+          <h4 class="text-sm font-bold text-white">${escapeHtml(task.title)}</h4>
+          <div class="text-xs text-slate-300">
+            Tələbə: <strong class="text-white">${escapeHtml(sub.studentName)}</strong> (@${escapeHtml(sub.studentUsername || '')}) &bull; ${escapeHtml(sub.studentUniversity || '')}
+          </div>
+        </div>
+
+        <!-- Submission Content -->
+        <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2 text-xs">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-slate-300">Tələbənin Təhvil Qeydləri:</span>
+            ${sub.solutionUrl ? `<a href="${escapeHtml(sub.solutionUrl)}" target="_blank" class="text-teal-400 underline font-mono text-[11px]">Həll Linki</a>` : ''}
+          </div>
+          <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-slate-200 font-mono text-[11px] whitespace-pre-wrap">
+            ${escapeHtml(sub.notes || sub.solutionCode || 'Qeyd yoxdur.')}
+          </div>
+        </div>
+
+        <!-- Teacher Review (if graded) -->
+        ${sub.feedback ? `
+          <div class="p-3.5 rounded-2xl bg-indigo-950/30 border border-indigo-800/40 space-y-1.5 text-xs">
+            <div class="flex items-center justify-between text-indigo-300 font-bold">
+              <span>Müəllim Rəyi (${escapeHtml(sub.reviewedBy || 'Mentor')}):</span>
+              <span class="text-emerald-400 font-black">${escapeHtml(sub.grade)} / 100</span>
+            </div>
+            <p class="text-slate-200 italic">"${escapeHtml(sub.feedback)}"</p>
+          </div>
+        ` : ''}
+
+        <!-- President Supervisory Audit Form -->
+        <div class="pt-3 border-t border-slate-800 space-y-3">
+          <label class="block text-xs font-bold text-amber-300 flex items-center gap-1.5">
+            <i class="fa-solid fa-crown text-amber-400"></i> Sədrin Supervizor Qərarı & Elmi Tövsiyəsi:
+          </label>
+          <textarea id="presidentAuditFeedbackInput" rows="3" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-amber-400 leading-relaxed" placeholder="Tələbə və müəllim üçün sədr supervizor qeydlərinizi və ya təsdiq rəyini yazın...">${sub.presidentFeedback || '👑 Sədr Superviziyası: Laboratoriya işi yüksək akademik intizamla təhvil verilib. Qiymətləndirmə təsdiqlənir.'}</textarea>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] text-slate-400 font-semibold mb-1">Yekun Bal / Qiymət:</label>
+              <input type="number" min="0" max="100" id="presidentAuditGradeInput" value="${sub.grade !== null && sub.grade !== undefined ? sub.grade : 95}" class="w-full bg-slate-950 border border-slate-700 text-xs rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-400" />
+            </div>
+
+            <div>
+              <label class="block text-[11px] text-slate-400 font-semibold mb-1">Status:</label>
+              <select id="presidentAuditStatusInput" class="w-full bg-slate-950 border border-slate-700 text-xs rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-400">
+                <option value="Sədr Tərəfindən Təsdiqləndi" selected>Sədr Tərəfindən Təsdiqləndi</option>
+                <option value="Qiymətləndirildi">Qiymətləndirildi</option>
+                <option value="Təkmilləşdirmə tələb olunur">Təkmilləşdirmə tələb olunur</option>
+                <option value="Yoxlama Gözləyir">Yoxlama Gözləyir</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="pt-3 flex items-center justify-end gap-2.5">
+            <button onclick="PresidentPortal.closeSupervisionAuditModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition">
+              Bağla
+            </button>
+            <button onclick="PresidentPortal.saveSupervisionAudit('${task.id}', '${sub.id}')" class="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs transition flex items-center gap-1.5 shadow-lg shadow-amber-500/20">
+              <i class="fa-solid fa-check"></i> Supervizor Təsdiqini Saxla
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    modal.classList.remove("hidden");
+  },
+
+  closeSupervisionAuditModal() {
+    const modal = document.getElementById("presidentSupervisionAuditModal");
+    if (modal) modal.classList.add("hidden");
+  },
+
+  saveSupervisionAudit(taskId, subId) {
+    const feedbackEl = document.getElementById("presidentAuditFeedbackInput");
+    const gradeEl = document.getElementById("presidentAuditGradeInput");
+    const statusEl = document.getElementById("presidentAuditStatusInput");
+
+    const feedback = feedbackEl ? feedbackEl.value.trim() : "";
+    const grade = gradeEl && gradeEl.value !== "" ? parseInt(gradeEl.value, 10) : null;
+    const status = statusEl ? statusEl.value : "Sədr Tərəfindən Təsdiqləndi";
+
+    const data = typeof getClubData === "function" ? getClubData() : null;
+    if (!data) return;
+
+    const task = (data.tasks || []).find(t => t.id === taskId);
+    if (!task) return;
+    const sub = (task.submissions || []).find(s => s.id === subId);
+    if (!sub) return;
+
+    sub.presidentFeedback = feedback;
+    if (grade !== null && !isNaN(grade)) sub.grade = grade;
+    sub.status = status;
+    sub.presidentReviewedAt = new Date().toISOString();
+
+    if (typeof saveClubData === "function") saveClubData(data);
+
+    // Real-time broadcast across devices
+    if (window.SyncEngine) {
+      window.SyncEngine.broadcast("PRESIDENT_SUBMISSION_REVIEWED", {
+        taskId,
+        submissionId: subId,
+        presidentFeedback: feedback,
+        grade: sub.grade,
+        status: sub.status
+      });
+    }
+
+    // Direct ntfy publish
+    try {
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "PRESIDENT_SUBMISSION_REVIEWED",
+          taskId,
+          submissionId: subId,
+          presidentFeedback: feedback,
+          grade: sub.grade,
+          status: sub.status
+        })
+      }).catch(() => {});
+    } catch (e) {}
+
+    this.closeSupervisionAuditModal();
+    this.renderMetrics();
+    this.renderAcademicSupervision();
+    this.renderTasksList();
+
+    if (window.TeacherPortal && window.TeacherPortal.renderSubmissions) {
+      window.TeacherPortal.renderSubmissions();
+    }
+    if (window.MembersPortal && window.MembersPortal.renderTasks) {
+      window.MembersPortal.renderTasks();
+    }
+
+    if (typeof showToast === "function") {
+      showToast(`Tələbə ${sub.studentName} üçün sədr supervizor rəyi və statusu uğurla saxlanıldı!`, "success");
+    }
+  },
+
 };
 
 window.PresidentPortal = PresidentPortal;

@@ -1345,6 +1345,8 @@ document.addEventListener("DOMContentLoaded", () => {
         PresidentPortal.renderMetrics();
         PresidentPortal.renderApplicationsTable();
         if (PresidentPortal.renderTasksList) PresidentPortal.renderTasksList();
+                if (PresidentPortal.renderAcademicSupervision) PresidentPortal.renderAcademicSupervision();
+    if (PresidentPortal.renderAcademicSupervision) PresidentPortal.renderAcademicSupervision();
         if (PresidentPortal.renderMembersAccountsTable) PresidentPortal.renderMembersAccountsTable();
         if (PresidentPortal.renderTeachersAccountsTable) PresidentPortal.renderTeachersAccountsTable();
         if (PresidentPortal.renderMemberCustomTasks) PresidentPortal.renderMemberCustomTasks();
@@ -1428,6 +1430,23 @@ document.addEventListener("DOMContentLoaded", () => {
                   if (sIdx === -1) t.submissions.push(payload.submission);
                   else t.submissions[sIdx] = { ...t.submissions[sIdx], ...payload.submission };
                   changed = true;
+                }
+              }
+            } else if (payload.action === "SUBMISSION_GRADED" || payload.action === "PRESIDENT_SUBMISSION_REVIEWED") {
+              if (payload.taskId && (payload.submissionId || (payload.submission && payload.submission.id))) {
+                const subId = payload.submissionId || payload.submission.id;
+                data.tasks = data.tasks || [];
+                const t = data.tasks.find(x => x.id === payload.taskId);
+                if (t && t.submissions) {
+                  const s = t.submissions.find(sub => sub.id === subId);
+                  if (s) {
+                    if (payload.grade !== undefined && payload.grade !== null) s.grade = payload.grade;
+                    if (payload.feedback !== undefined) s.feedback = payload.feedback;
+                    if (payload.teacherName) s.reviewedBy = payload.teacherName;
+                    if (payload.presidentFeedback !== undefined) s.presidentFeedback = payload.presidentFeedback;
+                    if (payload.status) s.status = payload.status;
+                    changed = true;
+                  }
                 }
               }
             } else if (payload.action === "REGISTER_STUDENT" || payload.action === "REGISTER_MEMBER") {
@@ -1623,6 +1642,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 PresidentPortal.renderMetrics();
                 PresidentPortal.renderApplicationsTable();
                 if (PresidentPortal.renderTasksList) PresidentPortal.renderTasksList();
+                if (PresidentPortal.renderAcademicSupervision) PresidentPortal.renderAcademicSupervision();
+    if (PresidentPortal.renderAcademicSupervision) PresidentPortal.renderAcademicSupervision();
                 if (PresidentPortal.renderMembersAccountsTable) PresidentPortal.renderMembersAccountsTable();
                 if (PresidentPortal.renderTeachersAccountsTable) PresidentPortal.renderTeachersAccountsTable();
               }
@@ -1758,6 +1779,8 @@ document.addEventListener("DOMContentLoaded", () => {
               PresidentPortal.renderMetrics();
               PresidentPortal.renderApplicationsTable();
               if (PresidentPortal.renderTasksList) PresidentPortal.renderTasksList();
+                if (PresidentPortal.renderAcademicSupervision) PresidentPortal.renderAcademicSupervision();
+    if (PresidentPortal.renderAcademicSupervision) PresidentPortal.renderAcademicSupervision();
               if (PresidentPortal.renderMembersAccountsTable) PresidentPortal.renderMembersAccountsTable();
               if (PresidentPortal.renderTeachersAccountsTable) PresidentPortal.renderTeachersAccountsTable();
             }
@@ -1999,6 +2022,8 @@ function navigateTo(sectionId) {
     PresidentPortal.renderMetrics();
     PresidentPortal.renderApplicationsTable();
     if (PresidentPortal.renderTasksList) PresidentPortal.renderTasksList();
+                if (PresidentPortal.renderAcademicSupervision) PresidentPortal.renderAcademicSupervision();
+    if (PresidentPortal.renderAcademicSupervision) PresidentPortal.renderAcademicSupervision();
     if (PresidentPortal.renderMembersAccountsTable) PresidentPortal.renderMembersAccountsTable();
     if (PresidentPortal.renderTeachersAccountsTable) PresidentPortal.renderTeachersAccountsTable();
     if (PresidentPortal.renderMemberCustomTasks) PresidentPortal.renderMemberCustomTasks();

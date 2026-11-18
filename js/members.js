@@ -1629,19 +1629,42 @@ const MembersPortal = {
           </div>
 
           ${userSub ? `
-            <div class="bg-slate-900/90 p-3 rounded-2xl border border-slate-800 text-xs space-y-1.5">
+            <div class="bg-slate-900/90 p-3 rounded-2xl border border-slate-800 text-xs space-y-2">
               <div class="flex items-center justify-between">
                 <span class="text-slate-400">Təhvil Statusu:</span>
                 <span class="px-2 py-0.5 rounded text-[11px] font-bold ${
-                  (userSub.status || '').includes('Təsdiq') ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
-                }">${escapeHtml(userSub.status)}</span>
+                  (userSub.status || '').includes('Təsdiq') || (userSub.status || '').includes('Qiymət')
+                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                    : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                }">${escapeHtml(userSub.status || 'Təhvil Verildi')}</span>
               </div>
-              ${userSub.presidentFeedback ? `
-                <div class="text-[11px] text-amber-300 bg-amber-950/30 p-2 rounded-lg border border-amber-900/40">
-                  <strong>👑 Sədrin Rəyi:</strong> "${escapeHtml(userSub.presidentFeedback)}"
-                  ${userSub.grade ? `<span class="block mt-1 font-bold text-teal-300">Qiymət: ${escapeHtml(userSub.grade)}</span>` : ''}
+              ${userSub.grade !== undefined && userSub.grade !== null && userSub.grade !== '' ? `
+                <div class="flex items-center justify-between text-teal-300 font-bold bg-teal-950/40 px-2.5 py-1 rounded-lg border border-teal-800/50">
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-award text-amber-400"></i> Qiymət:</span>
+                  <span class="text-sm font-black text-emerald-400">${escapeHtml(userSub.grade)} / 100</span>
                 </div>
               ` : ''}
+              ${userSub.feedback ? `
+                <div class="text-[11px] text-indigo-200 bg-indigo-950/40 p-2.5 rounded-xl border border-indigo-900/50 space-y-1">
+                  <div class="font-bold text-indigo-300 flex items-center justify-between">
+                    <span class="flex items-center gap-1"><i class="fa-solid fa-chalkboard-user"></i> Müəllim Rəyi:</span>
+                    <span class="text-[10px] text-slate-400 font-normal">${escapeHtml(userSub.reviewedBy || 'Mentor')}</span>
+                  </div>
+                  <p class="text-slate-200 leading-relaxed italic">"${escapeHtml(userSub.feedback)}"</p>
+                </div>
+              ` : ''}
+              ${userSub.presidentFeedback ? `
+                <div class="text-[11px] text-amber-200 bg-amber-950/30 p-2.5 rounded-xl border border-amber-900/40 space-y-1">
+                  <div class="font-bold text-amber-300 flex items-center gap-1">
+                    <i class="fa-solid fa-crown text-amber-400"></i> Klub Sədrinin Supervizor Rəyi:
+                  </div>
+                  <p class="text-slate-200 leading-relaxed italic">"${escapeHtml(userSub.presidentFeedback)}"</p>
+                </div>
+              ` : ''}
+              <div class="text-[10px] text-slate-500 pt-1 flex items-center justify-between">
+                <span>Təhvil tarixi: ${userSub.submittedAt ? userSub.submittedAt.split("T")[0] : '2026-11-15'}</span>
+                ${userSub.solutionUrl ? `<a href="${escapeHtml(userSub.solutionUrl)}" target="_blank" rel="noopener noreferrer" class="text-teal-400 hover:underline flex items-center gap-1"><i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i> Həllə Bax</a>` : ''}
+              </div>
             </div>
           ` : ''}
 
@@ -1923,10 +1946,22 @@ const MembersPortal = {
     document.getElementById("memberTaskSubmitModal").classList.add("hidden");
     showToast("Tapşırığınız uğurla təhvil verildi! Klub Sədri yoxladıqdan sonra rəy bildirəcək.", "success");
 
-    // Real-time broadcast
+    // Real-time broadcast across devices and browsers
     if (window.SyncEngine) {
       window.SyncEngine.broadcast("TASK_SUBMISSION_ADDED", { taskId, submission: newSub, studentName });
     }
+    try {
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "TASK_SUBMISSION_ADDED",
+          taskId,
+          submission: newSub,
+          studentName
+        })
+      }).catch(() => {});
+    } catch (e) {}
   },
 
   copyCode(elementId) {
