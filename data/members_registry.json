@@ -1,0 +1,2133 @@
+{
+  "registryVersion": "2.0.0",
+  "lastUpdated": "2026-11-18T16:30:00+04:00",
+  "approvedBy": "Süleyman Hacızadə (Klub Sədri)",
+  "totalApprovedMembers": 33,
+  "totalApplications": 33,
+  "members": [
+    {
+      "id": "mem-1794979215352",
+      "fullName": "Mehdi Fətullalı (Rafiq)",
+      "email": "the.mehdidi@gmail.com",
+      "phone": "+994773118757",
+      "photo": "",
+      "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+      "major": "Biologiya",
+      "course": "Bakalavr (I kurs)",
+      "role": "Klub Üzvü",
+      "username": "the.mehdidi@gmail.com",
+      "password": "Riyaziyyat5",
+      "registeredAt": "2026-11-18",
+      "status": "Aktiv",
+      "customTasks": [],
+      "notes": [],
+      "motivation": "Gələcəkdə iş fəaliyyətimdə bioinformatik üzrə işləmək istəyirəm. Bu sahənin dərinliklərini  məhz indidən yiyələnmək isdəyirəm",
+      "yearGoal": "1 illik fəaliyyətdən sonra bioinformatika üzrə  artıq yetərincə yaxşı yerlərə gəlmək, bu sahe üzrə təlim və tədbirlərdə rahatlıqla iştirak və işləyə bilmək. Daha sonra isə proqramlaşdırmanın dilini tamamilə başa düşmək isdəyirəm",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=the.mehdidi@gmail.com"
+    },
+    {
+      "id": "mem-1794986793973",
+      "fullName": "Nuray Cəlilli (Zaur)",
+      "email": "nuraycalilli@gmail.com",
+      "phone": "774158585",
+      "photo": "",
+      "faculty": "(WCU) - Biznes və İqtisadiyyat Məktəbi",
+      "major": "Mühasibat",
+      "course": "Bakalavr (I kurs)",
+      "role": "Klub Üzvü",
+      "username": "nuray",
+      "password": "Nuray15",
+      "registeredAt": "2026-11-18",
+      "status": "Aktiv",
+      "customTasks": [],
+      "notes": [],
+      "motivation": "Öyrenmek isteyirem",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=nuray"
+    },
+    {
+      "id": "mem-1794992829469",
+      "fullName": "Nuray Mirzəyeva (Seymur)",
+      "email": "mirzeyevanuray57@gmail.com",
+      "phone": "+994514054487",
+      "photo": "",
+      "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+      "major": "Biologiya",
+      "course": "Bakalavr (I kurs)",
+      "role": "Klub Üzvü",
+      "username": "nuray.mirzeyeva",
+      "password": "19.06.08nurayyy",
+      "registeredAt": "2026-11-18",
+      "status": "Aktiv",
+      "customTasks": [],
+      "notes": [],
+      "motivation": "Biologiya ixtisası üzrə təhsil aldığım üçün müasir biologiya və texnologiyanın kəsişdiyi bioinformatika sahəsi mənə çox maraqlıdır. Bu kluba qoşulmaqda əsas məqsədim yeni biliklər qazanmaq, proqramlaşdırmanı sıfırdan öyrənmək və biologiya sahəsində kompüter texnologiyalarının tətbiqini mənimsəməkdir. Xüsusilə genomika, molekulyar biologiya və zülalların 3D modelləşdirilməsi istiqamətləri məni cəlb edir. Təlimlərdə, seminarlarda və komanda layihələrində iştirak edərək həm nəzəri biliklərimi, həm də praktiki bacarıqlarımı inkişaf etdirmək istəyirəm.",
+      "yearGoal": "Bir il ərzində Python proqramlaşdırmasının əsaslarını öyrənmək, genomika və molekulyar biologiya sahəsində biliklərimi genişləndirmək, bioloji məlumatların kompüter vasitəsilə analizini mənimsəmək istəyirəm. Gələcəkdə süni intellektdən istifadə edərək genetik məlumatların araşdırılması ilə bağlı kiçik bir bioinformatik layihədə iştirak etməyi hədəfləyirəm.",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=nuray.mirzeyeva"
+    },
+    {
+      "id": "mem-kenanbiotech",
+      "fullName": "Kənan Heydərov (Fərail)",
+      "username": "kenanbiotech",
+      "email": "heyderofknan@gmail.com",
+      "phone": "+994519549012",
+      "password": "Kennan1245",
+      "role": "Klub Üzvü",
+      "university": "Bakı Dövlət Universiteti (BDU)",
+      "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
+      "major": "Biotexnologiya",
+      "course": "II Kurs",
+      "joinDate": "24.10.2026",
+      "registeredAt": "2026-10-24",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=kenanbiotech",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Ümumiyyətlə bioinformatika sahəsinə geniş marağım var və düşünürəm və inanıram ki CarboxMol Bioinformatika klubunda bunlara cavab tapacam.",
+      "yearGoal": "Açığı hələki tam qərar verməmişəm duruma görə dəyişə bilər.",
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-nurus*",
+      "fullName": "Nuray Məmmədzadə (Qədir)",
+      "username": "nurus*",
+      "email": "nurusmemmedzade@gmail.com",
+      "phone": "0104202077",
+      "password": "Qarabağ2020",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=nurus*",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Fərqli maraq dairəm var.Bu klubu da sınamaq istədim.Mənə nələr qatacağı maraqlııdır.",
+      "yearGoal": "Qeyd edilməyib",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-mahmudovas",
+      "fullName": "Mahmudova Sahibə (Anar)",
+      "username": "mahmudovas",
+      "email": "sahibamahmudova666@gmail.com",
+      "phone": "0557463675",
+      "password": "Sahibe2008_S",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya/az (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=mahmudovas",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Daha çox biologiya haqqında öyrənmək və kompüterlərlə üzərində səlis işləmək",
+      "yearGoal": "Artıq hər şeyi öyrənmiş olmaq kompüter vasitəsilə biologiya üzrə işləmək",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-faganaliyev",
+      "fullName": "Fəqan Əliyev (Azər)",
+      "username": "faganaliyev",
+      "email": "faganaliyevvvv@gmail.com",
+      "phone": "+994504832312",
+      "password": "NF21122008?!nf",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Kompüter Elmləri (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=faganaliyev",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Salam,CarboxMol Bioinformatika Klubundan olan gözləntilərim olduqca böyükdür.İnanıram ki,Bu klubda  həyatımın bir parçası olan sahədə yeni məlumatlar,biliklər əldə edəcəm.Bununla yanaşı Bioloji konseptləridə öyrənməyə olduqca həvəsliyəm.",
+      "yearGoal": "əldə etdiyim bacarəqları şəxsi lahiyələrimə entegre etmək,\nNetwork genişləndirmək,\nMüxtəlif hackathonlarda iştirak etmək",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-7tlqtsd",
+      "fullName": "Rahide Abbasova (Səfail)",
+      "username": "7tlqtsd",
+      "email": "rahideabbasova21@gmail.com",
+      "phone": "0103134808",
+      "password": "250526",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Humanitar və Sosial Elmlər Məktəbi - Tarix (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=7tlqtsd",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Proqramlaşdırmanı öyrənmək istəyi",
+      "yearGoal": "Kömpüterdən çətinlik çəkmədən istifadə etmək",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-saeid",
+      "fullName": "Səid Cəmi (Vazeh)",
+      "username": "saeid",
+      "email": "saiddcmi@gmail.com",
+      "phone": "+994507799221",
+      "password": "csaid132008",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Kompüter Elmləri (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=saeid",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "AI/ML sahəsində biliklərimi real layihələrdə tətbiq etmək istəyirəm.\nBu klubda həm yeni texnologiyalar öyrənəcəyimə, həm də komanda ilə praktiki təcrübə qazanacağıma inanıram.",
+      "yearGoal": "1 ilin sonunda ML alqoritmlərindən istifadə edərək bioloji dataları analiz edən kiçik bir layihə hazırlamaq və komanda ilə hakatonlarda iştirak etmək.",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-seadetquliyeva",
+      "fullName": "Səadət Quliyeva (Yusif)",
+      "username": "seadetquliyeva",
+      "email": "seadetquliyeva2009@gmail.com",
+      "phone": "0702642383",
+      "password": "19112009s",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biotexnologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=seadetquliyeva",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Mən Biotexnologiya ixtisası üzrə təhsil alıram və gələcəkdə bu sahədə peşəkar mütəxəssis olmaq istəyirəm. CarboxMol Bioinformatika Klubuna qoşulmaqda əsas məqsədim bioinformatika sahəsində biliklərimi genişləndirmək, yeni elmi metodlarla tanış olmaq və praktiki təcrübə qazanmaqdır. Xüsusilə molekulyar biologiya, genetik analiz, protein strukturları və dərmanların modelləşdirilməsi kimi sahələr mənim üçün maraqlıdır.\n\nBundan əlavə, elmi məqalələrin hazırlanması, tədqiqat layihələrində iştirak etmək və seminarlar vasitəsilə biliklərimi inkişaf etdirmək istəyirəm. Düşünürəm ki, bu klub mənə həm fərdi, həm də komanda şəklində işləmək bacarığı qazandıracaq. Eyni zamanda, öyrəndiklərimi gələcək elmi fəaliyyətimdə tətbiq etməyi hədəfləyirəm.",
+      "yearGoal": "Bir il ərzində bioinformatikanın əsaslarını öyrənmək, Python və digər bioinformatik analiz alətləri ilə işləmək bacarığı qazanmaq istəyirəm. Əsas hədəflərimdən biri kiçik elmi-tədqiqat layihəsində iştirak etmək və elmi məqalənin hazırlanması prosesində təcrübə qazanmaqdır. Xüsusilə protein strukturlarının analizi və dərman molekullarının modelləşdirilməsi istiqamətində araşdırma aparmaq istəyirəm. Gələcəkdə əldə etdiyim biliklər əsasında müstəqil tədqiqat layihəsi hazırlamağı hədəfləyirəm.",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-quliyevathmin",
+      "fullName": "Təhminə Quliyeva (Müzəddin)",
+      "username": "quliyevathmin",
+      "email": "quliyevathmin014@gmail.com",
+      "phone": "0993706181",
+      "password": "06082009t",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biotexnologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=quliyevathmin",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "CarboxMol Bioinformatika Klubuna qoşulmaq istəməyimin əsas səbəbi biologiya və texnologiyanın birləşdiyi bioinformatika sahəsinə böyük maraq göstərməyimdir. Biotexnologiya ixtisası üzrə təhsil aldığım üçün canlı orqanizmlərin molekulyar quruluşunu, genetikanı və bioloji prosesləri daha dərindən öyrənmək istəyirəm.\n\nKlubda bioinformatikanın əsaslarını, DNT və zülal analizini, bioloji məlumatların kompüter vasitəsilə araşdırılmasını və süni intellektin biologiyada tətbiqini öyrənməyi hədəfləyirəm. Eyni zamanda, praktiki biliklər qazanmaq, yeni layihələrdə iştirak etmək, elmi araşdırma bacarıqlarımı inkişaf etdirmək və bu sahədə təcrübəli insanlarla fikir mübadiləsi aparmaq istəyirəm.\n\nMənim üçün bu klub yalnız yeni biliklər əldə etmək deyil, həm də gələcəkdə elmə faydalı ola biləcək layihələrdə iştirak etmək və özümü peşəkar istiqamətdə inkişaf etdirmək üçün bir fürsətdir. Öyrənməyə, araşdırmağa və yeni biliklər əldə etməyə həvəsliyəm.",
+      "yearGoal": "1 illik fəaliyyət müddətindən sonra bioinformatika sahəsində ilkin biliklərə və praktiki bacarıqlara yiyələnməyi, bioloji məlumatların analizi və DNT ardıcıllıqlarının araşdırılması üzrə təcrübə qazanmağı hədəfləyirəm. Eyni zamanda, komanda ilə birlikdə kiçik bir elmi layihə həyata keçirmək və əldə etdiyim biliklər əsasında elmi araşdırma hazırlamaq istəyirəm. Gələcəkdə biotexnologiya və bioinformatika sahələrinin kəsişməsində çalışan, elmi yeniliklərə töhfə verən mütəxəssis olmağı qarşıma məqsəd qoymuşam.",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-mtagiyevf",
+      "fullName": "Musa Məmmədtağıyev (Məhəmməd)",
+      "username": "mtagiyevf",
+      "email": "m0557885852@gmail.com",
+      "phone": "0557885852",
+      "password": "musa2008",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Humanitar və Sosial Elmlər Məktəbi - Beynəlxalq münasibətlər (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=mtagiyevf",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Bu sahəni seçməyimin əsas səbəbi biologiya, kimya və rəqəmsal texnologiyaların qovşağında yerləşməsi və elmi araşdırmalara tamamilə yeni bir baxış bucağı gətirməsidir.",
+      "yearGoal": "Qeyd edilməyib",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-denizp",
+      "fullName": "deniz penahova (eldar)",
+      "username": "denizp",
+      "email": "panahovadeniz@gmail.com",
+      "phone": "556010104",
+      "password": "denrikobiko",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=denizp",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "umumi ixtisasim ve bioinformatika ile teze seyler oyrenmey",
+      "yearGoal": "muxtelif lahiyelerde qalib gelmey",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-mesume2008",
+      "fullName": "Məsumə Dumanlı (Qahir)",
+      "username": "mesume2008",
+      "email": "msmdumanli17@gmail.com",
+      "phone": "+994517755938",
+      "password": "Mesume2008",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya ing (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=mesume2008",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "İxtisasıma bağlı olaraq gələcəkdə inkişaf etmək istədiyim sahələri kəşf edə biləcəyimi düşünürəm",
+      "yearGoal": "Özümü inkişaf etdirmək və gələcəkdə bu sahədə irəliləmək",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-lalə",
+      "fullName": "Lalə Mərdiyeva (Azad)",
+      "username": "lalə",
+      "email": "lale.merdiyeva@wcu.edu.az",
+      "phone": "0706887224",
+      "password": "Laleelxan123",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Dizayn və Memarlıq Məktəbi - Dizayn (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=lalə",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Məni ən çox cəlb edən bu klubun mənim üçün yeni və fərqli bir sahə olmasıdır. Açığı, bioinformatika haqqında geniş məlumatım yoxdur, amma məhz bu sahə ilə tanış olmaq, yeni biliklər əldə etmək mənə maraqlı gəldi. Xüsusilə IT sahəsində biliklərimi artırmaq, yeni şeylər öyrənmək və bu istiqamətdə özümü sınamaq istəyirəm. Həmçinin yeni insanlarla tanış olmaq, komanda ilə işləmək və fərqli təcrübələr qazanmaq da mənim üçün önəmlidir. İnanıram ki, CarboxMol Bioinformatika Klubu mənə həm öyrənmək, həm də özümü inkişaf etdirmək üçün yaxşı imkan yaradacaq.",
+      "yearGoal": "1 il ərzində əsas məqsədim bioinformatika və IT sahəsində ilkin biliklər əldə etmək, öyrəndiklərimi praktikada tətbiq etməyi bacarmaqdır. İstərdim ki, bu müddətin sonunda klubda öyrəndiklərim əsasında kiçik də olsa, öz layihəmi hazırlayım. Məsələn, biologiya ilə texnologiyanın əlaqəsini göstərən, məlumatların toplanması və təhlilinə əsaslanan sadə bir layihə üzərində işləmək maraqlı olardı. Eyni zamanda komanda işində təcrübə qazanmaq və klubun fəaliyyətində aktiv iştirak etmək istəyirəm. Mənim üçün əsas məqsəd bir il sonra kluba qoşulduğum ilk günlə müqayisədə daha çox bilik və bacarıq əldə etmiş olmaqdır.",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-lenmara",
+      "fullName": "Lenmara (Kriyakidi)",
+      "username": "lenmara",
+      "email": "l3nm1r1@gmail.com",
+      "phone": "0503672896",
+      "password": "212008",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - IT (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=lenmara",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Salam. Mən Qərbi Kaspi Universitetinin İnformasiya Texnologiyaları ixtisası üzrə 2-ci kurs tələbəsiyəm. Proqramlaşdırma və məlumatların analitikası sahəsində biliklərimi real layihələrdə tətbiq etmək və bioinformatika kimi sürətlə inkişaf edən multidissiplinar bir sahəni dərindən öyrənmək məqsədilə CarboxMol Bioinformatika Klubuna qoşulmaq istəyirəm.",
+      "yearGoal": "1 illik fəaliyyətin sonunda əsas hədəfim Python və bioinformatik alətlərdən istifadə edərək açıq bioloji verilənlər bazaları (NCBI, Ensembl və s.) üzərində işləməyi öyrənmək və komanda ilə birlikdə konkret bir data analizi layihəsi hazırlamaqdır. Layihə ideyası olaraq, müxtəlif xəstəliklərə səbəb olan genetik mutasiyaların və ya DNT/RNT ardıcıllıqlarının statistik analizini aparan, nəticələri isə aydın qrafiklər şəklində vizuallaşdıran kiçik bir Python əsaslı analiz skripti və ya veb-alət (dashboard) yaratmaq istəyirəm.",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-cingizyusifli",
+      "fullName": "Yusifli (Çingiz)",
+      "username": "cingizyusifli",
+      "email": "cingizyusifli82@gmail.com",
+      "phone": "+994104783472",
+      "password": "a.0a.0",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - İnformasiya Texnologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=cingizyusifli",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Çünki mən inşallah bir layihə üstündə kor insanların görə bilməsi üçün cihaz düzəldirəm bu cihaz üçün riyaziyyat və informatika təməlindən çox biologiya hissəsində öyrənərək problemə real həll yolu tapmaq istəyirəm və Tibb sahəsi üzrə çox böyük marağım var",
+      "yearGoal": "Konkret layihə ideası kor insanların görə bilməsi üçün tibbi həll olmamiş xəstəlikləri IT bilikləri ilə birləşdirib aradan qaldırmaq istəyirəm 1 ildən sonra ilk ixtiranın kor insanların görə bilməsi üçün cihaz düzəltmək istəyirəm",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-rayyanhuseynli",
+      "fullName": "Rayyan Hüseyinli (İlqar)",
+      "username": "rayyanhuseynli",
+      "email": "rayyanhuseyinli2@gmail.com",
+      "phone": "0514353949",
+      "password": "Rayyan2008",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=rayyanhuseynli",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Mən biologiya ixtisası üzrə 2-ci kurs tələbəsiyəm. Öz ixtisasımı sevirəm və bu sahədə daha çox şey öyrənmək, özümü inkişaf etdirmək istəyirəm. Düşünürəm ki, universitetdə yalnız dərslərdə öyrəndiklərimizlə kifayətlənmək düzgün deyil. Yeni təcrübələr qazanmaq, fərqli insanlarla tanış olmaq və öyrəndiklərimizi praktikada sınamaq da çox vacibdir.\n\nİndiyə qədər bir neçə könüllülük fəaliyyətində iştirak etmişəm. Həmçinin tibbi ekspertiza ilə bağlı təlimdə iştirak edərək sertifikat əldə etmişəm. Yeni şeylər öyrənməyi, araşdırma aparmağı və bilmədiyim mövzuları öyrənib anlamağı sevirəm.\n\nBu kluba qoşulmaq istəməyimin əsas səbəbi maraq göstərdiyim sahədə daha çox təcrübə qazanmaq və özümü sınamaqdır. Burada həm yeni biliklər əldə edəcəyimə, həm də komanda ilə işləməyi və fərqli layihələrdə iştirak etməyi öyrənəcəyimə inanıram. Eyni zamanda, mən də öz həvəsim və məsuliyyətimlə klubun fəaliyyətinə töhfə vermək istəyirəm.",
+      "yearGoal": "Bir il ərzində özümü daha çox inkişaf etdirmək, yeni biliklər və təcrübələr qazanmaq istəyirəm. Ən böyük istəyim öyrəndiklərimi praktikada tətbiq edə bilmək və maraq göstərdiyim sahələrdə real layihələrdə iştirak etməkdir.\n\nXüsusilə genetika və insan sağlamlığı ilə bağlı mövzular mənə maraqlıdır. Gələcəkdə bu istiqamətdə kiçik bir layihədə iştirak etmək, araşdırma aparmaq və komanda ilə birlikdə yeni bir iş ortaya qoymaq istəyərdim.\n\nMənim üçün bu bir ilin ən böyük nəticəsi sadəcə sertifikat əldə etmək deyil, həqiqətən nələrisə öyrənmək, yeni bacarıqlar qazanmaq və gələcəkdə özümə güvənərək daha böyük işlərə başlaya bilmək olacaq.",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-nraay_10",
+      "fullName": "Talışinskaya (Nuray)",
+      "username": "nraay_10",
+      "email": "nuraytalisinskaya@gmail.com",
+      "phone": "503388028",
+      "password": "20080121nuray",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biotexnologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=nraay_10",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Maraq dairəmə aid mövzuların olması",
+      "yearGoal": "Şəxsi məqalə hazırlıya bilmək, lazım olduqda konfrans verə bilmək",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-ibrahimovaf1",
+      "fullName": "Fatimə İbrahimova (Rahim)",
+      "username": "ibrahimovaf1",
+      "email": "fatimeibrahimova1144@gmail.com",
+      "phone": "0553437974",
+      "password": "ibrahimovaf1",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=ibrahimovaf1",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Çünki biologiyanın qollarına böyük həvəsim var və CarboxMol Bioinformatika klubu əminəm ki mənə maraqlarım üzərə irəliləməyimə kömək olacaq",
+      "yearGoal": "Şəxsi elmi məqalə hazırlamaq Alphafold ilə dərman modeli qurmaq həmçinin Hakatonda qalib gəlmək",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-fidanhesenova_2008",
+      "fullName": "Fidan Həsənova (Səxavət)",
+      "username": "fidanhesenova_2008",
+      "email": "fidanhesenovaaa27@gmail.com",
+      "phone": "0705052334",
+      "password": "Btslijelibon2008!",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=fidanhesenova_2008",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Biologiya ixtisası üzrə təhsil alan bir tələbə olaraq bioinformatika sahəsinə marağım böyükdür. Biologiya və texnologiyanın birləşdiyi bu sahə haqqında daha çox öyrənmək, biliklərimi inkişaf etdirmək və yeni təcrübələr qazanmaq istəyirəm. Carboxmol klubuna qoşulmağı həm özümü inkişaf etdirmək, həm də maraqlı layihələrdə iştirak edərək komandaya töhfə vermək üçün yaxşı fürsət hesab edirəm. Öyrənməyə və yeniliklərə açığam.",
+      "yearGoal": "Qeyd edilməyib",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-sh.nurana",
+      "fullName": "Nuranə Şabılı (Şahin)",
+      "username": "sh.nurana",
+      "email": "sabilinurane7@gmail.com",
+      "phone": "+994775959738",
+      "password": "1234567nurane",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Genetika (Magistratura)",
+      "course": "Magistratura",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=sh.nurana",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Bioinformatika üzrə təcrübələrimi genişləndirmək, hazırki iş şəraitimə olmasa da gələcək prioritetlərimə inteqrasiya etmək və PHD təhsilim üçün ölkəxaricinə lazım olacaq sənədlərimi genişləndirmək",
+      "yearGoal": "Hakatonlarda və fərqli layihələrdə qalib gəlmək və həmin layihələri keçirmək genişmiqyaslı",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-ahumust",
+      "fullName": "Ahu Mustafazadə",
+      "username": "ahumust",
+      "email": "ahuumust@gmail.com",
+      "phone": "+994102120166",
+      "password": "PrPc2.ahe34",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Humanitar və Sosial Elmlər Məktəbi - Psixologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=ahumust",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Məktəb vaxtlarından milli və beynəlxalq olimpiadalarda iştirak edən, həmçinin, texnalogiya ilə maraqlanan bir gənc kimi biotexnalogiya, bioinformatika və texnoloji inkişafların biologiya və tibb sahəsinə necə təsir etdiyi məni hər zaman maraqlandırmışdır. Bioinformatika anlayışı nəinki ətrafımda, Azərbaycanda da hələ geniş yayılmayıb və bu isə sahəyə maraq göstərən gənclərin öyrənmə prosesində müəyyən çətinliklərlə üzləşməsinə səbəb olur. prosesində çətinlik çəkməsinə səbəb olur. Məhz buna görə CarboxMol Bioinformatika klubunu ölkəmizdə bu istiqamətin formalaşmağına töhfə verən başlanğıcların biri olacağını düşünürəm. Klubdan əsas gözləntim bioinformatikanın əsas anlayışlarını və metodlarını öyrənmək, eyni məqsədə can atan həmfikir insanlarla birlikdə digər gəclərə də dəstək olmaqdır. Eyni zamanda qarşılıqlı rəy və fikir mübadiləsi aparmaqla bu sahədə inkişaf prosesinin sürətlənəcəyinə və öz təcrübəmi və səylərimi bu icmaya qataraq dəstək olacağıma inanıram.",
+      "yearGoal": "Elmi məqalə hazırlamaq, gen xəritələnməsi ilə bağlı layihələr və təşəbbüslərə dəstək omaq, tədqiqat proqramlarında iştirak etmək.",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-turangulieva",
+      "fullName": "Turan Quliyeva (Haci)",
+      "username": "turangulieva",
+      "email": "turanquliyeva.in@icloud.com",
+      "phone": "+994557146765",
+      "password": "Tuti4481",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Genetika (Magistratura)",
+      "course": "Magistratura",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=turangulieva",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Dissertasiya isi ucun arasdirma",
+      "yearGoal": "Qeyd edilməyib",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-nigar jafar",
+      "fullName": "Nigar Cəfərzadə (Ruslan)",
+      "username": "nigar jafar",
+      "email": "nigarnigar0608@gmail.com",
+      "phone": "0507735578",
+      "password": "152519",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=nigar jafar",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Mən öz yolumu seçmek,hansı sahə üzrə irələləyəcəyimi müəyyənləşdirmək istəyirəm. Həmçinin də bioinformatikaya da çox həvəsim var. Bu sahə üzrə məni digərlərindən fərqləndirən bilgilərə sahib olmaq istəyirəm.",
+      "yearGoal": "Fikrimdə hələki hər hansı bir layihə fikri yoxdur. Amma düşünürəm ki,buradakı fəaliyyətimi tamamladıqdan sonra üstün biliklərə sahib olub,o cümlədən marağımı cəlb edən  hər suala cavab tapacağam və bir layihə haqqında düşünəcəm.",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-@xədicəsüleymanlı",
+      "fullName": "Xədicə Süleymanlı (Rahib)",
+      "username": "@xədicəsüleymanlı",
+      "email": "xsuleyman359@gmail.com",
+      "phone": "0517556992",
+      "password": "Xədi2009",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=@xədicəsüleymanlı",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Universitetimizdə mövcud olan başqa bioinformatika klubu yoxdur. Bu bir ilkdir. Ona görə də yüksək səviyyədə olacağına inanıram.",
+      "yearGoal": "Bioinformatika sahəsində magistr təhsili almaq",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-javidanhasanov",
+      "fullName": "Cavidan Həsənov (Səfər)",
+      "username": "javidanhasanov",
+      "email": "cavidan56@proton.me",
+      "phone": "+994 50 837 69 05",
+      "password": "0508376905Ca.",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - İnformasiya Təhlükəsizliyi (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=javidanhasanov",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Öyrəndiyim programlaşdırma biliklərini praktikada istifadə etmək maraqlı gəlir.",
+      "yearGoal": "Hakatonda qalib gəlmək",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-nuray_03",
+      "fullName": "Nuray Mustafayeva (Cahid)",
+      "username": "nuray_03",
+      "email": "nuray.mustafayeva@wcu.edu.az",
+      "phone": "0103212221",
+      "password": "030809",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=nuray_03",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Universitetimin  biz tələbələrin inkişafı üçün yaratdığı bu fəaillyətdə kömək etmələri məni cəlb edən səbəb oldu",
+      "yearGoal": "Gələcəkdəki peşəmdə mütəxəssis olmaq üçün bu fəaliyyətdən yararlanaraq özümü inkişaf etdirməyə başlamaq ideyamdır. Hədəfim isə Genomika və NGS ardıcıllıq analinizini mənimsəməkdir.",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-fuadgadirov",
+      "fullName": "Fuad Gadirov (Faiq)",
+      "username": "fuadgadirov",
+      "email": "qedirovfuad3@gmail.com",
+      "phone": "+994503062510",
+      "password": "fdgdrv18",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=fuadgadirov",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Çünki hal-hazırda ölkə bu öz ixtisasımla əlaqəli keyfiyyətli fəaliyyətlər tapmaq çox çətindir, bu səbəbdən bu klubu seçmişəm həm öz inkişafım baxlmdan həm də klubun yanaşması baxlmından, təşəkkürlər",
+      "yearGoal": "Əsasən daha çox praktiki bacarıqlar əldə etmək, laboratoroiyalarda rahat işləmək, elmi məqalələr yazıb çap etdirmək və s.",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-mehrihssnv",
+      "fullName": "Həsənova Mehriban (Aftandil)",
+      "username": "mehrihssnv",
+      "email": "mehrihssnv@mail.ru",
+      "phone": "+994513469741",
+      "password": "Murad555",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=mehrihssnv",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "İxtisasımla baölı belə bir klubun açıldığına çox sevindim. Yeni biliklər öyrənib, maraqlı insanlarla tanış olub, vaxtını səmərəli keçirəcəyimə əminəm",
+      "yearGoal": "Şəxsi elmi məqalə hazırlamaq, biologiya sahəsində biliklərimi çoxaltmaq",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-sekine_eliyeva7",
+      "fullName": "Səkinə Əliyeva (Sahib)",
+      "username": "sekine_eliyeva7",
+      "email": "sekineeliyeva390@gmail.com",
+      "phone": "+994553809567",
+      "password": "Sekine2007",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=sekine_eliyeva7",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Biologiyaya marağım var, amma müasir bioloji tədqiqatların artıq böyük verilənlər və proqramlaşdırma ilə aparıldığını görürəm. Klubun genomika, Python/R və AlphaFold kimi alətləri praktiki şəkildə öyrətməsi məni ən çox cəlb edir. Dərslərdən kənarda real layihələr üzərində işləmək, alimlərlə seminarlarda iştirak etmək və komanda ilə birlikdə öyrənmək istəyirəm. Gözləntim bioinformatika əsaslarını möhkəm öyrənmək və gələcək elmi karyeramda istifadə edəcəyim bacarıqlar qazanmaqdır.",
+      "yearGoal": "1 il ərzində Python və R ilə bioloji verilənləri müstəqil təhlil edə bilmək, Linux/Bash-də rahat işləmək və klubda ən azı bir komanda layihəsini tamamlamaq istəyirəm. Son hədəfim AlphaFold və PyMOL ilə seçdiyim bir zülalın strukturunu modelləşdirib nəticələri kiçik elmi hesabat və ya poster şəklində təqdim etməkdir.",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-mirzzadbagdagul",
+      "fullName": "Bağdagül Mirzəzadə (Zaur)",
+      "username": "mirzzadbagdagul",
+      "email": "bagdagul.mirzzad@235bioing",
+      "phone": "514431115",
+      "password": "B12345678",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "joinDate": "2026-11-17",
+      "registeredAt": "2026-11-17",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=mirzzadbagdagul",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Maraqım var",
+      "yearGoal": "Hələki yoxdur",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-fs-nuray_mirzeyeva",
+      "fullName": "Nuray Mirzəyeva (Seymur)",
+      "username": "nuray_mirzeyeva",
+      "email": "nuraymirzeyeva254@gmail.com",
+      "phone": "+994514054487",
+      "password": "19.06.08nurayy",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "joinDate": "2026-11-18",
+      "registeredAt": "2026-11-18",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=nuray_mirzeyeva",
+      "photo": "",
+      "skills": [
+        "Biotexnologiya",
+        "Genomika və NGS Analizi"
+      ],
+      "motivation": "Biologiya ixtisası üzrə təhsil aldığım üçün müasir biologiya və texnologiyanın kəsişdiyi bioinformatika sahəsi mənə çox maraqlıdır. Bu kluba qoşulmaqda əsas məqsədim yeni biliklər qazanmaq, proqramlaşdırmanı sıfırdan öyrənmək və biologiya sahəsində kompüter texnologiyalarının tətbiqini mənimsəməkdir. Xüsusilə genomika, molekulyar biologiya və zülalların 3D modelləşdirilməsi istiqamətləri məni cəlb edir. Təlimlərdə, seminarlarda və komanda layihələrində iştirak edərək həm nəzəri biliklərimi, həm də praktiki bacarıqlarımı inkişaf etdirmək istəyirəm.",
+      "yearGoal": "Bir il ərzində Python proqramlaşdırmasının əsaslarını öyrənmək, genomika və molekulyar biologiya sahəsində biliklərimi genişləndirmək, bioloji məlumatların kompüter vasitəsilə analizini mənimsəmək istəyirəm. Gələcəkdə süni intellektdən istifadə edərək genetik məlumatların araşdırılması ilə bağlı kiçik bir bioinformatik layihədə iştirak etməyi hədəfləyirəm.",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "customTasks": [],
+      "notes": []
+    }
+  ],
+  "applications": [
+    {
+      "id": "app-1794979215352",
+      "memberId": "mem-1794979215352",
+      "teacherId": null,
+      "isTeacher": false,
+      "fullName": "Mehdi Fətullalı (Rafiq)",
+      "email": "the.mehdidi@gmail.com",
+      "phone": "+994773118757",
+      "photo": "",
+      "profileUrl": "https://www.linkedin.com/in/mehdi-fatullali-9a01b7365?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+      "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+      "major": "Biologiya",
+      "course": "Bakalavr (I kurs)",
+      "studyLang": "Azərbaycan bölməsi",
+      "gpa": "",
+      "username": "the.mehdidi@gmail.com",
+      "password": "Riyaziyyat5",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Python",
+        "R / RStudio"
+      ],
+      "bioTools": [],
+      "bioKnowledge": "Orta səviyyədə anlayışım var (Ümumi universitet biologiyası)",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası və Dərman Dizaynı",
+        "Transkriptomika və RNA-Seq",
+        "Süni İntellekt və Biotibb ML"
+      ],
+      "weeklyTime": "Həftədə 4–6 saat",
+      "roleInterest": "Tədqiqatçı / Layihə və Hakaton Komandası Üzvü",
+      "motivation": "Gələcəkdə iş fəaliyyətimdə bioinformatik üzrə işləmək istəyirəm. Bu sahənin dərinliklərini  məhz indidən yiyələnmək isdəyirəm",
+      "yearGoal": "1 illik fəaliyyətdən sonra bioinformatika üzrə  artıq yetərincə yaxşı yerlərə gəlmək, bu sahe üzrə təlim və tədbirlərdə rahatlıqla iştirak və işləyə bilmək. Daha sonra isə proqramlaşdırmanın dilini tamamilə başa düşmək isdəyirəm",
+      "dateApplied": "2026-11-18",
+      "status": "Təsdiqləndi",
+      "adminNotes": "",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-1794986793973",
+      "memberId": "mem-1794986793973",
+      "fullName": "Nuray Cəlilli (Zaur)",
+      "email": "nuraycalilli@gmail.com",
+      "phone": "774158585",
+      "photo": "",
+      "profileUrl": "",
+      "faculty": "(WCU) - Biznes və İqtisadiyyat Məktəbi",
+      "major": "Mühasibat",
+      "course": "Bakalavr (I kurs)",
+      "studyLang": "Azərbaycan bölməsi",
+      "gpa": "93.7",
+      "username": "nuray",
+      "password": "Nuray15",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [],
+      "bioTools": [],
+      "bioKnowledge": "İT / Mühəndislik yönümlüyəm (Bioloji konseptləri sıfırdan öyrənmək istəyirəm)",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası və Dərman Dizaynı"
+      ],
+      "weeklyTime": "Həftədə 2–4 saat",
+      "roleInterest": "Tədqiqatçı / Layihə və Hakaton Komandası Üzvü",
+      "motivation": "Öyrenmek isteyirem",
+      "yearGoal": "",
+      "dateApplied": "2026-11-18",
+      "status": "Təsdiqləndi",
+      "adminNotes": "",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-1794992829469",
+      "memberId": "mem-1794992829469",
+      "teacherId": null,
+      "isTeacher": false,
+      "fullName": "Nuray Mirzəyeva (Seymur)",
+      "email": "mirzeyevanuray57@gmail.com",
+      "phone": "+994514054487",
+      "photo": "",
+      "profileUrl": "",
+      "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+      "major": "Biologiya",
+      "course": "Bakalavr (I kurs)",
+      "studyLang": "Azərbaycan bölməsi",
+      "gpa": "",
+      "username": "nuray.mirzeyeva",
+      "password": "19.06.08nurayyy",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [],
+      "bioTools": [],
+      "bioKnowledge": "Güclü biologiya bazam var (Genetika, Molekulyar biologiya)",
+      "osType": "Yalnız universitet laboratoriyası",
+      "researchTracks": [
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası və Dərman Dizaynı",
+        "Transkriptomika və RNA-Seq",
+        "Süni İntellekt və Biotibb ML",
+        "Filogenetika və Təkamül Ağacları"
+      ],
+      "weeklyTime": "Həftədə 2–4 saat",
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "motivation": "Biologiya ixtisası üzrə təhsil aldığım üçün müasir biologiya və texnologiyanın kəsişdiyi bioinformatika sahəsi mənə çox maraqlıdır. Bu kluba qoşulmaqda əsas məqsədim yeni biliklər qazanmaq, proqramlaşdırmanı sıfırdan öyrənmək və biologiya sahəsində kompüter texnologiyalarının tətbiqini mənimsəməkdir. Xüsusilə genomika, molekulyar biologiya və zülalların 3D modelləşdirilməsi istiqamətləri məni cəlb edir. Təlimlərdə, seminarlarda və komanda layihələrində iştirak edərək həm nəzəri biliklərimi, həm də praktiki bacarıqlarımı inkişaf etdirmək istəyirəm.",
+      "yearGoal": "Bir il ərzində Python proqramlaşdırmasının əsaslarını öyrənmək, genomika və molekulyar biologiya sahəsində biliklərimi genişləndirmək, bioloji məlumatların kompüter vasitəsilə analizini mənimsəmək istəyirəm. Gələcəkdə süni intellektdən istifadə edərək genetik məlumatların araşdırılması ilə bağlı kiçik bir bioinformatik layihədə iştirak etməyi hədəfləyirəm.",
+      "dateApplied": "2026-11-18",
+      "status": "Təsdiqləndi",
+      "adminNotes": "",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-kenanbiotech",
+      "memberId": "mem-kenanbiotech",
+      "fullName": "Kənan Heydərov (Fərail)",
+      "email": "heyderofknan@gmail.com",
+      "phone": "+994519549012",
+      "username": "kenanbiotech",
+      "password": "Kennan1245",
+      "university": "Bakı Dövlət Universiteti (BDU)",
+      "faculty": "Bakı Dövlət Universiteti (BDU) - Biologiya Fakültəsi",
+      "major": "Biotexnologiya",
+      "course": "Bakalavr (II kurs)",
+      "studyLang": "İngilis bölməsi | GPA: 82.4",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyədə anlayışım var (Ümumi universitet biologiyası)",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi",
+        "Transkriptomika və RNA-Seq",
+        "Süni İntellekt və Biotibb ML"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Ümumiyyətlə bioinformatika sahəsinə geniş marağım var və düşünürəm və inanıram ki CarboxMol Bioinformatika klubunda bunlara cavab tapacam.",
+      "yearGoal": "Açığı hələki tam qərar verməmişəm duruma görə dəyişə bilər.",
+      "dateApplied": "2026-10-24",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən daxil olmuş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-nurus*",
+      "memberId": "mem-fs-nurus*",
+      "fullName": "Nuray Məmmədzadə (Qədir)",
+      "email": "nurusmemmedzade@gmail.com",
+      "phone": "0104202077",
+      "username": "nurus*",
+      "password": "Qarabağ2020",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Fərqli maraq dairəm var.Bu klubu da sınamaq istədim.Mənə nələr qatacağı maraqlııdır.",
+      "yearGoal": "Qeyd edilməyib",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-mahmudovas",
+      "memberId": "mem-fs-mahmudovas",
+      "fullName": "Mahmudova Sahibə (Anar)",
+      "email": "sahibamahmudova666@gmail.com",
+      "phone": "0557463675",
+      "username": "mahmudovas",
+      "password": "Sahibe2008_S",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya/az (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Daha çox biologiya haqqında öyrənmək və kompüterlərlə üzərində səlis işləmək",
+      "yearGoal": "Artıq hər şeyi öyrənmiş olmaq kompüter vasitəsilə biologiya üzrə işləmək",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-faganaliyev",
+      "memberId": "mem-fs-faganaliyev",
+      "fullName": "Fəqan Əliyev (Azər)",
+      "email": "faganaliyevvvv@gmail.com",
+      "phone": "+994504832312",
+      "username": "faganaliyev",
+      "password": "NF21122008?!nf",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Kompüter Elmləri (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "İngilis bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "İrəli (OOP, data analizi, alqoritmlər)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Salam,CarboxMol Bioinformatika Klubundan olan gözləntilərim olduqca böyükdür.İnanıram ki,Bu klubda  həyatımın bir parçası olan sahədə yeni məlumatlar,biliklər əldə edəcəm.Bununla yanaşı Bioloji konseptləridə öyrənməyə olduqca həvəsliyəm.",
+      "yearGoal": "əldə etdiyim bacarəqları şəxsi lahiyələrimə entegre etmək,\nNetwork genişləndirmək,\nMüxtəlif hackathonlarda iştirak etmək",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-7tlqtsd",
+      "memberId": "mem-fs-7tlqtsd",
+      "fullName": "Rahide Abbasova (Səfail)",
+      "email": "rahideabbasova21@gmail.com",
+      "phone": "0103134808",
+      "username": "7tlqtsd",
+      "password": "250526",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Humanitar və Sosial Elmlər Məktəbi - Tarix (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Proqramlaşdırmanı öyrənmək istəyi",
+      "yearGoal": "Kömpüterdən çətinlik çəkmədən istifadə etmək",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-saeid",
+      "memberId": "mem-fs-saeid",
+      "fullName": "Səid Cəmi (Vazeh)",
+      "email": "saiddcmi@gmail.com",
+      "phone": "+994507799221",
+      "username": "saeid",
+      "password": "csaid132008",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Kompüter Elmləri (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Orta (Python/R skriptləri yaza bilirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "AI/ML sahəsində biliklərimi real layihələrdə tətbiq etmək istəyirəm.\nBu klubda həm yeni texnologiyalar öyrənəcəyimə, həm də komanda ilə praktiki təcrübə qazanacağıma inanıram.",
+      "yearGoal": "1 ilin sonunda ML alqoritmlərindən istifadə edərək bioloji dataları analiz edən kiçik bir layihə hazırlamaq və komanda ilə hakatonlarda iştirak etmək.",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-seadetquliyeva",
+      "memberId": "mem-fs-seadetquliyeva",
+      "fullName": "Səadət Quliyeva (Yusif)",
+      "email": "seadetquliyeva2009@gmail.com",
+      "phone": "0702642383",
+      "username": "seadetquliyeva",
+      "password": "19112009s",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biotexnologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Mən Biotexnologiya ixtisası üzrə təhsil alıram və gələcəkdə bu sahədə peşəkar mütəxəssis olmaq istəyirəm. CarboxMol Bioinformatika Klubuna qoşulmaqda əsas məqsədim bioinformatika sahəsində biliklərimi genişləndirmək, yeni elmi metodlarla tanış olmaq və praktiki təcrübə qazanmaqdır. Xüsusilə molekulyar biologiya, genetik analiz, protein strukturları və dərmanların modelləşdirilməsi kimi sahələr mənim üçün maraqlıdır.\n\nBundan əlavə, elmi məqalələrin hazırlanması, tədqiqat layihələrində iştirak etmək və seminarlar vasitəsilə biliklərimi inkişaf etdirmək istəyirəm. Düşünürəm ki, bu klub mənə həm fərdi, həm də komanda şəklində işləmək bacarığı qazandıracaq. Eyni zamanda, öyrəndiklərimi gələcək elmi fəaliyyətimdə tətbiq etməyi hədəfləyirəm.",
+      "yearGoal": "Bir il ərzində bioinformatikanın əsaslarını öyrənmək, Python və digər bioinformatik analiz alətləri ilə işləmək bacarığı qazanmaq istəyirəm. Əsas hədəflərimdən biri kiçik elmi-tədqiqat layihəsində iştirak etmək və elmi məqalənin hazırlanması prosesində təcrübə qazanmaqdır. Xüsusilə protein strukturlarının analizi və dərman molekullarının modelləşdirilməsi istiqamətində araşdırma aparmaq istəyirəm. Gələcəkdə əldə etdiyim biliklər əsasında müstəqil tədqiqat layihəsi hazırlamağı hədəfləyirəm.",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-quliyevathmin",
+      "memberId": "mem-fs-quliyevathmin",
+      "fullName": "Təhminə Quliyeva (Müzəddin)",
+      "email": "quliyevathmin014@gmail.com",
+      "phone": "0993706181",
+      "username": "quliyevathmin",
+      "password": "06082009t",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biotexnologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "CarboxMol Bioinformatika Klubuna qoşulmaq istəməyimin əsas səbəbi biologiya və texnologiyanın birləşdiyi bioinformatika sahəsinə böyük maraq göstərməyimdir. Biotexnologiya ixtisası üzrə təhsil aldığım üçün canlı orqanizmlərin molekulyar quruluşunu, genetikanı və bioloji prosesləri daha dərindən öyrənmək istəyirəm.\n\nKlubda bioinformatikanın əsaslarını, DNT və zülal analizini, bioloji məlumatların kompüter vasitəsilə araşdırılmasını və süni intellektin biologiyada tətbiqini öyrənməyi hədəfləyirəm. Eyni zamanda, praktiki biliklər qazanmaq, yeni layihələrdə iştirak etmək, elmi araşdırma bacarıqlarımı inkişaf etdirmək və bu sahədə təcrübəli insanlarla fikir mübadiləsi aparmaq istəyirəm.\n\nMənim üçün bu klub yalnız yeni biliklər əldə etmək deyil, həm də gələcəkdə elmə faydalı ola biləcək layihələrdə iştirak etmək və özümü peşəkar istiqamətdə inkişaf etdirmək üçün bir fürsətdir. Öyrənməyə, araşdırmağa və yeni biliklər əldə etməyə həvəsliyəm.",
+      "yearGoal": "1 illik fəaliyyət müddətindən sonra bioinformatika sahəsində ilkin biliklərə və praktiki bacarıqlara yiyələnməyi, bioloji məlumatların analizi və DNT ardıcıllıqlarının araşdırılması üzrə təcrübə qazanmağı hədəfləyirəm. Eyni zamanda, komanda ilə birlikdə kiçik bir elmi layihə həyata keçirmək və əldə etdiyim biliklər əsasında elmi araşdırma hazırlamaq istəyirəm. Gələcəkdə biotexnologiya və bioinformatika sahələrinin kəsişməsində çalışan, elmi yeniliklərə töhfə verən mütəxəssis olmağı qarşıma məqsəd qoymuşam.",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-mtagiyevf",
+      "memberId": "mem-fs-mtagiyevf",
+      "fullName": "Musa Məmmədtağıyev (Məhəmməd)",
+      "email": "m0557885852@gmail.com",
+      "phone": "0557885852",
+      "username": "mtagiyevf",
+      "password": "musa2008",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Humanitar və Sosial Elmlər Məktəbi - Beynəlxalq münasibətlər (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Başlanğıc (Təməl sintaksisi bilirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Bu sahəni seçməyimin əsas səbəbi biologiya, kimya və rəqəmsal texnologiyaların qovşağında yerləşməsi və elmi araşdırmalara tamamilə yeni bir baxış bucağı gətirməsidir.",
+      "yearGoal": "Qeyd edilməyib",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-denizp",
+      "memberId": "mem-fs-denizp",
+      "fullName": "deniz penahova (eldar)",
+      "email": "panahovadeniz@gmail.com",
+      "phone": "556010104",
+      "username": "denizp",
+      "password": "denrikobiko",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "İngilis bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "umumi ixtisasim ve bioinformatika ile teze seyler oyrenmey",
+      "yearGoal": "muxtelif lahiyelerde qalib gelmey",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-mesume2008",
+      "memberId": "mem-fs-mesume2008",
+      "fullName": "Məsumə Dumanlı (Qahir)",
+      "email": "msmdumanli17@gmail.com",
+      "phone": "+994517755938",
+      "username": "mesume2008",
+      "password": "Mesume2008",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya ing (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "İxtisasıma bağlı olaraq gələcəkdə inkişaf etmək istədiyim sahələri kəşf edə biləcəyimi düşünürəm",
+      "yearGoal": "Özümü inkişaf etdirmək və gələcəkdə bu sahədə irəliləmək",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-lalə",
+      "memberId": "mem-fs-lalə",
+      "fullName": "Lalə Mərdiyeva (Azad)",
+      "email": "lale.merdiyeva@wcu.edu.az",
+      "phone": "0706887224",
+      "username": "lalə",
+      "password": "Laleelxan123",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Dizayn və Memarlıq Məktəbi - Dizayn (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Məni ən çox cəlb edən bu klubun mənim üçün yeni və fərqli bir sahə olmasıdır. Açığı, bioinformatika haqqında geniş məlumatım yoxdur, amma məhz bu sahə ilə tanış olmaq, yeni biliklər əldə etmək mənə maraqlı gəldi. Xüsusilə IT sahəsində biliklərimi artırmaq, yeni şeylər öyrənmək və bu istiqamətdə özümü sınamaq istəyirəm. Həmçinin yeni insanlarla tanış olmaq, komanda ilə işləmək və fərqli təcrübələr qazanmaq da mənim üçün önəmlidir. İnanıram ki, CarboxMol Bioinformatika Klubu mənə həm öyrənmək, həm də özümü inkişaf etdirmək üçün yaxşı imkan yaradacaq.",
+      "yearGoal": "1 il ərzində əsas məqsədim bioinformatika və IT sahəsində ilkin biliklər əldə etmək, öyrəndiklərimi praktikada tətbiq etməyi bacarmaqdır. İstərdim ki, bu müddətin sonunda klubda öyrəndiklərim əsasında kiçik də olsa, öz layihəmi hazırlayım. Məsələn, biologiya ilə texnologiyanın əlaqəsini göstərən, məlumatların toplanması və təhlilinə əsaslanan sadə bir layihə üzərində işləmək maraqlı olardı. Eyni zamanda komanda işində təcrübə qazanmaq və klubun fəaliyyətində aktiv iştirak etmək istəyirəm. Mənim üçün əsas məqsəd bir il sonra kluba qoşulduğum ilk günlə müqayisədə daha çox bilik və bacarıq əldə etmiş olmaqdır.",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-lenmara",
+      "memberId": "mem-fs-lenmara",
+      "fullName": "Lenmara (Kriyakidi)",
+      "email": "l3nm1r1@gmail.com",
+      "phone": "0503672896",
+      "username": "lenmara",
+      "password": "212008",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - IT (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "studyLang": "İngilis bölməsi | GPA: 76.71",
+      "programmingSkill": "Başlanğıc (Təməl sintaksisi bilirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Salam. Mən Qərbi Kaspi Universitetinin İnformasiya Texnologiyaları ixtisası üzrə 2-ci kurs tələbəsiyəm. Proqramlaşdırma və məlumatların analitikası sahəsində biliklərimi real layihələrdə tətbiq etmək və bioinformatika kimi sürətlə inkişaf edən multidissiplinar bir sahəni dərindən öyrənmək məqsədilə CarboxMol Bioinformatika Klubuna qoşulmaq istəyirəm.",
+      "yearGoal": "1 illik fəaliyyətin sonunda əsas hədəfim Python və bioinformatik alətlərdən istifadə edərək açıq bioloji verilənlər bazaları (NCBI, Ensembl və s.) üzərində işləməyi öyrənmək və komanda ilə birlikdə konkret bir data analizi layihəsi hazırlamaqdır. Layihə ideyası olaraq, müxtəlif xəstəliklərə səbəb olan genetik mutasiyaların və ya DNT/RNT ardıcıllıqlarının statistik analizini aparan, nəticələri isə aydın qrafiklər şəklində vizuallaşdıran kiçik bir Python əsaslı analiz skripti və ya veb-alət (dashboard) yaratmaq istəyirəm.",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-cingizyusifli",
+      "memberId": "mem-fs-cingizyusifli",
+      "fullName": "Yusifli (Çingiz)",
+      "email": "cingizyusifli82@gmail.com",
+      "phone": "+994104783472",
+      "username": "cingizyusifli",
+      "password": "a.0a.0",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - İnformasiya Texnologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "İngilis bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Başlanğıc (Təməl sintaksisi bilirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Tədqiqatçı / Layihə və Hakaton Komandası Üzvü",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Çünki mən inşallah bir layihə üstündə kor insanların görə bilməsi üçün cihaz düzəldirəm bu cihaz üçün riyaziyyat və informatika təməlindən çox biologiya hissəsində öyrənərək problemə real həll yolu tapmaq istəyirəm və Tibb sahəsi üzrə çox böyük marağım var",
+      "yearGoal": "Konkret layihə ideası kor insanların görə bilməsi üçün tibbi həll olmamiş xəstəlikləri IT bilikləri ilə birləşdirib aradan qaldırmaq istəyirəm 1 ildən sonra ilk ixtiranın kor insanların görə bilməsi üçün cihaz düzəltmək istəyirəm",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-rayyanhuseynli",
+      "memberId": "mem-fs-rayyanhuseynli",
+      "fullName": "Rayyan Hüseyinli (İlqar)",
+      "email": "rayyanhuseyinli2@gmail.com",
+      "phone": "0514353949",
+      "username": "rayyanhuseynli",
+      "password": "Rayyan2008",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "studyLang": "İngilis bölməsi | GPA: 79",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Mən biologiya ixtisası üzrə 2-ci kurs tələbəsiyəm. Öz ixtisasımı sevirəm və bu sahədə daha çox şey öyrənmək, özümü inkişaf etdirmək istəyirəm. Düşünürəm ki, universitetdə yalnız dərslərdə öyrəndiklərimizlə kifayətlənmək düzgün deyil. Yeni təcrübələr qazanmaq, fərqli insanlarla tanış olmaq və öyrəndiklərimizi praktikada sınamaq da çox vacibdir.\n\nİndiyə qədər bir neçə könüllülük fəaliyyətində iştirak etmişəm. Həmçinin tibbi ekspertiza ilə bağlı təlimdə iştirak edərək sertifikat əldə etmişəm. Yeni şeylər öyrənməyi, araşdırma aparmağı və bilmədiyim mövzuları öyrənib anlamağı sevirəm.\n\nBu kluba qoşulmaq istəməyimin əsas səbəbi maraq göstərdiyim sahədə daha çox təcrübə qazanmaq və özümü sınamaqdır. Burada həm yeni biliklər əldə edəcəyimə, həm də komanda ilə işləməyi və fərqli layihələrdə iştirak etməyi öyrənəcəyimə inanıram. Eyni zamanda, mən də öz həvəsim və məsuliyyətimlə klubun fəaliyyətinə töhfə vermək istəyirəm.",
+      "yearGoal": "Bir il ərzində özümü daha çox inkişaf etdirmək, yeni biliklər və təcrübələr qazanmaq istəyirəm. Ən böyük istəyim öyrəndiklərimi praktikada tətbiq edə bilmək və maraq göstərdiyim sahələrdə real layihələrdə iştirak etməkdir.\n\nXüsusilə genetika və insan sağlamlığı ilə bağlı mövzular mənə maraqlıdır. Gələcəkdə bu istiqamətdə kiçik bir layihədə iştirak etmək, araşdırma aparmaq və komanda ilə birlikdə yeni bir iş ortaya qoymaq istəyərdim.\n\nMənim üçün bu bir ilin ən böyük nəticəsi sadəcə sertifikat əldə etmək deyil, həqiqətən nələrisə öyrənmək, yeni bacarıqlar qazanmaq və gələcəkdə özümə güvənərək daha böyük işlərə başlaya bilmək olacaq.",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-nraay_10",
+      "memberId": "mem-fs-nraay_10",
+      "fullName": "Talışinskaya (Nuray)",
+      "email": "nuraytalisinskaya@gmail.com",
+      "phone": "503388028",
+      "username": "nraay_10",
+      "password": "20080121nuray",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biotexnologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: 21.5",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Maraq dairəmə aid mövzuların olması",
+      "yearGoal": "Şəxsi məqalə hazırlıya bilmək, lazım olduqda konfrans verə bilmək",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-ibrahimovaf1",
+      "memberId": "mem-fs-ibrahimovaf1",
+      "fullName": "Fatimə İbrahimova (Rahim)",
+      "email": "fatimeibrahimova1144@gmail.com",
+      "phone": "0553437974",
+      "username": "ibrahimovaf1",
+      "password": "ibrahimovaf1",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "İngilis bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Tədqiqatçı / Layihə və Hakaton Komandası Üzvü",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Çünki biologiyanın qollarına böyük həvəsim var və CarboxMol Bioinformatika klubu əminəm ki mənə maraqlarım üzərə irəliləməyimə kömək olacaq",
+      "yearGoal": "Şəxsi elmi məqalə hazırlamaq Alphafold ilə dərman modeli qurmaq həmçinin Hakatonda qalib gəlmək",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-fidanhesenova_2008",
+      "memberId": "mem-fs-fidanhesenova_2008",
+      "fullName": "Fidan Həsənova (Səxavət)",
+      "email": "fidanhesenovaaa27@gmail.com",
+      "phone": "0705052334",
+      "username": "fidanhesenova_2008",
+      "password": "Btslijelibon2008!",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "studyLang": "İngilis bölməsi | GPA: 87.2",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Biologiya ixtisası üzrə təhsil alan bir tələbə olaraq bioinformatika sahəsinə marağım böyükdür. Biologiya və texnologiyanın birləşdiyi bu sahə haqqında daha çox öyrənmək, biliklərimi inkişaf etdirmək və yeni təcrübələr qazanmaq istəyirəm. Carboxmol klubuna qoşulmağı həm özümü inkişaf etdirmək, həm də maraqlı layihələrdə iştirak edərək komandaya töhfə vermək üçün yaxşı fürsət hesab edirəm. Öyrənməyə və yeniliklərə açığam.",
+      "yearGoal": "Qeyd edilməyib",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-sh.nurana",
+      "memberId": "mem-fs-sh.nurana",
+      "fullName": "Nuranə Şabılı (Şahin)",
+      "email": "sabilinurane7@gmail.com",
+      "phone": "+994775959738",
+      "username": "sh.nurana",
+      "password": "1234567nurane",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Genetika (Magistratura)",
+      "course": "Magistratura",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Başlanğıc (Təməl sintaksisi bilirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Tədqiqatçı / Layihə və Hakaton Komandası Üzvü",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Bioinformatika üzrə təcrübələrimi genişləndirmək, hazırki iş şəraitimə olmasa da gələcək prioritetlərimə inteqrasiya etmək və PHD təhsilim üçün ölkəxaricinə lazım olacaq sənədlərimi genişləndirmək",
+      "yearGoal": "Hakatonlarda və fərqli layihələrdə qalib gəlmək və həmin layihələri keçirmək genişmiqyaslı",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-ahumust",
+      "memberId": "mem-fs-ahumust",
+      "fullName": "Ahu Mustafazadə",
+      "email": "ahuumust@gmail.com",
+      "phone": "+994102120166",
+      "username": "ahumust",
+      "password": "PrPc2.ahe34",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Humanitar və Sosial Elmlər Məktəbi - Psixologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "studyLang": "İngilis bölməsi | GPA: 97.56",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Tədqiqatçı / Layihə və Hakaton Komandası Üzvü",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Məktəb vaxtlarından milli və beynəlxalq olimpiadalarda iştirak edən, həmçinin, texnalogiya ilə maraqlanan bir gənc kimi biotexnalogiya, bioinformatika və texnoloji inkişafların biologiya və tibb sahəsinə necə təsir etdiyi məni hər zaman maraqlandırmışdır. Bioinformatika anlayışı nəinki ətrafımda, Azərbaycanda da hələ geniş yayılmayıb və bu isə sahəyə maraq göstərən gənclərin öyrənmə prosesində müəyyən çətinliklərlə üzləşməsinə səbəb olur. prosesində çətinlik çəkməsinə səbəb olur. Məhz buna görə CarboxMol Bioinformatika klubunu ölkəmizdə bu istiqamətin formalaşmağına töhfə verən başlanğıcların biri olacağını düşünürəm. Klubdan əsas gözləntim bioinformatikanın əsas anlayışlarını və metodlarını öyrənmək, eyni məqsədə can atan həmfikir insanlarla birlikdə digər gəclərə də dəstək olmaqdır. Eyni zamanda qarşılıqlı rəy və fikir mübadiləsi aparmaqla bu sahədə inkişaf prosesinin sürətlənəcəyinə və öz təcrübəmi və səylərimi bu icmaya qataraq dəstək olacağıma inanıram.",
+      "yearGoal": "Elmi məqalə hazırlamaq, gen xəritələnməsi ilə bağlı layihələr və təşəbbüslərə dəstək omaq, tədqiqat proqramlarında iştirak etmək.",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-turangulieva",
+      "memberId": "mem-fs-turangulieva",
+      "fullName": "Turan Quliyeva (Haci)",
+      "email": "turanquliyeva.in@icloud.com",
+      "phone": "+994557146765",
+      "username": "turangulieva",
+      "password": "Tuti4481",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Genetika (Magistratura)",
+      "course": "Magistratura",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Dissertasiya isi ucun arasdirma",
+      "yearGoal": "Qeyd edilməyib",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-nigar jafar",
+      "memberId": "mem-fs-nigar jafar",
+      "fullName": "Nigar Cəfərzadə (Ruslan)",
+      "email": "nigarnigar0608@gmail.com",
+      "phone": "0507735578",
+      "username": "nigar jafar",
+      "password": "152519",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: 82",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Mən öz yolumu seçmek,hansı sahə üzrə irələləyəcəyimi müəyyənləşdirmək istəyirəm. Həmçinin də bioinformatikaya da çox həvəsim var. Bu sahə üzrə məni digərlərindən fərqləndirən bilgilərə sahib olmaq istəyirəm.",
+      "yearGoal": "Fikrimdə hələki hər hansı bir layihə fikri yoxdur. Amma düşünürəm ki,buradakı fəaliyyətimi tamamladıqdan sonra üstün biliklərə sahib olub,o cümlədən marağımı cəlb edən  hər suala cavab tapacağam və bir layihə haqqında düşünəcəm.",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-@xədicəsüleymanlı",
+      "memberId": "mem-fs-@xədicəsüleymanlı",
+      "fullName": "Xədicə Süleymanlı (Rahib)",
+      "email": "xsuleyman359@gmail.com",
+      "phone": "0517556992",
+      "username": "@xədicəsüleymanlı",
+      "password": "Xədi2009",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Bilmirəm",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Universitetimizdə mövcud olan başqa bioinformatika klubu yoxdur. Bu bir ilkdir. Ona görə də yüksək səviyyədə olacağına inanıram.",
+      "yearGoal": "Bioinformatika sahəsində magistr təhsili almaq",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-javidanhasanov",
+      "memberId": "mem-fs-javidanhasanov",
+      "fullName": "Cavidan Həsənov (Səfər)",
+      "email": "cavidan56@proton.me",
+      "phone": "+994 50 837 69 05",
+      "username": "javidanhasanov",
+      "password": "0508376905Ca.",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - İnformasiya Təhlükəsizliyi (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Başlanğıc (Təməl sintaksisi bilirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Öyrəndiyim programlaşdırma biliklərini praktikada istifadə etmək maraqlı gəlir.",
+      "yearGoal": "Hakatonda qalib gəlmək",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-nuray_03",
+      "memberId": "mem-fs-nuray_03",
+      "fullName": "Nuray Mustafayeva (Cahid)",
+      "email": "nuray.mustafayeva@wcu.edu.az",
+      "phone": "0103212221",
+      "username": "nuray_03",
+      "password": "030809",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Universitetimin  biz tələbələrin inkişafı üçün yaratdığı bu fəaillyətdə kömək etmələri məni cəlb edən səbəb oldu",
+      "yearGoal": "Gələcəkdəki peşəmdə mütəxəssis olmaq üçün bu fəaliyyətdən yararlanaraq özümü inkişaf etdirməyə başlamaq ideyamdır. Hədəfim isə Genomika və NGS ardıcıllıq analinizini mənimsəməkdir.",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-fuadgadirov",
+      "memberId": "mem-fs-fuadgadirov",
+      "fullName": "Fuad Gadirov (Faiq)",
+      "email": "qedirovfuad3@gmail.com",
+      "phone": "+994503062510",
+      "username": "fuadgadirov",
+      "password": "fdgdrv18",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Çünki hal-hazırda ölkə bu öz ixtisasımla əlaqəli keyfiyyətli fəaliyyətlər tapmaq çox çətindir, bu səbəbdən bu klubu seçmişəm həm öz inkişafım baxlmdan həm də klubun yanaşması baxlmından, təşəkkürlər",
+      "yearGoal": "Əsasən daha çox praktiki bacarıqlar əldə etmək, laboratoroiyalarda rahat işləmək, elmi məqalələr yazıb çap etdirmək və s.",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-mehrihssnv",
+      "memberId": "mem-fs-mehrihssnv",
+      "fullName": "Həsənova Mehriban (Aftandil)",
+      "email": "mehrihssnv@mail.ru",
+      "phone": "+994513469741",
+      "username": "mehrihssnv",
+      "password": "Murad555",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: 84",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "İxtisasımla baölı belə bir klubun açıldığına çox sevindim. Yeni biliklər öyrənib, maraqlı insanlarla tanış olub, vaxtını səmərəli keçirəcəyimə əminəm",
+      "yearGoal": "Şəxsi elmi məqalə hazırlamaq, biologiya sahəsində biliklərimi çoxaltmaq",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-sekine_eliyeva7",
+      "memberId": "mem-fs-sekine_eliyeva7",
+      "fullName": "Səkinə Əliyeva (Sahib)",
+      "email": "sekineeliyeva390@gmail.com",
+      "phone": "+994553809567",
+      "username": "sekine_eliyeva7",
+      "password": "Sekine2007",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Biologiyaya marağım var, amma müasir bioloji tədqiqatların artıq böyük verilənlər və proqramlaşdırma ilə aparıldığını görürəm. Klubun genomika, Python/R və AlphaFold kimi alətləri praktiki şəkildə öyrətməsi məni ən çox cəlb edir. Dərslərdən kənarda real layihələr üzərində işləmək, alimlərlə seminarlarda iştirak etmək və komanda ilə birlikdə öyrənmək istəyirəm. Gözləntim bioinformatika əsaslarını möhkəm öyrənmək və gələcək elmi karyeramda istifadə edəcəyim bacarıqlar qazanmaqdır.",
+      "yearGoal": "1 il ərzində Python və R ilə bioloji verilənləri müstəqil təhlil edə bilmək, Linux/Bash-də rahat işləmək və klubda ən azı bir komanda layihəsini tamamlamaq istəyirəm. Son hədəfim AlphaFold və PyMOL ilə seçdiyim bir zülalın strukturunu modelləşdirib nəticələri kiçik elmi hesabat və ya poster şəklində təqdim etməkdir.",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-mirzzadbagdagul",
+      "memberId": "mem-fs-mirzzadbagdagul",
+      "fullName": "Bağdagül Mirzəzadə (Zaur)",
+      "email": "bagdagul.mirzzad@235bioing",
+      "phone": "514431115",
+      "username": "mirzzadbagdagul",
+      "password": "B12345678",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (II kurs))",
+      "course": "Bakalavr (II kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: 77/100",
+      "programmingSkill": "Başlanğıc (Təməl sintaksisi bilirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Maraqım var",
+      "yearGoal": "Hələki yoxdur",
+      "dateApplied": "2026-11-17",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-fs-nuray_mirzeyeva",
+      "memberId": "mem-fs-nuray_mirzeyeva",
+      "fullName": "Nuray Mirzəyeva (Seymur)",
+      "email": "nuraymirzeyeva254@gmail.com",
+      "phone": "+994514054487",
+      "username": "nuray_mirzeyeva",
+      "password": "19.06.08nurayy",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU)",
+      "major": "Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi - Biologiya (Bakalavr (I kurs))",
+      "course": "Bakalavr (I kurs",
+      "studyLang": "Azərbaycan bölməsi | GPA: Qeyd edilməyib",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [
+        "Heç biri"
+      ],
+      "bioTools": [
+        "Heç biri"
+      ],
+      "bioKnowledge": "Orta səviyyə",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Biologiya ixtisası üzrə təhsil aldığım üçün müasir biologiya və texnologiyanın kəsişdiyi bioinformatika sahəsi mənə çox maraqlıdır. Bu kluba qoşulmaqda əsas məqsədim yeni biliklər qazanmaq, proqramlaşdırmanı sıfırdan öyrənmək və biologiya sahəsində kompüter texnologiyalarının tətbiqini mənimsəməkdir. Xüsusilə genomika, molekulyar biologiya və zülalların 3D modelləşdirilməsi istiqamətləri məni cəlb edir. Təlimlərdə, seminarlarda və komanda layihələrində iştirak edərək həm nəzəri biliklərimi, həm də praktiki bacarıqlarımı inkişaf etdirmək istəyirəm.",
+      "yearGoal": "Bir il ərzində Python proqramlaşdırmasının əsaslarını öyrənmək, genomika və molekulyar biologiya sahəsində biliklərimi genişləndirmək, bioloji məlumatların kompüter vasitəsilə analizini mənimsəmək istəyirəm. Gələcəkdə süni intellektdən istifadə edərək genetik məlumatların araşdırılması ilə bağlı kiçik bir bioinformatik layihədə iştirak etməyi hədəfləyirəm.",
+      "dateApplied": "2026-11-18",
+      "status": "Təsdiqləndi",
+      "photo": "",
+      "adminNotes": "FormSubmit bulud arxivindən avtomatik çəkilmiş rəsmi müraciət.",
+      "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    }
+  ]
+}

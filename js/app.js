@@ -197,86 +197,169 @@ window.closeMemberLoginModal = closeMemberLoginModal;
 // Canlı Bulud Şini (ntfy.sh) vasitəsilə təsdiqlənmiş üzvləri və müraciət qərarlarını dərhal sinxronlaşdır
 async function syncCloudApprovals(targetUser) {
   if (typeof fetch !== "function" || (typeof navigator !== "undefined" && !navigator.onLine)) return false;
+  let updated = false;
+  const data = getClubData();
+  data.members = data.members || [];
+  data.applications = data.applications || [];
+  data.approvedAppIds = data.approvedAppIds || [];
+
+  // 1. Qlobal Rəsmi CDN Reyestri (data/members_registry.json)
+  try {
+    const basePath = (typeof window !== "undefined" && window.location && window.location.pathname)
+      ? window.location.pathname.substring(0, window.location.pathname.lastIndexOf("/") + 1)
+      : "";
+    const regUrl = basePath + "data/members_registry.json?t=" + Math.floor(Date.now() / 60000);
+
+    const regRes = await fetch(regUrl, { cache: "no-cache" }).catch(() => null);
+    if (regRes && regRes.ok) {
+      const regData = await regRes.json();
+      if (regData && Array.isArray(regData.members)) {
+        regData.members.forEach(regMem => {
+          if (!regMem || !regMem.username) return;
+          const u = regMem.username.toLowerCase().replace(/^@/, "").trim();
+          let target = data.members.find(m => m && m.username && m.username.toLowerCase().replace(/^@/, "").trim() === u);
+          if (target) {
+            target.status = "Aktiv";
+            if (regMem.password) target.password = regMem.password;
+            if (regMem.role) target.role = regMem.role;
+            if (regMem.fullName) target.fullName = regMem.fullName;
+          } else {
+            data.members.unshift(Object.assign({}, regMem, { status: "Aktiv" }));
+          }
+          updated = true;
+        });
+      }
+      if (regData && Array.isArray(regData.applications)) {
+        regData.applications.forEach(regApp => {
+          if (!regApp || !regApp.username) return;
+          const u = regApp.username.toLowerCase().replace(/^@/, "").trim();
+          let target = data.applications.find(a => a && a.username && a.username.toLowerCase().replace(/^@/, "").trim() === u);
+          if (target) {
+            target.status = "Təsdiqləndi";
+            if (regApp.password) target.password = regApp.password;
+            if (regApp.approvedAt) target.approvedAt = regApp.approvedAt;
+            if (regApp.approvedBy) target.approvedBy = regApp.approvedBy;
+          } else {
+            data.applications.unshift(Object.assign({}, regApp, { status: "Təsdiqləndi" }));
+          }
+          if (regApp.id && !data.approvedAppIds.includes(regApp.id)) {
+            data.approvedAppIds.push(regApp.id);
+          }
+          updated = true;
+        });
+      }
+    }
+  } catch (errReg) {
+    console.warn("[CloudSync] members_registry fetch notice:", errReg);
+  }
+
+  // 2. Canlı ntfy Bulud Şini (ntfy.sh poll=1&since=all + Fayl Qoşması/Attachment dəstəyi)
   try {
     const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-    const timeoutId = controller ? setTimeout(() => controller.abort(), 2500) : null;
+    const timeoutId = controller ? setTimeout(() => controller.abort(), 8000) : null;
     const fetchOpts = controller ? { signal: controller.signal } : {};
-    const res = await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/json?poll=1", fetchOpts);
+    const res = await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/json?poll=1&since=all", fetchOpts);
     if (timeoutId) clearTimeout(timeoutId);
-    if (!res.ok) return false;
-    const text = await res.text();
-    const lines = text.trim().split("\n").filter(Boolean);
-    const data = getClubData();
-    data.members = data.members || [];
-    data.applications = data.applications || [];
-    let updated = false;
+    if (res && res.ok) {
+      const text = await res.text();
+      const lines = text.trim().split("\n").filter(Boolean);
 
-    for (const line of lines) {
-      try {
-        const item = JSON.parse(line);
-        let msg = item.message;
-        if (typeof msg === "string" && msg.trim().startsWith("{")) {
-          try { msg = JSON.parse(msg); } catch (e) {}
-        }
-        if (!msg || typeof msg !== "object") continue;
+      for (const line of lines) {
+        try {
+          const item = JSON.parse(line);
+          let payload = null;
 
-        if (msg.action === "UPDATE_STATUS" && msg.appId && msg.status) {
-          const incomingApp = msg.application;
-          const incomingMem = msg.member;
+          if (item.attachment && item.attachment.url) {
+            try {
+              const attRes = await fetch(item.attachment.url, { cache: "no-cache" });
+              if (attRes.ok) payload = await attRes.json();
+            } catch (errAtt) {}
+          }
 
-          let targetApp = data.applications.find(a => 
-            a.id === msg.appId || 
-            (incomingApp && a.username && incomingApp.username && a.username.toLowerCase() === incomingApp.username.toLowerCase()) ||
-            (incomingApp && a.email && incomingApp.email && a.email.toLowerCase() === incomingApp.email.toLowerCase())
-          );
+          if (!payload) {
+            let msg = item.message;
+            if (typeof msg === "string" && msg.trim().startsWith("{")) {
+              try { msg = JSON.parse(msg); } catch (e) {}
+            }
+            if (msg && typeof msg === "object") payload = msg;
+            else if (item && typeof item === "object" && item.action) payload = item;
+          }
 
-          if (targetApp) {
-            if (targetApp.status !== msg.status) {
-              targetApp.status = msg.status;
-              if (incomingApp && incomingApp.approvedAt) targetApp.approvedAt = incomingApp.approvedAt;
-              if (incomingApp && incomingApp.approvedBy) targetApp.approvedBy = incomingApp.approvedBy;
+          if (!payload || typeof payload !== "object") continue;
+
+          if (payload.action === "UPDATE_STATUS" && (payload.appId || (payload.application && payload.application.id)) && payload.status) {
+            const incomingApp = payload.application;
+            const incomingMem = payload.member;
+            const targetStatus = payload.status;
+
+            let targetApp = data.applications.find(a => 
+              (payload.appId && a.id === payload.appId) ||
+              (incomingApp && a.id && a.id === incomingApp.id) ||
+              (incomingApp && a.username && incomingApp.username && a.username.toLowerCase().replace(/^@/, "").trim() === incomingApp.username.toLowerCase().replace(/^@/, "").trim()) ||
+              (incomingApp && a.email && incomingApp.email && a.email.toLowerCase().trim() === incomingApp.email.toLowerCase().trim())
+            );
+
+            if (targetApp) {
+              if (targetApp.status !== targetStatus) {
+                targetApp.status = targetStatus;
+                if (incomingApp && incomingApp.approvedAt) targetApp.approvedAt = incomingApp.approvedAt;
+                if (incomingApp && incomingApp.approvedBy) targetApp.approvedBy = incomingApp.approvedBy;
+                updated = true;
+              }
+            } else if (incomingApp && incomingApp.username) {
+              incomingApp.status = targetStatus;
+              data.applications.unshift(incomingApp);
               updated = true;
             }
-          } else if (incomingApp && incomingApp.username) {
-            data.applications.unshift(incomingApp);
-            updated = true;
-          }
 
-          let targetMem = data.members.find(m => 
-            m.id === msg.appId || 
-            (targetApp && m.username && targetApp.username && m.username.toLowerCase() === targetApp.username.toLowerCase()) ||
-            (incomingMem && m.username && incomingMem.username && m.username.toLowerCase() === incomingMem.username.toLowerCase()) ||
-            (incomingMem && m.email && incomingMem.email && m.email.toLowerCase() === incomingMem.email.toLowerCase())
-          );
+            if (targetStatus === "Təsdiqləndi" && payload.appId && !data.approvedAppIds.includes(payload.appId)) {
+              data.approvedAppIds.push(payload.appId);
+            }
 
-          if (targetMem) {
-            const newMemStatus = (msg.status === "Təsdiqləndi") ? "Aktiv" : msg.status;
-            if (targetMem.status !== newMemStatus) {
-              targetMem.status = newMemStatus;
+            let targetMem = data.members.find(m => 
+              (payload.appId && m.id === payload.appId) ||
+              (targetApp && m.username && targetApp.username && m.username.toLowerCase().replace(/^@/, "").trim() === targetApp.username.toLowerCase().replace(/^@/, "").trim()) ||
+              (incomingMem && m.username && incomingMem.username && m.username.toLowerCase().replace(/^@/, "").trim() === incomingMem.username.toLowerCase().replace(/^@/, "").trim()) ||
+              (incomingMem && m.email && incomingMem.email && m.email.toLowerCase().trim() === incomingMem.email.toLowerCase().trim())
+            );
+
+            const newMemStatus = (targetStatus === "Təsdiqləndi") ? "Aktiv" : targetStatus;
+            if (targetMem) {
+              if (targetMem.status !== newMemStatus) {
+                targetMem.status = newMemStatus;
+                updated = true;
+              }
+            } else if (incomingMem && incomingMem.username) {
+              incomingMem.status = newMemStatus;
+              data.members.unshift(incomingMem);
               updated = true;
             }
-          } else if (incomingMem && incomingMem.username) {
-            data.members.unshift(incomingMem);
-            updated = true;
+          } else if ((payload.action === "REGISTER_STUDENT" || payload.action === "REGISTER_MEMBER") && payload.application) {
+            const app = payload.application;
+            const exists = data.applications.some(a => a.id === app.id || (a.username && app.username && a.username.toLowerCase().replace(/^@/, "").trim() === app.username.toLowerCase().replace(/^@/, "").trim()));
+            if (!exists) {
+              data.applications.unshift(app);
+              if (payload.member) data.members.unshift(payload.member);
+              updated = true;
+            }
           }
-        } else if (msg.action === "REGISTER_STUDENT" && msg.application) {
-          const app = msg.application;
-          const exists = data.applications.some(a => a.id === app.id || (a.username && app.username && a.username.toLowerCase() === app.username.toLowerCase()));
-          if (!exists) {
-            data.applications.unshift(app);
-            if (msg.member) data.members.unshift(msg.member);
-            updated = true;
-          }
-        }
-      } catch (errLine) {}
-    }
-
-    if (updated) {
-      saveClubData(data);
-      return true;
+        } catch (errLine) {}
+      }
     }
   } catch (errSync) {
     console.warn("[CloudSync] Background sync notice:", errSync);
+  }
+
+  if (updated) {
+    saveClubData(data);
+    try {
+      localStorage.setItem("carboxmol_approved_app_ids", JSON.stringify(data.approvedAppIds));
+    } catch(e) {}
+    if (window.ClubDatabase) {
+      data.members.forEach(m => window.ClubDatabase.provisionMember(m));
+      data.applications.forEach(a => window.ClubDatabase.saveApplication(a));
+    }
+    return true;
   }
   return false;
 }
@@ -408,7 +491,7 @@ async function handleMemberLogin(e) {
 
   // Əgər aktiv üzv kimi tapılmadısa, müraciətlər siyahısından (applications) yoxla
   if (!member) {
-    const app = (data.applications || []).find(a => 
+    let app = (data.applications || []).find(a => 
       (a.username && a.username.toLowerCase().replace(/^@/, "") === username) || 
       (a.username && a.username.toLowerCase().replace(/^@/, "").replace(/[\s_]/g, "") === cleanInputUser) ||
       (a.email && a.email.toLowerCase() === username) ||
