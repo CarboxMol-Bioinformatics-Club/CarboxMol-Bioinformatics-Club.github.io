@@ -5269,9 +5269,8 @@ function getClubData() {
           (m.username && app.username && m.username.toLowerCase() === app.username.toLowerCase()) ||
           (m.email && app.email && m.email.toLowerCase() === app.email.toLowerCase())
       );
-      const isApproved = app.status === "Təsdiqləndi" || app.status === "Qəbul Edildi";
-      const isRejected = app.status === "Rədd edildi";
-      const targetMemberStatus = isApproved ? "Aktiv" : (isRejected ? "Rədd edildi" : "Gözləyir");
+      const isRejected = app.status === "Rədd edildi" || (parsed.rejectedAppIds && parsed.rejectedAppIds.includes(app.id));
+      const targetMemberStatus = isRejected ? "Rədd edildi" : "Aktiv";
 
       if (memIdx === -1) {
         parsed.members.unshift({
@@ -5298,16 +5297,21 @@ function getClubData() {
         });
         hasStorageUpdates = true;
       } else {
-        // İkitərəfli status uyğunluğu: Əgər müraciət "Gözləyir"dirsə, üzv hesabı da "Gözləyir" olmalıdır
-        if (app.status === "Gözləyir" && parsed.members[memIdx].status !== "Gözləyir") {
-          parsed.members[memIdx].status = "Gözləyir";
-          hasStorageUpdates = true;
-        } else if (app.status === "Təsdiqləndi" && parsed.members[memIdx].status !== "Aktiv") {
-          parsed.members[memIdx].status = "Aktiv";
-          hasStorageUpdates = true;
-        } else if (app.status === "Rədd edildi" && parsed.members[memIdx].status !== "Rədd edildi") {
-          parsed.members[memIdx].status = "Rədd edildi";
-          hasStorageUpdates = true;
+        // İkitərəfli status uyğunluğu: Yalnız rəsmi rədd edilmişlər deaktiv qalır, digər bütün üzvlər aktivdir
+        if (app.status === "Rədd edildi" || (parsed.rejectedAppIds && parsed.rejectedAppIds.includes(app.id))) {
+          if (parsed.members[memIdx].status !== "Rədd edildi") {
+            parsed.members[memIdx].status = "Rədd edildi";
+            hasStorageUpdates = true;
+          }
+        } else {
+          if (parsed.members[memIdx].status !== "Aktiv") {
+            parsed.members[memIdx].status = "Aktiv";
+            hasStorageUpdates = true;
+          }
+          if (app.status !== "Təsdiqləndi") {
+            app.status = "Təsdiqləndi";
+            hasStorageUpdates = true;
+          }
         }
 
         if (app.password && !parsed.members[memIdx].password) {

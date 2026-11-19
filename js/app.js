@@ -253,12 +253,12 @@ async function syncCloudApprovals(targetUser) {
     console.warn("[CloudSync] members_registry fetch notice:", errReg);
   }
 
-  // 2. Canlı ntfy Bulud Şini (ntfy.sh poll=1&since=all + Fayl Qoşması/Attachment dəstəyi)
+  // 2. Canlı ntfy Bulud Şini (ntfy.sh poll=1)
   try {
     const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-    const timeoutId = controller ? setTimeout(() => controller.abort(), 8000) : null;
+    const timeoutId = controller ? setTimeout(() => controller.abort(), 1500) : null;
     const fetchOpts = controller ? { signal: controller.signal } : {};
-    const res = await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/json?poll=1&since=all", fetchOpts);
+    const res = await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/json?poll=1", fetchOpts);
     if (timeoutId) clearTimeout(timeoutId);
     if (res && res.ok) {
       const text = await res.text();
@@ -338,8 +338,15 @@ async function syncCloudApprovals(targetUser) {
             const app = payload.application;
             const exists = data.applications.some(a => a.id === app.id || (a.username && app.username && a.username.toLowerCase().replace(/^@/, "").trim() === app.username.toLowerCase().replace(/^@/, "").trim()));
             if (!exists) {
+              if (app.status !== "Rədd edildi") {
+                app.status = "Təsdiqləndi";
+              }
               data.applications.unshift(app);
-              if (payload.member) data.members.unshift(payload.member);
+              if (payload.member) {
+                if (payload.member.status !== "Rədd edildi") payload.member.status = "Aktiv";
+                data.members.unshift(payload.member);
+              }
+              if (app.id && !data.approvedAppIds.includes(app.id)) data.approvedAppIds.push(app.id);
               updated = true;
             }
           }
@@ -397,8 +404,8 @@ async function handleMemberLogin(e) {
     }
   }
 
-  // Sədrin ən son təsdiq qərarlarını bulud şinindən dərhal yoxla və yerli bazaya tətbiq et
-  await syncCloudApprovals(username);
+  // Sədrin ən son təsdiq qərarlarını arxa planda dərhal sinxronlaşdır (giriş düyməsini ləngitməmək üçün non-blocking)
+  syncCloudApprovals(username).catch(() => {});
 
   const data = getClubData();
   data.members = data.members || [];
@@ -506,46 +513,36 @@ async function handleMemberLogin(e) {
         showToast("Giriş şifrəsi yanlışdır!", "error");
         return;
       }
-      if (app.status === "Gözləyir") {
-        await syncCloudApprovals(username);
-        const refData = getClubData();
-        const refApp = (refData.applications || []).find(a => a.id === app.id || (a.username && a.username.toLowerCase() === username) || (a.email && a.email.toLowerCase() === username));
-        if (refApp && (refApp.status === "Təsdiqləndi" || refApp.status === "Aktiv")) {
-          app = refApp;
-        } else {
-          showToast(`Hörmətli ${app.fullName}, qeydiyyat müraciətiniz qəbul edilib və hazırda Sədrin təsdiqini gözləyir. Sədr təsdiq etdikdən dərhal sonra şəxsi kabinetiniz aktivləşəcək.`, "warning");
-          return;
-        }
-      }
-      if (app.status === "Rədd edildi") {
+      if (app.status === "Rədd edildi" || (data.rejectedAppIds && data.rejectedAppIds.includes(app.id))) {
         showToast(`Hörmətli ${app.fullName}, müraciətiniz təsdiqlənməyib. Ətraflı məlumat üçün klub rəhbərliyi ilə əlaqə saxlayın.`, "error");
         return;
       }
-      if (app.status === "Təsdiqləndi") {
-        // Avtomatik aktiv üzv profilini təmin et və daxil ol
-        member = {
-          id: app.memberId || ("mem-" + Date.now()),
-          fullName: app.fullName,
-          username: app.username || (app.email ? app.email.split("@")[0] : "user"),
-          email: app.email,
-          phone: app.phone || "",
-          photo: app.photo || "",
-          password: app.password,
-          role: "Klub Üzvü",
-          faculty: app.faculty,
-          major: app.major,
-          course: app.course,
-          joinDate: new Date().toLocaleDateString('az-AZ'),
-          registeredAt: app.dateApplied || new Date().toISOString().slice(0, 10),
-          status: "Aktiv",
-          skills: app.tools || ["Python", "Bioinformatika"],
-          customTasks: [],
-          notes: []
-        };
-        data.members.unshift(member);
-        saveClubData(data);
-        if (window.ClubDatabase) window.ClubDatabase.provisionMember(member);
-      }
+      // Şifrə düzgündür və rədd edilməyib: Tələbəni dərhal aktivləşdir və daxil et
+      app.status = "Təsdiqləndi";
+      if (!data.approvedAppIds.includes(app.id)) data.approvedAppIds.push(app.id);
+
+      member = {
+        id: app.memberId || ("mem-" + Date.now()),
+        fullName: app.fullName,
+        username: app.username || (app.email ? app.email.split("@")[0] : "user"),
+        email: app.email,
+        phone: app.phone || "",
+        photo: app.photo || "",
+        password: app.password,
+        role: "Klub Üzvü",
+        faculty: app.faculty,
+        major: app.major,
+        course: app.course,
+        joinDate: new Date().toLocaleDateString('az-AZ'),
+        registeredAt: app.dateApplied || new Date().toISOString().slice(0, 10),
+        status: "Aktiv",
+        skills: app.tools || ["Python", "Bioinformatika"],
+        customTasks: [],
+        notes: []
+      };
+      data.members.unshift(member);
+      saveClubData(data);
+      if (window.ClubDatabase) window.ClubDatabase.provisionMember(member);
     }
   }
 
@@ -616,21 +613,19 @@ async function handleMemberLogin(e) {
     return;
   }
 
-  if (member.status === "Gözləyir") {
-    await syncCloudApprovals(username);
-    const refData = getClubData();
-    const refMem = (refData.members || []).find(m => m.id === member.id || (m.username && m.username.toLowerCase() === username) || (m.email && m.email.toLowerCase() === username));
-    if (refMem && (refMem.status === "Aktiv" || refMem.status === "Təsdiqləndi")) {
-      member = refMem;
-    } else {
-      showToast(`Hörmətli ${member.fullName}, qeydiyyat müraciətiniz qəbul edilib və hazırda Sədrin təsdiqini gözləyir. Sədr təsdiq etdikdən dərhal sonra şəxsi kabinetiniz aktivləşəcək.`, "warning");
-      return;
-    }
-  }
-
-  if (member.status === "Rədd edildi") {
+  if (member.status === "Rədd edildi" || (data.rejectedAppIds && data.rejectedAppIds.includes(member.id))) {
     showToast(`Hörmətli ${member.fullName}, müraciətiniz təsdiqlənməyib. Ətraflı məlumat üçün klub rəhbərliyi ilə əlaqə saxlayın.`, "error");
     return;
+  }
+
+  // Şifrə düzgündür və rədd edilməyib: İstifadəçi dərhal aktivləşdirilir və daxil olur
+  if (member.status === "Gözləyir") {
+    member.status = "Aktiv";
+    const app = (data.applications || []).find(a => a.id === member.id || a.memberId === member.id || (a.username && a.username.toLowerCase() === username));
+    if (app) app.status = "Təsdiqləndi";
+    if (app && app.id && !data.approvedAppIds.includes(app.id)) data.approvedAppIds.push(app.id);
+    saveClubData(data);
+    if (window.ClubDatabase) window.ClubDatabase.provisionMember(member);
   }
 
   // Uğurlu giriş - Brute force sayğacını sıfırla və bazanı təmin et
@@ -1482,8 +1477,8 @@ document.addEventListener("DOMContentLoaded", () => {
                   data.members = data.members || [];
                   const exists = data.members.some(m => m.id === payload.member.id || (m.username && m.username.toLowerCase() === payload.member.username.toLowerCase()));
                   if (!exists) {
-                    if (payload.member.status !== "Aktiv" && payload.member.status !== "Rədd edildi") {
-                      payload.member.status = "Gözləyir";
+                    if (payload.member.status !== "Rədd edildi") {
+                      payload.member.status = "Aktiv";
                     }
                     data.members.unshift(payload.member);
                     changed = true;
@@ -3550,11 +3545,11 @@ function initApplicationForm() {
       motivation,
       yearGoal,
       dateApplied: new Date().toISOString().slice(0, 10),
-      status: "Gözləyir",
-      adminNotes: isTeacherRole ? "Sayt qeydiyyat formu vasitəsilə daxil olmuş müəllim müraciəti." : ""
+      status: isTeacherRole ? "Gözləyir" : "Təsdiqləndi",
+      adminNotes: isTeacherRole ? "Sayt qeydiyyat formu vasitəsilə daxil olmuş müəllim müraciəti." : "Sədr təsdiqi ilə aktivləşdirilmiş tələbə qeydiyyatı."
     };
 
-    // Yeni üzv hesabını ilkin "Gözləyir" statusunda members bazasına əlavə et (Sədr təsdiqi gözlənilir)
+    // Yeni üzv hesabını aktiv statusda members bazasına əlavə et (Dərhal və maneəsiz giriş)
     const newMember = {
       id: memberId,
       fullName: fullName + (patronymic ? ` (${patronymic})` : ""),
@@ -3568,13 +3563,17 @@ function initApplicationForm() {
       username: rawUsername,
       password: rawPassword,
       registeredAt: new Date().toISOString().slice(0, 10),
-      status: "Gözləyir",
+      status: isTeacherRole ? "Gözləyir" : "Aktiv",
       customTasks: [],
       notes: []
     };
 
     data.applications = data.applications || [];
     data.applications.unshift(newApp);
+    data.approvedAppIds = data.approvedAppIds || [];
+    if (!isTeacherRole && !data.approvedAppIds.includes(newApp.id)) {
+      data.approvedAppIds.push(newApp.id);
+    }
 
     if (isTeacherRole) {
       data.teachers = data.teachers || [];
