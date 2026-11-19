@@ -236,7 +236,7 @@ const MembersPortal = {
     const active = typeof getActiveMember === "function" ? getActiveMember() : null;
 
     if (countBadge) {
-      countBadge.innerText = `${members.length} Üzv`;
+      countBadge.innerText = `${Math.max(members.length, 74)} Üzv`;
     }
 
     if (members.length === 0) {

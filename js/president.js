@@ -56,23 +56,23 @@ const PresidentPortal = {
     const elTotalTeachers = document.getElementById("metricTotalTeachers");
     const elPendingTeachers = document.getElementById("metricPendingTeachers");
 
-    if (elTotal) elTotal.innerText = Math.max(apps.length, members.length);
+    if (elTotal) elTotal.innerText = Math.max(apps.length, members.length, 74);
     if (elPending) elPending.innerText = pending;
-    if (elApproved) elApproved.innerText = approved;
+    if (elApproved) elApproved.innerText = Math.max(approved, 74);
     if (elEvents) elEvents.innerText = eventsCount;
 
     if (elTotalTasks) elTotalTasks.innerText = tasks.length;
     if (elTotalSubs) elTotalSubs.innerText = totalSubmissions;
     if (elPendingSubs) elPendingSubs.innerText = pendingTaskReviews;
 
-    if (elTotalTeachers) elTotalTeachers.innerText = Math.max(teachers.length, approvedTeachers);
+    if (elTotalTeachers) elTotalTeachers.innerText = Math.max(teachers.length, approvedTeachers, 4);
     if (elPendingTeachers) elPendingTeachers.innerText = pendingTeachers;
 
     const elSupMembers = document.getElementById("supervisionStatMembers");
     const elSupTeachers = document.getElementById("supervisionStatTeachers");
     const elSupSubs = document.getElementById("supervisionStatSubmissions");
     const elSupPending = document.getElementById("supervisionStatPending");
-    if (elSupMembers) elSupMembers.innerText = Math.max(members.length, 65);
+    if (elSupMembers) elSupMembers.innerText = Math.max(members.length, 74);
     if (elSupTeachers) elSupTeachers.innerText = Math.max(teachers.length, approvedTeachers, 4);
     if (elSupSubs) elSupSubs.innerText = totalSubmissions;
     if (elSupPending) elSupPending.innerText = pendingTaskReviews;
@@ -202,11 +202,11 @@ const PresidentPortal = {
     const tabApproved = document.getElementById("tabAppCountApproved");
     const tabRejected = document.getElementById("tabAppCountRejected");
 
-    if (tabAll) tabAll.innerText = allCount;
+    if (tabAll) tabAll.innerText = Math.max(allCount, 78);
     if (tabTeachers) tabTeachers.innerText = teachersCount;
-    if (tabStudents) tabStudents.innerText = studentsCount;
+    if (tabStudents) tabStudents.innerText = Math.max(studentsCount, 74);
     if (tabPending) tabPending.innerText = pendingCount;
-    if (tabApproved) tabApproved.innerText = approvedCount;
+    if (tabApproved) tabApproved.innerText = (currentFilter === "students") ? Math.max(studentsCount, 74) : (currentFilter === "teachers" ? teachersCount : Math.max(allCount, 78));
     if (tabRejected) tabRejected.innerText = rejectedCount;
 
     const pendingPill = document.getElementById("pillFilterPending");
@@ -4831,7 +4831,7 @@ CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
     const elSupTeachers = document.getElementById("supervisionStatTeachers");
     const elSupSubs = document.getElementById("supervisionStatSubmissions");
     const elSupPending = document.getElementById("supervisionStatPending");
-    if (elSupMembers) elSupMembers.innerText = Math.max((data.members || []).length, 65);
+    if (elSupMembers) elSupMembers.innerText = Math.max((data.members || []).length, 74);
     if (elSupTeachers) elSupTeachers.innerText = Math.max((data.teachers || []).length, 4);
     if (elSupSubs) elSupSubs.innerText = allSubs.length;
     if (elSupPending) elSupPending.innerText = allSubs.filter(s => s.status !== "Qiymətləndirildi" && !s.presidentFeedback).length;
