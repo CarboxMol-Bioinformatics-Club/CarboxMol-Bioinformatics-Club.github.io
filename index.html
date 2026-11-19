@@ -4526,21 +4526,21 @@ Seçilmiş pipeline: DESeq2
 
         <!-- Metrics Cards -->
         <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 pt-2">
-          <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800">
-            <span class="text-[11px] text-slate-400 block mb-1">Ümumi Müraciət</span>
-            <span id="metricTotalApps" class="text-xl sm:text-2xl font-black text-white">0</span>
+          <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-teal-900/40">
+            <span class="text-[11px] text-teal-300/80 block mb-1">Tələbə Müraciətləri</span>
+            <span id="metricTotalApps" class="text-xl sm:text-2xl font-black text-white">65</span>
           </div>
           <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-amber-900/40">
             <span class="text-[11px] text-amber-300/80 block mb-1">Gözləyən Qəbullar</span>
             <span id="metricPendingApps" class="text-xl sm:text-2xl font-black text-amber-400">0</span>
           </div>
           <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-emerald-900/40">
-            <span class="text-[11px] text-emerald-300/80 block mb-1">Təsdiqli Üzvlər</span>
-            <span id="metricApprovedMembers" class="text-xl sm:text-2xl font-black text-emerald-400">0</span>
+            <span class="text-[11px] text-emerald-300/80 block mb-1">Təsdiqli Tələbə Üzvlər</span>
+            <span id="metricApprovedMembers" class="text-xl sm:text-2xl font-black text-emerald-400">65</span>
           </div>
           <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-indigo-900/40">
             <span class="text-[11px] text-indigo-300/80 block mb-1">Müəllim & Mentorlar</span>
-            <span id="metricTotalTeachers" class="text-xl sm:text-2xl font-black text-indigo-400">0</span>
+            <span id="metricTotalTeachers" class="text-xl sm:text-2xl font-black text-indigo-400">4</span>
           </div>
           <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-amber-900/40">
             <span class="text-[11px] text-amber-300/80 block mb-1">Gözləyən Müəllimlər</span>
@@ -4761,25 +4761,26 @@ Seçilmiş pipeline: DESeq2
         <!-- Filter Tabs & Search Bar -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-slate-800/80">
           <div class="flex flex-wrap items-center gap-2">
-            <button type="button" onclick="PresidentPortal.setFilterTab('all')" id="pillFilterAll"
-              class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-slate-800 text-white border border-slate-700 shadow-sm flex items-center gap-1.5">
-              <span>Hamısı</span>
-              <span id="tabAppCountAll"
-                class="px-1.5 py-0.2 rounded-full bg-slate-900 text-slate-300 text-[10px] font-mono">0</span>
+            <button type="button" onclick="PresidentPortal.setFilterTab('students')" id="pillFilterStudents"
+              class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-teal-600 text-white border border-teal-400 shadow-md shadow-teal-600/30 flex items-center gap-1.5">
+              <i class="fa-solid fa-graduation-cap text-teal-200"></i>
+              <span>Tələbələr</span>
+              <span id="tabAppCountStudents"
+                class="px-1.5 py-0.2 rounded-full bg-teal-950 text-teal-200 text-[10px] font-mono">65</span>
             </button>
             <button type="button" onclick="PresidentPortal.setFilterTab('teachers')" id="pillFilterTeachers"
               class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-indigo-950/40 text-indigo-300 border border-indigo-700/60 hover:bg-indigo-900/50 flex items-center gap-1.5">
               <i class="fa-solid fa-chalkboard-user text-indigo-400"></i>
               <span>Müəllimlər / Mentorlar</span>
               <span id="tabAppCountTeachers"
-                class="px-1.5 py-0.2 rounded-full bg-indigo-900 text-indigo-200 text-[10px] font-mono">0</span>
+                class="px-1.5 py-0.2 rounded-full bg-indigo-900 text-indigo-200 text-[10px] font-mono">4</span>
             </button>
-            <button type="button" onclick="PresidentPortal.setFilterTab('students')" id="pillFilterStudents"
-              class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-slate-900 text-teal-300 border border-teal-800/60 hover:bg-teal-950/40 flex items-center gap-1.5">
-              <i class="fa-solid fa-graduation-cap text-teal-400"></i>
-              <span>Tələbələr</span>
-              <span id="tabAppCountStudents"
-                class="px-1.5 py-0.2 rounded-full bg-teal-950 text-teal-200 text-[10px] font-mono">0</span>
+            <button type="button" onclick="PresidentPortal.setFilterTab('all')" id="pillFilterAll"
+              class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-slate-900 text-slate-400 border border-slate-800 hover:text-white flex items-center gap-1.5">
+              <i class="fa-solid fa-users text-slate-400"></i>
+              <span>Cəmi (Tələbə + Müəllim)</span>
+              <span id="tabAppCountAll"
+                class="px-1.5 py-0.2 rounded-full bg-slate-800 text-slate-300 text-[10px] font-mono">69</span>
             </button>
             <button type="button" onclick="PresidentPortal.setFilterTab('Gözləyir')" id="pillFilterPending"
               class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-amber-950/30 text-amber-400/80 border border-amber-900/40 hover:bg-amber-950/50 flex items-center gap-1.5">
@@ -4793,7 +4794,7 @@ Seçilmiş pipeline: DESeq2
               <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
               <span>Təsdiqləndi</span>
               <span id="tabAppCountApproved"
-                class="px-1.5 py-0.2 rounded-full bg-emerald-950 text-emerald-300 text-[10px] font-mono">0</span>
+                class="px-1.5 py-0.2 rounded-full bg-emerald-950 text-emerald-300 text-[10px] font-mono">65</span>
             </button>
             <button type="button" onclick="PresidentPortal.setFilterTab('Rədd edildi')" id="pillFilterRejected"
               class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-slate-900 text-slate-400 border border-slate-800 hover:text-rose-300 flex items-center gap-1.5">
@@ -4806,14 +4807,14 @@ Seçilmiş pipeline: DESeq2
 
           <div class="flex items-center gap-2">
             <input type="text" id="appSearchInput"
-              oninput="PresidentPortal.renderApplicationsTable(PresidentPortal.currentAppFilterTab || 'all', this.value)"
+              oninput="PresidentPortal.renderApplicationsTable(PresidentPortal.currentAppFilterTab || 'students', this.value)"
               placeholder="Axtarış (Ad, ixtisas, e-poçt)..."
               class="bg-slate-900 border border-slate-700 text-xs rounded-xl px-3 py-1.5 text-white focus:outline-none focus:border-teal-500 w-full sm:w-60" />
             <select id="appFilterStatus" onchange="PresidentPortal.setFilterTab(this.value)"
               class="bg-slate-900 border border-slate-700 text-xs rounded-xl px-2.5 py-1.5 text-white focus:outline-none focus:border-teal-500 hidden sm:block">
-              <option value="all">Bütün Kateqoriya & Statuslar</option>
-              <option value="teachers">Yalnız Müəllimlər / Mentorlar</option>
-              <option value="students">Yalnız Tələbələr</option>
+              <option value="students" selected>Yalnız Tələbələr (65)</option>
+              <option value="teachers">Yalnız Müəllimlər / Mentorlar (4)</option>
+              <option value="all">Bütün Müraciətlər (Cəmi 69)</option>
               <option value="Gözləyir">Gözləyir (Təsdiq Gözlənilir)</option>
               <option value="Təsdiqləndi">Təsdiqləndi</option>
               <option value="Rədd edildi">İmtina</option>

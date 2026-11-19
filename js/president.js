@@ -82,7 +82,7 @@ const PresidentPortal = {
     }
   },
 
-  currentAppFilterTab: "all",
+  currentAppFilterTab: "students",
 
   setFilterTab(status) {
     this.currentAppFilterTab = status;
@@ -96,9 +96,9 @@ const PresidentPortal = {
     if (select) select.value = status;
 
     const baseClass = "px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5";
-    if (allPill) allPill.className = status === "all" ? `${baseClass} bg-slate-800 text-white border border-slate-700 shadow-sm` : `${baseClass} bg-slate-900 text-slate-400 border border-slate-800 hover:text-white`;
-    if (teachPill) teachPill.className = status === "teachers" ? `${baseClass} bg-indigo-600 text-white border border-indigo-400 shadow-md shadow-indigo-600/30` : `${baseClass} bg-indigo-950/40 text-indigo-300 border border-indigo-800/60 hover:bg-indigo-900/50`;
     if (studPill) studPill.className = status === "students" ? `${baseClass} bg-teal-600 text-white border border-teal-400 shadow-md shadow-teal-600/30` : `${baseClass} bg-slate-900 text-teal-300 border border-teal-800/60 hover:bg-teal-950/40`;
+    if (teachPill) teachPill.className = status === "teachers" ? `${baseClass} bg-indigo-600 text-white border border-indigo-400 shadow-md shadow-indigo-600/30` : `${baseClass} bg-indigo-950/40 text-indigo-300 border border-indigo-800/60 hover:bg-indigo-900/50`;
+    if (allPill) allPill.className = status === "all" ? `${baseClass} bg-slate-800 text-white border border-slate-700 shadow-sm` : `${baseClass} bg-slate-900 text-slate-400 border border-slate-800 hover:text-white`;
     if (pendPill) pendPill.className = status === "Gözləyir" ? `${baseClass} bg-amber-500/30 text-amber-300 border border-amber-500/60 shadow-sm` : `${baseClass} bg-amber-950/30 text-amber-400/80 border border-amber-900/40 hover:bg-amber-950/50`;
     if (appPill) appPill.className = status === "Təsdiqləndi" ? `${baseClass} bg-emerald-500/30 text-emerald-300 border border-emerald-500/60 shadow-sm` : `${baseClass} bg-slate-900 text-slate-400 border border-slate-800 hover:text-emerald-300`;
     if (rejPill) rejPill.className = status === "Rədd edildi" ? `${baseClass} bg-rose-500/30 text-rose-300 border border-rose-500/60 shadow-sm` : `${baseClass} bg-slate-900 text-slate-400 border border-slate-800 hover:text-rose-300`;
@@ -114,7 +114,7 @@ const PresidentPortal = {
     if (filterStatus !== null) {
       this.currentAppFilterTab = filterStatus;
     }
-    const currentFilter = this.currentAppFilterTab || "all";
+    const currentFilter = this.currentAppFilterTab || "students";
 
     const data = getClubData();
     data.deletedAppIds = data.deletedAppIds || [];
@@ -182,9 +182,18 @@ const PresidentPortal = {
     const allCount = unifiedApps.length;
     const teachersCount = unifiedApps.filter(a => a.isTeacher).length;
     const studentsCount = unifiedApps.filter(a => !a.isTeacher).length;
-    const pendingCount = unifiedApps.filter(a => a.status === "Gözləyir").length;
-    const approvedCount = unifiedApps.filter(a => a.status === "Təsdiqləndi" || a.status === "Qəbul Edildi" || a.status === "Aktiv").length;
-    const rejectedCount = unifiedApps.filter(a => a.status === "Rədd edildi").length;
+
+    // Filter-scoped counts for status badges
+    let currentScope = unifiedApps;
+    if (currentFilter === "students") {
+      currentScope = unifiedApps.filter(a => !a.isTeacher);
+    } else if (currentFilter === "teachers") {
+      currentScope = unifiedApps.filter(a => a.isTeacher);
+    }
+
+    const pendingCount = currentScope.filter(a => a.status === "Gözləyir").length;
+    const approvedCount = currentScope.filter(a => a.status === "Təsdiqləndi" || a.status === "Qəbul Edildi" || a.status === "Aktiv").length;
+    const rejectedCount = currentScope.filter(a => a.status === "Rədd edildi").length;
 
     const tabAll = document.getElementById("tabAppCountAll");
     const tabTeachers = document.getElementById("tabAppCountTeachers");
