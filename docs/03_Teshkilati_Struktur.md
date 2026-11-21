@@ -14,9 +14,9 @@ Klubun idarəetmə, tədris və elmi-tədqiqat fəaliyyəti yüksək səmərəli
 
 | Pillə | Struktur Vahidi / Vəzifə | Tərkib və İnstitusional Əhatə | Əsas Funksional Öhdəliklər |
 | :---: | :--- | :--- | :--- |
-| **I** | **Təsisçi və Klub Sədri** *(President)* | **Süleyman Mehdi oğlu Hacızadə** *(WCU Biologiya V kurs & ETN Molekulyar Biologiya İnstitutu, Böyük Laborant)* | Strateji idarəetmə, elmi-tədris proqramının tərtibi, rəsmi təmsilçilik, kargüzarlıq və layihə koordinasiyası |
+| **I** | **Təsisçi, Klub Sədri və Koordinatorlar** *(1 Sədr + 2 Koordinator Modeli)* | **Klub Sədri:** Süleyman Mehdi oğlu Hacızadə *(WCU Biologiya V kurs & ETN Molekulyar Biologiya İnstitutu, Böyük Laborant)*<br>**Koordinatorlar:** Elm & Tədris Koordinatoru (`CMBC-2026/VT-06`) və Təşkilat & Media Koordinatoru (`CMBC-2026/VT-07`) | Strateji idarəetmə, elmi-tədris proqramının tərtibi, rəsmi təmsilçilik, kargüzarlıq, tədbir və media koordinasiyası |
 | **II** | **Dəvətli Beynəlxalq Alimlər, Akademik Müəllimlər və Mentorlar** | **Beynəlxalq Alimlər:** MRC LMB (Kembric), ETN Molekulyar Biologiya İnstitutu, Univ. of Colorado Anschutz (ABŞ) <br> **Akademik Heyət:** Imperial College London (ICL), WCU, BDU, ETN Molekulyar Biologiya İnstitutu | İxtisaslaşmış elmi təlimlərin və seminarların təşkili, laboratoriya işlərinin qiymətləndirilməsi, hakaton/məqalə mentorluğu və Journal Club sessiyaları |
-| **III** | **Klub Üzvləri** *(Members)* | **74 Təsdiqlənmiş Tələbə Üzv** *(WCU və respublikanın digər aparıcı ali təhsil müəssisələri)* | 28 həftəlik praktiki tədris, komanda layihələri, İlk CarboxMol Bioinformatika Hakatonu, birgə elmi məqalə hazırlığı və Journal Club |
+| **III** | **Klub Üzvləri** *(Members)* | **Klub Üzvləri** *(WCU və respublikanın digər aparıcı ali təhsil müəssisələrinin tələbə və gənc tədqiqatçıları)* | 28 həftəlik praktiki tədris, komanda layihələri, İlk CarboxMol Bioinformatika Hakatonu, birgə elmi məqalə hazırlığı və Journal Club |
 
 ---
 
@@ -69,7 +69,7 @@ Azərbaycanda bioinformatika, struktur və hesablama biologiyası sahəsində el
 
 ---
 
-#### 2.4. Klub Üzvləri (Members — 74 Təsdiqlənmiş Tələbə Üzv)
+#### 2.4. Klub Üzvləri (Members)
 * **Əhatə Dairəsi:** Klub açıq və inteqrativ akademik platformadır. Kluba Qərbi Kaspi Universiteti (WCU) ilə yanaşı Azərbaycanın və beynəlxalq məkanın bütün universitetlərinin (BDU, ATU, ADNSU, ADA, BMU, Xəzər Universiteti və s.) və elmi-tədqiqat institutlarının (**ETN Molekulyar Biologiya İnstitutu**, Genetik Ehtiyatlar İnstitutu, Biofizika İnstitutu, Fiziologiya İnstitutu və s.) tələbələri, magistrantları, doktorantları və gənc tədqiqatçıları tamhüquqlu üzv kimi qoşula bilərlər.
 * **Hüquq və Vəzifələri:** Təlimlərdə, laboratoriya vorkşoplarında, hakaton komandalarında, alimlərlə birgə elmi məqalə hazırlığında və sirkulyar Journal Club sessiyalarında iştirak etmək; universitetin daxili nizam-intizam qaydalarına və akademik dürüstlük prinsiplərinə ciddi əməl etmək.
 

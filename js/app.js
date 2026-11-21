@@ -2127,9 +2127,7 @@ function initDocumentsView() {
         <a href="${doc.pdfUrl}" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-rose-950/60 hover:bg-rose-900 text-rose-300 border border-rose-800/80 text-xs flex items-center gap-1 transition" title="${doc.title} PDF-ni yeni tabda aç">
           <i class="fa-solid fa-arrow-up-right-from-square text-rose-400"></i> <span class="text-[11px] font-semibold">PDF Aç</span>
         </a>
-        <a href="${doc.docxUrl}" download class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs transition" title="Word (.docx) Yüklə">
-          <i class="fa-solid fa-file-word text-blue-400"></i>
-        </a>
+        ${doc.docxUrl ? `<a href="${doc.docxUrl}" download class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs transition" title="Word (.docx) Yüklə"><i class="fa-solid fa-file-word text-blue-400"></i></a>` : ''}
       </div>
     </div>
   `).join("");
@@ -2147,6 +2145,8 @@ async function openDocumentPreview(docId) {
     "03_struktur": "03_Teshkilati_Struktur",
     "04_plan": "04_Illik_Fealiyyet_Plani_ve_Sillabus",
     "05_uzvluk": "05_Uzvluk_Formasi",
+    "06_elmi_koordinator": "06_Elm_ve_Tedris_Koordinatoru_Vezife_Telimati",
+    "07_teshkilat_media_koordinatoru": "07_Teshkilat_ve_Media_Koordinatoru_Vezife_Telimati",
     "tam_paket": "WCU_Bioinformatika_Klubu_Tam_Paket"
   };
   const docKey = keyMap[docId] || docId;
@@ -2463,7 +2463,7 @@ const inAppDocViewer = {
               </div>
               <div class="w-full p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 text-center shadow-lg">
                 <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-teal-300 border border-slate-700 uppercase tracking-wider mb-1.5">
-                  <i class="fa-solid fa-users text-teal-400 mr-1"></i> Klub Üzvləri (74 Tələbə Üzv)
+                  <i class="fa-solid fa-users text-teal-400 mr-1"></i> Klub Üzvləri (Members)
                 </span>
                 <p class="text-xs text-slate-200 font-medium">Biologiya, Biotexnologiya və İT Tələbələri</p>
               </div>

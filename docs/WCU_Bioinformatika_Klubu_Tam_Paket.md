@@ -3,7 +3,7 @@
 
 | Sənəd İndeksi | Tədris İli | Tərkib | Redaksiya |
 | :--- | :---: | :--- | :--- |
-| **CMBC-2026/TP-00** | 2026/2027 | Sədr: Süleyman Hacızadə • Dəvətli Beynəlxalq Alimlər • 4 Akademik Müəllim/Mentor • 74 Tələbə Üzv | Redaksiya 2.0 • Tam Rəsmi Paket |
+| **CMBC-2026/TP-00** | 2026/2027 | Klub Sədri • 2 Koordinator • Dəvətli Beynəlxalq Alimlər • Akademik Müəllimlər/Mentorlar • Klub Üzvləri | Redaksiya 2.1 • Tam Rəsmi Arxiv |
 
 ---
 
@@ -167,7 +167,7 @@ Klubun idarəetmə və elmi-tədris strukturu çevik, şəffaf və ölçülə bi
 | :--- | :--- | :--- |
 | **1. Klub Sədri (President)** | **Süleyman Mehdi oğlu Hacızadə** *(Qərbi Kaspi Universiteti Biologiya V kurs & Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutu, Hesablama Struktur Biologiyası Laboratoriyası — Böyük Laborant)* | Ümumi rəhbərlik, elmi-tədris proqramının tərtibi, rəsmi təmsilçilik, kargüzarlıq və layihə mentorluğu |
 | **2. Dəvətli Beynəlxalq Alimlər, Akademik Müəllimlər və Mentorlar** | **Dəvətli Alimlər:** Prof. Qərib Mürşüdov, Elbay Əliyev (MSc) <br> **Akademik Müəllim və Mentorlar:** Fidan Məhərrəmova (MRes, ICL), Leyla Budaqova (WCU & ETN MBİ), Süsən Həsənova (BDU), Sefanya Hacızadə (WCU) | İxtisaslaşmış təlim və ustad dərslərinin keçirilməsi, laboratoriya tapşırıqlarının yoxlanması, hakaton/məqalə mentorluğu və Journal Club sessiyaları |
-| **3. Klub Üzvləri (Members)** | **74 Təsdiqlənmiş Tələbə Üzv** *(Biologiya, Biotexnologiya, İT və əlaqəli ixtisaslar)* | Praktiki tədqiqatlar, laboratoriya vorkşopları, seminar iştirakı, hakaton və elmi məqalə layihələri |
+| **3. Klub Üzvləri (Members)** | **Klub Üzvləri** *(Biologiya, Biotexnologiya, İT və əlaqəli ixtisaslar üzrə tələbə və gənc tədqiqatçılar)* | Praktiki tədqiqatlar, laboratoriya vorkşopları, seminar iştirakı, hakaton və elmi məqalə layihələri |
 
 **5.1. Təsisçi və Klub Sədri (Founder & President):**  
 - Klubun təsisçisi və sədri **Süleyman Mehdi oğlu Hacızadə**dir — Qərbi Kaspi Universiteti (WCU) Biologiya (ingilis dili, 2021–2026) ixtisası tələbəsi; **Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutunun** Hesablama Struktur Biologiyası Laboratoriyasının **böyük laborantı** (laboratoriya müdiri **Prof. Qərib Mürşüdov** ilə birgə zülal strukturlarında protonlaşmanı aşkar edən alqoritm/proqram inkişaf etdirir); Holberton School Azerbaijan (Foundations of Computer Science) və Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi (Kompüter Ustalığı / İT Dəstək) məzunu; açıq mənbəli **Carbox** (`https://project-carbox.github.io/`) və **CarboxMol** (`https://carboxmol.github.io/`) layihələrinin tərtibatçısı.
@@ -237,9 +237,9 @@ Klubun idarəetmə, tədris və elmi-tədqiqat fəaliyyəti yüksək səmərəli
 
 | Pillə | Struktur Vahidi / Vəzifə | Tərkib və İnstitusional Əhatə | Əsas Funksional Öhdəliklər |
 | :---: | :--- | :--- | :--- |
-| **I** | **Təsisçi və Klub Sədri** *(President)* | **Süleyman Mehdi oğlu Hacızadə** *(WCU Biologiya V kurs & ETN Molekulyar Biologiya İnstitutu, Böyük Laborant)* | Strateji idarəetmə, elmi-tədris proqramının tərtibi, rəsmi təmsilçilik, kargüzarlıq və layihə koordinasiyası |
+| **I** | **Təsisçi, Klub Sədri və Koordinatorlar** *(1 Sədr + 2 Koordinator Modeli)* | **Klub Sədri:** Süleyman Mehdi oğlu Hacızadə *(WCU Biologiya V kurs & ETN Molekulyar Biologiya İnstitutu, Böyük Laborant)*<br>**Koordinatorlar:** Elm & Tədris Koordinatoru (`CMBC-2026/VT-06`) və Təşkilat & Media Koordinatoru (`CMBC-2026/VT-07`) | Strateji idarəetmə, elmi-tədris proqramının tərtibi, rəsmi təmsilçilik, kargüzarlıq, tədbir və media koordinasiyası |
 | **II** | **Dəvətli Beynəlxalq Alimlər, Akademik Müəllimlər və Mentorlar** | **Beynəlxalq Alimlər:** MRC LMB (Kembric), ETN Molekulyar Biologiya İnstitutu, Univ. of Colorado Anschutz (ABŞ) <br> **Akademik Heyət:** Imperial College London (ICL), WCU, BDU, ETN Molekulyar Biologiya İnstitutu | İxtisaslaşmış elmi təlimlərin və seminarların təşkili, laboratoriya işlərinin qiymətləndirilməsi, hakaton/məqalə mentorluğu və Journal Club sessiyaları |
-| **III** | **Klub Üzvləri** *(Members)* | **74 Təsdiqlənmiş Tələbə Üzv** *(WCU və respublikanın digər aparıcı ali təhsil müəssisələri)* | 28 həftəlik praktiki tədris, komanda layihələri, İlk CarboxMol Bioinformatika Hakatonu, birgə elmi məqalə hazırlığı və Journal Club |
+| **III** | **Klub Üzvləri** *(Members)* | **Klub Üzvləri** *(WCU və respublikanın digər aparıcı ali təhsil müəssisələrinin tələbə və gənc tədqiqatçıları)* | 28 həftəlik praktiki tədris, komanda layihələri, İlk CarboxMol Bioinformatika Hakatonu, birgə elmi məqalə hazırlığı və Journal Club |
 
 ---
 
@@ -292,7 +292,7 @@ Azərbaycanda bioinformatika, struktur və hesablama biologiyası sahəsində el
 
 ---
 
-#### 2.4. Klub Üzvləri (Members — 74 Təsdiqlənmiş Tələbə Üzv)
+#### 2.4. Klub Üzvləri (Members)
 * **Əhatə Dairəsi:** Klub açıq və inteqrativ akademik platformadır. Kluba Qərbi Kaspi Universiteti (WCU) ilə yanaşı Azərbaycanın və beynəlxalq məkanın bütün universitetlərinin (BDU, ATU, ADNSU, ADA, BMU, Xəzər Universiteti və s.) və elmi-tədqiqat institutlarının (**ETN Molekulyar Biologiya İnstitutu**, Genetik Ehtiyatlar İnstitutu, Biofizika İnstitutu, Fiziologiya İnstitutu və s.) tələbələri, magistrantları, doktorantları və gənc tədqiqatçıları tamhüquqlu üzv kimi qoşula bilərlər.
 * **Hüquq və Vəzifələri:** Təlimlərdə, laboratoriya vorkşoplarında, hakaton komandalarında, alimlərlə birgə elmi məqalə hazırlığında və sirkulyar Journal Club sessiyalarında iştirak etmək; universitetin daxili nizam-intizam qaydalarına və akademik dürüstlük prinsiplərinə ciddi əməl etmək.
 
@@ -590,3 +590,179 @@ Tarix: ____ / ____ / 2026-cı il
 ---
 
 *Qeyd: Bu formanı doldurduqdan sonra kağız nüsxəsini Klub Sədrinə təqdim edə və ya klubun rəsmi onlayn platforması vasitəsilə (`https://wcu-bioinformatics-club.vercel.app/#register`) elektron qaydada göndərə bilərsiniz.*
+
+
+<div style="page-break-before: always;"></div>
+
+# AZƏRBAYCAN RESPUBLİKASI • QƏRBİ KASPİ UNİVERSİTETİ
+## "CARBOXMOL BİOİNFORMATİKA KLUBU" (CARBOXMOL BIOINFORMATICS CLUB)
+### ELM VƏ TƏDRİS KOORDİNATORU (ELMİ KOORDİNATOR) — RƏSMİ VƏZİFƏ TƏLİMATI
+
+| Sənəd İndeksi | Tədris İli | İdarəetmə Modeli | Redaksiya / Status |
+| :--- | :---: | :--- | :--- |
+| **CMBC-2026/VT-06** | 2026/2027 | 1 Sədr + 2 Koordinator Modeli (Elm & Tədris İstiqaməti) | Redaksiya 1.0 • Rəsmi Kargüzarlıq Sənədi |
+
+---
+
+### I. ÜMUMİ MÜDDƏALAR VƏ VƏZİFƏNİN MAHİYYƏTİ
+
+1. **Vəzifənin adı:** Elm və Tədris Koordinatoru (*Scientific & Academic Coordinator* — bundan sonra **Elmi Koordinator**).
+2. **Tabeçilik:** Birbaşa CarboxMol Bioinformatika Klubunun Sədrinə (**Süleyman Mehdi oğlu Hacızadə**) tabedir və **Təşkilat və Media Koordinatoru** ilə sıx əməkdaşlıq şəraitində fəaliyyət göstərir.
+3. **Əsas Missiyası:** Klubun akademik və elmi-tədris fəaliyyətinin əsas təşkilati "mühərriki" olaraq **Klub Üzvləri**, **Akademik Müəllimlər/Mentorlar** və **Dəvətli Beynəlxalq Alimlər** arasında nizamlı, fasiləsiz və yüksək keyfiyyətli tədris körpüsü qurmaq.
+
+> **Vacib Qeyd:** Elmi Koordinatorun bütün dərsləri özünün keçməsi və ya bütün proqramlaşdırma dillərini mükəmməl bilməsi **tələb olunmur**. Onun əsas funksiyası elmi-tədris prosesini sistemli şəkildə **planlaşdırmaq, koordinasiya etmək, izləmək və nəticəyə çatdırmaqdır**.
+
+---
+
+### II. ƏSAS VƏZİFƏ ÖHDƏLİKLƏRİ (5 İSTİQAMƏT ÜZRƏ)
+
+#### 2.1. 28 Həftəlik Tədris Prosesi və Cədvəlin İdarə Edilməsi
+* Klubun rəsmi **28 həftəlik Tədris Sillabusu** (*Linux/Bash, Python, Biopython, R/Bioconductor, NGS sekvens analizi, 3D Struktur Biologiyası, AlphaFold, Carbox & CarboxMol*) üzrə həftəlik dərslərin təqvimini və axınını idarə etmək.
+* Rəsmi təsdiqlənmiş Akademik Müəllim və Mentorlarla (**Fidan Məhərrəmova — ICL**, **Leyla Budaqova — WCU / ETN Molekulyar Biologiya İnstitutu**, **Süsən Həsənova — BDU**, **Sefanya Hacızadə — WCU** və növbəti mərhələlərdə rəsmi təsdiqləri əldə edildikdən sonra qoşulacaq digər müəllimlərlə) əvvəlcədən əlaqə saxlayaraq:
+  * növbəti dərsin mövzusunu, gününü, saatını və formatını dəqiqləşdirmək;
+  * təqdimat slaydlarını, laboratoriya kod şablonlarını və oxu materiallarını əvvəlcədən toplayıb sistemləşdirmək.
+* Əsasən onlayn (**BioMeet** üzərindən: [carboxmol-bioinformatics-club.github.io/#biomeet](https://carboxmol-bioinformatics-club.github.io/#biomeet)), bəzən isə fiziki (WCU Kompüter və Bio-laboratoriya mərkəzi) formatda keçirilən dərslərin vaxtında açılmasını, texniki hazırlığını, dərs moderasiyasını və video/audio qeydlərinin (REC/Audio) arxivləşdirilməsini nəzarətdə saxlamaq.
+
+#### 2.2. Dəvətli Beynəlxalq Alimlər və Xüsusi Təlimlərin Koordinasiyası
+* **Prof. Qərib Mürşüdov** (MRC LMB Kembric / ETN Molekulyar Biologiya İnstitutu), **Elbay Əliyev** (University of Colorado Anschutz Medical Campus, ABŞ) və digər yerli/beynəlxalq mütəxəssislərin iştirakı ilə təşkil olunacaq seminar və ustad dərslərinin proqram koordinasiyasında Klub Sədrinə dəstək göstərmək.
+* Seminar öncəsi **Klub Üzvlərindən** mövzuya dair sualları toplamaq, iştirakçıları əsas anlayışlarla öncədən tanış etmək və seminar zamanı sual-cavab (Q&A) sessiyasının vaxt idarəçiliyini tənzimləmək.
+
+#### 2.3. Klub Üzvlərinin Laboratoriya Tapşırıqları və Komanda İşinin İzlənməsi
+* Klubun əsas tədris metodologiyası olan **Komanda İşi (*teamwork & pair-programming*)** prinsiplərinə uyğun olaraq Klub Üzvlərinin maraq və ixtisaslarına görə qarışıq tədqiqat komandalarına (biologiya + İT) bölünməsinə kömək etmək.
+* Müəllimlərin platformada təyin etdiyi praktiki laboratoriya tapşırıqlarının son təhvil tarixlərini (deadline) Klub Üzvlərinə xatırlatmaq, iştirak və aktivlik uçotunu aparmaq.
+* Çətinlik çəkən üzvləri vaxtında müvafiq akademik mentora yönləndirmək.
+
+#### 2.4. 4 Mərhələli Sirkulyar (Dövri) Elmi İnkişaf Modelinin İcrası
+Elmi Koordinator klubun Azərbaycanda davamlı elmi inkişafa yönəlmiş 4 mərhələli **sirkulyar (dövri)** planının bütün pillələrində əsas təşkilati rolu daşıyır:
+1. **Mərhələ 1 — 28 Həftəlik Praktiki Tədris Prosesi:** Həftəlik dərs ritminin qorunması və tələbə bazasının formalaşdırılması.
+2. **Mərhələ 2 — İlk CarboxMol Bioinformatika Hakatonu:** İlk məzunlar arasında keçiriləcək hakaton üçün komanda qeydiyyatı, bioloji verilənlər dəstlərinin (dataset) hazırlanması, mentor saatlarının və yekun müdafiə qrafikinin koordinasiyası.
+3. **Mərhələ 3 — Alimlərlə Birgə Elmi Məqalələrin Hazırlanması:** İlk məzun tələbə qruplarının alimlərlə birgə elmi məqalələrin yazılmasına hazırlıq mərhələsində ədəbiyyat icmalı, dataların sistemləşdirilməsi və görüş qrafikinin izlənməsi.
+4. **Mərhələ 4 — Journal Club Sessiyaları (Son Mərhələ — Sirkulyar Davamlılıq):** Müəyyən elmi məqalələr yazıldıqdan sonra elmi işçilər, Klub Üzvləri və klub müəllimləri ilə birgə **Journal Club** sessiyalarının təşkili (məqalənin 1 həftə əvvəl paylaşılması, məruzəçilərin müəyyən edilməsi, elmi müzakirənin moderasiyası) və bu prosesin növbəti dövrdə sirkulyar olaraq yenidən başladılması.
+
+#### 2.5. Daxili Komanda Koordinasiyası və Hesabatlılıq
+* **Təşkilat və Media Koordinatoru ilə iş:** Hər dərs və ya seminardan ən azı 3–4 gün əvvəl ona rəsmi və səhvsiz məlumat paketi (*mövzunun dəqiq elmi adı, məruzəçinin/müəllimin adı və titulu, tarix, saat, format və 2–3 cümləlik elmi xülasə*) təqdim etmək ki, afişa və elanlar vaxtında və düzgün hazırlansın.
+* **Klub Sədrinə hesabat:** Həftədə 1 dəfə qısa status məlumatı vermək (*keçirilən dərs, iştirak səviyyəsi, yaranan çətinliklər və növbəti həftənin planı*).
+
+---
+
+### III. TİPİK HƏFTƏLİK İŞ QRAFİKİ (TƏXMİNƏN 3–5 SAAT / HƏFTƏ)
+
+| Həftənin Günləri | Görüləcək Konkret Fəaliyyətlər | Təxmini Vaxt |
+| :--- | :--- | :---: |
+| **Bazar ertəsi – Çərşənbə axşamı** | Həftənin müəllimi/spikeri ilə dərs vaxtını və tədris materiallarını dəqiqləşdirmək; elan məlumat paketini Təşkilat və Media Koordinatoruna ötürmək | 45–60 dəq |
+| **Cümə axşamı – Cümə** | Klub Üzvlərinə dərs xatırlatması və lazımi resursları (FASTA, Google Colab, BioMeet linki) paylaşmaq; aktiv tapşırıqların təhvil vəziyyətini yoxlamaq | 30–45 dəq |
+| **Dərs / Seminar Günü** | 15 dəqiqə əvvəl qoşulub BioMeet otağını (və ya fiziki laboratoriyanı) yoxlamaq, dərsdə moderasiya aparmaq, REC/Audio qeydini nəzarətdə saxlamaq | 1.5–2 saat |
+| **Həftə Sonu** | Dərsin slayd/kod materialını paylaşmaq, davamiyyəti qeyd etmək və Klub Sədri ilə növbəti həftənin 15 dəqiqəlik planlaşdırmasını aparmaq | 30 dəq |
+
+---
+
+### IV. TƏLƏB OLUNAN SƏRİŞTƏLƏR, ETİKA VƏ SƏRHƏDLƏR
+
+* **Əsas Tələblər:** Məsuliyyətlilik və punktual ünsiyyət; tarix, link və sənədlərin səliqəli kargüzarlıq uçotu; biologiya, bioinformatika və ya İT sahəsinə həqiqi maraq; ingilis dilində baza elmi terminləri anlamaq qabiliyyəti; komanda ruhu.
+* **Etika və Səlahiyyət Sərhədləri:**
+  * Klub adından kənar təşkilatlarla rəsmi tərəfdaşlıq öhdəliyi götürməzdən və ya qonaq alimlərə rəsmi dəvət məktubu göndərməzdən əvvəl mütləq **Klub Sədri** ilə razılaşdırmaq.
+  * Klub Üzvlərinin və müəllimlərin şəxsi əlaqə məlumatlarının məxfiliyini qorumaq.
+  * Bütün tapşırıq, hakaton və məqalə proseslərində akademik dürüstlük (*plagiatsız və təkrar istehsal edilə bilən elm*) prinsiplərinə ciddi əməl etmək.
+
+---
+
+### V. KOORDİNATOR ÜÇÜN AKADEMİK VƏ PEŞƏKAR İMKANLAR
+
+1. **Beynəlxalq Elmi Şəbəkə (*Networking*):** Kembric MRC LMB, University of Colorado, Imperial College London (ICL), ETN Molekulyar Biologiya İnstitutu, BDU və WCU-dan olan alim və müəllimlərlə birbaşa işləmək və elmi əlaqələr qurmaq.
+2. **Akademik CV və Liderlik Təcrübəsi:** Yerli və xarici magistratura/doktorantura müraciətlərində yüksək qiymətləndirilən *"Scientific & Academic Coordinator"* rəsmi rəhbərlik təcrübəsi və Klub Sədri tərəfindən rəsmi tövsiyə məktubu.
+3. **Elmi Tədqiqatların Mərkəzində İştirak:** 28 həftəlik bütün təlimlərə, İlk CarboxMol Bioinformatika Hakatonuna, alimlərlə birgə elmi məqalə qruplarına və Journal Club sessiyalarına birbaşa daxil olmaq.
+
+---
+
+**Təsdiq etdi:**  
+CarboxMol Bioinformatika Klubunun Təsisçisi və Sədri: **Süleyman Mehdi oğlu Hacızadə**  
+Əlaqə: +994 70 550 69 07 \| +994 99 350 69 07 \| `suleyman.hacizade.232bioing@wcu.edu.az` \| `suleyman.hacizade1@gmail.com`  
+İmza: _______________________ &nbsp;&nbsp;&nbsp;&nbsp; Tarix: ____ / ____ / 2026-cı il
+
+
+<div style="page-break-before: always;"></div>
+
+# AZƏRBAYCAN RESPUBLİKASI • QƏRBİ KASPİ UNİVERSİTETİ
+## "CARBOXMOL BİOİNFORMATİKA KLUBU" (CARBOXMOL BIOINFORMATICS CLUB)
+### TƏŞKİLAT VƏ MEDİA KOORDİNATORU — RƏSMİ VƏZİFƏ TƏLİMATI
+
+| Sənəd İndeksi | Tədris İli | İdarəetmə Modeli | Redaksiya / Status |
+| :--- | :---: | :--- | :--- |
+| **CMBC-2026/VT-07** | 2026/2027 | 1 Sədr + 2 Koordinator Modeli (Təşkilat & Media İstiqaməti) | Redaksiya 1.0 • Rəsmi Kargüzarlıq Sənədi |
+
+---
+
+### I. ÜMUMİ MÜDDƏALAR VƏ VƏZİFƏNİN MAHİYYƏTİ
+
+1. **Vəzifənin adı:** Təşkilat və Media Koordinatoru (*Operations & Media Coordinator*).
+2. **Tabeçilik:** Birbaşa CarboxMol Bioinformatika Klubunun Sədrinə (**Süleyman Mehdi oğlu Hacızadə**) tabedir və **Elm və Tədris Koordinatoru** ilə sıx qarşılıqlı əlaqədə fəaliyyət göstərir.
+3. **Əsas Missiyası:** Klubun rəsmi vizual kimliyini, sosial media və ictimaiyyətlə əlaqələr (PR) strategiyasını, fiziki və onlayn tədbirlərin təşkilati logistikasını, **Klub Üzvləri** ilə davamlı kommunikasiyanı və universitetlərarası/tərəfdaşlıq əlaqələrini peşəkar səviyyədə idarə etmək.
+
+> **Vacib Qeyd:** Bu vəzifə üçün dərin bioinformatika proqramlaşdırması bilikləri **tələb olunmur**. Əsas üstünlük güclü təşkilatçılıq qabiliyyəti, müasir vizual dizayn zövqü, səlis yazı mədəniyyəti və peşəkar kommunikasiya bacarığıdır.
+
+---
+
+### II. ƏSAS VƏZİFƏ ÖHDƏLİKLƏRİ (5 İSTİQAMƏT ÜZRƏ)
+
+#### 2.1. Vizual Dizayn, Elmi Afişalar və Elanların Hazırlanması (Canva / Figma)
+* Hər bir təlim dərsi, dəvətli beynəlxalq alim seminarı (**Prof. Qərib Mürşüdov**, **Elbay Əliyev** və digər qonaq mütəxəssislər), **İlk CarboxMol Bioinformatika Hakatonu** və **Journal Club** sessiyası üçün klubun vahid vizual üslubunda afişalar, bannerlər və elan postları hazırlamaq.
+* Elmi Koordinatorun əvvəlcədən ötürdüyü dəqiq məlumat paketi (*mövzu, spikerin adı və elmi titulu, tarix, saat, format*) əsasında vizual materialları səhvsiz tərtib etmək.
+* Klubun rəsmi iştirak və nailiyyət sertifikatlarının, eləcə də elmi təqdimat və poster şablonlarının dizaynını hazırlamaq və yeniləmək.
+
+#### 2.2. Sosial Şəbəkələrin İdarə Edilməsi və İctimai İmic (LinkedIn, Instagram, Telegram)
+* Klubun rəsmi sosial şəbəkə kanallarında (**LinkedIn, Instagram, Telegram** və zərurət olduqda **YouTube**) müntəzəm, akademik səviyyəli və cəlbedici paylaşımları planlaşdırmaq və dərc etmək.
+* Keçirilmiş dərs, seminar və tədbirlərdən sonra foto/ekran görüntüsü və qısa xülasə əsasında **tədbir sonrası hesabat paylaşımları (*post-event recap*)** hazırlamaq.
+* Klub Üzvlərinin uğurlarını, komanda layihələrini, elmi məqalə nailiyyətlərini və klubun açıq mənbəli elmi təşəbbüslərini (**Carbox**, **CarboxMol**, **BioMeet**) geniş akademik auditoriyaya peşəkar şəkildə təqdim etmək.
+
+#### 2.3. Klub Üzvləri ilə Kommunikasiya və Daxili İcma İdarəçiliyi
+* Klubun daxili kommunikasiya kanallarında (WhatsApp / Telegram qrupları) səliqəli, nəzakətli və operativ məlumat axınını təmin etmək.
+* Təlimlər, qeydiyyat ([carboxmol-bioinformatics-club.github.io/#register](https://carboxmol-bioinformatics-club.github.io/#register)), BioMeet linkləri və tədbirlər barədə xatırlatmaları vaxtında paylaşmaq, yeni qoşulan **Klub Üzvlərinin** ilkin suallarını cavablandırmaq və onları düzgün resurslara yönləndirmək.
+* Dərslərin və tədbirlərin keyfiyyətini artırmaq məqsədilə dövri olaraq üzvlərdən qısa rəy sorğuları (*feedback forms*) toplamaq və ümumiləşdirilmiş nəticələri Sədrə təqdim etmək.
+
+#### 2.4. Tədbir Təşkilatçılığı, Universitetlərarası Əlaqələr və Tərəfdaşlıqlar
+* Fiziki formatda keçirilən tədbir və laboratoriyalarda təşkilati logistikanı (auditoriyanın/zalın texniki və vizual hazırlığı, iştirakçı qeydiyyat masası, qonaqların qarşılanması, foto və video çəkiliş) koordinasiya etmək.
+* Qərbi Kaspi Universitetinin daxili strukturları (Tələbə İşləri Departamenti, Tələbə Gənclər Təşkilatı — TGT) ilə cari təşkilati işlərdə Sədrə kömək etmək.
+* Respublikanın digər ali təhsil müəssisələrinin tələbə elmi cəmiyyətləri və tərəfdaş elmi platformalar (məsələn, **"Bir Elm"** və digər tərəfdaşlar) ilə birgə elanların, açıq dərslərin və vebinarların media və təşkilati koordinasiyasını həyata keçirmək.
+
+#### 2.5. 4 Mərhələli Sirkulyar (Dövri) İnkişaf Modelində Rolu və Hesabatlılıq
+* **Mərhələ 1 (28 Həftəlik Tədris):** Həftəlik təlim elanları, iştirakçı xatırlatmaları və daxili kommunikasiya dəstəyi.
+* **Mərhələ 2 (İlk CarboxMol Bioinformatika Hakatonu):** Hakatonun PR kampaniyası, afişalar, iştirakçı qeydiyyatı axını, fiziki/onlayn təşkilatçılıq və foto-video arxivləşdirmə.
+* **Mərhələ 3 (Alimlərlə Birgə Elmi Məqalə Hazırlığı):** Tədqiqat komandalarının elmi irəliləyişlərinin və uğurlarının media işıqlandırılması.
+* **Mərhələ 4 (Journal Club Sessiyaları — Sirkulyar Davamlılıq):** Elmi işçilər, Klub Üzvləri və müəllimlərlə keçiriləcək Journal Club sessiyalarının elan/media dəstəyi və növbəti tədris dövrü üçün yeni üzvlərin cəlbi kampaniyasının sirkulyar davam etdirilməsi.
+* **Həftəlik Hesabat:** Həftədə 1 dəfə Sədr və Elmi Koordinatorla qısa koordinasiya görüşü keçirərək dərc olunan materiallar, auditoriya reaksiyası və növbəti həftənin elan qrafiki barədə məlumat vermək.
+
+---
+
+### III. TİPİK HƏFTƏLİK İŞ QRAFİKİ (TƏXMİNƏN 3–5 SAAT / HƏFTƏ)
+
+| Həftənin Günləri | Görüləcək Konkret Fəaliyyətlər | Təxmini Vaxt |
+| :--- | :--- | :---: |
+| **Bazar ertəsi – Çərşənbə axşamı** | Elmi Koordinatorun göndərdiyi məlumat əsasında həftənin dərs/seminar afişasını (Canva/Figma) və elan mətnini hazırlamaq, Sədrlə təsdiqlətmək | 60–90 dəq |
+| **Çərşənbə – Cümə** | Elanı LinkedIn, Instagram, Telegram və daxili qruplarda yayımlamaq; yeni müraciətçilərin və Klub Üzvlərinin suallarını cavablandırmaq; tərəfdaş platformalarla elan paylaşımını koordinasiya etmək | 45–60 dəq |
+| **Dərs / Tədbir Günü** | Fiziki tədbirdə zal, qeydiyyat və foto-video çəkilişi təşkil etmək; onlayn BioMeet dərsində iştirakçı xatırlatması və vizual ekran görüntülərini qeydə almaq | 1–1.5 saat |
+| **Həftə Sonu** | Tədbir sonrası qısa foto/xülasə paylaşımını dərc etmək; Sədr və Elmi Koordinatorla növbəti həftənin 15 dəqiqəlik planlaşdırmasını aparmaq | 30–45 dəq |
+
+---
+
+### IV. TƏLƏB OLUNAN SƏRİŞTƏLƏR, ETİKA VƏ SƏRHƏDLƏR
+
+* **Əsas Tələblər:** Canva, Figma və ya oxşar dizayn alətlərində səliqəli vizual hazırlamaq bacarığı; Azərbaycan dilində orfoqrafik və üslubi cəhətdən qüsursuz yazı mədəniyyəti (İngilis dili biliyi əlavə üstünlükdür); sosial şəbəkə idarəetməsi, tədbir təşkilatçılığı və yüksək kommunikasiya mədəniyyəti.
+* **Etika və Səlahiyyət Sərhədləri:**
+  * Elmi terminlər, spikerlərin elmi dərəcələri və məqalə istinadları dərc edilməzdən əvvəl mütləq **Elmi Koordinator** və ya **Klub Sədri** tərəfindən yoxlanılmalıdır.
+  * Klub adından kənar qurumlarla rəsmi tərəfdaşlıq müqaviləsi, rəsmi bəyanat və ya loqo istifadəsi yalnız **Klub Sədrinin** yazılı/şifahi razılığı ilə həyata keçirilə bilər.
+  * Klub Üzvlərinin və qonaqların razılığı olmadan onların şəxsi məlumatlarını paylaşmamaq və media etikasına ciddi əməl etmək.
+
+---
+
+### V. KOORDİNATOR ÜÇÜN PEŞƏKAR VƏ AKADEMİK İMKANLAR
+
+1. **Real PR, Dizayn və Tədbir İdarəçiliyi Portfoliosu:** Ölkənin aparıcı elmi tələbə platformasında vizual brendinq, sosial media idarəçiliyi, hakaton və beynəlxalq elmi seminar təşkilatçılığı üzrə güclü portfolio toplamaq.
+2. **Rəsmi Liderlik Təcrübəsi və Tövsiyə Məktubu:** İş, təqaüd və magistratura müraciətlərində yüksək dəyər daşıyan *"Operations & Media Coordinator"* statusu və Klub Sədrinin rəsmi tövsiyə məktubu.
+3. **Yerli və Beynəlxalq Akademik Şəbəkə:** Universitet rəhbərlikləri, tərəfdaş elmi platformalar, beynəlxalq alimlər və akademik mentorlarla birbaşa kommunikasiya və peşəkar şəbəkə qurmaq imkanı.
+
+---
+
+**Təsdiq etdi:**  
+CarboxMol Bioinformatika Klubunun Təsisçisi və Sədri: **Süleyman Mehdi oğlu Hacızadə**  
+Əlaqə: +994 70 550 69 07 \| +994 99 350 69 07 \| `suleyman.hacizade.232bioing@wcu.edu.az` \| `suleyman.hacizade1@gmail.com`  
+İmza: _______________________ &nbsp;&nbsp;&nbsp;&nbsp; Tarix: ____ / ____ / 2026-cı il

@@ -61,25 +61,47 @@ const INITIAL_DATA = {
   documents: [
     {
       id: "03_struktur",
-      title: "Təşkilati Struktur",
-      subtitle: "Klub Sədri, Akademik Müəllimlər/Mentorlar (4) və Klub Üzvləri (74) vəzifə bölgüsü",
+      title: "Təşkilati Struktur və Akademik Heyət Reyestri",
+      subtitle: "Klub Sədri, Koordinatorlar, Beynəlxalq Alimlər, Akademik Müəllimlər və Klub Üzvləri",
       category: "Struktur",
       pdfUrl: "docs/03_Teshkilati_Struktur.pdf",
       docxUrl: "docs/03_Teshkilati_Struktur.docx",
       mdUrl: "docs/03_Teshkilati_Struktur.md",
       icon: "fa-sitemap",
-      description: "Klub Sədri (Süleyman Hacızadə), 4 Akademik Müəllim/Mentor (Sefanya Hacızadə, Fidan Məhərrəmova, Süsən Həsənova, Leyla Budaqova) və 74 Klub Üzvünün 3 pilləli təşkilati idarəetmə strukturu və vəzifə bölgüsü."
+      description: "1 Sədr + 2 Koordinator modeli, Dəvətli Beynəlxalq Alimlər (Prof. Qərib Mürşüdov, Elbay Əliyev), Akademik Müəllimlər/Mentorlar (Fidan Məhərrəmova — ICL, Leyla Budaqova, Süsən Həsənova, Sefanya Hacızadə) və Klub Üzvlərinin rəsmi strukturu."
     },
     {
       id: "04_plan",
       title: "İllik Fəaliyyət Planı və Sillabus",
-      subtitle: "2 semestr (28 həftəlik) dərinləşdirilmiş akademik sillabus",
+      subtitle: "2 semestr (28 həftə) + 4 mərhələli sirkulyar (dövri) elmi inkişaf planı",
       category: "Tədris",
       pdfUrl: "docs/04_Illik_Fealiyyet_Plani_ve_Sillabus.pdf",
       docxUrl: "docs/04_Illik_Fealiyyet_Plani_ve_Sillabus.docx",
       mdUrl: "docs/04_Illik_Fealiyyet_Plani_ve_Sillabus.md",
       icon: "fa-calendar-check",
-      description: "Payız və Yaz semestrləri (28 həftə): Linux/Bash, Python, Biopython, BLAST, AlphaFold, PyMOL, ChimeraX, Coot, GemmiMol, Carbox & CarboxMol laboratoriyaları, R/Bioconductor, RNA-seq, ML və WCU Hakaton planı."
+      description: "28 həftəlik praktiki tədris (BioMeet onlayn və fiziki), İlk CarboxMol Bioinformatika Hakatonu, alimlərlə birgə elmi məqalə hazırlığı və Journal Club sessiyalarını əhatə edən sirkulyar akademik proqram."
+    },
+    {
+      id: "06_elmi_koordinator",
+      title: "Elm və Tədris Koordinatoru — Vəzifə Təlimatı",
+      subtitle: "Sənəd İndeksi: CMBC-2026/VT-06 • Rəsmi Kargüzarlıq Təlimatı",
+      category: "Koordinator",
+      pdfUrl: "docs/06_Elm_ve_Tedris_Koordinatoru_Vezife_Telimati.pdf",
+      docxUrl: "docs/06_Elm_ve_Tedris_Koordinatoru_Vezife_Telimati.docx",
+      mdUrl: "docs/06_Elm_ve_Tedris_Koordinatoru_Vezife_Telimati.md",
+      icon: "fa-graduation-cap",
+      description: "28 həftəlik tədris cədvəli, BioMeet dərsləri, akademik müəllimlər və beynəlxalq alimlərlə koordinasiya, Klub Üzvlərinin tapşırıqları, hakaton, məqalə hazırlığı və Journal Club üzrə tam vəzifə təlimatı."
+    },
+    {
+      id: "07_teshkilat_media_koordinatoru",
+      title: "Təşkilat və Media Koordinatoru — Vəzifə Təlimatı",
+      subtitle: "Sənəd İndeksi: CMBC-2026/VT-07 • Rəsmi Kargüzarlıq Təlimatı",
+      category: "Koordinator",
+      pdfUrl: "docs/07_Teshkilat_ve_Media_Koordinatoru_Vezife_Telimati.pdf",
+      docxUrl: "docs/07_Teshkilat_ve_Media_Koordinatoru_Vezife_Telimati.docx",
+      mdUrl: "docs/07_Teshkilat_ve_Media_Koordinatoru_Vezife_Telimati.md",
+      icon: "fa-bullhorn",
+      description: "Vizual dizayn və elmi afişalar (Canva/Figma), sosial media idarəçiliyi (LinkedIn, Instagram, Telegram), Klub Üzvləri ilə kommunikasiya, tədbir logistikası və universitetlərarası/tərəfdaşlıq əlaqələri üzrə tam vəzifə təlimatı."
     }
   ],
 
@@ -4898,7 +4920,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.22.v65_master_faculty_registry";
+const CURRENT_DATA_VERSION = "2026.11.22.v66_coordinator_docs_archived";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -5074,8 +5096,8 @@ function getClubData() {
 
   try {
 
-    // Saytda yalnız Təşkilati Struktur və İllik Fəaliyyət Planı və Sillabus sənədlərini göstər
-    const siteDocIds = ["03_struktur", "04_plan"];
+    // Saytda göstərilən rəsmi sənədlər (Təşkilati Struktur, İllik Plan/Sillabus və 2 Koordinator Vəzifə Təlimatı)
+    const siteDocIds = ["03_struktur", "04_plan", "06_elmi_koordinator", "07_teshkilat_media_koordinatoru"];
     if (parsed.documents && Array.isArray(parsed.documents)) {
       parsed.documents = parsed.documents.filter(d => siteDocIds.includes(d.id));
       if (parsed.documents.length !== siteDocIds.length) {
