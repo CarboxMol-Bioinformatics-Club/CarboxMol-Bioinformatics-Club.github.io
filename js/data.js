@@ -112,12 +112,50 @@ events: [
       category: "Bio / Longevity • Konfrans",
       date: "21–22 Noyabr 2026",
       time: "11:00 - 16:00",
-      location: "Bakı • GOUP Tech Community",
-      badge: "Olacaq • Spiker 51/100",
-      description: "Azərbaycanda Tələbə Bioinformatika Ekosisteminin Yaradılması, zülalların 3D modelləşdirilməsi, kristalloqrafiya (Carbox & CarboxMol), Python və R mövzularında rəsmi məruzə olacaq.",
-      speaker: "Süleyman Hacızadə (CarboxMol Bioinformatika Klubunun Sədri & IMB Tədqiqatçısı)",
-      status: "upcoming",
-      poster: "assets/images/announcements/techbrains-2026-speaker.jpg"
+      location: "Bakı • GOUP Tech Community (ADA Universiteti)",
+      badge: "Uğurla Keçirildi • 7 Foto & Slayd",
+      description: "21–22 Noyabr 2026 tarixində GOUP Baku Tech Community və CNCF Baku tərəfindən ADA Universiteti və İnnovasiya və Rəqəmsal İnkişaf Agentliyinin (İRİA) tərəfdaşlığı ilə keçirilən TechBrains 2026 konfransında (Bio / Longevity • Bioinformatics, Spiker 51/100) Azərbaycanda Tələbə Bioinformatika Ekosisteminin Yaradılması, zülalların 3D modelləşdirilməsi, makromolekulyar kristalloqrafiya (Carbox & CarboxMol), Python və R mövzularında rəsmi məruzə uğurla təqdim edildi.",
+      speaker: "Süleyman Hacızadə (CarboxMol Bioinformatika Klubunun Sədri & ETN Molekulyar Biologiya İnstitutu, Böyük Laborant)",
+      status: "completed",
+      poster: "assets/images/announcements/techbrains-2026-speaker.jpg",
+      report: "Məruzədə CarboxMol Bioinformatika Klubu, 7,230 PDB strukturunda (≤ 1.20 Å) anomal Asp/Glu protonasiyasını (ASH/GLH) və LBHB əlaqələrini aşkar edən Carbox alqoritmi və WebGL əsaslı CarboxMol 3D Protein Vizualizatoru təqdim olundu.",
+      photos: [
+        {
+          src: "assets/images/events/techbrains_2026_stage_presentation.jpg",
+          title: "TechBrains 2026 — Səhnə Çıxışı və Canlı Məruzə",
+          caption: "Klub Sədri Süleyman Hacızadə TechBrains 2026 konfransında «Hesablama Struktur Biologiyası və CarboxMol» məruzəsini təqdim edərkən."
+        },
+        {
+          src: "assets/images/events/techbrains_2026_speaker_badge.jpg",
+          title: "Rəsmi Spiker Nişanı (Spiker 51/100)",
+          caption: "Süleyman Hacızadə GOUP TechBrains 2026 konfransının rəsmi Spiker nişanı ilə."
+        },
+        {
+          src: "assets/images/events/techbrains_2026_conference_hall.jpg",
+          title: "ADA Universiteti Konfrans Zalı",
+          caption: "TechBrains 2026 beynəlxalq konfrans zalında rəsmi spiker xatirə fotosu."
+        },
+        {
+          src: "assets/images/events/techbrains_2026_banner_participants.jpg",
+          title: "TechBrains 2026 Rəsmi Banneri Önündə",
+          caption: "GOUP Baku Tech Community, CNCF Baku, ADA Universiteti və İRİA tərəfdaşlığı ilə keçirilən konfrans banneri önündə iştirakçılarla."
+        },
+        {
+          src: "assets/images/events/techbrains_2026_group_campus.jpg",
+          title: "Kampusda Qrup Xatirə Fotosu",
+          caption: "TechBrains 2026 konfrans iştirakçıları və texnologiya icması üzvləri ilə xatirə fotosu."
+        },
+        {
+          src: "assets/images/events/techbrains_2026_slide_speaker.jpg",
+          title: "Təqdimat Slaydı 269 — BIO / LONGEVITY Spiker Profili",
+          caption: "Süleyman Hacızadə: ETN Molekulyar Biologiya İnstitutu, CarboxMol Bioinformatika Klubu, Carbox (PDB Protonasiya Aşkarlama Alqoritmi) və CarboxMol (3D Zülal Vizualizatoru)."
+        },
+        {
+          src: "assets/images/events/techbrains_2026_slide_carboxmol.jpg",
+          title: "Təqdimat Slaydı 270 — Hesablama Struktur Biologiyası və CarboxMol",
+          caption: "Azərbaycanda Hesablama Struktur Biologiyası və Bioinformatika Ekosistemi: 01 · Klub, 02 · Carbox Alqoritmi və 03 · CarboxMol 3D Studiya icmalı."
+        }
+      ]
     },
     {
       id: "ev-1",
@@ -4920,7 +4958,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.22.v66_coordinator_docs_archived";
+const CURRENT_DATA_VERSION = "2026.11.22.v67_techbrains_2026_completed";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -5129,10 +5167,13 @@ function getClubData() {
           }
         });
       }
-      // Qərib Mürşüdov tədbirini və TechBrains 2026 tədbirini qoru, Sədrin əlavə etdiyi xüsusi tədbirləri heç vaxt silmə!
+      // Qərib Mürşüdov tədbirini və TechBrains 2026 tədbirini yenilə və qoru, Sədrin əlavə etdiyi xüsusi tədbirləri heç vaxt silmə!
       parsed.events = (parsed.events || []).filter(e => e && !["ev-2", "ev-3", "ev-4", "ev-5"].includes(e.id));
       INITIAL_DATA.events.forEach(defEv => {
-        if (!parsed.events.some(e => e.id === defEv.id)) {
+        const existingIdx = parsed.events.findIndex(e => e.id === defEv.id);
+        if (existingIdx !== -1) {
+          parsed.events[existingIdx] = JSON.parse(JSON.stringify(defEv));
+        } else {
           parsed.events.unshift(JSON.parse(JSON.stringify(defEv)));
         }
       });

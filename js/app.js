@@ -3042,54 +3042,114 @@ function initCurriculumView() {
   `).join("");
 }
 
-// Event Photos Data & Lightbox Logic (Prof. Qərib Mürşüdov Seminarı və Klub Tədbirləri)
-const EVENT_PHOTOS = [
-  {
-    src: "assets/images/events/garib_murshudov_seminar_group.jpg",
-    title: "Böyük Kollektiv: Qərbi Kaspi Universiteti və Bioinformatika Klubu",
-    caption: "Seminar iştirakçıları, professor-müəllim heyəti, tələbələr və CarboxMol Bioinformatika Klubunun üzvləri Prof. Qərib Mürşüdov ilə xatirə fotosu."
-  },
-  {
-    src: "assets/images/events/garib_murshudov_seminar_president.jpg",
-    title: "Klub Sədri və Qonaq Alim",
-    caption: "CarboxMol Bioinformatika Klubunun Sədri Süleyman Hacızadə və Kembric Universitetinin professoru, MRC LMB Proqram Rəhbəri Prof. Qərib Mürşüdov."
-  },
-  {
-    src: "assets/images/events/garib_murshudov_seminar_member1.jpg",
-    title: "Klub Üzvü və Qərib Müəllim",
-    caption: "Elmi seminarın sual-cavab sessiyasında fəal iştirak edən klub üzvümüz, Sədr Süleyman Hacızadə və Prof. Qərib Mürşüdov."
-  },
-  {
-    src: "assets/images/events/garib_murshudov_seminar_member2.jpg",
-    title: "Klub Üzvü ilə Görüş",
-    caption: "Klub üzvümüz, Prof. Qərib Mürşüdov və Klub Sədri Süleyman Hacızadə elmi müzakirə sonrası xatirə fotosunda."
-  }
-];
+// Event Photos Data & Lightbox Logic (TechBrains 2026, Prof. Qərib Mürşüdov Seminarı və Klub Tədbirləri)
+const EVENT_GALLERIES = {
+  garib: [
+    {
+      src: "assets/images/events/garib_murshudov_seminar_group.jpg",
+      title: "Böyük Kollektiv: Qərbi Kaspi Universiteti və Bioinformatika Klubu",
+      caption: "Seminar iştirakçıları, professor-müəllim heyəti, tələbələr və CarboxMol Bioinformatika Klubunun üzvləri Prof. Qərib Mürşüdov ilə xatirə fotosu."
+    },
+    {
+      src: "assets/images/events/garib_murshudov_seminar_president.jpg",
+      title: "Klub Sədri və Qonaq Alim",
+      caption: "CarboxMol Bioinformatika Klubunun Sədri Süleyman Hacızadə və Kembric Universitetinin professoru, MRC LMB Proqram Rəhbəri Prof. Qərib Mürşüdov."
+    },
+    {
+      src: "assets/images/events/garib_murshudov_seminar_member1.jpg",
+      title: "Klub Üzvü və Qərib Müəllim",
+      caption: "Elmi seminarın sual-cavab sessiyasında fəal iştirak edən klub üzvümüz, Sədr Süleyman Hacızadə və Prof. Qərib Mürşüdov."
+    },
+    {
+      src: "assets/images/events/garib_murshudov_seminar_member2.jpg",
+      title: "Klub Üzvü ilə Görüş",
+      caption: "Klub üzvümüz, Prof. Qərib Mürşüdov və Klub Sədri Süleyman Hacızadə elmi müzakirə sonrası xatirə fotosunda."
+    }
+  ],
+  techbrains2026: [
+    {
+      src: "assets/images/events/techbrains_2026_stage_presentation.jpg",
+      title: "TechBrains 2026 — Səhnə Çıxışı və Canlı Məruzə",
+      caption: "Klub Sədri və ETN Molekulyar Biologiya İnstitutunun böyük laborantı Süleyman Hacızadə TechBrains 2026 səhnəsində «Hesablama Struktur Biologiyası və CarboxMol» məruzəsini təqdim edərkən."
+    },
+    {
+      src: "assets/images/events/techbrains_2026_speaker_badge.jpg",
+      title: "Rəsmi Spiker Nişanı (Spiker 51/100)",
+      caption: "Süleyman Hacızadə GOUP Baku Tech Community tərəfindən keçirilən TechBrains 2026 konfransının rəsmi Spiker nişanı ilə."
+    },
+    {
+      src: "assets/images/events/techbrains_2026_conference_hall.jpg",
+      title: "ADA Universiteti Konfrans Zalı",
+      caption: "TechBrains 2026 beynəlxalq texnologiya konfransı zalında rəsmi spiker xatirə fotosu."
+    },
+    {
+      src: "assets/images/events/techbrains_2026_banner_participants.jpg",
+      title: "TechBrains 2026 Rəsmi Banneri Önündə",
+      caption: "GOUP Baku Tech Community, CNCF Baku, ADA Universiteti və İnnovasiya və Rəqəmsal İnkişaf Agentliyinin (İRİA) tərəfdaşlığı ilə keçirilən konfransın banneri önündə iştirakçılarla."
+    },
+    {
+      src: "assets/images/events/techbrains_2026_group_campus.jpg",
+      title: "Kampusda Qrup Xatirə Fotosu",
+      caption: "TechBrains 2026 konfrans iştirakçıları və texnologiya icması üzvləri ilə kampusda xatirə fotosu."
+    },
+    {
+      src: "assets/images/events/techbrains_2026_slide_speaker.jpg",
+      title: "Təqdimat Slaydı 269 — BIO / LONGEVITY Spiker Profili",
+      caption: "Süleyman Hacızadə: ETN Molekulyar Biologiya İnstitutu (IMB), CarboxMol Bioinformatika Klubu, Carbox (PDB Protonasiya Aşkarlama Alqoritmi) və CarboxMol (3D Protein Vizualizatoru)."
+    },
+    {
+      src: "assets/images/events/techbrains_2026_slide_carboxmol.jpg",
+      title: "Təqdimat Slaydı 270 — Hesablama Struktur Biologiyası və CarboxMol",
+      caption: "Azərbaycanda Hesablama Struktur Biologiyası və Bioinformatika Ekosistemi: 01 · CarboxMol Klubu, 02 · Carbox Alqoritmi (7,230 PDB ≤ 1.20 Å, ASH/GLH, LBHB) və 03 · CarboxMol 3D Studiya."
+    }
+  ]
+};
+const EVENT_PHOTOS = EVENT_GALLERIES.garib;
 
+let currentEventGalleryKey = "garib";
 let currentEventPhotoIndex = 0;
 
-function openEventPhotoModal(index) {
-  currentEventPhotoIndex = (typeof index === "number" && !isNaN(index)) ? index : 0;
+function getActiveEventPhotos() {
+  return EVENT_GALLERIES[currentEventGalleryKey] || EVENT_GALLERIES.garib;
+}
+
+function openEventPhotoModal(index, galleryKey = "garib") {
+  currentEventGalleryKey = EVENT_GALLERIES[galleryKey] ? galleryKey : "garib";
+  const photos = getActiveEventPhotos();
+  const safeIndex = (typeof index === "number" && !isNaN(index)) ? index : 0;
+  currentEventPhotoIndex = ((safeIndex % photos.length) + photos.length) % photos.length;
   updateEventPhotoLightbox();
   const modal = document.getElementById("eventPhotoLightboxModal");
-  if (modal) modal.classList.remove("hidden");
+  if (!modal) return;
+  if (typeof modal.showModal === "function") {
+    if (!modal.open) modal.showModal();
+  } else {
+    modal.classList.remove("hidden");
+  }
 }
 window.openEventPhotoModal = openEventPhotoModal;
 
 function closeEventPhotoModal() {
   const modal = document.getElementById("eventPhotoLightboxModal");
-  if (modal) modal.classList.add("hidden");
+  if (!modal) return;
+  if (typeof modal.close === "function") {
+    if (modal.open) modal.close();
+  } else {
+    modal.classList.add("hidden");
+  }
 }
 window.closeEventPhotoModal = closeEventPhotoModal;
 
 function navigateEventPhoto(step) {
-  currentEventPhotoIndex = (currentEventPhotoIndex + step + EVENT_PHOTOS.length) % EVENT_PHOTOS.length;
+  const photos = getActiveEventPhotos();
+  currentEventPhotoIndex = (currentEventPhotoIndex + step + photos.length) % photos.length;
   updateEventPhotoLightbox();
 }
 window.navigateEventPhoto = navigateEventPhoto;
 
 function updateEventPhotoLightbox() {
-  const item = EVENT_PHOTOS[currentEventPhotoIndex];
+  const photos = getActiveEventPhotos();
+  const item = photos[currentEventPhotoIndex];
   if (!item) return;
   const img = document.getElementById("eventPhotoLightboxImg");
   const title = document.getElementById("eventPhotoLightboxTitle");
@@ -3101,21 +3161,39 @@ function updateEventPhotoLightbox() {
   }
   if (title) title.innerText = item.title;
   if (caption) caption.innerText = item.caption;
-  if (counter) counter.innerText = `${currentEventPhotoIndex + 1} / ${EVENT_PHOTOS.length}`;
+  if (counter) counter.innerText = `${currentEventPhotoIndex + 1} / ${photos.length}`;
 }
 
-// Klaviatura ilə foto qalereyanı idarə etmə (ESC və ox düymələri)
+// Klaviatura ilə foto qalereyada keçid (ESC bağlanmasını native <dialog> özü idarə edir)
 document.addEventListener("keydown", (e) => {
   const modal = document.getElementById("eventPhotoLightboxModal");
-  if (!modal || modal.classList.contains("hidden")) return;
-  if (e.key === "Escape") {
-    closeEventPhotoModal();
-  } else if (e.key === "ArrowLeft") {
+  if (!modal || !modal.open) return;
+  if (e.key === "ArrowLeft") {
+    e.preventDefault();
     navigateEventPhoto(-1);
   } else if (e.key === "ArrowRight") {
+    e.preventDefault();
     navigateEventPhoto(1);
   }
 });
+
+// Fallback for browsers without native <dialog closedby="any"> light-dismiss (e.g., Safari)
+if (typeof HTMLDialogElement !== "undefined" && !("closedBy" in HTMLDialogElement.prototype)) {
+  const outsideDialog = (e, dialog) => {
+    const r = dialog.getBoundingClientRect();
+    return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+  };
+  document.querySelectorAll('dialog[closedby="any"]').forEach((dialog) => {
+    let pressedOutside = false;
+    dialog.addEventListener("pointerdown", (e) => {
+      pressedOutside = outsideDialog(e, dialog);
+    });
+    dialog.addEventListener("pointerup", (e) => {
+      if (pressedOutside && outsideDialog(e, dialog)) dialog.close();
+      pressedOutside = false;
+    });
+  });
+}
 
 // Render Events Schedule
 function initEventsView() {
@@ -3144,12 +3222,16 @@ function initEventsView() {
   container.innerHTML = events.map(ev => {
     const hasPhotos = Array.isArray(ev.photos) && ev.photos.length > 0;
     const isCompleted = ev.status === "completed" || (ev.badge && ev.badge.includes("Keçirildi"));
+    const galleryKey = ev.id === "ev-techbrains-2026" ? "techbrains2026" : "garib";
+    const showcaseId = ev.id === "ev-techbrains-2026" ? "techbrains2026Showcase" : "garibSeminarShowcase";
+    const previewPhotos = hasPhotos ? ev.photos.slice(0, 4) : [];
+    const extraCount = hasPhotos && ev.photos.length > 4 ? ev.photos.length - 4 : 0;
 
     return `
     <div class="bg-slate-900/80 border ${isCompleted ? 'border-teal-500/50 bg-gradient-to-b from-teal-950/20 to-slate-900/90' : 'border-slate-800'} rounded-2xl p-6 hover:border-teal-500/60 transition flex flex-col justify-between space-y-4 shadow-lg relative overflow-hidden">
       ${isCompleted ? '<div class="absolute top-0 right-0 w-28 h-28 bg-teal-500/10 rounded-full blur-xl pointer-events-none"></div>' : ''}
       <div class="space-y-3">
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between gap-2 flex-wrap">
           <span class="text-xs font-semibold px-2.5 py-1 rounded-full ${isCompleted ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-teal-500/20 text-teal-300 border border-teal-500/30'}">
             ${isCompleted ? '<i class="fa-solid fa-circle-check mr-1 text-emerald-400"></i>' : ''}${ev.category}
           </span>
@@ -3179,14 +3261,14 @@ function initEventsView() {
         <div class="pt-2">
           <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1.5 font-semibold">
             <span class="flex items-center gap-1"><i class="fa-regular fa-images text-teal-400"></i> Fotoreportaj (${ev.photos.length} Foto):</span>
-            <button onclick="document.getElementById('garibSeminarShowcase')?.scrollIntoView({behavior:'smooth'})" class="text-teal-300 hover:underline">Geniş bax</button>
+            <button type="button" onclick="document.getElementById('${showcaseId}')?.scrollIntoView({behavior:'smooth'})" class="text-teal-300 hover:underline">Geniş bax</button>
           </div>
           <div class="grid grid-cols-4 gap-1.5">
-            ${ev.photos.map((p, idx) => `
-              <div onclick="openEventPhotoModal(${idx})" class="h-14 rounded-lg overflow-hidden border border-slate-700 hover:border-teal-400 cursor-pointer transition relative group">
+            ${previewPhotos.map((p, idx) => `
+              <button type="button" onclick="openEventPhotoModal(${idx}, '${galleryKey}')" aria-label="${p.title || 'Tədbir fotosu'}" class="h-14 p-0 rounded-lg overflow-hidden border border-slate-700 hover:border-teal-400 cursor-pointer transition relative group">
                 <img src="${p.src || p}" alt="${p.title || 'Foto'}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300" loading="lazy" />
-                <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition"></div>
-              </div>
+                ${idx === 3 && extraCount > 0 ? `<span data-keep-white class="absolute inset-0 bg-slate-950/70 flex items-center justify-center text-xs font-extrabold text-white">+${extraCount}</span>` : '<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>'}
+              </button>
             `).join('')}
           </div>
         </div>
@@ -3207,8 +3289,8 @@ function initEventsView() {
           <span class="text-slate-300">${ev.speaker}</span>
         </div>
         ${hasPhotos ? `
-        <button onclick="openEventPhotoModal(0)" class="w-full mt-2 py-2 rounded-xl bg-slate-800 hover:bg-teal-500 hover:text-slate-950 text-teal-300 font-bold transition flex items-center justify-center gap-1.5 text-xs border border-slate-700">
-          <i class="fa-regular fa-images"></i> Fotoreportajı Tam Ekranda Aç (4 Foto)
+        <button type="button" onclick="openEventPhotoModal(0, '${galleryKey}')" class="w-full mt-2 py-2 rounded-xl bg-slate-800 hover:bg-teal-500 hover:text-slate-950 text-teal-300 font-bold transition flex items-center justify-center gap-1.5 text-xs border border-slate-700">
+          <i class="fa-regular fa-images"></i> Fotoreportajı Tam Ekranda Aç (${ev.photos.length} Foto)
         </button>
         ` : ''}
       </div>

@@ -785,8 +785,9 @@ button[class*="bg-teal-950"]:hover {
   color: #0f172a !important;
 }
 
-/* Garib Murshudov seminar showcase */
-#garibSeminarShowcase {
+/* Garib Murshudov & TechBrains 2026 completed event showcases */
+#garibSeminarShowcase,
+#techbrains2026Showcase {
   background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 50%, #ffffff 100%) !important;
   border: 1px solid #ccfbf1 !important;
 }
@@ -1788,6 +1789,99 @@ a[href*=".pdf"]:hover {
 [id$="Modal"] [class*="bg-gradient-to-r"] p {
   color: #0f766e !important;
 }
+
+/* 16.7. COMPLETED EVENT PHOTO GALLERY CARDS & NATIVE LIGHTBOX DIALOG */
+.event-photo-card {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  text-align: left;
+  padding: 0;
+  box-shadow: 0 2px 10px -2px rgba(15, 23, 42, 0.06) !important;
+}
+.event-photo-card:hover {
+  border-color: #0d9488 !important;
+  box-shadow: 0 12px 28px -8px rgba(13, 148, 136, 0.18) !important;
+}
+.event-photo-card:focus-visible {
+  outline: 2px solid #0d9488;
+  outline-offset: 2px;
+}
+.event-photo-card h5 {
+  color: #0f172a !important;
+}
+.event-photo-card:hover h5 {
+  color: #0f766e !important;
+}
+.event-photo-card p {
+  color: #475569 !important;
+}
+.event-photo-card img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Native <dialog> lightbox: never set display unconditionally; scope to [open] */
+dialog#eventPhotoLightboxModal {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: auto !important;
+  width: min(96vw, 980px);
+  max-width: min(96vw, 980px);
+  max-height: 95dvh;
+  overflow: visible;
+  --modal-max-w: 980px;
+}
+dialog#eventPhotoLightboxModal > div > form {
+  flex: 0 0 auto !important;
+  overflow: visible !important;
+}
+dialog#eventPhotoLightboxModal[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+dialog#eventPhotoLightboxModal:modal {
+  overscroll-behavior: contain;
+}
+dialog#eventPhotoLightboxModal::backdrop {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+dialog#eventPhotoLightboxModal > div {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  max-width: 100% !important;
+  max-height: min(94vh, 94dvh) !important;
+}
+dialog#eventPhotoLightboxModal #eventPhotoLightboxFrame {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+}
+dialog#eventPhotoLightboxModal #eventPhotoLightboxPrevBtn,
+dialog#eventPhotoLightboxModal #eventPhotoLightboxNextBtn {
+  background-color: rgba(15, 23, 42, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+dialog#eventPhotoLightboxModal #eventPhotoLightboxPrevBtn *,
+dialog#eventPhotoLightboxModal #eventPhotoLightboxNextBtn * {
+  color: #ffffff !important;
+}
+dialog#eventPhotoLightboxModal #eventPhotoLightboxPrevBtn:hover,
+dialog#eventPhotoLightboxModal #eventPhotoLightboxNextBtn:hover {
+  background-color: #0d9488 !important;
+  border-color: #14b8a6 !important;
+  color: #ffffff !important;
+}
+
 
 
 

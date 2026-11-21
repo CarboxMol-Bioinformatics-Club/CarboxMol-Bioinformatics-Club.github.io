@@ -221,18 +221,18 @@
     {
       id: "ann_techbrains_2026",
       category: "academic",
-      badge_az: "Konfrans • Olacaq",
-      badge_en: "Upcoming Talk",
-      title_az: "TechBrains 2026: «Hesablama Struktur Biologiyası və CarboxMol» Çıxışı Olacaq",
-      title_en: "TechBrains 2026: «Hesablama Struktur Biologiyası və CarboxMol» Talk",
+      badge_az: "Konfrans • Uğurla Keçirildi",
+      badge_en: "Completed Talk • 7 Photos",
+      title_az: "TechBrains 2026: «Hesablama Struktur Biologiyası və CarboxMol» Çıxışı Uğurla Keçirildi",
+      title_en: "TechBrains 2026: «Hesablama Struktur Biologiyası və CarboxMol» Talk Completed",
       date: "2026-11-21",
       date_az: "21–22 Noyabr 2026",
       date_en: "21–22 Nov 2026",
       image: "assets/images/announcements/techbrains-2026-speaker.jpg",
       imageFit: "contain",
       posterBg: "bg-[#f3f5f8]",
-      content_az: "21–22 Noyabr 2026 (11:00–16:00, Bakı) tarixində GOUP Baku Tech Community tərəfindən keçiriləcək TechBrains 2026 konfransında (Bio / Longevity • Bioinformatics bölməsi, Spiker 51/100) Klub Sədri Süleyman Hacızadə «Hesablama Struktur Biologiyası və CarboxMol: Azərbaycanda Tələbə Bioinformatika Ekosisteminin Yaradılması» mövzusunda məruzə ilə çıxış edəcək.",
-      content_en: "On 21–22 November 2026 (11:00–16:00, Baku) at TechBrains 2026 by GOUP Baku Tech Community (Bio / Longevity · Bioinformatics track, Speaker 51/100), Club President Suleiman Hajizadeh will speak on «Hesablama Struktur Biologiyası və CarboxMol: Building Azerbaijan's Student Bioinformatics Ecosystem»."
+      content_az: "21–22 Noyabr 2026 (11:00–16:00, Bakı) tarixində GOUP Baku Tech Community və CNCF Baku tərəfindən ADA Universiteti və İRİA tərəfdaşlığı ilə keçirilən TechBrains 2026 konfransında (Bio / Longevity • Bioinformatics bölməsi, Spiker 51/100) Klub Sədri və ETN Molekulyar Biologiya İnstitutunun böyük laborantı Süleyman Hacızadə «Hesablama Struktur Biologiyası və CarboxMol: Azərbaycanda Tələbə Bioinformatika Ekosisteminin Yaradılması» mövzusunda uğurla çıxış etdi.",
+      content_en: "On 21–22 November 2026 (11:00–16:00, Baku) at TechBrains 2026 by GOUP Baku Tech Community & CNCF Baku in partnership with ADA University and IDDA (Bio / Longevity · Bioinformatics track, Speaker 51/100), Club President and Senior Lab Assistant at the Institute of Molecular Biology (MSE) Suleiman Hajizadeh successfully presented «Hesablama Struktur Biologiyası və CarboxMol: Building Azerbaijan's Student Bioinformatics Ecosystem»."
     },
     {
       id: "ann_wcu_approval_2026",
@@ -434,12 +434,12 @@
         gridHtml += '  <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2 text-xs">';
         if (ann.id === 'ann_techbrains_2026') {
           gridHtml += '    <div class="flex items-center gap-1.5">';
-          gridHtml += '      <a href="presentation.html" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-teal-500 hover:from-indigo-500 hover:to-teal-400 text-white font-bold text-xs flex items-center gap-1.5 transition shadow-sm">';
-          gridHtml += '        <i class="fa-solid fa-microphone-lines text-xs"></i> <span>' + (lang === 'en' ? 'Slides' : 'Slaydlar') + '</span>';
-          gridHtml += '      </a>';
-          gridHtml += '      <button onclick="navigateTo(\'events\')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 border border-slate-700 font-bold text-xs flex items-center gap-1 transition">';
-          gridHtml += '        <i class="fa-solid fa-calendar-days text-xs"></i> <span>' + (lang === 'en' ? 'Event' : 'Tədbir') + '</span>';
+          gridHtml += '      <button onclick="navigateTo(\'events\'); setTimeout(function(){ document.getElementById(\'techbrains2026Showcase\')?.scrollIntoView({behavior:\'smooth\'}); }, 120);" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-teal-500 hover:from-indigo-500 hover:to-teal-400 text-white font-bold text-xs flex items-center gap-1.5 transition shadow-sm">';
+          gridHtml += '        <i class="fa-regular fa-images text-xs"></i> <span>' + (lang === 'en' ? 'Photos (7)' : 'Fotoreportaj (7)') + '</span>';
           gridHtml += '      </button>';
+          gridHtml += '      <a href="presentation.html" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 border border-slate-700 font-bold text-xs flex items-center gap-1 transition">';
+          gridHtml += '        <i class="fa-solid fa-display text-xs"></i> <span>' + (lang === 'en' ? 'Slides' : 'Slaydlar') + '</span>';
+          gridHtml += '      </a>';
           gridHtml += '    </div>';
         } else if (ann.id === 'ann_wcu_approval_2026') {
           gridHtml += '    <button onclick="navigateTo(\'register\')" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs flex items-center gap-1.5 transition shadow-sm">';

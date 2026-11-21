@@ -1,7 +1,7 @@
 // CarboxMol Bioinformatika Klubu - PWA Service Worker (Oflayn və Canlı Sinxronizasiya Mühərriki)
-// Versiya: 2.5.4
+// Versiya: 2.5.5
  
-const CACHE_VERSION = 'carboxmol-bioinformatics-club-v2.5.4';
+const CACHE_VERSION = 'carboxmol-bioinformatics-club-v2.5.5';
 const CORE_CACHE = `core-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
 
@@ -49,6 +49,13 @@ const PRECACHE_ASSETS = [
   './assets/images/president.jpg',
   './assets/images/announcements/coordinator-recruitment.png',
   './assets/images/announcements/coordinator-recruitment-linkedin.png',
+  './assets/images/events/techbrains_2026_stage_presentation.jpg',
+  './assets/images/events/techbrains_2026_speaker_badge.jpg',
+  './assets/images/events/techbrains_2026_conference_hall.jpg',
+  './assets/images/events/techbrains_2026_banner_participants.jpg',
+  './assets/images/events/techbrains_2026_group_campus.jpg',
+  './assets/images/events/techbrains_2026_slide_speaker.jpg',
+  './assets/images/events/techbrains_2026_slide_carboxmol.jpg',
   './assets/images/events/garib_murshudov_seminar_group.jpg',
   './assets/images/events/garib_murshudov_seminar_president.jpg',
   './assets/images/events/garib_murshudov_seminar_member1.jpg',
