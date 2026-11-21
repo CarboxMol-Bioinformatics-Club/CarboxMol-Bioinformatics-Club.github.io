@@ -113,11 +113,10 @@ events: [
       date: "21–22 Noyabr 2026",
       time: "11:00 - 16:00",
       location: "Bakı • GOUP Tech Community (ADA Universiteti)",
-      badge: "Uğurla Keçirildi • 7 Foto & Slayd",
+      badge: "Uğurla Keçirildi • 7 Foto",
       description: "21–22 Noyabr 2026 tarixində GOUP Baku Tech Community və CNCF Baku tərəfindən ADA Universiteti və İnnovasiya və Rəqəmsal İnkişaf Agentliyinin (İRİA) tərəfdaşlığı ilə keçirilən TechBrains 2026 konfransında (Bio / Longevity • Bioinformatics, Spiker 51/100) Azərbaycanda Tələbə Bioinformatika Ekosisteminin Yaradılması, zülalların 3D modelləşdirilməsi, makromolekulyar kristalloqrafiya (Carbox & CarboxMol), Python və R mövzularında rəsmi məruzə uğurla təqdim edildi.",
       speaker: "Süleyman Hacızadə (CarboxMol Bioinformatika Klubunun Sədri & ETN Molekulyar Biologiya İnstitutu, Böyük Laborant)",
       status: "completed",
-      poster: "assets/images/announcements/techbrains-2026-speaker.jpg",
       report: "Məruzədə CarboxMol Bioinformatika Klubu, 7,230 PDB strukturunda (≤ 1.20 Å) anomal Asp/Glu protonasiyasını (ASH/GLH) və LBHB əlaqələrini aşkar edən Carbox alqoritmi və WebGL əsaslı CarboxMol 3D Protein Vizualizatoru təqdim olundu.",
       photos: [
         {
@@ -4958,7 +4957,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.22.v67_techbrains_2026_completed";
+const CURRENT_DATA_VERSION = "2026.11.22.v68_techbrains_card_match";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {

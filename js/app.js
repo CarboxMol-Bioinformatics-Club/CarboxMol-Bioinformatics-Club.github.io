@@ -3224,8 +3224,6 @@ function initEventsView() {
     const isCompleted = ev.status === "completed" || (ev.badge && ev.badge.includes("Keçirildi"));
     const galleryKey = ev.id === "ev-techbrains-2026" ? "techbrains2026" : "garib";
     const showcaseId = ev.id === "ev-techbrains-2026" ? "techbrains2026Showcase" : "garibSeminarShowcase";
-    const previewPhotos = hasPhotos ? ev.photos.slice(0, 4) : [];
-    const extraCount = hasPhotos && ev.photos.length > 4 ? ev.photos.length - 4 : 0;
 
     return `
     <div class="bg-slate-900/80 border ${isCompleted ? 'border-teal-500/50 bg-gradient-to-b from-teal-950/20 to-slate-900/90' : 'border-slate-800'} rounded-2xl p-6 hover:border-teal-500/60 transition flex flex-col justify-between space-y-4 shadow-lg relative overflow-hidden">
@@ -3240,7 +3238,7 @@ function initEventsView() {
           </span>
         </div>
         <h4 class="text-base font-bold text-white hover:text-teal-300 transition">${ev.title}</h4>
-        ${ev.poster ? `
+        ${ev.poster && !hasPhotos ? `
         <a href="${ev.poster}" target="_blank" rel="noopener noreferrer" class="block relative overflow-hidden rounded-xl border border-slate-700 aspect-video bg-[#f3f5f8]">
           <img src="${ev.poster}" alt="${ev.title}" class="w-full h-full object-contain p-1 hover:scale-105 transition duration-300" loading="lazy" />
         </a>
@@ -3264,12 +3262,21 @@ function initEventsView() {
             <button type="button" onclick="document.getElementById('${showcaseId}')?.scrollIntoView({behavior:'smooth'})" class="text-teal-300 hover:underline">Geniş bax</button>
           </div>
           <div class="grid grid-cols-4 gap-1.5">
-            ${previewPhotos.map((p, idx) => `
-              <button type="button" onclick="openEventPhotoModal(${idx}, '${galleryKey}')" aria-label="${p.title || 'Tədbir fotosu'}" class="h-14 p-0 rounded-lg overflow-hidden border border-slate-700 hover:border-teal-400 cursor-pointer transition relative group">
-                <img src="${p.src || p}" alt="${p.title || 'Foto'}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300" loading="lazy" />
-                ${idx === 3 && extraCount > 0 ? `<span data-keep-white class="absolute inset-0 bg-slate-950/70 flex items-center justify-center text-xs font-extrabold text-white">+${extraCount}</span>` : '<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>'}
+            ${ev.photos.map((p, idx) => {
+              const src = p.src || p;
+              const isSlide = String(src).includes('_slide_');
+              const fitClass = isSlide
+                ? 'object-contain'
+                : (String(src).includes('stage_presentation') || String(src).includes('banner_participants')
+                  ? 'object-cover object-center'
+                  : 'object-cover object-top');
+              return `
+              <button type="button" onclick="openEventPhotoModal(${idx}, '${galleryKey}')" aria-label="${p.title || 'Tədbir fotosu'}" class="event-card-thumb h-14 w-full p-0 ${isSlide ? 'bg-white' : 'bg-transparent'} rounded-lg overflow-hidden border border-slate-700 hover:border-teal-400 cursor-pointer transition relative group block">
+                <img src="${src}" alt="${p.title || 'Foto'}" class="w-full h-full ${fitClass} group-hover:scale-110 transition duration-300" loading="lazy" />
+                <div class="absolute inset-0 bg-black/15 group-hover:bg-transparent transition pointer-events-none"></div>
               </button>
-            `).join('')}
+              `;
+            }).join('')}
           </div>
         </div>
         ` : ''}

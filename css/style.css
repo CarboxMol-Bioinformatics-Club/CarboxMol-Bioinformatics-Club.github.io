@@ -1816,7 +1816,8 @@ a[href*=".pdf"]:hover {
 .event-photo-card p {
   color: #475569 !important;
 }
-.event-photo-card img {
+.event-photo-card img,
+.event-card-thumb img {
   width: 100% !important;
   height: 100% !important;
 }
