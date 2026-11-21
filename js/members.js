@@ -1490,12 +1490,12 @@ const MembersPortal = {
     if (!container) return;
 
     const items = [
-      { id: "step1", label: "Klub Sənədləri və Sillabus ilə tanışlıq", defaultChecked: true },
-      { id: "step2", label: "Python və Biopython mühitinin quraşdırılması", defaultChecked: true },
-      { id: "step3", label: "NCBI və UniProt bazalarından FASTA çəkilməsi", defaultChecked: false },
-      { id: "step4", label: "PyMOL ilə 3D zülal vizuallaşdırma laboratoriyası", defaultChecked: false },
-      { id: "step5", label: "Journal Club elmi məqalə təhlilində iştirak", defaultChecked: false },
-      { id: "step6", label: "Daxili Bio-Data Hakatonuna qoşulmaq", defaultChecked: false }
+      { id: "step1", label: "Klub Sənədləri (PDF) və 28 Həftəlik Sillabus ilə tanışlıq", defaultChecked: true },
+      { id: "step2", label: "Mərhələ 1: Python, Biopython, R və BioMeet onlayn tədris dərslərində iştirak", defaultChecked: true },
+      { id: "step3", label: "NCBI, UniProt, PDB və 3D Struktur Biologiyası (Carbox / CarboxMol) təcrübəsi", defaultChecked: false },
+      { id: "step4", label: "Mərhələ 2: İlk məzunlar arasında İlk CarboxMol Bioinformatika Hakatonunda iştirak", defaultChecked: false },
+      { id: "step5", label: "Mərhələ 3: Alimlərlə birgə elmi məqalələrin yazılmasına hazırlıq qrupuna qoşulmaq", defaultChecked: false },
+      { id: "step6", label: "Mərhələ 4 (Sirkulyar): Elmi işçilər, üzvlər və müəllimlərlə Journal Club sessiyaları", defaultChecked: false }
     ];
 
     const savedProgress = JSON.parse(localStorage.getItem("wcu_member_progress") || "{}");

@@ -2444,7 +2444,7 @@ const inAppDocViewer = {
                   <i class="fa-solid fa-crown text-amber-400 mr-1"></i> Klub Sədri (President)
                 </span>
                 <h5 class="text-base font-extrabold text-white">Süleyman Mehdi oğlu Hacızadə</h5>
-                <p class="text-xs text-slate-300 mt-0.5">WCU Biologiya &amp; IMB Bioinformatika Mütəxəssisi</p>
+                <p class="text-xs text-slate-300 mt-0.5">WCU Biologiya &amp; ETN Molekulyar Biologiya İnstitutu (Böyük Laborant)</p>
               </div>
               <div class="flex flex-col items-center text-teal-400 my-0.5">
                 <div class="w-0.5 h-6 bg-gradient-to-b from-teal-400 to-teal-500"></div>

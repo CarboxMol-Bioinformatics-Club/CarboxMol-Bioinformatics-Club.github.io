@@ -315,16 +315,16 @@ const INITIAL_PUBLISHED_PROJECTS = [
   },
   {
     id: "proj-3d-structural-tools",
-    title: "3D Struktur Alətləri (Carbox & CarboxMol)",
+    title: "3D Struktur Alətləri (Carbox & CarboxMol — Açıq Mənbəli)",
     category: "Struktur Biologiyası",
-    authors: "Süleyman Hacızadə & Prof. Qərib Mürşüdov (Cambridge University, MRC LMB)",
+    authors: "Süleyman Hacızadə (Böyük Laborant) & Prof. Qərib Mürşüdov (Lab Müdiri, ETN Molekulyar Biologiya İnstitutu & MRC LMB)",
     date: "2026/2027 Tədris İli",
-    status: "Daxili Elmi Alət & Workbench",
-    stack: ["Carbox & CarboxMol"],
+    status: "Açıq Mənbəli (Open-Source) Elmi Layihə",
+    stack: ["Carbox", "CarboxMol", "Protonlaşma Analizi"],
     biocPipelineKey: null,
-    summary: "Atomar zülal strukturlarının, Krio-EM xəritələrinin və zülal-liqand komplekslərinin 3D analizi. Xüsusi Qeyd: Carbox və CarboxMol hələ ki, rəsmi nəşr (publish) edilmədiyi üçün klubun daxili elmi aləti və workbench-i olaraq istifadə olunur və yalnız Süleyman Hacızadə və Prof. Qərib Mürşüdov tərəfindən izah edilə və tədris oluna bilər.",
-    githubUrl: "https://github.com/SuleimanHajizadeh/WCU-Bioinformatics-Club",
-    badge: "Daxili Workbench (Nəşr Edilməyib)",
+    summary: "Atomar zülal strukturlarının, Krio-EM xəritələrinin, protonlaşma aşkarlanması alqoritminin və zülal-liqand komplekslərinin 3D analizi üçün inkişaf etdirilən açıq mənbəli (open-source) proqramlar. Rəsmi saytlar: https://project-carbox.github.io/ və https://carboxmol.github.io/",
+    githubUrl: "https://carboxmol.github.io/",
+    badge: "Açıq Mənbəli Workbench",
     actionType: "structural"
   },
   {
@@ -970,9 +970,21 @@ const BioconductorEngine = {
           </div>
 
           <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2 relative z-10 flex-wrap">
-            <button onclick="navigateTo('curriculum')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 text-xs font-bold transition flex items-center gap-1.5 border border-slate-700">
-              <i class="fa-solid fa-calendar-check"></i> Sillabusda Bax
-            </button>
+            <div class="flex items-center gap-1.5 flex-wrap">
+              ${tool.url ? `
+                <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-teal-950/90 hover:bg-teal-900 text-teal-300 text-xs font-bold transition inline-flex items-center gap-1.5 border border-teal-500/40">
+                  <i class="fa-solid fa-globe"></i> Rəsmi Sayt
+                </a>
+              ` : ''}
+              ${tool.docsUrl ? `
+                <a href="${tool.docsUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-300 text-xs font-bold transition inline-flex items-center gap-1.5 border border-slate-700">
+                  <i class="fa-solid fa-book"></i> Docs
+                </a>
+              ` : ''}
+              <button onclick="navigateTo('curriculum')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 text-xs font-bold transition flex items-center gap-1.5 border border-slate-700">
+                <i class="fa-solid fa-calendar-check"></i> Sillabusda Bax
+              </button>
+            </div>
             <button onclick="navigateTo('tasks')" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 text-xs font-extrabold transition flex items-center gap-1.5 shadow">
               <i class="fa-solid fa-flask"></i> Laboratoriya #2
             </button>

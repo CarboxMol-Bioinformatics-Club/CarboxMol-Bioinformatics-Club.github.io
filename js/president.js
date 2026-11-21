@@ -870,46 +870,80 @@ klubun istifadəsinə ayrılmasını Sizdən xahiş edirik.
 
 Tarix: ${today}
 CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
+ETN Molekulyar Biologiya İnstitutu, Hesablama Struktur Biologiyası Laboratoriyası (Böyük Laborant)
 Əlaqə: +994 70 550 69 07 | +994 99 350 69 07
-E-poçt: suleyman.hacizade.232bioing@wcu.edu.az
+E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
       `;
     } else if (type === "speaker") {
-      title = "Elmi Ustad Dərsi üçün Rəsmi Spiker Dəvəti";
+      title = "Elmi Təlim və Seminar üçün Rəsmi Spiker Dəvəti";
       body = `
 Hörmətli Həmkar / Professor,
 
-Sizi Qərbi Kaspi Universitetinin "CarboxMol Bioinformatika Klubu" tələbələri adından universitetimizdə 
-keçiriləcək "Hesablama Genomikası və Müasir Biotexnologiya" seminarında fəxri qonaq və 
-məruzəçi kimi çıxış etməyə dəvət edirik.
+Sizi Qərbi Kaspi Universitetinin "CarboxMol Bioinformatika Klubu" adından 
+bioinformatika, struktur və hesablama biologiyası sahəsində tələbələrimiz üçün keçiriləcək 
+elmi seminar və təlim sessiyasında məruzəçi kimi çıxış etməyə dəvət edirik.
 
 Çıxışınız tələbələrimizin elmi dünyagörüşünün formalaşmasında və praktiki tədqiqatlara istiqamətlənməsində 
-mühüm rol oynayacaqdır. Çıxış formatı (əyani və ya onlayn) və vaxtı Sizin qrafikinizə uyğun 
-razılaşdırılacaqdır.
+mühüm rol oynayacaqdır. Çıxış formatı (əsasən onlayn BioMeet üzərindən: https://carboxmol-bioinformatics-club.github.io/#biomeet və ya əyani) və vaxtı Sizin qrafikinizə uyğun razılaşdırılacaqdır.
 
 Tarix: ${today}
 Dərin hörmətlə,
 CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
-Qərbi Kaspi Universiteti
+Qərbi Kaspi Universiteti | Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutunun Hesablama Struktur Biologiyası Laboratoriyasının Böyük Laborantı
 Əlaqə: +994 70 550 69 07 | +994 99 350 69 07
-E-poçt: suleyman.hacizade.232bioing@wcu.edu.az
+E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
+      `;
+    } else if (type === "partnership") {
+      title = "Rəsmi Tərəfdaşlıq və Əməkdaşlıq Təklifi (CarboxMol Bioinformatika Klubu)";
+      body = `
+Hörmətli Tərəfdaş Təşkilat / Platforma Rəhbərliyi,
+
+CarboxMol Bioinformatika Klubu Qərbi Kaspi Universiteti (WCU) Yüksək Texnologiyalar və Təbiət Elmləri Məktəbinin Təbiət Elmləri Kafedrası nəzdində fəaliyyət göstərən, hazırda 74 təsdiqlənmiş tələbə üzv və 4 akademik mentordan ibarət elmi-tədris klubudur.
+
+Klub Sədri Süleyman Hacızadə Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutunun Hesablama Struktur Biologiyası Laboratoriyasının böyük laborantı kimi laboratoriya müdiri Prof. Qərib Mürşüdov ilə birgə protonlaşmanı aşkar edən alqoritm (alət/proqram) inkişaf etdirir.
+
+4 Mərhələli Sirkulyar (Dövri) Fəaliyyət Planımız:
+1. 28 Həftəlik Praktiki Bioinformatika Tədris Prosesi (əsasən onlayn BioMeet üzərindən, bəzən fiziki; Prof. Qərib Mürşüdov və digər mütəxəssislər tərəfindən xüsusi təlimlər);
+2. Gələcək tədris prosesinin ilk məzunları arasında İlk CarboxMol Bioinformatika Hakatonunun təşkili;
+3. İlk məzun tələbə qruplarının alimlərlə birgə elmi məqalələrin yazılmasına hazırlığının başladılması;
+4. Ən son mərhələdə elmi məqalələr yazıldıqdan sonra elmi işçilər, klub üzvləri və müəllimlərlə Journal Club sessiyalarının təşkili.
+* Bu proses Azərbaycanda bioinformatika, struktur və hesablama biologiyası sahəsində davamlı inkişaf üçün sirkulyar (dövri) olaraq davam edəcəkdir.
+
+Qarşılıqlı Əməkdaşlıq İstiqamətləri (hər iki tərəf üçün qarşılıqlı):
+- Onlayn (və bəzən fiziki) təlimlərə tələbələrin qeydiyyat şərti ilə qarşılıqlı yönləndirilməsi;
+- İnformasiya və media dəstəyi, birgə elmi vebinarların, açıq dərslərin və debatların təşkili.
+
+Rəsmi Linklər və PDF Sənədlər:
+- Portal: https://carboxmol-bioinformatics-club.github.io/
+- BioMeet: https://carboxmol-bioinformatics-club.github.io/#biomeet
+- Carbox: https://project-carbox.github.io/ | CarboxMol (açıq mənbəli): https://carboxmol.github.io/
+- Əsasnamə (PDF): https://carboxmol-bioinformatics-club.github.io/docs/02_Esasname.pdf
+- Təşkilati Struktur (PDF): https://carboxmol-bioinformatics-club.github.io/docs/03_Teshkilati_Struktur.pdf
+- İllik Fəaliyyət Planı və Sillabus (PDF): https://carboxmol-bioinformatics-club.github.io/docs/04_Illik_Fealiyyet_Plani_ve_Sillabus.pdf
+
+Tarix: ${today}
+Hörmətlə,
+Süleyman Mehdi oğlu Hacızadə — CarboxMol Bioinformatika Klubunun Sədri
+Əlaqə: +994 70 550 69 07 | +994 99 350 69 07
+E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
       `;
     } else {
       title = "Semestr Fəaliyyət Hesabatı Təqdimatı";
       body = `
 Qərbi Kaspi Universitetinin Rektorluğuna / TGT İdarə Heyətinə
 
-"CarboxMol Bioinformatika Klubu"nun cari semestr üzrə fəaliyyət hesabatını təqdim edirik:
-- Təşkil olunmuş praktiki seminar və laboratoriya dərsləri: 5 ədəd;
-- Journal Club çərçivəsində təhlil edilmiş beynəlxalq elmi məqalələr: 2 ədəd;
-- Qeydiyyatdan keçmiş və fəal iştirak edən klub üzvlərinin sayı: 45 nəfər;
-- İştirakçı tələbələrin ixtisasları: Biotexnologiya, Biologiya, Kompüter Mühəndisliyi, İT.
+"CarboxMol Bioinformatika Klubu"nun cari dövr üzrə fəaliyyət hesabatını təqdim edirik:
+- Qeydiyyatdan keçmiş və təsdiqlənmiş tələbə klub üzvlərinin sayı: 74 nəfər (+ 4 akademik mentor/müəllim);
+- 4-Mərhələli Sirkulyar (Dövri) İnkişaf Modeli: 28 həftəlik praktiki tədris (əsasən onlayn BioMeet, bəzən fiziki) → İlk CarboxMol Bioinformatika Hakatonu → Alimlərlə birgə elmi məqalə hazırlığı → Journal Club sessiyaları (sirkulyar olaraq davam edəcək);
+- Rəsmi alətlər və platforma: https://carboxmol-bioinformatics-club.github.io/ | Carbox (https://project-carbox.github.io/) | CarboxMol (https://carboxmol.github.io/) | BioMeet (#biomeet).
 
-Klubun fəaliyyəti universitetin elmi reytinqinin və fənlərarası tələbə potensialının artırılmasına 
-xidmət edir.
+Klubun fəaliyyəti universitetin elmi reytinqinin və Azərbaycanda bioinformatika, struktur və hesablama biologiyası potensialının davamlı artırılmasına xidmət edir.
 
 Tarix: ${today}
 CarboxMol Bioinformatika Klubu Sədri: Süleyman Mehdi oğlu Hacızadə
+ETN Molekulyar Biologiya İnstitutu, Hesablama Struktur Biologiyası Laboratoriyası (Böyük Laborant)
 Əlaqə: +994 70 550 69 07 | +994 99 350 69 07
+E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
       `;
     }
 

@@ -48,11 +48,11 @@ const TeacherPortal = {
       const currentTeacher = teacher || {
         id: "pres-teacher-preview",
         fullName: "Süleyman Hacızadə (Sədr Nəzarəti)",
-        title: "Klub Sədri & Elmi Koordinator",
+        title: "Klub Sədri & Böyük Laborant (ETN Molekulyar Biologiya İnstitutu)",
         academicDegree: "Təsisçi & Rəhbər",
-        university: "Western Caspian University",
-        department: "Təbiət Elmləri və Bioinformatika",
-        email: "suleyman.hacizade.232bioing@wcu.edu.az",
+        university: "Western Caspian University & ETN Molekulyar Biologiya İnstitutu",
+        department: "Təbiət Elmləri və Hesablama Struktur Biologiyası",
+        email: "suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com",
         phone: "+994 70 550 69 07",
         username: "suleimanhajizadeh",
         status: "Aktiv",
@@ -868,7 +868,7 @@ const TeacherPortal = {
         "Qərbi Kaspi Universiteti (WCU)", "Bakı Dövlət Universiteti (BDU)", "Azərbaycan Tibb Universiteti (ATU)",
         "Xəzər Universiteti", "Azərbaycan Dövlət Neft və Sənaye Universiteti (ADNSU)", "ADA Universiteti",
         "Bakı Mühəndislik Universiteti (BMU)", "Bakı Ali Neft Məktəbi (BANM)", "Fransız-Azərbaycan Universiteti (UFAZ)",
-        "Azərbaycan Dövlət İqtisad Universiteti (UNEC)", "AMEA / AR ETN Molekulyar Biologiya və Biotexnologiyalar İnstitutu",
+        "Azərbaycan Dövlət İqtisad Universiteti (UNEC)", "ETN Molekulyar Biologiya İnstitutu",
         "AR ETN Genetik Ehtiyatlar İnstitutu", "Cambridge University (MRC LMB)"
       ];
       if (standardUnis.includes(currentTeacher.university)) {

@@ -5,52 +5,53 @@ const INITIAL_COLLABORATORS = [
   {
     id: "garib-murshudov",
     name: "Prof. Qərib Mürşüdov (Garib Murshudov)",
-    title: "Programme Leader (Group Leader), Computational Structural Biology Group",
-    institution: "MRC Laboratory of Molecular Biology (LMB), Cambridge University",
-    location: "Kembric, Böyük Britaniya (UK)",
+    title: "Hesablama Struktur Biologiyası Laboratoriyasının Müdiri (ETN Molekulyar Biologiya İnstitutu) & Programme Leader (MRC LMB, Cambridge)",
+    institution: "Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutu & MRC Laboratory of Molecular Biology (LMB), Cambridge University",
+    location: "Bakı, Azərbaycan / Kembric, Böyük Britaniya (UK)",
     field: "Struktur Biologiyası",
-    specialty: "Makromolekulyar Kristalloqrafiya, REFMAC5, Bayes Statistikası, Cryo-EM Xəritə Refinement, Servalcat, ProSMART",
+    specialty: "Makromolekulyar Kristalloqrafiya, REFMAC5, Bayes Statistikası, Cryo-EM Xəritə Refinement, Protonlaşma Analizi, Servalcat, ProSMART",
     keySoftware: "REFMAC5, ProSMART, Servalcat, CCP4 Suite",
     keyPublications: "Refinement of macromolecular structures by the maximum-likelihood method (Acta Cryst D 2011, >12,000 sitat); Cryo-EM refinement (Nature Methods 2020)",
-    badge: "Fəxri Qonaq Alim • Kembric LMB",
+    badge: "Laboratoriya Müdiri • Kembric MRC LMB",
     badgeColor: "bg-indigo-500/20 text-indigo-300 border-indigo-500/40",
     avatar: "assets/images/events/garib_murshudov_seminar_president.jpg",
     email: "garib@mrc-lmb.cam.ac.uk",
     labUrl: "https://www2.mrc-lmb.cam.ac.uk/group-leaders/m-to-o/g-murshudov/",
     scholarUrl: "https://scholar.google.com/citations?user=Y7qW4sEAAAAJ",
     orcid: "0000-0001-8314-1785",
-    clubStatus: "Aktiv Əməkdaşlıq & Elmi Məsləhətçi (20 Oktyabr 2026 seminarı keçirildi)",
-    bio: "Kembric Universitetinin professoru, dünya şöhrətli azərbaycanlı alim. Zülal və RNT-lərin 3D atomar strukturunun dəqiq təyini üçün qlobal standart olan REFMAC5 proqramının və Bayes statistikası alətlərinin müəllifidir. Klubumuzun fəxri elmi seminar qonağı olmuşdur.",
+    clubStatus: "Təlimçi Alim & Elmi Əməkdaşlıq (20 Oktyabr 2026 seminarı keçirildi)",
+    bio: "ETN Molekulyar Biologiya İnstitutunun Hesablama Struktur Biologiyası Laboratoriyasının müdiri və Kembric Universiteti MRC Molekulyar Biologiya Laboratoriyasının qrup rəhbəri. REFMAC5 proqramının və Bayes statistikası alətlərinin müəllifidir. Klubumuzda dərs və təlim verə biləcək alimlərdən biridir və Süleyman Hacızadə ilə birgə protonlaşmanı aşkar edən alqoritm üzərində çalışır.",
     cooperationAreas: [
-      "Struktur biologiyası və krio-elektron mikroskopiyası (Cryo-EM) ustad dərsləri",
-      "REFMAC5 və makromolekulyar zülal-liqand koordinatlarının dəqiqləşdirilməsi",
-      "Tələbələrin beynəlxalq elmi məqalə və tədqiqat layihələrinə rəy və mentorluq"
+      "Azərbaycanda bioinformatika, struktur və hesablama biologiyası sahəsində elmi təlimlər",
+      "REFMAC5, protonlaşma aşkarlanması və makromolekulyar zülal-liqand analizi",
+      "İlk məzun qruplarının elmi məqalə hazırlığına və Journal Club sessiyalarına metodoloji dəstək"
     ]
   },
   {
     id: "suleyman-hajizadeh",
     name: "Süleyman Hacızadə (Suleyman Hajizadeh)",
-    title: "CarboxMol Bioinformatika Klubunun Təsisçisi və Sədri, Hesablama Struktur Biologiyası Gənc Tədqiqatçısı",
-    institution: "Western Caspian University & AR ETN MBİ (IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyası",
+    title: "CarboxMol Bioinformatika Klubunun Təsisçisi və Sədri | Böyük Laborant (ETN Molekulyar Biologiya İnstitutu)",
+    institution: "Qərbi Kaspi Universiteti (WCU) & Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutu, Hesablama Struktur Biologiyası Laboratoriyası",
     location: "Bakı, Azərbaycan",
     field: "Gənc Tədqiqatçılar",
-    specialty: "Hesablama Struktur Biologiyası, PDB/mmCIF koordinat emalı, Carbox (həndəsi analiz) və CarboxMol (3D vizualizasiya), Python/C++ bioinformatikası",
-    keySoftware: "Carbox, CarboxMol, SeqAnalyzer, BioMeet WebRTC Engine",
-    keyPublications: "Carbox: Macromolecular Coordinate and Geometry Engine (Daxili Layihə); CarboxMol Bioinformatika Kurrikulumu və Laboratoriya Sillabusu (2026)",
-    badge: "Klub Sədri & Gənc Tədqiqatçı",
+    specialty: "Hesablama Struktur Biologiyası, Protonlaşmanı aşkar edən (detect edən) alqoritm/proqram, PDB/mmCIF koordinat emalı, Carbox (https://project-carbox.github.io/) və CarboxMol (https://carboxmol.github.io/)",
+    keySoftware: "Carbox (Open-Source), CarboxMol (Open-Source), SeqAnalyzer, BioMeet WebRTC Engine",
+    keyPublications: "Carbox & CarboxMol: Macromolecular Coordinate, Protonation Detection & 3D Visualization Workbench; CarboxMol 28-Həftəlik Bioinformatika Sillabusu (2026)",
+    badge: "Klub Sədri & Böyük Laborant (ETN MBİ)",
     badgeColor: "bg-teal-500/20 text-teal-300 border-teal-500/40",
     avatar: "assets/images/suleyman_hajizadeh.jpg",
     email: "suleyman.hacizade.232bioing@wcu.edu.az",
+    secondaryEmail: "suleyman.hacizade1@gmail.com",
     labUrl: "https://carboxmol-bioinformatics-club.github.io/",
-    scholarUrl: "https://scholar.google.com/",
+    scholarUrl: "https://carboxmol.github.io/",
     githubUrl: "https://github.com/SuleimanHajizadeh",
     orcid: "0009-0000-0000-0000",
-    clubStatus: "Təsisçi & Rəhbər (Daxili Tədqiqatçı)",
-    bio: "Qərbi Kaspi Universiteti Bioinformatika Klubunun təsisçisi və sədri, AR ETN Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasında tədqiqatçı. Prof. Qərib Mürşüdovla birlikdə Carbox və CarboxMol daxili struktur biologiyası layihələri üzərində çalışır.",
+    clubStatus: "Təsisçi & Rəhbər (Böyük Laborant — ETN Molekulyar Biologiya İnstitutu)",
+    bio: "Qərbi Kaspi Universiteti Bioinformatika Klubunun təsisçisi və sədri, Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutunun Hesablama Struktur Biologiyası Laboratoriyasının böyük laborantı. Laboratoriya müdiri Prof. Qərib Mürşüdovla birgə zülal strukturlarında protonlaşmanı aşkar edən alqoritm (alət/proqram) və açıq mənbəli Carbox / CarboxMol layihələri üzərində çalışır.",
     cooperationAreas: [
-      "Klubun illik tədris sillabusunun rəhbərliyi və tələbə komandalarının mentorluğu",
-      "Carbox və CarboxMol alətlərinin praktiki laboratoriya dərslərində nümayişi",
-      "Universitetdə və respublika səviyyəsində bioinformatika hakatonlarının təşkili"
+      "28 həftəlik praktiki bioinformatika tədris prosesinin (əsasən onlayn BioMeet, bəzən fiziki) təşkili",
+      "İlk məzunlar arasında İlk CarboxMol Bioinformatika Hakatonunun və alimlərlə birgə elmi məqalə hazırlığının təşkili",
+      "Elmi işçilər, üzvlər və müəllimlərlə sirkulyar (dövri) Journal Club sessiyalarının davamlı aparılması"
     ]
   },
   {
@@ -576,7 +577,7 @@ const CollaboratorsEngine = {
 
     if (nameEl) nameEl.innerText = collab.name;
     if (instEl) instEl.innerText = `${collab.title} • ${collab.institution} (${collab.location})`;
-    if (emailEl) emailEl.innerText = collab.email || "Əlaqə rəsmi vebsayt vasitəsilə";
+    if (emailEl) emailEl.innerText = collab.email ? (collab.secondaryEmail ? `${collab.email} | ${collab.secondaryEmail}` : collab.email) : "Əlaqə rəsmi vebsayt vasitəsilə";
     if (avatarEl) avatarEl.src = collab.avatar;
 
     // Render external links in modal
@@ -645,8 +646,8 @@ Tədbir formatı və tarixi Sizin sıx elmi qrafikinizə tam uyğunlaşdırıla 
 Hörmət və ehtiramla,
 Süleyman Mehdi oğlu Hacızadə
 Qərbi Kaspi Universiteti Bioinformatika Klubunun Sədri
-AR ETN MBİ (IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasında Tədqiqatçı
-E-poçt: suleyman.hacizade.232bioing@wcu.edu.az
+Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutunun Hesablama Struktur Biologiyası Laboratoriyasının Böyük Laborantı
+E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
 Vebsayt: https://carboxmol-bioinformatics-club.github.io/`;
     } else {
       defaultSubject = `[CarboxMol Bioinformatics Club] Scientific Collaboration & Guest Lecture Proposal: ${collab.name}`;
@@ -656,7 +657,7 @@ Greetings from the Western Caspian University (WCU) Bioinformatics Club in Baku,
 
 Our student research community and young computational biologists actively follow and study your pioneering contributions in ${collab.specialty}. Your groundbreaking work and software tools (${collab.keySoftware || 'computational biology tools'}) form a core inspiration for our annual curriculum and student research projects.
 
-We would be deeply honored to invite you for an online guest lecture (via our interactive CarboxMol BioMeet platform) or to explore potential academic collaboration with our young researchers in:
+We would be deeply honored to invite you for an online guest lecture (via our interactive CarboxMol BioMeet platform: https://carboxmol-bioinformatics-club.github.io/#biomeet) or to explore potential academic collaboration with our young researchers in:
 - Computational structural biology, molecular modeling, and genomics data science
 - Feedback and mentorship on student research papers and open-source bio-tools
 - Collaborative student exchange and scientific webinars
@@ -668,9 +669,9 @@ Thank you very much for your time, consideration, and leadership in advancing op
 Warm regards,
 Suleyman Hajizadeh
 President & Founder, CarboxMol Bioinformatics Club
-Researcher, Computational Structural Biology Laboratory, Institute of Molecular Biology (IMB / MBİ)
+Senior Laboratory Assistant, Computational Structural Biology Laboratory, Institute of Molecular Biology (Ministry of Science and Education)
 Western Caspian University, Baku, Azerbaijan
-Email: suleyman.hacizade.232bioing@wcu.edu.az
+Email: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
 Portal: https://carboxmol-bioinformatics-club.github.io/`;
     }
 

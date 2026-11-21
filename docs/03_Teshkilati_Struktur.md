@@ -7,7 +7,7 @@ Klubun idarəetmə strukturu çevik, sadə və effektiv elmi fəaliyyəti təmin
 
 | Səviyyə / Vəzifə | Təmsilçi / Tərkib | Əsas Funksiya və Rolu |
 | :--- | :--- | :--- |
-| **Klub Sədri (President)** | **Süleyman Mehdi oğlu Hacızadə** *(WCU Biologiya & MBİ / IMB Bioinformatika Mütəxəssisi)* | Ümumi rəhbərlik, elmi-tədris proqramının tərtibi, rəsmi təmsilçilik və layihə mentorluğu |
+| **Klub Sədri (President)** | **Süleyman Mehdi oğlu Hacızadə** *(WCU Biologiya & ETN Molekulyar Biologiya İnstitutu Böyük Laborantı)* | Ümumi rəhbərlik, elmi-tədris proqramının tərtibi, rəsmi təmsilçilik və layihə mentorluğu |
 | **Klub Üzvləri (Members)** | **Biologiya, Biotexnologiya və İT Tələbələri** | Praktiki tədqiqatlar, laboratoriya vorkşopları, seminar iştirakı və komanda layihələri |
 
 ---
@@ -18,12 +18,12 @@ Klubun idarəetmə strukturu çevik, sadə və effektiv elmi fəaliyyəti təmin
 * **Ad, Soyad:** Süleyman Mehdi oğlu Hacızadə
 * **Akademik və Elmi Status:** 
   * Western Caspian University, Biologiya (ingilis dili), 2021–2026 (V kurs tələbəsi);
-  * Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasında **Bioinformatika Mütəxəssisi (Bioinformatics Specialist)**;
+  * Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasının **böyük laborantı (Senior Laboratory Assistant)** (laboratoriya müdiri Prof. Qərib Mürşüdov ilə birgə protonlaşmanı aşkar edən alqoritm/proqram inkişaf etdirir);
   * Kembric MRC LMB Proqram Rəhbəri Prof. Qərib Mürşüdov ilə birgə makromolekulyar koordinat və həndəsi analiz mühərriki **Carbox** və interaktiv 3D biomolekulyar vizualizator **CarboxMol** proqram təminatlarının müəllifi və tərtibatçısı (Hələ rəsmi nəşr edilmədiyi üçün daxili elmi alət kimi yalnız onlar tərəfindən tədris olunur);
   * Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi, Kompüter Ustalığı (İT Dəstək) ixtisası üzrə 1 illik təhsil məzunu (2020–2021);
   * Holberton School Azerbaijan, Kompüter Elmləri (Foundations of Computer Science, İyun 2025 – Aprel 2026);
   * 1 saylı Bakı Tibb Kolleci (Əczaçılıq, 2017–2020) və 5 illik əczaçılıq təcrübəsi bazası.
-* **Əlaqə:** +994 70 550 69 07 | +994 99 350 69 07 | suleyman.hacizade.232bioing@wcu.edu.az | GitHub: [SuleimanHajizadeh](https://github.com/SuleimanHajizadeh)
+* **Əlaqə:** +994 70 550 69 07 | +994 99 350 69 07 | suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com | GitHub: [SuleimanHajizadeh](https://github.com/SuleimanHajizadeh)
 * **Vəzifə Öhdəlikləri:**
   * **Rəsmi Təmsilçilik:** Klubu rəsmi olaraq Qərbi Kaspi Universitetinin rəhbərliyi, dekanlıq, Tələbə İşləri Departamenti və Tələbə Gənclər Təşkilatı (TGT) qarşısında təmsil edir.
   * **Elmi və Tədris Rəhbərliyi:** Seminarların, vorkşopların və elmi araşdırmaların proqramını tərtib edir, 3D struktur laboratoriyasında PyMOL, ChimeraX, Coot, Carbox və CarboxMol alətlərinin tədrisinə rəhbərlik edir, real laboratoriya təcrübəsini tələbələrlə bölüşür.

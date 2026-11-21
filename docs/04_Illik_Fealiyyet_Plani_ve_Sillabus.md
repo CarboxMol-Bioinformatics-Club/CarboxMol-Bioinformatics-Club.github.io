@@ -7,7 +7,7 @@
 ### I. KURS HAQQINDA ÜMUMİ MƏLUMAT VƏ TƏDRİS KONSEPSİYASI
 
 * **Təşkilatçı:** Qərbi Kaspi Universiteti Bioinformatika Klubu
-* **Elmi Rəhbər və Təlimçi:** Süleyman Mehdi oğlu Hacızadə (Western Caspian University, Biologiya 2021–2026, V kurs / Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasında Bioinformatika Mütəxəssisi / Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi Kompüter Ustalığı və İT Dəstək, 1 illik təhsil, 2020–2021 / Holberton School Azerbaijan)
+* **Elmi Rəhbər və Təlimçi:** Süleyman Mehdi oğlu Hacızadə (Western Caspian University, Biologiya 2021–2026, V kurs / Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasının Böyük Laborantı / Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi Kompüter Ustalığı və İT Dəstək, 1 illik təhsil, 2020–2021 / Holberton School Azerbaijan)
 * **Müddət:** 2 Semestr (28 Həftəlik Akademik Təqvim + 1 Həftəlik Qış İntensiv Məktəbi)
 * **Tədris Formatı:** Hibrid (Universitet Kompüter Laboratoriyasında əyani vorkşoplar, interaktiv seminar dərsləri və GitHub/Google Colab üzərindən praktiki kodlaşdırma)
 * **İş Formatı və Metodologiya:** **Komanda İşi (Teamwork & Pair-Programming)** — Bütün fəaliyyət planı üzrə praktiki tapşırıqlar, alqoritmik kodlaşdırma və elmi layihələr tələbə komandaları şəklində birgə icra ediləcəkdir.
@@ -99,3 +99,14 @@ Bu proqramı uğurla tamamlayan klub üzvləri aşağıdakı bilik və sərişt�
 Təsisçi və Klub Sədri: **Süleyman Mehdi oğlu Hacızadə**  
 İmza: _______________________  
 Tarix: ____ / ____ / 2026-cı il
+
+---
+
+### MƏRHƏLƏLİ VƏ SİRKULYAR (DÖVRİ) ELMİ İNKİŞAF PLANI
+
+Azərbaycanda bioinformatika, struktur və hesablama biologiyası sahəsində davamlı inkişafın getməsi məqsədilə klubun fəaliyyəti aşağıdakı 4 mərhələli **sirkulyar (dövri)** model əsasında davam edəcəkdir:
+
+1. **28 Həftəlik Praktiki Bioinformatika Tədris Prosesi:** Əsasən onlayn (BioMeet üzərindən: `https://carboxmol-bioinformatics-club.github.io/#biomeet`), bəzən isə fiziki formatda olmaqla Linux/Bash, Python, Biopython, R/Bioconductor, NGS sekvens analizi, struktur biologiyası (açıq mənbəli **Carbox**: `https://project-carbox.github.io/` və **CarboxMol**: `https://carboxmol.github.io/`) və AlphaFold üzrə sistemli təlimlərin keçirilməsi; həmçinin Prof. Qərib Mürşüdov və növbəti mərhələlərdə digər mütəxəssislər tərəfindən xüsusi təlimlərin təşkili.
+2. **İlk CarboxMol Bioinformatika Hakatonu:** Gələcək tədris prosesinin ilk məzunları arasında **İlk CarboxMol Bioinformatika Hakatonunu** təşkil etmək üçün əlimizdən gəldiyi qədər işlər görməyə çalışacağıq.
+3. **Alimlərlə Birgə Elmi Məqalələrin Hazırlanması:** İlk məzun verəcəyimiz tələbə qruplarının alimlərlə birgə elmi məqalələrin yazılmasına hazırlığını başlatmağı planlaşdırırıq.
+4. **Journal Club Sessiyaları (Son Mərhələ — Sirkulyar Davamlılıq):** Ən son mərhələdə artıq müəyyən elmi məqalələr yazıldıqdan sonra **Journal Club** çərçivəsində elmi işçilərin, klub üzvlərinin və klub müəllimlərinin birgə müzakirə sessiyalarını təşkil etməyi planlaşdırırıq. Bu proses Azərbaycanda elmi inkişafın fasiləsiz davam etməsi üçün **sirkulyar olaraq** hər yeni dövrdə davam edəcəkdir.

@@ -305,16 +305,16 @@
     {
       id: "ann_03",
       category: "academic",
-      badge_az: "Respublika Müsabiqəsi",
-      badge_en: "National Contest",
-      title_az: "2026 Bioinformatika və Struktur Biologiyası Tələbə Hakatonu",
-      title_en: "2026 Bioinformatics & Structural Biology Student Hackathon",
-      date: "Tezliklə",
-      date_az: "Tezliklə",
-      date_en: "Coming Soon",
+      badge_az: "Sirkulyar İnkişaf Planı",
+      badge_en: "Circular Roadmap",
+      title_az: "İlk CarboxMol Bioinformatika Hakatonu, Elmi Məqalələr və Sirkulyar Journal Club",
+      title_en: "First CarboxMol Bioinformatics Hackathon, Co-Authored Papers & Circular Journal Club",
+      date: "Sirkulyar Proses",
+      date_az: "Sirkulyar Proses",
+      date_en: "Circular Process",
       image: "",
-      content_az: "Qərbi Kaspi Universiteti Bioinformatika Klubu komandalarının beynəlxalq və respublika səviyyəli hakatonlara hazırlığı üzrə qeydiyyat davam edir.",
-      content_en: "Registration is open for WCU Bioinformatics Club teams preparing for national and international computational biology hackathons."
+      content_az: "28 həftəlik tədris prosesinin ilk məzunları arasında İlk CarboxMol Bioinformatika Hakatonunun təşkili, alimlərlə birgə elmi məqalələrin yazılmasına hazırlıq və elmi işçilər, üzvlər və müəllimlərlə Journal Club sessiyaları Azərbaycanda davamlı inkişaf üçün sirkulyar (dövri) olaraq davam edəcəkdir.",
+      content_en: "Following the 28-week training program, we plan to organize the First CarboxMol Bioinformatics Hackathon among our first graduates, initiate co-authored scientific paper preparation with scientists, and host Journal Club sessions with researchers, members, and mentors in a continuous circular cycle."
     }
   ];
 

@@ -7,13 +7,45 @@ const INITIAL_DATA = {
     university: "Qərbi Kaspi Universiteti (Western Caspian University)",
     year: "2026/2027",
     president: "Süleyman Mehdi oğlu Hacızadə",
-    presidentTitle: "Təsisçi və Klub Sədri | Bioinformatika Mütəxəssisi",
+    presidentTitle: "Təsisçi və Klub Sədri | Böyük Laborant (ETN Molekulyar Biologiya İnstitutu)",
     presidentEducation: "Western Caspian University, Biologiya (İngilis dili), 2021–2026 | Holberton School Azerbaijan (Foundations of Computer Science, İyun 2025 – Aprel 2026) | Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi (2020–2021) | 1 saylı Bakı Tibb Kolleci (Əczaçılıq, 2017–2020)",
-    presidentBio: "Qərbi Kaspi Universiteti Biologiya (İngilis dili) 2021–2026 (V kurs tələbəsi). Azərbaycan Elm və Təhsil Nazirliyi Molekulyar Biologiya İnstitutunun (IMB) Hesablama Struktur Biologiyası Laboratoriyasında Bioinformatika Mütəxəssisi. Holberton School Azerbaijan (Foundations of Computer Science, İyun 2025 – Aprel 2026), Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi (Kompüter Ustalığı / İT Dəstək, 1 illik təhsil, 2020–2021) və 1 saylı Bakı Tibb Kolleci (Əczaçılıq, 2017–2020, 5 illik əczaçılıq təcrübəsi).",
+    presidentBio: "Qərbi Kaspi Universiteti Biologiya (İngilis dili) 2021–2026 (V kurs tələbəsi). Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutunun Hesablama Struktur Biologiyası Laboratoriyasının böyük laborantı (laboratoriya müdiri Prof. Qərib Mürşüdov ilə birgə protonlaşmanı aşkar edən alqoritm/proqram inkişaf etdirir). Holberton School Azerbaijan (Foundations of Computer Science, İyun 2025 – Aprel 2026), Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi (Kompüter Ustalığı / İT Dəstək, 1 illik təhsil, 2020–2021) və 1 saylı Bakı Tibb Kolleci (Əczaçılıq, 2017–2020, 6+ illik əczaçılıq təcrübəsi).",
     presidentPhoto: "assets/images/president.jpg",
     presidentGithub: "https://github.com/SuleimanHajizadeh",
     phones: ["+994 70 550 69 07", "+994 99 350 69 07"],
     contactEmail: "suleyman.hacizade.232bioing@wcu.edu.az",
+    secondaryEmail: "suleyman.hacizade1@gmail.com",
+    contactEmails: ["suleyman.hacizade.232bioing@wcu.edu.az", "suleyman.hacizade1@gmail.com"],
+    officialLinks: {
+      club: "https://carboxmol-bioinformatics-club.github.io/",
+      biomeet: "https://carboxmol-bioinformatics-club.github.io/#biomeet",
+      carbox: "https://project-carbox.github.io/",
+      carboxDocs: "https://project-carbox.readthedocs.io/en/latest/",
+      carboxmol: "https://carboxmol.github.io/",
+      carboxmolDocs: "https://carboxmol.readthedocs.io/en/latest/"
+    },
+    circularRoadmap: [
+      {
+        step: 1,
+        title: "28 Həftəlik Praktiki Bioinformatika Tədris Prosesi",
+        description: "Əsasən onlayn (BioMeet üzərindən), bəzən isə fiziki formatda olmaqla Linux/Bash, Python, Biopython, R/Bioconductor, NGS sekvens analizi, struktur biologiyası və AlphaFold üzrə sistemli təlimlərin keçirilməsi; həmçinin Prof. Qərib Mürşüdov və növbəti mərhələlərdə digər mütəxəssislər tərəfindən xüsusi təlimlərin təşkili."
+      },
+      {
+        step: 2,
+        title: "İlk CarboxMol Bioinformatika Hakatonu",
+        description: "Gələcək tədris prosesinin ilk məzunları arasında İlk CarboxMol Bioinformatika Hakatonunu təşkil etmək üçün əlimizdən gəldiyi qədər işlər görməyə çalışacağıq."
+      },
+      {
+        step: 3,
+        title: "Alimlərlə Birgə Elmi Məqalələrin Hazırlanması",
+        description: "İlk məzun verəcəyimiz tələbə qruplarının alimlərlə birgə elmi məqalələrin yazılmasına hazırlığını başlatmağı planlaşdırırıq."
+      },
+      {
+        step: 4,
+        title: "Journal Club Sessiyaları (Son Mərhələ — Sirkulyar Davamlılıq)",
+        description: "Ən son mərhələdə artıq müəyyən elmi məqalələr yazıldıqdan sonra Journal Club çərçivəsində elmi işçilərin, klub üzvlərinin və klub müəllimlərinin birgə müzakirə sessiyalarını təşkil etməyi planlaşdırırıq. Bu 4 mərhələli proses Azərbaycanda davamlı inkişaf üçün sirkulyar (dövri) olaraq davam edəcəkdir."
+      }
+    ],
     githubRepo: "https://github.com/SuleimanHajizadeh",
     meetingLocation: "Əhməd Rəcəbli korpusu, Kompüter və Bio-laboratoriya mərkəzi",
     registrationVideo: {
@@ -370,22 +402,26 @@ events: [
     {
       id: "tool-carbox",
       name: "Carbox",
-      badge: "Daxili Elmi Workbench (Nəşr Edilməyib)",
-      category: "Hesablama Struktur Biologiyası Mühərriki",
-      developer: "Süleyman Hacızadə & Prof. Qərib Mürşüdov (Cambridge University, MRC LMB)",
-      status: "Daxili Alət • Yalnız Süleyman və Qərib Müəllim İzah Edə Bilər",
-      description: "PDB və mmCIF makromolekulyar koordinatlarının emalı, atomlararası rabitə bucaqları, dihedrallar, toqquşma analizi və zülal-liqand qarşılıqlı əlaqələrinin riyazi hesablanması üçün xüsusi mühərrik. Xüsusi Qeyd: Carbox hələ ki, rəsmi nəşr (publish) edilmədiyi üçün klubun daxili elmi aləti və workbench-i olaraq istifadə olunur və yalnız Süleyman Hacızadə və Prof. Qərib Mürşüdov tərəfindən izah edilə və tədris oluna bilər.",
+      badge: "Açıq Mənbəli Elmi Workbench (İnkişaf Mərhələsində)",
+      category: "Hesablama Struktur Biologiyası & Protonlaşma Analizi Mühərriki",
+      developer: "Süleyman Hacızadə (Böyük Laborant) & Prof. Qərib Mürşüdov (Lab Müdiri, ETN Molekulyar Biologiya İnstitutu & MRC LMB)",
+      status: "Rəsmi Alət • https://project-carbox.github.io/",
+      url: "https://project-carbox.github.io/",
+      docsUrl: "https://project-carbox.readthedocs.io/en/latest/",
+      description: "PDB və mmCIF makromolekulyar koordinatlarının emalı, zülal strukturlarında protonlaşmanı aşkar edən (detect edən) alqoritm, atomlararası rabitə bucaqları, dihedrallar və zülal-liqand qarşılıqlı əlaqələrinin hesablanması üçün inkişaf etdirilən açıq mənbəli mühərrik. Rəsmi sayt: https://project-carbox.github.io/",
       syllabusWeek: "Həftə 11, Həftə 24",
       icon: "fa-dna"
     },
     {
       id: "tool-carboxmol",
       name: "CarboxMol",
-      badge: "Daxili Elmi Workbench (Nəşr Edilməyib)",
+      badge: "Açıq Mənbəli (Open-Source) 3D Vizualizator",
       category: "İnteraktiv 3D Biomolekulyar Vizualizator",
-      developer: "Süleyman Hacızadə & Prof. Qərib Mürşüdov (Cambridge University, MRC LMB)",
-      status: "Daxili Alət • Yalnız Süleyman və Qərib Müəllim İzah Edə Bilər",
-      description: "İnteraktiv 3D biomolekulyar vizuallaşdırma və model render proqramı (PyMOL və ChimeraX analoqu): zülalların ikincili/üçüncülü strukturlarını (alfa-spiral, beta-qat), aktiv mərkəz ciblərini, elektrostatik səthləri və elektron sıxlıqlarını 3D mühitdə yüksək sürətlə vizuallaşdırmaq üçün daxili alət. Xüsusi Qeyd: CarboxMol hələ ki, rəsmi nəşr (publish) edilmədiyi üçün klubun daxili elmi aləti və workbench-i olaraq istifadə olunur və yalnız Süleyman Hacızadə və Prof. Qərib Mürşüdov tərəfindən izah edilə və tədris oluna bilər.",
+      developer: "Süleyman Hacızadə (Böyük Laborant) & Prof. Qərib Mürşüdov (Lab Müdiri, ETN Molekulyar Biologiya İnstitutu & MRC LMB)",
+      status: "Rəsmi Alət • https://carboxmol.github.io/",
+      url: "https://carboxmol.github.io/",
+      docsUrl: "https://carboxmol.readthedocs.io/en/latest/",
+      description: "Açıq mənbəli (open-source) interaktiv 3D biomolekulyar vizuallaşdırma və model render proqramı: zülalların ikincili/üçüncülü strukturlarını, aktiv mərkəz ciblərini, protonlaşma vəziyyətlərini və elektron sıxlıqlarını 3D mühitdə yüksək sürətlə vizuallaşdırmaq üçün inkişaf etdirilir. Rəsmi sayt: https://carboxmol.github.io/",
       syllabusWeek: "Həftə 11, Həftə 24",
       icon: "fa-atom"
     },
@@ -4862,7 +4898,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.18.v62_clean_manual_tasks";
+const CURRENT_DATA_VERSION = "2026.11.21.v63_circular_roadmap_etn_mbi";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -5625,7 +5661,7 @@ function getClubData() {
           room: "Beynəlxalq Alimlər & Qonaq Seminarı",
           roomId: "guest-seminars",
           hostName: "Prof. Qərib Mürşüdov & Süleyman Hacızadə",
-          hostRole: "Fəxri Qonaq Alim & Klub Sədri",
+          hostRole: "Laboratoriya Müdiri (Təlimçi Alim) & Klub Sədri",
           type: "video",
           duration: "01:25:40",
           sizeFormatted: "148.6 MB",

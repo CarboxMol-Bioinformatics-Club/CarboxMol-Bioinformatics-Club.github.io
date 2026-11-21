@@ -325,7 +325,7 @@ async function syncOfflineQueue() {
               "Content-Type": "application/json",
               "Accept": "application/json"
             },
-            body: JSON.stringify(item.data)
+            body: JSON.stringify(Object.assign({ _cc: "suleyman.hacizade1@gmail.com" }, item.data))
           });
           if (res.ok) {
             successCount++;
@@ -343,7 +343,7 @@ async function syncOfflineQueue() {
     localStorage.setItem('wcu_offline_sync_queue', JSON.stringify(remaining));
 
     if (successCount > 0 && typeof showToast === 'function') {
-      showToast(`🔄 ${successCount} ədəd oflayn müraciət Sədrə (suleyman.hacizade.232bioing@wcu.edu.az) uğurla sinxronlaşdırıldı!`, 'success');
+      showToast(`🔄 ${successCount} ədəd oflayn müraciət Sədrə (suleyman.hacizade.232bioing@wcu.edu.az / suleyman.hacizade1@gmail.com) uğurla sinxronlaşdırıldı!`, 'success');
     }
   } catch (err) {
     console.warn('[PWA] Sinxronizasiya xətası:', err);
