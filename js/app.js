@@ -2452,9 +2452,10 @@ const inAppDocViewer = {
               </div>
               <div class="w-full p-4 rounded-2xl bg-gradient-to-r from-indigo-950/70 via-slate-900 to-indigo-950/70 border border-indigo-500/40 text-center shadow-lg">
                 <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 uppercase tracking-wider mb-1.5">
-                  <i class="fa-solid fa-chalkboard-user text-indigo-400 mr-1"></i> Akademik Müəllimlər və Mentorlar (4)
+                  <i class="fa-solid fa-chalkboard-user text-indigo-400 mr-1"></i> Dəvətli Beynəlxalq Alimlər &amp; Akademik Müəllimlər
                 </span>
-                <p class="text-xs text-slate-200 font-semibold">Sefanya Hacızadə (WCU) • Fidan Məhərrəmova (MSc) • Süsən Həsənova (BDU) • Leyla Budaqova (BDU &amp; ETN MBİ)</p>
+                <p class="text-[11px] text-cyan-300 font-semibold">Dəvətli Alimlər: Prof. Qərib Mürşüdov (MRC LMB / ETN MBİ) • Elbay Əliyev (Univ. of Colorado Anschutz)</p>
+                <p class="text-xs text-slate-200 font-semibold mt-1">Müəllimlər: Fidan Məhərrəmova (ICL) • Leyla Budaqova (WCU / ETN MBİ) • Süsən Həsənova (BDU) • Sefanya Hacızadə (WCU)</p>
               </div>
               <div class="flex flex-col items-center text-teal-400 my-0.5">
                 <div class="w-0.5 h-5 bg-gradient-to-b from-indigo-400 to-teal-500"></div>

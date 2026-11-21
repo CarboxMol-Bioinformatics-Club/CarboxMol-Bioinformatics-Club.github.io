@@ -4700,26 +4700,26 @@ events: [
     },
     {
       "id": "teacher-fidan-m",
-      "fullName": "Fidan Məhərrəmova",
-      "title": "Akademik Mentor & Tədqiqatçı",
-      "academicDegree": "MSc Bioinformatika",
-      "university": "Digər Elmi-Tədqiqat İnstitutu və ya Mərkəzi",
-      "faculty": "Bioinformatika Fakültəsi",
-      "department": "Bioinformatika və Hesablama Biologiyası",
+      "fullName": "Fidan Məhərrəmova (MRes)",
+      "title": "Akademik Müəllim & Mentor (Imperial College London məzunu)",
+      "academicDegree": "MRes Bioinformatika & BSc Biokimya (ICL)",
+      "university": "Imperial College London (ICL)",
+      "faculty": "Department of Life Sciences",
+      "department": "Bioinformatics and Theoretical Systems Biology",
       "email": "fidan.maharramova1@gmail.com",
       "phone": "+447394415024",
       "username": "fidan_m",
       "password": "Imperial123:)",
       "photo": "",
       "specialties": [
-        "Bioinformatika",
+        "Bioinformatics and Theoretical Systems Biology",
+        "Biokimya",
         "Genomika və NGS Analizi",
-        "Struktur Biologiyası",
         "Python & R"
       ],
       "orcid": "",
       "googleScholar": "",
-      "bio": "Bioinformatika (Magistratura) üzrə tədqiqatçı və CarboxMol klubunun akademik mentoru.",
+      "bio": "Imperial College London (ICL) Bakalavr (BSc Biokimya) və Magistratura (MRes Bioinformatics and Theoretical Systems Biology) məzunu; bioinformatika üzrə tədqiqatçı və CarboxMol Bioinformatika Klubunun akademik müəllimi və mentoru.",
       "status": "Aktiv",
       "registeredAt": "2026-10-27",
       "approvedAt": "2026-10-27",
@@ -4732,7 +4732,7 @@ events: [
       "academicDegree": "Müəllim",
       "university": "Bakı Dövlət Universiteti (BDU)",
       "faculty": "Biotexnologiya Fakültəsi",
-      "department": "Biotexnologiya",
+      "department": "Biotexnologiya Kafedrası",
       "email": "hasanovaa.ssssss@gmail.com",
       "phone": "+994 50 761 40 64",
       "username": "hasanovasusan",
@@ -4740,12 +4740,12 @@ events: [
       "photo": "https://api.dicebear.com/7.x/identicon/svg?seed=hasanovasusan",
       "specialties": [
         "Biotexnologiya",
-        "Genomics",
+        "Genomika",
         "Molekulyar Biologiya"
       ],
       "orcid": "",
       "googleScholar": "",
-      "bio": "Bakı Dövlət Universiteti (BDU) Biotexnologiya kafedrası üzrə müəllim və CarboxMol klubunun akademik mentoru.",
+      "bio": "Bakı Dövlət Universiteti (BDU) məzunu, BDU Biotexnologiya Kafedrasının müəllimi və CarboxMol Bioinformatika Klubunun akademik müəllimi və mentoru.",
       "status": "Aktiv",
       "registeredAt": "2026-11-03",
       "approvedAt": "2026-11-03",
@@ -4754,10 +4754,10 @@ events: [
     {
       "id": "teacher-leyla-25",
       "fullName": "Leyla Budaqova",
-      "title": "Doktorant & Akademik Mentor",
-      "academicDegree": "Doktorant",
-      "university": "Bakı Dövlət Universiteti (BDU)",
-      "faculty": "Biologiya Fakültəsi / ETN Molekulyar Biologiya İnstitutu",
+      "title": "Müəllim (WCU) & Doktorant (ETN Molekulyar Biologiya İnstitutu)",
+      "academicDegree": "Doktorant / Müəllim",
+      "university": "Qərbi Kaspi Universiteti (WCU) & ETN Molekulyar Biologiya İnstitutu",
+      "faculty": "Təbiət Elmləri Kafedrası / ETN Molekulyar Biologiya İnstitutu",
       "department": "Molekulyar Biologiya",
       "email": "leylabudaqova073@gmail.com",
       "phone": "+994 50 576 10 87",
@@ -4772,7 +4772,7 @@ events: [
       ],
       "orcid": "",
       "googleScholar": "",
-      "bio": "Bakı Dövlət Universiteti və MBİ-də Molekulyar Biologiya üzrə doktorantura tədqiqatçısı və CarboxMol klubunun akademik mentoru.",
+      "bio": "Bakı Dövlət Universiteti məzunu, Qərbi Kaspi Universitetinin (WCU) Təbiət Elmləri Kafedrasının müəllimi, ETN Molekulyar Biologiya İnstitutunun Molekulyar Biologiya üzrə doktorant-tədqiqatçısı və CarboxMol Bioinformatika Klubunun akademik müəllimi və mentoru.",
       "status": "Aktiv",
       "registeredAt": "2026-11-03",
       "approvedAt": "2026-11-03",
@@ -4898,7 +4898,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.22.v64_teachers_in_docs";
+const CURRENT_DATA_VERSION = "2026.11.22.v65_master_faculty_registry";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {

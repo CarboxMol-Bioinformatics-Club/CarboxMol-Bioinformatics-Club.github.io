@@ -1,19 +1,27 @@
-# QƏRBİ KASPİ UNİVERSİTETİ (WESTERN CASPIAN UNIVERSITY)
-## "WCU BIOINFORMATICS CLUB" (WCU BİOİNFORMATİKA KLUBU)
+# AZƏRBAYCAN RESPUBLİKASI • QƏRBİ KASPİ UNİVERSİTETİ
+## "CARBOXMOL BİOİNFORMATİKA KLUBU" (CARBOXMOL BIOINFORMATICS CLUB)
 ### 2026/2027 TƏDRİS İLİ ÜÇÜN İLLİK FƏALİYYƏT PLANI VƏ GENİŞLƏNDİRİLMİŞ TƏDRİS SİLLABUSU
+
+| Sənəd İndeksi | Tədris İli | Təsisçi Qurum | Redaksiya / Status |
+| :--- | :---: | :--- | :--- |
+| **CMBC-2026/FP-04** | 2026/2027 | Qərbi Kaspi Universiteti (WCU), Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi, Təbiət Elmləri Kafedrası | Redaksiya 2.0 • Rəsmi Akademik Sənəd |
 
 ---
 
-### I. KURS HAQQINDA ÜMUMİ MƏLUMAT VƏ TƏDRİS KONSEPSİYASI
+### I. KURS HAQQINDA ÜMUMİ MƏLUMAT, AKADEMİK HEYƏT VƏ TƏDRİS KONSEPSİYASI
 
 * **Təşkilatçı:** Qərbi Kaspi Universiteti — CarboxMol Bioinformatika Klubu
-* **Klub Sədri və Elmi Təlimçi:** Süleyman Mehdi oğlu Hacızadə (Western Caspian University, Biologiya 2021–2026, V kurs / Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutunun Hesablama Struktur Biologiyası Laboratoriyasının Böyük Laborantı / Holberton School Azerbaijan)
-* **Akademik Müəllim və Mentor Heyəti:**
-  * **Sefanya Hacızadə** — Akademik Mentor & Tədqiqatçı (Qərbi Kaspi Universiteti, Təbiət Elmləri Kafedrası — *Bioinformatika, Genomika, DNT Analizi, Python*)
-  * **Fidan Məhərrəmova** — Akademik Mentor & Tədqiqatçı, MSc Bioinformatika (*Bioinformatika, Genomika və NGS Analizi, Struktur Biologiyası, Python & R*)
-  * **Süsən Həsənova** — Müəllim / Akademik Mentor (Bakı Dövlət Universiteti, Biotexnologiya Kafedrası — *Biotexnologiya, Genomika, Molekulyar Biologiya*)
-  * **Leyla Budaqova** — Doktorant & Akademik Mentor (Bakı Dövlət Universiteti & ETN Molekulyar Biologiya İnstitutu — *Molekulyar Biologiya, Genomika, Struktur Biologiyası*)
-* **Müddət:** 2 Semestr (28 Həftəlik Akademik Təqvim + 1 Həftəlik Qış İntensiv Məktəbi — Sirkulyar / Dövri Model)
+* **Klub Sədri və Elmi Təlimçi:** **Süleyman Mehdi oğlu Hacızadə** *(Qərbi Kaspi Universiteti, Biologiya V kurs; Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutu, Hesablama Struktur Biologiyası Laboratoriyasının Böyük Laborantı; Holberton School Azerbaijan məzunu)*
+* **Dəvətli Beynəlxalq Alimlər və Təlimçi Mütəxəssislər:**
+  * **Prof. Qərib Mürşüdov** ([LinkedIn](https://www.linkedin.com/in/garib-murshudov-40598513/)) — *Məzuniyyət:* BDU (1985), REA Kristalloqrafiya İnstitutu (Moskva, PhD 1993). *İş yeri:* MRC Molekulyar Biologiya Laboratoriyası (MRC LMB, Kembric, Böyük Britaniya — Qrup Rəhbəri) & ETN Molekulyar Biologiya İnstitutu (Hesablama Struktur Biologiyası Laboratoriyasının Müdiri).
+  * **Elbay Əliyev (MSc)** ([LinkedIn](https://www.linkedin.com/in/elbayaliyev/)) — *Məzuniyyət:* Bakı Dövlət Universiteti (Tətbiqi Riyaziyyat və Kibernetika — Bakalavr, Magistratura/MSc). *İş yeri:* University of Colorado Anschutz Medical Campus (ABŞ, Biotibbi İnformatika Departamenti — Baş Data Alimi / Senior Data Scientist; əvvəllər: Sidra Medicine, Qətər).
+* **Rəsmi Təsdiqlənmiş Akademik Müəllim və Mentor Heyəti:**
+  * **Fidan Məhərrəmova (MRes)** — *Məzuniyyət:* **Imperial College London (ICL)**, Böyük Britaniya (Bakalavr: Biokimya / *BSc Biochemistry*; Magistratura: Bioinformatika və Nəzəri Sistemlər Biologiyası / *MRes Bioinformatics and Theoretical Systems Biology*). *Fəaliyyət:* Bioinformatika tədqiqatçısı, Klubun Akademik Müəllimi və Mentoru.
+  * **Leyla Budaqova** — *Təhsil/Məzuniyyət:* Bakı Dövlət Universiteti (BDU); ETN Molekulyar Biologiya İnstitutu (Doktorant). *İş yeri:* Qərbi Kaspi Universiteti (WCU), Təbiət Elmləri Kafedrasının Müəllimi & ETN Molekulyar Biologiya İnstitutu, Doktorant-tədqiqatçı.
+  * **Süsən Həsənova** — *Məzuniyyət:* Bakı Dövlət Universiteti (BDU), Biotexnologiya. *İş yeri:* Bakı Dövlət Universiteti (BDU), Biotexnologiya Kafedrasının Müəllimi.
+  * **Sefanya Hacızadə** — *Təhsil:* Qərbi Kaspi Universiteti (WCU), Biologiya (İngilis bölməsi). *Fəaliyyət:* Qərbi Kaspi Universiteti (WCU), Təbiət Elmləri Kafedrası nəzdində Klubun Akademik Mentoru və Tədqiqatçı-təlimçisi.
+  * *Kargüzarlıq Qeydi:* Növbəti mərhələlərdə digər müəllimlər və alimlər də rəsmi təsdiqləri əldə edildikdən sonra zamanla bu tədris heyətinə əlavə ediləcəkdir.
+* **Müddət:** 2 Semestr (28 Həftəlik Akademik Təqvim + 1 Həftəlik Qış İntensiv Məktəbi — 4 Mərhələli Sirkulyar / Dövri Model)
 * **Tədris Formatı:** Əsasən onlayn (BioMeet üzərindən: `https://carboxmol-bioinformatics-club.github.io/#biomeet`), bəzən isə fiziki (Universitet Kompüter Laboratoriyasında əyani vorkşoplar, interaktiv seminar dərsləri və GitHub/Google Colab üzərindən praktiki kodlaşdırma)
 * **İş Formatı və Metodologiya:** **Komanda İşi (Teamwork & Pair-Programming)** — Bütün fəaliyyət planı üzrə praktiki tapşırıqlar, alqoritmik kodlaşdırma və elmi layihələr tələbə komandaları şəklində birgə icra ediləcəkdir.
 * **Hədəf Auditoriyası:** Biologiya, Biotexnologiya, Kompüter Elmləri, İnformasiya Texnologiyaları və əlaqəli ixtisasların bakalavr və magistr tələbələri.

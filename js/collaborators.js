@@ -16,15 +16,39 @@ const INITIAL_COLLABORATORS = [
     badgeColor: "bg-indigo-500/20 text-indigo-300 border-indigo-500/40",
     avatar: "assets/images/events/garib_murshudov_seminar_president.jpg",
     email: "garib@mrc-lmb.cam.ac.uk",
-    labUrl: "https://www2.mrc-lmb.cam.ac.uk/group-leaders/m-to-o/g-murshudov/",
+    labUrl: "https://www.linkedin.com/in/garib-murshudov-40598513/",
     scholarUrl: "https://scholar.google.com/citations?user=Y7qW4sEAAAAJ",
     orcid: "0000-0001-8314-1785",
     clubStatus: "Təlimçi Alim & Elmi Əməkdaşlıq (20 Oktyabr 2026 seminarı keçirildi)",
-    bio: "ETN Molekulyar Biologiya İnstitutunun Hesablama Struktur Biologiyası Laboratoriyasının müdiri və Kembric Universiteti MRC Molekulyar Biologiya Laboratoriyasının qrup rəhbəri. REFMAC5 proqramının və Bayes statistikası alətlərinin müəllifidir. Klubumuzda dərs və təlim verə biləcək alimlərdən biridir və Süleyman Hacızadə ilə birgə protonlaşmanı aşkar edən alqoritm üzərində çalışır.",
+    bio: "Bakı Dövlət Universiteti (1985) və REA Kristalloqrafiya İnstitutu (Moskva, PhD 1993) məzunu. ETN Molekulyar Biologiya İnstitutunun Hesablama Struktur Biologiyası Laboratoriyasının müdiri və Kembric Universiteti MRC Molekulyar Biologiya Laboratoriyasının (MRC LMB) qrup rəhbəri (əvvəllər York Universiteti). REFMAC5 proqramının müəllifidir və Süleyman Hacızadə ilə birgə protonlaşmanı aşkar edən alqoritm üzərində çalışır.",
     cooperationAreas: [
       "Azərbaycanda bioinformatika, struktur və hesablama biologiyası sahəsində elmi təlimlər",
       "REFMAC5, protonlaşma aşkarlanması və makromolekulyar zülal-liqand analizi",
       "İlk məzun qruplarının elmi məqalə hazırlığına və Journal Club sessiyalarına metodoloji dəstək"
+    ]
+  },
+  {
+    id: "elbay-aliyev",
+    name: "Elbay Əliyev (Elbay Aliyev, MSc)",
+    title: "Senior Data Scientist, Department of Biomedical Informatics",
+    institution: "University of Colorado Anschutz Medical Campus (ABŞ) • əvvəllər Sidra Medicine (Qətər) • BDU Məzunu",
+    location: "Kolorado, ABŞ (USA)",
+    field: "Genomika & Data Elmi",
+    specialty: "Populyasiya Genomikası, Tam Genom Sekvensləmə (WGS), Struktur Variasiyalar, Biotibbi İnformatika, Data Elmi",
+    keySoftware: "WGS Pipelines, Structural Variant Analysis, Python & R Genomics",
+    keyPublications: "Population-scale structural variation & biomedical genomics studies (Nature Communications və s.)",
+    badge: "Dəvətli Beynəlxalq Alim • ABŞ",
+    badgeColor: "bg-cyan-500/20 text-cyan-300 border-cyan-500/40",
+    avatar: "https://api.dicebear.com/7.x/initials/svg?seed=EA",
+    email: "",
+    labUrl: "https://www.linkedin.com/in/elbayaliyev/",
+    scholarUrl: "https://scholar.google.com/scholar?q=Elbay+Aliyev+Sidra+genomics",
+    clubStatus: "Dəvətli Təlimçi Alim (Beynəlxalq Bioinformatika & Genomika)",
+    bio: "Bakı Dövlət Universiteti Tətbiqi Riyaziyyat və Kibernetika fakültəsinin Bakalavr (2005–2009) və Magistratura (MSc, 2010–2012) məzunu. Hazırda ABŞ-ın University of Colorado Anschutz Medical Campus-unda Biotibbi İnformatika Departamentində Baş Data Alimi (Senior Data Scientist) kimi çalışır (əvvəllər Qətərdə Sidra Medicine-də böyük miqyaslı genomika tədqiqatları aparmışdır).",
+    cooperationAreas: [
+      "Populyasiya genomikası, tam genom sekvensləmə (WGS) və biotibbi data elmi təlimləri",
+      "İlk CarboxMol Bioinformatika Hakatonu və tələbə tədqiqat komandalarına metodoloji dəstək",
+      "Beynəlxalq elmi məqalə hazırlığı və Journal Club müzakirələri"
     ]
   },
   {
