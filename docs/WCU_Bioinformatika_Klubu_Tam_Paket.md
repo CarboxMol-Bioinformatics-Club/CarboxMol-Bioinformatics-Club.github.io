@@ -1,19 +1,15 @@
 # QƏRBİ KASPİ UNİVERSİTETİ (WESTERN CASPIAN UNIVERSITY)
-# "WCU BIOINFORMATICS CLUB" (WCU BİOİNFORMATİKA KLUBU)
-## TƏSİS VƏ FƏALİYYƏT ÜZRƏ RƏSMİ SƏNƏDLƏR TOPLUSU
+## CARBOXMOL BİOİNFORMATİKA KLUBU — RƏSMİ SƏNƏDLƏR TOPLUSU (TAM PAKET)
+
+*Sədr: Süleyman Mehdi oğlu Hacızadə | 4 Akademik Müəllim/Mentor | 74 Təsdiqlənmiş Tələbə Üzv*
 
 ---
 
-## MÜNDƏRİCAT
-1. Rektorluğa və Tələbə İşləri Departamentinə Rəsmi Müraciət Ərizəsi
-2. WCU Bioinformatika Klubunun Rəsmi Əsasnaməsi (Statute / Charter)
-3. Təşkilati Struktur və Vəzifə Bölgüsü
-4. İllik Fəaliyyət Planı və Genişləndirilmiş Tədris Sillabusu (2026/2027)
-5. Rəsmi Üzvlük və Qeydiyyat Anketi (Tələbə Qəbulu və İxtisaslaşma Şablonu)
 
-\newpage
+<!-- BÖLMƏ 1: RƏSMİ MÜRACİƏT ƏRİZƏSİ -->
 
-# 1. Rektorluğa və Tələbə İşləri Departamentinə Rəsmi Müraciət Ərizəsi
+# Qərbi Kaspi Universiteti Bioinformatika Klubu
+## Rektorluğa və Tələbə İşləri Departamentinə Rəsmi Müraciət Ərizəsi
 
 **Qərbi Kaspi Universitetinin Rektorluğuna, Tələbə İşləri Departamentinə və Tələbə Gənclər Təşkilatının (TGT) İdarə Heyətinə**
 
@@ -53,9 +49,16 @@ Klubun rəsmi qeydiyyata alınmasına və fəaliyyətinə icazə verməyinizi Si
 Süleyman Mehdi oğlu Hacızadə _______________________  
 Tarix: ____ / ____ / 2026-cı il
 
-\newpage
+---
 
-# 2. WCU Bioinformatika Klubunun Rəsmi Əsasnaməsi (Statute / Charter)
+
+<!-- BÖLMƏ 2: KLUBUN RƏSMİ ƏSASNAMƏSİ -->
+
+# QƏRBİ KASPİ UNİVERSİTETİ (WESTERN CASPIAN UNIVERSITY)
+## "WCU BIOINFORMATICS CLUB" (WCU BİOİNFORMATİKA KLUBU)
+### RƏSMİ ƏSASNAMƏSİ (STATUTE / CHARTER)
+
+---
 
 ### I BÖLMƏ: Klub Haqqında (About the Club)
 
@@ -154,24 +157,33 @@ Klub üzvlüyü Qərbi Kaspi Universitetinin (WCU), habelə Azərbaycanın və b
 
 ### V BÖLMƏ: Təşkilati Quruluş və İdarəetmə (Organizational Structure)
 
-Klubun idarəetmə strukturu çevik, effektiv və birbaşa elmi nəticələrə hədəflənmiş 2 pilləli modeldən ibarətdir:
+Klubun idarəetmə strukturu çevik, effektiv və birbaşa elmi nəticələrə hədəflənmiş **3 pilləli modeldən** ibarətdir:
 
 | Səviyyə / Vəzifə | Təmsilçi / Tərkib | Əsas Funksiya və Rolu |
 | :--- | :--- | :--- |
 | **Klub Sədri (President)** | **Süleyman Mehdi oğlu Hacızadə** *(WCU Biologiya & ETN Molekulyar Biologiya İnstitutu Böyük Laborantı)* | Ümumi rəhbərlik, elmi-tədris proqramının tərtibi, rəsmi təmsilçilik və layihə mentorluğu |
-| **Klub Üzvləri (Members)** | **Biologiya, Biotexnologiya və İT Tələbələri** | Praktiki tədqiqatlar, laboratoriya vorkşopları, seminar iştirakı və komanda layihələri |
+| **Akademik Müəllimlər və Mentorlar (Teachers & Mentors)** | **Sefanya Hacızadə** *(WCU)*, **Fidan Məhərrəmova** *(MSc Bioinformatika)*, **Süsən Həsənova** *(BDU)*, **Leyla Budaqova** *(BDU & ETN Molekulyar Biologiya İnstitutu)* | Elmi-praktiki dərslərin tədrisi, laboratoriya tapşırıqlarının yoxlanması, hakaton/məqalə mentorluğu və Journal Club sessiyaları |
+| **Klub Üzvləri (Members)** | **74 Təsdiqlənmiş Tələbə Üzv** *(Biologiya, Biotexnologiya, İT və əlaqəli ixtisaslar)* | Praktiki tədqiqatlar, laboratoriya vorkşopları, seminar iştirakı, hakaton və komanda layihələri |
 
 **5.1. Təsisçi və Klub Sədri (Founder & President):**  
-- Klubun təsisçisi və ilk rəhbəri Western Caspian University Biologiya (ingilis dili, 2021–2026) ixtisası tələbəsi, Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasının böyük laborantı kimi çalışan (laboratoriya müdiri Prof. Qərib Mürşüdov ilə birgə protonlaşmanı aşkar edən alqoritm/proqram inkişaf etdirən), Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzində Kompüter Ustalığı (İT Dəstək) ixtisası üzrə 1 illik təhsil almış (2020–2021) və Holberton School Azerbaijan kompüter elmləri təhsilli, həmçinin Kembric MRC LMB Proqram Rəhbəri Prof. Qərib Mürşüdov ilə birgə makromolekulyar həndəsi və koordinat analiz mühərriki **Carbox** və interaktiv 3D biomolekulyar vizualizasiya aləti **CarboxMol** proqramlarının müəllifi olan **Süleyman Mehdi oğlu Hacızadə**dir (Xüsusi Qeyd: Carbox və CarboxMol hələ ki, rəsmi nəşr edilmədiyi üçün klubun daxili elmi aləti və workbench-i olaraq istifadə olunur və yalnız Süleyman Hacızadə və Prof. Qərib Mürşüdov tərəfindən izah edilə və tədris oluna bilər).
+- Klubun təsisçisi və ilk rəhbəri Western Caspian University Biologiya (ingilis dili, 2021–2026) ixtisası tələbəsi, Azərbaycan Respublikası Elm və Təhsil Nazirliyinin (ETN) Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasının böyük laborantı kimi çalışan (laboratoriya müdiri Prof. Qərib Mürşüdov ilə birgə protonlaşmanı aşkar edən alqoritm/proqram inkişaf etdirən), Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzində Kompüter Ustalığı (İT Dəstək) ixtisası üzrə 1 illik təhsil almış (2020–2021) və Holberton School Azerbaijan kompüter elmləri təhsilli, həmçinin açıq mənbəli **Carbox** (`https://project-carbox.github.io/`) və **CarboxMol** (`https://carboxmol.github.io/`) layihələrinin tərtibatçısı olan **Süleyman Mehdi oğlu Hacızadə**dir.
 - **Səlahiyyət və Öhdəlikləri:**
   - Klubu rəsmi olaraq Qərbi Kaspi Universitetinin rəhbərliyi, dekanlıq, Tələbə İşləri Departamenti və Tələbə Gənclər Təşkilatı (TGT) qarşısında təmsil edir;
   - Klubun illik və semestrlik fəaliyyət planını, dərslərin elmi məzmununu, 3D struktur laboratoriyasında PyMOL, ChimeraX, Coot, Carbox və CarboxMol alətlərinin tədrisini və dəvət olunacaq qonaq spikerləri müəyyənləşdirir;
   - Laboratoriyaların və kompüter zallarının təmin edilməsi üçün universitet strukturları ilə rəsmi yazışmaları həyata keçirir;
-  - Üzvlük müraciətlərini dəyərləndirir və tələbələrin komandalara bölünməsinə rəhbərlik edir;
+  - Üzvlük və müəllim/mentor müraciətlərini dəyərləndirir, tələbələrin komandalara bölünməsinə rəhbərlik edir;
   - Hər tədris semestrinin sonunda fəaliyyət hesabatını hazırlayaraq universitet rəhbərliyinə təqdim edir.
 
-**5.2. Klub Üzvləri (Club Members):**  
-- Təlimlərdə, layihələrdə və elmi müzakirələrdə iştirak edir;
+**5.2. Akademik Müəllimlər və Mentorlar (Academic Teachers & Mentors):**  
+- Klubun elmi-pedaqoji fəaliyyətinə dəstək verən, müxtəlif universitet və elmi-tədqiqat institutlarından qoşulmuş rəsmi təsdiqlənmiş müəllim və mentor heyətidir (**Sefanya Hacızadə**, **Fidan Məhərrəmova**, **Süsən Həsənova**, **Leyla Budaqova** və növbəti mərhələlərdə qoşulacaq digər mütəxəssislər).
+- **Səlahiyyət və Öhdəlikləri:**
+  - Bioinformatika, molekulyar biologiya, genomika, struktur biologiyası, Python və R istiqamətlərində əsasən onlayn (BioMeet) və ya fiziki dərslər, seminarlar və laboratoriya məşğələləri aparmaq;
+  - Tələbələrə praktiki laboratoriya tapşırıqları təyin etmək, təhvil verilən həlləri yoxlamaq, elmi rəy bildirmək və qiymətləndirmək;
+  - İlk məzun tələbə qruplarına hakaton layihələrində və alimlərlə birgə elmi məqalələrin hazırlanmasında mentorluq etmək;
+  - Sirkulyar (dövri) tədris döngüsünün son mərhələsində elmi işçilər və klub üzvləri ilə birlikdə **Journal Club** sessiyalarını təşkil etmək və aparmaq.
+
+**5.3. Klub Üzvləri (Club Members):**  
+- Təlimlərdə, laboratoriya tapşırıqlarında, hakaton layihələrində, elmi məqalə hazırlığında və Journal Club müzakirələrində iştirak edir;
 - Tədbirlərin təşkilində, texniki təminatında və ictimaiyyətlə əlaqələrdə təşkilati dəstək göstərirlər.
 
 ---
@@ -193,20 +205,25 @@ Süleyman Mehdi oğlu Hacızadə
 İmza: _______________________  
 Tarix: ____ / ____ / 2026-cı il  
 Əlaqə: +994 70 550 69 07 | +994 99 350 69 07  
-E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com  
+E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
 
-\newpage
+---
 
-# 3. Təşkilati Struktur və Vəzifə Bölgüsü
 
-Klubun idarəetmə strukturu çevik, sadə və effektiv elmi fəaliyyəti təmin etmək məqsədilə birbaşa **Klub Sədri** və **Klub Üzvləri** səviyyəsində formalaşdırılmışdır.
+<!-- BÖLMƏ 3: TƏŞKİLATİ STRUKTUR VƏ AKADEMİK HEYƏT -->
+
+# Qərbi Kaspi Universiteti Bioinformatika Klubu
+## Təşkilati Struktur və Vəzifə Bölgüsü
+
+Klubun idarəetmə və elmi-tədris strukturu çevik, şəffaf və effektiv elmi fəaliyyəti təmin etmək məqsədilə **Klub Sədri**, **Akademik Müəllimlər və Mentorlar** və **Klub Üzvləri** olmaqla 3 pillədə formalaşdırılmışdır.
 
 ### Təşkilati İdarəetmə Sxemi
 
 | Səviyyə / Vəzifə | Təmsilçi / Tərkib | Əsas Funksiya və Rolu |
 | :--- | :--- | :--- |
 | **Klub Sədri (President)** | **Süleyman Mehdi oğlu Hacızadə** *(WCU Biologiya & ETN Molekulyar Biologiya İnstitutu Böyük Laborantı)* | Ümumi rəhbərlik, elmi-tədris proqramının tərtibi, rəsmi təmsilçilik və layihə mentorluğu |
-| **Klub Üzvləri (Members)** | **Biologiya, Biotexnologiya və İT Tələbələri** | Praktiki tədqiqatlar, laboratoriya vorkşopları, seminar iştirakı və komanda layihələri |
+| **Akademik Müəllimlər və Mentorlar (Teachers & Mentors)** | **4 Rəsmi Akademik Müəllim / Mentor** *(WCU, BDU, ETN Molekulyar Biologiya İnstitutu və Bioinformatika tədqiqatçıları)* | Tədris və seminarların aparılması, laboratoriya tapşırıqlarının yoxlanması, hakaton/məqalə mentorluğu və Journal Club sessiyaları |
+| **Klub Üzvləri (Members)** | **74 Təsdiqlənmiş Tələbə Üzv** *(Biologiya, Biotexnologiya, İT və əlaqəli ixtisaslar)* | Praktiki tədqiqatlar, laboratoriya vorkşopları, seminar iştirakı, hakaton və komanda layihələri |
 
 ---
 
@@ -216,38 +233,69 @@ Klubun idarəetmə strukturu çevik, sadə və effektiv elmi fəaliyyəti təmin
 * **Ad, Soyad:** Süleyman Mehdi oğlu Hacızadə
 * **Akademik və Elmi Status:** 
   * Western Caspian University, Biologiya (ingilis dili), 2021–2026 (V kurs tələbəsi);
-  * Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasının **böyük laborantı (Senior Laboratory Assistant)** (laboratoriya müdiri Prof. Qərib Mürşüdov ilə birgə protonlaşmanı aşkar edən alqoritm/proqram inkişaf etdirir);
-  * Kembric MRC LMB Proqram Rəhbəri Prof. Qərib Mürşüdov ilə birgə makromolekulyar koordinat və həndəsi analiz mühərriki **Carbox** və interaktiv 3D biomolekulyar vizualizator **CarboxMol** proqram təminatlarının müəllifi və tərtibatçısı (Hələ rəsmi nəşr edilmədiyi üçün daxili elmi alət kimi yalnız onlar tərəfindən tədris olunur);
+  * Azərbaycan Respublikası Elm və Təhsil Nazirliyinin (ETN) Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasının **böyük laborantı (Senior Laboratory Assistant)** (laboratoriya müdiri Prof. Qərib Mürşüdov ilə birgə protonlaşmanı aşkar edən alqoritm/proqram inkişaf etdirir);
+  * Açıq mənbəli (open-source) makromolekulyar koordinat və həndəsi analiz mühərriki **Carbox** (`https://project-carbox.github.io/`) və interaktiv 3D biomolekulyar vizualizator **CarboxMol** (`https://carboxmol.github.io/`) layihələrinin tərtibatçısı;
   * Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi, Kompüter Ustalığı (İT Dəstək) ixtisası üzrə 1 illik təhsil məzunu (2020–2021);
   * Holberton School Azerbaijan, Kompüter Elmləri (Foundations of Computer Science, İyun 2025 – Aprel 2026);
-  * 1 saylı Bakı Tibb Kolleci (Əczaçılıq, 2017–2020) və 5 illik əczaçılıq təcrübəsi bazası.
+  * 1 saylı Bakı Tibb Kolleci (Əczaçılıq, 2017–2020) və 6+ illik əczaçılıq təcrübəsi bazası.
 * **Əlaqə:** +994 70 550 69 07 | +994 99 350 69 07 | suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com | GitHub: [SuleimanHajizadeh](https://github.com/SuleimanHajizadeh)
 * **Vəzifə Öhdəlikləri:**
-  * **Rəsmi Təmsilçilik:** Klubu rəsmi olaraq Qərbi Kaspi Universitetinin rəhbərliyi, dekanlıq, Tələbə İşləri Departamenti və Tələbə Gənclər Təşkilatı (TGT) qarşısında təmsil edir.
+  * **Rəsmi Təmsilçilik:** Klubu rəsmi olaraq Qərbi Kaspi Universitetinin rəhbərliyi, dekanlıq, Tələbə İşləri Departamenti, Tələbə Gənclər Təşkilatı (TGT) və xarici/yerli elmi tərəfdaşlar qarşısında təmsil edir.
   * **Elmi və Tədris Rəhbərliyi:** Seminarların, vorkşopların və elmi araşdırmaların proqramını tərtib edir, 3D struktur laboratoriyasında PyMOL, ChimeraX, Coot, Carbox və CarboxMol alətlərinin tədrisinə rəhbərlik edir, real laboratoriya təcrübəsini tələbələrlə bölüşür.
-  * **Təşkilati İşlər:** Kompüter laboratoriyalarının və auditoriyaların ayrılması üçün universitet strukturları ilə rəsmi yazışmaları aparır.
-  * **Koordinasiya və Qəbul:** Üzvlük müraciətlərini dəyərləndirir, tələbələrin inkişaf istiqamətlərini (kodlaşdırma və ya biologiya) istiqamətləndirir.
+  * **Təşkilati İşlər:** Kompüter laboratoriyalarının və auditoriyaların ayrılması üçün universitet strukturları ilə rəsmi yazışmaları aparır, BioMeet onlayn tədris infrastrukturunu idarə edir.
+  * **Koordinasiya və Qəbul:** Üzvlük və müəllim/mentor müraciətlərini dəyərləndirir, tələbələrin inkişaf istiqamətlərini (kodlaşdırma və ya biologiya) istiqamətləndirir.
   * **Hesabatlılıq:** Hər semestrin sonunda klubun elmi və ictimai fəaliyyət hesabatını hazırlayaraq universitet rəhbərliyinə təqdim edir.
 
 ---
 
-#### 2. Klub Üzvləri (Members)
+#### 2. Akademik Müəllimlər və Mentorlar (Teachers & Academic Mentors)
+
+Klubun tədris, laboratoriya təcrübəsi və elmi tədqiqat istiqamətlərini dəstəkləyən rəsmi təsdiqlənmiş müəllim və mentor heyəti:
+
+| # | Müəllim / Mentor | Vəzifə / Akademik Status | Universitet / Elmi Müəssisə | İxtisas və Tədqiqat Sahələri |
+| :---: | :--- | :--- | :--- | :--- |
+| **1** | **Sefanya Hacızadə** | Akademik Mentor & Tədqiqatçı | Qərbi Kaspi Universiteti (WCU), Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi, Təbiət Elmləri Kafedrası | Bioinformatika, Genomika, DNT Analizi, Python |
+| **2** | **Fidan Məhərrəmova** | Akademik Mentor & Tədqiqatçı *(MSc Bioinformatika)* | Bioinformatika və Hesablama Biologiyası | Bioinformatika, Genomika və NGS Analizi, Struktur Biologiyası, Python & R |
+| **3** | **Süsən Həsənova** | Müəllim / Akademik Mentor | Bakı Dövlət Universiteti (BDU), Biotexnologiya Kafedrası | Biotexnologiya, Genomika, Molekulyar Biologiya |
+| **4** | **Leyla Budaqova** | Doktorant & Akademik Mentor | Bakı Dövlət Universiteti (BDU) & ETN Molekulyar Biologiya İnstitutu | Molekulyar Biologiya, Genomika, Doktorantura Tədqiqatları, Struktur Biologiyası |
+
+* **Vəzifə Öhdəlikləri:**
+  * **Tədris və Laboratoriya Rəhbərliyi:** 28 həftəlik tədris proqramı çərçivəsində əsasən onlayn (BioMeet: `https://carboxmol-bioinformatics-club.github.io/#biomeet`) və bəzən fiziki dərslər, praktiki seminarlar və vörkşoplar aparmaq.
+  * **Tapşırıqların Qiymətləndirilməsi:** Müəllim Paneli vasitəsilə klub üzvlərinə laboratoriya tapşırıqları təyin etmək, tələbə həllərini yoxlamaq, peşəkar akademik rəy yazmaq və qiymətləndirmək.
+  * **Hakaton və Elmi Məqalə Mentorluğu:** Tədris prosesinin ilk məzunları arasında keçiriləcək **İlk CarboxMol Bioinformatika Hakatonunda** və alimlərlə birgə elmi məqalələrin yazılmasına hazırlıq mərhələsində tələbə qruplarına rəhbərlik etmək.
+  * **Journal Club Sessiyaları:** Sirkulyar (dövri) inkişaf modelinin son mərhələsində elmi işçilər və klub üzvləri ilə birgə Journal Club elmi müzakirə sessiyalarını təşkil etmək.
+
+---
+
+#### 3. Klub Üzvləri (Members)
 * **Tərkib və Geniş Əhatə Dairəsi:** Klub açıq və inteqrativ elmi platformadır. Kluba təkcə Qərbi Kaspi Universitetinin (WCU) tələbələri deyil, eyni zamanda Azərbaycanın və beynəlxalq səviyyədə bütün **Universitetlərinin** (BDU, ATU, ADNSU, ADA, BMU, Xəzər Universiteti və digər ali təhsil müəssisələri) və **Elmi-Tədqiqat İnstitutlarının** (Molekulyar Biologiya İnstitutu - AR ETN MBİ / IMB - Institute of Molecular Biology, Genetik Ehtiyatlar İnstitutu, Biofizika İnstitutu, Fiziologiya İnstitutu və s.) tələbələri, magistrantları, doktorantları və gənc elmi tədqiqatçıları tamhüquqlu və bərabərhüquqlu üzv qismində qoşula, layihələrdə iştirak edə bilərlər.
 * **İştirak Hüququ:** Klubun təşkil etdiyi bütün açıq dərslərdə, laboratoriya vorkşoplarında, elmi seminarlarda və "Journal Club" məqalə müzakirələrində iştirak edirlər.
 * **Təşəbbüskarlıq və Layihələr:** Fərdi və ya qrup şəklində bioinformatika, data analizi və elmi modelləşdirmə layihələri irəli sürə, hakaton komandalarında yer ala bilərlər.
 * **Təşkilati Dəstək:** Tədbirlərin təşkilində, texniki təminatda, dizayn və ya təbliğat işlərində fəal şəkildə dəstək göstərirlər.
 * **Əsasnaməyə Riayət:** Universitetin daxili nizam-intizam qaydalarına və klubun etik prinsiplərinə tam əməl edirlər.
 
-\newpage
+---
 
-# 4. İllik Fəaliyyət Planı və Genişləndirilmiş Tədris Sillabusu (2026/2027)
+
+<!-- BÖLMƏ 4: İLLİK FƏALİYYƏT PLANI, SİLLABUS VƏ SİRKULYAR PLAN -->
+
+# QƏRBİ KASPİ UNİVERSİTETİ (WESTERN CASPIAN UNIVERSITY)
+## "WCU BIOINFORMATICS CLUB" (WCU BİOİNFORMATİKA KLUBU)
+### 2026/2027 TƏDRİS İLİ ÜÇÜN İLLİK FƏALİYYƏT PLANI VƏ GENİŞLƏNDİRİLMİŞ TƏDRİS SİLLABUSU
+
+---
 
 ### I. KURS HAQQINDA ÜMUMİ MƏLUMAT VƏ TƏDRİS KONSEPSİYASI
 
-* **Təşkilatçı:** Qərbi Kaspi Universiteti Bioinformatika Klubu
-* **Elmi Rəhbər və Təlimçi:** Süleyman Mehdi oğlu Hacızadə (Western Caspian University, Biologiya 2021–2026, V kurs / Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasının Böyük Laborantı / Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi Kompüter Ustalığı və İT Dəstək, 1 illik təhsil, 2020–2021 / Holberton School Azerbaijan)
-* **Müddət:** 2 Semestr (28 Həftəlik Akademik Təqvim + 1 Həftəlik Qış İntensiv Məktəbi)
-* **Tədris Formatı:** Hibrid (Universitet Kompüter Laboratoriyasında əyani vorkşoplar, interaktiv seminar dərsləri və GitHub/Google Colab üzərindən praktiki kodlaşdırma)
+* **Təşkilatçı:** Qərbi Kaspi Universiteti — CarboxMol Bioinformatika Klubu
+* **Klub Sədri və Elmi Təlimçi:** Süleyman Mehdi oğlu Hacızadə (Western Caspian University, Biologiya 2021–2026, V kurs / Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutunun Hesablama Struktur Biologiyası Laboratoriyasının Böyük Laborantı / Holberton School Azerbaijan)
+* **Akademik Müəllim və Mentor Heyəti:**
+  * **Sefanya Hacızadə** — Akademik Mentor & Tədqiqatçı (Qərbi Kaspi Universiteti, Təbiət Elmləri Kafedrası — *Bioinformatika, Genomika, DNT Analizi, Python*)
+  * **Fidan Məhərrəmova** — Akademik Mentor & Tədqiqatçı, MSc Bioinformatika (*Bioinformatika, Genomika və NGS Analizi, Struktur Biologiyası, Python & R*)
+  * **Süsən Həsənova** — Müəllim / Akademik Mentor (Bakı Dövlət Universiteti, Biotexnologiya Kafedrası — *Biotexnologiya, Genomika, Molekulyar Biologiya*)
+  * **Leyla Budaqova** — Doktorant & Akademik Mentor (Bakı Dövlət Universiteti & ETN Molekulyar Biologiya İnstitutu — *Molekulyar Biologiya, Genomika, Struktur Biologiyası*)
+* **Müddət:** 2 Semestr (28 Həftəlik Akademik Təqvim + 1 Həftəlik Qış İntensiv Məktəbi — Sirkulyar / Dövri Model)
+* **Tədris Formatı:** Əsasən onlayn (BioMeet üzərindən: `https://carboxmol-bioinformatics-club.github.io/#biomeet`), bəzən isə fiziki (Universitet Kompüter Laboratoriyasında əyani vorkşoplar, interaktiv seminar dərsləri və GitHub/Google Colab üzərindən praktiki kodlaşdırma)
 * **İş Formatı və Metodologiya:** **Komanda İşi (Teamwork & Pair-Programming)** — Bütün fəaliyyət planı üzrə praktiki tapşırıqlar, alqoritmik kodlaşdırma və elmi layihələr tələbə komandaları şəklində birgə icra ediləcəkdir.
 * **Hədəf Auditoriyası:** Biologiya, Biotexnologiya, Kompüter Elmləri, İnformasiya Texnologiyaları və əlaqəli ixtisasların bakalavr və magistr tələbələri.
 * **İlkin Tələblər:** İlkin proqramlaşdırma təcrübəsi tələb olunmur. Biologiya tələbələri üçün sıfırdan proqramlaşdırma, İT tələbələri üçün isə təməl molekulyar biologiya konseptləri paralel tədris olunur.
@@ -310,15 +358,26 @@ Bu proqramı uğurla tamamlayan klub üzvləri aşağıdakı bilik və sərişt�
 | **21** | **Qabaqcıl RNA-Seq Vizuallaşdırması** | Çoxölçülü məlumatların reduksiyası (PCA). P-dəyəri və Fold Change nisbəti. | Volcano plot (əhəmiyyətli genlərin vurğulanması) və Clustered Heatmap (istilik xəritəsi) qurulması. | `EnhancedVolcano`, `pheatmap` |
 | **22** | **Funksional Zənginləşdirmə: GO & KEGG** | Gen Ontologiyası (Bioloji Proses, Molekulyar Funksiya, Hüceyrə Komponenti), Siqnal yolları. | Diferensial genlərin hansı bioloji yollarda zənginləşdiyinin statistik analizi (Over-representation test). | `clusterProfiler`, STRING-DB |
 | **23** | **Journal Club #2: Dəqiq Onkologiya** | Xərçəng genomikası, mutasiya yüklənməsi (TMB) və immunoterapiya biomarkerləri. | "Cell" və ya "Lancet Oncology" jurnalından bioinformatik tədqiqat məqaləsinin müzakirəsi. | Elmi Müzakirə Paneli |
-| **24** | **Molekulyar Dokinq və Dərman Dizaynı** | Zülal-liqand qarşılıqlı təsirləri, rabitə enerjisi ($\Delta G$), aktiv mərkəz şəbəkəsi. | Məlum inhibitor liqandın hədəf xərçəng zülalına virtual dokinqi və bağlanma enerjisinin təhlili; PyMOL, ChimeraX, Carbox və CarboxMol ilə komplekslərin konformasiya analizi. | AutoDock Vina, PyMOL, UCSF ChimeraX, Carbox, CarboxMol |
+| **24** | **Molekulyar Dokinq və Dərman Dizaynı** | Zülal-liqand qarşılıqlı təsirləri, rabitə enerjisi (ΔG), aktiv mərkəz şəbəkəsi. | Məlum inhibitor liqandın hədəf xərçəng zülalına virtual dokinqi və bağlanma enerjisinin təhlili; PyMOL, ChimeraX, Carbox və CarboxMol ilə komplekslərin konformasiya analizi. | AutoDock Vina, PyMOL, UCSF ChimeraX, Carbox, CarboxMol |
 | **25** | **Bioinformatikada Maşın Öyrənməsi (ML)** | Supervised / Unsupervised learning, təsnifat (Classification) və klasterləşmə alqoritmləri. | Xərçəng xəstələrinin gen ekspressiyası profilinə əsasən Random Forest və SVM ilə təsnifatı. | Python `scikit-learn` |
-| **26** | **WCU Bio-Data Hackathon: Start və Təlimat** | Hakatonun elanı: Tələbə komandalarına real anonimləşdirilmiş xəstəlik verilənlər dəstlərinin təqdimi. | Komandaların formalaşdırılması, iş bölgüsü, hipotezlərin qurulması və məlumatların təmizlənməsi. | Kaggle / GitHub Classroom |
-| **27** | **Hakaton: Mentorluq və Layihə İnkişafı** | Mentor saatları: Klub Sədri və dəvət olunmuş elmi tədqiqatçılar tərəfindən komandalara bələdçilik. | Tələbə komandalarının analiz skriptlərinin tamamlanması, elmi nəticələrin və posterlərin hazırlanması. | Kod Yoxlanışı və Mentorluq |
-| **28** | **İllik Elmi Sərgi, Təqdimatlar və Müdafiə** | Klubun İllik Yekun Konfransı. Universitet rəhbərliyi, dekanlıq və TGT qarşısında poster müdafiəsi. | Ən yaxşı 3 layihə komandasının mükafatlandırılması, bütün aktiv məzunlara rəsmi sertifikatların təqdimi. | Qərbi Kaspi Universiteti Konfrans Zalı |
+| **26** | **İlk CarboxMol Bioinformatika Hakatonu: Start və Təlimat** | Hakatonun elanı: İlk məzun tələbə komandalarına real anonimləşdirilmiş bioloji verilənlər dəstlərinin təqdimi. | Komandaların formalaşdırılması, iş bölgüsü, hipotezlərin qurulması və məlumatların təmizlənməsi. | Kaggle / GitHub Classroom |
+| **27** | **Hakaton: Mentorluq və Layihə İnkişafı** | Mentor saatları: Klub Sədri, Akademik Müəllimlər/Mentorlar (Sefanya Hacızadə, Fidan Məhərrəmova, Süsən Həsənova, Leyla Budaqova) və dəvət olunmuş alimlər tərəfindən bələdçilik. | Tələbə komandalarının analiz skriptlərinin tamamlanması, elmi nəticələrin və posterlərin hazırlanması. | Kod Yoxlanışı və Mentorluq |
+| **28** | **İllik Elmi Sərgi, Təqdimatlar və Müdafiə** | Klubun İllik Yekun Konfransı. Universitet rəhbərliyi, dekanlıq, müəllimlər və TGT qarşısında poster müdafiəsi. | Ən yaxşı layihə komandalarının mükafatlandırılması, ilk məzunların alimlərlə birgə elmi məqalə hazırlığına keçidi. | Qərbi Kaspi Universiteti / BioMeet |
 
 ---
 
-### VI. TÖVSİYƏ OLUNAN ƏDƏBİYYAT VƏ RESURSLAR
+### VI. MƏRHƏLƏLİ VƏ SİRKULYAR (DÖVRİ) ELMİ İNKİŞAF PLANI
+
+Azərbaycanda bioinformatika, struktur və hesablama biologiyası sahəsində davamlı inkişafın getməsi məqsədilə klubun fəaliyyəti aşağıdakı 4 mərhələli **sirkulyar (dövri)** model əsasında davam edəcəkdir:
+
+1. **28 Həftəlik Praktiki Bioinformatika Tədris Prosesi:** Əsasən onlayn (BioMeet üzərindən: `https://carboxmol-bioinformatics-club.github.io/#biomeet`), bəzən isə fiziki formatda olmaqla Linux/Bash, Python, Biopython, R/Bioconductor, NGS sekvens analizi, struktur biologiyası (açıq mənbəli **Carbox**: `https://project-carbox.github.io/` və **CarboxMol**: `https://carboxmol.github.io/`) və AlphaFold üzrə sistemli təlimlərin keçirilməsi; həmçinin Akademik Müəllim/Mentor heyəti, Prof. Qərib Mürşüdov və növbəti mərhələlərdə digər mütəxəssislər tərəfindən xüsusi təlimlərin təşkili.
+2. **İlk CarboxMol Bioinformatika Hakatonu:** Gələcək tədris prosesinin ilk məzunları arasında **İlk CarboxMol Bioinformatika Hakatonunu** təşkil etmək üçün əlimizdən gəldiyi qədər işlər görməyə çalışacağıq.
+3. **Alimlərlə Birgə Elmi Məqalələrin Hazırlanması:** İlk məzun verəcəyimiz tələbə qruplarının alimlərlə birgə elmi məqalələrin yazılmasına hazırlığını başlatmağı planlaşdırırıq.
+4. **Journal Club Sessiyaları (Son Mərhələ — Sirkulyar Davamlılıq):** Ən son mərhələdə artıq müəyyən elmi məqalələr yazıldıqdan sonra **Journal Club** çərçivəsində elmi işçilərin, klub üzvlərinin və klub müəllimlərinin birgə müzakirə sessiyalarını təşkil etməyi planlaşdırırıq. Bu proses Azərbaycanda elmi inkişafın fasiləsiz davam etməsi üçün **sirkulyar olaraq** hər yeni dövrdə davam edəcəkdir.
+
+---
+
+### VII. TÖVSİYƏ OLUNAN ƏDƏBİYYAT VƏ RESURSLAR
 
 1. **Kitablar:**
    - Compeau, P., & Pevzner, P. (2018). *Bioinformatics Algorithms: An Active Learning Approach*. Active Learning Publishers.
@@ -335,12 +394,19 @@ Bu proqramı uğurla tamamlayan klub üzvləri aşağıdakı bilik və sərişt�
 
 **Tərtib etdi və Təsdiq üçün təqdim etdi:**  
 Təsisçi və Klub Sədri: **Süleyman Mehdi oğlu Hacızadə**  
+Əlaqə: +994 70 550 69 07 | +994 99 350 69 07  
+E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com  
 İmza: _______________________  
 Tarix: ____ / ____ / 2026-cı il
 
-\newpage
+---
 
-# 5. Rəsmi Üzvlük və Qeydiyyat Anketi (Tələbə Qəbulu və İxtisaslaşma Şablonu)
+
+<!-- BÖLMƏ 5: ÜZVLÜK QEYDİYYAT FORMASI -->
+
+# QƏRBİ KASPİ UNİVERSİTETİ (WESTERN CASPIAN UNIVERSITY)
+## "WCU BIOINFORMATICS CLUB" (WCU BİOİNFORMATİKA KLUBU)
+### RƏSMİ ÜZVLÜK VƏ QEYDİYYAT ANKETİ (TƏLƏBƏ QƏBULU VƏ İXTİSASLAŞMA FORMASI)
 
 *Bu anket Qərbi Kaspi Universitetinin Bioinformatika Klubuna üzv olmaq istəyən tələbələrin və gənc tədqiqatçıların qeydiyyatı, onların ilkin bilik səviyyəsinin və elmi maraq istiqamətlərinin müəyyənləşdirilərək komandalara düzgün bölüşdürülməsi üçün hazırlanmışdır.*
 
@@ -491,14 +557,3 @@ Tarix: ____ / ____ / 2026-cı il
 ---
 
 *Qeyd: Bu formanı doldurduqdan sonra kağız nüsxəsini Klub Sədrinə təqdim edə və ya klubun rəsmi onlayn platforması vasitəsilə (`https://wcu-bioinformatics-club.vercel.app/#register`) elektron qaydada göndərə bilərsiniz.*
-
----
-
-### MƏRHƏLƏLİ VƏ SİRKULYAR (DÖVRİ) ELMİ İNKİŞAF PLANI
-
-Azərbaycanda bioinformatika, struktur və hesablama biologiyası sahəsində davamlı inkişafın getməsi məqsədilə klubun fəaliyyəti aşağıdakı 4 mərhələli **sirkulyar (dövri)** model əsasında davam edəcəkdir:
-
-1. **28 Həftəlik Praktiki Bioinformatika Tədris Prosesi:** Əsasən onlayn (BioMeet üzərindən: `https://carboxmol-bioinformatics-club.github.io/#biomeet`), bəzən isə fiziki formatda olmaqla Linux/Bash, Python, Biopython, R/Bioconductor, NGS sekvens analizi, struktur biologiyası (açıq mənbəli **Carbox**: `https://project-carbox.github.io/` və **CarboxMol**: `https://carboxmol.github.io/`) və AlphaFold üzrə sistemli təlimlərin keçirilməsi; həmçinin Prof. Qərib Mürşüdov və növbəti mərhələlərdə digər mütəxəssislər tərəfindən xüsusi təlimlərin təşkili.
-2. **İlk CarboxMol Bioinformatika Hakatonu:** Gələcək tədris prosesinin ilk məzunları arasında **İlk CarboxMol Bioinformatika Hakatonunu** təşkil etmək üçün əlimizdən gəldiyi qədər işlər görməyə çalışacağıq.
-3. **Alimlərlə Birgə Elmi Məqalələrin Hazırlanması:** İlk məzun verəcəyimiz tələbə qruplarının alimlərlə birgə elmi məqalələrin yazılmasına hazırlığını başlatmağı planlaşdırırıq.
-4. **Journal Club Sessiyaları (Son Mərhələ — Sirkulyar Davamlılıq):** Ən son mərhələdə artıq müəyyən elmi məqalələr yazıldıqdan sonra **Journal Club** çərçivəsində elmi işçilərin, klub üzvlərinin və klub müəllimlərinin birgə müzakirə sessiyalarını təşkil etməyi planlaşdırırıq. Bu proses Azərbaycanda elmi inkişafın fasiləsiz davam etməsi üçün **sirkulyar olaraq** hər yeni dövrdə davam edəcəkdir.

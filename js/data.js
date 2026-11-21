@@ -62,13 +62,13 @@ const INITIAL_DATA = {
     {
       id: "03_struktur",
       title: "Təşkilati Struktur",
-      subtitle: "Klub Sədri və Klub Üzvləri vəzifə bölgüsü",
+      subtitle: "Klub Sədri, Akademik Müəllimlər/Mentorlar (4) və Klub Üzvləri (74) vəzifə bölgüsü",
       category: "Struktur",
       pdfUrl: "docs/03_Teshkilati_Struktur.pdf",
       docxUrl: "docs/03_Teshkilati_Struktur.docx",
       mdUrl: "docs/03_Teshkilati_Struktur.md",
       icon: "fa-sitemap",
-      description: "Klub Sədri (Carbox & CarboxMol həmmüəllifi) və Klub Üzvlərinin vəzifə bölgüsü, 3D struktur laboratoriyalarında tədris rəhbərliyi."
+      description: "Klub Sədri (Süleyman Hacızadə), 4 Akademik Müəllim/Mentor (Sefanya Hacızadə, Fidan Məhərrəmova, Süsən Həsənova, Leyla Budaqova) və 74 Klub Üzvünün 3 pilləli təşkilati idarəetmə strukturu və vəzifə bölgüsü."
     },
     {
       id: "04_plan",
@@ -4898,7 +4898,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.21.v63_circular_roadmap_etn_mbi";
+const CURRENT_DATA_VERSION = "2026.11.22.v64_teachers_in_docs";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {

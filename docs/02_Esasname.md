@@ -101,24 +101,33 @@ Klub üzvlüyü Qərbi Kaspi Universitetinin (WCU), habelə Azərbaycanın və b
 
 ### V BÖLMƏ: Təşkilati Quruluş və İdarəetmə (Organizational Structure)
 
-Klubun idarəetmə strukturu çevik, effektiv və birbaşa elmi nəticələrə hədəflənmiş 2 pilləli modeldən ibarətdir:
+Klubun idarəetmə strukturu çevik, effektiv və birbaşa elmi nəticələrə hədəflənmiş **3 pilləli modeldən** ibarətdir:
 
 | Səviyyə / Vəzifə | Təmsilçi / Tərkib | Əsas Funksiya və Rolu |
 | :--- | :--- | :--- |
 | **Klub Sədri (President)** | **Süleyman Mehdi oğlu Hacızadə** *(WCU Biologiya & ETN Molekulyar Biologiya İnstitutu Böyük Laborantı)* | Ümumi rəhbərlik, elmi-tədris proqramının tərtibi, rəsmi təmsilçilik və layihə mentorluğu |
-| **Klub Üzvləri (Members)** | **Biologiya, Biotexnologiya və İT Tələbələri** | Praktiki tədqiqatlar, laboratoriya vorkşopları, seminar iştirakı və komanda layihələri |
+| **Akademik Müəllimlər və Mentorlar (Teachers & Mentors)** | **Sefanya Hacızadə** *(WCU)*, **Fidan Məhərrəmova** *(MSc Bioinformatika)*, **Süsən Həsənova** *(BDU)*, **Leyla Budaqova** *(BDU & ETN Molekulyar Biologiya İnstitutu)* | Elmi-praktiki dərslərin tədrisi, laboratoriya tapşırıqlarının yoxlanması, hakaton/məqalə mentorluğu və Journal Club sessiyaları |
+| **Klub Üzvləri (Members)** | **74 Təsdiqlənmiş Tələbə Üzv** *(Biologiya, Biotexnologiya, İT və əlaqəli ixtisaslar)* | Praktiki tədqiqatlar, laboratoriya vorkşopları, seminar iştirakı, hakaton və komanda layihələri |
 
 **5.1. Təsisçi və Klub Sədri (Founder & President):**  
-- Klubun təsisçisi və ilk rəhbəri Western Caspian University Biologiya (ingilis dili, 2021–2026) ixtisası tələbəsi, Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasının böyük laborantı kimi çalışan (laboratoriya müdiri Prof. Qərib Mürşüdov ilə birgə protonlaşmanı aşkar edən alqoritm/proqram inkişaf etdirən), Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzində Kompüter Ustalığı (İT Dəstək) ixtisası üzrə 1 illik təhsil almış (2020–2021) və Holberton School Azerbaijan kompüter elmləri təhsilli, həmçinin Kembric MRC LMB Proqram Rəhbəri Prof. Qərib Mürşüdov ilə birgə makromolekulyar həndəsi və koordinat analiz mühərriki **Carbox** və interaktiv 3D biomolekulyar vizualizasiya aləti **CarboxMol** proqramlarının müəllifi olan **Süleyman Mehdi oğlu Hacızadə**dir (Xüsusi Qeyd: Carbox və CarboxMol hələ ki, rəsmi nəşr edilmədiyi üçün klubun daxili elmi aləti və workbench-i olaraq istifadə olunur və yalnız Süleyman Hacızadə və Prof. Qərib Mürşüdov tərəfindən izah edilə və tədris oluna bilər).
+- Klubun təsisçisi və ilk rəhbəri Western Caspian University Biologiya (ingilis dili, 2021–2026) ixtisası tələbəsi, Azərbaycan Respublikası Elm və Təhsil Nazirliyinin (ETN) Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasının böyük laborantı kimi çalışan (laboratoriya müdiri Prof. Qərib Mürşüdov ilə birgə protonlaşmanı aşkar edən alqoritm/proqram inkişaf etdirən), Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzində Kompüter Ustalığı (İT Dəstək) ixtisası üzrə 1 illik təhsil almış (2020–2021) və Holberton School Azerbaijan kompüter elmləri təhsilli, həmçinin açıq mənbəli **Carbox** (`https://project-carbox.github.io/`) və **CarboxMol** (`https://carboxmol.github.io/`) layihələrinin tərtibatçısı olan **Süleyman Mehdi oğlu Hacızadə**dir.
 - **Səlahiyyət və Öhdəlikləri:**
   - Klubu rəsmi olaraq Qərbi Kaspi Universitetinin rəhbərliyi, dekanlıq, Tələbə İşləri Departamenti və Tələbə Gənclər Təşkilatı (TGT) qarşısında təmsil edir;
   - Klubun illik və semestrlik fəaliyyət planını, dərslərin elmi məzmununu, 3D struktur laboratoriyasında PyMOL, ChimeraX, Coot, Carbox və CarboxMol alətlərinin tədrisini və dəvət olunacaq qonaq spikerləri müəyyənləşdirir;
   - Laboratoriyaların və kompüter zallarının təmin edilməsi üçün universitet strukturları ilə rəsmi yazışmaları həyata keçirir;
-  - Üzvlük müraciətlərini dəyərləndirir və tələbələrin komandalara bölünməsinə rəhbərlik edir;
+  - Üzvlük və müəllim/mentor müraciətlərini dəyərləndirir, tələbələrin komandalara bölünməsinə rəhbərlik edir;
   - Hər tədris semestrinin sonunda fəaliyyət hesabatını hazırlayaraq universitet rəhbərliyinə təqdim edir.
 
-**5.2. Klub Üzvləri (Club Members):**  
-- Təlimlərdə, layihələrdə və elmi müzakirələrdə iştirak edir;
+**5.2. Akademik Müəllimlər və Mentorlar (Academic Teachers & Mentors):**  
+- Klubun elmi-pedaqoji fəaliyyətinə dəstək verən, müxtəlif universitet və elmi-tədqiqat institutlarından qoşulmuş rəsmi təsdiqlənmiş müəllim və mentor heyətidir (**Sefanya Hacızadə**, **Fidan Məhərrəmova**, **Süsən Həsənova**, **Leyla Budaqova** və növbəti mərhələlərdə qoşulacaq digər mütəxəssislər).
+- **Səlahiyyət və Öhdəlikləri:**
+  - Bioinformatika, molekulyar biologiya, genomika, struktur biologiyası, Python və R istiqamətlərində əsasən onlayn (BioMeet) və ya fiziki dərslər, seminarlar və laboratoriya məşğələləri aparmaq;
+  - Tələbələrə praktiki laboratoriya tapşırıqları təyin etmək, təhvil verilən həlləri yoxlamaq, elmi rəy bildirmək və qiymətləndirmək;
+  - İlk məzun tələbə qruplarına hakaton layihələrində və alimlərlə birgə elmi məqalələrin hazırlanmasında mentorluq etmək;
+  - Sirkulyar (dövri) tədris döngüsünün son mərhələsində elmi işçilər və klub üzvləri ilə birlikdə **Journal Club** sessiyalarını təşkil etmək və aparmaq.
+
+**5.3. Klub Üzvləri (Club Members):**  
+- Təlimlərdə, laboratoriya tapşırıqlarında, hakaton layihələrində, elmi məqalə hazırlığında və Journal Club müzakirələrində iştirak edir;
 - Tədbirlərin təşkilində, texniki təminatında və ictimaiyyətlə əlaqələrdə təşkilati dəstək göstərirlər.
 
 ---

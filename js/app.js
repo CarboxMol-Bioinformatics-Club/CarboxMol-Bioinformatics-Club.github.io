@@ -2447,12 +2447,22 @@ const inAppDocViewer = {
                 <p class="text-xs text-slate-300 mt-0.5">WCU Biologiya &amp; ETN Molekulyar Biologiya İnstitutu (Böyük Laborant)</p>
               </div>
               <div class="flex flex-col items-center text-teal-400 my-0.5">
-                <div class="w-0.5 h-6 bg-gradient-to-b from-teal-400 to-teal-500"></div>
+                <div class="w-0.5 h-5 bg-gradient-to-b from-teal-400 to-indigo-500"></div>
+                <i class="fa-solid fa-chevron-down text-xs text-indigo-400"></i>
+              </div>
+              <div class="w-full p-4 rounded-2xl bg-gradient-to-r from-indigo-950/70 via-slate-900 to-indigo-950/70 border border-indigo-500/40 text-center shadow-lg">
+                <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 uppercase tracking-wider mb-1.5">
+                  <i class="fa-solid fa-chalkboard-user text-indigo-400 mr-1"></i> Akademik Müəllimlər və Mentorlar (4)
+                </span>
+                <p class="text-xs text-slate-200 font-semibold">Sefanya Hacızadə (WCU) • Fidan Məhərrəmova (MSc) • Süsən Həsənova (BDU) • Leyla Budaqova (BDU &amp; ETN MBİ)</p>
+              </div>
+              <div class="flex flex-col items-center text-teal-400 my-0.5">
+                <div class="w-0.5 h-5 bg-gradient-to-b from-indigo-400 to-teal-500"></div>
                 <i class="fa-solid fa-chevron-down text-xs"></i>
               </div>
               <div class="w-full p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 text-center shadow-lg">
                 <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-teal-300 border border-slate-700 uppercase tracking-wider mb-1.5">
-                  <i class="fa-solid fa-users text-teal-400 mr-1"></i> Klub Üzvləri (Members)
+                  <i class="fa-solid fa-users text-teal-400 mr-1"></i> Klub Üzvləri (74 Tələbə Üzv)
                 </span>
                 <p class="text-xs text-slate-200 font-medium">Biologiya, Biotexnologiya və İT Tələbələri</p>
               </div>

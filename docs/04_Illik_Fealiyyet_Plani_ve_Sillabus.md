@@ -6,10 +6,15 @@
 
 ### I. KURS HAQQINDA ÜMUMİ MƏLUMAT VƏ TƏDRİS KONSEPSİYASI
 
-* **Təşkilatçı:** Qərbi Kaspi Universiteti Bioinformatika Klubu
-* **Elmi Rəhbər və Təlimçi:** Süleyman Mehdi oğlu Hacızadə (Western Caspian University, Biologiya 2021–2026, V kurs / Azərbaycan Respublikası Elm və Təhsil Nazirliyinin Molekulyar Biologiya İnstitutunun (MBİ / IMB - Institute of Molecular Biology) Hesablama Struktur Biologiyası Laboratoriyasının Böyük Laborantı / Texnika və Texnologiyalar üzrə Bakı Dövlət Peşə Təhsil Mərkəzi Kompüter Ustalığı və İT Dəstək, 1 illik təhsil, 2020–2021 / Holberton School Azerbaijan)
-* **Müddət:** 2 Semestr (28 Həftəlik Akademik Təqvim + 1 Həftəlik Qış İntensiv Məktəbi)
-* **Tədris Formatı:** Hibrid (Universitet Kompüter Laboratoriyasında əyani vorkşoplar, interaktiv seminar dərsləri və GitHub/Google Colab üzərindən praktiki kodlaşdırma)
+* **Təşkilatçı:** Qərbi Kaspi Universiteti — CarboxMol Bioinformatika Klubu
+* **Klub Sədri və Elmi Təlimçi:** Süleyman Mehdi oğlu Hacızadə (Western Caspian University, Biologiya 2021–2026, V kurs / Elm və Təhsil Nazirliyi (ETN) Molekulyar Biologiya İnstitutunun Hesablama Struktur Biologiyası Laboratoriyasının Böyük Laborantı / Holberton School Azerbaijan)
+* **Akademik Müəllim və Mentor Heyəti:**
+  * **Sefanya Hacızadə** — Akademik Mentor & Tədqiqatçı (Qərbi Kaspi Universiteti, Təbiət Elmləri Kafedrası — *Bioinformatika, Genomika, DNT Analizi, Python*)
+  * **Fidan Məhərrəmova** — Akademik Mentor & Tədqiqatçı, MSc Bioinformatika (*Bioinformatika, Genomika və NGS Analizi, Struktur Biologiyası, Python & R*)
+  * **Süsən Həsənova** — Müəllim / Akademik Mentor (Bakı Dövlət Universiteti, Biotexnologiya Kafedrası — *Biotexnologiya, Genomika, Molekulyar Biologiya*)
+  * **Leyla Budaqova** — Doktorant & Akademik Mentor (Bakı Dövlət Universiteti & ETN Molekulyar Biologiya İnstitutu — *Molekulyar Biologiya, Genomika, Struktur Biologiyası*)
+* **Müddət:** 2 Semestr (28 Həftəlik Akademik Təqvim + 1 Həftəlik Qış İntensiv Məktəbi — Sirkulyar / Dövri Model)
+* **Tədris Formatı:** Əsasən onlayn (BioMeet üzərindən: `https://carboxmol-bioinformatics-club.github.io/#biomeet`), bəzən isə fiziki (Universitet Kompüter Laboratoriyasında əyani vorkşoplar, interaktiv seminar dərsləri və GitHub/Google Colab üzərindən praktiki kodlaşdırma)
 * **İş Formatı və Metodologiya:** **Komanda İşi (Teamwork & Pair-Programming)** — Bütün fəaliyyət planı üzrə praktiki tapşırıqlar, alqoritmik kodlaşdırma və elmi layihələr tələbə komandaları şəklində birgə icra ediləcəkdir.
 * **Hədəf Auditoriyası:** Biologiya, Biotexnologiya, Kompüter Elmləri, İnformasiya Texnologiyaları və əlaqəli ixtisasların bakalavr və magistr tələbələri.
 * **İlkin Tələblər:** İlkin proqramlaşdırma təcrübəsi tələb olunmur. Biologiya tələbələri üçün sıfırdan proqramlaşdırma, İT tələbələri üçün isə təməl molekulyar biologiya konseptləri paralel tədris olunur.
@@ -72,15 +77,26 @@ Bu proqramı uğurla tamamlayan klub üzvləri aşağıdakı bilik və sərişt�
 | **21** | **Qabaqcıl RNA-Seq Vizuallaşdırması** | Çoxölçülü məlumatların reduksiyası (PCA). P-dəyəri və Fold Change nisbəti. | Volcano plot (əhəmiyyətli genlərin vurğulanması) və Clustered Heatmap (istilik xəritəsi) qurulması. | `EnhancedVolcano`, `pheatmap` |
 | **22** | **Funksional Zənginləşdirmə: GO & KEGG** | Gen Ontologiyası (Bioloji Proses, Molekulyar Funksiya, Hüceyrə Komponenti), Siqnal yolları. | Diferensial genlərin hansı bioloji yollarda zənginləşdiyinin statistik analizi (Over-representation test). | `clusterProfiler`, STRING-DB |
 | **23** | **Journal Club #2: Dəqiq Onkologiya** | Xərçəng genomikası, mutasiya yüklənməsi (TMB) və immunoterapiya biomarkerləri. | "Cell" və ya "Lancet Oncology" jurnalından bioinformatik tədqiqat məqaləsinin müzakirəsi. | Elmi Müzakirə Paneli |
-| **24** | **Molekulyar Dokinq və Dərman Dizaynı** | Zülal-liqand qarşılıqlı təsirləri, rabitə enerjisi ($\Delta G$), aktiv mərkəz şəbəkəsi. | Məlum inhibitor liqandın hədəf xərçəng zülalına virtual dokinqi və bağlanma enerjisinin təhlili; PyMOL, ChimeraX, Carbox və CarboxMol ilə komplekslərin konformasiya analizi. | AutoDock Vina, PyMOL, UCSF ChimeraX, Carbox, CarboxMol |
+| **24** | **Molekulyar Dokinq və Dərman Dizaynı** | Zülal-liqand qarşılıqlı təsirləri, rabitə enerjisi (ΔG), aktiv mərkəz şəbəkəsi. | Məlum inhibitor liqandın hədəf xərçəng zülalına virtual dokinqi və bağlanma enerjisinin təhlili; PyMOL, ChimeraX, Carbox və CarboxMol ilə komplekslərin konformasiya analizi. | AutoDock Vina, PyMOL, UCSF ChimeraX, Carbox, CarboxMol |
 | **25** | **Bioinformatikada Maşın Öyrənməsi (ML)** | Supervised / Unsupervised learning, təsnifat (Classification) və klasterləşmə alqoritmləri. | Xərçəng xəstələrinin gen ekspressiyası profilinə əsasən Random Forest və SVM ilə təsnifatı. | Python `scikit-learn` |
-| **26** | **WCU Bio-Data Hackathon: Start və Təlimat** | Hakatonun elanı: Tələbə komandalarına real anonimləşdirilmiş xəstəlik verilənlər dəstlərinin təqdimi. | Komandaların formalaşdırılması, iş bölgüsü, hipotezlərin qurulması və məlumatların təmizlənməsi. | Kaggle / GitHub Classroom |
-| **27** | **Hakaton: Mentorluq və Layihə İnkişafı** | Mentor saatları: Klub Sədri və dəvət olunmuş elmi tədqiqatçılar tərəfindən komandalara bələdçilik. | Tələbə komandalarının analiz skriptlərinin tamamlanması, elmi nəticələrin və posterlərin hazırlanması. | Kod Yoxlanışı və Mentorluq |
-| **28** | **İllik Elmi Sərgi, Təqdimatlar və Müdafiə** | Klubun İllik Yekun Konfransı. Universitet rəhbərliyi, dekanlıq və TGT qarşısında poster müdafiəsi. | Ən yaxşı 3 layihə komandasının mükafatlandırılması, bütün aktiv məzunlara rəsmi sertifikatların təqdimi. | Qərbi Kaspi Universiteti Konfrans Zalı |
+| **26** | **İlk CarboxMol Bioinformatika Hakatonu: Start və Təlimat** | Hakatonun elanı: İlk məzun tələbə komandalarına real anonimləşdirilmiş bioloji verilənlər dəstlərinin təqdimi. | Komandaların formalaşdırılması, iş bölgüsü, hipotezlərin qurulması və məlumatların təmizlənməsi. | Kaggle / GitHub Classroom |
+| **27** | **Hakaton: Mentorluq və Layihə İnkişafı** | Mentor saatları: Klub Sədri, Akademik Müəllimlər/Mentorlar (Sefanya Hacızadə, Fidan Məhərrəmova, Süsən Həsənova, Leyla Budaqova) və dəvət olunmuş alimlər tərəfindən bələdçilik. | Tələbə komandalarının analiz skriptlərinin tamamlanması, elmi nəticələrin və posterlərin hazırlanması. | Kod Yoxlanışı və Mentorluq |
+| **28** | **İllik Elmi Sərgi, Təqdimatlar və Müdafiə** | Klubun İllik Yekun Konfransı. Universitet rəhbərliyi, dekanlıq, müəllimlər və TGT qarşısında poster müdafiəsi. | Ən yaxşı layihə komandalarının mükafatlandırılması, ilk məzunların alimlərlə birgə elmi məqalə hazırlığına keçidi. | Qərbi Kaspi Universiteti / BioMeet |
 
 ---
 
-### VI. TÖVSİYƏ OLUNAN ƏDƏBİYYAT VƏ RESURSLAR
+### VI. MƏRHƏLƏLİ VƏ SİRKULYAR (DÖVRİ) ELMİ İNKİŞAF PLANI
+
+Azərbaycanda bioinformatika, struktur və hesablama biologiyası sahəsində davamlı inkişafın getməsi məqsədilə klubun fəaliyyəti aşağıdakı 4 mərhələli **sirkulyar (dövri)** model əsasında davam edəcəkdir:
+
+1. **28 Həftəlik Praktiki Bioinformatika Tədris Prosesi:** Əsasən onlayn (BioMeet üzərindən: `https://carboxmol-bioinformatics-club.github.io/#biomeet`), bəzən isə fiziki formatda olmaqla Linux/Bash, Python, Biopython, R/Bioconductor, NGS sekvens analizi, struktur biologiyası (açıq mənbəli **Carbox**: `https://project-carbox.github.io/` və **CarboxMol**: `https://carboxmol.github.io/`) və AlphaFold üzrə sistemli təlimlərin keçirilməsi; həmçinin Akademik Müəllim/Mentor heyəti, Prof. Qərib Mürşüdov və növbəti mərhələlərdə digər mütəxəssislər tərəfindən xüsusi təlimlərin təşkili.
+2. **İlk CarboxMol Bioinformatika Hakatonu:** Gələcək tədris prosesinin ilk məzunları arasında **İlk CarboxMol Bioinformatika Hakatonunu** təşkil etmək üçün əlimizdən gəldiyi qədər işlər görməyə çalışacağıq.
+3. **Alimlərlə Birgə Elmi Məqalələrin Hazırlanması:** İlk məzun verəcəyimiz tələbə qruplarının alimlərlə birgə elmi məqalələrin yazılmasına hazırlığını başlatmağı planlaşdırırıq.
+4. **Journal Club Sessiyaları (Son Mərhələ — Sirkulyar Davamlılıq):** Ən son mərhələdə artıq müəyyən elmi məqalələr yazıldıqdan sonra **Journal Club** çərçivəsində elmi işçilərin, klub üzvlərinin və klub müəllimlərinin birgə müzakirə sessiyalarını təşkil etməyi planlaşdırırıq. Bu proses Azərbaycanda elmi inkişafın fasiləsiz davam etməsi üçün **sirkulyar olaraq** hər yeni dövrdə davam edəcəkdir.
+
+---
+
+### VII. TÖVSİYƏ OLUNAN ƏDƏBİYYAT VƏ RESURSLAR
 
 1. **Kitablar:**
    - Compeau, P., & Pevzner, P. (2018). *Bioinformatics Algorithms: An Active Learning Approach*. Active Learning Publishers.
@@ -97,16 +113,7 @@ Bu proqramı uğurla tamamlayan klub üzvləri aşağıdakı bilik və sərişt�
 
 **Tərtib etdi və Təsdiq üçün təqdim etdi:**  
 Təsisçi və Klub Sədri: **Süleyman Mehdi oğlu Hacızadə**  
+Əlaqə: +994 70 550 69 07 | +994 99 350 69 07  
+E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com  
 İmza: _______________________  
 Tarix: ____ / ____ / 2026-cı il
-
----
-
-### MƏRHƏLƏLİ VƏ SİRKULYAR (DÖVRİ) ELMİ İNKİŞAF PLANI
-
-Azərbaycanda bioinformatika, struktur və hesablama biologiyası sahəsində davamlı inkişafın getməsi məqsədilə klubun fəaliyyəti aşağıdakı 4 mərhələli **sirkulyar (dövri)** model əsasında davam edəcəkdir:
-
-1. **28 Həftəlik Praktiki Bioinformatika Tədris Prosesi:** Əsasən onlayn (BioMeet üzərindən: `https://carboxmol-bioinformatics-club.github.io/#biomeet`), bəzən isə fiziki formatda olmaqla Linux/Bash, Python, Biopython, R/Bioconductor, NGS sekvens analizi, struktur biologiyası (açıq mənbəli **Carbox**: `https://project-carbox.github.io/` və **CarboxMol**: `https://carboxmol.github.io/`) və AlphaFold üzrə sistemli təlimlərin keçirilməsi; həmçinin Prof. Qərib Mürşüdov və növbəti mərhələlərdə digər mütəxəssislər tərəfindən xüsusi təlimlərin təşkili.
-2. **İlk CarboxMol Bioinformatika Hakatonu:** Gələcək tədris prosesinin ilk məzunları arasında **İlk CarboxMol Bioinformatika Hakatonunu** təşkil etmək üçün əlimizdən gəldiyi qədər işlər görməyə çalışacağıq.
-3. **Alimlərlə Birgə Elmi Məqalələrin Hazırlanması:** İlk məzun verəcəyimiz tələbə qruplarının alimlərlə birgə elmi məqalələrin yazılmasına hazırlığını başlatmağı planlaşdırırıq.
-4. **Journal Club Sessiyaları (Son Mərhələ — Sirkulyar Davamlılıq):** Ən son mərhələdə artıq müəyyən elmi məqalələr yazıldıqdan sonra **Journal Club** çərçivəsində elmi işçilərin, klub üzvlərinin və klub müəllimlərinin birgə müzakirə sessiyalarını təşkil etməyi planlaşdırırıq. Bu proses Azərbaycanda elmi inkişafın fasiləsiz davam etməsi üçün **sirkulyar olaraq** hər yeni dövrdə davam edəcəkdir.
