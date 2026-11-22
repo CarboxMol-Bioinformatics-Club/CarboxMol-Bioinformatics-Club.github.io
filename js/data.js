@@ -2327,6 +2327,516 @@ events: [
   ],
 
   applications: [
+    {
+        "id": "app-1122-aydanqasimzade",
+        "memberId": "mem-1122-aydanqasimzade",
+        "isTeacher": false,
+        "fullName": "Qasımzadə Aydan (Nadir)",
+        "email": "aqasimzade.cs@gmail.com",
+        "phone": "0552423566",
+        "username": "aydanqasımzadə",
+        "password": "aydan2009",
+        "photo": "",
+        "profileUrl": "https://www.linkedin.com/in/aydan-qasımzadə-student-at-western-caspian-university-40b801429?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "university": "Qərbi Kaspi Universiteti (WCU)",
+        "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+        "major": "Komputer elmləri",
+        "course": "Bakalavr (I kurs)",
+        "studyLang": "İngilis bölməsi",
+        "gpa": "",
+        "programmingSkill": "Orta (Python/R skriptləri yaza bilirəm)",
+        "tools": [
+            "Python",
+            "C / C++"
+        ],
+        "bioTools": [],
+        "bioKnowledge": "İT / Mühəndislik yönümlüyəm (Bioloji konseptləri sıfırdan öyrənmək istəyirəm)",
+        "osType": "Windows",
+        "researchTracks": [
+            "Genomika və NGS Analizi",
+            "Süni İntellekt və Biotibb ML"
+        ],
+        "roleInterest": "Tədqiqatçı / Layihə və Hakaton Komandası Üzvü",
+        "weeklyTime": "Həftədə 2–4 saat",
+        "motivation": "Ixtisasım İT yönümlüdür və özümü inkişaf etdirib sahəmin hər bir qolunda nailiyyətlər əldə etmək istəyirəm",
+        "yearGoal": "Bir illik fəaliyyətin sonunda öyrəndiyim biologiya  və proqramlaşdırma bacarıqlarını real problemə tətbiq edərək işlək bir prototip və ya data əsaslı kiçik veb/ analitik layihə hazırlamaq istəyirəm.",
+        "dateApplied": "2026-11-22",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1122-nazrin77",
+        "memberId": "mem-1122-nazrin77",
+        "isTeacher": false,
+        "fullName": "Nəzrin Əliyeva",
+        "email": "n.aliyeva@ufaz.az",
+        "phone": "+994708586507",
+        "username": "nazrin77",
+        "password": "nasa_Bio78",
+        "photo": "",
+        "profileUrl": "",
+        "university": "Fransız-Azərbaycan Universiteti (UFAZ)",
+        "faculty": "Fransız-Azərbaycan Universiteti (UFAZ)",
+        "major": "Computer Science",
+        "course": "Bakalavr (I kurs)",
+        "studyLang": "İngilis bölməsi",
+        "gpa": "100/100",
+        "programmingSkill": "Orta (Python/R skriptləri yaza bilirəm)",
+        "tools": [
+            "Python",
+            "Linux / Bash",
+            "Git & GitHub",
+            "C / C++",
+            "SQL"
+        ],
+        "bioTools": [],
+        "bioKnowledge": "İT / Mühəndislik yönümlüyəm (Bioloji konseptləri sıfırdan öyrənmək istəyirəm)",
+        "osType": "Linux / Ubuntu",
+        "researchTracks": [
+            "Genomika və NGS Analizi",
+            "Süni İntellekt və Biotibb ML"
+        ],
+        "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+        "weeklyTime": "Həftədə 2–4 saat",
+        "motivation": "CarboxMol Bioinformatika Klubuna qoşulmaq istəyirəm, çünki bioinformatika, molekulyar biologiya və süni intellekt sahələrinə böyük marağım var və bu sahələrdə praktiki biliklərimi inkişaf etdirmək istəyirəm. Klubda yeni bacarıqlar qazanaraq elmi tədqiqatlarda iştirak etməyi və komandaya faydalı olmağı hədəfləyirəm.",
+        "yearGoal": "Bir il ərzində Python və bioinformatik analiz alətlərini öyrənmək istəyirəm.",
+        "dateApplied": "2026-11-22",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1121-afaghumbat",
+        "memberId": "mem-1121-afaghumbat",
+        "isTeacher": false,
+        "fullName": "Afaq Hümbətova (Fazil)",
+        "email": "afaqhumbetova06@gmail.com",
+        "phone": "0503087443",
+        "username": "afaghumbat",
+        "password": "afaghumbat06",
+        "photo": "",
+        "profileUrl": "https://www.linkedin.com/in/afaq-hümbətova-06b814412?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+        "university": "Bakı Dövlət Universiteti (BDU)",
+        "faculty": "Bakı Dövlət Universiteti (BDU)",
+        "major": "Biotexnologiya",
+        "course": "Bakalavr (III kurs)",
+        "studyLang": "Azərbaycan bölməsi",
+        "gpa": "82",
+        "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+        "tools": [],
+        "bioTools": [
+            "NCBI / BLAST"
+        ],
+        "bioKnowledge": "Orta səviyyədə anlayışım var (Ümumi universitet biologiyası)",
+        "osType": "macOS",
+        "researchTracks": [
+            "Genomika və NGS Analizi",
+            "Struktur Biologiyası və Dərman Dizaynı",
+            "Transkriptomika və RNA-Seq",
+            "Süni İntellekt və Biotibb ML"
+        ],
+        "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+        "weeklyTime": "Həftədə 6 saatdan çox",
+        "motivation": "Əslində məqsədim yeni biliklər əldə etmək, təlimlərdə iştirak etməkdir. Bir növ özümü inkşaf etdirmək.",
+        "yearGoal": "Yeni əldə etdiyim biliklər vasitəsi ilə, daha çox insanlarıda buna cəlb etmək. Şəxsi məqalələrimin olması.",
+        "dateApplied": "2026-11-21",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1121-ayselsafarli0",
+        "memberId": "mem-1121-ayselsafarli0",
+        "isTeacher": false,
+        "fullName": "Aysel Səfərli (Elşən)",
+        "email": "ayselsafarli0@gmail.com",
+        "phone": "+994554227110",
+        "username": "_ayselsafarli0",
+        "password": "ayso.0606",
+        "photo": "",
+        "profileUrl": "https://www.linkedin.com/in/aysel-safarli-49748438b?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "university": "Bakı Dövlət Universiteti (BDU)",
+        "faculty": "Bakı Dövlət Universiteti (BDU)",
+        "major": "Biotexnologiya",
+        "course": "Bakalavr (III kurs)",
+        "studyLang": "Azərbaycan bölməsi",
+        "gpa": "",
+        "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+        "tools": [
+            "Python"
+        ],
+        "bioTools": [
+            "NCBI / BLAST",
+            "UniProt",
+            "RCSB PDB"
+        ],
+        "bioKnowledge": "Orta səviyyədə anlayışım var (Ümumi universitet biologiyası)",
+        "osType": "Windows",
+        "researchTracks": [
+            "Genomika və NGS Analizi",
+            "Struktur Biologiyası və Dərman Dizaynı"
+        ],
+        "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+        "weeklyTime": "Həftədə 2–4 saat",
+        "motivation": "Müasir biologiya və kompüter elmlərinin kəsişməsində yer alan bioinformatika sahəsinə böyük marağım var. CarboxMol Bioinformatika Klubunun təqdim etdiyi praktiki yanaşma, real tədqiqat tapşırıqları və komanda şəklində elmi işləmə mühiti məni ən çox cəlb edən amillərdir. Bu klub vasitəsilə nəzəri biliklərimi praktiki alətlərlə birləşdirərək molekulyar modelləşdirmə, genom analizi və müasir bioinformatik proqram təminatları üzrə dərin bacarıqlar\n\nqazanmaq istəyirəm.",
+        "yearGoal": "1 illik fəaliyyətin sonunda zülal strukturlarının modelləşdirilməsi (məsələn, AlphaFold və ya molekulyar dokinq alətlərindən istifadə edərək) və potensial dərman namizədlərinin skrininqi mövzusunda müstəqil tədqiqat layihəsi hazırlamaq istəyirəm. Əldə etdiyim nəticələr əsasında elmi məqalə yazmaq və ya beynəlxalq konfranslarda çıxış edərək klubu uğurla təmsil etmək əsas hədəfimdir.",
+        "dateApplied": "2026-11-21",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1119-adile-7",
+        "memberId": "mem-1119-adile-7",
+        "isTeacher": false,
+        "fullName": "Şükürova Adilə (İsmixan qızı)",
+        "email": "nazsukurlu1@gmail.com",
+        "phone": "516875265",
+        "username": "adilə_7",
+        "password": "Naz1234",
+        "photo": "",
+        "profileUrl": "",
+        "university": "Qərbi Kaspi Universiteti (WCU)",
+        "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+        "major": "Biologiya",
+        "course": "Bakalavr (II kurs)",
+        "studyLang": "Azərbaycan bölməsi",
+        "gpa": "",
+        "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+        "tools": [],
+        "bioTools": [],
+        "bioKnowledge": "Orta səviyyədə anlayışım var (Ümumi universitet biologiyası)",
+        "osType": "Yalnız universitet laboratoriyası",
+        "researchTracks": [
+            "Genomika və NGS Analizi",
+            "Struktur Biologiyası və Dərman Dizaynı"
+        ],
+        "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+        "weeklyTime": "Həftədə 4–6 saat",
+        "motivation": "Biologiya sahəsində təhsil aldığım üçün canlı sistemlərin molekulyar səviyyədə necə fəaliyyət göstərdiyini, genetik və bioloji məlumatların analizinin elmi tədqiqatlarda necə istifadə olunduğunu öyrənmək mənə maraqlıdır. CarboxMol Bioinformatika Klubuna qoşulmaqda əsas məqsədim bioinformatika sahəsində biliklərimi artırmaq, yeni proqram və analiz metodları ilə tanış olmaq, həmçinin nəzəri biliklərimi praktiki fəaliyyətlə birləşdirməkdir.",
+        "yearGoal": "Bir il ərzində bioinformatikanın əsaslarını öyrənmək, bioloji məlumatların analizində istifadə olunan proqram və alətlərlə işləmək bacarığı qazanmaq istəyirəm. Konkret hədəfim genetik məlumatların analizinə əsaslanan kiçik bir tədqiqat layihəsində iştirak etmək, əldə etdiyim bilikləri praktikada tətbiq etmək və komanda ilə birlikdə elmi layihə hazırlamaqdır.",
+        "dateApplied": "2026-11-19",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1119-kamil",
+        "memberId": "mem-1119-kamil",
+        "isTeacher": false,
+        "fullName": "Kamil Səfərəliyev (Səfa)",
+        "email": "kamilsefereliyev34@gmail.com",
+        "phone": "0508568361",
+        "username": "kamil",
+        "password": "BiTokamo",
+        "photo": "",
+        "profileUrl": "",
+        "university": "Qərbi Kaspi Universiteti (WCU)",
+        "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+        "major": "Kompüter  Elmləri",
+        "course": "Bakalavr (I kurs)",
+        "studyLang": "Azərbaycan bölməsi",
+        "gpa": "",
+        "programmingSkill": "Başlanğıc (Təməl sintaksisi bilirəm)",
+        "tools": [
+            "Python",
+            "C / C++"
+        ],
+        "bioTools": [],
+        "bioKnowledge": "İT / Mühəndislik yönümlüyəm (Bioloji konseptləri sıfırdan öyrənmək istəyirəm)",
+        "osType": "Windows",
+        "researchTracks": [
+            "Süni İntellekt və Biotibb ML"
+        ],
+        "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+        "weeklyTime": "Həftədə 2–4 saat",
+        "motivation": "İnformatika və mühəndislik yönümlü baza biliklərimi real elmi və tətbiqi problemlər üzərində sınamaq istəyirəm. Bioinformatika mənə həm proqramlaşdırma və alqoritmik yanaşmanı inkişaf etdirmək, həm də süni intellektin biologiya və tibb sahəsindəki tətbiqlərini öyrənmək üçün güclü mühit verir. Komanda işində fəal olmaq, təlimlərdə öyrəndiklərimi praktik layihələrə çevirmək və klubun elmi mühitinə töhfə vermək əsas məqsədimdir.",
+        "yearGoal": "1 ilin sonunda Python və maşın öyrənməsi alətlərindən istifadə edərək bioloji  analizi və ya modelləşdirilməsi üzrə kiçik, işlək bir tədqiqat/praktik layihə hazırlamaq və komanda ilə birlikdə elmi təqdimat və  hakaton layihəsində iştirak etmək istəyirəm.",
+        "dateApplied": "2026-11-19",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1119-elmira",
+        "memberId": "mem-1119-elmira",
+        "isTeacher": false,
+        "fullName": "Elmira Əliskəndərova (Eldar)",
+        "email": "elmira.eliskenderova@gmail.com",
+        "phone": "0773005213",
+        "username": "elmira_",
+        "password": "elmira236",
+        "photo": "",
+        "profileUrl": "",
+        "university": "Qərbi Kaspi Universiteti (WCU)",
+        "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+        "major": "Biologiya",
+        "course": "Bakalavr (I kurs)",
+        "studyLang": "Azərbaycan bölməsi",
+        "gpa": "",
+        "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+        "tools": [],
+        "bioTools": [],
+        "bioKnowledge": "Orta səviyyədə anlayışım var (Ümumi universitet biologiyası)",
+        "osType": "Windows",
+        "researchTracks": [
+            "Genomika və NGS Analizi",
+            "Struktur Biologiyası və Dərman Dizaynı"
+        ],
+        "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+        "weeklyTime": "Həftədə 2–4 saat",
+        "motivation": "Gələcəkdə bioinformatika ve neyrobiologiya sahəsinə yönəlmək istəyirəm. Haradan başlayacagimi bilməyəndə bu elani gördüm :)",
+        "yearGoal": "",
+        "dateApplied": "2026-11-19",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1119-inji-badirli2",
+        "memberId": "mem-1119-inji-badirli2",
+        "isTeacher": false,
+        "fullName": "İnci Bədirli (Zəmir)",
+        "email": "badirliinji17@gmail.com",
+        "phone": "+994707260808",
+        "username": "inji.badirli2",
+        "password": "09l8s08_\\iB",
+        "photo": "",
+        "profileUrl": "",
+        "university": "Qərbi Kaspi Universiteti (WCU)",
+        "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+        "major": "Mexatronika və robototexnika mühəndisliyi",
+        "course": "Bakalavr (II kurs)",
+        "studyLang": "Azərbaycan bölməsi",
+        "gpa": "",
+        "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+        "tools": [],
+        "bioTools": [],
+        "bioKnowledge": "İT / Mühəndislik yönümlüyəm (Bioloji konseptləri sıfırdan öyrənmək istəyirəm)",
+        "osType": "Windows",
+        "researchTracks": [
+            "Süni İntellekt və Biotibb ML"
+        ],
+        "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+        "weeklyTime": "Həftədə 2–4 saat",
+        "motivation": "İnformatika, proqramlaşdırmaya aid hər şeyi öyrənmək istəyirəm",
+        "yearGoal": "",
+        "dateApplied": "2026-11-19",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1119-turann",
+        "memberId": "mem-1119-turann",
+        "isTeacher": false,
+        "fullName": "Turan Hüseynov (Zakir)",
+        "email": "guseinov197301@icloud.com",
+        "phone": "0519359603",
+        "username": "turann",
+        "password": "2009.07",
+        "photo": "",
+        "profileUrl": "",
+        "university": "Qərbi Kaspi Universiteti (WCU)",
+        "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+        "major": "Biologiya",
+        "course": "Bakalavr (I kurs)",
+        "studyLang": "İngilis bölməsi",
+        "gpa": "",
+        "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+        "tools": [],
+        "bioTools": [],
+        "bioKnowledge": "Güclü biologiya bazam var (Genetika, Molekulyar biologiya)",
+        "osType": "Windows",
+        "researchTracks": [
+            "Genomika və NGS Analizi",
+            "Struktur Biologiyası və Dərman Dizaynı"
+        ],
+        "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+        "weeklyTime": "Həftədə 2–4 saat",
+        "motivation": "Gələcək-yönümlü bir sahə olduğu üçün marağımı çəkir və çox istədiyim ixtisaslardan birini əhat edir\n\nÇalışıb öz biliyimi gücləndirmək istəyirəm",
+        "yearGoal": "",
+        "dateApplied": "2026-11-19",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1118-rahidsoltanova",
+        "memberId": "mem-1118-rahidsoltanova",
+        "isTeacher": false,
+        "fullName": "Rahidə Soltanova (Anar)",
+        "email": "soltanovarahid@gmail.com",
+        "phone": "705507540",
+        "username": "rahidsoltanova",
+        "password": "RahideRahide",
+        "photo": "",
+        "profileUrl": "",
+        "university": "Qərbi Kaspi Universiteti (WCU)",
+        "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+        "major": "Genetika",
+        "course": "Magistratura",
+        "studyLang": "Azərbaycan bölməsi",
+        "gpa": "80",
+        "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+        "tools": [],
+        "bioTools": [
+            "NCBI / BLAST",
+            "UniProt"
+        ],
+        "bioKnowledge": "Güclü biologiya bazam var (Genetika, Molekulyar biologiya)",
+        "osType": "Windows",
+        "researchTracks": [
+            "Genomika və NGS Analizi"
+        ],
+        "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+        "weeklyTime": "Həftədə 4–6 saat",
+        "motivation": "Genetika üzrə magistr təhsili aldığım üçün bioinformatika sahəsində biliklərimi genişləndirmək və praktiki bacarıqlar qazanmaq istəyirəm. Xüsusilə genetik məlumatların təhlili və müasir bioinformatik metodları öyrənmək məni cəlb edir.",
+        "yearGoal": "Bir il ərzində bioinformatika sahəsində praktiki biliklər qazanmaq, genetik məlumatların analizini öyrənmək və əldə etdiyim biliklər əsasında kiçik bir bioinformatik layihə hazırlamaq istəyirəm.",
+        "dateApplied": "2026-11-18",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1118-naile",
+        "memberId": "mem-1118-naile",
+        "isTeacher": false,
+        "fullName": "Nailə Fərzəliyeva (İlyas)",
+        "email": "nailefrzliyeva18@gmail.com",
+        "phone": "+994513624818",
+        "username": "naile",
+        "password": "NaileE0727",
+        "photo": "",
+        "profileUrl": "https://www.linkedin.com/in/naila-farzaliyeva-012406438?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        "university": "Qərbi Kaspi Universiteti (WCU)",
+        "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+        "major": "Genetika",
+        "course": "Magistratura",
+        "studyLang": "Azərbaycan bölməsi",
+        "gpa": "88.9/100",
+        "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+        "tools": [],
+        "bioTools": [],
+        "bioKnowledge": "Orta səviyyədə anlayışım var (Ümumi universitet biologiyası)",
+        "osType": "Windows",
+        "researchTracks": [
+            "Genomika və NGS Analizi",
+            "Struktur Biologiyası və Dərman Dizaynı",
+            "Transkriptomika və RNA-Seq",
+            "Süni İntellekt və Biotibb ML",
+            "Filogenetika və Təkamül Ağacları"
+        ],
+        "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+        "weeklyTime": "Həftədə 2–4 saat",
+        "motivation": "Hazırda Qərbi Kaspi Universitetində genetika ixtisası üzrə magistr təhsili alıram. Genetika və molekulyar biologiya sahəsində nəzəri biliklərimi praktiki bacarıqlarla inkişaf etdirmək istəyirəm. CarboxMol Bioinformatika Klubunda məni ən çox cəlb edən bioinformatik analiz metodlarını, genetik məlumatların kompüter vasitəsilə təhlilini və müasir proqramları öyrənmək imkanıdır. Elmi seminarlarda və komanda layihələrində iştirak edərək həm biliklərimi artırmaq, həm də gələcək elmi fəaliyyətim üçün təcrübə qazanmaq istəyirəm.",
+        "yearGoal": "Bir il ərzində bioinformatikanın əsaslarını mənimsəmək, xüsusilə Python və R proqramlarında ilkin praktiki bacarıqlar qazanmaq istəyirəm. Əsas hədəfim genetik məlumatların analizini öyrənmək və əldə etdiyim bilikləri kiçik bir elmi layihədə tətbiq etməkdir. Məsələn, müəyyən genetik mutasiyaların xəstəliklərlə əlaqəsini açıq elmi məlumat bazaları əsasında araşdırmaq və nəticələri təqdim etmək istərdim. Bu təcrübənin gələcəkdə genetika sahəsində tədqiqat aparmağıma kömək edəcəyini düşünürəm.",
+        "dateApplied": "2026-11-18",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1118-aysun",
+        "memberId": "mem-1118-aysun",
+        "isTeacher": false,
+        "fullName": "Aysun Musayeva (Mahir)",
+        "email": "aysunmusayeva69@gmail.com",
+        "phone": "+994519518815",
+        "username": "aysun",
+        "password": "Aysun27@",
+        "photo": "",
+        "profileUrl": "https://www.linkedin.com/in/aysun-musayeva-ab709a440?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+        "university": "Qərbi Kaspi Universiteti (WCU)",
+        "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+        "major": "Biologiya",
+        "course": "Magistratura",
+        "studyLang": "Azərbaycan bölməsi",
+        "gpa": "80",
+        "programmingSkill": "Başlanğıc (Təməl sintaksisi bilirəm)",
+        "tools": [],
+        "bioTools": [],
+        "bioKnowledge": "Orta səviyyədə anlayışım var (Ümumi universitet biologiyası)",
+        "osType": "Linux / Ubuntu",
+        "researchTracks": [
+            "Genomika və NGS Analizi",
+            "Struktur Biologiyası və Dərman Dizaynı",
+            "Transkriptomika və RNA-Seq",
+            "Süni İntellekt və Biotibb ML",
+            "Filogenetika və Təkamül Ağacları"
+        ],
+        "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+        "weeklyTime": "Həftədə 2–4 saat",
+        "motivation": "Genetika, molekulyar biologiya və bioinformatika sahələrinə olan marağımı daha da inkişaf etdirmək, yeni biliklər qazanmaq, praktiki layihələrdə iştirak etmək və gələcək akademik-karyera yolumda özümü təkmilləşdirmək üçün kluba qoşulmaq istəyirəm.”",
+        "yearGoal": "Bir il ərzində genetik xəstəliklərlə əlaqəli müəyyən genlərin bioinformatik analizi üzrə kiçik layihə hazırlamaq, genetik məlumat bazaları ilə işləməyi, mutasiyaların araşdırılmasını və nəticələrin elmi şəkildə təqdim edilməsini öyrənmək istəyirəm.”",
+        "dateApplied": "2026-11-18",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1118-aysbio-235",
+        "memberId": "mem-1118-aysbio-235",
+        "isTeacher": false,
+        "fullName": "Məmmədova (Ayişə)",
+        "email": "mmdovaays2007@gmail.com",
+        "phone": "0516857923",
+        "username": "aysbio_235",
+        "password": "aysmmdva",
+        "photo": "",
+        "profileUrl": "",
+        "university": "Qərbi Kaspi Universiteti (WCU)",
+        "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+        "major": "Biologiya",
+        "course": "Bakalavr (II kurs)",
+        "studyLang": "Azərbaycan bölməsi",
+        "gpa": "66",
+        "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+        "tools": [],
+        "bioTools": [],
+        "bioKnowledge": "Orta səviyyədə anlayışım var (Ümumi universitet biologiyası)",
+        "osType": "Yalnız universitet laboratoriyası",
+        "researchTracks": [
+            "Genomika və NGS Analizi",
+            "Struktur Biologiyası və Dərman Dizaynı"
+        ],
+        "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+        "weeklyTime": "Həftədə 2–4 saat",
+        "motivation": "Mən biologiya ixtisası üzrə təhsil aldığım üçün canlı orqanizmlərin molekulyar quruluşu, genetika və hüceyrədə baş verən proseslərə xüsusi maraq göstərirəm.Kluba qoşulmaqda əsas məqsədim biologiya üzrə nəzəri biliklərimi praktiki biliklərlə zənginləşdirmək və bioinformatika sahəsində özümü inkişaf etdirməkdir.Xüsusilə DNT və RNT analizi, genetik məlumatların araşdırılması, molekulyar biologiya və bioinformatik proqramlarla işləməyi öyrənmək istəyirəm. Eyni zamanda proqramlaşdırma sahəsində ilkin biliklər əldə etmək, yeni bacarıqlar qazanmaq və elmi tədqiqatlarda iştirak etmək mənim üçün maraqlı olardı.",
+        "yearGoal": "Bir il ərzində bioinformatikanın əsaslarını öyrənmək, DNT və zülal ardıcıllıqlarının analizini aparmağı bacarmaq və Python proqramlaşdırma dili üzrə ilkin biliklər əldə etmək istəyirəm.Əsas hədəfim seçilmiş bir genin bioinformatik analizini aparmaq, onun funksiyasını araşdırmaq və əldə etdiyim nəticələr əsasında kiçik elmi tədqiqat layihəsi hazırlamaqdır. Gələcəkdə bu layihəni elmi məqalə və ya təqdimat şəklində təqdim etməyi qarşıma məqsəd qoyuram.",
+        "dateApplied": "2026-11-18",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
+    {
+        "id": "app-1118-esmira94",
+        "memberId": "mem-1118-esmira94",
+        "isTeacher": false,
+        "fullName": "Qasımzadə Esmira (Eyler)",
+        "email": "es.94@yahoo.com",
+        "phone": "0517303545",
+        "username": "esmira94",
+        "password": "Qasimzade94",
+        "photo": "",
+        "profileUrl": "",
+        "university": "Mikrobiologiya İnstitutu",
+        "faculty": "Mikrobiologiya İnstitutu",
+        "major": "Mikrobiologiya",
+        "course": "Doktorantura",
+        "studyLang": "Azərbaycan bölməsi",
+        "gpa": "",
+        "programmingSkill": "Başlanğıc (Təməl sintaksisi bilirəm)",
+        "tools": [
+            "Python",
+            "Linux / Bash"
+        ],
+        "bioTools": [
+            "NCBI / BLAST"
+        ],
+        "bioKnowledge": "Güclü biologiya bazam var (Genetika, Molekulyar biologiya)",
+        "osType": "Windows",
+        "researchTracks": [
+            "Genomika və NGS Analizi",
+            "Struktur Biologiyası və Dərman Dizaynı",
+            "Transkriptomika və RNA-Seq"
+        ],
+        "roleInterest": "Tədqiqatçı / Layihə və Hakaton Komandası Üzvü",
+        "weeklyTime": "Həftədə 4–6 saat",
+        "motivation": "Bioinformatikanı dərindən öyrənmək istədiyim üçün",
+        "yearGoal": "",
+        "dateApplied": "2026-11-18",
+        "status": "Gözləyir",
+        "adminNotes": "Sayt qeydiyyat formu vasitəsilə daxil olmuş müraciət (Sədr təsdiqi gözləyir)."
+    },
 {
         "id": "app-1794415625983",
         "memberId": "mem-1794415625983",
@@ -4957,7 +5467,7 @@ events: [
   ]
 };
 
-const CURRENT_DATA_VERSION = "2026.11.22.v68_techbrains_card_match";
+const CURRENT_DATA_VERSION = "2026.11.22.v69_manual_president_approval";
 
 // Real-time Sinxronizasiya Mühərriki (Cross-Tab, PWA və Cihazlararası Canlı Əlaqə)
 const SyncEngine = {
@@ -5193,6 +5703,54 @@ function getClubData() {
       parsed.memberCustomTasks = parsed.memberCustomTasks || [];
       parsed.memberNotes = parsed.memberNotes || [];
 
+      // Köhnə versiyada avtomatik təsdiqlənmiş son qeydiyyatları (Nov 18–22) təmizlə ki,
+      // Sədr özü əllə "Təsdiq" düyməsi ilə təsdiq edə bilsin (əllə təsdiqlənənlər approvedBy ilə qorunur)
+      const pendingSeedUsers = new Set(
+        (INITIAL_DATA.applications || [])
+          .filter(a => a && a.status === "Gözləyir" && a.username)
+          .map(a => a.username.toLowerCase().replace(/^@/, "").trim())
+      );
+      if (pendingSeedUsers.size > 0) {
+        const autoApprovedIdsToClear = new Set();
+        (parsed.applications || []).forEach(a => {
+          if (!a || !a.username) return;
+          const u = a.username.toLowerCase().replace(/^@/, "").trim();
+          const wasAutoApproved = !a.approvedBy || (a.adminNotes && a.adminNotes.includes("Sədr təsdiqi ilə aktivləşdirilmiş tələbə qeydiyyatı"));
+          if (pendingSeedUsers.has(u) && wasAutoApproved) {
+            a.status = "Gözləyir";
+            delete a.approvedAt;
+            delete a.approvedBy;
+            if (a.id) autoApprovedIdsToClear.add(a.id);
+          }
+        });
+        (parsed.members || []).forEach(m => {
+          if (!m || !m.username) return;
+          const u = m.username.toLowerCase().replace(/^@/, "").trim();
+          const matchingApp = (parsed.applications || []).find(a => a && a.username && a.username.toLowerCase().replace(/^@/, "").trim() === u);
+          if (pendingSeedUsers.has(u) && (!matchingApp || matchingApp.status === "Gözləyir")) {
+            m.status = "Gözləyir";
+          }
+        });
+        if (autoApprovedIdsToClear.size > 0) {
+          parsed.approvedAppIds = (parsed.approvedAppIds || []).filter(id => !autoApprovedIdsToClear.has(id));
+          try {
+            const oldStored = JSON.parse(localStorage.getItem("carboxmol_approved_app_ids") || "[]");
+            if (Array.isArray(oldStored)) {
+              localStorage.setItem("carboxmol_approved_app_ids", JSON.stringify(oldStored.filter(id => !autoApprovedIdsToClear.has(id))));
+            }
+            const oldPerm = JSON.parse(localStorage.getItem("carboxmol_permanent_applications") || "[]");
+            if (Array.isArray(oldPerm)) {
+              oldPerm.forEach(p => {
+                if (p && p.username && pendingSeedUsers.has(p.username.toLowerCase().replace(/^@/, "").trim()) && !p.approvedBy) {
+                  p.status = "Gözləyir";
+                }
+              });
+              localStorage.setItem("carboxmol_permanent_applications", JSON.stringify(oldPerm));
+            }
+          } catch (e) {}
+        }
+      }
+
       parsed._dataVersion = CURRENT_DATA_VERSION;
       localStorage.setItem("wcu_bioinfo_club_data", JSON.stringify(parsed));
     } else {
@@ -5277,50 +5835,80 @@ function getClubData() {
     }
 
     parsed.approvedAppIds = parsed.approvedAppIds || [];
+    parsed.approvedUsers = parsed.approvedUsers || [];
     parsed.rejectedAppIds = parsed.rejectedAppIds || [];
+    parsed.pendingOverrideIds = parsed.pendingOverrideIds || [];
 
-    // Sədr tərəfindən verilən qərarların (Təsdiq / İmtina) qalıcı yaddaşdan oxunması
+    // Sədr tərəfindən verilən qərarların (Təsdiq / Gözləyir / İmtina) qalıcı yaddaşdan oxunması
     try {
       const storedApproved = JSON.parse(localStorage.getItem("carboxmol_approved_app_ids") || "[]");
       if (Array.isArray(storedApproved)) {
         parsed.approvedAppIds = Array.from(new Set([...(parsed.approvedAppIds || []), ...storedApproved]));
       }
+      const storedApprovedUsers = JSON.parse(localStorage.getItem("carboxmol_approved_users") || "[]");
+      if (Array.isArray(storedApprovedUsers)) {
+        parsed.approvedUsers = Array.from(new Set([...(parsed.approvedUsers || []), ...storedApprovedUsers]));
+      }
       const storedRejected = JSON.parse(localStorage.getItem("carboxmol_rejected_app_ids") || "[]");
       if (Array.isArray(storedRejected)) {
         parsed.rejectedAppIds = Array.from(new Set([...(parsed.rejectedAppIds || []), ...storedRejected]));
       }
+      const storedPending = JSON.parse(localStorage.getItem("carboxmol_pending_override_ids") || "[]");
+      if (Array.isArray(storedPending)) {
+        parsed.pendingOverrideIds = Array.from(new Set([...(parsed.pendingOverrideIds || []), ...storedPending]));
+      }
     } catch (e) {}
 
-    // 2. İlkin müraciətlərin (Seed Applications) zəmanətli bərpası və status qorunması
-    // QAYDA: Heç vaxt Sədrin təsdiqlədiyi müraciəti yenidən "Gözləyir" statusuna qaytarma!
+    // 2. İlkin müraciətlərin (Seed Applications) zəmanətli bərpası və Sədr qərarının qorunması
+    // QAYDA: Yalnız Sədrin təsdiqlədiyi müraciətlər "Təsdiqləndi" qalır; gözləyənlər HEÇ VAXT avtomatik təsdiqlənmir!
     if (Array.isArray(INITIAL_DATA.applications)) {
       INITIAL_DATA.applications.forEach((seedApp) => {
         if (parsed.deletedAppIds.includes(seedApp.id)) return;
+        const seedUser = (seedApp.username || "").toLowerCase().replace(/^@/, "").trim();
+        const seedEmail = (seedApp.email || "").toLowerCase().trim();
         const existingIdx = parsed.applications.findIndex(
-          (a) => a.id === seedApp.id || (a.username && seedApp.username && a.username.toLowerCase() === seedApp.username.toLowerCase())
+          (a) =>
+            a.id === seedApp.id ||
+            (a.username && seedUser && a.username.toLowerCase().replace(/^@/, "").trim() === seedUser) ||
+            (a.email && seedEmail && a.email.toLowerCase().trim() === seedEmail)
         );
-        const isApprovedByPresident = parsed.approvedAppIds && parsed.approvedAppIds.includes(seedApp.id);
-        const isRejectedByPresident = parsed.rejectedAppIds && parsed.rejectedAppIds.includes(seedApp.id);
+        const isPendingOverride = parsed.pendingOverrideIds.includes(seedApp.id) || (seedUser && parsed.pendingOverrideIds.includes(seedUser));
+        const isRejectedByPresident = parsed.rejectedAppIds.includes(seedApp.id) || (seedUser && parsed.rejectedAppIds.includes(seedUser));
+        const isApprovedByPresident = !isRejectedByPresident && !isPendingOverride && (
+          parsed.approvedAppIds.includes(seedApp.id) ||
+          (seedUser && parsed.approvedUsers.includes(seedUser))
+        );
 
         if (existingIdx === -1) {
           const freshApp = JSON.parse(JSON.stringify(seedApp));
-          if (isApprovedByPresident) {
-            freshApp.status = "Təsdiqləndi";
-          } else if (isRejectedByPresident) {
+          if (isRejectedByPresident) {
             freshApp.status = "Rədd edildi";
+          } else if (isPendingOverride) {
+            freshApp.status = "Gözləyir";
+          } else if (isApprovedByPresident) {
+            freshApp.status = "Təsdiqləndi";
           }
           parsed.applications.push(freshApp);
           hasStorageUpdates = true;
         } else {
-          // Əgər saxlanmış müraciət artıq təsdiqlənibsə və ya Sədr qərar veribsə, statusu qoru
-          if ((seedApp.status === "Təsdiqləndi" || isApprovedByPresident) && parsed.applications[existingIdx].status !== "Təsdiqləndi") {
-            parsed.applications[existingIdx].status = "Təsdiqləndi";
-            if (seedApp.approvedAt) parsed.applications[existingIdx].approvedAt = seedApp.approvedAt;
-            if (seedApp.approvedBy) parsed.applications[existingIdx].approvedBy = seedApp.approvedBy;
-            hasStorageUpdates = true;
-          } else if (isRejectedByPresident && parsed.applications[existingIdx].status !== "Rədd edildi") {
-            parsed.applications[existingIdx].status = "Rədd edildi";
-            hasStorageUpdates = true;
+          // Sədrin verdiyi statusu tam dəqiqliklə qoru (heç vaxt Gözləyir -> Təsdiqləndi avto-keçid etmə!)
+          if (isRejectedByPresident) {
+            if (parsed.applications[existingIdx].status !== "Rədd edildi") {
+              parsed.applications[existingIdx].status = "Rədd edildi";
+              hasStorageUpdates = true;
+            }
+          } else if (isPendingOverride) {
+            if (parsed.applications[existingIdx].status !== "Gözləyir") {
+              parsed.applications[existingIdx].status = "Gözləyir";
+              hasStorageUpdates = true;
+            }
+          } else if (isApprovedByPresident || seedApp.status === "Təsdiqləndi") {
+            if (parsed.applications[existingIdx].status !== "Təsdiqləndi") {
+              parsed.applications[existingIdx].status = "Təsdiqləndi";
+              if (seedApp.approvedAt) parsed.applications[existingIdx].approvedAt = seedApp.approvedAt;
+              if (seedApp.approvedBy) parsed.applications[existingIdx].approvedBy = seedApp.approvedBy;
+              hasStorageUpdates = true;
+            }
           }
           // Çatışmayan sahələri tamamla
           if (!parsed.applications[existingIdx].password && seedApp.password) {
@@ -5358,17 +5946,35 @@ function getClubData() {
     } catch (e) {}
 
     // 4. Tələbə Hesabları və Müraciətlər arasında ikitərəfli zəmanətli sinxronizasiya
-    // SƏDR QAYDASI: Kimsə qeydiyyatdan keçəndə Sədr qəbul edənə qədər həm müraciət, həm də üzv hesabı "Gözləyir" statusunda qalır!
+    // SƏDR QAYDASI: Kimsə qeydiyyatdan keçəndə Sədr əllə "Təsdiq" edənə qədər həm müraciət, həm də üzv hesabı "Gözləyir" statusunda qalır!
+    // Sədr "Təsdiq" etdikdən sonra isə daimi olaraq "Təsdiqləndi" / "Aktiv" qalır!
     parsed.applications.forEach((app) => {
       if (parsed.deletedAppIds.includes(app.id)) return;
+      const appUser = (app.username || "").toLowerCase().replace(/^@/, "").trim();
+      const appEmail = (app.email || "").toLowerCase().trim();
       const memIdx = parsed.members.findIndex(
         (m) =>
           (m.id && m.id === app.memberId) ||
-          (m.username && app.username && m.username.toLowerCase() === app.username.toLowerCase()) ||
-          (m.email && app.email && m.email.toLowerCase() === app.email.toLowerCase())
+          (m.username && appUser && m.username.toLowerCase().replace(/^@/, "").trim() === appUser) ||
+          (m.email && appEmail && m.email.toLowerCase().trim() === appEmail)
       );
-      const isRejected = app.status === "Rədd edildi" || (parsed.rejectedAppIds && parsed.rejectedAppIds.includes(app.id));
-      const targetMemberStatus = isRejected ? "Rədd edildi" : "Aktiv";
+
+      const isPendingOverride = parsed.pendingOverrideIds.includes(app.id) || (appUser && parsed.pendingOverrideIds.includes(appUser));
+      const isRejected = app.status === "Rədd edildi" || parsed.rejectedAppIds.includes(app.id) || (appUser && parsed.rejectedAppIds.includes(appUser));
+      const isApproved = !isRejected && !isPendingOverride && (
+        app.status === "Təsdiqləndi" ||
+        app.status === "Qəbul Edildi" ||
+        parsed.approvedAppIds.includes(app.id) ||
+        (appUser && parsed.approvedUsers.includes(appUser))
+      );
+
+      const targetAppStatus = isRejected ? "Rədd edildi" : (isApproved ? "Təsdiqləndi" : "Gözləyir");
+      const targetMemberStatus = isRejected ? "Rədd edildi" : (isApproved ? "Aktiv" : "Gözləyir");
+
+      if (app.status !== targetAppStatus) {
+        app.status = targetAppStatus;
+        hasStorageUpdates = true;
+      }
 
       if (memIdx === -1) {
         parsed.members.unshift({
@@ -5395,21 +6001,9 @@ function getClubData() {
         });
         hasStorageUpdates = true;
       } else {
-        // İkitərəfli status uyğunluğu: Yalnız rəsmi rədd edilmişlər deaktiv qalır, digər bütün üzvlər aktivdir
-        if (app.status === "Rədd edildi" || (parsed.rejectedAppIds && parsed.rejectedAppIds.includes(app.id))) {
-          if (parsed.members[memIdx].status !== "Rədd edildi") {
-            parsed.members[memIdx].status = "Rədd edildi";
-            hasStorageUpdates = true;
-          }
-        } else {
-          if (parsed.members[memIdx].status !== "Aktiv") {
-            parsed.members[memIdx].status = "Aktiv";
-            hasStorageUpdates = true;
-          }
-          if (app.status !== "Təsdiqləndi") {
-            app.status = "Təsdiqləndi";
-            hasStorageUpdates = true;
-          }
+        if (parsed.members[memIdx].status !== targetMemberStatus) {
+          parsed.members[memIdx].status = targetMemberStatus;
+          hasStorageUpdates = true;
         }
 
         if (app.password && !parsed.members[memIdx].password) {

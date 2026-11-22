@@ -21,6 +21,43 @@
     })();
   </script>
   <meta charset="UTF-8" />
+  <!-- Zero-Flash Pre-Paint Hash Routing Guard (prevents flashing #home on page refresh) -->
+  <script>
+    (function () {
+      var hash = (window.location.hash || "").replace(/^#/, "").trim();
+      var valid = [
+        "home", "documents", "curriculum", "biotools", "resources", "events",
+        "announcements", "collaborators", "biomeet", "members-portal",
+        "teacher-portal", "president-portal", "register"
+      ];
+      var target = valid.indexOf(hash) !== -1 ? hash : "home";
+      if (target === "president-portal") {
+        try {
+          if (localStorage.getItem("wcu_president_logged_in") !== "true") {
+            target = "home";
+          }
+        } catch (e) {
+          target = "home";
+        }
+      }
+      document.documentElement.setAttribute("data-initial-section", target);
+    })();
+  </script>
+  <style id="initialRouteGuard">
+    html[data-initial-section]:not([data-initial-section="home"]) section#home { display: none !important; }
+    html[data-initial-section="documents"] section#documents,
+    html[data-initial-section="curriculum"] section#curriculum,
+    html[data-initial-section="biotools"] section#biotools,
+    html[data-initial-section="resources"] section#resources,
+    html[data-initial-section="events"] section#events,
+    html[data-initial-section="announcements"] section#announcements,
+    html[data-initial-section="collaborators"] section#collaborators,
+    html[data-initial-section="biomeet"] section#biomeet,
+    html[data-initial-section="members-portal"] section#members-portal,
+    html[data-initial-section="teacher-portal"] section#teacher-portal,
+    html[data-initial-section="president-portal"] section#president-portal,
+    html[data-initial-section="register"] section#register { display: block !important; }
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
 
   <!-- Primary SEO Meta Tags -->
@@ -10002,8 +10039,8 @@ Seçilmiş pipeline: DESeq2
     </div>
 
     <!-- Application Scripts -->
-    <script src="js/data.js?v=20261122_v68"></script>
-    <script src="js/db.js?v=20261118_v62"></script>
+    <script src="js/data.js?v=20261122_v69"></script>
+    <script src="js/db.js?v=20261122_v69"></script>
     <script src="js/security.js?v=20261118_v62"></script>
     <script src="js/doc-contents.js?v=20261118_v62"></script>
     <script src="js/bio-tools.js?v=20261118_v62"></script>
@@ -10013,7 +10050,7 @@ Seçilmiş pipeline: DESeq2
     <!-- 3Dmol.js Real Biomolecular WebGL Engine & CarboxMol Studio -->
     <script src="js/3Dmol-min.js?v=20261118_v62"></script>
     <script src="js/mol-viewer.js?v=20261118_v62"></script>
-    <script src="js/president.js?v=20261118_v62"></script>
+    <script src="js/president.js?v=20261122_v69"></script>
     <script src="js/members.js?v=20261118_v62"></script>
     <script src="js/teacher.js?v=20261118_v62"></script>
     <script src="js/pwa.js?v=20261118_v62"></script>
@@ -10021,7 +10058,7 @@ Seçilmiş pipeline: DESeq2
     <script src="js/bio-analysis.js?v=20261122_v67"></script>
     <script src="js/resources.js?v=20261118_v62"></script>
     <script src="js/seo-responsive-engine.js?v=20261118_v62"></script>
-    <script src="js/app.js?v=20261122_v68"></script>
+    <script src="js/app.js?v=20261122_v69"></script>
 </body>
 
 </html>

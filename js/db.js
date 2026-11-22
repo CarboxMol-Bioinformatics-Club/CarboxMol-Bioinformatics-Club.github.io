@@ -172,9 +172,9 @@ class ClubDatabaseEngine {
             localData.members.unshift(dbMem);
             updated = true;
           } else {
-            // Status qorunması: Əgər local "Aktiv"dirsə, IndexedDB-ni də aktiv et
-            if (localMem.status === "Aktiv" && dbMem.status !== "Aktiv") {
-              dbMem.status = "Aktiv";
+            // Status qorunması: LocalStorage-dakı ən son Sədr statusunu IndexedDB-yə əks etdir
+            if (localMem.status && dbMem.status !== localMem.status) {
+              dbMem.status = localMem.status;
               try { memberStore.put(dbMem); } catch (e) {}
             }
             if (dbMem.photo && !localMem.photo) {
@@ -203,9 +203,9 @@ class ClubDatabaseEngine {
               localData.applications.unshift(dbApp);
               updated = true;
             } else {
-              // Status qorunması: Əgər local "Təsdiqləndi"dirsə, IndexedDB-ni də yenilə
-              if (localApp.status === "Təsdiqləndi" && dbApp.status !== "Təsdiqləndi") {
-                dbApp.status = "Təsdiqləndi";
+              // Status qorunması: LocalStorage-dakı ən son Sədr statusunu IndexedDB-yə əks etdir
+              if (localApp.status && dbApp.status !== localApp.status) {
+                dbApp.status = localApp.status;
                 try { appStore.put(dbApp); } catch (e) {}
               }
               if (dbApp.photo && !localApp.photo) {
