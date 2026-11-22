@@ -2803,28 +2803,30 @@ Seçilmiş pipeline: DESeq2
           </div>
         </div>
 
-        <!-- Fotolar və Təqdimat Slaydları Qalereyası (7 Vizual) -->
-        <div class="space-y-4">
-          <div class="flex items-center justify-between">
+        <!-- Fotolar və Təqdimat Slaydları Qalereyası (7 Vizual — Prof. Qərib Mürşüdov qalereyası ilə eyni yığcam ölçüdə) -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
             <span class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
               <i class="fa-regular fa-images text-teal-400"></i> Tədbirdən Fotolar və Təqdimat Slaydları (Böyütmək üçün üzərinə klikləyin)
             </span>
-            <span class="text-[11px] text-teal-400 font-mono">7 Vizual</span>
+            <span class="text-[11px] text-teal-400 font-mono">7 Fotoşəkil</span>
           </div>
 
-          <!-- Sıra 1: 3 Portret Tədbir Fotosu -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <!-- Foto 1: Səhnə Çıxışı -->
             <button type="button" onclick="openEventPhotoModal(0, 'techbrains2026')"
               class="event-photo-card group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between">
-              <div class="relative w-full aspect-[3/4] overflow-hidden bg-slate-900">
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-slate-900">
                 <img src="assets/images/events/techbrains_2026_stage_presentation.jpg"
                   alt="TechBrains 2026 — Süleyman Hacızadə səhnə çıxışı və canlı məruzə"
                   width="576" height="1024"
                   class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   loading="lazy" />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity">
+                </div>
                 <span
-                  class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md bg-slate-900/90 text-teal-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
+                  class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-slate-900/90 text-teal-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
                   Səhnə Çıxışı
                 </span>
                 <div
@@ -2835,7 +2837,7 @@ Seçilmiş pipeline: DESeq2
                   </span>
                 </div>
               </div>
-              <div class="p-3.5 w-full">
+              <div class="p-3 w-full">
                 <h5 class="text-xs font-bold transition">Canlı Məruzə Təqdimatı</h5>
                 <p class="text-[11px] line-clamp-2 mt-0.5">TechBrains 2026 səhnəsində «Hesablama Struktur Biologiyası və CarboxMol» çıxışı.</p>
               </div>
@@ -2844,14 +2846,17 @@ Seçilmiş pipeline: DESeq2
             <!-- Foto 2: Spiker Nişanı -->
             <button type="button" onclick="openEventPhotoModal(1, 'techbrains2026')"
               class="event-photo-card group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between">
-              <div class="relative w-full aspect-[3/4] overflow-hidden bg-slate-900">
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-slate-900">
                 <img src="assets/images/events/techbrains_2026_speaker_badge.jpg"
                   alt="TechBrains 2026 — Süleyman Hacızadə Rəsmi Spiker Nişanı ilə"
                   width="768" height="1024"
                   class="w-full h-full object-cover object-[50%_20%] group-hover:scale-105 transition-transform duration-500"
                   loading="lazy" />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity">
+                </div>
                 <span
-                  class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md bg-slate-900/90 text-cyan-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
+                  class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-slate-900/90 text-cyan-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
                   Spiker 51/100
                 </span>
                 <div
@@ -2862,7 +2867,7 @@ Seçilmiş pipeline: DESeq2
                   </span>
                 </div>
               </div>
-              <div class="p-3.5 w-full">
+              <div class="p-3 w-full">
                 <h5 class="text-xs font-bold transition">Rəsmi Spiker Nişanı</h5>
                 <p class="text-[11px] line-clamp-2 mt-0.5">GOUP TechBrains 2026 rəsmi Spiker kartı ilə konfrans fasiləsində.</p>
               </div>
@@ -2871,14 +2876,17 @@ Seçilmiş pipeline: DESeq2
             <!-- Foto 3: Konfrans Zalı -->
             <button type="button" onclick="openEventPhotoModal(2, 'techbrains2026')"
               class="event-photo-card group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between">
-              <div class="relative w-full aspect-[3/4] overflow-hidden bg-slate-900">
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-slate-900">
                 <img src="assets/images/events/techbrains_2026_conference_hall.jpg"
                   alt="TechBrains 2026 — ADA Universiteti Konfrans Zalı"
                   width="768" height="1024"
                   class="w-full h-full object-cover object-[50%_18%] group-hover:scale-105 transition-transform duration-500"
                   loading="lazy" />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity">
+                </div>
                 <span
-                  class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md bg-slate-900/90 text-indigo-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
+                  class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-slate-900/90 text-indigo-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
                   Konfrans Zalı
                 </span>
                 <div
@@ -2889,27 +2897,27 @@ Seçilmiş pipeline: DESeq2
                   </span>
                 </div>
               </div>
-              <div class="p-3.5 w-full">
-                <h5 class="text-xs font-bold transition">ADA Universiteti Konfrans Zalı</h5>
+              <div class="p-3 w-full">
+                <h5 class="text-xs font-bold transition">ADA Universiteti Zalı</h5>
                 <p class="text-[11px] line-clamp-2 mt-0.5">Beynəlxalq konfrans məkanında rəsmi spiker xatirə fotosu.</p>
               </div>
             </button>
-          </div>
 
-          <!-- Sıra 2: 2 Landşaft Tədbir Fotosu -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Foto 4: Rəsmi Banner Önündə -->
             <button type="button" onclick="openEventPhotoModal(3, 'techbrains2026')"
               class="event-photo-card group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between">
-              <div class="relative w-full aspect-[4/3] overflow-hidden bg-slate-900">
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-slate-900">
                 <img src="assets/images/events/techbrains_2026_banner_participants.jpg"
                   alt="TechBrains 2026 — Rəsmi Banner Önündə İştirakçılarla"
                   width="1024" height="768"
                   class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   loading="lazy" />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity">
+                </div>
                 <span
-                  class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md bg-slate-900/90 text-amber-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
-                  TechBrains 2026 Banner
+                  class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-slate-900/90 text-amber-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
+                  TechBrains Banner
                 </span>
                 <div
                   class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
@@ -2919,23 +2927,26 @@ Seçilmiş pipeline: DESeq2
                   </span>
                 </div>
               </div>
-              <div class="p-3.5 w-full">
-                <h5 class="text-xs font-bold transition">TechBrains 2026 Rəsmi Banneri Önündə</h5>
-                <p class="text-[11px] line-clamp-2 mt-0.5">GOUP, CNCF Baku, ADA Universiteti və İRİA tərəfdaşlığı banneri önündə konfrans iştirakçıları ilə.</p>
+              <div class="p-3 w-full">
+                <h5 class="text-xs font-bold transition">Rəsmi Banner Önündə</h5>
+                <p class="text-[11px] line-clamp-2 mt-0.5">GOUP, CNCF Baku, ADA və İRİA banneri önündə konfrans iştirakçıları ilə.</p>
               </div>
             </button>
 
             <!-- Foto 5: Kampus Qrup Fotosu -->
             <button type="button" onclick="openEventPhotoModal(4, 'techbrains2026')"
               class="event-photo-card group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between">
-              <div class="relative w-full aspect-[4/3] overflow-hidden bg-slate-900">
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-slate-900">
                 <img src="assets/images/events/techbrains_2026_group_campus.jpg"
                   alt="TechBrains 2026 — Kampusda Qrup Xatirə Fotosu"
                   width="1024" height="768"
-                  class="w-full h-full object-cover object-[50%_30%] group-hover:scale-105 transition-transform duration-500"
+                  class="w-full h-full object-cover object-[50%_25%] group-hover:scale-105 transition-transform duration-500"
                   loading="lazy" />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity">
+                </div>
                 <span
-                  class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md bg-slate-900/90 text-emerald-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
+                  class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-slate-900/90 text-emerald-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
                   İcma &amp; Şəbəkə
                 </span>
                 <div
@@ -2946,27 +2957,24 @@ Seçilmiş pipeline: DESeq2
                   </span>
                 </div>
               </div>
-              <div class="p-3.5 w-full">
-                <h5 class="text-xs font-bold transition">Kampusda Qrup Xatirə Fotosu</h5>
+              <div class="p-3 w-full">
+                <h5 class="text-xs font-bold transition">Kampusda Qrup Fotosu</h5>
                 <p class="text-[11px] line-clamp-2 mt-0.5">Konfrans iştirakçıları və texnologiya icması üzvləri ilə xatirə fotosu.</p>
               </div>
             </button>
-          </div>
 
-          <!-- Sıra 3: 2 Rəsmi Təqdimat Slaydı (16:9) -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Foto 6: Slayd 269 Spiker Bio -->
             <button type="button" onclick="openEventPhotoModal(5, 'techbrains2026')"
               class="event-photo-card group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between">
-              <div class="relative w-full aspect-video overflow-hidden bg-white border-b border-slate-200">
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-white border-b border-slate-200 p-1">
                 <img src="assets/images/events/techbrains_2026_slide_speaker.jpg"
                   alt="TechBrains 2026 — Təqdimat Slaydı 269: Spiker Profili"
                   width="1024" height="578"
-                  class="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-500"
+                  class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                   loading="lazy" />
                 <span
-                  class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md bg-slate-900/90 text-cyan-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
-                  Slayd 269 • Spiker
+                  class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-slate-900/90 text-cyan-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
+                  Slayd 269
                 </span>
                 <div
                   class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/35">
@@ -2976,24 +2984,24 @@ Seçilmiş pipeline: DESeq2
                   </span>
                 </div>
               </div>
-              <div class="p-3.5 w-full">
-                <h5 class="text-xs font-bold transition">BIO / LONGEVITY — Rəsmi Spiker Slaydı</h5>
-                <p class="text-[11px] line-clamp-2 mt-0.5">Süleyman Hacızadə: ETN Molekulyar Biologiya İnstitutu, CarboxMol Bioinformatika Klubu, Carbox və CarboxMol təqdimatı.</p>
+              <div class="p-3 w-full">
+                <h5 class="text-xs font-bold transition">Rəsmi Spiker Slaydı</h5>
+                <p class="text-[11px] line-clamp-2 mt-0.5">BIO / LONGEVITY spiker profili: IMB, CarboxMol Klubu, Carbox və CarboxMol.</p>
               </div>
             </button>
 
             <!-- Foto 7: Slayd 270 CarboxMol Ekosistemi -->
             <button type="button" onclick="openEventPhotoModal(6, 'techbrains2026')"
               class="event-photo-card group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between">
-              <div class="relative w-full aspect-video overflow-hidden bg-white border-b border-slate-200">
+              <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-white border-b border-slate-200 p-1">
                 <img src="assets/images/events/techbrains_2026_slide_carboxmol.jpg"
                   alt="TechBrains 2026 — Təqdimat Slaydı 270: Hesablama Struktur Biologiyası və CarboxMol"
                   width="1024" height="578"
-                  class="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-500"
+                  class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                   loading="lazy" />
                 <span
-                  class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md bg-slate-900/90 text-teal-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
-                  Slayd 270 • Ekosistem
+                  class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-slate-900/90 text-teal-300 text-[10px] font-bold border border-slate-700 backdrop-blur">
+                  Slayd 270
                 </span>
                 <div
                   class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/35">
@@ -3003,9 +3011,9 @@ Seçilmiş pipeline: DESeq2
                   </span>
                 </div>
               </div>
-              <div class="p-3.5 w-full">
-                <h5 class="text-xs font-bold transition">Hesablama Struktur Biologiyası və CarboxMol Slaydı</h5>
-                <p class="text-[11px] line-clamp-2 mt-0.5">01 · Klub, 02 · Carbox Alqoritmi və 03 · CarboxMol 3D Protein Vizualizatorunun əsas göstəriciləri.</p>
+              <div class="p-3 w-full">
+                <h5 class="text-xs font-bold transition">CarboxMol Ekosistem Slaydı</h5>
+                <p class="text-[11px] line-clamp-2 mt-0.5">01 · Klub, 02 · Carbox Alqoritmi və 03 · CarboxMol 3D Vizualizator icmalı.</p>
               </div>
             </button>
           </div>
