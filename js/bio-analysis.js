@@ -219,6 +219,20 @@
 
   var INITIAL_ANNOUNCEMENTS = [
     {
+      id: "ann_free_trainings_2026",
+      category: "academic",
+      badge_az: "Əsas Elan • Ödənişsiz Təlimlər",
+      badge_en: "Main Announcement • Free Trainings",
+      title_az: "Tezliklə Beynəlxalq Təcrübəli Mütəxəssislərlə Ödənişsiz Təlimlər Başlayır!",
+      title_en: "Free Bioinformatics Trainings with International Experts Starting Soon!",
+      date: "Tezliklə",
+      date_az: "Tezliklə",
+      date_en: "Coming Soon",
+      image: "assets/images/announcements/free-trainings-coming-soon.png",
+      content_az: "CarboxMol Bioinformatika Klubunda tezliklə beynəlxalq təcrübəli mütəxəssislər və alimlərlə praktiki bioinformatika təlimləri başlayır. Bütün dərslər tam ödənişsizdir — maraqlanan bütün tələbə və gənc tədqiqatçılar indi kluba üzv olaraq dərslərə qoşula bilərlər!",
+      content_en: "Practical bioinformatics trainings with internationally experienced specialists and scientists are starting soon at CarboxMol Bioinformatics Club. All classes are 100% free — interested students and young researchers can join the club now to participate!"
+    },
+    {
       id: "ann_techbrains_2026",
       category: "academic",
       badge_az: "Konfrans • Uğurla Keçirildi",
@@ -251,14 +265,16 @@
     {
       id: "ann_recruitment_2026",
       category: "recruitment",
-      badge_az: "İdarə Heyəti Seçimi",
-      badge_en: "Executive Board Call",
-      title_az: "CarboxMol Komandasına 2 Koordinator Dəvət Edirik",
-      title_en: "Welcoming 2 Coordinators to the CarboxMol Executive Team",
+      badge_az: "Tamamlandı • Artıq Tapıldı",
+      badge_en: "Completed • Already Selected",
+      title_az: "CarboxMol Komandasına 2 Koordinator Dəvət Edirik (Artıq Tapıldı)",
+      title_en: "Welcoming 2 Coordinators to the CarboxMol Executive Team (Already Selected)",
       date: "2026-11-09",
+      date_az: "09 Noyabr 2026",
+      date_en: "09 Nov 2026",
       image: "assets/images/announcements/coordinator-recruitment.png",
-      content_az: "CarboxMol Bioinformatika Klubu elmi seminarlarımızı, praktiki layihələrimizi və tələbə icmamızı birgə idarə edəcəyimiz 2 fəal koordinator axtarır (Elm & Tədris və Təşkilat & Media). Beynəlxalq alimlərlə əlaqə və real layihələrdə rəhbərlik təcrübəsi.",
-      content_en: "CarboxMol Bioinformatics Club is inviting 2 driven coordinators to co-lead our academic seminars, research projects, and student community (Science & Academic and Operations & Media). Direct research networking and hands-on leadership experience."
+      content_az: "Hər iki koordinator vakansiyası (Elm & Tədris və Təşkilat & Media) üzrə seçim uğurla başa çatdı və koordinatorlarımız artıq tapıldı! Maraq göstərən bütün tələbələrə təşəkkür edirik — kluba üzv olaraq tezliklə başlayacaq ödənişsiz təlimlərimizə qoşula bilərsiniz.",
+      content_en: "Selection for both coordinator roles (Science & Academic and Operations & Media) has been successfully completed and our coordinators have already been selected! Thank you to all applicants — you can still join the club to participate in our upcoming free trainings."
     },
     {
       id: "ann_virtulab_collab",
@@ -349,15 +365,16 @@
       }
     });
 
-    // Toggle visibility of featured card
-    var featured = document.querySelector('.announcement-item.featured-announcement');
-    if (featured) {
-      if (currentAnnFilter === 'all' || currentAnnFilter === 'recruitment') {
-        featured.classList.remove('hidden');
+    // Toggle visibility of all featured announcement cards by their data-category
+    var featuredCards = document.querySelectorAll('.announcement-item.featured-announcement');
+    featuredCards.forEach(function (card) {
+      var cardCat = card.getAttribute('data-category') || 'all';
+      if (currentAnnFilter === 'all' || currentAnnFilter === cardCat) {
+        card.classList.remove('hidden');
       } else {
-        featured.classList.add('hidden');
+        card.classList.add('hidden');
       }
-    }
+    });
 
     renderAnnouncementsList();
   }
@@ -375,10 +392,13 @@
         var title = lang === 'en' ? ann.title_en : ann.title_az;
         var content = lang === 'en' ? ann.content_en : ann.content_az;
         var dateDisplay = (lang === 'en' && ann.date_en) ? ann.date_en : (ann.date_az || ann.date);
+        var badgeCls = ann.id === 'ann_recruitment_2026'
+          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+          : 'bg-teal-500/20 text-teal-300 border border-teal-500/40';
 
         modalHtml += '<div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-2 hover:border-teal-500/50 transition">';
         modalHtml += '  <div class="flex items-center justify-between gap-2">';
-        modalHtml += '    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/40">' + badge + '</span>';
+        modalHtml += '    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ' + badgeCls + '">' + badge + '</span>';
         modalHtml += '    <span class="text-[11px] font-mono ' + (dateDisplay === 'Tezliklə' || dateDisplay === 'Coming Soon' ? 'text-teal-400 font-bold' : 'text-slate-400') + '">' + dateDisplay + '</span>';
         modalHtml += '  </div>';
         modalHtml += '  <h4 class="text-sm font-bold text-white">' + title + '</h4>';
@@ -410,6 +430,9 @@
         var title = lang === 'en' ? ann.title_en : ann.title_az;
         var content = lang === 'en' ? ann.content_en : ann.content_az;
         var dateDisplay = (lang === 'en' && ann.date_en) ? ann.date_en : (ann.date_az || ann.date);
+        var cardBadgeCls = ann.id === 'ann_recruitment_2026'
+          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+          : 'bg-teal-500/20 text-teal-300 border border-teal-500/30';
 
         gridHtml += '<div class="glass-panel p-5 rounded-2xl border border-slate-800 bg-slate-900/80 hover:border-teal-500/50 transition flex flex-col justify-between space-y-4 shadow-lg group">';
         gridHtml += '  <div class="space-y-3">';
@@ -420,11 +443,14 @@
           var imgFitClass = isContain ? 'object-contain p-1' : 'object-cover';
           gridHtml += '    <a href="' + ann.image + '" target="_blank" rel="noopener noreferrer" title="' + (lang === 'en' ? 'Click to view full poster' : 'Posteri tam ölçüdə açmaq üçün klikləyin') + '" class="block relative overflow-hidden rounded-xl border border-slate-800 aspect-video ' + imgBg + '">';
           gridHtml += '      <img src="' + ann.image + '" alt="' + title + '" class="w-full h-full ' + imgFitClass + ' group-hover:scale-105 transition duration-500" />';
+          if (ann.id === 'ann_recruitment_2026') {
+            gridHtml += '      <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-emerald-600/95 text-white text-[9px] font-black uppercase tracking-wider shadow border border-emerald-300/50">' + (lang === 'en' ? 'Already Selected' : 'Artıq Tapıldı') + '</span>';
+          }
           gridHtml += '    </a>';
         }
 
         gridHtml += '    <div class="flex items-center justify-between gap-2">';
-        gridHtml += '      <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 whitespace-nowrap">' + badge + '</span>';
+        gridHtml += '      <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ' + cardBadgeCls + ' whitespace-nowrap">' + badge + '</span>';
         gridHtml += '      <span class="text-[11px] font-mono whitespace-nowrap ' + (dateDisplay === 'Tezliklə' || dateDisplay === 'Coming Soon' ? 'text-teal-400 font-bold' : 'text-slate-400') + '">' + dateDisplay + '</span>';
         gridHtml += '    </div>';
         gridHtml += '    <h4 class="text-sm sm:text-base font-extrabold text-white group-hover:text-teal-300 transition leading-snug">' + title + '</h4>';
@@ -432,7 +458,16 @@
         gridHtml += '  </div>';
 
         gridHtml += '  <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2 text-xs">';
-        if (ann.id === 'ann_techbrains_2026') {
+        if (ann.id === 'ann_free_trainings_2026') {
+          gridHtml += '    <div class="flex items-center gap-1.5">';
+          gridHtml += '      <button onclick="navigateTo(\'register\')" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-extrabold text-xs flex items-center gap-1.5 transition shadow-sm">';
+          gridHtml += '        <i class="fa-solid fa-user-plus text-xs"></i> <span>' + (lang === 'en' ? 'Join the Club' : 'Kluba Üzv Ol') + '</span>';
+          gridHtml += '      </button>';
+          gridHtml += '      <button onclick="navigateTo(\'curriculum\')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 font-bold text-xs flex items-center gap-1 transition">';
+          gridHtml += '        <i class="fa-solid fa-book-open text-xs"></i> <span>' + (lang === 'en' ? 'Curriculum' : 'Sillabus') + '</span>';
+          gridHtml += '      </button>';
+          gridHtml += '    </div>';
+        } else if (ann.id === 'ann_techbrains_2026') {
           gridHtml += '    <div class="flex items-center gap-1.5">';
           gridHtml += '      <button onclick="navigateTo(\'events\'); setTimeout(function(){ document.getElementById(\'techbrains2026Showcase\')?.scrollIntoView({behavior:\'smooth\'}); }, 120);" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-teal-500 hover:from-indigo-500 hover:to-teal-400 text-white font-bold text-xs flex items-center gap-1.5 transition shadow-sm">';
           gridHtml += '        <i class="fa-regular fa-images text-xs"></i> <span>' + (lang === 'en' ? 'Photos (7)' : 'Fotoreportaj (7)') + '</span>';
@@ -449,6 +484,10 @@
           gridHtml += '    <a href="https://carboxmol-virtulab.github.io/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition shadow-sm">';
           gridHtml += '      <i class="fa-solid fa-up-right-from-square text-xs"></i> <span>' + (lang === 'en' ? 'Explore VirtuLab' : 'VirtuLab Portalı') + '</span>';
           gridHtml += '    </a>';
+        } else if (ann.id === 'ann_recruitment_2026') {
+          gridHtml += '    <span class="px-3 py-1.5 rounded-xl bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 font-bold text-xs inline-flex items-center gap-1.5">';
+          gridHtml += '      <i class="fa-solid fa-circle-check text-xs"></i> <span>' + (lang === 'en' ? 'Selection Completed' : 'Seçim Tamamlandı') + '</span>';
+          gridHtml += '    </span>';
         } else if (ann.category === 'recruitment') {
           gridHtml += '    <button onclick="navigateTo(\'register\')" class="px-3.5 py-1.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition">';
           gridHtml += '      <i class="fa-solid fa-user-plus text-xs"></i> <span>' + (lang === 'en' ? 'Join the Club' : 'Kluba Üzv Ol') + '</span>';

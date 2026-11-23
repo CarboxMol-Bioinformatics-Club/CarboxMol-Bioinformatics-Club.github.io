@@ -2263,8 +2263,8 @@ function navigateTo(sectionId) {
       canonical: "https://carboxmol-bioinformatics-club.github.io/events/"
     },
     announcements: {
-      title: "Rəsmi Elanlar, Vakansiyalar və Xəbərlər | CarboxMol Bioinformatika Klubu",
-      description: "CarboxMol Bioinformatika Klubu rəsmi elanları: İdarə Heyətinə 2 Koordinator seçimi, beynəlxalq elmi seminarlar, laboratoriya xəbərləri və hakaton anonsları.",
+      title: "Rəsmi Elanlar, Təlimlər və Xəbərlər | CarboxMol Bioinformatika Klubu",
+      description: "CarboxMol Bioinformatika Klubu rəsmi elanları: Tezliklə beynəlxalq təcrübəli mütəxəssislərlə tam ödənişsiz bioinformatika təlimləri başlayır, elmi seminarlar və laboratoriya xəbərləri.",
       canonical: "https://carboxmol-bioinformatics-club.github.io/announcements/"
     },
     collaborators: {

@@ -24,14 +24,18 @@
   function translateText(text) {
     if (!text || !text.trim()) return text;
     var trimmed = text.trim();
+    var collapsed = trimmed.replace(/\s+/g, ' ');
 
-    // 1. Direct exact dictionary match
+    // 1. Direct exact dictionary match (and whitespace-normalized fallback)
     if (DICTIONARY[trimmed]) {
       return text.replace(trimmed, DICTIONARY[trimmed]);
     }
+    if (collapsed !== trimmed && DICTIONARY[collapsed]) {
+      return text.replace(trimmed, DICTIONARY[collapsed]);
+    }
 
     // 2. Trailing punctuation match
-    var puncMatch = trimmed.match(/^(.*?)([:.,;!?\-]+)$/);
+    var puncMatch = collapsed.match(/^(.*?)([:.,;!?\-]+)$/);
     if (puncMatch && DICTIONARY[puncMatch[1]]) {
       return text.replace(trimmed, DICTIONARY[puncMatch[1]] + puncMatch[2]);
     }
@@ -226,7 +230,34 @@
     "Qərbi Kaspi Universiteti CarboxMol Bioinformatika Klubunu Rəsmi Təsdiq Etdi": "Western Caspian University Officially Accreditates CarboxMol Bioinformatics Club",
     "Konfrans • Olacaq": "Conference • Upcoming",
     "Slaydlar": "Slides",
-    "Tədbir": "Event"
+    "Tədbir": "Event",
+    "Tezliklə Ödənişsiz Bioinformatika Təlimləri Başlayır!": "Free Bioinformatics Trainings Starting Soon!",
+    "Beynəlxalq təcrübəli mütəxəssislərlə tam ödənişsiz dərslər • Maraqlananlar indi kluba üzv olsunlar": "100% free classes with internationally experienced specialists • Interested students can join the club now",
+    "Əsas Elan • Tezliklə Təlimlər Başlayır": "Main Announcement • Trainings Starting Soon",
+    "100% Ödənişsiz Dərslər": "100% Free Classes",
+    "Beynəlxalq Təcrübəli Mütəxəssislər": "Internationally Experienced Experts",
+    "CarboxMol Təlim Proqramı": "CarboxMol Training Program",
+    "Ödənişsiz • Qeydiyyat Açıqdır": "Free • Registration Open",
+    "Tezliklə Beynəlxalq Təcrübəli Mütəxəssislərlə Ödənişsiz Təlimlər Başlayır!": "Free Bioinformatics Trainings with International Experts Starting Soon!",
+    "CarboxMol Bioinformatika Klubunda tezliklə beynəlxalq təcrübəli mütəxəssislər və alimlər tərəfindən praktiki bioinformatika təlimləri başlayır. Bütün dərslər klub üzvləri üçün tam ödənişsizdir — bioinformatika, genomika, 3D struktur biologiyası və süni intellekt sahələrinə marağı olan bütün tələbə və gənc tədqiqatçılar indi kluba üzv olaraq dərslərə qoşula bilərlər!": "CarboxMol Bioinformatics Club is soon launching practical bioinformatics trainings led by internationally experienced specialists and scientists. All classes are 100% free for club members — all students and young researchers interested in bioinformatics, genomics, 3D structural biology, and AI are welcome to join the club now!",
+    "Beynəlxalq Mütəxəssislər": "International Experts",
+    "Beynəlxalq təcrübəyə malik alimlər, tədqiqatçılar və akademik mentorlarla birbaşa canlı dərslər.": "Direct live classes with internationally experienced scientists, researchers, and academic mentors.",
+    "Tam Ödənişsiz Dərslər": "100% Free Classes",
+    "Bütün təlimlər, BioMeet canlı mühazirələri və laboratoriya praktikumları 100% ödənişsizdir.": "All trainings, BioMeet live lectures, and hands-on lab practicals are 100% free of charge.",
+    "Praktiki Proqram": "Hands-On Curriculum",
+    "Linux/Bash, Python, R/Bioconductor, NGS genomika, AlphaFold və 3D struktur biologiyası.": "Linux/Bash, Python, R/Bioconductor, NGS genomics, AlphaFold, and 3D structural biology.",
+    "Tədris Planına Bax": "View Curriculum",
+    "Baneri Yüklə (PNG)": "Download Banner (PNG)",
+    "Seçim Tamamlandı • Koordinatorlar Artıq Tapıldı": "Selection Completed • Coordinators Already Selected",
+    "2 Nəfər Koordinator Seçildi": "2 Coordinators Selected",
+    "Artıq Tapıldı": "Already Selected",
+    "Seçim Tamamlandı": "Selection Completed",
+    "Koordinatorlar Artıq Tapıldı": "Coordinators Already Selected",
+    "Hər iki koordinator vakansiyası üzrə seçim uğurla başa çatdı və komandamızın koordinatorları artıq tapıldı! Maraq göstərən bütün tələbələrə təşəkkür edirik — kluba üzv olaraq tezliklə başlayacaq ödənişsiz təlimlərimizə qoşula bilərsiniz.": "Selection for both coordinator vacancies has been successfully completed and our team coordinators have already been selected! Thank you to all interested students — you can join the club to participate in our upcoming free trainings.",
+    "Kluba Üzv Ol (Təlimlərə Qoşul)": "Join the Club (Join Trainings)",
+    "Təlimatı Oxu": "Read Guide",
+    "09 Noyabr 2026": "09 November 2026",
+    "CarboxMol İdarə Heyəti": "CarboxMol Executive Board"
   });
 
   function init() {

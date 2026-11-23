@@ -1,7 +1,7 @@
 // CarboxMol Bioinformatika Klubu - PWA Service Worker (Oflayn və Canlı Sinxronizasiya Mühərriki)
-// Versiya: 2.5.9
+// Versiya: 2.5.10
  
-const CACHE_VERSION = 'carboxmol-bioinformatics-club-v2.5.9';
+const CACHE_VERSION = 'carboxmol-bioinformatics-club-v2.5.10';
 const CORE_CACHE = `core-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
 
@@ -47,6 +47,7 @@ const PRECACHE_ASSETS = [
   './assets/images/carboxmol_bioclub_logo.png',
   './assets/images/carboxmol_favicon32.png',
   './assets/images/president.jpg',
+  './assets/images/announcements/free-trainings-coming-soon.png',
   './assets/images/announcements/coordinator-recruitment.png',
   './assets/images/announcements/coordinator-recruitment-linkedin.png',
   './assets/images/events/techbrains_2026_stage_presentation.jpg',
