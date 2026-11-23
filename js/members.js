@@ -127,7 +127,7 @@ const MembersPortal = {
         localStorage.setItem("wcu_active_member", JSON.stringify(active));
         if (window.ClubDatabase) {
           window.ClubDatabase.provisionMember(active);
-          if (app) window.ClubDatabase.provisionMember(app);
+          if (app && typeof window.ClubDatabase.saveApplication === "function") window.ClubDatabase.saveApplication(app);
         }
 
         MembersPortal.renderMemberDashboard();
@@ -186,7 +186,7 @@ const MembersPortal = {
     localStorage.setItem("wcu_active_member", JSON.stringify(active));
     if (window.ClubDatabase) {
       window.ClubDatabase.provisionMember(active);
-      if (app) window.ClubDatabase.provisionMember(app);
+      if (app && typeof window.ClubDatabase.saveApplication === "function") window.ClubDatabase.saveApplication(app);
     }
 
     this.renderMemberDashboard();
@@ -1309,7 +1309,9 @@ const MembersPortal = {
 
     if (window.ClubDatabase) {
       window.ClubDatabase.provisionMember(targetMember);
-      window.ClubDatabase.provisionMember(targetApp);
+      if (typeof window.ClubDatabase.saveApplication === "function") {
+        window.ClubDatabase.saveApplication(targetApp);
+      }
     }
 
     // Sync broadcast to edge and real-time cloud bus
@@ -1317,8 +1319,8 @@ const MembersPortal = {
       action: "UPDATE_MEMBER_DOSSIER",
       memberId: targetMember.id,
       username: targetMember.username,
-      member: targetMember,
-      application: targetApp,
+      member: { ...targetMember, photo: "" },
+      application: { ...targetApp, photo: "" },
       timestamp: Date.now()
     };
 
@@ -1333,10 +1335,11 @@ const MembersPortal = {
         body: JSON.stringify(syncPayload)
       }).catch(err => console.warn("API sync error:", err));
 
-      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/publish", {
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(syncPayload)
+        headers: { "Content-Type": "text/plain; charset=utf-8" },
+        body: JSON.stringify(syncPayload),
+        keepalive: true
       }).catch(err => console.warn("ntfy publish error:", err));
     }
 

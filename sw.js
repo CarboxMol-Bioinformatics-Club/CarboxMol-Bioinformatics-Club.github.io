@@ -1,7 +1,7 @@
 // CarboxMol Bioinformatika Klubu - PWA Service Worker (Oflayn və Canlı Sinxronizasiya Mühərriki)
-// Versiya: 2.5.8
+// Versiya: 2.5.9
  
-const CACHE_VERSION = 'carboxmol-bioinformatics-club-v2.5.8';
+const CACHE_VERSION = 'carboxmol-bioinformatics-club-v2.5.9';
 const CORE_CACHE = `core-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
 
@@ -135,13 +135,25 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   const isSameOrigin = url.origin === self.location.origin;
 
-  // 0) VERSION.JSON - Həmişə ən son versiyanı şəbəkədən yoxla (no-cache)
-  if (url.pathname.endsWith('/version.json')) {
+  // Real-time bulud sinxronizasiya şini (ntfy.sh), SSE axınları və API sorğuları HEÇ VAXT keşlənməməlidir!
+  if (
+    url.hostname === 'ntfy.sh' ||
+    url.hostname.endsWith('.ntfy.sh') ||
+    url.pathname.startsWith('/api/') ||
+    (request.headers.get('accept') || '').includes('text/event-stream')
+  ) {
+    return;
+  }
+
+  // 0) VERSION.JSON və MEMBERS_REGISTRY.JSON - Həmişə ən son versiyanı şəbəkədən yoxla (no-store)
+  if (url.pathname.endsWith('/version.json') || url.pathname.endsWith('/data/members_registry.json')) {
     event.respondWith(
       fetch(request, { cache: 'no-store' })
         .then((networkResponse) => {
-          const copy = networkResponse.clone();
-          caches.open(CORE_CACHE).then((cache) => cache.put(request, copy));
+          if (networkResponse && networkResponse.status === 200) {
+            const copy = networkResponse.clone();
+            caches.open(CORE_CACHE).then((cache) => cache.put(request, copy));
+          }
           return networkResponse;
         })
         .catch(async () => {

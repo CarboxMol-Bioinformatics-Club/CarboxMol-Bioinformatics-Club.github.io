@@ -745,22 +745,31 @@ const PresidentPortal = {
     }
 
     data.approvedAppIds = data.approvedAppIds || [];
+    data.approvedUsers = data.approvedUsers || [];
+    data.rejectedAppIds = data.rejectedAppIds || [];
+    data.pendingOverrideIds = data.pendingOverrideIds || [];
     data.members = data.members || [];
     const nowIso = new Date().toISOString().slice(0, 10);
+    const cloudPayloads = [];
 
     pendingApps.forEach(app => {
+      const normUser = (app.username || "").toLowerCase().replace(/^@/, "").trim();
       app.status = "Təsdiqləndi";
       app.approvedAt = nowIso;
       app.approvedBy = "Süleyman Hacızadə (Klub Sədri)";
+      app.adminNotes = "Sədr tərəfindən rəsmi təsdiqlənib.";
       if (!data.approvedAppIds.includes(app.id)) data.approvedAppIds.push(app.id);
-      data.rejectedAppIds = (data.rejectedAppIds || []).filter(id => id !== app.id);
+      if (normUser && !data.approvedUsers.includes(normUser)) data.approvedUsers.push(normUser);
+      data.rejectedAppIds = data.rejectedAppIds.filter(id => id !== app.id && id !== normUser);
+      data.pendingOverrideIds = data.pendingOverrideIds.filter(id => id !== app.id && id !== normUser);
 
       let memIdx = data.members.findIndex(m =>
         (app.memberId && m.id === app.memberId) ||
-        (m.username && app.username && m.username.toLowerCase() === app.username.toLowerCase()) ||
-        (m.email && app.email && m.email.toLowerCase() === app.email.toLowerCase())
+        (m.username && app.username && m.username.toLowerCase().replace(/^@/, "").trim() === normUser) ||
+        (m.email && app.email && m.email.toLowerCase().trim() === app.email.toLowerCase().trim())
       );
 
+      let activeMemberObj = null;
       if (memIdx === -1) {
         const newMember = {
           id: app.memberId || ("mem-" + Date.now() + Math.random().toString(36).substr(2, 4)),
@@ -782,6 +791,7 @@ const PresidentPortal = {
           notes: []
         };
         data.members.unshift(newMember);
+        activeMemberObj = newMember;
         if (window.ClubDatabase && typeof window.ClubDatabase.provisionMember === "function") {
           window.ClubDatabase.provisionMember(newMember);
         }
@@ -789,21 +799,82 @@ const PresidentPortal = {
         data.members[memIdx].status = "Aktiv";
         if (app.password && !data.members[memIdx].password) data.members[memIdx].password = app.password;
         if (app.phone && !data.members[memIdx].phone) data.members[memIdx].phone = app.phone;
+        activeMemberObj = data.members[memIdx];
         if (window.ClubDatabase && typeof window.ClubDatabase.provisionMember === "function") {
           window.ClubDatabase.provisionMember(data.members[memIdx]);
         }
       }
+
+      if (window.ClubDatabase && typeof window.ClubDatabase.saveApplication === "function") {
+        window.ClubDatabase.saveApplication(app);
+      }
+
+      cloudPayloads.push({
+        action: "UPDATE_STATUS",
+        appId: app.id,
+        username: app.username || "",
+        email: app.email || "",
+        status: "Təsdiqləndi",
+        application: {
+          id: app.id,
+          memberId: app.memberId || (activeMemberObj ? activeMemberObj.id : ""),
+          fullName: app.fullName,
+          username: app.username,
+          email: app.email,
+          phone: app.phone || "",
+          password: app.password || "",
+          faculty: app.faculty || "",
+          major: app.major || "",
+          course: app.course || "",
+          dateApplied: app.dateApplied || "",
+          status: "Təsdiqləndi",
+          approvedAt: app.approvedAt,
+          approvedBy: app.approvedBy
+        },
+        member: activeMemberObj ? {
+          id: activeMemberObj.id,
+          fullName: activeMemberObj.fullName,
+          username: activeMemberObj.username,
+          email: activeMemberObj.email,
+          phone: activeMemberObj.phone || "",
+          password: activeMemberObj.password || "",
+          role: activeMemberObj.role || "Klub Üzvü",
+          faculty: activeMemberObj.faculty || "",
+          major: activeMemberObj.major || "",
+          course: activeMemberObj.course || "",
+          status: "Aktiv"
+        } : null,
+        timestamp: Date.now()
+      });
     });
 
     try {
       localStorage.setItem("carboxmol_approved_app_ids", JSON.stringify(data.approvedAppIds));
+      localStorage.setItem("carboxmol_approved_users", JSON.stringify(data.approvedUsers));
       localStorage.setItem("carboxmol_rejected_app_ids", JSON.stringify(data.rejectedAppIds || []));
+      localStorage.setItem("carboxmol_pending_override_ids", JSON.stringify(data.pendingOverrideIds || []));
     } catch(e) {}
 
     saveClubData(data);
     this.renderMetrics();
     this.renderApplicationsTable();
     this.renderMembersAccountsTable();
+
+    if (typeof fetch === "function") {
+      cloudPayloads.forEach(payload => {
+        fetch("/api/sync", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+        fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure", {
+          method: "POST",
+          headers: { "Content-Type": "text/plain; charset=utf-8" },
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).catch(() => {});
+      });
+    }
 
     if (typeof showToast === "function") {
       showToast(`✓ Bütün ${pendingApps.length} müraciət uğurla təsdiqləndi və rəsmi üzv edildi!`, "success");
@@ -3125,6 +3196,12 @@ E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
 
     const appStatus = rawStatus;
     const memberStatus = rawStatus === "Təsdiqləndi" || rawStatus === "Qəbul Edildi" ? "Aktiv" : rawStatus;
+    const normUser = (username || "").toLowerCase().replace(/^@/, "").trim();
+
+    data.approvedAppIds = data.approvedAppIds || [];
+    data.approvedUsers = data.approvedUsers || [];
+    data.rejectedAppIds = data.rejectedAppIds || [];
+    data.pendingOverrideIds = data.pendingOverrideIds || [];
 
     if (app) {
       app.fullName = fullName;
@@ -3143,7 +3220,15 @@ E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
       app.weeklyTime = weeklyTime;
       app.adminNotes = adminNotes;
       if (motivation) app.motivation = motivation;
+      if (appStatus === "Təsdiqləndi" || appStatus === "Qəbul Edildi") {
+        app.approvedAt = app.approvedAt || new Date().toISOString().slice(0, 10);
+        app.approvedBy = app.approvedBy || "Süleyman Hacızadə (Klub Sədri)";
+      }
       app.lastEditedByAdminAt = new Date().toISOString();
+
+      if (window.ClubDatabase && typeof window.ClubDatabase.saveApplication === "function") {
+        window.ClubDatabase.saveApplication(app);
+      }
     }
 
     if (member) {
@@ -3170,6 +3255,32 @@ E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
       }
     }
 
+    const trackAppId = app ? app.id : null;
+    if (appStatus === "Təsdiqləndi" || appStatus === "Qəbul Edildi") {
+      if (trackAppId && !data.approvedAppIds.includes(trackAppId)) data.approvedAppIds.push(trackAppId);
+      if (normUser && !data.approvedUsers.includes(normUser)) data.approvedUsers.push(normUser);
+      data.rejectedAppIds = data.rejectedAppIds.filter(x => x !== trackAppId && x !== normUser);
+      data.pendingOverrideIds = data.pendingOverrideIds.filter(x => x !== trackAppId && x !== normUser);
+    } else if (appStatus === "Rədd edildi") {
+      if (trackAppId && !data.rejectedAppIds.includes(trackAppId)) data.rejectedAppIds.push(trackAppId);
+      if (normUser && !data.rejectedAppIds.includes(normUser)) data.rejectedAppIds.push(normUser);
+      data.approvedAppIds = data.approvedAppIds.filter(x => x !== trackAppId);
+      data.approvedUsers = data.approvedUsers.filter(x => x !== normUser);
+      data.pendingOverrideIds = data.pendingOverrideIds.filter(x => x !== trackAppId && x !== normUser);
+    } else {
+      if (trackAppId && !data.pendingOverrideIds.includes(trackAppId)) data.pendingOverrideIds.push(trackAppId);
+      if (normUser && !data.pendingOverrideIds.includes(normUser)) data.pendingOverrideIds.push(normUser);
+      data.approvedAppIds = data.approvedAppIds.filter(x => x !== trackAppId);
+      data.approvedUsers = data.approvedUsers.filter(x => x !== normUser);
+      data.rejectedAppIds = data.rejectedAppIds.filter(x => x !== trackAppId && x !== normUser);
+    }
+    try {
+      localStorage.setItem("carboxmol_approved_app_ids", JSON.stringify(data.approvedAppIds));
+      localStorage.setItem("carboxmol_approved_users", JSON.stringify(data.approvedUsers));
+      localStorage.setItem("carboxmol_rejected_app_ids", JSON.stringify(data.rejectedAppIds));
+      localStorage.setItem("carboxmol_pending_override_ids", JSON.stringify(data.pendingOverrideIds));
+    } catch (e) {}
+
     saveClubData(data);
     this.closeEditDossierModal();
     this.renderApplicationsTable();
@@ -3180,8 +3291,9 @@ E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
     // Canlı yayım və bulud sinxronizasiyası
     const syncPayload = {
       action: "UPDATE_MEMBER_DOSSIER",
-      application: app,
-      member: member,
+      username: username,
+      application: app ? { ...app, photo: "" } : null,
+      member: member ? { ...member, photo: "" } : null,
       timestamp: Date.now()
     };
 
@@ -3193,6 +3305,13 @@ E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(syncPayload)
       }).catch(e => console.warn("Admin dossier update sync warning:", e));
+
+      fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure", {
+        method: "POST",
+        headers: { "Content-Type": "text/plain; charset=utf-8" },
+        body: JSON.stringify(syncPayload),
+        keepalive: true
+      }).catch(e => console.warn("Admin dossier ntfy sync warning:", e));
     } catch (e) {}
   },
 
@@ -3290,7 +3409,7 @@ E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
                   data.applications.unshift(serverApp);
                   updatedCount++;
                   newIncomingNames.push(serverApp.fullName);
-                  if (window.ClubDatabase) window.ClubDatabase.provisionMember(serverApp);
+                  if (window.ClubDatabase && typeof window.ClubDatabase.saveApplication === "function") window.ClubDatabase.saveApplication(serverApp);
                 } else {
                   // Status qorunması: Əgər lokalda artıq "Təsdiqləndi"dirsə, heç vaxt "Gözləyir"ə qaytarma!
                   if (data.applications[idx].status === "Təsdiqləndi") {
@@ -3339,7 +3458,7 @@ E-poçt: suleyman.hacizade.232bioing@wcu.edu.az | suleyman.hacizade1@gmail.com
           return false;
         };
 
-        const ntfyRes = await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/json?poll=1&since=all");
+        const ntfyRes = await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/json?poll=1&since=all", { cache: "no-store" });
         if (ntfyRes.ok) {
           const text = await ntfyRes.text();
           const lines = text.trim().split("\n").filter(Boolean);

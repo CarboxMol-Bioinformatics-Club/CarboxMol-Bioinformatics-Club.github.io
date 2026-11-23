@@ -194,253 +194,370 @@ function closeMemberLoginModal() {
 }
 window.closeMemberLoginModal = closeMemberLoginModal;
 
-// Canlı Bulud Şini (ntfy.sh) vasitəsilə təsdiqlənmiş üzvləri və müraciət qərarlarını dərhal sinxronlaşdır
-async function syncCloudApprovals(targetUser) {
+// Canlı Bulud Şini (ntfy.sh) vasitəsilə təsdiqlənmiş üzvləri, müraciət qərarlarını və dossye yeniliklərini dərhal sinxronlaşdır
+let _inFlightCloudSyncPromise = null;
+
+function _normalizePhoneKey(val) {
+  const digits = String(val || "").replace(/\D/g, "");
+  if (digits.length < 9) return "";
+  if (digits.startsWith("994") && digits.length >= 12) return digits.slice(3);
+  if (digits.startsWith("0") && digits.length === 10) return digits.slice(1);
+  return digits.slice(-9);
+}
+
+async function syncCloudApprovals(targetUser, options = {}) {
   if (typeof fetch !== "function" || (typeof navigator !== "undefined" && !navigator.onLine)) return false;
-  let updated = false;
-  const data = getClubData();
-  data.members = data.members || [];
-  data.applications = data.applications || [];
-  data.approvedAppIds = data.approvedAppIds || [];
-  data.approvedUsers = data.approvedUsers || [];
-  data.rejectedAppIds = data.rejectedAppIds || [];
-  data.pendingOverrideIds = data.pendingOverrideIds || [];
-
-  // 1. Qlobal Rəsmi CDN Reyestri (data/members_registry.json — yalnız Sədrin təsdiqlədiyi rəsmi üzvlər)
-  try {
-    const basePath = (typeof window !== "undefined" && window.location && window.location.pathname)
-      ? window.location.pathname.substring(0, window.location.pathname.lastIndexOf("/") + 1)
-      : "";
-    const regUrl = basePath + "data/members_registry.json?t=" + Math.floor(Date.now() / 60000);
-
-    const regRes = await fetch(regUrl, { cache: "no-cache" }).catch(() => null);
-    if (regRes && regRes.ok) {
-      const regData = await regRes.json();
-      if (regData && Array.isArray(regData.members)) {
-        regData.members.forEach(regMem => {
-          if (!regMem || !regMem.username) return;
-          const u = regMem.username.toLowerCase().replace(/^@/, "").trim();
-          if (data.pendingOverrideIds.includes(u) || data.rejectedAppIds.includes(u)) return;
-          let target = data.members.find(m => m && m.username && m.username.toLowerCase().replace(/^@/, "").trim() === u);
-          if (target) {
-            if (target.status !== "Aktiv") { target.status = "Aktiv"; updated = true; }
-            if (regMem.password && !target.password) { target.password = regMem.password; updated = true; }
-            if (regMem.role && !target.role) { target.role = regMem.role; updated = true; }
-            if (regMem.fullName && !target.fullName) { target.fullName = regMem.fullName; updated = true; }
-          } else {
-            data.members.unshift(Object.assign({}, regMem, { status: "Aktiv" }));
-            updated = true;
-          }
-        });
-      }
-      if (regData && Array.isArray(regData.applications)) {
-        regData.applications.forEach(regApp => {
-          if (!regApp || !regApp.username) return;
-          const u = regApp.username.toLowerCase().replace(/^@/, "").trim();
-          if (data.pendingOverrideIds.includes(regApp.id) || data.pendingOverrideIds.includes(u) || data.rejectedAppIds.includes(regApp.id)) return;
-          let target = data.applications.find(a => a && a.username && a.username.toLowerCase().replace(/^@/, "").trim() === u);
-          if (target) {
-            if (target.status !== "Təsdiqləndi") { target.status = "Təsdiqləndi"; updated = true; }
-            if (regApp.password && !target.password) { target.password = regApp.password; updated = true; }
-            if (regApp.approvedAt && !target.approvedAt) target.approvedAt = regApp.approvedAt;
-            if (regApp.approvedBy && !target.approvedBy) target.approvedBy = regApp.approvedBy;
-          } else {
-            data.applications.unshift(Object.assign({}, regApp, { status: "Təsdiqləndi" }));
-            updated = true;
-          }
-          if (regApp.id && !data.approvedAppIds.includes(regApp.id)) {
-            data.approvedAppIds.push(regApp.id);
-          }
-        });
-      }
-    }
-  } catch (errReg) {
-    console.warn("[CloudSync] members_registry fetch notice:", errReg);
+  if (_inFlightCloudSyncPromise) {
+    return _inFlightCloudSyncPromise;
   }
 
-  // 2. Canlı ntfy Bulud Şini (ntfy.sh poll=1&since=all — sürətli 2s timeout ilə)
-  try {
-    const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-    const timeoutId = controller ? setTimeout(() => controller.abort(), 2000) : null;
-    const fetchOpts = controller ? { signal: controller.signal } : {};
-    const res = await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/json?poll=1&since=all", fetchOpts);
-    if (timeoutId) clearTimeout(timeoutId);
-    if (res && res.ok) {
-      const text = await res.text();
-      const lines = text.trim().split("\n").filter(Boolean);
+  const timeoutMs = (options && options.timeoutMs) || 5500;
 
-      for (const line of lines) {
-        try {
-          const item = JSON.parse(line);
-          let payload = null;
+  _inFlightCloudSyncPromise = (async () => {
+    let updated = false;
+    const data = getClubData();
+    data.members = data.members || [];
+    data.applications = data.applications || [];
+    data.approvedAppIds = data.approvedAppIds || [];
+    data.approvedUsers = data.approvedUsers || [];
+    data.rejectedAppIds = data.rejectedAppIds || [];
+    data.pendingOverrideIds = data.pendingOverrideIds || [];
 
-          if (item.attachment && item.attachment.url) {
-            try {
-              const attRes = await fetch(item.attachment.url, { cache: "no-cache" });
-              if (attRes.ok) payload = await attRes.json();
-            } catch (errAtt) {}
-          }
+    // 1. Qlobal Rəsmi CDN Reyestri (data/members_registry.json — yalnız Sədrin təsdiqlədiyi rəsmi üzvlər)
+    try {
+      const basePath = (typeof window !== "undefined" && window.location && window.location.pathname)
+        ? window.location.pathname.substring(0, window.location.pathname.lastIndexOf("/") + 1)
+        : "";
+      const regUrl = basePath + "data/members_registry.json?t=" + Date.now();
 
-          if (!payload) {
-            let msg = item.message;
-            if (typeof msg === "string" && msg.trim().startsWith("{")) {
-              try { msg = JSON.parse(msg); } catch (e) {}
+      const regRes = await fetch(regUrl, { cache: "no-store" }).catch(() => null);
+      if (regRes && regRes.ok) {
+        const regData = await regRes.json();
+        if (regData && Array.isArray(regData.members)) {
+          regData.members.forEach(regMem => {
+            if (!regMem || !regMem.username) return;
+            const u = regMem.username.toLowerCase().replace(/^@/, "").trim();
+            if (data.pendingOverrideIds.includes(u) || data.rejectedAppIds.includes(u)) return;
+            const targets = data.members.filter(m => m && m.username && m.username.toLowerCase().replace(/^@/, "").trim() === u);
+            if (targets.length > 0) {
+              targets.forEach(target => {
+                if (target.status !== "Aktiv") { target.status = "Aktiv"; updated = true; }
+                if (regMem.password && !target.password) { target.password = regMem.password; updated = true; }
+                if (regMem.role && !target.role) { target.role = regMem.role; updated = true; }
+                if (regMem.fullName && !target.fullName) { target.fullName = regMem.fullName; updated = true; }
+                if (regMem.phone && !target.phone) { target.phone = regMem.phone; updated = true; }
+              });
+            } else {
+              data.members.unshift(Object.assign({}, regMem, { status: "Aktiv" }));
+              updated = true;
             }
-            if (msg && typeof msg === "object") payload = msg;
-            else if (item && typeof item === "object" && item.action) payload = item;
-          }
+          });
+        }
+        if (regData && Array.isArray(regData.applications)) {
+          regData.applications.forEach(regApp => {
+            if (!regApp || !regApp.username) return;
+            const u = regApp.username.toLowerCase().replace(/^@/, "").trim();
+            if (data.pendingOverrideIds.includes(regApp.id) || data.pendingOverrideIds.includes(u) || data.rejectedAppIds.includes(regApp.id)) return;
+            const targets = data.applications.filter(a => a && a.username && a.username.toLowerCase().replace(/^@/, "").trim() === u);
+            if (targets.length > 0) {
+              targets.forEach(target => {
+                if (target.status !== "Təsdiqləndi") { target.status = "Təsdiqləndi"; updated = true; }
+                if (regApp.password && !target.password) { target.password = regApp.password; updated = true; }
+                if (regApp.phone && !target.phone) { target.phone = regApp.phone; updated = true; }
+                if (regApp.approvedAt && !target.approvedAt) target.approvedAt = regApp.approvedAt;
+                if (regApp.approvedBy && !target.approvedBy) target.approvedBy = regApp.approvedBy;
+              });
+            } else {
+              data.applications.unshift(Object.assign({}, regApp, { status: "Təsdiqləndi" }));
+              updated = true;
+            }
+            if (regApp.id && !data.approvedAppIds.includes(regApp.id)) {
+              data.approvedAppIds.push(regApp.id);
+            }
+            if (u && !data.approvedUsers.includes(u)) {
+              data.approvedUsers.push(u);
+            }
+          });
+        }
+      }
+    } catch (errReg) {
+      console.warn("[CloudSync] members_registry fetch notice:", errReg);
+    }
 
-          if (!payload || typeof payload !== "object") continue;
+    // 2. Canlı ntfy Bulud Şini (ntfy.sh poll=1&since=all — keşsiz canlı sorğu)
+    try {
+      const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+      const timeoutId = controller ? setTimeout(() => controller.abort(), timeoutMs) : null;
+      const fetchOpts = { cache: "no-store" };
+      if (controller) fetchOpts.signal = controller.signal;
+      const res = await fetch("https://ntfy.sh/carboxmol_bioinfo_cloud_sync_v3_secure/json?poll=1&since=all", fetchOpts);
+      if (timeoutId) clearTimeout(timeoutId);
+      if (res && res.ok) {
+        const text = await res.text();
+        const lines = text.trim().split("\n").filter(Boolean);
 
-          if (payload.action === "UPDATE_STATUS" && (payload.appId || (payload.application && payload.application.id) || payload.username) && payload.status) {
-            const incomingApp = payload.application;
-            const incomingMem = payload.member;
-            const targetStatus = payload.status;
-            const normUser = ((payload.username || (incomingApp && incomingApp.username) || (incomingMem && incomingMem.username) || "")).toLowerCase().replace(/^@/, "").trim();
-            const normEmail = ((payload.email || (incomingApp && incomingApp.email) || (incomingMem && incomingMem.email) || "")).toLowerCase().trim();
+        for (const line of lines) {
+          try {
+            const item = JSON.parse(line);
+            let payload = null;
 
-            let targetApp = data.applications.find(a =>
-              (payload.appId && a.id === payload.appId) ||
-              (incomingApp && a.id && a.id === incomingApp.id) ||
-              (normUser && a.username && a.username.toLowerCase().replace(/^@/, "").trim() === normUser) ||
-              (normEmail && a.email && a.email.toLowerCase().trim() === normEmail)
-            );
+            if (item.attachment && item.attachment.url) {
+              try {
+                const attRes = await fetch(item.attachment.url, { cache: "no-store" });
+                if (attRes.ok) payload = await attRes.json();
+              } catch (errAtt) {}
+            }
 
-            if (targetApp) {
-              if (targetApp.status !== targetStatus) {
-                targetApp.status = targetStatus;
-                if (targetStatus === "Təsdiqləndi") {
-                  targetApp.approvedAt = (incomingApp && incomingApp.approvedAt) || new Date().toISOString().slice(0, 10);
-                  targetApp.approvedBy = (incomingApp && incomingApp.approvedBy) || "Süleyman Hacızadə (Klub Sədri)";
+            if (!payload) {
+              let msg = item.message;
+              if (typeof msg === "string" && msg.trim().startsWith("{")) {
+                try { msg = JSON.parse(msg); } catch (e) {}
+              }
+              if (msg && typeof msg === "object") payload = msg;
+              else if (item && typeof item === "object" && item.action) payload = item;
+            }
+
+            if (!payload || typeof payload !== "object") continue;
+
+            if (payload.action === "UPDATE_STATUS" && (payload.appId || (payload.application && payload.application.id) || payload.username) && payload.status) {
+              const incomingApp = payload.application;
+              const incomingMem = payload.member;
+              const targetStatus = payload.status;
+              const normUser = ((payload.username || (incomingApp && incomingApp.username) || (incomingMem && incomingMem.username) || "")).toLowerCase().replace(/^@/, "").trim();
+              const normEmail = ((payload.email || (incomingApp && incomingApp.email) || (incomingMem && incomingMem.email) || "")).toLowerCase().trim();
+
+              const matchedApps = data.applications.filter(a => {
+                if (!a) return false;
+                const aUser = (a.username || "").toLowerCase().replace(/^@/, "").trim();
+                return (
+                  (payload.appId && a.id === payload.appId) ||
+                  (incomingApp && a.id && a.id === incomingApp.id) ||
+                  (normUser && aUser === normUser) ||
+                  ((!aUser || !normUser || aUser === normUser) && normEmail && a.email && a.email.toLowerCase().trim() === normEmail)
+                );
+              });
+
+              let targetApp = matchedApps[0] || null;
+              if (matchedApps.length > 0) {
+                matchedApps.forEach(a => {
+                  if (a.status !== targetStatus) {
+                    a.status = targetStatus;
+                    if (targetStatus === "Təsdiqləndi") {
+                      a.approvedAt = (incomingApp && incomingApp.approvedAt) || new Date().toISOString().slice(0, 10);
+                      a.approvedBy = (incomingApp && incomingApp.approvedBy) || "Süleyman Hacızadə (Klub Sədri)";
+                    }
+                    updated = true;
+                  }
+                  if (incomingApp && incomingApp.password && !a.password) { a.password = incomingApp.password; updated = true; }
+                  if (incomingApp && incomingApp.phone && !a.phone) { a.phone = incomingApp.phone; updated = true; }
+                });
+              } else if (incomingApp && incomingApp.username) {
+                const copyApp = Object.assign({}, incomingApp, { status: targetStatus });
+                data.applications.unshift(copyApp);
+                targetApp = copyApp;
+                updated = true;
+              }
+
+              const appIdToTrack = (targetApp && targetApp.id) || payload.appId;
+              if (targetStatus === "Təsdiqləndi") {
+                if (appIdToTrack && !data.approvedAppIds.includes(appIdToTrack)) data.approvedAppIds.push(appIdToTrack);
+                if (payload.appId && !data.approvedAppIds.includes(payload.appId)) data.approvedAppIds.push(payload.appId);
+                if (normUser && !data.approvedUsers.includes(normUser)) data.approvedUsers.push(normUser);
+                data.rejectedAppIds = data.rejectedAppIds.filter(x => x !== appIdToTrack && x !== payload.appId && x !== normUser);
+                data.pendingOverrideIds = data.pendingOverrideIds.filter(x => x !== appIdToTrack && x !== payload.appId && x !== normUser);
+              } else if (targetStatus === "Rədd edildi") {
+                if (appIdToTrack && !data.rejectedAppIds.includes(appIdToTrack)) data.rejectedAppIds.push(appIdToTrack);
+                if (normUser && !data.rejectedAppIds.includes(normUser)) data.rejectedAppIds.push(normUser);
+                data.approvedAppIds = data.approvedAppIds.filter(x => x !== appIdToTrack && x !== payload.appId);
+                data.approvedUsers = data.approvedUsers.filter(x => x !== normUser);
+                data.pendingOverrideIds = data.pendingOverrideIds.filter(x => x !== appIdToTrack && x !== payload.appId && x !== normUser);
+              } else if (targetStatus === "Gözləyir") {
+                if (appIdToTrack && !data.pendingOverrideIds.includes(appIdToTrack)) data.pendingOverrideIds.push(appIdToTrack);
+                if (normUser && !data.pendingOverrideIds.includes(normUser)) data.pendingOverrideIds.push(normUser);
+                data.approvedAppIds = data.approvedAppIds.filter(x => x !== appIdToTrack && x !== payload.appId);
+                data.approvedUsers = data.approvedUsers.filter(x => x !== normUser);
+                data.rejectedAppIds = data.rejectedAppIds.filter(x => x !== appIdToTrack && x !== payload.appId && x !== normUser);
+              }
+
+              const matchedMems = data.members.filter(m => {
+                if (!m) return false;
+                const mUser = (m.username || "").toLowerCase().replace(/^@/, "").trim();
+                return (
+                  (payload.appId && m.id === payload.appId) ||
+                  (incomingMem && incomingMem.id && m.id === incomingMem.id) ||
+                  (targetApp && targetApp.memberId && m.id === targetApp.memberId) ||
+                  (normUser && mUser === normUser) ||
+                  ((!mUser || !normUser || mUser === normUser) && normEmail && m.email && m.email.toLowerCase().trim() === normEmail)
+                );
+              });
+
+              const newMemStatus = (targetStatus === "Təsdiqləndi") ? "Aktiv" : targetStatus;
+              if (matchedMems.length > 0) {
+                matchedMems.forEach(m => {
+                  if (m.status !== newMemStatus) {
+                    m.status = newMemStatus;
+                    updated = true;
+                  }
+                  if (incomingMem && incomingMem.password && !m.password) { m.password = incomingMem.password; updated = true; }
+                  if (incomingMem && incomingMem.phone && !m.phone) { m.phone = incomingMem.phone; updated = true; }
+                });
+              } else if (incomingMem && incomingMem.username) {
+                data.members.unshift(Object.assign({}, incomingMem, { status: newMemStatus }));
+                updated = true;
+              }
+            } else if (payload.action === "UPDATE_MEMBER_DOSSIER" || payload.action === "MEMBER_PROFILE_UPDATED") {
+              const updatedMem = payload.member;
+              const updatedApp = payload.application;
+              const normUser = ((payload.username || (updatedMem && updatedMem.username) || (updatedApp && updatedApp.username) || "")).toLowerCase().replace(/^@/, "").trim();
+              const normEmail = (((updatedMem && updatedMem.email) || (updatedApp && updatedApp.email) || "")).toLowerCase().trim();
+
+              if (updatedMem && updatedMem.username) {
+                const mMatches = data.members.filter(m => {
+                  if (!m) return false;
+                  const mUser = (m.username || "").toLowerCase().replace(/^@/, "").trim();
+                  return (updatedMem.id && m.id === updatedMem.id) || (normUser && mUser === normUser);
+                });
+                if (mMatches.length > 0) {
+                  mMatches.forEach(m => {
+                    const preservedPhoto = updatedMem.photo || m.photo || "";
+                    Object.assign(m, updatedMem, { id: m.id, photo: preservedPhoto });
+                    updated = true;
+                  });
+                } else {
+                  data.members.unshift(Object.assign({}, updatedMem));
+                  updated = true;
+                }
+                if (updatedMem.status === "Aktiv" && normUser) {
+                  if (!data.approvedUsers.includes(normUser)) data.approvedUsers.push(normUser);
+                  data.pendingOverrideIds = data.pendingOverrideIds.filter(x => x !== normUser);
+                  data.rejectedAppIds = data.rejectedAppIds.filter(x => x !== normUser);
+                }
+              }
+
+              if (updatedApp && (updatedApp.id || updatedApp.username)) {
+                const aMatches = data.applications.filter(a => {
+                  if (!a) return false;
+                  const aUser = (a.username || "").toLowerCase().replace(/^@/, "").trim();
+                  return (
+                    (updatedApp.id && a.id === updatedApp.id) ||
+                    (normUser && aUser === normUser) ||
+                    ((!aUser || !normUser || aUser === normUser) && normEmail && a.email && a.email.toLowerCase().trim() === normEmail)
+                  );
+                });
+                if (aMatches.length > 0) {
+                  aMatches.forEach(a => {
+                    const preservedPhoto = updatedApp.photo || a.photo || "";
+                    Object.assign(a, updatedApp, { id: a.id, photo: preservedPhoto });
+                    updated = true;
+                  });
+                } else {
+                  data.applications.unshift(Object.assign({}, updatedApp));
+                  updated = true;
+                }
+                const trackId = (aMatches[0] && aMatches[0].id) || updatedApp.id;
+                if (updatedApp.status === "Təsdiqləndi") {
+                  if (trackId && !data.approvedAppIds.includes(trackId)) data.approvedAppIds.push(trackId);
+                  if (normUser && !data.approvedUsers.includes(normUser)) data.approvedUsers.push(normUser);
+                  data.pendingOverrideIds = data.pendingOverrideIds.filter(x => x !== trackId && x !== normUser);
+                  data.rejectedAppIds = data.rejectedAppIds.filter(x => x !== trackId && x !== normUser);
+                } else if (updatedApp.status === "Rədd edildi") {
+                  if (trackId && !data.rejectedAppIds.includes(trackId)) data.rejectedAppIds.push(trackId);
+                  if (normUser && !data.rejectedAppIds.includes(normUser)) data.rejectedAppIds.push(normUser);
+                  data.approvedAppIds = data.approvedAppIds.filter(x => x !== trackId);
+                  data.approvedUsers = data.approvedUsers.filter(x => x !== normUser);
+                }
+              }
+            } else if ((payload.action === "REGISTER_STUDENT" || payload.action === "REGISTER_MEMBER") && payload.application) {
+              // QAYDA: Yeni qeydiyyat HEÇ VAXT avtomatik təsdiqlənmir — yalnız Sədrin əllə təsdiq etdikləri "Təsdiqləndi" olur!
+              const app = Object.assign({}, payload.application);
+              const normUser = (app.username || "").toLowerCase().replace(/^@/, "").trim();
+              const normEmail = (app.email || "").toLowerCase().trim();
+              const exists = data.applications.some(a =>
+                a.id === app.id ||
+                (normUser && a.username && a.username.toLowerCase().replace(/^@/, "").trim() === normUser) ||
+                ((!a.username || !normUser) && normEmail && a.email && a.email.toLowerCase().trim() === normEmail)
+              );
+              if (!exists && !(data.deletedAppIds || []).includes(app.id)) {
+                const alreadyApproved = data.approvedAppIds.includes(app.id) || (normUser && data.approvedUsers.includes(normUser));
+                app.status = alreadyApproved ? "Təsdiqləndi" : "Gözləyir";
+                data.applications.unshift(app);
+                const memObj = payload.member ? Object.assign({}, payload.member) : {
+                  id: app.memberId || ("mem-" + Date.now()),
+                  fullName: app.fullName,
+                  username: app.username,
+                  email: app.email,
+                  phone: app.phone || "",
+                  photo: app.photo || "",
+                  password: app.password || "",
+                  role: "Klub Üzvü",
+                  faculty: app.faculty || "",
+                  major: app.major || "",
+                  course: app.course || "",
+                  registeredAt: app.dateApplied || new Date().toISOString().slice(0, 10),
+                  status: alreadyApproved ? "Aktiv" : "Gözləyir",
+                  customTasks: [],
+                  notes: []
+                };
+                memObj.status = alreadyApproved ? "Aktiv" : "Gözləyir";
+                const memExists = data.members.some(m =>
+                  m.id === memObj.id ||
+                  (normUser && m.username && m.username.toLowerCase().replace(/^@/, "").trim() === normUser)
+                );
+                if (!memExists) {
+                  data.members.unshift(memObj);
                 }
                 updated = true;
               }
-            } else if (incomingApp && incomingApp.username) {
-              incomingApp.status = targetStatus;
-              data.applications.unshift(incomingApp);
-              targetApp = incomingApp;
-              updated = true;
             }
-
-            const appIdToTrack = (targetApp && targetApp.id) || payload.appId;
-            if (targetStatus === "Təsdiqləndi") {
-              if (appIdToTrack && !data.approvedAppIds.includes(appIdToTrack)) data.approvedAppIds.push(appIdToTrack);
-              if (normUser && !data.approvedUsers.includes(normUser)) data.approvedUsers.push(normUser);
-              data.rejectedAppIds = data.rejectedAppIds.filter(x => x !== appIdToTrack && x !== normUser);
-              data.pendingOverrideIds = data.pendingOverrideIds.filter(x => x !== appIdToTrack && x !== normUser);
-            } else if (targetStatus === "Rədd edildi") {
-              if (appIdToTrack && !data.rejectedAppIds.includes(appIdToTrack)) data.rejectedAppIds.push(appIdToTrack);
-              data.approvedAppIds = data.approvedAppIds.filter(x => x !== appIdToTrack);
-              data.approvedUsers = data.approvedUsers.filter(x => x !== normUser);
-              data.pendingOverrideIds = data.pendingOverrideIds.filter(x => x !== appIdToTrack && x !== normUser);
-            } else if (targetStatus === "Gözləyir") {
-              if (appIdToTrack && !data.pendingOverrideIds.includes(appIdToTrack)) data.pendingOverrideIds.push(appIdToTrack);
-              if (normUser && !data.pendingOverrideIds.includes(normUser)) data.pendingOverrideIds.push(normUser);
-              data.approvedAppIds = data.approvedAppIds.filter(x => x !== appIdToTrack);
-              data.approvedUsers = data.approvedUsers.filter(x => x !== normUser);
-              data.rejectedAppIds = data.rejectedAppIds.filter(x => x !== appIdToTrack && x !== normUser);
-            }
-
-            let targetMem = data.members.find(m =>
-              (payload.appId && m.id === payload.appId) ||
-              (targetApp && targetApp.memberId && m.id === targetApp.memberId) ||
-              (normUser && m.username && m.username.toLowerCase().replace(/^@/, "").trim() === normUser) ||
-              (normEmail && m.email && m.email.toLowerCase().trim() === normEmail)
-            );
-
-            const newMemStatus = (targetStatus === "Təsdiqləndi") ? "Aktiv" : targetStatus;
-            if (targetMem) {
-              if (targetMem.status !== newMemStatus) {
-                targetMem.status = newMemStatus;
-                updated = true;
-              }
-            } else if (incomingMem && incomingMem.username) {
-              incomingMem.status = newMemStatus;
-              data.members.unshift(incomingMem);
-              updated = true;
-            }
-          } else if ((payload.action === "REGISTER_STUDENT" || payload.action === "REGISTER_MEMBER") && payload.application) {
-            // QAYDA: Yeni qeydiyyat HEÇ VAXT avtomatik təsdiqlənmir — yalnız Sədrin əllə təsdiq etdikləri "Təsdiqləndi" olur!
-            const app = Object.assign({}, payload.application);
-            const normUser = (app.username || "").toLowerCase().replace(/^@/, "").trim();
-            const normEmail = (app.email || "").toLowerCase().trim();
-            const exists = data.applications.some(a =>
-              a.id === app.id ||
-              (normUser && a.username && a.username.toLowerCase().replace(/^@/, "").trim() === normUser) ||
-              (normEmail && a.email && a.email.toLowerCase().trim() === normEmail)
-            );
-            if (!exists && !(data.deletedAppIds || []).includes(app.id)) {
-              const alreadyApproved = data.approvedAppIds.includes(app.id) || (normUser && data.approvedUsers.includes(normUser));
-              app.status = alreadyApproved ? "Təsdiqləndi" : "Gözləyir";
-              data.applications.unshift(app);
-              const memObj = payload.member ? Object.assign({}, payload.member) : {
-                id: app.memberId || ("mem-" + Date.now()),
-                fullName: app.fullName,
-                username: app.username,
-                email: app.email,
-                phone: app.phone || "",
-                photo: app.photo || "",
-                password: app.password || "",
-                role: "Klub Üzvü",
-                faculty: app.faculty || "",
-                major: app.major || "",
-                course: app.course || "",
-                registeredAt: app.dateApplied || new Date().toISOString().slice(0, 10),
-                status: alreadyApproved ? "Aktiv" : "Gözləyir",
-                customTasks: [],
-                notes: []
-              };
-              memObj.status = alreadyApproved ? "Aktiv" : "Gözləyir";
-              const memExists = data.members.some(m =>
-                m.id === memObj.id ||
-                (normUser && m.username && m.username.toLowerCase().replace(/^@/, "").trim() === normUser)
-              );
-              if (!memExists) {
-                data.members.unshift(memObj);
-              }
-              updated = true;
-            }
-          }
-        } catch (errLine) {}
+          } catch (errLine) {}
+        }
       }
+    } catch (errSync) {
+      console.warn("[CloudSync] Background sync notice:", errSync);
     }
-  } catch (errSync) {
-    console.warn("[CloudSync] Background sync notice:", errSync);
-  }
 
-  if (updated) {
-    saveClubData(data);
-    try {
-      localStorage.setItem("carboxmol_approved_app_ids", JSON.stringify(data.approvedAppIds));
-      localStorage.setItem("carboxmol_approved_users", JSON.stringify(data.approvedUsers));
-      localStorage.setItem("carboxmol_rejected_app_ids", JSON.stringify(data.rejectedAppIds));
-      localStorage.setItem("carboxmol_pending_override_ids", JSON.stringify(data.pendingOverrideIds));
-    } catch (e) {}
-    if (window.ClubDatabase) {
-      data.members.forEach(m => window.ClubDatabase.provisionMember(m));
-      data.applications.forEach(a => window.ClubDatabase.saveApplication(a));
+    if (updated) {
+      saveClubData(data);
+      try {
+        localStorage.setItem("carboxmol_approved_app_ids", JSON.stringify(data.approvedAppIds));
+        localStorage.setItem("carboxmol_approved_users", JSON.stringify(data.approvedUsers));
+        localStorage.setItem("carboxmol_rejected_app_ids", JSON.stringify(data.rejectedAppIds));
+        localStorage.setItem("carboxmol_pending_override_ids", JSON.stringify(data.pendingOverrideIds));
+      } catch (e) {}
+      if (window.ClubDatabase) {
+        data.members.forEach(m => window.ClubDatabase.provisionMember(m));
+        data.applications.forEach(a => window.ClubDatabase.saveApplication(a));
+      }
+      if (window.PresidentPortal) {
+        PresidentPortal.renderMetrics();
+        PresidentPortal.renderApplicationsTable();
+        if (PresidentPortal.renderMembersAccountsTable) PresidentPortal.renderMembersAccountsTable();
+      }
+      return true;
     }
-    if (window.PresidentPortal) {
-      PresidentPortal.renderMetrics();
-      PresidentPortal.renderApplicationsTable();
-      if (PresidentPortal.renderMembersAccountsTable) PresidentPortal.renderMembersAccountsTable();
-    }
-    return true;
-  }
-  return false;
+    return false;
+  })().finally(() => {
+    _inFlightCloudSyncPromise = null;
+  });
+
+  return _inFlightCloudSyncPromise;
 }
 window.syncCloudApprovals = syncCloudApprovals;
 
 async function handleMemberLogin(e) {
   if (e) e.preventDefault();
 
+  const submittedForm = e && e.target && typeof e.target.querySelector === "function" ? e.target : null;
+  const formUserInput = submittedForm ? submittedForm.querySelector('input[type="text"], input[id*="Username"]') : null;
+  const formPassInput = submittedForm ? submittedForm.querySelector('input[type="password"], input[id*="Password"]') : null;
+
   const userInput = document.getElementById("memberLoginUsername");
   const passInput = document.getElementById("memberLoginPassword");
   const gwUserInput = document.getElementById("memberLoginUsernameGateway");
   const gwPassInput = document.getElementById("memberLoginPasswordGateway");
 
-  let rawUser = ((userInput && userInput.value) || (gwUserInput && gwUserInput.value) || "").trim();
-  let rawPass = ((passInput && passInput.value) || (gwPassInput && gwPassInput.value) || "").trim();
+  let rawUser = ((formUserInput && formUserInput.value) || (userInput && userInput.value) || (gwUserInput && gwUserInput.value) || "").trim();
+  let rawPass = ((formPassInput && formPassInput.value) || (passInput && passInput.value) || (gwPassInput && gwPassInput.value) || "").trim();
 
   const username = rawUser.toLowerCase().replace(/^@/, "");
   const password = rawPass;
@@ -462,9 +579,6 @@ async function handleMemberLogin(e) {
       return;
     }
   }
-
-  // Sədrin ən son təsdiq qərarlarını arxa planda dərhal sinxronlaşdır (giriş düyməsini ləngitməmək üçün non-blocking)
-  syncCloudApprovals(username).catch(() => {});
 
   const data = getClubData();
   data.members = data.members || [];
@@ -534,59 +648,77 @@ async function handleMemberLogin(e) {
     return;
   }
 
-  // Axtarış: username (@ ilə və ya olmadan, boşluq/altxətt toleransı ilə), email və ya telefon nömrəsi üzrə
+  // Axtarış: username (@ ilə və ya olmadan, boşluq/altxətt toleransı ilə), email və ya telefon nömrəsi (0xx / +994xx) üzrə
   const cleanInputUser = username.toLowerCase().replace(/^@/, "").replace(/[\s_]/g, "");
-  let member = data.members.find(m => 
-    (m.username && m.username.toLowerCase().replace(/^@/, "") === username) || 
-    (m.username && m.username.toLowerCase().replace(/^@/, "").replace(/[\s_]/g, "") === cleanInputUser) ||
-    (m.email && m.email.toLowerCase() === username) ||
-    (m.phone && m.phone.replace(/[\s\-\(\)\+]/g, "") === username.replace(/[\s\-\(\)\+]/g, ""))
-  );
+  const inputPhoneKey = _normalizePhoneKey(username);
+  const rawInputDigits = username.replace(/[\s\-\(\)\+]/g, "");
+
+  const matchesIdentifier = (item) => {
+    if (!item) return false;
+    const u = (item.username || "").toLowerCase().replace(/^@/, "").trim();
+    const eMail = (item.email || "").toLowerCase().trim();
+    const pDigits = (item.phone || "").replace(/[\s\-\(\)\+]/g, "");
+    const pKey = _normalizePhoneKey(item.phone);
+    return (
+      (u && u === username) ||
+      (u && u.replace(/[\s_]/g, "") === cleanInputUser) ||
+      (eMail && eMail === username) ||
+      (pDigits && rawInputDigits.length >= 7 && pDigits === rawInputDigits) ||
+      (pKey && inputPhoneKey && pKey === inputPhoneKey)
+    );
+  };
+
+  const findBestRecord = (list, preferredStatus) => {
+    const matches = (list || []).filter(matchesIdentifier);
+    if (matches.length === 0) return null;
+    return matches.find(x => x.status === preferredStatus) || matches[0];
+  };
+
+  let didCloudSync = false;
+  const runCloudSyncOnce = async () => {
+    if (didCloudSync) return;
+    didCloudSync = true;
+    await syncCloudApprovals(username, { timeoutMs: 5500 }).catch(() => {});
+    const freshData = getClubData();
+    data.members = freshData.members || [];
+    data.applications = freshData.applications || [];
+    data.approvedAppIds = freshData.approvedAppIds || [];
+    data.approvedUsers = freshData.approvedUsers || [];
+    data.rejectedAppIds = freshData.rejectedAppIds || [];
+  };
+
+  let member = findBestRecord(data.members, "Aktiv");
 
   // Əgər LocalStorage-da tapılmadısa, IndexedDB persistent bazadan bərpa cəhdi
   if (!member && window.ClubDatabase) {
     member = await window.ClubDatabase.getMember(username);
-    if (member) {
+    if (member && !String(member.id || "").startsWith("app-")) {
       const exists = data.members.some(m => m.id === member.id || m.username === member.username);
       if (!exists) {
         data.members.unshift(member);
         saveClubData(data);
       }
+    } else if (member && String(member.id || "").startsWith("app-")) {
+      member = null;
     }
   }
 
   // Əgər aktiv üzv kimi tapılmadısa, müraciətlər siyahısından (applications) yoxla
   if (!member) {
-    let app = (data.applications || []).find(a =>
-      (a.username && a.username.toLowerCase().replace(/^@/, "") === username) ||
-      (a.username && a.username.toLowerCase().replace(/^@/, "").replace(/[\s_]/g, "") === cleanInputUser) ||
-      (a.email && a.email.toLowerCase() === username) ||
-      (a.phone && a.phone.replace(/[\s\-\(\)\+]/g, "") === username.replace(/[\s\-\(\)\+]/g, ""))
-    );
+    let app = findBestRecord(data.applications, "Təsdiqləndi");
 
-    // Əgər lokalda Gözləyir statusundadırsa və ya tapılmadısa, Sədrin yeni təsdiqini buluddan (max 2s) yoxla
+    // Əgər lokalda Gözləyir statusundadırsa və ya tapılmadısa, Sədrin yeni təsdiqini buluddan canlı yoxla
     if (!app || app.status === "Gözləyir") {
-      await syncCloudApprovals(username).catch(() => {});
-      const freshData = getClubData();
-      data.members = freshData.members || [];
-      data.applications = freshData.applications || [];
-      data.approvedAppIds = freshData.approvedAppIds || [];
-      data.approvedUsers = freshData.approvedUsers || [];
-      data.rejectedAppIds = freshData.rejectedAppIds || [];
-      member = data.members.find(m =>
-        (m.username && m.username.toLowerCase().replace(/^@/, "") === username) ||
-        (m.username && m.username.toLowerCase().replace(/^@/, "").replace(/[\s_]/g, "") === cleanInputUser) ||
-        (m.email && m.email.toLowerCase() === username)
-      );
-      app = (data.applications || []).find(a =>
-        (a.username && a.username.toLowerCase().replace(/^@/, "") === username) ||
-        (a.username && a.username.toLowerCase().replace(/^@/, "").replace(/[\s_]/g, "") === cleanInputUser) ||
-        (a.email && a.email.toLowerCase() === username) ||
-        (a.phone && a.phone.replace(/[\s\-\(\)\+]/g, "") === username.replace(/[\s\-\(\)\+]/g, ""))
-      );
+      await runCloudSyncOnce();
+      member = findBestRecord(data.members, "Aktiv");
+      app = findBestRecord(data.applications, "Təsdiqləndi");
     }
 
     if (!member && app) {
+      if (app.password && app.password !== password) {
+        await runCloudSyncOnce();
+        app = findBestRecord(data.applications, "Təsdiqləndi") || app;
+      }
       if (app.password && app.password !== password) {
         if (window.ClubSecurity) {
           window.ClubSecurity.recordAttempt("member_login", false);
@@ -632,14 +764,7 @@ async function handleMemberLogin(e) {
 
   if (!member) {
     // Əgər üzv kimi tapılmadısa, müəllim və mentor bazasından da yoxla!
-    const cleanUser = username.toLowerCase().trim().replace(/^@/, "");
-    const normalized = cleanUser
-      .replace(/[\s_.-]/g, "")
-      .replace(/ü/g, "u")
-      .replace(/ə/g, "e")
-      .replace(/ı/g, "i");
-
-    const teacher = (data.teachers || []).find(t => {
+    const teacherFallback = (data.teachers || []).find(t => {
       if (!t) return false;
       const tUser = (t.username || "").toLowerCase().replace(/^@/, "");
       const tNormUser = tUser.replace(/[\s_.-]/g, "").replace(/ü/g, "u").replace(/ə/g, "e").replace(/ı/g, "i");
@@ -656,8 +781,8 @@ async function handleMemberLogin(e) {
       return aUser === cleanUser || aNormUser === normalized || aEmail === cleanUser || aName === cleanUser;
     });
 
-    if (teacher) {
-      if (teacher.password && teacher.password !== password) {
+    if (teacherFallback) {
+      if (teacherFallback.password && teacherFallback.password !== password) {
         if (window.ClubSecurity) {
           window.ClubSecurity.recordAttempt("member_login", false);
           window.ClubSecurity.log("LOGIN_FAIL_WRONG_PASSWORD", { username }, "WARNING");
@@ -665,17 +790,17 @@ async function handleMemberLogin(e) {
         showToast("Müəllim hesabı aşkarlandı, lakin şifrə yanlışdır!", "error");
         return;
       }
-      if (teacher.status === "Gözləyir") {
-        showToast(`Hörmətli ${teacher.fullName}, müəllim qeydiyyatınız hələ Sədrin təsdiqini gözləyir.`, "warning");
+      if (teacherFallback.status === "Gözləyir") {
+        showToast(`Hörmətli ${teacherFallback.fullName}, müəllim qeydiyyatınız hələ Sədrin təsdiqini gözləyir.`, "warning");
         return;
       }
       // Avtomatik Müəllim Panelinə daxil et və yönləndir
-      localStorage.setItem("wcu_active_teacher_id", teacher.id || teacher.teacherId || "teacher-sefanya");
+      localStorage.setItem("wcu_active_teacher_id", teacherFallback.id || teacherFallback.teacherId || "teacher-sefanya");
       if (window.ClubSecurity && typeof window.ClubSecurity.createSessionToken === "function") {
-        window.ClubSecurity.createSessionToken("teacher", teacher.id || teacher.teacherId || "teacher-sefanya");
+        window.ClubSecurity.createSessionToken("teacher", teacherFallback.id || teacherFallback.teacherId || "teacher-sefanya");
       }
       if (typeof closeMemberLoginModal === "function") closeMemberLoginModal();
-      showToast(`Xoş gəldiniz, ${teacher.fullName}! Akademik Mentor Panelinə daxil oldunuz.`, "success");
+      showToast(`Xoş gəldiniz, ${teacherFallback.fullName}! Akademik Mentor Panelinə daxil oldunuz.`, "success");
       navigateTo("teacher-portal");
       return;
     }
@@ -686,6 +811,13 @@ async function handleMemberLogin(e) {
     }
     showToast("Bu istifadəçi adı ilə qeydiyyatdan keçmiş üzv və ya müəllim tapılmadı. Zəhmət olmasa qeydiyyat formasından müraciət edin.", "error");
     return;
+  }
+
+  // Şifrə lokalda uyğun gəlmirsə, Sədrin dossye redaktəsi ilə şifrəni yeniləmiş olub-olmadığını buluddan yoxla
+  if (member.password !== password) {
+    await runCloudSyncOnce();
+    const refreshed = findBestRecord(data.members, "Aktiv");
+    if (refreshed) member = refreshed;
   }
 
   if (member.password !== password) {
@@ -702,14 +834,16 @@ async function handleMemberLogin(e) {
     return;
   }
 
-  // Əgər lokalda "Gözləyir" statusundadırsa, Sədrin yeni təsdiqini buluddan (max 2s) yoxla — avtomatik təsdiq ETMƏ!
+  // Əgər lokalda "Gözləyir" statusundadırsa, Sədrin yeni təsdiqini buluddan canlı yoxla — avtomatik təsdiq ETMƏ!
   if (member.status === "Gözləyir") {
-    await syncCloudApprovals(username).catch(() => {});
-    const freshData = getClubData();
-    const refreshedMem = (freshData.members || []).find(m =>
-      m.id === member.id || (m.username && m.username.toLowerCase().replace(/^@/, "") === username)
-    );
+    await runCloudSyncOnce();
+    const refreshedMem = findBestRecord(data.members, "Aktiv");
     if (refreshedMem) member = refreshedMem;
+    const matchedApp = findBestRecord(data.applications, "Təsdiqləndi");
+    if (member.status === "Gözləyir" && matchedApp && (matchedApp.status === "Təsdiqləndi" || matchedApp.status === "Qəbul Edildi")) {
+      member.status = "Aktiv";
+      saveClubData(data);
+    }
     if (member.status === "Gözləyir") {
       showToast(`Hörmətli ${member.fullName}, qeydiyyatınız qəbul edilib və hazırda Klub Sədrinin təsdiqini gözləyir. Sədr təsdiq etdikdən sonra panelə rahat daxil ola bilərsiniz.`, "warning");
       return;
@@ -1653,22 +1787,52 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
               }
             } else if (payload.action === "UPDATE_MEMBER_DOSSIER" || payload.action === "MEMBER_PROFILE_UPDATED") {
+              data.approvedAppIds = data.approvedAppIds || [];
+              data.approvedUsers = data.approvedUsers || [];
+              data.rejectedAppIds = data.rejectedAppIds || [];
+              data.pendingOverrideIds = data.pendingOverrideIds || [];
+              const normUser = ((payload.username || (payload.member && payload.member.username) || (payload.application && payload.application.username) || "")).toLowerCase().replace(/^@/, "").trim();
               if (payload.member && payload.member.username) {
                 data.members = data.members || [];
-                const mIdx = data.members.findIndex(m => m.id === payload.member.id || (m.username && m.username.toLowerCase() === payload.member.username.toLowerCase()));
+                const mIdx = data.members.findIndex(m => m.id === payload.member.id || (m.username && m.username.toLowerCase().replace(/^@/, "").trim() === normUser));
                 if (mIdx !== -1) {
-                  data.members[mIdx] = { ...data.members[mIdx], ...payload.member };
+                  const preservedPhoto = payload.member.photo || data.members[mIdx].photo || "";
+                  data.members[mIdx] = { ...data.members[mIdx], ...payload.member, id: data.members[mIdx].id, photo: preservedPhoto };
                   changed = true;
                 }
+                if (payload.member.status === "Aktiv" && normUser) {
+                  if (!data.approvedUsers.includes(normUser)) data.approvedUsers.push(normUser);
+                  data.pendingOverrideIds = data.pendingOverrideIds.filter(x => x !== normUser);
+                  data.rejectedAppIds = data.rejectedAppIds.filter(x => x !== normUser);
+                }
               }
-              if (payload.application && payload.application.id) {
+              if (payload.application && (payload.application.id || payload.application.username)) {
                 data.applications = data.applications || [];
-                const aIdx = data.applications.findIndex(a => a.id === payload.application.id || (a.username && payload.application.username && a.username.toLowerCase() === payload.application.username.toLowerCase()));
+                const aIdx = data.applications.findIndex(a => a.id === payload.application.id || (a.username && normUser && a.username.toLowerCase().replace(/^@/, "").trim() === normUser));
                 if (aIdx !== -1) {
-                  data.applications[aIdx] = { ...data.applications[aIdx], ...payload.application };
+                  const preservedPhoto = payload.application.photo || data.applications[aIdx].photo || "";
+                  data.applications[aIdx] = { ...data.applications[aIdx], ...payload.application, id: data.applications[aIdx].id, photo: preservedPhoto };
                   changed = true;
                 }
+                const trackId = (aIdx !== -1 ? data.applications[aIdx].id : payload.application.id);
+                if (payload.application.status === "Təsdiqləndi") {
+                  if (trackId && !data.approvedAppIds.includes(trackId)) data.approvedAppIds.push(trackId);
+                  if (normUser && !data.approvedUsers.includes(normUser)) data.approvedUsers.push(normUser);
+                  data.pendingOverrideIds = data.pendingOverrideIds.filter(x => x !== trackId && x !== normUser);
+                  data.rejectedAppIds = data.rejectedAppIds.filter(x => x !== trackId && x !== normUser);
+                } else if (payload.application.status === "Rədd edildi") {
+                  if (trackId && !data.rejectedAppIds.includes(trackId)) data.rejectedAppIds.push(trackId);
+                  if (normUser && !data.rejectedAppIds.includes(normUser)) data.rejectedAppIds.push(normUser);
+                  data.approvedAppIds = data.approvedAppIds.filter(x => x !== trackId);
+                  data.approvedUsers = data.approvedUsers.filter(x => x !== normUser);
+                }
               }
+              try {
+                localStorage.setItem("carboxmol_approved_app_ids", JSON.stringify(data.approvedAppIds));
+                localStorage.setItem("carboxmol_approved_users", JSON.stringify(data.approvedUsers));
+                localStorage.setItem("carboxmol_rejected_app_ids", JSON.stringify(data.rejectedAppIds));
+                localStorage.setItem("carboxmol_pending_override_ids", JSON.stringify(data.pendingOverrideIds));
+              } catch (e) {}
             } else if (payload.action === "DELETE_APPLICATION" || payload.action === "APPLICATION_DELETED") {
               data.deletedAppIds = data.deletedAppIds || [];
               data.deletedMemberIds = data.deletedMemberIds || [];

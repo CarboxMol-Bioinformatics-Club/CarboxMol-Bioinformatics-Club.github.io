@@ -1,9 +1,9 @@
 {
-  "registryVersion": "2.0.0",
-  "lastUpdated": "2026-11-19T22:50:00+04:00",
+  "registryVersion": "2.0.1",
+  "lastUpdated": "2026-11-23T21:00:00+04:00",
   "approvedBy": "Süleyman Hacızadə (Klub Sədri)",
-  "totalApprovedMembers": 74,
-  "totalApplications": 74,
+  "totalApprovedMembers": 66,
+  "totalApplications": 66,
   "members": [
     {
       "id": "mem-1794415625983",
@@ -1827,6 +1827,39 @@
       ],
       "motivation": "Bioinformatika sahəsində biliklərimi artırmaq və klubun elmi tədqiqatlarında iştirak etmək istəyirəm.",
       "yearGoal": "1 il ərzində bioinformatika alətlərini mənimsəmək və elmi məqalə hazırlamaq.",
+      "customTasks": [],
+      "notes": []
+    },
+    {
+      "id": "mem-1119-turann",
+      "fullName": "Turan Hüseynov (Zakir)",
+      "username": "turann",
+      "email": "guseinov197301@icloud.com",
+      "phone": "0509743986",
+      "password": "2009.07",
+      "role": "Klub Üzvü",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+      "major": "Biologiya",
+      "course": "Bakalavr (I kurs)",
+      "studyLang": "İngilis bölməsi",
+      "gpa": "",
+      "joinDate": "23.11.2026",
+      "registeredAt": "2026-11-19",
+      "status": "Aktiv",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=turann",
+      "photo": "",
+      "profileUrl": "",
+      "skills": [
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası və Dərman Dizaynı"
+      ],
+      "researchTracks": [
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası və Dərman Dizaynı"
+      ],
+      "motivation": "Gələcək-yönümlü bir sahə olduğu üçün marağımı çəkir və çox istədiyim ixtisaslardan birini əhat edir\n\nÇalışıb öz biliyimi gücləndirmək istəyirəm",
+      "yearGoal": "",
       "customTasks": [],
       "notes": []
     }
@@ -4228,6 +4261,42 @@
       "status": "Təsdiqləndi",
       "adminNotes": "Sədr tərəfindən rəsmi təsdiqlənmiş Qərbi Kaspi Universiteti üzvü.",
       "approvedAt": "2026-11-18",
+      "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
+    },
+    {
+      "id": "app-1119-turann",
+      "memberId": "mem-1119-turann",
+      "isTeacher": false,
+      "fullName": "Turan Hüseynov (Zakir)",
+      "email": "guseinov197301@icloud.com",
+      "phone": "0509743986",
+      "username": "turann",
+      "password": "2009.07",
+      "photo": "",
+      "profileUrl": "",
+      "university": "Qərbi Kaspi Universiteti (WCU)",
+      "faculty": "(WCU) - Yüksək Texnologiyalar və Təbiət Elmləri Məktəbi",
+      "major": "Biologiya",
+      "course": "Bakalavr (I kurs)",
+      "studyLang": "İngilis bölməsi",
+      "gpa": "",
+      "programmingSkill": "Heç biri (Sıfırdan öyrənmək istəyirəm)",
+      "tools": [],
+      "bioTools": [],
+      "bioKnowledge": "Güclü biologiya bazam var (Genetika, Molekulyar biologiya)",
+      "osType": "Windows",
+      "researchTracks": [
+        "Genomika və NGS Analizi",
+        "Struktur Biologiyası və Dərman Dizaynı"
+      ],
+      "roleInterest": "Aktiv Tələbə / Təlim və Seminar İştirakçısı",
+      "weeklyTime": "Həftədə 2–4 saat",
+      "motivation": "Gələcək-yönümlü bir sahə olduğu üçün marağımı çəkir və çox istədiyim ixtisaslardan birini əhat edir\n\nÇalışıb öz biliyimi gücləndirmək istəyirəm",
+      "yearGoal": "",
+      "dateApplied": "2026-11-19",
+      "status": "Təsdiqləndi",
+      "adminNotes": "Sədr tərəfindən rəsmi təsdiqlənib.",
+      "approvedAt": "2026-11-23",
       "approvedBy": "Süleyman Hacızadə (Klub Sədri)"
     }
   ]

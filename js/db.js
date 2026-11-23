@@ -159,6 +159,11 @@ class ClubDatabaseEngine {
 
         dbMembers.forEach((dbMem) => {
           if (!dbMem || !dbMem.id) return;
+          // Köhnə xətadan qalmış app-* müraciət qeydlərini members cədvəlindən dərhal təmizlə
+          if (String(dbMem.id).startsWith("app-")) {
+            try { memberStore.delete(dbMem.id); } catch (e) {}
+            return;
+          }
           // Əgər rəsmi silinmiş siyahıdadırsa, IndexedDB-dən də dərhal sil və bərpa etmə!
           if (deletedMemberIds.has(dbMem.id)) {
             try { memberStore.delete(dbMem.id); } catch (e) {}
@@ -166,7 +171,7 @@ class ClubDatabaseEngine {
           }
 
           const localMem = (localData.members || []).find(
-            (m) => m.id === dbMem.id || (m.username && m.username.toLowerCase() === (dbMem.username || "").toLowerCase())
+            (m) => m.id === dbMem.id || (m.username && dbMem.username && m.username.toLowerCase().replace(/^@/, "").trim() === dbMem.username.toLowerCase().replace(/^@/, "").trim())
           );
           if (!localMem) {
             localData.members.unshift(dbMem);
@@ -197,7 +202,7 @@ class ClubDatabaseEngine {
             }
 
             const localApp = (localData.applications || []).find(
-              (a) => a.id === dbApp.id || (a.username && a.username.toLowerCase() === (dbApp.username || "").toLowerCase())
+              (a) => a.id === dbApp.id || (a.username && dbApp.username && a.username.toLowerCase().replace(/^@/, "").trim() === dbApp.username.toLowerCase().replace(/^@/, "").trim())
             );
             if (!localApp) {
               localData.applications.unshift(dbApp);
@@ -243,6 +248,9 @@ class ClubDatabaseEngine {
   // Yeni üzv üçün fərdi databaza qeydini yarat və saxla
   async provisionMember(member) {
     if (!member || !member.id) return;
+    if (String(member.id).startsWith("app-")) {
+      return this.saveApplication(member);
+    }
 
     // 1. IndexedDB-də saxla (şəkilin silinməməsini zəmanətə al)
     if (this.db) {
@@ -264,8 +272,9 @@ class ClubDatabaseEngine {
     if (typeof getClubData === "function" && typeof saveClubData === "function") {
       const data = getClubData();
       data.members = data.members || [];
+      const normMemUser = (member.username || "").toLowerCase().replace(/^@/, "").trim();
       const idx = data.members.findIndex(
-        (m) => m.id === member.id || (m.username && m.username.toLowerCase() === (member.username || "").toLowerCase())
+        (m) => m.id === member.id || (m.username && normMemUser && m.username.toLowerCase().replace(/^@/, "").trim() === normMemUser)
       );
       if (idx === -1) {
         data.members.unshift(member);

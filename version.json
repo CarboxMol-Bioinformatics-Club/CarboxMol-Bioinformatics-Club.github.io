@@ -1,6 +1,6 @@
 {
-  "version": "2.5.4",
-  "build": "20261116-1930",
-  "timestamp": 1794843000000,
-  "description": "CarboxMol Bioinformatika Klubu v2.5.4 — Bütün platformada rəsmi CarboxMol Bioinformatics Club loqosu və avtomatik favicon sinxronizasiyası (köhnə favicon.svg silinib, robots.txt & SEO mühərriki yenilənib), həmçinin ingilis və Azərbaycan dillərində bütün resursların birbaşa açıq rəsmi PDF dərsliklərlə əvəzlənməsi."
+  "version": "2.5.9",
+  "build": "20261123-2100",
+  "timestamp": 1795453200000,
+  "description": "CarboxMol Bioinformatika Klubu v2.5.9 — Turan Hüseynov (turann) rəsmi üzv reyestrinə təsdiqlənmiş statusda əlavə edildi, Service Worker-in ntfy.sh canlı bulud şinini keşləmə xətası aradan qaldırıldı və çarpaz-cihaz təsdiq/giriş sinxronizasiyası tam sabitləşdirildi."
 }
