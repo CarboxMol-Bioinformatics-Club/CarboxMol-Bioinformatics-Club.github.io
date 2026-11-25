@@ -402,7 +402,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=20261122_v68" />
+  <link rel="stylesheet" href="css/style.css?v=20261125_v70" />
   <!-- Auto-redirect from old domain/vercel only (never on official domain or localhost) -->
   <script>
       (function () {
@@ -416,8 +416,10 @@
 
 <body class="bg-[#f8fafc] text-slate-800 min-h-screen flex flex-col selection:bg-teal-500 selection:text-white">
 
-  <!-- Ambient Light Effects (Contained to prevent any horizontal overflow) -->
-  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+  <!-- Global Seamless 3D Protein Structural Backdrop (Fixed GPU Layer, Zero Overflow) -->
+  <div id="siteProteinBackdrop" aria-hidden="true">
+    <div class="protein-bg-accent"></div>
+    <div class="protein-bg-main"></div>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
   </div>
@@ -791,7 +793,7 @@
   <!-- ========================================== -->
   <!-- MAIN CONTENT CONTAINER -->
   <!-- ========================================== -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 lg:pb-8">
+  <main class="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 lg:pb-8">
 
     <!-- ======================================================= -->
     <!-- GLOBAL SYNCHRONOUS LIVE MEETING / CLASS NOTIFICATION BANNER -->

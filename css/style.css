@@ -3,6 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
+  --in-oklab: ;
+  --in-oklch: ;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --color-wcu-maroon: #800020;
@@ -15,6 +17,13 @@
   --sab: env(safe-area-inset-bottom, 0px);
   --sal: env(safe-area-inset-left, 0px);
   --sar: env(safe-area-inset-right, 0px);
+}
+
+@supports (background: linear-gradient(in oklab, white, black)) {
+  :root {
+    --in-oklab: in oklab;
+    --in-oklch: in oklch;
+  }
 }
 
 /* ========================================================
@@ -480,7 +489,7 @@ input, select, textarea {
     background: #fff !important;
     color: #000 !important;
   }
-  .no-print, nav, footer, #toastContainer, #mobileBottomNav {
+  .no-print, nav, footer, #toastContainer, #mobileBottomNav, #siteProteinBackdrop {
     display: none !important;
   }
 }
@@ -502,8 +511,75 @@ input, select, textarea {
 }
 
 body {
-  background-color: #ffffff !important;
+  background-color: #f3fafc !important;
+  background-image: linear-gradient(155deg var(--in-oklab), #ecf7fa 0%, #f8fcfd 48%, #eaf5f8 100%) !important;
+  background-attachment: fixed;
   color: #1e293b !important;
+}
+
+main, footer {
+  position: relative;
+  z-index: 10;
+}
+
+/* Global Seamless 3D Protein Structural Background Layer */
+#siteProteinBackdrop {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  isolation: isolate;
+}
+
+.protein-bg-main,
+.protein-bg-accent {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  /* MANDATORY fallback before image-set() for older browsers */
+  background-image: url("../assets/images/backgrounds/protein-bg-2x.png");
+  /* Ordered from most optimized (AVIF) to least optimized (PNG) */
+  background-image: image-set(
+    url("../assets/images/backgrounds/protein-bg-1x.avif") type("image/avif") 1x,
+    url("../assets/images/backgrounds/protein-bg-2x.avif") type("image/avif") 2x,
+    url("../assets/images/backgrounds/protein-bg-1x.webp") type("image/webp") 1x,
+    url("../assets/images/backgrounds/protein-bg-2x.webp") type("image/webp") 2x,
+    url("../assets/images/backgrounds/protein-bg-1x.png") type("image/png") 1x,
+    url("../assets/images/backgrounds/protein-bg-2x.png") type("image/png") 2x
+  );
+}
+
+.protein-bg-main {
+  background-position: 50% 50%;
+  background-size: min(92vmin, 920px) auto;
+  opacity: 0.50;
+}
+
+.protein-bg-accent {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .protein-bg-accent {
+    display: block;
+    background-position: -90px 14%;
+    background-size: min(58vmin, 540px) auto;
+    opacity: 0.28;
+    transform: scaleY(-1);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .protein-bg-main {
+    background-position: center 34%;
+    background-size: min(96vw, 480px) auto;
+    opacity: 0.44;
+  }
 }
 
 /* 1. UNIVERSAL TYPOGRAPHY CONTRAST ON WHITE (WCAG AAA/AA) */
@@ -721,19 +797,21 @@ button[class*="bg-teal-950"]:hover {
 
 /* 3. CARD & PANEL BACKGROUND INVERSIONS */
 
-/* Glass Panels and Cards */
+/* Glass Panels and Cards (Frosted Academic Glass over 3D Protein Backdrop) */
 .glass-panel {
-  background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(5px) saturate(1.12) !important;
+  -webkit-backdrop-filter: blur(5px) saturate(1.12) !important;
+  border: 1px solid rgba(14, 116, 144, 0.18) !important;
+  box-shadow: 0 8px 30px -6px rgba(15, 23, 42, 0.07) !important;
 }
 
-/* All dark slate background classes become pure white */
+/* All dark slate background classes become crisp frosted translucent white */
 [class*="bg-slate-950"]:not([id$="Modal"]):not(#mobileMenu):not(button),
 [class*="bg-slate-900"]:not([id$="Modal"]):not(#mobileMenu):not(button),
 [class*="bg-[#070e17]"] {
-  background-color: #ffffff !important;
-  border-color: #e2e8f0 !important;
+  background-color: rgba(255, 255, 255, 0.78) !important;
+  border-color: rgba(203, 213, 225, 0.85) !important;
 }
 
 /* Subtle secondary nested card containers */
@@ -745,8 +823,8 @@ button[class*="bg-teal-950"]:hover {
 [class*="bg-slate-900/60"],
 [class*="bg-slate-800/80"],
 [class*="bg-slate-800/60"] {
-  background-color: #f8fafc !important;
-  border-color: #e2e8f0 !important;
+  background-color: rgba(248, 250, 252, 0.78) !important;
+  border-color: rgba(203, 213, 225, 0.85) !important;
 }
 
 /* Borders */
@@ -788,8 +866,17 @@ button[class*="bg-teal-950"]:hover {
 /* Garib Murshudov & TechBrains 2026 completed event showcases */
 #garibSeminarShowcase,
 #techbrains2026Showcase {
-  background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 50%, #ffffff 100%) !important;
-  border: 1px solid #ccfbf1 !important;
+  background: linear-gradient(135deg var(--in-oklab), rgba(255, 255, 255, 0.78) 0%, rgba(240, 253, 250, 0.72) 50%, rgba(255, 255, 255, 0.78) 100%) !important;
+  backdrop-filter: blur(6px) saturate(1.12) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(1.12) !important;
+  border: 1px solid rgba(153, 246, 228, 0.85) !important;
+}
+
+/* Prevent light-mode from-slate-950 override from putting a white haze over event gallery photos */
+#techbrains2026Showcase [class*="from-slate-950"],
+#garibSeminarShowcase [class*="from-slate-950"] {
+  background: transparent !important;
+  border: none !important;
 }
 
 /* Insignia / Emblem card */
@@ -837,9 +924,11 @@ button[class*="bg-teal-950"]:hover {
 
 /* 6. NAVIGATION & HEADER */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.98) !important;
-  border-bottom: 1px solid #e2e8f0 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  background: rgba(255, 255, 255, 0.86) !important;
+  backdrop-filter: blur(18px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.2) !important;
+  border-bottom: 1px solid rgba(203, 213, 225, 0.8) !important;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05) !important;
 }
 
 .glass-nav .nav-link {
@@ -1114,8 +1203,10 @@ pre, code, .font-mono-seq {
 
 /* 11. FOOTER & DOCK */
 footer {
-  background: #f8fafc !important;
-  border-top: 1px solid #e2e8f0 !important;
+  background: rgba(248, 250, 252, 0.84) !important;
+  backdrop-filter: blur(12px) saturate(1.1) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(1.1) !important;
+  border-top: 1px solid rgba(203, 213, 225, 0.85) !important;
   color: #334155 !important;
 }
 
